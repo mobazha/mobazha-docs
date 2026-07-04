@@ -1,0 +1,37 @@
+# Mobazha Documentation
+
+> Canonical task-oriented documentation for people and agents using, operating, integrating, or evaluating Mobazha.
+
+Status: Beta knowledge surface. Pages marked Draft are not shipped guarantees.
+Runtime authority: the connected backend's version and advertised capabilities.
+Policy authority: the reviewed public source linked from each page.
+
+## Start
+- [Overview](/start)
+- [Sell](/sell)
+- [Buy](/buy)
+
+## Operate
+- [Self-host](/self-host)
+- [Bind an account](/self-host/bind-account)
+- [Backup and upgrade](/self-host/backup-and-upgrade)
+
+## Build
+- [Developer overview](/build)
+- [API policy](/build/api)
+- [MCP and agents](/build/mcp)
+- [Webhooks](/build/webhooks)
+- [Source reference](/reference)
+
+## Project and trust
+- [Architecture](/project/architecture)
+- [Whitepaper summary](/project/whitepaper)
+- [Fees and economics](/project/fees)
+- [Release scope](/project/release-scope)
+- [Governance](/project/governance)
+- [Releases](/releases)
+
+## Machine-readable
+- [Documentation index](/docs-index.json)
+- [Discovery manifest](/.well-known/mobazha-docs.json)
+- [Expanded agent context](/llms-full.txt)

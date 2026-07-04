@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "generated_from": "curated-public-sources",
+  "canonical_language": "en",
+  "reviewed": "2026-07-04",
+  "runtime_authority": "connected backend version and advertised capabilities",
+  "documents": [
+    { "id": "start", "path": "/start", "status": "beta", "audiences": ["everyone", "agents"], "source": "https://github.com/mobazha" },
+    { "id": "sell", "path": "/sell", "status": "beta", "audiences": ["sellers", "operators"], "source": "https://github.com/mobazha/mobazha/tree/main" },
+    { "id": "buy", "path": "/buy", "status": "beta", "audiences": ["buyers", "agents"], "source": "docs-curation", "source_note": "anonymous public client source pending" },
+    { "id": "self-host", "path": "/self-host", "status": "beta", "audiences": ["operators", "developers"], "source": "https://github.com/mobazha/mobazha/tree/main" },
+    { "id": "bind-account", "path": "/self-host/bind-account", "status": "beta", "audiences": ["operators"], "source": "docs-curation", "source_note": "anonymous public client source pending" },
+    { "id": "backup-upgrade", "path": "/self-host/backup-and-upgrade", "status": "beta", "audiences": ["operators"], "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases" },
+    { "id": "build", "path": "/build", "status": "beta", "audiences": ["developers", "agent-builders"], "source": "https://github.com/mobazha" },
+    { "id": "api", "path": "/build/api", "status": "draft", "audiences": ["developers"], "source": "https://github.com/mobazha/mobazha/tree/main" },
+    { "id": "mcp", "path": "/build/mcp", "status": "beta", "audiences": ["agent-builders", "security-reviewers"], "source": "https://github.com/mobazha" },
+    { "id": "webhooks", "path": "/build/webhooks", "status": "draft", "audiences": ["developers", "operators"], "source": "https://github.com/mobazha/mobazha/tree/main" },
+    { "id": "reference", "path": "/reference", "status": "current", "audiences": ["developers", "contributors", "agents"], "source": "https://github.com/mobazha" },
+    { "id": "project", "path": "/project", "status": "current", "audiences": ["everyone", "contributors", "evaluators"], "source": "https://github.com/mobazha/mobazha/tree/main/docs/project" },
+    { "id": "architecture", "path": "/project/architecture", "status": "beta", "audiences": ["operators", "developers", "evaluators"], "source": "https://github.com/mobazha" },
+    { "id": "whitepaper", "path": "/project/whitepaper", "status": "draft", "audiences": ["community", "contributors", "evaluators"], "source": "docs-curation" },
+    { "id": "fees", "path": "/project/fees", "status": "current", "audiences": ["buyers", "sellers", "operators", "evaluators", "agents"], "source": "https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES.md" },
+    { "id": "release-scope", "path": "/project/release-scope", "status": "beta", "audiences": ["everyone"], "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases" },
+    { "id": "governance", "path": "/project/governance", "status": "draft", "audiences": ["contributors", "maintainers", "agents"], "source": "docs-curation" },
+    { "id": "releases", "path": "/releases", "status": "current", "audiences": ["operators", "developers"], "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases" }
+  ]
+}

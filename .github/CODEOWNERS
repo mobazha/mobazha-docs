@@ -1,0 +1,6 @@
+* @fengzie
+
+/public/docs-index.json @fengzie
+/public/llms*.txt @fengzie
+/sources.json @fengzie
+/wrangler.jsonc @fengzie

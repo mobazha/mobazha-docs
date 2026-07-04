@@ -1,0 +1,30 @@
+{
+  "$schema": "./sources.schema.json",
+  "reviewed": "2026-07-04",
+  "policy": "Only reviewed public material from these owners may be curated into the public site.",
+  "sources": [
+    {
+      "id": "community-backend",
+      "repository": "https://github.com/mobazha/mobazha/tree/main",
+      "owns": ["backend", "deployment", "release notes", "public project policy"]
+    },
+    {
+      "id": "public-website",
+      "repository": "https://github.com/mobazha/mobazha.org",
+      "owns": ["public positioning", "high-level disclosures", "website navigation"]
+    },
+    {
+      "id": "docs-curation",
+      "repository": "this repository",
+      "owns": ["information architecture", "derived guidance", "machine-readable discovery"]
+    }
+  ],
+  "denied": [
+    "credentials or recovery material",
+    "customer or production data",
+    "private incident and operational logs",
+    "unapproved forecasts or commercial percentages",
+    "internal-only Hosting plans and playbooks",
+    "repositories that are not anonymously readable"
+  ]
+}

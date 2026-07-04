@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "name": "Mobazha Documentation",
+  "canonical_base_url": "https://docs.mobazha.org",
+  "human_start": "/start",
+  "llms": "/llms.txt",
+  "llms_full": "/llms-full.txt",
+  "index": "/docs-index.json",
+  "source_policy": "https://github.com/mobazha",
+  "status": "beta"
+}

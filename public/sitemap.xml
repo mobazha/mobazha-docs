@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://docs.mobazha.org/</loc></url>
+  <url><loc>https://docs.mobazha.org/start</loc></url>
+  <url><loc>https://docs.mobazha.org/sell</loc></url>
+  <url><loc>https://docs.mobazha.org/buy</loc></url>
+  <url><loc>https://docs.mobazha.org/self-host</loc></url>
+  <url><loc>https://docs.mobazha.org/self-host/bind-account</loc></url>
+  <url><loc>https://docs.mobazha.org/self-host/backup-and-upgrade</loc></url>
+  <url><loc>https://docs.mobazha.org/build</loc></url>
+  <url><loc>https://docs.mobazha.org/build/api</loc></url>
+  <url><loc>https://docs.mobazha.org/build/mcp</loc></url>
+  <url><loc>https://docs.mobazha.org/build/webhooks</loc></url>
+  <url><loc>https://docs.mobazha.org/reference</loc></url>
+  <url><loc>https://docs.mobazha.org/project</loc></url>
+  <url><loc>https://docs.mobazha.org/project/architecture</loc></url>
+  <url><loc>https://docs.mobazha.org/project/whitepaper</loc></url>
+  <url><loc>https://docs.mobazha.org/project/fees</loc></url>
+  <url><loc>https://docs.mobazha.org/project/release-scope</loc></url>
+  <url><loc>https://docs.mobazha.org/project/governance</loc></url>
+  <url><loc>https://docs.mobazha.org/releases</loc></url>
+</urlset>
