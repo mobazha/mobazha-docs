@@ -5,8 +5,8 @@ status: Beta
 audiences:
   - Operators
   - Support
-sourceLabel: Mobazha Node operations commands
-sourceUrl: https://github.com/mobazha/mobazha#operations
+evidenceLabel: Mobazha Node operations commands
+evidenceUrl: https://github.com/mobazha/mobazha#operations
 reviewed: 2026-07-04
 ---
 

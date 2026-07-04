@@ -6,6 +6,17 @@ import { loadContentDocuments, renderDocumentRegistry } from "./content-files.mj
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
 const failures = [];
 const fail = (message) => failures.push(message);
+const canonicalBaseUrl = "https://docs.mobazha.org";
+const retiredPolicyEvidence = new Set([
+  "https://github.com/mobazha/mobazha/blob/main/docs/project/COMPATIBILITY.md",
+  "https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES.md",
+  "https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES_ZH.md",
+  "https://github.com/mobazha/mobazha/blob/main/docs/project/OEM_DISTRIBUTION.md",
+  "https://github.com/mobazha/mobazha/blob/main/docs/project/PUBLIC_HISTORY.md",
+  "https://github.com/mobazha/mobazha/blob/main/docs/project/RELEASE_SCOPE.md",
+  "https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md",
+  "https://github.com/mobazha/mobazha-unified/blob/main/docs/TOKEN_STANDARD_GUIDE.md",
+]);
 
 const expectedRegistry = renderDocumentRegistry(loadContentDocuments());
 if (read("app/lib/generated-docs.json") !== expectedRegistry) {
@@ -52,9 +63,12 @@ for (const path of navPaths) if (!paths.has(path)) fail(`navigation points to un
 for (const path of paths) if (!navPaths.includes(path)) fail(`${path} is missing from navigation`);
 
 for (const doc of docs) {
-  if (!doc.slug || !doc.title || !doc.summary || !doc.sourceLabel || !doc.audiences.length || !doc.sections.length) {
+  if (!doc.slug || !doc.title || !doc.summary || !doc.evidenceLabel || !doc.audiences.length || !doc.sections.length) {
     fail(`incomplete document metadata on /${doc.slug}`);
   }
+  if (doc.authorityKind !== "public-knowledge") fail(`invalid knowledge authority kind on /${doc.slug}`);
+  if (doc.authorityUrl !== `${canonicalBaseUrl}/${doc.slug}`) fail(`non-canonical knowledge authority on /${doc.slug}`);
+  if (retiredPolicyEvidence.has(doc.evidenceUrl)) fail(`/${doc.slug} cites a retired duplicate policy as evidence`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(doc.reviewed)) fail(`invalid review date on /${doc.slug}`);
   if (doc.version !== undefined && (typeof doc.version !== "string" || !doc.version.trim())) {
     fail(`invalid document version on /${doc.slug}`);

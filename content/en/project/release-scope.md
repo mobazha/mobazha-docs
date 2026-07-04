@@ -4,8 +4,8 @@ summary: The documentation distinguishes current release-candidate behavior from
 status: Beta
 audiences:
   - Everyone
-sourceLabel: Mobazha releases and repository documentation
-sourceUrl: https://github.com/mobazha/mobazha/tree/main/docs/releases
+evidenceLabel: Mobazha releases and repository documentation
+evidenceUrl: https://github.com/mobazha/mobazha/tree/main/docs/releases
 reviewed: 2026-07-04
 ---
 
@@ -23,7 +23,12 @@ reviewed: 2026-07-04
 - Identifiers or adapters present in source do not enable a payment method or create a compatibility commitment.
 - Stable signed binaries and reproducibility attestations remain pending final release approval.
 - Clients must fail closed when a valid runtime-capability snapshot is unavailable.
+- English is the default repository-documentation language unless a maintained translation is explicitly identified.
 
-- [Node release scope](https://github.com/mobazha/mobazha/blob/main/docs/project/RELEASE_SCOPE.md)
+- [Community capability manifest](https://github.com/mobazha/mobazha/blob/main/config/editions/community.json) — Machine-readable release evidence.
 - [Node v0.3.0-rc.1 notes](https://github.com/mobazha/mobazha/blob/main/docs/releases/v0.3.0-rc.1.md)
 - [Unified v0.3.0-rc.1 notes](https://github.com/mobazha/mobazha-unified/blob/main/docs/releases/v0.3.0-rc.1.md)
+
+## What remains version-specific
+
+Exact checksums, artifacts, known issues, migration steps, SBOMs, provenance, and implementation commits belong to each tagged repository release. This page governs shared maturity language and the current public boundary; it does not replace release evidence.

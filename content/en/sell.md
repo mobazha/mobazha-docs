@@ -5,8 +5,8 @@ status: Beta
 audiences:
   - Sellers
   - Operators
-sourceLabel: Mobazha README and release scope
-sourceUrl: https://github.com/mobazha/mobazha/tree/main
+evidenceLabel: Mobazha README and release scope
+evidenceUrl: https://github.com/mobazha/mobazha/tree/main
 reviewed: 2026-07-04
 ---
 

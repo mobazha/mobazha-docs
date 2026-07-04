@@ -5,8 +5,8 @@ status: Beta
 audiences:
   - 运营者
   - 开发者
-sourceLabel: Mobazha Node 快速开始
-sourceUrl: https://github.com/mobazha/mobazha#quick-start
+evidenceLabel: Mobazha Node 快速开始
+evidenceUrl: https://github.com/mobazha/mobazha#quick-start
 reviewed: 2026-07-04
 translationOf: self-host/install
 ---

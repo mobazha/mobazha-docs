@@ -6,8 +6,8 @@ audiences:
   - 社区
   - 贡献者
   - 评估者
-sourceLabel: Mobazha 白皮书中文维护译本
-sourceUrl: https://github.com/mobazha/mobazha-docs
+evidenceLabel: Mobazha 白皮书中文维护译本
+evidenceUrl: https://github.com/mobazha/mobazha-docs
 reviewed: 2026-07-04
 version: 0.1-review
 translationOf: project/whitepaper

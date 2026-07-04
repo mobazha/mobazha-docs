@@ -5,8 +5,8 @@ status: Beta
 audiences:
   - 卖家
   - 运营者
-sourceLabel: Mobazha Node 与 Unified 公开实现
-sourceUrl: https://github.com/mobazha/mobazha-unified
+evidenceLabel: Mobazha Node 与 Unified 公开实现
+evidenceUrl: https://github.com/mobazha/mobazha-unified
 reviewed: 2026-07-04
 translationOf: sell
 ---

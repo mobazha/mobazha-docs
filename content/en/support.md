@@ -4,8 +4,8 @@ summary: Use public support for reproducible product questions, repository issue
 status: Current
 audiences:
   - Everyone
-sourceLabel: Mobazha public support surfaces
-sourceUrl: https://mobazha.org/status
+evidenceLabel: Mobazha public support surfaces
+evidenceUrl: https://mobazha.org/status
 reviewed: 2026-07-04
 ---
 

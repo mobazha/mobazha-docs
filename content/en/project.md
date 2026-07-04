@@ -6,8 +6,8 @@ audiences:
   - Everyone
   - Contributors
   - Evaluators
-sourceLabel: Mobazha public project documents
-sourceUrl: https://github.com/mobazha/mobazha/tree/main/docs/project
+evidenceLabel: Mobazha public repositories and project records
+evidenceUrl: https://github.com/mobazha
 reviewed: 2026-07-04
 ---
 
@@ -18,11 +18,16 @@ reviewed: 2026-07-04
 - Fee policy governs how charges must be disclosed and who may set them.
 - The whitepaper expresses durable design principles and direction, not a promise that every described capability exists today.
 - Governance explains how public policy and protocol decisions change.
+- Compatibility defines shared contracts and safe evolution across distributions.
+- The public roadmap describes outcomes without turning implementation plans into commitments.
 
 ## Current authorities and records
 
 - [Release scope](/project/release-scope) — Current release boundary and explicit exclusions.
 - [Founding whitepaper](/project/whitepaper) — Versioned public review of durable principles.
 - [Fees and economics](/project/fees) — Current disclosure and economic boundaries.
+- [Compatibility](/project/compatibility) — Wire, capability, version, migration, and conformance policy.
+- [Distribution](/project/distribution) — OEM, appliance, and VPS packaging boundaries.
+- [Public roadmap](/project/roadmap) — Product outcomes separated from implementation plans.
 - [Public decisions and proposals](/project/decisions) — RFC, ADR, and history lifecycle.
 - [Releases](/releases) — Published release maturity and evidence.

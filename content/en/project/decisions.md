@@ -7,8 +7,8 @@ audiences:
   - Maintainers
   - Agents
   - Evaluators
-sourceLabel: Mobazha documentation decision process
-sourceUrl: https://github.com/mobazha/mobazha-docs/blob/main/docs/CONTENT_GOVERNANCE.md
+evidenceLabel: Mobazha documentation decision process
+evidenceUrl: https://github.com/mobazha/mobazha-docs/blob/main/docs/CONTENT_GOVERNANCE.md
 reviewed: 2026-07-04
 ---
 

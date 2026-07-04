@@ -7,8 +7,8 @@ audiences:
   - Maintainers
   - Architects
   - Agents
-sourceLabel: Public Mobazha ADR registry
-sourceUrl: https://github.com/mobazha/mobazha-docs/tree/main/adrs
+evidenceLabel: Public Mobazha ADR registry
+evidenceUrl: https://github.com/mobazha/mobazha-docs/tree/main/adrs
 reviewed: 2026-07-04
 ---
 
@@ -23,6 +23,7 @@ Editorial changes, routine implementation details, and temporary experiments usu
 ## Current registry
 
 - [ADR-0001: Markdown files are the documentation content authority](https://github.com/mobazha/mobazha-docs/blob/main/adrs/0001-markdown-content-authority.md) — Accepted; generated registries and discovery artifacts are derived outputs.
+- [ADR-0002: Mobazha Docs owns public knowledge](https://github.com/mobazha/mobazha-docs/blob/main/adrs/0002-public-knowledge-authority.md) — Accepted; public explanations live here while runtime facts and versioned contracts remain with their owners.
 - [ADR template](https://github.com/mobazha/mobazha-docs/blob/main/adrs/0000-template.md)
 - [Repository ADR guide](https://github.com/mobazha/mobazha-docs/blob/main/adrs/README.md)
 

@@ -5,6 +5,7 @@ import YAML from "yaml";
 
 const contentRoot = fileURLToPath(new URL("../content", import.meta.url));
 const supportedLanguages = new Set(["en", "zh-CN"]);
+const canonicalBaseUrl = "https://docs.mobazha.org";
 
 function walkMarkdown(directory) {
   return readdirSync(directory, { withFileTypes: true })
@@ -148,8 +149,11 @@ export function loadContentDocuments() {
       summary: metadata.summary,
       status: metadata.status,
       audiences: metadata.audiences,
-      sourceLabel: metadata.sourceLabel,
-      ...(metadata.sourceUrl ? { sourceUrl: metadata.sourceUrl } : {}),
+      authorityKind: "public-knowledge",
+      authorityLabel: metadata.authorityLabel ?? metadata.title,
+      authorityUrl: `${canonicalBaseUrl}/${slug}`,
+      evidenceLabel: metadata.evidenceLabel,
+      ...(metadata.evidenceUrl ? { evidenceUrl: metadata.evidenceUrl } : {}),
       reviewed: metadata.reviewed,
       ...(metadata.version ? { version: metadata.version } : {}),
       ...(metadata.appliesTo ? { appliesTo: metadata.appliesTo } : {}),

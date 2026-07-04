@@ -5,8 +5,8 @@ status: Beta
 audiences:
   - 开发者
   - Agent 开发者
-sourceLabel: Mobazha 公开源码组织
-sourceUrl: https://github.com/mobazha
+evidenceLabel: Mobazha 公开源码组织
+evidenceUrl: https://github.com/mobazha
 reviewed: 2026-07-04
 translationOf: build
 ---

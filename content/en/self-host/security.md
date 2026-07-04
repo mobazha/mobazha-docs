@@ -5,8 +5,8 @@ status: Beta
 audiences:
   - Operators
   - Security reviewers
-sourceLabel: Mobazha security policy and extension security model
-sourceUrl: https://github.com/mobazha/mobazha/blob/main/SECURITY.md
+evidenceLabel: Mobazha security policy and extension security model
+evidenceUrl: https://github.com/mobazha/mobazha/blob/main/SECURITY.md
 reviewed: 2026-07-04
 ---
 

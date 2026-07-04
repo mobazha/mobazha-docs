@@ -5,8 +5,8 @@ status: Beta
 audiences:
   - Operators
   - Developers
-sourceLabel: Mobazha deployment sources
-sourceUrl: https://github.com/mobazha/mobazha/tree/main
+evidenceLabel: Mobazha deployment sources
+evidenceUrl: https://github.com/mobazha/mobazha/tree/main
 reviewed: 2026-07-04
 ---
 

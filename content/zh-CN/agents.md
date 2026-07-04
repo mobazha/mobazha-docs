@@ -6,8 +6,8 @@ audiences:
   - Agent
   - Agent 开发者
   - 安全评审者
-sourceLabel: Mobazha 文档知识契约
-sourceUrl: https://github.com/mobazha/mobazha-docs
+evidenceLabel: Mobazha 文档知识契约
+evidenceUrl: https://github.com/mobazha/mobazha-docs
 reviewed: 2026-07-04
 translationOf: agents
 ---

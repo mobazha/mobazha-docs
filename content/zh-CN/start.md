@@ -5,8 +5,8 @@ status: Beta
 audiences:
   - 所有人
   - Agent
-sourceLabel: Mobazha 公开仓库
-sourceUrl: https://github.com/mobazha
+evidenceLabel: Mobazha 公开仓库
+evidenceUrl: https://github.com/mobazha
 reviewed: 2026-07-04
 translationOf: start
 ---

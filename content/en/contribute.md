@@ -6,8 +6,8 @@ audiences:
   - Contributors
   - Maintainers
   - Agents
-sourceLabel: Mobazha contribution and governance policies
-sourceUrl: https://github.com/mobazha/mobazha/blob/main/CONTRIBUTING.md
+evidenceLabel: Mobazha contribution and governance policies
+evidenceUrl: https://github.com/mobazha/mobazha/blob/main/CONTRIBUTING.md
 reviewed: 2026-07-04
 ---
 

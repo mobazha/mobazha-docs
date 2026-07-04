@@ -7,8 +7,8 @@ audiences:
   - Operators
   - Contributors
   - Evaluators
-sourceLabel: Mobazha public policies and repository notices
-sourceUrl: https://mobazha.org/terms
+evidenceLabel: Mobazha public policies and repository notices
+evidenceUrl: https://mobazha.org/terms
 reviewed: 2026-07-04
 ---
 

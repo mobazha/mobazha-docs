@@ -48,7 +48,8 @@ export default async function DocumentationPage({ params }: PageProps) {
     appliesTo: "适用范围",
     reviewed: "最后审阅",
     version: "文档版本",
-    source: "来源",
+    authority: "公共知识权威",
+    evidence: "实现与政策证据",
     important: "重要",
     previous: "上一页",
     next: "下一页",
@@ -61,7 +62,8 @@ export default async function DocumentationPage({ params }: PageProps) {
     appliesTo: "Applies to",
     reviewed: "Last reviewed",
     version: "Document version",
-    source: "Source",
+    authority: "Knowledge authority",
+    evidence: "Implementation evidence",
     important: "Important",
     previous: "Previous",
     next: "Next",
@@ -94,8 +96,12 @@ export default async function DocumentationPage({ params }: PageProps) {
         <div><span>{labels.reviewed}</span><b>{doc.reviewed}</b></div>
         {doc.version && <div><span>{labels.version}</span><b>{doc.version}</b></div>}
         <div>
-          <span>{labels.source}</span>
-          {doc.sourceUrl ? <a href={doc.sourceUrl}>{doc.sourceLabel} ↗</a> : <b>{doc.sourceLabel}</b>}
+          <span>{labels.authority}</span>
+          <a href={doc.authorityUrl}>{doc.authorityLabel} ↗</a>
+        </div>
+        <div>
+          <span>{labels.evidence}</span>
+          {doc.evidenceUrl ? <a href={doc.evidenceUrl}>{doc.evidenceLabel} ↗</a> : <b>{doc.evidenceLabel}</b>}
         </div>
       </div>
 

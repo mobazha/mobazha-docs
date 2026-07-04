@@ -7,8 +7,8 @@ audiences:
   - Developers
   - Security reviewers
   - Evaluators
-sourceLabel: Mobazha public security sources
-sourceUrl: https://github.com/mobazha/mobazha/blob/main/SECURITY.md
+evidenceLabel: Mobazha public security sources
+evidenceUrl: https://github.com/mobazha/mobazha/blob/main/SECURITY.md
 reviewed: 2026-07-04
 ---
 

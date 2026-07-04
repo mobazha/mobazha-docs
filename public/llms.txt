@@ -5,7 +5,8 @@
 Status: Beta knowledge surface. Draft pages are not shipped guarantees.
 Reviewed: 2026-07-04
 Runtime authority: the connected backend's version and advertised effective capabilities.
-Policy authority: the reviewed public source linked from each page.
+Public knowledge authority: the canonical page on docs.mobazha.org.
+Implementation evidence: the versioned sources linked from each page.
 
 ## Start
 - [Overview](/start)
@@ -28,6 +29,7 @@ Policy authority: the reviewed public source linked from each page.
 ## Build
 - [Developer overview](/build)
 - [Runtime capabilities](/build/runtime-capabilities)
+- [Token identifiers](/build/token-identifiers)
 - [API](/build/api)
 - [WebSocket events](/build/websocket)
 - [MCP and agents](/build/mcp)
@@ -40,6 +42,9 @@ Policy authority: the reviewed public source linked from each page.
 - [Architecture](/project/architecture)
 - [Whitepaper](/project/whitepaper)
 - [Fees and economics](/project/fees)
+- [Compatibility](/project/compatibility)
+- [Distribution](/project/distribution)
+- [Product roadmap](/project/roadmap)
 - [Security model](/project/security)
 - [Legal and privacy](/project/legal-and-privacy)
 - [Release scope](/project/release-scope)
@@ -70,6 +75,7 @@ Policy authority: the reviewed public source linked from each page.
 ## 开发
 - [开发者概览](/zh/build)
 - [运行时能力](/zh/build/runtime-capabilities)
+- [Token 标识](/zh/build/token-identifiers)
 - [扩展架构](/zh/build/extensions)
 
 ## 项目信任

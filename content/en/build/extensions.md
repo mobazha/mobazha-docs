@@ -6,8 +6,8 @@ audiences:
   - Extension developers
   - Architects
   - Security reviewers
-sourceLabel: Mobazha Open Core extension contracts
-sourceUrl: https://github.com/mobazha/mobazha/tree/main/docs/extensions
+evidenceLabel: Mobazha Open Core extension contracts
+evidenceUrl: https://github.com/mobazha/mobazha/tree/main/docs/extensions
 reviewed: 2026-07-04
 ---
 

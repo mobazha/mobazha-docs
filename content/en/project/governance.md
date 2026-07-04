@@ -6,8 +6,8 @@ audiences:
   - Contributors
   - Maintainers
   - Agents
-sourceLabel: Mobazha public governance and documentation policy
-sourceUrl: https://github.com/mobazha/mobazha/blob/main/GOVERNANCE.md
+evidenceLabel: Mobazha public governance and documentation policy
+evidenceUrl: https://github.com/mobazha/mobazha/blob/main/GOVERNANCE.md
 reviewed: 2026-07-04
 ---
 
@@ -20,7 +20,7 @@ reviewed: 2026-07-04
 
 ## Review expectation
 
-Operational, policy, and protocol changes require review by the owning repository and must update affected documentation, machine-readable indexes, tests where applicable, and release notes. The docs site is a publication surface, not an authority that silently overrides source owners.
+Project-wide public policy and explanation change in this repository. Operational and protocol implementations change in their owning repositories and must update affected documentation, machine-readable indexes, tests, contracts, and release notes. Neither layer silently overrides runtime state or a versioned interface contract.
 
 ## Documentation publication workflow
 

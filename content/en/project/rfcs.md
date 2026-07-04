@@ -7,8 +7,8 @@ audiences:
   - Maintainers
   - Evaluators
   - Agents
-sourceLabel: Public Mobazha RFC registry
-sourceUrl: https://github.com/mobazha/mobazha-docs/tree/main/rfcs
+evidenceLabel: Public Mobazha RFC registry
+evidenceUrl: https://github.com/mobazha/mobazha-docs/tree/main/rfcs
 reviewed: 2026-07-04
 ---
 

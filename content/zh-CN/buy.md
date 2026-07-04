@@ -5,8 +5,8 @@ status: Beta
 audiences:
   - 买家
   - Agent
-sourceLabel: Mobazha Unified 公开客户端
-sourceUrl: https://github.com/mobazha/mobazha-unified
+evidenceLabel: Mobazha Unified 公开客户端
+evidenceUrl: https://github.com/mobazha/mobazha-unified
 reviewed: 2026-07-04
 translationOf: buy
 ---

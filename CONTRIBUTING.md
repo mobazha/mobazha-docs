@@ -5,10 +5,10 @@ operations, fees, policy, security, or agent behavior.
 
 ## Before proposing a change
 
-1. Identify the repository that owns the fact.
-2. Update the governing source first when behavior or policy changes.
+1. Identify the fact type and its single authority: public knowledge, runtime state, versioned contract, release evidence, or implementation-local design.
+2. Change project-wide public policy and explanation here; change runtime, contract, release, or implementation evidence in its owning system or repository.
 3. Mark the page Current, Beta, Draft, Deprecated, or Historical.
-4. Record the public source and review date.
+4. Record implementation or policy evidence and the review date; the canonical docs URL is emitted as the page's public knowledge authority.
 5. Run `npm run generate:content` after page or route changes; do not hand-edit generated publication files.
 
 Public pages are Markdown files under `content/en/` or `content/zh-CN/`. Use a
@@ -40,6 +40,7 @@ npm run deploy:dry-run
 
 Maintainers may currently commit and push reviewed documentation directly to
 `main`. Community contributions can use a focused pull request and should
-describe the governing source, audience, lifecycle status, and human or Agent
-impact. Policy and protocol changes need review in their owning repository;
-this site must not silently create a competing rule.
+describe the authority class, evidence, audience, lifecycle status, and human
+or Agent impact. Project-wide public policy changes here. Protocol and
+implementation changes need review in their owning repository and must not
+create a competing public explanation.

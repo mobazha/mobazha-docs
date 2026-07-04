@@ -6,8 +6,8 @@ audiences:
   - Agents
   - Agent builders
   - Security reviewers
-sourceLabel: Mobazha documentation knowledge contract
-sourceUrl: https://github.com/mobazha/mobazha-docs
+evidenceLabel: Mobazha documentation knowledge contract
+evidenceUrl: https://github.com/mobazha/mobazha-docs
 reviewed: 2026-07-04
 ---
 

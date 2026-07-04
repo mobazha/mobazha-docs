@@ -5,8 +5,8 @@ status: Beta
 audiences:
   - Operators
   - Developers
-sourceLabel: Mobazha Node quick start
-sourceUrl: https://github.com/mobazha/mobazha#quick-start
+evidenceLabel: Mobazha Node quick start
+evidenceUrl: https://github.com/mobazha/mobazha#quick-start
 reviewed: 2026-07-04
 ---
 

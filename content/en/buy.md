@@ -5,8 +5,8 @@ status: Beta
 audiences:
   - Buyers
   - Agents
-sourceLabel: Mobazha Unified public client
-sourceUrl: https://github.com/mobazha/mobazha-unified
+evidenceLabel: Mobazha Unified public client
+evidenceUrl: https://github.com/mobazha/mobazha-unified
 reviewed: 2026-07-04
 ---
 

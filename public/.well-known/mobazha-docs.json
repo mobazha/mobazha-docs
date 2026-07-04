@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.3",
+  "schema_version": "1.4",
   "name": "Mobazha Documentation",
   "canonical_base_url": "https://docs.mobazha.org",
   "canonical_language": "en",
@@ -18,8 +18,16 @@
   "index": "/docs-index.json",
   "sources": "/sources.json",
   "agent_evals": "/agent-evals.json",
+  "authority_model": {
+    "public_knowledge": "/docs-index.json",
+    "runtime": "connected backend version and effective capability response",
+    "implementation": "versioned contracts, tests, and tagged release evidence"
+  },
   "project_records": {
     "whitepaper": "/project/whitepaper",
+    "compatibility": "/project/compatibility",
+    "distribution": "/project/distribution",
+    "roadmap": "/project/roadmap",
     "decisions": "/project/decisions",
     "rfcs": "/project/rfcs",
     "adrs": "/project/adrs",

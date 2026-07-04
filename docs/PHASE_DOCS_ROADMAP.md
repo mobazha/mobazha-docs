@@ -100,6 +100,9 @@ count.
   upstream contract check.
 - Generate API reference from approved tagged specifications.
 - Add freshness ownership, review reminders, redirects, and deprecation windows.
+- Accepted ADR-0002 and promoted docs.mobazha.org from a routing surface to the canonical public knowledge authority.
+- Migrated fees, compatibility, release maturity, public history, distribution, runtime-composition meaning, token identifiers, and public product outcomes out of duplicate repository prose.
+- Keep implementation contracts, code-near design, and tagged release evidence in their owning repositories with machine-checked canonical links.
 
 ## Quality gates
 

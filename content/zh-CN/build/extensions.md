@@ -6,8 +6,8 @@ audiences:
   - 扩展开发者
   - 架构师
   - 安全审核者
-sourceLabel: Mobazha Open Core 扩展契约
-sourceUrl: https://github.com/mobazha/mobazha/tree/main/docs/extensions
+evidenceLabel: Mobazha Open Core 扩展契约
+evidenceUrl: https://github.com/mobazha/mobazha/tree/main/docs/extensions
 reviewed: 2026-07-04
 translationOf: build/extensions
 ---

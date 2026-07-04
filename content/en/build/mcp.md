@@ -5,8 +5,8 @@ status: Beta
 audiences:
   - Agent builders
   - Security reviewers
-sourceLabel: Mobazha agent-capability sources
-sourceUrl: https://github.com/mobazha/mobazha/tree/main/pkg/mcp
+evidenceLabel: Mobazha agent-capability sources
+evidenceUrl: https://github.com/mobazha/mobazha/tree/main/pkg/mcp
 reviewed: 2026-07-04
 ---
 

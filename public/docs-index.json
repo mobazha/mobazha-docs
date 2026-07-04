@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.3",
-  "generated_from": "reviewed-public-sources",
+  "schema_version": "1.4",
+  "generated_from": "canonical-public-knowledge-and-reviewed-evidence",
   "canonical_language": "en",
   "languages": [
     "en",
@@ -9,7 +9,8 @@
   "canonical_base_url": "https://docs.mobazha.org",
   "reviewed": "2026-07-04",
   "runtime_authority": "connected backend version and advertised effective capabilities",
-  "policy_authority": "reviewed public source linked from each document",
+  "public_knowledge_authority": "the canonical page on docs.mobazha.org",
+  "implementation_authority": "versioned code, generated contracts, conformance tests, and tagged release evidence",
   "documents": [
     {
       "id": "start",
@@ -23,8 +24,15 @@
         "agents"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha",
-      "source_label": "Mobazha public repositories",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/start",
+        "label": "Start with the job you need to do"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha public repositories"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -42,8 +50,15 @@
         "agents"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha/mobazha/blob/main/README.md",
-      "source_label": "Mobazha public product and release boundaries",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/start/choose-deployment",
+        "label": "Choose hosted or self-hosted Mobazha"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/blob/main/README.md",
+        "label": "Mobazha public product and release boundaries"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -60,8 +75,15 @@
         "security reviewers"
       ],
       "applies_to": "Current public project policy or service surface",
-      "source": "https://github.com/mobazha/mobazha-docs",
-      "source_label": "Mobazha documentation knowledge contract",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/agents",
+        "label": "Use Mobazha documentation as an Agent"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-docs",
+        "label": "Mobazha documentation knowledge contract"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -77,8 +99,15 @@
         "operators"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha/mobazha/tree/main",
-      "source_label": "Mobazha README and release scope",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/sell",
+        "label": "Sell through a Mobazha store"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/tree/main",
+        "label": "Mobazha README and release scope"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -94,8 +123,15 @@
         "agents"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha/mobazha-unified",
-      "source_label": "Mobazha Unified public client",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/buy",
+        "label": "Buy with inspectable terms"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified",
+        "label": "Mobazha Unified public client"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -111,8 +147,15 @@
         "developers"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha/mobazha/tree/main",
-      "source_label": "Mobazha deployment sources",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/self-host",
+        "label": "Operate your own Mobazha Node"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/tree/main",
+        "label": "Mobazha deployment sources"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -128,8 +171,15 @@
         "developers"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha/mobazha#quick-start",
-      "source_label": "Mobazha Node quick start",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/self-host/install",
+        "label": "Install a Mobazha Node"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha#quick-start",
+        "label": "Mobazha Node quick start"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -144,8 +194,15 @@
         "operators"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha/mobazha",
-      "source_label": "Mobazha Node command and deployment sources",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/self-host/configure",
+        "label": "Configure a self-hosted node"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha",
+        "label": "Mobazha Node command and deployment sources"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -160,8 +217,15 @@
         "operators"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
-      "source_label": "Mobazha operations guidance",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/self-host/backup-and-upgrade",
+        "label": "Back up and upgrade safely"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
+        "label": "Mobazha operations guidance"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -177,8 +241,15 @@
         "security reviewers"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha/mobazha/blob/main/SECURITY.md",
-      "source_label": "Mobazha security policy and extension security model",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/self-host/security",
+        "label": "Secure a self-hosted node"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/blob/main/SECURITY.md",
+        "label": "Mobazha security policy and extension security model"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -194,8 +265,15 @@
         "support"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha/mobazha#operations",
-      "source_label": "Mobazha Node operations commands",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/self-host/troubleshooting",
+        "label": "Troubleshoot a Mobazha Node"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha#operations",
+        "label": "Mobazha Node operations commands"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -210,8 +288,15 @@
         "operators"
       ],
       "applies_to": "Design direction; not a shipped guarantee",
-      "source": "https://github.com/mobazha/mobazha/blob/main/README.md",
-      "source_label": "Mobazha public release boundary",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/self-host/bind-account",
+        "label": "Connect optional hosted capabilities"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/blob/main/README.md",
+        "label": "Mobazha public release boundary"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -227,8 +312,15 @@
         "agent builders"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha",
-      "source_label": "Mobazha public source organization",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/build",
+        "label": "Build on advertised capabilities"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha public source organization"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -245,8 +337,40 @@
         "operators"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md",
-      "source_label": "Mobazha compatibility and Unified runtime contracts",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/build/runtime-capabilities",
+        "label": "Runtime capabilities and product composition"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config",
+        "label": "Unified runtime configuration implementation"
+      },
+      "reviewed": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "build-token-identifiers",
+      "path": "/build/token-identifiers",
+      "canonical_url": "https://docs.mobazha.org/build/token-identifiers",
+      "title": "Token and on-chain asset identifiers",
+      "summary": "Use a versioned, parseable identifier across clients while treating exact parsing behavior and supported standards as release-scoped contracts.",
+      "status": "beta",
+      "audiences": [
+        "developers",
+        "integrators",
+        "agent builders"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/build/token-identifiers",
+        "label": "Token and on-chain asset identifiers"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/blob/main/packages/core/utils/tokenIdentifier.ts",
+        "label": "Unified token identifier implementation and tests"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -261,8 +385,15 @@
         "developers"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json",
-      "source_label": "Generated Mobazha Node OpenAPI contract",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/build/api",
+        "label": "HTTP API and OpenAPI"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json",
+        "label": "Generated Mobazha Node OpenAPI contract"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -278,8 +409,15 @@
         "client maintainers"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha/mobazha/blob/main/internal/api/ws.go",
-      "source_label": "Mobazha WebSocket gateway and event registry",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/build/websocket",
+        "label": "WebSocket events"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/blob/main/internal/api/ws.go",
+        "label": "Mobazha WebSocket gateway and event registry"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -295,8 +433,15 @@
         "security reviewers"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha/mobazha/tree/main/pkg/mcp",
-      "source_label": "Mobazha agent-capability sources",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/build/mcp",
+        "label": "MCP and agent integrations"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/tree/main/pkg/mcp",
+        "label": "Mobazha agent-capability sources"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -312,8 +457,15 @@
         "operators"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha/mobazha/tree/main/pkg/webhook",
-      "source_label": "Mobazha webhook engine and OpenAPI contract",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/build/webhooks",
+        "label": "Webhook integration contract"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/tree/main/pkg/webhook",
+        "label": "Mobazha webhook engine and OpenAPI contract"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -330,8 +482,15 @@
         "security reviewers"
       ],
       "applies_to": "Design direction; not a shipped guarantee",
-      "source": "https://github.com/mobazha/mobazha/tree/main/docs/extensions",
-      "source_label": "Mobazha Open Core extension contracts",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/build/extensions",
+        "label": "Extend Mobazha through public contracts"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/tree/main/docs/extensions",
+        "label": "Mobazha Open Core extension contracts"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -340,7 +499,7 @@
       "path": "/reference",
       "canonical_url": "https://docs.mobazha.org/reference",
       "title": "Reference and source map",
-      "summary": "Find the repository that owns a fact before proposing or automating a change.",
+      "summary": "Find the public knowledge authority, runtime authority, contract, and implementation evidence before proposing or automating a change.",
       "status": "current",
       "audiences": [
         "developers",
@@ -348,8 +507,15 @@
         "agents"
       ],
       "applies_to": "Current public project policy or service surface",
-      "source": "https://github.com/mobazha",
-      "source_label": "Mobazha GitHub organization",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/reference",
+        "label": "Reference and source map"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha GitHub organization"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -366,8 +532,15 @@
         "evaluators"
       ],
       "applies_to": "Current public project policy or service surface",
-      "source": "https://github.com/mobazha/mobazha/tree/main/docs/project",
-      "source_label": "Mobazha public project documents",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project",
+        "label": "Understand the Mobazha project"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha public repositories and project records"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -384,8 +557,15 @@
         "evaluators"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha",
-      "source_label": "Mobazha public repositories",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/architecture",
+        "label": "Architecture and trust boundaries"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha public repositories"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -402,8 +582,15 @@
         "evaluators"
       ],
       "applies_to": "Design direction; not a shipped guarantee",
-      "source": "docs-curation",
-      "source_label": "Public-review edition prepared for the Mobazha project",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/whitepaper",
+        "label": "Founding whitepaper"
+      },
+      "evidence": {
+        "source": "docs-curation",
+        "label": "Public-review edition prepared for the Mobazha project"
+      },
       "reviewed": "2026-07-04",
       "version": "0.1-review",
       "language": "en"
@@ -423,8 +610,93 @@
         "agents"
       ],
       "applies_to": "Current public project policy or service surface",
-      "source": "https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES.md",
-      "source_label": "Fees and Paid Services policy",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/fees",
+        "label": "Fees and sustainable economics"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha",
+        "label": "Mobazha public implementation and release evidence"
+      },
+      "reviewed": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "project-compatibility",
+      "path": "/project/compatibility",
+      "canonical_url": "https://docs.mobazha.org/project/compatibility",
+      "title": "Compatibility policy",
+      "summary": "Compatibility covers wire contracts, state semantics, capabilities, versioning, extensions, migration, and conformance—not matching names alone.",
+      "status": "current",
+      "audiences": [
+        "developers",
+        "operators",
+        "distributors",
+        "agents"
+      ],
+      "applies_to": "Current public project policy or service surface",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/compatibility",
+        "label": "Compatibility policy"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha",
+        "label": "Node public contracts and conformance sources"
+      },
+      "reviewed": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "project-distribution",
+      "path": "/project/distribution",
+      "canonical_url": "https://docs.mobazha.org/project/distribution",
+      "title": "OEM, appliance, and VPS distribution policy",
+      "summary": "Distributors may package Mobazha with services while preserving source obligations, capability boundaries, secure first run, user control, and honest branding.",
+      "status": "current",
+      "audiences": [
+        "operators",
+        "distributors",
+        "security reviewers",
+        "agents"
+      ],
+      "applies_to": "Current public project policy or service surface",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/distribution",
+        "label": "OEM, appliance, and VPS distribution policy"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/tree/main/deploy/standalone",
+        "label": "Standalone packaging and distribution checks"
+      },
+      "reviewed": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "project-roadmap",
+      "path": "/project/roadmap",
+      "canonical_url": "https://docs.mobazha.org/project/roadmap",
+      "title": "Public product roadmap",
+      "summary": "Track product outcomes and maturity without converting internal estimates, implementation checklists, or experiments into delivery promises.",
+      "status": "draft",
+      "audiences": [
+        "users",
+        "contributors",
+        "evaluators",
+        "agents"
+      ],
+      "applies_to": "Design direction; not a shipped guarantee",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/roadmap",
+        "label": "Public product roadmap"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Public repository milestones and implementation roadmaps"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -442,8 +714,15 @@
         "evaluators"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha/mobazha/blob/main/SECURITY.md",
-      "source_label": "Mobazha public security sources",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/security",
+        "label": "Project security model"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/blob/main/SECURITY.md",
+        "label": "Mobazha public security sources"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -461,8 +740,15 @@
         "evaluators"
       ],
       "applies_to": "Current public project policy or service surface",
-      "source": "https://mobazha.org/terms",
-      "source_label": "Mobazha public policies and repository notices",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/legal-and-privacy",
+        "label": "Legal, privacy, license, and trademark boundaries"
+      },
+      "evidence": {
+        "source": "https://mobazha.org/terms",
+        "label": "Mobazha public policies and repository notices"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -477,8 +763,15 @@
         "everyone"
       ],
       "applies_to": "Mobazha v0.3 release candidate",
-      "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
-      "source_label": "Mobazha releases and repository documentation",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/release-scope",
+        "label": "Release scope and maturity"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
+        "label": "Mobazha releases and repository documentation"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -495,8 +788,15 @@
         "agents"
       ],
       "applies_to": "Design direction; not a shipped guarantee",
-      "source": "https://github.com/mobazha/mobazha/blob/main/GOVERNANCE.md",
-      "source_label": "Mobazha public governance and documentation policy",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/governance",
+        "label": "Documentation and policy governance"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/blob/main/GOVERNANCE.md",
+        "label": "Mobazha public governance and documentation policy"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -514,8 +814,15 @@
         "evaluators"
       ],
       "applies_to": "Current public project policy or service surface",
-      "source": "https://github.com/mobazha/mobazha-docs/blob/main/docs/CONTENT_GOVERNANCE.md",
-      "source_label": "Mobazha documentation decision process",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/decisions",
+        "label": "Public decisions and proposals"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-docs/blob/main/docs/CONTENT_GOVERNANCE.md",
+        "label": "Mobazha documentation decision process"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -533,8 +840,15 @@
         "agents"
       ],
       "applies_to": "Current public project policy or service surface",
-      "source": "https://github.com/mobazha/mobazha-docs/tree/main/rfcs",
-      "source_label": "Public Mobazha RFC registry",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/rfcs",
+        "label": "Requests for Comment"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-docs/tree/main/rfcs",
+        "label": "Public Mobazha RFC registry"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -552,8 +866,15 @@
         "agents"
       ],
       "applies_to": "Current public project policy or service surface",
-      "source": "https://github.com/mobazha/mobazha-docs/tree/main/adrs",
-      "source_label": "Public Mobazha ADR registry",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/adrs",
+        "label": "Architecture Decision Records"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-docs/tree/main/adrs",
+        "label": "Public Mobazha ADR registry"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -571,8 +892,15 @@
         "agents"
       ],
       "applies_to": "Current public project policy or service surface",
-      "source": "https://github.com/mobazha/mobazha-docs/tree/main/history",
-      "source_label": "Mobazha public history registry",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/history",
+        "label": "History and supersession"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-docs/tree/main/history",
+        "label": "Mobazha public history registry"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -588,8 +916,15 @@
         "developers"
       ],
       "applies_to": "Current public project policy or service surface",
-      "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
-      "source_label": "Mobazha GitHub releases",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/releases",
+        "label": "Releases"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
+        "label": "Mobazha GitHub releases"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -606,8 +941,15 @@
         "agents"
       ],
       "applies_to": "Current public project policy or service surface",
-      "source": "https://github.com/mobazha/mobazha/blob/main/CONTRIBUTING.md",
-      "source_label": "Mobazha contribution and governance policies",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/contribute",
+        "label": "Contribute to Mobazha"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/blob/main/CONTRIBUTING.md",
+        "label": "Mobazha contribution and governance policies"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -622,8 +964,15 @@
         "everyone"
       ],
       "applies_to": "Current public project policy or service surface",
-      "source": "https://mobazha.org/status",
-      "source_label": "Mobazha public support surfaces",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/support",
+        "label": "Get help and report problems"
+      },
+      "evidence": {
+        "source": "https://mobazha.org/status",
+        "label": "Mobazha public support surfaces"
+      },
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -639,8 +988,15 @@
         "agent"
       ],
       "applies_to": "Mobazha v0.3 候选版本",
-      "source": "https://github.com/mobazha",
-      "source_label": "Mobazha 公开仓库",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/start",
+        "label": "从你要完成的任务开始"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha 公开仓库"
+      },
       "reviewed": "2026-07-04",
       "language": "zh-CN",
       "translation_of": "/start"
@@ -659,8 +1015,15 @@
         "agent"
       ],
       "applies_to": "Mobazha v0.3 候选版本",
-      "source": "https://github.com/mobazha/mobazha/blob/main/README.md",
-      "source_label": "Mobazha 公开产品与发布边界",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/start/choose-deployment",
+        "label": "选择托管服务或自行托管"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/blob/main/README.md",
+        "label": "Mobazha 公开产品与发布边界"
+      },
       "reviewed": "2026-07-04",
       "language": "zh-CN",
       "translation_of": "/start/choose-deployment"
@@ -678,8 +1041,15 @@
         "安全评审者"
       ],
       "applies_to": "当前公开项目政策或服务界面",
-      "source": "https://github.com/mobazha/mobazha-docs",
-      "source_label": "Mobazha 文档知识契约",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/agents",
+        "label": "Agent 如何使用 Mobazha 文档"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-docs",
+        "label": "Mobazha 文档知识契约"
+      },
       "reviewed": "2026-07-04",
       "language": "zh-CN",
       "translation_of": "/agents"
@@ -696,8 +1066,15 @@
         "运营者"
       ],
       "applies_to": "Mobazha v0.3 候选版本",
-      "source": "https://github.com/mobazha/mobazha-unified",
-      "source_label": "Mobazha Node 与 Unified 公开实现",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/sell",
+        "label": "通过 Mobazha 开店与销售"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified",
+        "label": "Mobazha Node 与 Unified 公开实现"
+      },
       "reviewed": "2026-07-04",
       "language": "zh-CN",
       "translation_of": "/sell"
@@ -714,8 +1091,15 @@
         "agent"
       ],
       "applies_to": "Mobazha v0.3 候选版本",
-      "source": "https://github.com/mobazha/mobazha-unified",
-      "source_label": "Mobazha Unified 公开客户端",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/buy",
+        "label": "在条款与成本透明的前提下购买"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified",
+        "label": "Mobazha Unified 公开客户端"
+      },
       "reviewed": "2026-07-04",
       "language": "zh-CN",
       "translation_of": "/buy"
@@ -732,8 +1116,15 @@
         "开发者"
       ],
       "applies_to": "Mobazha v0.3 候选版本",
-      "source": "https://github.com/mobazha/mobazha",
-      "source_label": "Mobazha Node 公开部署源码",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/self-host",
+        "label": "运行自己的 Mobazha Node"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha",
+        "label": "Mobazha Node 公开部署源码"
+      },
       "reviewed": "2026-07-04",
       "language": "zh-CN",
       "translation_of": "/self-host"
@@ -750,8 +1141,15 @@
         "开发者"
       ],
       "applies_to": "Mobazha v0.3 候选版本",
-      "source": "https://github.com/mobazha/mobazha#quick-start",
-      "source_label": "Mobazha Node 快速开始",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/self-host/install",
+        "label": "安装 Mobazha Node"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha#quick-start",
+        "label": "Mobazha Node 快速开始"
+      },
       "reviewed": "2026-07-04",
       "language": "zh-CN",
       "translation_of": "/self-host/install"
@@ -768,8 +1166,15 @@
         "agent 开发者"
       ],
       "applies_to": "Mobazha v0.3 候选版本",
-      "source": "https://github.com/mobazha",
-      "source_label": "Mobazha 公开源码组织",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/build",
+        "label": "基于后端实际公开的能力进行开发"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha 公开源码组织"
+      },
       "reviewed": "2026-07-04",
       "language": "zh-CN",
       "translation_of": "/build"
@@ -787,11 +1192,44 @@
         "运营者"
       ],
       "applies_to": "Mobazha v0.3 候选版本",
-      "source": "https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md",
-      "source_label": "Mobazha 兼容性与 Unified 运行时契约",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/build/runtime-capabilities",
+        "label": "运行时能力与产品组合"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config",
+        "label": "Unified 运行时配置实现"
+      },
       "reviewed": "2026-07-04",
       "language": "zh-CN",
       "translation_of": "/build/runtime-capabilities"
+    },
+    {
+      "id": "zh-build-token-identifiers",
+      "path": "/zh/build/token-identifiers",
+      "canonical_url": "https://docs.mobazha.org/zh/build/token-identifiers",
+      "title": "Token 与链上资产标识",
+      "summary": "在客户端之间使用带版本、可解析的标识，同时让精确解析行为和支持标准继续受发布版本契约约束。",
+      "status": "beta",
+      "audiences": [
+        "开发者",
+        "集成方",
+        "agent 开发者"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/build/token-identifiers",
+        "label": "Token 与链上资产标识"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/blob/main/packages/core/utils/tokenIdentifier.ts",
+        "label": "Unified 代币标识实现与测试"
+      },
+      "reviewed": "2026-07-04",
+      "language": "zh-CN",
+      "translation_of": "/build/token-identifiers"
     },
     {
       "id": "zh-build-extensions",
@@ -806,8 +1244,15 @@
         "安全审核者"
       ],
       "applies_to": "设计方向，不代表已交付承诺",
-      "source": "https://github.com/mobazha/mobazha/tree/main/docs/extensions",
-      "source_label": "Mobazha Open Core 扩展契约",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/build/extensions",
+        "label": "通过公共契约扩展 Mobazha"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/tree/main/docs/extensions",
+        "label": "Mobazha Open Core 扩展契约"
+      },
       "reviewed": "2026-07-04",
       "language": "zh-CN",
       "translation_of": "/build/extensions"
@@ -825,8 +1270,15 @@
         "评估者"
       ],
       "applies_to": "设计方向，不代表已交付承诺",
-      "source": "https://github.com/mobazha/mobazha-docs",
-      "source_label": "Mobazha 白皮书中文维护译本",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/project/whitepaper",
+        "label": "Mobazha 创始白皮书"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-docs",
+        "label": "Mobazha 白皮书中文维护译本"
+      },
       "reviewed": "2026-07-04",
       "version": "0.1-review",
       "language": "zh-CN",
@@ -847,8 +1299,15 @@
         "agent"
       ],
       "applies_to": "当前公开项目政策或服务界面",
-      "source": "https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES_ZH.md",
-      "source_label": "收费与付费服务公开政策",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/project/fees",
+        "label": "收费与可持续经济模式"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha",
+        "label": "Mobazha 公开实现与发布证据"
+      },
       "reviewed": "2026-07-04",
       "language": "zh-CN",
       "translation_of": "/project/fees"
@@ -864,8 +1323,15 @@
         "所有人"
       ],
       "applies_to": "当前公开项目政策或服务界面",
-      "source": "https://mobazha.org/status",
-      "source_label": "Mobazha 公开支持入口",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/support",
+        "label": "获取帮助与报告问题"
+      },
+      "evidence": {
+        "source": "https://mobazha.org/status",
+        "label": "Mobazha 公开支持入口"
+      },
       "reviewed": "2026-07-04",
       "language": "zh-CN",
       "translation_of": "/support"

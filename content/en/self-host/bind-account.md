@@ -4,8 +4,8 @@ summary: Keep local node ownership separate from any optional account or hosted 
 status: Draft
 audiences:
   - Operators
-sourceLabel: Mobazha public release boundary
-sourceUrl: https://github.com/mobazha/mobazha/blob/main/README.md
+evidenceLabel: Mobazha public release boundary
+evidenceUrl: https://github.com/mobazha/mobazha/blob/main/README.md
 reviewed: 2026-07-04
 ---
 

@@ -5,8 +5,8 @@ status: Beta
 audiences:
   - Developers
   - Operators
-sourceLabel: Mobazha webhook engine and OpenAPI contract
-sourceUrl: https://github.com/mobazha/mobazha/tree/main/pkg/webhook
+evidenceLabel: Mobazha webhook engine and OpenAPI contract
+evidenceUrl: https://github.com/mobazha/mobazha/tree/main/pkg/webhook
 reviewed: 2026-07-04
 ---
 

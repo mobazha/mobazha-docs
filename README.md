@@ -6,10 +6,13 @@ evaluate, or contribute to Mobazha.
 
 ## Information model
 
-- Governing facts stay in the repository that owns the product, policy, or
-  interface.
-- This site provides task-first navigation, reviewed explanations, and source
-  links. It does not silently override an owning repository.
+- This repository is the canonical public knowledge surface for product
+  meaning, user guidance, project-wide policy, economics, governance,
+  cross-repository architecture explanations, and public decisions.
+- Runtime state, generated contracts, tagged releases, and implementation-local
+  design remain with the systems and repositories that produce them.
+- Every page identifies its canonical knowledge authority separately from the
+  implementation, policy, release, or service evidence supporting it.
 - Every page declares status, audience, source, and last-reviewed date.
 - Drafts are visibly different from current policy and shipped behavior.
 - Internal forecasts, credentials, customer data, incident details, and
@@ -54,6 +57,10 @@ fails when committed output is stale.
 Public proposals live under `rfcs/`, durable decisions under `adrs/`, replaced
 public material under `history/`, and the whitepaper maintenance contract under
 `whitepaper/`.
+
+ADR-0002 defines the authority boundary. Do not copy public policy into a code
+repository. Keep a non-normative moved notice only when an existing GitHub path
+needs a compatibility window.
 
 ## Language and publishing contract
 

@@ -7,8 +7,8 @@ audiences:
   - 运营者
   - 评估者
   - Agent
-sourceLabel: Mobazha 公开产品与发布边界
-sourceUrl: https://github.com/mobazha/mobazha/blob/main/README.md
+evidenceLabel: Mobazha 公开产品与发布边界
+evidenceUrl: https://github.com/mobazha/mobazha/blob/main/README.md
 reviewed: 2026-07-04
 translationOf: start/choose-deployment
 ---

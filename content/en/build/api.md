@@ -4,8 +4,8 @@ summary: Use the generated Mobazha Node OpenAPI contract as the operation and sc
 status: Beta
 audiences:
   - Developers
-sourceLabel: Generated Mobazha Node OpenAPI contract
-sourceUrl: https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json
+evidenceLabel: Generated Mobazha Node OpenAPI contract
+evidenceUrl: https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json
 reviewed: 2026-07-04
 ---
 

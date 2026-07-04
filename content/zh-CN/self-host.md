@@ -5,8 +5,8 @@ status: Beta
 audiences:
   - 运营者
   - 开发者
-sourceLabel: Mobazha Node 公开部署源码
-sourceUrl: https://github.com/mobazha/mobazha
+evidenceLabel: Mobazha Node 公开部署源码
+evidenceUrl: https://github.com/mobazha/mobazha
 reviewed: 2026-07-04
 translationOf: self-host
 ---

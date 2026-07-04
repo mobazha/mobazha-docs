@@ -8,8 +8,8 @@ audiences:
   - 运营者
   - 评估者
   - Agent
-sourceLabel: 收费与付费服务公开政策
-sourceUrl: https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES_ZH.md
+evidenceLabel: Mobazha 公开实现与发布证据
+evidenceUrl: https://github.com/mobazha/mobazha
 reviewed: 2026-07-04
 translationOf: project/fees
 ---
@@ -27,6 +27,14 @@ translationOf: project/fees
 - 推荐与生态奖励：必须有资金来源、上限、可归因，并在退款或欺诈时按规则冲回。
 - 协议或公共资金：必须明确、可治理，不能由草案百分比暗示。
 
+## 稳定承诺
+
+- 在自己控制的基础设施上运行 Mobazha，本身不会产生应付给 Mobazha 的订单费。
+- 开源不等于服务器、网络、支付处理、插件、税费、支持和所有可选服务都免费。
+- Mobazha 或其他提供者可以对明确的可选服务收费，但必须在同意前披露提供者、付费者、价值、价格、续费和退出方式。
+- 区块链、支付商、插件、税费或换汇成本，除非 Mobazha 是明确收款方，否则不能表述成 Mobazha 平台费。
+- 自行托管不得强制加入 Mobazha 运营的成交服务。
+
 ## 报价必须说明
 
 - 每项收费的名称、服务和收款方。
@@ -35,10 +43,20 @@ translationOf: project/fees
 - 确认前的最终总额和结算分配。
 - 报价有效期与适用规则版本。
 
+## 受运营成交、推荐与 Agent
+
+- 与交易相关的服务费必须对应支付执行、自动交付、证据处理、争议运营或明确风险责任等具体服务。
+- 推荐或分发报酬必须由卖家或运营者提供预算、与已结算交易可归因、设置总额与时间上限，并在退款或欺诈后冲回。
+- Agent 或推荐存在付费关系时，必须在影响付费决定前披露。
+- 多层招募收益、无限下级比例和未披露付费推荐不属于当前 Mobazha 政策。
+
+## 修改此边界
+
+普通自托管订单如果要强制使用中心 Mobazha 服务或支付 Mobazha 费用，必须经过公开 RFC 或 ADR、迁移和退出分析、明确的客户端与 API 行为、发布范围更新以及适用的法律审查。可选服务提供者可以在自己的价格页面标明生效日期后调整价格，但这不会改变项目级边界。
+
 > **Important:** 历史讨论中的示例比例不是当前默认值。只有完成公开审阅、实现、测试、披露和发布说明后，比例才能成为政策。
 
-## 权威来源
+## 相关页面
 
-- [中文公开政策](https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES_ZH.md)
 - [当前服务价格](https://mobazha.org/pricing)
 - [English canonical page](/project/fees)

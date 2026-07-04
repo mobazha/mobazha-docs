@@ -6,7 +6,7 @@ audiences:
   - Community
   - Contributors
   - Evaluators
-sourceLabel: Public-review edition prepared for the Mobazha project
+evidenceLabel: Public-review edition prepared for the Mobazha project
 reviewed: 2026-07-04
 version: 0.1-review
 ---

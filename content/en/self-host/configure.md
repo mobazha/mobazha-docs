@@ -4,8 +4,8 @@ summary: Make deployment mode, data location, network exposure, payments, and ex
 status: Beta
 audiences:
   - Operators
-sourceLabel: Mobazha Node command and deployment sources
-sourceUrl: https://github.com/mobazha/mobazha
+evidenceLabel: Mobazha Node command and deployment sources
+evidenceUrl: https://github.com/mobazha/mobazha
 reviewed: 2026-07-04
 ---
 
@@ -31,4 +31,4 @@ Use a dedicated data directory and testnet while learning the operational model.
 A source file, recognized identifier, frontend component, or configuration field does not prove a capability is active. Effective availability is the intersection of distribution allowlist, contract compatibility, installation or composition, authorization, configuration, and health.
 
 - [Runtime capabilities](/build/runtime-capabilities)
-- [Compatibility policy](https://github.com/mobazha/mobazha/blob/main/docs/project/COMPATIBILITY.md)
+- [Compatibility policy](/project/compatibility)

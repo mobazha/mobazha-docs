@@ -7,8 +7,8 @@ audiences:
   - Contributors
   - Evaluators
   - Agents
-sourceLabel: Mobazha public history registry
-sourceUrl: https://github.com/mobazha/mobazha-docs/tree/main/history
+evidenceLabel: Mobazha public history registry
+evidenceUrl: https://github.com/mobazha/mobazha-docs/tree/main/history
 reviewed: 2026-07-04
 ---
 
@@ -25,7 +25,15 @@ Historical material remains useful when it explains an old link, percentage, pro
 
 ## Current registry
 
-No historical artifact has been imported in this initial registry. Candidates require source review and a safe public provenance check before publication.
+No superseded public artifact has been imported in the initial content registry. Candidates require source review and a safe public provenance check before publication.
+
+## Public source-history invariants
+
+- A publication repository has one reviewed public root and contains only publishable commits, trees, paths, messages, and blobs.
+- Private provenance trailers, source-to-public commit maps, Git notes, replace refs, private refs, and private-only commits do not belong in public history.
+- Attribution is carried by licenses, notices, and preserved publishable authorship.
+- Repository scripts may verify topology and metadata hygiene without exposing private source lineage.
+- Content safety, secrets, licenses, architecture boundaries, and tests remain separate gates.
 
 - [History registry and template](https://github.com/mobazha/mobazha-docs/blob/main/history/README.md)
 - [Current fees and economics](/project/fees) — Governs interpretation of old illustrative percentages.

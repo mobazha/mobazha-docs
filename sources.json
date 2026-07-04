@@ -6,16 +6,16 @@
     {
       "id": "community-backend",
       "repository": "https://github.com/mobazha/mobazha/tree/main",
-      "revision": "21bd6a5968991430bacfbd4a7449446a338fab0d",
+      "revision": "1ac91843310fbd45f5b16ea26666e58e15b76e5f",
       "reviewed": "2026-07-04",
-      "owns": ["backend", "deployment", "OpenAPI", "MCP", "webhooks", "extensions", "release notes", "public project policy"]
+      "owns": ["backend", "deployment", "OpenAPI", "MCP", "webhooks", "extensions", "conformance", "release notes", "implementation evidence"]
     },
     {
       "id": "public-client",
       "repository": "https://github.com/mobazha/mobazha-unified/tree/main",
-      "revision": "b1015e73409ebc617bd773e5de92fdd4a6deb151",
+      "revision": "f4c0cd33c7c07d1627ffdea2cb620dfdc2ad7361",
       "reviewed": "2026-07-04",
-      "owns": ["buyer and seller experience", "frontend development", "runtime capability client behavior", "client release notes"]
+      "owns": ["frontend implementation", "runtime capability client behavior", "feature and package design", "client release notes", "implementation evidence"]
     },
     {
       "id": "public-website",
@@ -27,7 +27,7 @@
     {
       "id": "docs-curation",
       "repository": "this repository",
-      "owns": ["information architecture", "derived guidance", "machine-readable discovery"]
+      "owns": ["canonical public knowledge", "project-wide policy", "user and operator guidance", "cross-repository explanations", "RFCs", "project ADRs", "public history", "machine-readable discovery"]
     }
   ],
   "denied": [

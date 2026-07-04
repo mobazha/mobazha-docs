@@ -6,8 +6,8 @@ audiences:
   - Developers
   - Agent builders
   - Operators
-sourceLabel: Mobazha compatibility and Unified runtime contracts
-sourceUrl: https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md
+evidenceLabel: Unified runtime configuration implementation
+evidenceUrl: https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config
 reviewed: 2026-07-04
 ---
 
@@ -32,6 +32,15 @@ distribution allowlist
 - Capabilities control availability, permissions control the current actor, and feature flags control experiments or kill switches.
 - Clients may narrow availability for safety or session validity but must never widen the backend response.
 
+## Product composition axes
+
+- Authentication mode selects the authentication transport; it does not enable a product capability.
+- Deployment describes hosted, standalone, or sovereign operation.
+- Experience selects a platform, store, or marketplace shell.
+- Capabilities describe backend-implemented product behavior.
+- Permissions describe what the current actor may do.
+- Feature flags describe experiments or kill switches and cannot replace authorization.
+
 ## Fail-closed client behavior
 
 - Do not render or call an optional feature until an authoritative capability snapshot is ready.
@@ -39,5 +48,5 @@ distribution allowlist
 - Apply the same capability keys to navigation, route boundaries, action controls, and Agent tools.
 - Keep server-side authorization even when the client hides unavailable controls.
 
-- [Node compatibility policy](https://github.com/mobazha/mobazha/blob/main/docs/project/COMPATIBILITY.md)
-- [Unified runtime composition](https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md)
+- [Compatibility policy](/project/compatibility)
+- [Unified runtime configuration code](https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config)

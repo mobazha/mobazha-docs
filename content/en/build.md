@@ -5,8 +5,8 @@ status: Beta
 audiences:
   - Developers
   - Agent builders
-sourceLabel: Mobazha public source organization
-sourceUrl: https://github.com/mobazha
+evidenceLabel: Mobazha public source organization
+evidenceUrl: https://github.com/mobazha
 reviewed: 2026-07-04
 ---
 

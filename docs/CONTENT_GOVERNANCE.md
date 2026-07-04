@@ -11,13 +11,27 @@ Use the narrowest applicable authority:
 2. The connected backend's version and effective capabilities govern runtime availability.
 3. The selected payment system and confirmed records govern payment facts.
 4. A transaction quote governs disclosed amounts for that transaction within public policy.
-5. Reviewed public policy governs project-wide boundaries.
+5. The canonical page on docs.mobazha.org governs project-wide public policy and explanation.
 6. Tagged release documents and generated contracts govern a released version.
 7. Draft ADRs, RFCs, and whitepapers describe proposals or direction.
-8. This portal explains and routes readers to those authorities.
+8. Implementation-local documentation governs only its named code or package boundary.
 
 Documentation never activates a capability, authorizes an action, changes an
-order, or silently overrides its owning repository.
+order, or overrides a versioned contract. Evidence supports the canonical
+public explanation; it does not create a second policy authority.
+
+## One authority per fact
+
+Use `mobazha-docs` for product meaning, user and operator guidance,
+project-wide policy, economics, governance, cross-repository architecture,
+public roadmaps, RFCs, and project-level ADRs. Use implementation repositories
+for generated contracts, tagged release notes, required legal and security
+files, package documentation, and code-near design.
+
+Do not maintain the same policy paragraph in both places. After migration, an
+old repository path may contain only a clearly non-normative moved notice and
+the canonical docs URL. Release and implementation evidence may be linked but
+must not be labeled as a second public knowledge source.
 
 ## Content and decision records
 
@@ -47,13 +61,14 @@ Never publish:
 
 ## Page contract
 
-Every public page declares:
+Every public page declares or deterministically emits:
 
 - title and concise summary;
 - intended audiences;
 - lifecycle status;
 - version or policy applicability;
-- public source owner and URL;
+- its canonical public knowledge authority;
+- implementation, release, policy, or service evidence;
 - last-reviewed date.
 
 Current describes reviewed policy or a stable fact. Beta describes available or
@@ -66,7 +81,7 @@ content must identify its replacement.
 Public code is useful when prose is missing or stale, but implementation is not
 automatically a supported contract.
 
-When deriving a page from code:
+When using code as evidence for a page:
 
 1. Start with the owning public repository and current main or a release tag.
 2. Prefer generated schemas, public interfaces, conformance tests, commands, and release notes over internal helpers.
@@ -74,7 +89,7 @@ When deriving a page from code:
 4. Distinguish code presence from release enablement and runtime availability.
 5. Link the public evidence and state its version or review date.
 6. Test user-facing commands or examples where practical.
-7. Escalate a conflict to the owning repository instead of inventing a second contract here.
+7. Escalate a conflict to the owning repository instead of copying its exact contract into prose.
 
 ## Change workflow
 

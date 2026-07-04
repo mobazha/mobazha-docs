@@ -5,8 +5,8 @@ status: Current
 audiences:
   - Operators
   - Developers
-sourceLabel: Mobazha GitHub releases
-sourceUrl: https://github.com/mobazha/mobazha/tree/main/docs/releases
+evidenceLabel: Mobazha GitHub releases
+evidenceUrl: https://github.com/mobazha/mobazha/tree/main/docs/releases
 reviewed: 2026-07-04
 ---
 

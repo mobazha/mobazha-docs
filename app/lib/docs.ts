@@ -22,8 +22,11 @@ export type DocPage = {
   summary: string;
   status: DocStatus;
   audiences: string[];
-  sourceLabel: string;
-  sourceUrl?: string;
+  authorityKind: "public-knowledge";
+  authorityLabel: string;
+  authorityUrl: string;
+  evidenceLabel: string;
+  evidenceUrl?: string;
   reviewed: string;
   version?: string;
   appliesTo?: string;

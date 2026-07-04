@@ -4,8 +4,8 @@ summary: Treat upgrade readiness as a recoverability exercise, not only a packag
 status: Beta
 audiences:
   - Operators
-sourceLabel: Mobazha operations guidance
-sourceUrl: https://github.com/mobazha/mobazha/tree/main/docs/releases
+evidenceLabel: Mobazha operations guidance
+evidenceUrl: https://github.com/mobazha/mobazha/tree/main/docs/releases
 reviewed: 2026-07-04
 ---
 

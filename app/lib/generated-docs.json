@@ -9,8 +9,11 @@
       "Agent builders",
       "Security reviewers"
     ],
-    "sourceLabel": "Mobazha documentation knowledge contract",
-    "sourceUrl": "https://github.com/mobazha/mobazha-docs",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Use Mobazha documentation as an Agent",
+    "authorityUrl": "https://docs.mobazha.org/agents",
+    "evidenceLabel": "Mobazha documentation knowledge contract",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-docs",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -96,8 +99,11 @@
       "Developers",
       "Agent builders"
     ],
-    "sourceLabel": "Mobazha public source organization",
-    "sourceUrl": "https://github.com/mobazha",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Build on advertised capabilities",
+    "authorityUrl": "https://docs.mobazha.org/build",
+    "evidenceLabel": "Mobazha public source organization",
+    "evidenceUrl": "https://github.com/mobazha",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -127,8 +133,11 @@
     "audiences": [
       "Developers"
     ],
-    "sourceLabel": "Generated Mobazha Node OpenAPI contract",
-    "sourceUrl": "https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "HTTP API and OpenAPI",
+    "authorityUrl": "https://docs.mobazha.org/build/api",
+    "evidenceLabel": "Generated Mobazha Node OpenAPI contract",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -190,8 +199,11 @@
       "Architects",
       "Security reviewers"
     ],
-    "sourceLabel": "Mobazha Open Core extension contracts",
-    "sourceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/extensions",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Extend Mobazha through public contracts",
+    "authorityUrl": "https://docs.mobazha.org/build/extensions",
+    "evidenceLabel": "Mobazha Open Core extension contracts",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/extensions",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -330,8 +342,11 @@
       "Agent builders",
       "Security reviewers"
     ],
-    "sourceLabel": "Mobazha agent-capability sources",
-    "sourceUrl": "https://github.com/mobazha/mobazha/tree/main/pkg/mcp",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "MCP and agent integrations",
+    "authorityUrl": "https://docs.mobazha.org/build/mcp",
+    "evidenceLabel": "Mobazha agent-capability sources",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/pkg/mcp",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -390,8 +405,11 @@
       "Agent builders",
       "Operators"
     ],
-    "sourceLabel": "Mobazha compatibility and Unified runtime contracts",
-    "sourceUrl": "https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Runtime capabilities and product composition",
+    "authorityUrl": "https://docs.mobazha.org/build/runtime-capabilities",
+    "evidenceLabel": "Unified runtime configuration implementation",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -413,6 +431,17 @@
         ]
       },
       {
+        "heading": "Product composition axes",
+        "bullets": [
+          "Authentication mode selects the authentication transport; it does not enable a product capability.",
+          "Deployment describes hosted, standalone, or sovereign operation.",
+          "Experience selects a platform, store, or marketplace shell.",
+          "Capabilities describe backend-implemented product behavior.",
+          "Permissions describe what the current actor may do.",
+          "Feature flags describe experiments or kill switches and cannot replace authorization."
+        ]
+      },
+      {
         "heading": "Fail-closed client behavior",
         "bullets": [
           "Do not render or call an optional feature until an authoritative capability snapshot is ready.",
@@ -422,12 +451,76 @@
         ],
         "links": [
           {
-            "label": "Node compatibility policy",
-            "href": "https://github.com/mobazha/mobazha/blob/main/docs/project/COMPATIBILITY.md"
+            "label": "Compatibility policy",
+            "href": "/project/compatibility"
           },
           {
-            "label": "Unified runtime composition",
-            "href": "https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md"
+            "label": "Unified runtime configuration code",
+            "href": "https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "build/token-identifiers",
+    "title": "Token and on-chain asset identifiers",
+    "summary": "Use a versioned, parseable identifier across clients while treating exact parsing behavior and supported standards as release-scoped contracts.",
+    "status": "Beta",
+    "audiences": [
+      "Developers",
+      "Integrators",
+      "Agent builders"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Token and on-chain asset identifiers",
+    "authorityUrl": "https://docs.mobazha.org/build/token-identifiers",
+    "evidenceLabel": "Unified token identifier implementation and tests",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/blob/main/packages/core/utils/tokenIdentifier.ts",
+    "reviewed": "2026-07-04",
+    "language": "en",
+    "sections": [
+      {
+        "heading": "Public identifier shape",
+        "body": [
+          "New identifiers encode the uppercase network, lowercase contract address, token standard, and token or slot identifier. Examples include `SEPOLIA_0x1234..._ERC721_42`, `SEPOLIA_0x1234..._ERC1155_1`, and `SEPOLIA_0x1234..._ERC3525_1`.",
+          "The exact parser, normalization, supported standards, legacy forms, and serialized field remain versioned implementation contracts. Do not create an identifier by concatenating unvalidated user input or infer that an asset is enabled merely because its identifier parses."
+        ]
+      },
+      {
+        "heading": "Identity semantics",
+        "bullets": [
+          "ERC-721 and ERC-1155 assets use contract address plus token ID as the asset identity.",
+          "ERC-3525 integrations may use a slot identifier for the asset class while individual holdings retain their own token identity.",
+          "Network identity is part of the identifier; the same contract address on another network is a different namespace.",
+          "Contract addresses are normalized before comparison.",
+          "Human symbols are display metadata and are not sufficient unique identifiers."
+        ]
+      },
+      {
+        "heading": "Compatibility and safety",
+        "bullets": [
+          "Parse legacy forms only through the maintained parser and preserve the original value for migration evidence.",
+          "Treat unknown standards and malformed identifiers as unsupported rather than guessing.",
+          "Resolve network, contract, and token metadata through trusted configuration or verified chain data.",
+          "Keep identifier recognition separate from runtime capability, authorization, ownership, pricing, and settlement support.",
+          "Agents must not turn a parseable identifier into a purchase or transfer without an effective capability and user confirmation."
+        ]
+      },
+      {
+        "heading": "Implementation evidence",
+        "links": [
+          {
+            "label": "Identifier implementation",
+            "href": "https://github.com/mobazha/mobazha-unified/blob/main/packages/core/utils/tokenIdentifier.ts"
+          },
+          {
+            "label": "RWA type contracts",
+            "href": "https://github.com/mobazha/mobazha-unified/blob/main/packages/core/types/rwa.ts"
+          },
+          {
+            "label": "Runtime capability rules",
+            "href": "/build/runtime-capabilities"
           }
         ]
       }
@@ -442,8 +535,11 @@
       "Developers",
       "Operators"
     ],
-    "sourceLabel": "Mobazha webhook engine and OpenAPI contract",
-    "sourceUrl": "https://github.com/mobazha/mobazha/tree/main/pkg/webhook",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Webhook integration contract",
+    "authorityUrl": "https://docs.mobazha.org/build/webhooks",
+    "evidenceLabel": "Mobazha webhook engine and OpenAPI contract",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/pkg/webhook",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -515,8 +611,11 @@
       "Developers",
       "Client maintainers"
     ],
-    "sourceLabel": "Mobazha WebSocket gateway and event registry",
-    "sourceUrl": "https://github.com/mobazha/mobazha/blob/main/internal/api/ws.go",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "WebSocket events",
+    "authorityUrl": "https://docs.mobazha.org/build/websocket",
+    "evidenceLabel": "Mobazha WebSocket gateway and event registry",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/internal/api/ws.go",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -565,8 +664,11 @@
       "Buyers",
       "Agents"
     ],
-    "sourceLabel": "Mobazha Unified public client",
-    "sourceUrl": "https://github.com/mobazha/mobazha-unified",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Buy with inspectable terms",
+    "authorityUrl": "https://docs.mobazha.org/buy",
+    "evidenceLabel": "Mobazha Unified public client",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -634,8 +736,11 @@
       "Maintainers",
       "Agents"
     ],
-    "sourceLabel": "Mobazha contribution and governance policies",
-    "sourceUrl": "https://github.com/mobazha/mobazha/blob/main/CONTRIBUTING.md",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Contribute to Mobazha",
+    "authorityUrl": "https://docs.mobazha.org/contribute",
+    "evidenceLabel": "Mobazha contribution and governance policies",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/CONTRIBUTING.md",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -687,8 +792,11 @@
       "Contributors",
       "Evaluators"
     ],
-    "sourceLabel": "Mobazha public project documents",
-    "sourceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/project",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Understand the Mobazha project",
+    "authorityUrl": "https://docs.mobazha.org/project",
+    "evidenceLabel": "Mobazha public repositories and project records",
+    "evidenceUrl": "https://github.com/mobazha",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -699,7 +807,9 @@
           "Architecture explains component and trust boundaries.",
           "Fee policy governs how charges must be disclosed and who may set them.",
           "The whitepaper expresses durable design principles and direction, not a promise that every described capability exists today.",
-          "Governance explains how public policy and protocol decisions change."
+          "Governance explains how public policy and protocol decisions change.",
+          "Compatibility defines shared contracts and safe evolution across distributions.",
+          "The public roadmap describes outcomes without turning implementation plans into commitments."
         ]
       },
       {
@@ -719,6 +829,21 @@
             "label": "Fees and economics",
             "href": "/project/fees",
             "description": "Current disclosure and economic boundaries."
+          },
+          {
+            "label": "Compatibility",
+            "href": "/project/compatibility",
+            "description": "Wire, capability, version, migration, and conformance policy."
+          },
+          {
+            "label": "Distribution",
+            "href": "/project/distribution",
+            "description": "OEM, appliance, and VPS packaging boundaries."
+          },
+          {
+            "label": "Public roadmap",
+            "href": "/project/roadmap",
+            "description": "Product outcomes separated from implementation plans."
           },
           {
             "label": "Public decisions and proposals",
@@ -745,8 +870,11 @@
       "Architects",
       "Agents"
     ],
-    "sourceLabel": "Public Mobazha ADR registry",
-    "sourceUrl": "https://github.com/mobazha/mobazha-docs/tree/main/adrs",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Architecture Decision Records",
+    "authorityUrl": "https://docs.mobazha.org/project/adrs",
+    "evidenceLabel": "Public Mobazha ADR registry",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-docs/tree/main/adrs",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -768,6 +896,11 @@
             "label": "ADR-0001: Markdown files are the documentation content authority",
             "href": "https://github.com/mobazha/mobazha-docs/blob/main/adrs/0001-markdown-content-authority.md",
             "description": "Accepted; generated registries and discovery artifacts are derived outputs."
+          },
+          {
+            "label": "ADR-0002: Mobazha Docs owns public knowledge",
+            "href": "https://github.com/mobazha/mobazha-docs/blob/main/adrs/0002-public-knowledge-authority.md",
+            "description": "Accepted; public explanations live here while runtime facts and versioned contracts remain with their owners."
           },
           {
             "label": "ADR template",
@@ -815,8 +948,11 @@
       "Developers",
       "Evaluators"
     ],
-    "sourceLabel": "Mobazha public repositories",
-    "sourceUrl": "https://github.com/mobazha",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Architecture and trust boundaries",
+    "authorityUrl": "https://docs.mobazha.org/project/architecture",
+    "evidenceLabel": "Mobazha public repositories",
+    "evidenceUrl": "https://github.com/mobazha",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -860,6 +996,83 @@
     ]
   },
   {
+    "slug": "project/compatibility",
+    "title": "Compatibility policy",
+    "summary": "Compatibility covers wire contracts, state semantics, capabilities, versioning, extensions, migration, and conformance—not matching names alone.",
+    "status": "Current",
+    "audiences": [
+      "Developers",
+      "Operators",
+      "Distributors",
+      "Agents"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Compatibility policy",
+    "authorityUrl": "https://docs.mobazha.org/project/compatibility",
+    "evidenceLabel": "Node public contracts and conformance sources",
+    "evidenceUrl": "https://github.com/mobazha/mobazha",
+    "reviewed": "2026-07-04",
+    "language": "en",
+    "sections": [
+      {
+        "heading": "Compatibility surfaces",
+        "bullets": [
+          "Public HTTP methods, paths, schemas, response envelopes, and stable error codes.",
+          "Public events, webhooks, order and payment states, refunds, disputes, and settlement semantics.",
+          "Runtime capability schema and effective-set negotiation.",
+          "Canonical asset and payment identifiers.",
+          "Persisted public data, migration behavior, and documented configuration required for upgrades.",
+          "Public packages and extension contracts explicitly identified as supported surfaces."
+        ],
+        "body": [
+          "Matching JSON names is insufficient. State transitions, authorization, idempotency, confirmation, recovery, and financial invariants are part of the contract."
+        ]
+      },
+      {
+        "heading": "Source and package boundary",
+        "body": [
+          "Code under an internal directory, concrete constructors, database internals, application hooks, and composition-root details are not public contracts merely because another repository can reach them. Extensions use documented Ports, modules, typed functions, controllers, or versioned out-of-process protocols and do not receive raw signing material."
+        ]
+      },
+      {
+        "heading": "Effective capability compatibility",
+        "body": [
+          "Recognition, source presence, installation, authorization, operator configuration, health, and release policy are separate concerns. Clients render and call only effective capabilities advertised by the backend, fail closed without a valid snapshot, tolerate additive unknown fields, and never infer support from an identifier or dormant adapter."
+        ]
+      },
+      {
+        "heading": "Versioning and change process",
+        "bullets": [
+          "Patch releases carry compatible fixes and security updates.",
+          "Minor releases add backward-compatible APIs, capability fields, events, or extension points.",
+          "Major releases may break wire, state-machine, persisted-data, or supported-package contracts.",
+          "Removing a field, changing a state's meaning, weakening an invariant, or requiring a formerly optional capability is breaking even if the transport still parses.",
+          "Breaking proposals require an RFC or ADR, migration and downgrade guidance, updated conformance tests, a support window, release notes, and documentation impact review."
+        ]
+      },
+      {
+        "heading": "Conformance evidence",
+        "body": [
+          "Compatibility is established through implementation tests, standalone E2E, hosted-distribution E2E, and shared black-box conformance. A distribution records the Mobazha commit or tag and contract version it implements. Undeclared capabilities are skipped by policy; mocks cannot prove production compatibility."
+        ],
+        "links": [
+          {
+            "label": "Runtime capabilities",
+            "href": "/build/runtime-capabilities"
+          },
+          {
+            "label": "HTTP API and OpenAPI",
+            "href": "/build/api"
+          },
+          {
+            "label": "Open Core extensions",
+            "href": "/build/extensions"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "project/decisions",
     "title": "Public decisions and proposals",
     "summary": "Use RFCs for changes still being evaluated, ADRs for decisions already made, and history records for superseded public material.",
@@ -870,8 +1083,11 @@
       "Agents",
       "Evaluators"
     ],
-    "sourceLabel": "Mobazha documentation decision process",
-    "sourceUrl": "https://github.com/mobazha/mobazha-docs/blob/main/docs/CONTENT_GOVERNANCE.md",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Public decisions and proposals",
+    "authorityUrl": "https://docs.mobazha.org/project/decisions",
+    "evidenceLabel": "Mobazha documentation decision process",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-docs/blob/main/docs/CONTENT_GOVERNANCE.md",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -923,6 +1139,70 @@
     ]
   },
   {
+    "slug": "project/distribution",
+    "title": "OEM, appliance, and VPS distribution policy",
+    "summary": "Distributors may package Mobazha with services while preserving source obligations, capability boundaries, secure first run, user control, and honest branding.",
+    "status": "Current",
+    "audiences": [
+      "Operators",
+      "Distributors",
+      "Security reviewers",
+      "Agents"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "OEM, appliance, and VPS distribution policy",
+    "authorityUrl": "https://docs.mobazha.org/project/distribution",
+    "evidenceLabel": "Standalone packaging and distribution checks",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/deploy/standalone",
+    "reviewed": "2026-07-04",
+    "language": "en",
+    "sections": [
+      {
+        "heading": "Permitted distribution",
+        "body": [
+          "An operator may package the default standalone deployment in hardware, an appliance, a VPS marketplace image, a container image, or a pre-installed server and may sell installation, hosting, support, or other identified services around it. Packaging does not silently widen the enabled capability set or create a new official Mobazha product."
+        ]
+      },
+      {
+        "heading": "Required boundaries",
+        "bullets": [
+          "Do not include unapproved payment capabilities, provider credentials, private control-plane code, hidden support tooling, customer data, or pre-generated secrets.",
+          "Preserve applicable licenses, notices, corresponding-source obligations, and third-party attribution for the exact artifact.",
+          "Record the source commit or tag, capability manifest, SBOM, checksums, provenance, upgrade, backup, restore, reset, and export path.",
+          "Generate seller identity, administrator credentials, and signing material on the user's system during first-run setup.",
+          "Disclose update channels, signing keys, external endpoints, data handling, optional services, and how to disable them.",
+          "Preserve local administration, listing management, data export, and supported standalone payment operation without requiring a Mobazha Hosting account."
+        ]
+      },
+      {
+        "heading": "Branding and certification",
+        "body": [
+          "Open-source licensing does not grant rights to Mobazha names, logos, or certification claims. Do not describe an image as Official or Mobazha Certified without separate written authorization. A future certification program may verify provenance, release material, capability boundaries, first-run security, updates, and recovery, but certification is not required to run or join the network."
+        ]
+      },
+      {
+        "heading": "Operational evidence",
+        "body": [
+          "The code repository owns the executable source-tree and artifact checks because they must run against an exact revision and release bundle. This page owns the public distribution policy; the scripts own whether an artifact satisfies their machine-verifiable requirements."
+        ],
+        "links": [
+          {
+            "label": "Self-host installation",
+            "href": "/self-host/install"
+          },
+          {
+            "label": "Backup and upgrade",
+            "href": "/self-host/backup-and-upgrade"
+          },
+          {
+            "label": "Legal, privacy, license, and trademark boundaries",
+            "href": "/project/legal-and-privacy"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "project/fees",
     "title": "Fees and sustainable economics",
     "summary": "Mobazha does not define one unavoidable commission for every transaction. Each actual charge must identify its owner, purpose, basis, and point of consent.",
@@ -934,8 +1214,11 @@
       "Evaluators",
       "Agents"
     ],
-    "sourceLabel": "Fees and Paid Services policy",
-    "sourceUrl": "https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES.md",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Fees and sustainable economics",
+    "authorityUrl": "https://docs.mobazha.org/project/fees",
+    "evidenceLabel": "Mobazha public implementation and release evidence",
+    "evidenceUrl": "https://github.com/mobazha/mobazha",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -957,6 +1240,16 @@
         ]
       },
       {
+        "heading": "Durable commitments",
+        "bullets": [
+          "Running Mobazha on infrastructure you control does not by itself create a fee owed to Mobazha for creating or completing an order.",
+          "Open-source availability does not mean servers, networks, payment processors, plugins, taxes, support, or every optional service are free.",
+          "Mobazha or another provider may charge for an identified optional service, but the provider, payer, value, price, renewal, and exit path must be visible before consent.",
+          "A blockchain, payment-provider, plugin, tax, or exchange cost must not be described as a Mobazha platform fee unless Mobazha is the disclosed recipient.",
+          "Self-hosted operation must not require enrollment in a Mobazha-operated managed transaction service."
+        ]
+      },
+      {
         "heading": "Required quote contract",
         "bullets": [
           "Name every charge and recipient.",
@@ -964,6 +1257,21 @@
           "State whether it is required, optional, refundable, or condition-dependent.",
           "Show the final total and settlement allocation before confirmation.",
           "Record the policy and quote version used by the order."
+        ]
+      },
+      {
+        "heading": "Managed transactions, referrals, and agents",
+        "bullets": [
+          "A transaction-related service fee needs an identified service such as execution, automation, evidence handling, dispute operations, or a defined risk commitment.",
+          "Referral or distribution compensation must be seller- or operator-funded, attributable to a settled transaction, capped, time-bounded, and reversible after refunds or fraud.",
+          "An Agent or recommendation must disclose a paid relationship before influencing a paid decision.",
+          "Multi-level recruitment payments, unlimited downstream percentages, and undisclosed paid recommendations are outside current Mobazha policy."
+        ]
+      },
+      {
+        "heading": "Changing this boundary",
+        "body": [
+          "Requiring a central Mobazha service or mandatory Mobazha fee for ordinary self-hosted orders requires a public RFC or ADR, migration and exit analysis, explicit client and API behavior, updated release scope, and applicable legal review. A provider may change an optional service price on its own pricing surface with an effective date, but that does not change this project-wide boundary."
         ],
         "note": "Illustrative allocations in old discussions are not defaults. A percentage becomes policy only through public review, implementation, tests, disclosure, and release notes."
       }
@@ -979,8 +1287,11 @@
       "Maintainers",
       "Agents"
     ],
-    "sourceLabel": "Mobazha public governance and documentation policy",
-    "sourceUrl": "https://github.com/mobazha/mobazha/blob/main/GOVERNANCE.md",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Documentation and policy governance",
+    "authorityUrl": "https://docs.mobazha.org/project/governance",
+    "evidenceLabel": "Mobazha public governance and documentation policy",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/GOVERNANCE.md",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -996,7 +1307,7 @@
       {
         "heading": "Review expectation",
         "body": [
-          "Operational, policy, and protocol changes require review by the owning repository and must update affected documentation, machine-readable indexes, tests where applicable, and release notes. The docs site is a publication surface, not an authority that silently overrides source owners."
+          "Project-wide public policy and explanation change in this repository. Operational and protocol implementations change in their owning repositories and must update affected documentation, machine-readable indexes, tests, contracts, and release notes. Neither layer silently overrides runtime state or a versioned interface contract."
         ]
       },
       {
@@ -1034,8 +1345,11 @@
       "Evaluators",
       "Agents"
     ],
-    "sourceLabel": "Mobazha public history registry",
-    "sourceUrl": "https://github.com/mobazha/mobazha-docs/tree/main/history",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "History and supersession",
+    "authorityUrl": "https://docs.mobazha.org/project/history",
+    "evidenceLabel": "Mobazha public history registry",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-docs/tree/main/history",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -1057,7 +1371,17 @@
       {
         "heading": "Current registry",
         "body": [
-          "No historical artifact has been imported in this initial registry. Candidates require source review and a safe public provenance check before publication."
+          "No superseded public artifact has been imported in the initial content registry. Candidates require source review and a safe public provenance check before publication."
+        ]
+      },
+      {
+        "heading": "Public source-history invariants",
+        "bullets": [
+          "A publication repository has one reviewed public root and contains only publishable commits, trees, paths, messages, and blobs.",
+          "Private provenance trailers, source-to-public commit maps, Git notes, replace refs, private refs, and private-only commits do not belong in public history.",
+          "Attribution is carried by licenses, notices, and preserved publishable authorship.",
+          "Repository scripts may verify topology and metadata hygiene without exposing private source lineage.",
+          "Content safety, secrets, licenses, architecture boundaries, and tests remain separate gates."
         ],
         "links": [
           {
@@ -1089,8 +1413,11 @@
       "Contributors",
       "Evaluators"
     ],
-    "sourceLabel": "Mobazha public policies and repository notices",
-    "sourceUrl": "https://mobazha.org/terms",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Legal, privacy, license, and trademark boundaries",
+    "authorityUrl": "https://docs.mobazha.org/project/legal-and-privacy",
+    "evidenceLabel": "Mobazha public policies and repository notices",
+    "evidenceUrl": "https://mobazha.org/terms",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -1149,8 +1476,11 @@
     "audiences": [
       "Everyone"
     ],
-    "sourceLabel": "Mobazha releases and repository documentation",
-    "sourceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Release scope and maturity",
+    "authorityUrl": "https://docs.mobazha.org/project/release-scope",
+    "evidenceLabel": "Mobazha releases and repository documentation",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -1170,12 +1500,14 @@
           "The default open-source Node enables BTC, BCH, and LTC payment methods, subject to effective runtime capabilities and seller configuration.",
           "Identifiers or adapters present in source do not enable a payment method or create a compatibility commitment.",
           "Stable signed binaries and reproducibility attestations remain pending final release approval.",
-          "Clients must fail closed when a valid runtime-capability snapshot is unavailable."
+          "Clients must fail closed when a valid runtime-capability snapshot is unavailable.",
+          "English is the default repository-documentation language unless a maintained translation is explicitly identified."
         ],
         "links": [
           {
-            "label": "Node release scope",
-            "href": "https://github.com/mobazha/mobazha/blob/main/docs/project/RELEASE_SCOPE.md"
+            "label": "Community capability manifest",
+            "href": "https://github.com/mobazha/mobazha/blob/main/config/editions/community.json",
+            "description": "Machine-readable release evidence."
           },
           {
             "label": "Node v0.3.0-rc.1 notes",
@@ -1185,6 +1517,12 @@
             "label": "Unified v0.3.0-rc.1 notes",
             "href": "https://github.com/mobazha/mobazha-unified/blob/main/docs/releases/v0.3.0-rc.1.md"
           }
+        ]
+      },
+      {
+        "heading": "What remains version-specific",
+        "body": [
+          "Exact checksums, artifacts, known issues, migration steps, SBOMs, provenance, and implementation commits belong to each tagged repository release. This page governs shared maturity language and the current public boundary; it does not replace release evidence."
         ]
       }
     ]
@@ -1200,8 +1538,11 @@
       "Evaluators",
       "Agents"
     ],
-    "sourceLabel": "Public Mobazha RFC registry",
-    "sourceUrl": "https://github.com/mobazha/mobazha-docs/tree/main/rfcs",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Requests for Comment",
+    "authorityUrl": "https://docs.mobazha.org/project/rfcs",
+    "evidenceLabel": "Public Mobazha RFC registry",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-docs/tree/main/rfcs",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -1249,6 +1590,70 @@
     ]
   },
   {
+    "slug": "project/roadmap",
+    "title": "Public product roadmap",
+    "summary": "Track product outcomes and maturity without converting internal estimates, implementation checklists, or experiments into delivery promises.",
+    "status": "Draft",
+    "audiences": [
+      "Users",
+      "Contributors",
+      "Evaluators",
+      "Agents"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Public product roadmap",
+    "authorityUrl": "https://docs.mobazha.org/project/roadmap",
+    "evidenceLabel": "Public repository milestones and implementation roadmaps",
+    "evidenceUrl": "https://github.com/mobazha",
+    "reviewed": "2026-07-04",
+    "language": "en",
+    "sections": [
+      {
+        "heading": "Current outcome",
+        "body": [
+          "The current priority is a trustworthy release-candidate loop: discover effective capabilities, operate or connect a store, publish listings, complete supported checkout and payment paths, manage orders, preserve evidence, recover data, and understand every cost and responsibility."
+        ]
+      },
+      {
+        "heading": "Near-term outcomes",
+        "bullets": [
+          "Harden standalone installation, backup, upgrade, recovery, and release provenance.",
+          "Complete coherent buyer and seller journeys across small and large screens.",
+          "Keep hosted, standalone, marketplace, and sovereign compositions on shared contracts rather than product forks.",
+          "Make API, event, webhook, MCP, extension, and Agent behavior discoverable and fail closed.",
+          "Improve store administration, storefront presentation, shipping, identity, accessibility, and internationalization based on validated user needs.",
+          "Publish compatibility and conformance evidence for capabilities claimed across distributions."
+        ]
+      },
+      {
+        "heading": "Exploration areas",
+        "body": [
+          "AI-assisted store setup, Agent-mediated workflows, reusable commerce surfaces, richer marketplace operations, additional payment integrations, and new extension runtimes remain subject to capability, security, economic, legal, and release review. Exploration is not a delivery commitment."
+        ]
+      },
+      {
+        "heading": "How execution is tracked",
+        "body": [
+          "Repository issues, projects, feature designs, audits, and migration checklists own implementation work. This page owns only the public product-outcome view. Dates, staffing estimates, branch names, file-level tasks, and private operating plans are intentionally excluded."
+        ],
+        "links": [
+          {
+            "label": "Release scope and maturity",
+            "href": "/project/release-scope"
+          },
+          {
+            "label": "Runtime capabilities",
+            "href": "/build/runtime-capabilities"
+          },
+          {
+            "label": "Public decisions and proposals",
+            "href": "/project/decisions"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "project/security",
     "title": "Project security model",
     "summary": "Security depends on explicit authority, fail-closed capabilities, protected signing material, hostile-input assumptions, and private disclosure.",
@@ -1259,8 +1664,11 @@
       "Security reviewers",
       "Evaluators"
     ],
-    "sourceLabel": "Mobazha public security sources",
-    "sourceUrl": "https://github.com/mobazha/mobazha/blob/main/SECURITY.md",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Project security model",
+    "authorityUrl": "https://docs.mobazha.org/project/security",
+    "evidenceLabel": "Mobazha public security sources",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/SECURITY.md",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -1312,7 +1720,10 @@
       "Contributors",
       "Evaluators"
     ],
-    "sourceLabel": "Public-review edition prepared for the Mobazha project",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Founding whitepaper",
+    "authorityUrl": "https://docs.mobazha.org/project/whitepaper",
+    "evidenceLabel": "Public-review edition prepared for the Mobazha project",
     "reviewed": "2026-07-04",
     "version": "0.1-review",
     "language": "en",
@@ -1418,25 +1829,31 @@
   {
     "slug": "reference",
     "title": "Reference and source map",
-    "summary": "Find the repository that owns a fact before proposing or automating a change.",
+    "summary": "Find the public knowledge authority, runtime authority, contract, and implementation evidence before proposing or automating a change.",
     "status": "Current",
     "audiences": [
       "Developers",
       "Contributors",
       "Agents"
     ],
-    "sourceLabel": "Mobazha GitHub organization",
-    "sourceUrl": "https://github.com/mobazha",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Reference and source map",
+    "authorityUrl": "https://docs.mobazha.org/reference",
+    "evidenceLabel": "Mobazha GitHub organization",
+    "evidenceUrl": "https://github.com/mobazha",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
       {
-        "heading": "Source ownership",
+        "heading": "Authority ownership",
         "bullets": [
-          "mobazha/mobazha: community backend, deployment, project policies, and release notes.",
-          "mobazha/mobazha-unified: public cross-platform client, user flows, and runtime-capability handling.",
-          "mobazha/mobazha.org: public website, positioning, and high-level disclosures.",
-          "mobazha/mobazha-docs: curated navigation, derived guidance, publication metadata, and Agent discovery."
+          "mobazha/mobazha-docs: canonical public knowledge, project policy, user guidance, cross-repository explanations, RFCs, project ADRs, and history.",
+          "mobazha/mobazha: community backend, generated contracts, deployment, code-near architecture, conformance, and Node release notes.",
+          "mobazha/mobazha-unified: public cross-platform client implementation, package and feature design, runtime-capability handling, and client release notes.",
+          "mobazha/mobazha.org: public website, positioning, and high-level disclosures."
+        ],
+        "body": [
+          "An evidence link supports a canonical docs page but does not become a second public policy source. The connected backend, transaction records, generated contracts, and tagged releases remain more specific authorities for runtime and versioned facts."
         ],
         "note": "Internal Hosting plans, credentials, operational playbooks, forecasts, and unapproved commercial experiments are not public documentation sources."
       },
@@ -1472,8 +1889,11 @@
       "Operators",
       "Developers"
     ],
-    "sourceLabel": "Mobazha GitHub releases",
-    "sourceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Releases",
+    "authorityUrl": "https://docs.mobazha.org/releases",
+    "evidenceLabel": "Mobazha GitHub releases",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -1530,8 +1950,11 @@
       "Operators",
       "Developers"
     ],
-    "sourceLabel": "Mobazha deployment sources",
-    "sourceUrl": "https://github.com/mobazha/mobazha/tree/main",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Operate your own Mobazha Node",
+    "authorityUrl": "https://docs.mobazha.org/self-host",
+    "evidenceLabel": "Mobazha deployment sources",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -1568,8 +1991,11 @@
     "audiences": [
       "Operators"
     ],
-    "sourceLabel": "Mobazha operations guidance",
-    "sourceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Back up and upgrade safely",
+    "authorityUrl": "https://docs.mobazha.org/self-host/backup-and-upgrade",
+    "evidenceLabel": "Mobazha operations guidance",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -1600,8 +2026,11 @@
     "audiences": [
       "Operators"
     ],
-    "sourceLabel": "Mobazha public release boundary",
-    "sourceUrl": "https://github.com/mobazha/mobazha/blob/main/README.md",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Connect optional hosted capabilities",
+    "authorityUrl": "https://docs.mobazha.org/self-host/bind-account",
+    "evidenceLabel": "Mobazha public release boundary",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/README.md",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -1640,8 +2069,11 @@
     "audiences": [
       "Operators"
     ],
-    "sourceLabel": "Mobazha Node command and deployment sources",
-    "sourceUrl": "https://github.com/mobazha/mobazha",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Configure a self-hosted node",
+    "authorityUrl": "https://docs.mobazha.org/self-host/configure",
+    "evidenceLabel": "Mobazha Node command and deployment sources",
+    "evidenceUrl": "https://github.com/mobazha/mobazha",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -1674,7 +2106,7 @@
           },
           {
             "label": "Compatibility policy",
-            "href": "https://github.com/mobazha/mobazha/blob/main/docs/project/COMPATIBILITY.md"
+            "href": "/project/compatibility"
           }
         ]
       }
@@ -1689,8 +2121,11 @@
       "Operators",
       "Developers"
     ],
-    "sourceLabel": "Mobazha Node quick start",
-    "sourceUrl": "https://github.com/mobazha/mobazha#quick-start",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Install a Mobazha Node",
+    "authorityUrl": "https://docs.mobazha.org/self-host/install",
+    "evidenceLabel": "Mobazha Node quick start",
+    "evidenceUrl": "https://github.com/mobazha/mobazha#quick-start",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -1745,8 +2180,11 @@
       "Operators",
       "Security reviewers"
     ],
-    "sourceLabel": "Mobazha security policy and extension security model",
-    "sourceUrl": "https://github.com/mobazha/mobazha/blob/main/SECURITY.md",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Secure a self-hosted node",
+    "authorityUrl": "https://docs.mobazha.org/self-host/security",
+    "evidenceLabel": "Mobazha security policy and extension security model",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/SECURITY.md",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -1797,8 +2235,11 @@
       "Operators",
       "Support"
     ],
-    "sourceLabel": "Mobazha Node operations commands",
-    "sourceUrl": "https://github.com/mobazha/mobazha#operations",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Troubleshoot a Mobazha Node",
+    "authorityUrl": "https://docs.mobazha.org/self-host/troubleshooting",
+    "evidenceLabel": "Mobazha Node operations commands",
+    "evidenceUrl": "https://github.com/mobazha/mobazha#operations",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -1852,8 +2293,11 @@
       "Sellers",
       "Operators"
     ],
-    "sourceLabel": "Mobazha README and release scope",
-    "sourceUrl": "https://github.com/mobazha/mobazha/tree/main",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Sell through a Mobazha store",
+    "authorityUrl": "https://docs.mobazha.org/sell",
+    "evidenceLabel": "Mobazha README and release scope",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -1925,8 +2369,11 @@
       "Everyone",
       "Agents"
     ],
-    "sourceLabel": "Mobazha public repositories",
-    "sourceUrl": "https://github.com/mobazha",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Start with the job you need to do",
+    "authorityUrl": "https://docs.mobazha.org/start",
+    "evidenceLabel": "Mobazha public repositories",
+    "evidenceUrl": "https://github.com/mobazha",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -1980,8 +2427,11 @@
       "Evaluators",
       "Agents"
     ],
-    "sourceLabel": "Mobazha public product and release boundaries",
-    "sourceUrl": "https://github.com/mobazha/mobazha/blob/main/README.md",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Choose hosted or self-hosted Mobazha",
+    "authorityUrl": "https://docs.mobazha.org/start/choose-deployment",
+    "evidenceLabel": "Mobazha public product and release boundaries",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/README.md",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -2050,8 +2500,11 @@
     "audiences": [
       "Everyone"
     ],
-    "sourceLabel": "Mobazha public support surfaces",
-    "sourceUrl": "https://mobazha.org/status",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Get help and report problems",
+    "authorityUrl": "https://docs.mobazha.org/support",
+    "evidenceLabel": "Mobazha public support surfaces",
+    "evidenceUrl": "https://mobazha.org/status",
     "reviewed": "2026-07-04",
     "language": "en",
     "sections": [
@@ -2115,8 +2568,11 @@
       "Agent 开发者",
       "安全评审者"
     ],
-    "sourceLabel": "Mobazha 文档知识契约",
-    "sourceUrl": "https://github.com/mobazha/mobazha-docs",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Agent 如何使用 Mobazha 文档",
+    "authorityUrl": "https://docs.mobazha.org/zh/agents",
+    "evidenceLabel": "Mobazha 文档知识契约",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-docs",
     "reviewed": "2026-07-04",
     "language": "zh-CN",
     "translationOf": "agents",
@@ -2181,8 +2637,11 @@
       "开发者",
       "Agent 开发者"
     ],
-    "sourceLabel": "Mobazha 公开源码组织",
-    "sourceUrl": "https://github.com/mobazha",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "基于后端实际公开的能力进行开发",
+    "authorityUrl": "https://docs.mobazha.org/zh/build",
+    "evidenceLabel": "Mobazha 公开源码组织",
+    "evidenceUrl": "https://github.com/mobazha",
     "reviewed": "2026-07-04",
     "language": "zh-CN",
     "translationOf": "build",
@@ -2231,8 +2690,11 @@
       "架构师",
       "安全审核者"
     ],
-    "sourceLabel": "Mobazha Open Core 扩展契约",
-    "sourceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/extensions",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "通过公共契约扩展 Mobazha",
+    "authorityUrl": "https://docs.mobazha.org/zh/build/extensions",
+    "evidenceLabel": "Mobazha Open Core 扩展契约",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/extensions",
     "reviewed": "2026-07-04",
     "language": "zh-CN",
     "translationOf": "build/extensions",
@@ -2377,8 +2839,11 @@
       "Agent 开发者",
       "运营者"
     ],
-    "sourceLabel": "Mobazha 兼容性与 Unified 运行时契约",
-    "sourceUrl": "https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "运行时能力与产品组合",
+    "authorityUrl": "https://docs.mobazha.org/zh/build/runtime-capabilities",
+    "evidenceLabel": "Unified 运行时配置实现",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config",
     "reviewed": "2026-07-04",
     "language": "zh-CN",
     "translationOf": "build/runtime-capabilities",
@@ -2400,19 +2865,99 @@
         ]
       },
       {
-        "heading": "权威文档",
+        "heading": "产品组合维度",
+        "bullets": [
+          "认证模式只选择认证传输方式，不启用产品能力。",
+          "部署方式描述托管、自托管或自主运行。",
+          "产品体验选择平台、商店或市场外壳。",
+          "能力描述后端实际实现的产品行为。",
+          "权限描述当前主体可以做什么。",
+          "功能开关只用于实验或紧急关闭，不能替代授权。"
+        ]
+      },
+      {
+        "heading": "实现证据",
         "links": [
           {
-            "label": "Node 兼容性政策",
-            "href": "https://github.com/mobazha/mobazha/blob/main/docs/project/COMPATIBILITY.md"
+            "label": "兼容性政策",
+            "href": "/project/compatibility"
           },
           {
-            "label": "Unified 运行时组合",
-            "href": "https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md"
+            "label": "Unified 运行时配置代码",
+            "href": "https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config"
           },
           {
             "label": "English canonical page",
             "href": "/build/runtime-capabilities"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/build/token-identifiers",
+    "title": "Token 与链上资产标识",
+    "summary": "在客户端之间使用带版本、可解析的标识，同时让精确解析行为和支持标准继续受发布版本契约约束。",
+    "status": "Beta",
+    "audiences": [
+      "开发者",
+      "集成方",
+      "Agent 开发者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Token 与链上资产标识",
+    "authorityUrl": "https://docs.mobazha.org/zh/build/token-identifiers",
+    "evidenceLabel": "Unified 代币标识实现与测试",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/blob/main/packages/core/utils/tokenIdentifier.ts",
+    "reviewed": "2026-07-04",
+    "language": "zh-CN",
+    "translationOf": "build/token-identifiers",
+    "sections": [
+      {
+        "heading": "公共标识结构",
+        "body": [
+          "新标识编码大写网络名、小写合约地址、Token 标准以及 tokenId 或 slotId，例如 `SEPOLIA_0x1234..._ERC721_42`、`SEPOLIA_0x1234..._ERC1155_1` 和 `SEPOLIA_0x1234..._ERC3525_1`。",
+          "精确解析器、标准支持范围、旧格式兼容和序列化字段属于带版本的实现契约。不能直接拼接未经验证的用户输入，也不能因为标识可解析就推断资产能力已经启用。"
+        ]
+      },
+      {
+        "heading": "身份语义",
+        "bullets": [
+          "ERC-721 与 ERC-1155 使用合约地址和 tokenId 共同确定资产身份。",
+          "ERC-3525 集成可以用 slotId 表示资产类别，但具体持有物仍有自己的 token 身份。",
+          "网络是标识的一部分；不同网络上的相同地址属于不同命名空间。",
+          "比较前必须规范化合约地址。",
+          "人类可读符号只用于展示，不能作为唯一身份。"
+        ]
+      },
+      {
+        "heading": "兼容与安全",
+        "bullets": [
+          "旧格式只能通过维护中的解析器处理，并在迁移时保留原值作为证据。",
+          "未知标准和畸形标识应判断为不支持，不能猜测。",
+          "网络、合约和 Token 元数据必须来自可信配置或已验证链上数据。",
+          "标识识别必须和运行时能力、授权、所有权、价格及结算支持分开判断。",
+          "Agent 不得仅凭可解析标识执行购买或转移，仍需有效能力和用户确认。"
+        ]
+      },
+      {
+        "heading": "实现证据",
+        "links": [
+          {
+            "label": "标识实现",
+            "href": "https://github.com/mobazha/mobazha-unified/blob/main/packages/core/utils/tokenIdentifier.ts"
+          },
+          {
+            "label": "RWA 类型契约",
+            "href": "https://github.com/mobazha/mobazha-unified/blob/main/packages/core/types/rwa.ts"
+          },
+          {
+            "label": "运行时能力规则",
+            "href": "/zh/build/runtime-capabilities"
+          },
+          {
+            "label": "English canonical page",
+            "href": "/build/token-identifiers"
           }
         ]
       }
@@ -2427,8 +2972,11 @@
       "买家",
       "Agent"
     ],
-    "sourceLabel": "Mobazha Unified 公开客户端",
-    "sourceUrl": "https://github.com/mobazha/mobazha-unified",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "在条款与成本透明的前提下购买",
+    "authorityUrl": "https://docs.mobazha.org/zh/buy",
+    "evidenceLabel": "Mobazha Unified 公开客户端",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified",
     "reviewed": "2026-07-04",
     "language": "zh-CN",
     "translationOf": "buy",
@@ -2491,8 +3039,11 @@
       "评估者",
       "Agent"
     ],
-    "sourceLabel": "收费与付费服务公开政策",
-    "sourceUrl": "https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES_ZH.md",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "收费与可持续经济模式",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/fees",
+    "evidenceLabel": "Mobazha 公开实现与发布证据",
+    "evidenceUrl": "https://github.com/mobazha/mobazha",
     "reviewed": "2026-07-04",
     "language": "zh-CN",
     "translationOf": "project/fees",
@@ -2515,6 +3066,16 @@
         ]
       },
       {
+        "heading": "稳定承诺",
+        "bullets": [
+          "在自己控制的基础设施上运行 Mobazha，本身不会产生应付给 Mobazha 的订单费。",
+          "开源不等于服务器、网络、支付处理、插件、税费、支持和所有可选服务都免费。",
+          "Mobazha 或其他提供者可以对明确的可选服务收费，但必须在同意前披露提供者、付费者、价值、价格、续费和退出方式。",
+          "区块链、支付商、插件、税费或换汇成本，除非 Mobazha 是明确收款方，否则不能表述成 Mobazha 平台费。",
+          "自行托管不得强制加入 Mobazha 运营的成交服务。"
+        ]
+      },
+      {
         "heading": "报价必须说明",
         "bullets": [
           "每项收费的名称、服务和收款方。",
@@ -2522,16 +3083,27 @@
           "是否必需、可选、可退或依赖条件。",
           "确认前的最终总额和结算分配。",
           "报价有效期与适用规则版本。"
+        ]
+      },
+      {
+        "heading": "受运营成交、推荐与 Agent",
+        "bullets": [
+          "与交易相关的服务费必须对应支付执行、自动交付、证据处理、争议运营或明确风险责任等具体服务。",
+          "推荐或分发报酬必须由卖家或运营者提供预算、与已结算交易可归因、设置总额与时间上限，并在退款或欺诈后冲回。",
+          "Agent 或推荐存在付费关系时，必须在影响付费决定前披露。",
+          "多层招募收益、无限下级比例和未披露付费推荐不属于当前 Mobazha 政策。"
+        ]
+      },
+      {
+        "heading": "修改此边界",
+        "body": [
+          "普通自托管订单如果要强制使用中心 Mobazha 服务或支付 Mobazha 费用，必须经过公开 RFC 或 ADR、迁移和退出分析、明确的客户端与 API 行为、发布范围更新以及适用的法律审查。可选服务提供者可以在自己的价格页面标明生效日期后调整价格，但这不会改变项目级边界。"
         ],
         "note": "历史讨论中的示例比例不是当前默认值。只有完成公开审阅、实现、测试、披露和发布说明后，比例才能成为政策。"
       },
       {
-        "heading": "权威来源",
+        "heading": "相关页面",
         "links": [
-          {
-            "label": "中文公开政策",
-            "href": "https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES_ZH.md"
-          },
           {
             "label": "当前服务价格",
             "href": "https://mobazha.org/pricing"
@@ -2554,8 +3126,11 @@
       "贡献者",
       "评估者"
     ],
-    "sourceLabel": "Mobazha 白皮书中文维护译本",
-    "sourceUrl": "https://github.com/mobazha/mobazha-docs",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Mobazha 创始白皮书",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/whitepaper",
+    "evidenceLabel": "Mobazha 白皮书中文维护译本",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-docs",
     "reviewed": "2026-07-04",
     "version": "0.1-review",
     "language": "zh-CN",
@@ -2639,8 +3214,11 @@
       "运营者",
       "开发者"
     ],
-    "sourceLabel": "Mobazha Node 公开部署源码",
-    "sourceUrl": "https://github.com/mobazha/mobazha",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "运行自己的 Mobazha Node",
+    "authorityUrl": "https://docs.mobazha.org/zh/self-host",
+    "evidenceLabel": "Mobazha Node 公开部署源码",
+    "evidenceUrl": "https://github.com/mobazha/mobazha",
     "reviewed": "2026-07-04",
     "language": "zh-CN",
     "translationOf": "self-host",
@@ -2690,8 +3268,11 @@
       "运营者",
       "开发者"
     ],
-    "sourceLabel": "Mobazha Node 快速开始",
-    "sourceUrl": "https://github.com/mobazha/mobazha#quick-start",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "安装 Mobazha Node",
+    "authorityUrl": "https://docs.mobazha.org/zh/self-host/install",
+    "evidenceLabel": "Mobazha Node 快速开始",
+    "evidenceUrl": "https://github.com/mobazha/mobazha#quick-start",
     "reviewed": "2026-07-04",
     "language": "zh-CN",
     "translationOf": "self-host/install",
@@ -2741,8 +3322,11 @@
       "卖家",
       "运营者"
     ],
-    "sourceLabel": "Mobazha Node 与 Unified 公开实现",
-    "sourceUrl": "https://github.com/mobazha/mobazha-unified",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "通过 Mobazha 开店与销售",
+    "authorityUrl": "https://docs.mobazha.org/zh/sell",
+    "evidenceLabel": "Mobazha Node 与 Unified 公开实现",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified",
     "reviewed": "2026-07-04",
     "language": "zh-CN",
     "translationOf": "sell",
@@ -2802,8 +3386,11 @@
       "所有人",
       "Agent"
     ],
-    "sourceLabel": "Mobazha 公开仓库",
-    "sourceUrl": "https://github.com/mobazha",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "从你要完成的任务开始",
+    "authorityUrl": "https://docs.mobazha.org/zh/start",
+    "evidenceLabel": "Mobazha 公开仓库",
+    "evidenceUrl": "https://github.com/mobazha",
     "reviewed": "2026-07-04",
     "language": "zh-CN",
     "translationOf": "start",
@@ -2852,8 +3439,11 @@
       "评估者",
       "Agent"
     ],
-    "sourceLabel": "Mobazha 公开产品与发布边界",
-    "sourceUrl": "https://github.com/mobazha/mobazha/blob/main/README.md",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "选择托管服务或自行托管",
+    "authorityUrl": "https://docs.mobazha.org/zh/start/choose-deployment",
+    "evidenceLabel": "Mobazha 公开产品与发布边界",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/README.md",
     "reviewed": "2026-07-04",
     "language": "zh-CN",
     "translationOf": "start/choose-deployment",
@@ -2913,8 +3503,11 @@
     "audiences": [
       "所有人"
     ],
-    "sourceLabel": "Mobazha 公开支持入口",
-    "sourceUrl": "https://mobazha.org/status",
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "获取帮助与报告问题",
+    "authorityUrl": "https://docs.mobazha.org/zh/support",
+    "evidenceLabel": "Mobazha 公开支持入口",
+    "evidenceUrl": "https://mobazha.org/status",
     "reviewed": "2026-07-04",
     "language": "zh-CN",
     "translationOf": "support",

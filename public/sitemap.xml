@@ -15,6 +15,7 @@
   <url><loc>https://docs.mobazha.org/self-host/bind-account</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/build</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/build/runtime-capabilities</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/build/token-identifiers</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/build/api</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/build/websocket</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/build/mcp</loc><lastmod>2026-07-04</lastmod></url>
@@ -25,6 +26,9 @@
   <url><loc>https://docs.mobazha.org/project/architecture</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/whitepaper</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/fees</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/project/compatibility</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/project/distribution</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/project/roadmap</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/security</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/legal-and-privacy</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/release-scope</loc><lastmod>2026-07-04</lastmod></url>
@@ -45,6 +49,7 @@
   <url><loc>https://docs.mobazha.org/zh/self-host/install</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/build</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/build/runtime-capabilities</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/build/token-identifiers</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/build/extensions</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/project/whitepaper</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/project/fees</loc><lastmod>2026-07-04</lastmod></url>

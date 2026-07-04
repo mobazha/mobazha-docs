@@ -6,8 +6,8 @@ audiences:
   - 开发者
   - Agent 开发者
   - 运营者
-sourceLabel: Mobazha 兼容性与 Unified 运行时契约
-sourceUrl: https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md
+evidenceLabel: Unified 运行时配置实现
+evidenceUrl: https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config
 reviewed: 2026-07-04
 translationOf: build/runtime-capabilities
 ---
@@ -32,8 +32,17 @@ translationOf: build/runtime-capabilities
 - 导航、路由、操作控件和 Agent 工具使用同一能力键。
 - 客户端隐藏控件不能代替服务端授权。
 
-## 权威文档
+## 产品组合维度
 
-- [Node 兼容性政策](https://github.com/mobazha/mobazha/blob/main/docs/project/COMPATIBILITY.md)
-- [Unified 运行时组合](https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md)
+- 认证模式只选择认证传输方式，不启用产品能力。
+- 部署方式描述托管、自托管或自主运行。
+- 产品体验选择平台、商店或市场外壳。
+- 能力描述后端实际实现的产品行为。
+- 权限描述当前主体可以做什么。
+- 功能开关只用于实验或紧急关闭，不能替代授权。
+
+## 实现证据
+
+- [兼容性政策](/project/compatibility)
+- [Unified 运行时配置代码](https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config)
 - [English canonical page](/build/runtime-capabilities)

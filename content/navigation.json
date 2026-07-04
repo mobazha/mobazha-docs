@@ -75,6 +75,10 @@
           "/build/runtime-capabilities"
         ],
         [
+          "Token identifiers",
+          "/build/token-identifiers"
+        ],
+        [
           "API",
           "/build/api"
         ],
@@ -118,6 +122,18 @@
         [
           "Fees and economics",
           "/project/fees"
+        ],
+        [
+          "Compatibility",
+          "/project/compatibility"
+        ],
+        [
+          "Distribution",
+          "/project/distribution"
+        ],
+        [
+          "Product roadmap",
+          "/project/roadmap"
         ],
         [
           "Security model",
@@ -225,6 +241,10 @@
         [
           "运行时能力",
           "/zh/build/runtime-capabilities"
+        ],
+        [
+          "Token 标识",
+          "/zh/build/token-identifiers"
         ],
         [
           "扩展架构",

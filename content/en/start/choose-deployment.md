@@ -7,8 +7,8 @@ audiences:
   - Operators
   - Evaluators
   - Agents
-sourceLabel: Mobazha public product and release boundaries
-sourceUrl: https://github.com/mobazha/mobazha/blob/main/README.md
+evidenceLabel: Mobazha public product and release boundaries
+evidenceUrl: https://github.com/mobazha/mobazha/blob/main/README.md
 reviewed: 2026-07-04
 ---
 

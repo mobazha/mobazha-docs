@@ -5,8 +5,8 @@ status: Beta
 audiences:
   - Developers
   - Client maintainers
-sourceLabel: Mobazha WebSocket gateway and event registry
-sourceUrl: https://github.com/mobazha/mobazha/blob/main/internal/api/ws.go
+evidenceLabel: Mobazha WebSocket gateway and event registry
+evidenceUrl: https://github.com/mobazha/mobazha/blob/main/internal/api/ws.go
 reviewed: 2026-07-04
 ---
 
