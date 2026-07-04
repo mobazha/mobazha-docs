@@ -794,6 +794,25 @@
       "translation_of": "/build/runtime-capabilities"
     },
     {
+      "id": "zh-build-extensions",
+      "path": "/zh/build/extensions",
+      "canonical_url": "https://docs.mobazha.org/zh/build/extensions",
+      "title": "通过公共契约扩展 Mobazha",
+      "summary": "选择最窄的类型化扩展机制，并保留 Core 权威、能力门槛、运行隔离、恢复和审计边界。",
+      "status": "draft",
+      "audiences": [
+        "扩展开发者",
+        "架构师",
+        "安全审核者"
+      ],
+      "applies_to": "设计方向，不代表已交付承诺",
+      "source": "https://github.com/mobazha/mobazha/tree/main/docs/extensions",
+      "source_label": "Mobazha Open Core 扩展契约",
+      "reviewed": "2026-07-04",
+      "language": "zh-CN",
+      "translation_of": "/build/extensions"
+    },
+    {
       "id": "zh-project-whitepaper",
       "path": "/zh/project/whitepaper",
       "canonical_url": "https://docs.mobazha.org/zh/project/whitepaper",

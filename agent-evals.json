@@ -208,6 +208,54 @@
         "One hosted-service privacy policy automatically governs every independent store."
       ],
       "sources": ["/project/legal-and-privacy"]
+    },
+    {
+      "id": "extension-mechanism-selection",
+      "question": {
+        "en": "Which Open Core extension mechanism should be used?",
+        "zh-CN": "应该选择哪一种 Open Core 扩展机制？"
+      },
+      "required_claims": [
+        "Use a Port to replace a narrow Core-required implementation and a Module to compose reviewed capabilities.",
+        "Use a Function for a bounded deterministic decision, a Controller for external reconciliation or I/O, and OrderExtension for versioned order-associated domain data and lifecycle."
+      ],
+      "forbidden_claims": [
+        "Use a global hook or complete Core service locator for every extension.",
+        "Treat every callback as an interchangeable Port."
+      ],
+      "sources": ["/build/extensions"]
+    },
+    {
+      "id": "extension-settlement-authority",
+      "question": {
+        "en": "May an extension directly release settlement funds?",
+        "zh-CN": "扩展能否直接释放结算资金？"
+      },
+      "required_claims": [
+        "An extension may submit a typed and authorized attestation but cannot directly mutate settlement state.",
+        "Core validates the attestation and executes a versioned, idempotent conditional-settlement command through its state machine."
+      ],
+      "forbidden_claims": [
+        "A Controller may directly call an internal settlement service or choose the payout destination.",
+        "A valid extension signature bypasses Core order-state and authorization checks."
+      ],
+      "sources": ["/build/extensions"]
+    },
+    {
+      "id": "extension-current-versus-target",
+      "question": {
+        "en": "Does static Order Extension v1 mean the full module platform is shipped?",
+        "zh-CN": "静态 Order Extension v1 是否表示完整模块平台已经交付？"
+      },
+      "required_claims": [
+        "Static v1 contract compatibility, startup composition, dependency validation, interface agreement, and fail-closed invocation are implemented.",
+        "Distribution allowlists, tenant authorization and configuration, structured health, drain, upgrade, rollback, third-party process runtime, and Wasm Functions remain governance targets."
+      ],
+      "forbidden_claims": [
+        "Every lifecycle, isolation, and runtime gate in the target architecture is generally available today.",
+        "Source presence or static linkage alone enables an extension capability."
+      ],
+      "sources": ["/build/extensions", "/build/runtime-capabilities"]
     }
   ]
 }

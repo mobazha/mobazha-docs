@@ -13,7 +13,7 @@
     {
       "id": "public-client",
       "repository": "https://github.com/mobazha/mobazha-unified/tree/main",
-      "revision": "299edd89aca17ab7c8bd24c4221bc8ff27182e4c",
+      "revision": "2de4648d10dcdd62909e00c60c55214335e40d62",
       "reviewed": "2026-07-04",
       "owns": ["buyer and seller experience", "frontend development", "runtime capability client behavior", "client release notes"]
     },

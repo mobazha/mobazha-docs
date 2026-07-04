@@ -70,6 +70,7 @@ Policy authority: the reviewed public source linked from each page.
 ## 开发
 - [开发者概览](/zh/build)
 - [运行时能力](/zh/build/runtime-capabilities)
+- [扩展架构](/zh/build/extensions)
 
 ## 项目信任
 - [白皮书](/zh/project/whitepaper)

@@ -225,6 +225,10 @@
         [
           "运行时能力",
           "/zh/build/runtime-capabilities"
+        ],
+        [
+          "扩展架构",
+          "/zh/build/extensions"
         ]
       ]
     },

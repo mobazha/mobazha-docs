@@ -203,21 +203,92 @@
           "Function: customize a bounded deterministic business decision.",
           "Controller: reconcile an external system or perform external I/O.",
           "OrderExtension: attach versioned domain data and lifecycle to an order."
+        ],
+        "body": [
+          "Use the narrowest mechanism that matches one responsibility. A package may implement more than one role, but each public contract has one authority boundary. A callback is not automatically a Port, and a Module is not a service locator."
         ]
       },
       {
-        "heading": "Non-negotiable boundaries",
+        "heading": "Preserve Core authority",
+        "body": [
+          "Extensions submit declarations, decisions, observations, or attestations. Core validates identity, authorization, schema and contract versions, resource binding, expected state, idempotency, freshness, and policy before creating a Core-owned command or durable fact."
+        ],
+        "code": "extension input\n  -> Core validation\n  -> Core command or durable fact\n  -> Core state machine\n  -> audit and external execution through a scoped adapter",
         "bullets": [
           "Do not add a generic hook when a typed domain contract can express the need.",
           "Core retains release policy, order state, payment verification, settlement gates, audit, and key custody.",
           "Third-party code must not import internal packages, receive the Core object, or access raw signing material.",
-          "Every public contract needs version negotiation, permissions, health, idempotency, recovery, rollback, and conformance tests.",
-          "An extension capability remains unavailable until every activation gate passes."
+          "Extensions never write Core tables or directly invoke an internal state transition.",
+          "Payment, refund, dispute, and settlement changes re-enter a versioned, idempotent Core command and state machine."
+        ]
+      },
+      {
+        "heading": "Design rules",
+        "bullets": [
+          "Ports provide replaceability for narrow Core-owned capabilities.",
+          "Modules provide immutable startup composition and declare identity, versions, dependencies, capabilities, configuration, runtime type, and lifecycle.",
+          "Functions are bounded and deterministic; they do not receive network, database, key, clock, or state-transition authority.",
+          "Controllers reconcile external systems from durable Core facts and return observations or attestations.",
+          "Governance is uniform across modules, while business contracts remain small, typed, and domain-specific.",
+          "New extension points are deliberate and domain-scoped, with an owner, schema, authority boundary, failure semantics, idempotency, recovery, tests, and a removal plan.",
+          "There is no global named hook bus, mutable runtime registry, or universal Core service locator."
+        ]
+      },
+      {
+        "heading": "Capability and trust gates",
+        "body": [
+          "An extension capability remains unavailable until every activation gate passes. Source presence, a known identifier, or linked code is not evidence that the capability is enabled."
+        ],
+        "code": "distribution allowlist\n  ∩ contract compatible\n  ∩ installed or statically composed\n  ∩ authorized\n  ∩ configured\n  ∩ healthy",
+        "bullets": [
+          "Reviewed first-party modules are statically linked by default.",
+          "Independently distributed or third-party infrastructure runs out of process by default.",
+          "Merchant-authored decision rules use a restricted sandbox such as Wasm when that runtime is introduced.",
+          "Moving to a less isolated runtime requires threat analysis and an architecture decision."
+        ]
+      },
+      {
+        "heading": "Current implementation boundary",
+        "body": [
+          "The static order-extension v1 path currently validates exact contract names, immutable startup composition, dependencies and cycles, capability/interface agreement, and fail-closed invocation. It also provides append-only extension records, durable lifecycle delivery, typed reservation binding, and settlement attestations that re-enter the Core settlement command.",
+          "Distribution allowlists, per-tenant authorization and configuration, structured module health, drain, upgrade, rollback, a third-party process runtime, and a Wasm Function runtime remain governance targets. Do not describe those targets as generally available capabilities."
+        ]
+      },
+      {
+        "heading": "Collectibles as the first case",
+        "bullets": [
+          "Signed NFT metadata becomes a versioned OrderExtension declaration produced by the Collectibles module.",
+          "Token or inventory allocation is handled through a module-owned ReservationPort before funding.",
+          "Minting and delivery are Controller work driven by durable extension events.",
+          "Delivery evidence becomes a module-verified SettlementAttestation.",
+          "Seller payout remains an existing Core conditional-settlement command.",
+          "NFT, chain, mint, certificate, and provider vocabulary stays outside generic Core APIs."
+        ],
+        "body": [
+          "Collectibles proves the architecture without turning NFT concepts into universal Core abstractions. Product-specific hooks, settlement commands, queues, and FiatMetadata mirroring were removed during the direct development-time cutover."
+        ]
+      },
+      {
+        "heading": "Review a new extension point",
+        "bullets": [
+          "Identify the domain owner, business purpose, caller, declarer, and authorizer.",
+          "Version the input, output, descriptor, and compatibility behavior independently.",
+          "Define synchronous or durable delivery, ordering, idempotency, timeout, retry, dead-letter, and reconciliation behavior.",
+          "Declare capability gates, permissions, sensitive data, and the Core state-machine re-entry point.",
+          "Provide migration, rollback, removal, observability, negative tests, and conformance evidence."
+        ],
+        "body": [
+          "If those answers are not stable, keep the mechanism private to its implementation instead of publishing another generic extension point."
         ]
       },
       {
         "heading": "Start with the normative documents",
         "links": [
+          {
+            "label": "ADR-018: Open Core extension architecture",
+            "href": "https://github.com/mobazha/mobazha/blob/main/docs/adr/018-open-core-extension-architecture.md",
+            "description": "Roles, authority boundaries, trust model, and architectural invariants."
+          },
           {
             "label": "Extension overview",
             "href": "https://github.com/mobazha/mobazha/blob/main/docs/extensions/README.md"
@@ -229,6 +300,14 @@
           {
             "label": "Module lifecycle",
             "href": "https://github.com/mobazha/mobazha/blob/main/docs/extensions/MODULE_LIFECYCLE.md"
+          },
+          {
+            "label": "Order extension contract",
+            "href": "https://github.com/mobazha/mobazha/blob/main/docs/extensions/ORDER_EXTENSION_CONTRACT.md"
+          },
+          {
+            "label": "Collectibles order-extension evolution",
+            "href": "https://github.com/mobazha/mobazha/blob/main/docs/extensions/ORDER_EXTENSION_EVOLUTION_PLAN.md"
           },
           {
             "label": "Conformance",
@@ -701,6 +780,24 @@
         ]
       },
       {
+        "heading": "Repository-owned architecture decisions",
+        "body": [
+          "Cross-repository indexes point to the repository that owns each decision. They do not copy or renumber the decision in this documentation repository."
+        ],
+        "links": [
+          {
+            "label": "Open Core ADR-018: Extension architecture",
+            "href": "https://github.com/mobazha/mobazha/blob/main/docs/adr/018-open-core-extension-architecture.md",
+            "description": "Defines Ports, Modules, Functions, Controllers, Core authority, trust-dependent isolation, financial state-machine re-entry, and closed-by-default capabilities."
+          },
+          {
+            "label": "Open Core extension guide",
+            "href": "/build/extensions",
+            "description": "Explains the decision, its current implementation boundary, and the Collectibles case for portal readers."
+          }
+        ]
+      },
+      {
         "heading": "Reading an ADR safely",
         "body": [
           "An accepted ADR explains an intended durable decision. It does not by itself activate a capability, migrate a deployment, or prove that every repository has completed the decision. Check implementation, conformance tests, release notes, and effective runtime capability where applicable."
@@ -727,6 +824,27 @@
         "heading": "Core boundary",
         "body": [
           "A client connects to a backend chosen by the user or operator. That backend controls its data, enabled capabilities, integrations, and policies. Optional hosted services are separate dependencies and should be disclosed as such."
+        ]
+      },
+      {
+        "heading": "Open Core composition boundary",
+        "body": [
+          "Open Core owns order, payment, refund, dispute, settlement, key-custody, and audit state machines. Optional products and integrations compose through public typed contracts instead of adding product vocabulary, arbitrary hooks, database access, or a complete Core service locator."
+        ],
+        "bullets": [
+          "Ports replace narrow Core-required implementations.",
+          "Modules assemble reviewed capabilities before the Node starts serving traffic.",
+          "Functions customize deterministic decisions without I/O or mutation authority.",
+          "Controllers reconcile external systems and report observations or attestations.",
+          "Every financial change returns through a validated Core command and state machine.",
+          "Effective capabilities remain closed until distribution, compatibility, composition, authorization, configuration, and health gates all pass."
+        ],
+        "links": [
+          {
+            "label": "Open Core extension guide",
+            "href": "/build/extensions",
+            "description": "Mechanism selection, authority flow, trust levels, current implementation, and Collectibles as the first case."
+          }
         ]
       },
       {
@@ -2084,6 +2202,152 @@
           {
             "label": "English canonical page",
             "href": "/build"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/build/extensions",
+    "title": "通过公共契约扩展 Mobazha",
+    "summary": "选择最窄的类型化扩展机制，并保留 Core 权威、能力门槛、运行隔离、恢复和审计边界。",
+    "status": "Draft",
+    "audiences": [
+      "扩展开发者",
+      "架构师",
+      "安全审核者"
+    ],
+    "sourceLabel": "Mobazha Open Core 扩展契约",
+    "sourceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/extensions",
+    "reviewed": "2026-07-04",
+    "language": "zh-CN",
+    "translationOf": "build/extensions",
+    "sections": [
+      {
+        "heading": "选择正确的机制",
+        "bullets": [
+          "Port：替换 Core 所需能力的一种实现。",
+          "Module：把经过审核的能力组合进一个发行形态。",
+          "Function：定制有边界且确定性的业务决策。",
+          "Controller：协调外部系统或执行外部 I/O。",
+          "OrderExtension：为订单附加带版本的领域数据和生命周期。"
+        ],
+        "body": [
+          "应选择只承担一个职责的最窄机制。一个包可以实现多个角色，但每个公共契约只能有一个权威边界。回调不会自动成为 Port，Module 也不是服务定位器。"
+        ]
+      },
+      {
+        "heading": "保留 Core 权威",
+        "body": [
+          "扩展只能提交声明、决策、观察或证明。Core 校验身份、授权、模式与契约版本、资源绑定、预期状态、幂等性、新鲜度和策略，然后才创建由 Core 拥有的命令或持久事实。"
+        ],
+        "code": "扩展输入\n  -> Core 校验\n  -> Core 命令或持久事实\n  -> Core 状态机\n  -> 审计，并通过受限适配器执行外部动作",
+        "bullets": [
+          "类型化领域契约可以表达需求时，不增加全局通用 Hook。",
+          "Core 保留发布策略、订单状态、支付验证、结算门槛、审计和密钥托管权威。",
+          "第三方代码不得导入 internal 包、接收完整 Core 对象或访问原始签名材料。",
+          "扩展不得写 Core 数据表，也不得直接调用内部状态迁移。",
+          "支付、退款、争议和结算变化必须重新进入带版本和幂等保护的 Core 命令与状态机。"
+        ]
+      },
+      {
+        "heading": "设计规则",
+        "bullets": [
+          "Ports 为窄小、由 Core 定义的能力提供可替换性。",
+          "Modules 提供不可变的启动期组合，并声明身份、版本、依赖、能力、配置、运行类型和生命周期。",
+          "Functions 有边界且确定性，不获得网络、数据库、密钥、时钟或状态迁移权限。",
+          "Controllers 消费持久 Core 事实来协调外部系统，只返回观察或证明。",
+          "所有模块遵守统一治理，但业务接口保持窄小、类型化和领域化。",
+          "新扩展点必须有所有者、模式、权限边界、失败语义、幂等与恢复模型、测试和移除计划。",
+          "不提供全局命名 Hook 总线、运行时可变注册表或万能 Core 服务定位器。"
+        ]
+      },
+      {
+        "heading": "能力与信任门槛",
+        "body": [
+          "所有激活门槛通过后，扩展能力才可见。源码存在、标识符已知或代码已经链接，都不等于能力已启用。"
+        ],
+        "code": "发行允许列表\n  ∩ 契约兼容\n  ∩ 已安装或静态组合\n  ∩ 已授权\n  ∩ 已配置\n  ∩ 健康",
+        "bullets": [
+          "经审核的第一方模块默认静态链接。",
+          "独立分发或第三方基础设施默认在进程外运行。",
+          "商家编写的决策规则在该运行时引入后，应进入 Wasm 等受限沙箱。",
+          "降低隔离等级需要威胁分析和架构决策。"
+        ]
+      },
+      {
+        "heading": "当前实现边界",
+        "body": [
+          "静态 Order Extension v1 当前已经校验精确契约名称、不可变启动期组合、依赖与循环、能力和接口的一致性，并在缺失能力时失败关闭。它也已经提供只追加的扩展记录、持久生命周期投递、类型化预留绑定，以及重新进入 Core 结算命令的结算证明。",
+          "发行允许列表、按租户授权和配置、结构化模块健康、drain、升级、回滚、第三方进程运行时及 Wasm Function 运行时仍是治理目标，不能描述为已经普遍可用。"
+        ]
+      },
+      {
+        "heading": "Collectibles 首个落地案例",
+        "bullets": [
+          "签名 NFT 元数据成为由 Collectibles 模块生成、带版本的 OrderExtension 声明。",
+          "Token 或库存分配在创建资金目标前通过模块拥有的 ReservationPort 完成。",
+          "铸造和交付是由持久扩展事件驱动的 Controller 工作。",
+          "交付证据成为由模块校验的 SettlementAttestation。",
+          "卖家收款仍由已有 Core 条件结算命令执行。",
+          "NFT、链、铸造、证书和提供方词汇不进入通用 Core API。"
+        ],
+        "body": [
+          "Collectibles 用来证明架构，而不是把 NFT 概念提升为万能 Core 抽象。开发期直接切换已经移除产品专用 Hook、结算命令、队列和 FiatMetadata 镜像。"
+        ]
+      },
+      {
+        "heading": "评审新的扩展点",
+        "bullets": [
+          "明确领域所有者、业务目的、调用者、声明者和授权者。",
+          "分别对输入、输出、描述符和兼容行为进行版本管理。",
+          "定义同步或持久投递、顺序、幂等、超时、重试、死信和对账行为。",
+          "声明能力门槛、权限、敏感数据以及重新进入 Core 状态机的位置。",
+          "提供迁移、回滚、移除、可观测性、负向测试和一致性证据。"
+        ],
+        "body": [
+          "如果这些答案尚不稳定，应把机制保留为私有实现细节，而不是发布另一个通用扩展点。"
+        ]
+      },
+      {
+        "heading": "权威文档",
+        "links": [
+          {
+            "label": "ADR-018：Open Core 扩展架构",
+            "href": "https://github.com/mobazha/mobazha/blob/main/docs/adr/018-open-core-extension-architecture.md",
+            "description": "角色、权限边界、信任模型和架构不变量。"
+          },
+          {
+            "label": "扩展架构入口",
+            "href": "https://github.com/mobazha/mobazha/blob/main/docs/extensions/README.md"
+          },
+          {
+            "label": "能力与安全模型",
+            "href": "https://github.com/mobazha/mobazha/blob/main/docs/extensions/CAPABILITY_AND_SECURITY_MODEL.md"
+          },
+          {
+            "label": "模块生命周期",
+            "href": "https://github.com/mobazha/mobazha/blob/main/docs/extensions/MODULE_LIFECYCLE.md"
+          },
+          {
+            "label": "Order Extension 契约",
+            "href": "https://github.com/mobazha/mobazha/blob/main/docs/extensions/ORDER_EXTENSION_CONTRACT.md"
+          },
+          {
+            "label": "Collectibles Order Extension 演进",
+            "href": "https://github.com/mobazha/mobazha/blob/main/docs/extensions/ORDER_EXTENSION_EVOLUTION_PLAN.md"
+          },
+          {
+            "label": "一致性测试",
+            "href": "https://github.com/mobazha/mobazha/blob/main/docs/extensions/CONFORMANCE.md"
+          },
+          {
+            "label": "支付插件架构",
+            "href": "https://github.com/mobazha/mobazha/blob/main/docs/plugins/PAYMENT_PLUGIN_ARCHITECTURE.md"
+          },
+          {
+            "label": "English canonical page",
+            "href": "/build/extensions"
           }
         ]
       }

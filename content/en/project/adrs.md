@@ -26,6 +26,13 @@ Editorial changes, routine implementation details, and temporary experiments usu
 - [ADR template](https://github.com/mobazha/mobazha-docs/blob/main/adrs/0000-template.md)
 - [Repository ADR guide](https://github.com/mobazha/mobazha-docs/blob/main/adrs/README.md)
 
+## Repository-owned architecture decisions
+
+Cross-repository indexes point to the repository that owns each decision. They do not copy or renumber the decision in this documentation repository.
+
+- [Open Core ADR-018: Extension architecture](https://github.com/mobazha/mobazha/blob/main/docs/adr/018-open-core-extension-architecture.md) — Defines Ports, Modules, Functions, Controllers, Core authority, trust-dependent isolation, financial state-machine re-entry, and closed-by-default capabilities.
+- [Open Core extension guide](/build/extensions) — Explains the decision, its current implementation boundary, and the Collectibles case for portal readers.
+
 ## Reading an ADR safely
 
 An accepted ADR explains an intended durable decision. It does not by itself activate a capability, migrate a deployment, or prove that every repository has completed the decision. Check implementation, conformance tests, release notes, and effective runtime capability where applicable.
