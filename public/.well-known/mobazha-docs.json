@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5",
+  "schema_version": "1.6",
   "name": "Mobazha Documentation",
   "canonical_base_url": "https://docs.mobazha.org",
   "canonical_language": "en",
@@ -8,10 +8,10 @@
     "zh-CN"
   ],
   "language_starts": {
-    "en": "/start",
+    "en": "/",
     "zh-CN": "/zh/start"
   },
-  "human_start": "/start",
+  "human_start": "/",
   "agent_start": "/agents",
   "llms": "/llms.txt",
   "llms_full": "/llms-full.txt",

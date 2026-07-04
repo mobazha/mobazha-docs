@@ -3,8 +3,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
+import { CopyCodeButton } from "@/app/components/CopyCodeButton";
+import { DocumentHero, PageTableOfContents, sectionId, TrustPanel } from "@/app/components/DocumentExperience";
 import { DocsShell } from "@/app/components/DocsShell";
-import { docApplicability, docs, docsBySlug, navGroupsForPath, translationPathFor, type DocBlock } from "@/app/lib/docs";
+import { activeNavGroupForPath, docs, docsBySlug, translationPathFor, type DocBlock } from "@/app/lib/docs";
 
 type PageProps = { params: Promise<{ slug: string[] }> };
 
@@ -46,7 +48,7 @@ function DocumentBlock({ block, isChinese }: { block: DocBlock; isChinese: boole
     return <ol>{block.items.map((item, index) => <li key={`${index}-${item}`}><InlineMarkdown text={item} /></li>)}</ol>;
   }
   if (block.type === "code") {
-    return <div className="doc-code"><div>{block.language}</div><pre><code>{block.code}</code></pre></div>;
+    return <div className="doc-code"><div><span>{block.language}</span><CopyCodeButton code={block.code} language={block.language} /></div><pre><code>{block.code}</code></pre></div>;
   }
   if (block.type === "callout") {
     const label = calloutLabels[isChinese ? "zh" : "en"][block.tone];
@@ -70,12 +72,15 @@ function DocumentBlock({ block, isChinese }: { block: DocBlock; isChinese: boole
   if (block.type === "links") {
     return (
       <div className="doc-links">
-        {block.items.map((item, index) => (
-          <Link href={item.href} key={`${index}-${item.href}`}>
+        {block.items.map((item, index) => {
+          const content = <>
             <b>{item.label}<span>→</span></b>
             {item.description && <small>{item.description}</small>}
-          </Link>
-        ))}
+          </>;
+          return item.href.startsWith("/")
+            ? <Link href={item.href} key={`${index}-${item.href}`}>{content}</Link>
+            : <a href={item.href} key={`${index}-${item.href}`}>{content}</a>;
+        })}
       </div>
     );
   }
@@ -133,6 +138,11 @@ export default async function DocumentationPage({ params }: PageProps) {
     stale: "发现内容过期、不清楚或互相冲突？",
     issue: "提交文档问题 ↗",
     navigation: "文档页面",
+    trust: "适用范围与来源",
+    estimatedTime: "预计用时",
+    onThisPage: "本页内容",
+    agentResources: "Agent 资源",
+    agentGuide: "指南",
   } : {
     docs: "Docs",
     audience: "Audience",
@@ -148,12 +158,16 @@ export default async function DocumentationPage({ params }: PageProps) {
     stale: "Found something stale or unclear?",
     issue: "Open a documentation issue ↗",
     navigation: "Documentation pages",
+    trust: "Trust, applicability, and sources",
+    estimatedTime: "Estimated time",
+    onThisPage: "On this page",
+    agentResources: "Agent resources",
+    agentGuide: "Guide",
   };
   const statusLabel = isChinese
     ? { Current: "当前", Beta: "测试版", Draft: "草案", Deprecated: "已弃用", Historical: "历史" }[doc.status]
     : doc.status;
-  const navGroups = navGroupsForPath(path);
-  const orderedLinks = navGroups.flatMap((group) => group.links);
+  const orderedLinks = activeNavGroupForPath(path)?.links ?? [];
   const navigationIndex = orderedLinks.findIndex(([, href]) => href === path);
   const previous = navigationIndex > 0 ? orderedLinks[navigationIndex - 1] : undefined;
   const next = navigationIndex >= 0 && navigationIndex < orderedLinks.length - 1
@@ -161,49 +175,33 @@ export default async function DocumentationPage({ params }: PageProps) {
     : undefined;
   return (
     <DocsShell activePath={path}>
-      <div className="doc-breadcrumb"><Link href="/">{labels.docs}</Link><span>/</span><span>{key}</span></div>
-      <header className="doc-title-block">
-        <div className={`doc-status status-${doc.status.toLowerCase()}`}>{statusLabel}</div>
-        <h1>{doc.title}</h1>
-        <p>{doc.summary}</p>
-      </header>
+      <div className={`doc-page doc-page-${doc.pageType}`}>
+        <div className="doc-breadcrumb"><Link href="/">{labels.docs}</Link><span>/</span><span>{key}</span></div>
+        <DocumentHero doc={doc} isChinese={isChinese} labels={labels} statusLabel={statusLabel} />
+        <TrustPanel doc={doc} labels={labels} open={doc.pageType === "policy"} />
+        <PageTableOfContents doc={doc} label={labels.onThisPage} />
 
-      <div className="doc-metadata">
-        <div><span>{labels.audience}</span><b>{doc.audiences.join(" · ")}</b></div>
-        <div><span>{labels.appliesTo}</span><b>{docApplicability(doc)}</b></div>
-        <div><span>{labels.reviewed}</span><b>{doc.reviewed}</b></div>
-        {doc.version && <div><span>{labels.version}</span><b>{doc.version}</b></div>}
-        {doc.lastTested && <div><span>{labels.lastTested}</span><b>{doc.lastTested}</b></div>}
-        <div>
-          <span>{labels.authority}</span>
-          <a href={doc.authorityUrl}>{doc.authorityLabel} ↗</a>
+        <div className="doc-content">
+          {doc.sections.map((section, sectionIndex) => (
+            <section id={sectionId(section.heading, sectionIndex)} key={`${sectionIndex}-${section.heading}`}>
+              <h2>{section.heading}</h2>
+              {section.blocks.map((block, index) => <DocumentBlock block={block} isChinese={isChinese} key={`${section.heading}-${index}`} />)}
+            </section>
+          ))}
         </div>
-        <div>
-          <span>{labels.evidence}</span>
-          {doc.evidenceUrl ? <a href={doc.evidenceUrl}>{doc.evidenceLabel} ↗</a> : <b>{doc.evidenceLabel}</b>}
-        </div>
+
+        {(previous || next) && (
+          <nav className="doc-pagination" aria-label={labels.navigation}>
+            {previous ? <Link href={previous[1]}><small>{labels.previous}</small><b>← {previous[0]}</b></Link> : <span />}
+            {next ? <Link href={next[1]}><small>{labels.next}</small><b>{next[0]} →</b></Link> : <span />}
+          </nav>
+        )}
+
+        <footer className="doc-footer">
+          <div><span>{labels.stale}</span><a href="https://github.com/mobazha/mobazha-docs/issues/new">{labels.issue}</a></div>
+          <div><span>{labels.agentResources}</span><a href={isChinese ? "/zh/agents" : "/agents"}>{labels.agentGuide}</a><a href="/llms.txt">llms.txt</a><a href="/docs-index.json">Index</a></div>
+        </footer>
       </div>
-
-      <div className="doc-content">
-        {doc.sections.map((section, sectionIndex) => (
-          <section key={`${sectionIndex}-${section.heading}`}>
-            <h2>{section.heading}</h2>
-            {section.blocks.map((block, index) => <DocumentBlock block={block} isChinese={isChinese} key={`${section.heading}-${index}`} />)}
-          </section>
-        ))}
-      </div>
-
-      {(previous || next) && (
-        <nav className="doc-pagination" aria-label={labels.navigation}>
-          {previous ? <Link href={previous[1]}><small>{labels.previous}</small><b>← {previous[0]}</b></Link> : <span />}
-          {next ? <Link href={next[1]}><small>{labels.next}</small><b>{next[0]} →</b></Link> : <span />}
-        </nav>
-      )}
-
-      <footer className="doc-footer">
-        <span>{labels.stale}</span>
-        <a href="https://github.com/mobazha/mobazha-docs/issues/new">{labels.issue}</a>
-      </footer>
     </DocsShell>
   );
 }

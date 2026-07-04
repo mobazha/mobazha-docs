@@ -79,6 +79,28 @@ for (const doc of docs) {
   if (doc.lastTested !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(doc.lastTested)) {
     fail(`invalid last-tested date on /${doc.slug}`);
   }
+  if (doc.outcome !== undefined && (typeof doc.outcome !== "string" || !doc.outcome.trim())) {
+    fail(`invalid outcome on /${doc.slug}`);
+  }
+  if (doc.estimatedTime !== undefined && (typeof doc.estimatedTime !== "string" || !doc.estimatedTime.trim())) {
+    fail(`invalid estimated time on /${doc.slug}`);
+  }
+  if (doc.journey !== undefined && !new Set(["start", "use", "operate", "build", "understand", "community"]).has(doc.journey)) {
+    fail(`unsupported journey on /${doc.slug}`);
+  }
+  if (doc.primaryAction !== undefined) {
+    if (typeof doc.primaryAction !== "object" || !doc.primaryAction.label?.trim() || !doc.primaryAction.href?.trim()) {
+      fail(`invalid primary action on /${doc.slug}`);
+    } else {
+      const actionPath = doc.primaryAction.href.split("#")[0];
+      if (actionPath.startsWith("/") && actionPath && !allowedInternal.has(actionPath)) {
+        fail(`/${doc.slug} has a primary action to unknown path ${doc.primaryAction.href}`);
+      }
+      if (!doc.primaryAction.href.startsWith("/") && !doc.primaryAction.href.startsWith("https://")) {
+        fail(`/${doc.slug} has a non-HTTPS primary action ${doc.primaryAction.href}`);
+      }
+    }
+  }
   if (!new Set(["Current", "Beta", "Draft", "Deprecated", "Historical"]).has(doc.status)) {
     fail(`unsupported status on /${doc.slug}`);
   }

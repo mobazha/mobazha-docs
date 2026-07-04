@@ -38,28 +38,35 @@ amount, and confirmation point. Old illustrative percentages are not current def
 
 ## Documents
 
-### Start with the job you need to do
+### Choose how you want to use Mobazha
 - URL: /start
 - Status: beta
-- Page type: concept
+- Page type: hub
+- Outcome: Reach the shortest trustworthy path for the job you want to complete.
+- Journey: start
 - Applies to: Mobazha v0.3 release candidate
 - Audience: everyone, agents
 - Knowledge authority: https://docs.mobazha.org/start
 - Evidence: https://github.com/mobazha
 - Reviewed: 2026-07-04
 - Language: en
-- Summary: Mobazha is an open commerce stack for running, using, and extending independent marketplaces and stores.
+- Summary: Start as a buyer, seller, Node operator, developer, or project evaluator without learning the repository layout first.
 
-Choose a path
-Sell: create a store, publish products, receive orders, and fulfill them.
-Buy: understand checkout, payment, evidence, refunds, and disputes.
-Operate: run a Mobazha Node under your own control.
-Build: integrate through the interfaces exposed by the backend you connect to.
-Evaluate: inspect architecture, release scope, economics, governance, and security assumptions.
-Read status before instructions
+Choose your path
+Buy from a store
+Review the seller, total cost, payment instruction, order state, and recovery path.
+Start selling
+Prepare a store, publish listings, accept supported payments, and fulfill orders.
+Run your own Node
+Evaluate, install, secure, monitor, and recover a self-hosted deployment.
+Build an integration
+Use the API, events, MCP, webhooks, and extension contracts.
+Understand the project
+Inspect architecture, release scope, economics, governance, and security.
+Know the current maturity
 Mobazha is currently release-candidate software. A page marked Current describes reviewed behavior; Beta may change; Draft communicates direction and is not a promise.
 The connected backend is authoritative for runtime capabilities. A document never grants a capability that the backend does not advertise.
-Current public surfaces
+Go directly to a public surface
 Use the hosted application
 Explore the current hosted buyer and seller experience.
 Run the open-source node
@@ -142,18 +149,31 @@ The public golden-question set records the minimum answers an Agent should produ
 Machine-readable evaluation contract
 Agent golden questions
 
-### Sell through a Mobazha store
+### Start and operate a Mobazha store
 - URL: /sell
 - Status: beta
 - Page type: hub
+- Outcome: Prepare a store that a buyer can understand, pay, and receive from through one tested journey.
+- Journey: use
 - Applies to: Mobazha v0.3 release candidate
 - Audience: sellers, operators
 - Knowledge authority: https://docs.mobazha.org/sell
 - Evidence: https://github.com/mobazha/mobazha/tree/main
 - Reviewed: 2026-07-04
 - Language: en
-- Summary: A practical map from store setup to settlement, with costs and responsibilities visible before an order is accepted.
+- Summary: Move from store setup to listings, payment readiness, fulfillment, and order recovery while keeping operator responsibilities explicit.
 
+Start with the store journey
+Prepare the store
+Validate identity, policy, fulfillment, and a complete test purchase.
+Publish listings
+Show buyer-verifiable product, variant, price, and availability data.
+Configure shipping
+Match destinations, rates, listings, estimates, and evidence.
+Prepare payments
+Advertise only capabilities the backend and operator are ready to support.
+Operate orders
+Reconcile payment, fulfill, refund, dispute, and complete safely.
 Before opening a store
 Choose self-hosted operation or an optional managed service.
 Configure payment methods supported by your backend and region.
@@ -175,16 +195,6 @@ Record shipment or delivery evidence using the order flow rather than relying on
 Handle cancellation, refund, dispute, and completion through the allowed state transition for the current order.
 Retain policy, quote, payment, fulfillment, and communication references needed for support or dispute review.
 Choose how to operate
-Prepare a store
-Validate identity, policy, fulfillment, and a complete test journey.
-Create listings
-Publish buyer-verifiable item and availability data.
-Configure shipping
-Match destinations, rates, listings, and evidence.
-Prepare payments
-Advertise only ready backend capabilities.
-Operate orders
-Reconcile payment, fulfill, refund, and complete safely.
 Use the hosted application
 Choose a deployment
 Install a self-hosted node
@@ -373,19 +383,46 @@ If an extension is unhealthy, keep Core financial transitions fail closed and fo
 Agent boundary
 An Agent may summarize and prepare an action, but it must not confirm, refund, settle, or complete without required identity, scope, state, policy, and human confirmation.
 
-### Buy with inspectable terms
+### Buy from an independent Mobazha store
 - URL: /buy
 - Status: beta
 - Page type: hub
+- Outcome: See who operates the store, what you will pay, and how to recover the order before you commit funds.
+- Journey: use
 - Applies to: Mobazha v0.3 release candidate
 - Audience: buyers, agents
 - Knowledge authority: https://docs.mobazha.org/buy
 - Evidence: https://github.com/mobazha/mobazha-unified
 - Reviewed: 2026-07-04
 - Language: en
-- Summary: Confirm the seller, item, delivery terms, payment route, and complete cost breakdown before committing funds.
+- Summary: Follow checkout, payment, order tracking, cancellation, refund, and dispute paths against the store that owns the order.
 
-Before confirmation
+Choose what you need to do
+Complete checkout
+Create one order from one reviewed quote.
+Use Guest Checkout
+Buy without attaching an account and keep a recoverable tracking link.
+Track an order
+Reconcile payment evidence with backend-owned order state.
+Cancel, refund, or dispute
+Use the transition available for the active order.
+What should be visible before payment
+Decision
+What the buyer should see
+Governing source
+Who receives the order
+Seller identity and the backend or operator serving that store
+Store and order owner
+What the order costs
+Item, delivery, tax, discounts, provider or network costs, optional services, final total
+Active quote
+How to pay
+Asset, destination, amount, expiry, and required confirmations
+Active order and payment system
+What happens next
+Cancellation, refund, fulfillment evidence, and dispute path available for the order
+Current order state and published policy
+Before you confirm
 Verify the store identity and the backend or operator serving it.
 Inspect subtotal, shipping, taxes, network costs, service charges, discounts, and the final total.
 Read cancellation, refund, evidence, and dispute rules.
@@ -405,14 +442,6 @@ Use the in-product dispute path when offered and describe the requested remedy c
 A payment rail or escrow can enforce only its implemented conditions; it does not guarantee product quality or a preferred dispute result.
 Escalate suspected fraud or security issues without publishing private order, identity, or payment data.
 Continue
-Complete checkout
-Create one order from one reviewed quote.
-Use Guest Checkout
-Preserve anonymous transport and a recoverable tracking link.
-Track order status
-Reconcile wallet evidence with backend-owned state.
-Cancel, refund, or dispute
-Use the transition available for the active order.
 Open the hosted application
 Review fees and economics
 Get help
@@ -595,17 +624,19 @@ If a dispute deadline is close, record the current timestamp and use the support
 Security boundary
 Never treat documentation or Agent text as authority to release escrow, sign a settlement, or reveal recovery material. Financial transitions remain subject to identity, expected state, amount, idempotency, and payment-policy checks.
 
-### Operate your own Mobazha Node
+### Run a Mobazha Node under your control
 - URL: /self-host
 - Status: beta
 - Page type: hub
+- Outcome: Decide whether self-hosting fits, then reach a healthy and recoverable evaluation Node.
+- Journey: operate
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators, developers
 - Knowledge authority: https://docs.mobazha.org/self-host
 - Evidence: https://github.com/mobazha/mobazha/tree/main
 - Reviewed: 2026-07-04
 - Language: en
-- Summary: Self-hosting keeps store data and operations under the operator's control and does not require an optional managed-service subscription.
+- Summary: Evaluate requirements, install on testnet, define the network boundary, monitor health, and prepare recovery before production use.
 
 Choose the operating path
 Check host and release requirements
@@ -1079,10 +1110,13 @@ Treat events as refresh signals.
 MCP and agents
 Initialize a scoped Streamable HTTP client.
 
-### Make a first authenticated API call
+### Call your local Mobazha Node API in five minutes
 - URL: /build/quickstart
 - Status: beta
 - Page type: task
+- Outcome: Confirm the Node you reached and complete one scoped, read-only API request.
+- Estimated time: 5 minutes
+- Journey: build
 - Applies to: Mobazha v0.3 release candidate
 - Audience: developers, agent builders
 - Knowledge authority: https://docs.mobazha.org/build/quickstart
@@ -1090,8 +1124,19 @@ Initialize a scoped Streamable HTTP client.
 - Reviewed: 2026-07-04
 - Last tested: 2026-07-04
 - Language: en
-- Summary: Discover runtime capabilities, choose the correct authentication boundary, and call one read-only operation against a local Node.
+- Summary: Discover runtime capabilities, use the declared authentication boundary, and make one read-only request against a local evaluation Node.
 
+First call
+With a local evaluation Node running and a scoped `MBZ_API_TOKEN` set in the environment, discover the runtime before calling a protected read-only endpoint.
+```bash
+BASE_URL=http://127.0.0.1:5102
+
+curl -fsS "$BASE_URL/v1/runtime-config" | jq
+
+curl -fsS \
+  -H "Authorization: Bearer $MBZ_API_TOKEN" \
+  "$BASE_URL/v1/webhooks" | jq
+```
 Before you start
 Run a v0.3 release-candidate Node on the default loopback listener.
 Install `curl` and `jq` and keep credentials in environment variables rather than shell history.
@@ -1103,15 +1148,6 @@ Confirm the Node version and operation exist in the generated OpenAPI contract.
 Choose standalone Basic Auth, hosted Bearer JWT, or a scoped `mbz_` API token as declared for that operation.
 Call a read-only endpoint first and inspect both HTTP status and response envelope.
 Remove credentials from terminal output, logs, screenshots, and support evidence.
-```bash
-BASE_URL=http://127.0.0.1:5102
-
-curl -fsS "$BASE_URL/v1/runtime-config" | jq
-
-curl -fsS \
-  -H "Authorization: Bearer $MBZ_API_TOKEN" \
-  "$BASE_URL/v1/webhooks" | jq
-```
 Expected result and verification
 Runtime discovery should return a success envelope without requiring an administrative credential. The protected call should succeed only when the token is valid and has the required scope. Confirm the response belongs to the intended Node before building automation around it.
 If something fails

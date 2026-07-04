@@ -1001,23 +1001,44 @@
   },
   {
     "slug": "build/quickstart",
-    "title": "Make a first authenticated API call",
-    "summary": "Discover runtime capabilities, choose the correct authentication boundary, and call one read-only operation against a local Node.",
+    "title": "Call your local Mobazha Node API in five minutes",
+    "summary": "Discover runtime capabilities, use the declared authentication boundary, and make one read-only request against a local evaluation Node.",
     "status": "Beta",
     "audiences": [
       "Developers",
       "Agent builders"
     ],
     "authorityKind": "public-knowledge",
-    "authorityLabel": "Make a first authenticated API call",
+    "authorityLabel": "Call your local Mobazha Node API in five minutes",
     "authorityUrl": "https://docs.mobazha.org/build/quickstart",
     "evidenceLabel": "Generated Node OpenAPI and runtime contract",
     "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json",
     "reviewed": "2026-07-04",
     "pageType": "task",
     "lastTested": "2026-07-04",
+    "outcome": "Confirm the Node you reached and complete one scoped, read-only API request.",
+    "estimatedTime": "5 minutes",
+    "journey": "build",
+    "primaryAction": {
+      "label": "Run the first call",
+      "href": "/build/quickstart#first-call"
+    },
     "language": "en",
     "sections": [
+      {
+        "heading": "First call",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "With a local evaluation Node running and a scoped `MBZ_API_TOKEN` set in the environment, discover the runtime before calling a protected read-only endpoint."
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "code": "BASE_URL=http://127.0.0.1:5102\n\ncurl -fsS \"$BASE_URL/v1/runtime-config\" | jq\n\ncurl -fsS \\\n  -H \"Authorization: Bearer $MBZ_API_TOKEN\" \\\n  \"$BASE_URL/v1/webhooks\" | jq"
+          }
+        ]
+      },
       {
         "heading": "Before you start",
         "blocks": [
@@ -1044,11 +1065,6 @@
               "Call a read-only endpoint first and inspect both HTTP status and response envelope.",
               "Remove credentials from terminal output, logs, screenshots, and support evidence."
             ]
-          },
-          {
-            "type": "code",
-            "language": "bash",
-            "code": "BASE_URL=http://127.0.0.1:5102\n\ncurl -fsS \"$BASE_URL/v1/runtime-config\" | jq\n\ncurl -fsS \\\n  -H \"Authorization: Bearer $MBZ_API_TOKEN\" \\\n  \"$BASE_URL/v1/webhooks\" | jq"
           }
         ]
       },
@@ -1510,24 +1526,95 @@
   },
   {
     "slug": "buy",
-    "title": "Buy with inspectable terms",
-    "summary": "Confirm the seller, item, delivery terms, payment route, and complete cost breakdown before committing funds.",
+    "title": "Buy from an independent Mobazha store",
+    "summary": "Follow checkout, payment, order tracking, cancellation, refund, and dispute paths against the store that owns the order.",
     "status": "Beta",
     "audiences": [
       "Buyers",
       "Agents"
     ],
     "authorityKind": "public-knowledge",
-    "authorityLabel": "Buy with inspectable terms",
+    "authorityLabel": "Buy from an independent Mobazha store",
     "authorityUrl": "https://docs.mobazha.org/buy",
     "evidenceLabel": "Mobazha Unified public client",
     "evidenceUrl": "https://github.com/mobazha/mobazha-unified",
     "reviewed": "2026-07-04",
     "pageType": "hub",
+    "outcome": "See who operates the store, what you will pay, and how to recover the order before you commit funds.",
+    "journey": "use",
+    "primaryAction": {
+      "label": "Open the hosted app",
+      "href": "https://app.mobazha.org"
+    },
     "language": "en",
     "sections": [
       {
-        "heading": "Before confirmation",
+        "heading": "Choose what you need to do",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Complete checkout",
+                "href": "/buy/checkout",
+                "description": "Create one order from one reviewed quote."
+              },
+              {
+                "label": "Use Guest Checkout",
+                "href": "/buy/guest-checkout",
+                "description": "Buy without attaching an account and keep a recoverable tracking link."
+              },
+              {
+                "label": "Track an order",
+                "href": "/buy/order-status",
+                "description": "Reconcile payment evidence with backend-owned order state."
+              },
+              {
+                "label": "Cancel, refund, or dispute",
+                "href": "/buy/cancel-refund-dispute",
+                "description": "Use the transition available for the active order."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "What should be visible before payment",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "Decision",
+              "What the buyer should see",
+              "Governing source"
+            ],
+            "rows": [
+              [
+                "Who receives the order",
+                "Seller identity and the backend or operator serving that store",
+                "Store and order owner"
+              ],
+              [
+                "What the order costs",
+                "Item, delivery, tax, discounts, provider or network costs, optional services, final total",
+                "Active quote"
+              ],
+              [
+                "How to pay",
+                "Asset, destination, amount, expiry, and required confirmations",
+                "Active order and payment system"
+              ],
+              [
+                "What happens next",
+                "Cancellation, refund, fulfillment evidence, and dispute path available for the order",
+                "Current order state and published policy"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Before you confirm",
         "blocks": [
           {
             "type": "unordered-list",
@@ -1585,26 +1672,6 @@
           {
             "type": "links",
             "items": [
-              {
-                "label": "Complete checkout",
-                "href": "/buy/checkout",
-                "description": "Create one order from one reviewed quote."
-              },
-              {
-                "label": "Use Guest Checkout",
-                "href": "/buy/guest-checkout",
-                "description": "Preserve anonymous transport and a recoverable tracking link."
-              },
-              {
-                "label": "Track order status",
-                "href": "/buy/order-status",
-                "description": "Reconcile wallet evidence with backend-owned state."
-              },
-              {
-                "label": "Cancel, refund, or dispute",
-                "href": "/buy/cancel-refund-dispute",
-                "description": "Use the transition available for the active order."
-              },
               {
                 "label": "Open the hosted application",
                 "href": "https://app.mobazha.org"
@@ -3645,20 +3712,26 @@
   },
   {
     "slug": "self-host",
-    "title": "Operate your own Mobazha Node",
-    "summary": "Self-hosting keeps store data and operations under the operator's control and does not require an optional managed-service subscription.",
+    "title": "Run a Mobazha Node under your control",
+    "summary": "Evaluate requirements, install on testnet, define the network boundary, monitor health, and prepare recovery before production use.",
     "status": "Beta",
     "audiences": [
       "Operators",
       "Developers"
     ],
     "authorityKind": "public-knowledge",
-    "authorityLabel": "Operate your own Mobazha Node",
+    "authorityLabel": "Run a Mobazha Node under your control",
     "authorityUrl": "https://docs.mobazha.org/self-host",
     "evidenceLabel": "Mobazha deployment sources",
     "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main",
     "reviewed": "2026-07-04",
     "pageType": "hub",
+    "outcome": "Decide whether self-hosting fits, then reach a healthy and recoverable evaluation Node.",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "Check the requirements",
+      "href": "/self-host/requirements"
+    },
     "language": "en",
     "sections": [
       {
@@ -4700,22 +4773,63 @@
   },
   {
     "slug": "sell",
-    "title": "Sell through a Mobazha store",
-    "summary": "A practical map from store setup to settlement, with costs and responsibilities visible before an order is accepted.",
+    "title": "Start and operate a Mobazha store",
+    "summary": "Move from store setup to listings, payment readiness, fulfillment, and order recovery while keeping operator responsibilities explicit.",
     "status": "Beta",
     "audiences": [
       "Sellers",
       "Operators"
     ],
     "authorityKind": "public-knowledge",
-    "authorityLabel": "Sell through a Mobazha store",
+    "authorityLabel": "Start and operate a Mobazha store",
     "authorityUrl": "https://docs.mobazha.org/sell",
     "evidenceLabel": "Mobazha README and release scope",
     "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main",
     "reviewed": "2026-07-04",
     "pageType": "hub",
+    "outcome": "Prepare a store that a buyer can understand, pay, and receive from through one tested journey.",
+    "journey": "use",
+    "primaryAction": {
+      "label": "Prepare your store",
+      "href": "/sell/store-setup"
+    },
     "language": "en",
     "sections": [
+      {
+        "heading": "Start with the store journey",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Prepare the store",
+                "href": "/sell/store-setup",
+                "description": "Validate identity, policy, fulfillment, and a complete test purchase."
+              },
+              {
+                "label": "Publish listings",
+                "href": "/sell/listings",
+                "description": "Show buyer-verifiable product, variant, price, and availability data."
+              },
+              {
+                "label": "Configure shipping",
+                "href": "/sell/shipping",
+                "description": "Match destinations, rates, listings, estimates, and evidence."
+              },
+              {
+                "label": "Prepare payments",
+                "href": "/sell/payments",
+                "description": "Advertise only capabilities the backend and operator are ready to support."
+              },
+              {
+                "label": "Operate orders",
+                "href": "/sell/orders",
+                "description": "Reconcile payment, fulfill, refund, dispute, and complete safely."
+              }
+            ]
+          }
+        ]
+      },
       {
         "heading": "Before opening a store",
         "blocks": [
@@ -4780,31 +4894,6 @@
           {
             "type": "links",
             "items": [
-              {
-                "label": "Prepare a store",
-                "href": "/sell/store-setup",
-                "description": "Validate identity, policy, fulfillment, and a complete test journey."
-              },
-              {
-                "label": "Create listings",
-                "href": "/sell/listings",
-                "description": "Publish buyer-verifiable item and availability data."
-              },
-              {
-                "label": "Configure shipping",
-                "href": "/sell/shipping",
-                "description": "Match destinations, rates, listings, and evidence."
-              },
-              {
-                "label": "Prepare payments",
-                "href": "/sell/payments",
-                "description": "Advertise only ready backend capabilities."
-              },
-              {
-                "label": "Operate orders",
-                "href": "/sell/orders",
-                "description": "Reconcile payment, fulfill, refund, and complete safely."
-              },
               {
                 "label": "Use the hosted application",
                 "href": "https://app.mobazha.org"
@@ -5266,39 +5355,65 @@
   },
   {
     "slug": "start",
-    "title": "Start with the job you need to do",
-    "summary": "Mobazha is an open commerce stack for running, using, and extending independent marketplaces and stores.",
+    "title": "Choose how you want to use Mobazha",
+    "summary": "Start as a buyer, seller, Node operator, developer, or project evaluator without learning the repository layout first.",
     "status": "Beta",
     "audiences": [
       "Everyone",
       "Agents"
     ],
     "authorityKind": "public-knowledge",
-    "authorityLabel": "Start with the job you need to do",
+    "authorityLabel": "Choose how you want to use Mobazha",
     "authorityUrl": "https://docs.mobazha.org/start",
     "evidenceLabel": "Mobazha public repositories",
     "evidenceUrl": "https://github.com/mobazha",
     "reviewed": "2026-07-04",
-    "pageType": "concept",
+    "pageType": "hub",
+    "outcome": "Reach the shortest trustworthy path for the job you want to complete.",
+    "journey": "start",
+    "primaryAction": {
+      "label": "Explore the hosted app",
+      "href": "https://app.mobazha.org"
+    },
     "language": "en",
     "sections": [
       {
-        "heading": "Choose a path",
+        "heading": "Choose your path",
         "blocks": [
           {
-            "type": "unordered-list",
+            "type": "links",
             "items": [
-              "Sell: create a store, publish products, receive orders, and fulfill them.",
-              "Buy: understand checkout, payment, evidence, refunds, and disputes.",
-              "Operate: run a Mobazha Node under your own control.",
-              "Build: integrate through the interfaces exposed by the backend you connect to.",
-              "Evaluate: inspect architecture, release scope, economics, governance, and security assumptions."
+              {
+                "label": "Buy from a store",
+                "href": "/buy",
+                "description": "Review the seller, total cost, payment instruction, order state, and recovery path."
+              },
+              {
+                "label": "Start selling",
+                "href": "/sell",
+                "description": "Prepare a store, publish listings, accept supported payments, and fulfill orders."
+              },
+              {
+                "label": "Run your own Node",
+                "href": "/self-host",
+                "description": "Evaluate, install, secure, monitor, and recover a self-hosted deployment."
+              },
+              {
+                "label": "Build an integration",
+                "href": "/build",
+                "description": "Use the API, events, MCP, webhooks, and extension contracts."
+              },
+              {
+                "label": "Understand the project",
+                "href": "/project",
+                "description": "Inspect architecture, release scope, economics, governance, and security."
+              }
             ]
           }
         ]
       },
       {
-        "heading": "Read status before instructions",
+        "heading": "Know the current maturity",
         "blocks": [
           {
             "type": "paragraph",
@@ -5311,7 +5426,7 @@
         ]
       },
       {
-        "heading": "Current public surfaces",
+        "heading": "Go directly to a public surface",
         "blocks": [
           {
             "type": "links",

@@ -1,6 +1,6 @@
 ---
-title: Operate your own Mobazha Node
-summary: Self-hosting keeps store data and operations under the operator's control and does not require an optional managed-service subscription.
+title: Run a Mobazha Node under your control
+summary: Evaluate requirements, install on testnet, define the network boundary, monitor health, and prepare recovery before production use.
 status: Beta
 audiences:
   - Operators
@@ -9,6 +9,11 @@ evidenceLabel: Mobazha deployment sources
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main
 reviewed: 2026-07-04
 pageType: hub
+outcome: Decide whether self-hosting fits, then reach a healthy and recoverable evaluation Node.
+journey: operate
+primaryAction:
+  label: Check the requirements
+  href: /self-host/requirements
 ---
 
 ## Choose the operating path

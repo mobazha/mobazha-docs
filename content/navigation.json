@@ -165,7 +165,7 @@
       ]
     },
     {
-      "label": "Project",
+      "label": "Understand",
       "links": [
         [
           "Project overview",
@@ -194,7 +194,12 @@
         [
           "Product roadmap",
           "/project/roadmap"
-        ],
+        ]
+      ]
+    },
+    {
+      "label": "Trust & governance",
+      "links": [
         [
           "Security model",
           "/project/security"

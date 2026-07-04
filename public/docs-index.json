@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5",
+  "schema_version": "1.6",
   "generated_from": "canonical-public-knowledge-and-reviewed-evidence",
   "canonical_language": "en",
   "languages": [
@@ -16,8 +16,8 @@
       "id": "start",
       "path": "/start",
       "canonical_url": "https://docs.mobazha.org/start",
-      "title": "Start with the job you need to do",
-      "summary": "Mobazha is an open commerce stack for running, using, and extending independent marketplaces and stores.",
+      "title": "Choose how you want to use Mobazha",
+      "summary": "Start as a buyer, seller, Node operator, developer, or project evaluator without learning the repository layout first.",
       "status": "beta",
       "audiences": [
         "everyone",
@@ -27,14 +27,20 @@
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/start",
-        "label": "Start with the job you need to do"
+        "label": "Choose how you want to use Mobazha"
       },
       "evidence": {
         "source": "https://github.com/mobazha",
         "label": "Mobazha public repositories"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "hub",
+      "outcome": "Reach the shortest trustworthy path for the job you want to complete.",
+      "journey": "start",
+      "primary_action": {
+        "label": "Explore the hosted app",
+        "href": "https://app.mobazha.org"
+      },
       "language": "en"
     },
     {
@@ -94,8 +100,8 @@
       "id": "sell",
       "path": "/sell",
       "canonical_url": "https://docs.mobazha.org/sell",
-      "title": "Sell through a Mobazha store",
-      "summary": "A practical map from store setup to settlement, with costs and responsibilities visible before an order is accepted.",
+      "title": "Start and operate a Mobazha store",
+      "summary": "Move from store setup to listings, payment readiness, fulfillment, and order recovery while keeping operator responsibilities explicit.",
       "status": "beta",
       "audiences": [
         "sellers",
@@ -105,7 +111,7 @@
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/sell",
-        "label": "Sell through a Mobazha store"
+        "label": "Start and operate a Mobazha store"
       },
       "evidence": {
         "source": "https://github.com/mobazha/mobazha/tree/main",
@@ -113,6 +119,12 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "hub",
+      "outcome": "Prepare a store that a buyer can understand, pay, and receive from through one tested journey.",
+      "journey": "use",
+      "primary_action": {
+        "label": "Prepare your store",
+        "href": "/sell/store-setup"
+      },
       "language": "en"
     },
     {
@@ -249,8 +261,8 @@
       "id": "buy",
       "path": "/buy",
       "canonical_url": "https://docs.mobazha.org/buy",
-      "title": "Buy with inspectable terms",
-      "summary": "Confirm the seller, item, delivery terms, payment route, and complete cost breakdown before committing funds.",
+      "title": "Buy from an independent Mobazha store",
+      "summary": "Follow checkout, payment, order tracking, cancellation, refund, and dispute paths against the store that owns the order.",
       "status": "beta",
       "audiences": [
         "buyers",
@@ -260,7 +272,7 @@
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/buy",
-        "label": "Buy with inspectable terms"
+        "label": "Buy from an independent Mobazha store"
       },
       "evidence": {
         "source": "https://github.com/mobazha/mobazha-unified",
@@ -268,6 +280,12 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "hub",
+      "outcome": "See who operates the store, what you will pay, and how to recover the order before you commit funds.",
+      "journey": "use",
+      "primary_action": {
+        "label": "Open the hosted app",
+        "href": "https://app.mobazha.org"
+      },
       "language": "en"
     },
     {
@@ -381,8 +399,8 @@
       "id": "self-host",
       "path": "/self-host",
       "canonical_url": "https://docs.mobazha.org/self-host",
-      "title": "Operate your own Mobazha Node",
-      "summary": "Self-hosting keeps store data and operations under the operator's control and does not require an optional managed-service subscription.",
+      "title": "Run a Mobazha Node under your control",
+      "summary": "Evaluate requirements, install on testnet, define the network boundary, monitor health, and prepare recovery before production use.",
       "status": "beta",
       "audiences": [
         "operators",
@@ -392,7 +410,7 @@
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/self-host",
-        "label": "Operate your own Mobazha Node"
+        "label": "Run a Mobazha Node under your control"
       },
       "evidence": {
         "source": "https://github.com/mobazha/mobazha/tree/main",
@@ -400,6 +418,12 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "hub",
+      "outcome": "Decide whether self-hosting fits, then reach a healthy and recoverable evaluation Node.",
+      "journey": "operate",
+      "primary_action": {
+        "label": "Check the requirements",
+        "href": "/self-host/requirements"
+      },
       "language": "en"
     },
     {
@@ -657,8 +681,8 @@
       "id": "build-quickstart",
       "path": "/build/quickstart",
       "canonical_url": "https://docs.mobazha.org/build/quickstart",
-      "title": "Make a first authenticated API call",
-      "summary": "Discover runtime capabilities, choose the correct authentication boundary, and call one read-only operation against a local Node.",
+      "title": "Call your local Mobazha Node API in five minutes",
+      "summary": "Discover runtime capabilities, use the declared authentication boundary, and make one read-only request against a local evaluation Node.",
       "status": "beta",
       "audiences": [
         "developers",
@@ -668,7 +692,7 @@
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/build/quickstart",
-        "label": "Make a first authenticated API call"
+        "label": "Call your local Mobazha Node API in five minutes"
       },
       "evidence": {
         "source": "https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json",
@@ -677,6 +701,13 @@
       "reviewed": "2026-07-04",
       "page_type": "task",
       "last_tested": "2026-07-04",
+      "outcome": "Confirm the Node you reached and complete one scoped, read-only API request.",
+      "estimated_time": "5 minutes",
+      "journey": "build",
+      "primary_action": {
+        "label": "Run the first call",
+        "href": "/build/quickstart#first-call"
+      },
       "language": "en"
     },
     {

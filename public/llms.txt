@@ -52,7 +52,7 @@ Implementation evidence: the versioned sources linked from each page.
 - [Extensions](/build/extensions)
 - [Reference](/reference)
 
-## Project
+## Understand
 - [Project overview](/project)
 - [Architecture](/project/architecture)
 - [Whitepaper](/project/whitepaper)
@@ -60,6 +60,8 @@ Implementation evidence: the versioned sources linked from each page.
 - [Compatibility](/project/compatibility)
 - [Distribution](/project/distribution)
 - [Product roadmap](/project/roadmap)
+
+## Trust & governance
 - [Security model](/project/security)
 - [Legal and privacy](/project/legal-and-privacy)
 - [Release scope](/project/release-scope)

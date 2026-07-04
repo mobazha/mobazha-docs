@@ -38,6 +38,13 @@ export type DocPage = {
   appliesTo?: string;
   pageType: "concept" | "hub" | "task" | "reference" | "policy";
   lastTested?: string;
+  outcome?: string;
+  estimatedTime?: string;
+  journey?: "start" | "use" | "operate" | "build" | "understand" | "community";
+  primaryAction?: {
+    label: string;
+    href: string;
+  };
   language: "en" | "zh-CN";
   translationOf?: string;
   sections: DocSection[];
@@ -71,6 +78,10 @@ export const publicationNavGroups = [...englishNavGroups, ...chineseNavGroups];
 
 export function navGroupsForPath(path: string): NavGroup[] {
   return path.startsWith("/zh/") ? chineseNavGroups : englishNavGroups;
+}
+
+export function activeNavGroupForPath(path: string): NavGroup | undefined {
+  return navGroupsForPath(path).find((group) => group.links.some(([, href]) => href === path));
 }
 
 export const docs = generatedDocuments as DocPage[];

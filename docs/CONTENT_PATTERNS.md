@@ -7,6 +7,12 @@ Use the smallest page type that lets a reader complete a job or answer a
 question safely. A page should not mix a long tutorial, a full contract, and a
 policy decision simply because they share a noun.
 
+One canonical source may produce different human and Agent projections. Human
+pages lead with outcome, action, and observable completion; Agent publications
+retain the same facts with explicit authority and applicability. The active
+renderer and navigation migration is defined in
+[`HUMAN_EXPERIENCE_IMPLEMENTATION_PLAN.md`](./HUMAN_EXPERIENCE_IMPLEMENTATION_PLAN.md).
+
 ## Choose a page type
 
 | Type | Reader outcome | Required shape |

@@ -38,13 +38,17 @@ export function renderPublication({ docs, navGroups, docApplicability, sources, 
     reviewed: doc.reviewed,
     page_type: doc.pageType,
     last_tested: doc.lastTested,
+    outcome: doc.outcome,
+    estimated_time: doc.estimatedTime,
+    journey: doc.journey,
+    primary_action: doc.primaryAction,
     version: doc.version,
     language: doc.language ?? "en",
     translation_of: doc.translationOf ? `/${doc.translationOf}` : undefined,
   }));
 
   const index = {
-    schema_version: "1.5",
+    schema_version: "1.6",
     generated_from: "canonical-public-knowledge-and-reviewed-evidence",
     canonical_language: "en",
     languages: ["en", "zh-CN"],
@@ -89,7 +93,7 @@ ${llmsSections}
 - URL: ${doc.path}
 - Status: ${doc.status}
 - Page type: ${doc.page_type}
-- Applies to: ${doc.applies_to}
+${doc.outcome ? `- Outcome: ${doc.outcome}\n` : ""}${doc.estimated_time ? `- Estimated time: ${doc.estimated_time}\n` : ""}${doc.journey ? `- Journey: ${doc.journey}\n` : ""}- Applies to: ${doc.applies_to}
 - Audience: ${doc.audiences.join(", ")}
 - Knowledge authority: ${doc.knowledge_authority.url}
 - Evidence: ${doc.evidence.source}
@@ -154,13 +158,13 @@ ${records.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc><lastmo
 `;
 
   const discovery = {
-    schema_version: "1.5",
+    schema_version: "1.6",
     name: "Mobazha Documentation",
     canonical_base_url: baseUrl,
     canonical_language: "en",
     languages: ["en", "zh-CN"],
-    language_starts: { en: "/start", "zh-CN": "/zh/start" },
-    human_start: "/start",
+    language_starts: { en: "/", "zh-CN": "/zh/start" },
+    human_start: "/",
     agent_start: "/agents",
     llms: "/llms.txt",
     llms_full: "/llms-full.txt",

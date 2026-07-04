@@ -19,7 +19,7 @@ count.
 1. Start from a reader's job, not the repository layout.
 2. Keep one authority for each fact and link to its public owner.
 3. Separate current behavior, Beta behavior, proposals, and history.
-4. Give humans and Agents the same facts; machine indexes add structure, not authority.
+4. Give humans and Agents the same facts without requiring the same presentation hierarchy; machine indexes add structure, not authority.
 5. Publish from an allowlist and exclude secrets, private operations, and unapproved commercial assumptions.
 6. Test navigation, metadata, examples, generated contracts, and deployment as release artifacts.
 7. Use implementation as evidence only after identifying the public contract and applicability.
@@ -36,6 +36,7 @@ count.
 | DOCS-5 | Architecture, whitepaper, economics, security, governance, and legal navigation |
 | DOCS-6 | Agent indexes, examples, and golden-question evaluation |
 | DOCS-7 | Localization, redirects, freshness, analytics, and contribution workflow |
+| DOCS-8 | Human-first information architecture, page templates, product evidence, and task completion |
 
 ## Delivery waves
 
@@ -78,6 +79,24 @@ count.
 - Connect repository READMEs and in-product Help entry points back to the portal.
 - Unified Footer and Help & Support now route to canonical task pages; release
   notes in Node and Unified link the corresponding public guidance.
+
+### Wave 2H — Human-first documentation experience: in progress
+
+- Recorded the rendered-experience baseline, including navigation density,
+  first-useful-content position, missing actions, and missing product evidence.
+- Approved one canonical content source with distinct human and Agent projections.
+- Replaced full-taxonomy navigation with global journey choices and role-scoped local navigation.
+- Added page-type-aware human presentation, outcome, estimated-time, primary-action,
+  local-TOC, section-anchor, and copyable-code foundations.
+- Moved full trust metadata into progressive disclosure while preserving visible
+  lifecycle and material applicability.
+- Migrated `/`, `/start`, `/buy`, `/sell`, `/self-host`, and
+  `/build/quickstart`; reviewed product visuals remain before the flagship exit gate.
+- Govern real product screenshots, expected outputs, and conceptual diagrams as evidence.
+
+The baseline and execution contract are maintained in
+[`HUMAN_EXPERIENCE_AUDIT.md`](./HUMAN_EXPERIENCE_AUDIT.md) and
+[`HUMAN_EXPERIENCE_IMPLEMENTATION_PLAN.md`](./HUMAN_EXPERIENCE_IMPLEMENTATION_PLAN.md).
 
 ### Wave 3 — Trust and project knowledge: in progress
 

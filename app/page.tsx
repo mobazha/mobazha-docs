@@ -3,18 +3,18 @@ import Link from "next/link";
 
 const paths = [
   {
+    eyebrow: "BUY",
+    title: "Buy from an independent store",
+    description:
+      "See the seller, total cost, payment instructions, order state, and available recovery path.",
+    href: "/buy",
+  },
+  {
     eyebrow: "SELL",
     title: "Start and operate a store",
     description:
-      "Create a store, publish products, accept supported payments, fulfill orders, and understand costs.",
+      "Publish products, choose supported payments, fulfill orders, and keep control of store operations.",
     href: "/sell",
-  },
-  {
-    eyebrow: "BUY",
-    title: "Buy with clear terms",
-    description:
-      "Understand payment, buyer protection, cancellation, refund, evidence, and dispute paths.",
-    href: "/buy",
   },
   {
     eyebrow: "OPERATE",
@@ -46,15 +46,15 @@ export default function Home() {
 
       <section className="hero">
         <div className="hero-glow" aria-hidden="true" />
-        <div className="status-pill"><span /> Release candidate documentation</div>
-        <h1>One trusted path into<br /><em>open commerce.</em></h1>
+        <div className="status-pill"><span /> Open-source commerce stack</div>
+        <h1>Open commerce, operated by<br /><em>the people who use it.</em></h1>
         <p>
-          Guides, references, policies, and project knowledge for people and
-          agents using, operating, or extending Mobazha.
+          Buy from independent stores, run a store or Node under your control,
+          or build on public interfaces without one marketplace owning every path.
         </p>
         <div className="hero-actions">
-          <Link className="primary-action" href="/start">Get started <span>→</span></Link>
-          <Link className="secondary-action" href="/self-host">Run your own node</Link>
+          <a className="primary-action" href="#choose-path">Choose your path <span>→</span></a>
+          <a className="secondary-action" href="https://app.mobazha.org">Explore the hosted app</a>
         </div>
       </section>
 
@@ -64,7 +64,7 @@ export default function Home() {
             <p>CHOOSE YOUR PATH</p>
             <h2 id="choose-path">Start from what you need to accomplish.</h2>
           </div>
-          <span>Current facts are separated from drafts, history, and long-term direction.</span>
+          <span>Choose one outcome now. Architecture, policy, and source evidence stay available when you need them.</span>
         </div>
         <div className="path-grid">
           {paths.map((path, index) => (
@@ -81,13 +81,14 @@ export default function Home() {
 
       <section className="truth-strip">
         <div>
-          <p>AUTHORITATIVE BY DESIGN</p>
-          <h2>Know which answer governs.</h2>
+          <p>CONTROL WITHOUT GUESSWORK</p>
+          <h2>Know who operates each part.</h2>
         </div>
         <div className="truth-items">
-          <span><b>Capabilities</b> come from the connected backend.</span>
-          <span><b>Policies</b> come from reviewed public sources.</span>
-          <span><b>Transaction costs</b> come from the quote shown before confirmation.</span>
+          <span><b>Stores</b> are operated by their seller or chosen operator.</span>
+          <span><b>Capabilities</b> come from the backend you are connected to.</span>
+          <span><b>Transaction costs</b> come from the quote you review before confirmation.</span>
+          <span><b>Current software</b> is release-candidate quality and should be evaluated accordingly.</span>
         </div>
       </section>
 

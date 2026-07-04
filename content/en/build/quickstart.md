@@ -1,6 +1,6 @@
 ---
-title: Make a first authenticated API call
-summary: Discover runtime capabilities, choose the correct authentication boundary, and call one read-only operation against a local Node.
+title: Call your local Mobazha Node API in five minutes
+summary: Discover runtime capabilities, use the declared authentication boundary, and make one read-only request against a local evaluation Node.
 status: Beta
 audiences:
   - Developers
@@ -10,7 +10,27 @@ evidenceUrl: https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json
 reviewed: 2026-07-04
 pageType: task
 lastTested: 2026-07-04
+outcome: Confirm the Node you reached and complete one scoped, read-only API request.
+estimatedTime: 5 minutes
+journey: build
+primaryAction:
+  label: Run the first call
+  href: /build/quickstart#first-call
 ---
+
+## First call
+
+With a local evaluation Node running and a scoped `MBZ_API_TOKEN` set in the environment, discover the runtime before calling a protected read-only endpoint.
+
+```bash
+BASE_URL=http://127.0.0.1:5102
+
+curl -fsS "$BASE_URL/v1/runtime-config" | jq
+
+curl -fsS \
+  -H "Authorization: Bearer $MBZ_API_TOKEN" \
+  "$BASE_URL/v1/webhooks" | jq
+```
 
 ## Before you start
 
@@ -26,16 +46,6 @@ lastTested: 2026-07-04
 3. Choose standalone Basic Auth, hosted Bearer JWT, or a scoped `mbz_` API token as declared for that operation.
 4. Call a read-only endpoint first and inspect both HTTP status and response envelope.
 5. Remove credentials from terminal output, logs, screenshots, and support evidence.
-
-```bash
-BASE_URL=http://127.0.0.1:5102
-
-curl -fsS "$BASE_URL/v1/runtime-config" | jq
-
-curl -fsS \
-  -H "Authorization: Bearer $MBZ_API_TOKEN" \
-  "$BASE_URL/v1/webhooks" | jq
-```
 
 ## Expected result and verification
 

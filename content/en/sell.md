@@ -1,6 +1,6 @@
 ---
-title: Sell through a Mobazha store
-summary: A practical map from store setup to settlement, with costs and responsibilities visible before an order is accepted.
+title: Start and operate a Mobazha store
+summary: Move from store setup to listings, payment readiness, fulfillment, and order recovery while keeping operator responsibilities explicit.
 status: Beta
 audiences:
   - Sellers
@@ -9,7 +9,20 @@ evidenceLabel: Mobazha README and release scope
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main
 reviewed: 2026-07-04
 pageType: hub
+outcome: Prepare a store that a buyer can understand, pay, and receive from through one tested journey.
+journey: use
+primaryAction:
+  label: Prepare your store
+  href: /sell/store-setup
 ---
+
+## Start with the store journey
+
+- [Prepare the store](/sell/store-setup) — Validate identity, policy, fulfillment, and a complete test purchase.
+- [Publish listings](/sell/listings) — Show buyer-verifiable product, variant, price, and availability data.
+- [Configure shipping](/sell/shipping) — Match destinations, rates, listings, estimates, and evidence.
+- [Prepare payments](/sell/payments) — Advertise only capabilities the backend and operator are ready to support.
+- [Operate orders](/sell/orders) — Reconcile payment, fulfill, refund, dispute, and complete safely.
 
 ## Before opening a store
 
@@ -42,11 +55,6 @@ A seller remains responsible for product legality, tax, fulfillment, customer su
 
 ## Choose how to operate
 
-- [Prepare a store](/sell/store-setup) — Validate identity, policy, fulfillment, and a complete test journey.
-- [Create listings](/sell/listings) — Publish buyer-verifiable item and availability data.
-- [Configure shipping](/sell/shipping) — Match destinations, rates, listings, and evidence.
-- [Prepare payments](/sell/payments) — Advertise only ready backend capabilities.
-- [Operate orders](/sell/orders) — Reconcile payment, fulfill, refund, and complete safely.
 - [Use the hosted application](https://app.mobazha.org)
 - [Choose a deployment](/start/choose-deployment)
 - [Install a self-hosted node](/self-host/install)

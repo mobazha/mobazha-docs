@@ -1,6 +1,6 @@
 ---
-title: Buy with inspectable terms
-summary: Confirm the seller, item, delivery terms, payment route, and complete cost breakdown before committing funds.
+title: Buy from an independent Mobazha store
+summary: Follow checkout, payment, order tracking, cancellation, refund, and dispute paths against the store that owns the order.
 status: Beta
 audiences:
   - Buyers
@@ -9,9 +9,30 @@ evidenceLabel: Mobazha Unified public client
 evidenceUrl: https://github.com/mobazha/mobazha-unified
 reviewed: 2026-07-04
 pageType: hub
+outcome: See who operates the store, what you will pay, and how to recover the order before you commit funds.
+journey: use
+primaryAction:
+  label: Open the hosted app
+  href: https://app.mobazha.org
 ---
 
-## Before confirmation
+## Choose what you need to do
+
+- [Complete checkout](/buy/checkout) — Create one order from one reviewed quote.
+- [Use Guest Checkout](/buy/guest-checkout) — Buy without attaching an account and keep a recoverable tracking link.
+- [Track an order](/buy/order-status) — Reconcile payment evidence with backend-owned order state.
+- [Cancel, refund, or dispute](/buy/cancel-refund-dispute) — Use the transition available for the active order.
+
+## What should be visible before payment
+
+| Decision | What the buyer should see | Governing source |
+|---|---|---|
+| Who receives the order | Seller identity and the backend or operator serving that store | Store and order owner |
+| What the order costs | Item, delivery, tax, discounts, provider or network costs, optional services, final total | Active quote |
+| How to pay | Asset, destination, amount, expiry, and required confirmations | Active order and payment system |
+| What happens next | Cancellation, refund, fulfillment evidence, and dispute path available for the order | Current order state and published policy |
+
+## Before you confirm
 
 - Verify the store identity and the backend or operator serving it.
 - Inspect subtotal, shipping, taxes, network costs, service charges, discounts, and the final total.
@@ -40,10 +61,6 @@ Retain the order identifier, quote, payment reference, messages, fulfillment evi
 
 ## Continue
 
-- [Complete checkout](/buy/checkout) — Create one order from one reviewed quote.
-- [Use Guest Checkout](/buy/guest-checkout) — Preserve anonymous transport and a recoverable tracking link.
-- [Track order status](/buy/order-status) — Reconcile wallet evidence with backend-owned state.
-- [Cancel, refund, or dispute](/buy/cancel-refund-dispute) — Use the transition available for the active order.
 - [Open the hosted application](https://app.mobazha.org)
 - [Review fees and economics](/project/fees)
 - [Get help](/support)

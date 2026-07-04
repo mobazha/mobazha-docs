@@ -29,6 +29,12 @@ lifecycle, and review rules live in
 Page-type templates, supported Markdown blocks, and the definition of ready
 live in [`docs/CONTENT_PATTERNS.md`](./docs/CONTENT_PATTERNS.md).
 
+The human-facing experience baseline is recorded in
+[`docs/HUMAN_EXPERIENCE_AUDIT.md`](./docs/HUMAN_EXPERIENCE_AUDIT.md). Its target
+information architecture, page contracts, rollout order, and acceptance tests
+live in
+[`docs/HUMAN_EXPERIENCE_IMPLEMENTATION_PLAN.md`](./docs/HUMAN_EXPERIENCE_IMPLEMENTATION_PLAN.md).
+
 ## Local development
 
 ```bash
