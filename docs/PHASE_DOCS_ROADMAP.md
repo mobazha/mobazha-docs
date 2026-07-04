@@ -68,6 +68,8 @@ count.
 - Keep economics separate from current price lists and transaction quotes.
 - Publish architecture, compatibility, security, governance, ADR, RFC, license, privacy, and release indexes.
 - Add a visible history and supersession path for replaced proposals.
+- Established public RFC, ADR, whitepaper-versioning, and history registries;
+  RFC-0001 now tracks the whitepaper publication gates.
 
 ### Wave 4 — Agent and localization quality: in progress
 
@@ -76,6 +78,8 @@ count.
 - Published English and Chinese core journeys with per-page translation,
   canonical-source, lifecycle, and review metadata.
 - Test code samples, internal links, public source links, and structured data continuously.
+- Moved page authority from inline TypeScript into reviewable Markdown with
+  deterministic generated registries and stale-output validation.
 - Measure zero-result searches, repeated support questions, and stale-page reports.
 
 ### Wave 5 — Release-integrated maintenance: in progress

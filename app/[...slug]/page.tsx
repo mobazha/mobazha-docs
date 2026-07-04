@@ -47,6 +47,7 @@ export default async function DocumentationPage({ params }: PageProps) {
     audience: "适用读者",
     appliesTo: "适用范围",
     reviewed: "最后审阅",
+    version: "文档版本",
     source: "来源",
     important: "重要",
     previous: "上一页",
@@ -59,6 +60,7 @@ export default async function DocumentationPage({ params }: PageProps) {
     audience: "Audience",
     appliesTo: "Applies to",
     reviewed: "Last reviewed",
+    version: "Document version",
     source: "Source",
     important: "Important",
     previous: "Previous",
@@ -68,7 +70,7 @@ export default async function DocumentationPage({ params }: PageProps) {
     navigation: "Documentation pages",
   };
   const statusLabel = isChinese
-    ? { Current: "当前", Beta: "测试版", Draft: "草案" }[doc.status]
+    ? { Current: "当前", Beta: "测试版", Draft: "草案", Deprecated: "已弃用", Historical: "历史" }[doc.status]
     : doc.status;
   const navGroups = navGroupsForPath(path);
   const orderedLinks = navGroups.flatMap((group) => group.links);
@@ -90,6 +92,7 @@ export default async function DocumentationPage({ params }: PageProps) {
         <div><span>{labels.audience}</span><b>{doc.audiences.join(" · ")}</b></div>
         <div><span>{labels.appliesTo}</span><b>{docApplicability(doc)}</b></div>
         <div><span>{labels.reviewed}</span><b>{doc.reviewed}</b></div>
+        {doc.version && <div><span>{labels.version}</span><b>{doc.version}</b></div>}
         <div>
           <span>{labels.source}</span>
           {doc.sourceUrl ? <a href={doc.sourceUrl}>{doc.sourceLabel} ↗</a> : <b>{doc.sourceLabel}</b>}

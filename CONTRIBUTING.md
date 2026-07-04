@@ -11,6 +11,18 @@ operations, fees, policy, security, or agent behavior.
 4. Record the public source and review date.
 5. Run `npm run generate:content` after page or route changes; do not hand-edit generated publication files.
 
+Public pages are Markdown files under `content/en/` or `content/zh-CN/`. Use a
+stable task-oriented path, complete YAML frontmatter, level-two section
+headings, ordinary paragraphs, bullet lists, fenced code blocks, and
+`> **Important:**` notes. Markdown link bullets become the page's related-link
+cards. The constrained syntax is intentional so people, Agents, search, and
+generated indexes receive the same structure.
+
+Use an RFC for an unresolved material protocol, policy, economic, security,
+governance, or cross-repository proposal. Use an ADR to preserve a durable
+decision and its consequences. Do not use either record as evidence that a
+capability has shipped.
+
 Do not publish credentials, recovery material, customer or production data,
 private incident details, internal forecasts, or unapproved commercial rates.
 

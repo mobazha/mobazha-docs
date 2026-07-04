@@ -15,13 +15,14 @@
     "deploy:preview": "npm run build && npm run deploy:preview:built",
     "deploy:preview:built": "wrangler versions upload --config dist/server/wrangler.json",
     "deploy:dry-run": "npm run build && wrangler deploy --dry-run --config dist/server/wrangler.json",
-    "generate:content": "node scripts/generate-publication.mjs",
+    "generate:content": "node scripts/generate-doc-registry.mjs && node scripts/generate-publication.mjs",
     "check:routes": "node scripts/check-routes.mjs",
     "check:external-links": "node scripts/check-external-links.mjs",
     "check:source-contracts": "node scripts/check-source-contracts.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "validate:content": "node scripts/validate-content.mjs",
-    "check": "npm run validate:content && npm run lint && npm run build"
+    "validate:records": "node scripts/validate-records.mjs",
+    "check": "npm run validate:content && npm run validate:records && npm run lint && npm run build"
   },
   "dependencies": {
     "next": "16.2.10",
@@ -46,7 +47,8 @@
     "typescript": "5.9.3",
     "vinext": "0.0.50",
     "vite": "8.1.3",
-    "wrangler": "4.107.0"
+    "wrangler": "4.107.0",
+    "yaml": "^2.9.0"
   },
   "type": "module"
 }

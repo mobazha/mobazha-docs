@@ -1,0 +1,38 @@
+---
+title: Requests for Comment
+summary: Review substantial protocol, policy, economic, security, governance, and cross-repository proposals before treating them as commitments.
+status: Current
+audiences:
+  - Contributors
+  - Maintainers
+  - Evaluators
+  - Agents
+sourceLabel: Public Mobazha RFC registry
+sourceUrl: https://github.com/mobazha/mobazha-docs/tree/main/rfcs
+reviewed: 2026-07-04
+---
+
+## When an RFC is required
+
+- A public protocol or interoperability contract changes.
+- Order, payment, settlement, dispute, identity, authorization, or custody boundaries change.
+- A fee, recipient, reward, public fund, or economic policy changes.
+- A new optional hosted dependency changes independent-operation assumptions.
+- Governance, licensing, privacy, security, or cross-repository ownership changes materially.
+
+## Status model
+
+- Draft: authoring is incomplete.
+- Review: ready for public technical and product review.
+- Accepted or Rejected: the decision is recorded with rationale.
+- Withdrawn: the author no longer proposes the change.
+- Superseded: another RFC replaces the proposal.
+- Implemented: release evidence confirms that the accepted proposal shipped within a stated scope.
+
+## Current registry
+
+- [RFC-0001: Founding whitepaper publication contract](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0001-whitepaper-publication-contract.md) — Review; defines the evidence and approvals needed to advance the whitepaper.
+- [RFC template](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0000-template.md) — Required metadata and review questions.
+- [Repository RFC guide](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/README.md)
+
+> **Important:** Accepted and Implemented are different states. Only release evidence and effective runtime capability can establish shipped availability.

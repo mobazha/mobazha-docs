@@ -32,6 +32,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Current: reviewed public policy or stable project fact.
 - Beta: available or under validation and may change.
 - Draft: proposal or publication contract, not shipped behavior.
+- Deprecated: retained temporarily with a required replacement path.
 - Historical: retained context that must identify its replacement.
 
 ## Documents
@@ -315,6 +316,46 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Reviewed: 2026-07-04
 - Language: en
 - Summary: Important project claims need an owner, source, review date, status, and visible change path.
+
+### Public decisions and proposals
+- URL: /project/decisions
+- Status: current
+- Applies to: Current public project policy or service surface
+- Audience: contributors, maintainers, agents, evaluators
+- Source: https://github.com/mobazha/mobazha-docs/blob/main/docs/CONTENT_GOVERNANCE.md
+- Reviewed: 2026-07-04
+- Language: en
+- Summary: Use RFCs for changes still being evaluated, ADRs for decisions already made, and history records for superseded public material.
+
+### Requests for Comment
+- URL: /project/rfcs
+- Status: current
+- Applies to: Current public project policy or service surface
+- Audience: contributors, maintainers, evaluators, agents
+- Source: https://github.com/mobazha/mobazha-docs/tree/main/rfcs
+- Reviewed: 2026-07-04
+- Language: en
+- Summary: Review substantial protocol, policy, economic, security, governance, and cross-repository proposals before treating them as commitments.
+
+### Architecture Decision Records
+- URL: /project/adrs
+- Status: current
+- Applies to: Current public project policy or service surface
+- Audience: contributors, maintainers, architects, agents
+- Source: https://github.com/mobazha/mobazha-docs/tree/main/adrs
+- Reviewed: 2026-07-04
+- Language: en
+- Summary: Preserve why durable technical and product decisions were made, what alternatives were rejected, and what would supersede them.
+
+### History and supersession
+- URL: /project/history
+- Status: current
+- Applies to: Current public project policy or service surface
+- Audience: community, contributors, evaluators, agents
+- Source: https://github.com/mobazha/mobazha-docs/tree/main/history
+- Reviewed: 2026-07-04
+- Language: en
+- Summary: Preserve replaced public proposals and guidance without allowing historical text to masquerade as current behavior or policy.
 
 ### Releases
 - URL: /releases

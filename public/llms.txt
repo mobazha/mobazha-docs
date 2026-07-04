@@ -44,6 +44,10 @@ Policy authority: the reviewed public source linked from each page.
 - [Legal and privacy](/project/legal-and-privacy)
 - [Release scope](/project/release-scope)
 - [Governance](/project/governance)
+- [Decisions and proposals](/project/decisions)
+- [RFCs](/project/rfcs)
+- [ADRs](/project/adrs)
+- [History](/project/history)
 - [Releases](/releases)
 
 ## Community

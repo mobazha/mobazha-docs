@@ -1,10 +1,16 @@
 import { readFileSync } from "node:fs";
 import { docApplicability, docs, publicationNavGroups as navGroups } from "./load-docs.mjs";
 import { renderPublication } from "./publication.mjs";
+import { loadContentDocuments, renderDocumentRegistry } from "./content-files.mjs";
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
 const failures = [];
 const fail = (message) => failures.push(message);
+
+const expectedRegistry = renderDocumentRegistry(loadContentDocuments());
+if (read("app/lib/generated-docs.json") !== expectedRegistry) {
+  fail("app/lib/generated-docs.json is stale; run npm run generate:content");
+}
 
 const sources = JSON.parse(read("sources.json"));
 const sourceSchema = read("sources.schema.json");
@@ -50,7 +56,12 @@ for (const doc of docs) {
     fail(`incomplete document metadata on /${doc.slug}`);
   }
   if (!/^\d{4}-\d{2}-\d{2}$/.test(doc.reviewed)) fail(`invalid review date on /${doc.slug}`);
-  if (!new Set(["Current", "Beta", "Draft"]).has(doc.status)) fail(`unsupported status on /${doc.slug}`);
+  if (doc.version !== undefined && (typeof doc.version !== "string" || !doc.version.trim())) {
+    fail(`invalid document version on /${doc.slug}`);
+  }
+  if (!new Set(["Current", "Beta", "Draft", "Deprecated", "Historical"]).has(doc.status)) {
+    fail(`unsupported status on /${doc.slug}`);
+  }
   if (!docApplicability(doc)) fail(`missing applicability on /${doc.slug}`);
   if (!new Set(["en", "zh-CN"]).has(doc.language ?? "en")) fail(`unsupported language on /${doc.slug}`);
   if (doc.language === "zh-CN") {
@@ -58,6 +69,7 @@ for (const doc of docs) {
     const canonical = doc.translationOf ? docs.find((candidate) => candidate.slug === doc.translationOf) : undefined;
     if (!canonical) fail(`Chinese document /${doc.slug} points to missing canonical document`);
     if (canonical && canonical.status !== doc.status) fail(`translation status mismatch on /${doc.slug}`);
+    if (canonical && canonical.version !== doc.version) fail(`translation version mismatch on /${doc.slug}`);
     const canonicalPath = `/${doc.translationOf}`;
     const linksCanonical = doc.sections.some((section) =>
       section.links?.some((link) => link.href === canonicalPath),

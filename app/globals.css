@@ -140,9 +140,11 @@ footer a:hover { color: var(--cyan-soft); }
 .status-current { color: #78e2a5; }
 .status-beta { color: var(--cyan-soft); }
 .status-draft { color: #f5b573; }
+.status-deprecated { color: #f09a73; }
+.status-historical { color: #9aaab1; }
 .doc-title-block h1 { font-size: clamp(38px, 6vw, 62px); letter-spacing: -.052em; line-height: 1.02; margin: 0; }
 .doc-title-block > p { color: #9eb1ba; font-size: 18px; line-height: 1.65; margin: 22px 0 0; max-width: 720px; }
-.doc-metadata { border-bottom: 1px solid var(--line); display: grid; gap: 16px; grid-template-columns: 1fr 1.2fr .8fr 1.3fr; padding: 22px 0; }
+.doc-metadata { border-bottom: 1px solid var(--line); display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); padding: 22px 0; }
 .doc-metadata > div { display: flex; flex-direction: column; gap: 5px; }
 .doc-metadata span { color: #607984; font-size: 9px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
 .doc-metadata b, .doc-metadata a { color: #b8c8ce; font-size: 11px; font-weight: 620; line-height: 1.5; }

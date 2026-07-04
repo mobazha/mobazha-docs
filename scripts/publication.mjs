@@ -27,12 +27,13 @@ export function renderPublication({ docs, navGroups, docApplicability, sources, 
     source: doc.sourceUrl ?? "docs-curation",
     source_label: doc.sourceLabel,
     reviewed: doc.reviewed,
+    version: doc.version,
     language: doc.language ?? "en",
     translation_of: doc.translationOf ? `/${doc.translationOf}` : undefined,
   }));
 
   const index = {
-    schema_version: "1.2",
+    schema_version: "1.3",
     generated_from: "reviewed-public-sources",
     canonical_language: "en",
     languages: ["en", "zh-CN"],
@@ -112,6 +113,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Current: reviewed public policy or stable project fact.
 - Beta: available or under validation and may change.
 - Draft: proposal or publication contract, not shipped behavior.
+- Deprecated: retained temporarily with a required replacement path.
 - Historical: retained context that must identify its replacement.
 
 ## Documents
@@ -130,7 +132,7 @@ ${records.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc><lastmo
 `;
 
   const discovery = {
-    schema_version: "1.2",
+    schema_version: "1.3",
     name: "Mobazha Documentation",
     canonical_base_url: baseUrl,
     canonical_language: "en",
@@ -143,6 +145,13 @@ ${records.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc><lastmo
     index: "/docs-index.json",
     sources: "/sources.json",
     agent_evals: "/agent-evals.json",
+    project_records: {
+      whitepaper: "/project/whitepaper",
+      decisions: "/project/decisions",
+      rfcs: "/project/rfcs",
+      adrs: "/project/adrs",
+      history: "/project/history",
+    },
     openapi: "/openapi.json",
     sitemap: "/sitemap.xml",
     status: "beta",

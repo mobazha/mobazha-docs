@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2",
+  "schema_version": "1.3",
   "generated_from": "reviewed-public-sources",
   "canonical_language": "en",
   "languages": [
@@ -405,6 +405,7 @@
       "source": "docs-curation",
       "source_label": "Public-review edition prepared for the Mobazha project",
       "reviewed": "2026-07-04",
+      "version": "0.1-review",
       "language": "en"
     },
     {
@@ -496,6 +497,82 @@
       "applies_to": "Design direction; not a shipped guarantee",
       "source": "https://github.com/mobazha/mobazha/blob/main/GOVERNANCE.md",
       "source_label": "Mobazha public governance and documentation policy",
+      "reviewed": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "project-decisions",
+      "path": "/project/decisions",
+      "canonical_url": "https://docs.mobazha.org/project/decisions",
+      "title": "Public decisions and proposals",
+      "summary": "Use RFCs for changes still being evaluated, ADRs for decisions already made, and history records for superseded public material.",
+      "status": "current",
+      "audiences": [
+        "contributors",
+        "maintainers",
+        "agents",
+        "evaluators"
+      ],
+      "applies_to": "Current public project policy or service surface",
+      "source": "https://github.com/mobazha/mobazha-docs/blob/main/docs/CONTENT_GOVERNANCE.md",
+      "source_label": "Mobazha documentation decision process",
+      "reviewed": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "project-rfcs",
+      "path": "/project/rfcs",
+      "canonical_url": "https://docs.mobazha.org/project/rfcs",
+      "title": "Requests for Comment",
+      "summary": "Review substantial protocol, policy, economic, security, governance, and cross-repository proposals before treating them as commitments.",
+      "status": "current",
+      "audiences": [
+        "contributors",
+        "maintainers",
+        "evaluators",
+        "agents"
+      ],
+      "applies_to": "Current public project policy or service surface",
+      "source": "https://github.com/mobazha/mobazha-docs/tree/main/rfcs",
+      "source_label": "Public Mobazha RFC registry",
+      "reviewed": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "project-adrs",
+      "path": "/project/adrs",
+      "canonical_url": "https://docs.mobazha.org/project/adrs",
+      "title": "Architecture Decision Records",
+      "summary": "Preserve why durable technical and product decisions were made, what alternatives were rejected, and what would supersede them.",
+      "status": "current",
+      "audiences": [
+        "contributors",
+        "maintainers",
+        "architects",
+        "agents"
+      ],
+      "applies_to": "Current public project policy or service surface",
+      "source": "https://github.com/mobazha/mobazha-docs/tree/main/adrs",
+      "source_label": "Public Mobazha ADR registry",
+      "reviewed": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "project-history",
+      "path": "/project/history",
+      "canonical_url": "https://docs.mobazha.org/project/history",
+      "title": "History and supersession",
+      "summary": "Preserve replaced public proposals and guidance without allowing historical text to masquerade as current behavior or policy.",
+      "status": "current",
+      "audiences": [
+        "community",
+        "contributors",
+        "evaluators",
+        "agents"
+      ],
+      "applies_to": "Current public project policy or service surface",
+      "source": "https://github.com/mobazha/mobazha-docs/tree/main/history",
+      "source_label": "Mobazha public history registry",
       "reviewed": "2026-07-04",
       "language": "en"
     },
@@ -732,6 +809,7 @@
       "source": "https://github.com/mobazha/mobazha-docs",
       "source_label": "Mobazha 白皮书中文维护译本",
       "reviewed": "2026-07-04",
+      "version": "0.1-review",
       "language": "zh-CN",
       "translation_of": "/project/whitepaper"
     },

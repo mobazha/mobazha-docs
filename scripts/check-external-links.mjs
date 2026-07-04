@@ -15,11 +15,16 @@ const urls = [...links].sort();
 let failed = 0;
 
 async function check(url) {
-  const localPrefix = "https://github.com/mobazha/mobazha-docs/blob/main/";
-  if (url.startsWith(localPrefix)) {
-    await access(new URL(`../${url.slice(localPrefix.length)}`, import.meta.url));
-    console.log(`LOCAL ${url}`);
-    return;
+  const localPrefixes = [
+    "https://github.com/mobazha/mobazha-docs/blob/main/",
+    "https://github.com/mobazha/mobazha-docs/tree/main/",
+  ];
+  for (const localPrefix of localPrefixes) {
+    if (url.startsWith(localPrefix)) {
+      await access(new URL(`../${url.slice(localPrefix.length)}`, import.meta.url));
+      console.log(`LOCAL ${url}`);
+      return;
+    }
   }
 
   let lastError;

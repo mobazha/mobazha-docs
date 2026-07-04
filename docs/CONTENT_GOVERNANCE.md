@@ -19,6 +19,18 @@ Use the narrowest applicable authority:
 Documentation never activates a capability, authorizes an action, changes an
 order, or silently overrides its owning repository.
 
+## Content and decision records
+
+Markdown under `content/<language>/` is the authority for rendered page
+content. Navigation is authoritative in `content/navigation.json`; application
+registries and public discovery files are generated outputs.
+
+Use RFCs for material proposals still under evaluation, ADRs for durable
+decisions, and the history registry for superseded public material. Accepted
+design is not the same as implemented behavior. Runtime and release claims
+still require implementation, tests, contracts, capability gates, and release
+evidence.
+
 ## Public source policy
 
 The machine-readable allowlist is [`sources.json`](../sources.json). A source

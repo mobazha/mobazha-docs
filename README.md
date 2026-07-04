@@ -39,10 +39,21 @@ npm run lint
 npm run build
 ```
 
-`app/lib/docs.ts` currently owns page content and metadata. Generated discovery
-artifacts must not be edited by hand; `npm run generate:content` refreshes the
-document index, sitemap, Agent context, source manifest, and well-known
-discovery file. `npm run check` fails when those artifacts are stale.
+Markdown under `content/<language>/` owns page content and YAML frontmatter.
+The path beneath the language directory defines the public URL; for example,
+`content/en/self-host/install.md` publishes `/self-host/install`, while
+`content/zh-CN/self-host/install.md` publishes `/zh/self-host/install`.
+
+`content/navigation.json` owns navigation. `app/lib/generated-docs.json` and
+all files under `public/` that are produced by the publication scripts are
+generated artifacts and must not be edited independently. `npm run
+generate:content` refreshes the application registry, document index, sitemap,
+Agent context, source manifest, and well-known discovery file. `npm run check`
+fails when committed output is stale.
+
+Public proposals live under `rfcs/`, durable decisions under `adrs/`, replaced
+public material under `history/`, and the whitepaper maintenance contract under
+`whitepaper/`.
 
 ## Language and publishing contract
 

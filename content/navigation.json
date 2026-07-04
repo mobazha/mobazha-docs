@@ -1,0 +1,249 @@
+{
+  "en": [
+    {
+      "label": "Start",
+      "links": [
+        [
+          "Overview",
+          "/start"
+        ],
+        [
+          "Choose a deployment",
+          "/start/choose-deployment"
+        ],
+        [
+          "For agents",
+          "/agents"
+        ]
+      ]
+    },
+    {
+      "label": "Use Mobazha",
+      "links": [
+        [
+          "Sell",
+          "/sell"
+        ],
+        [
+          "Buy",
+          "/buy"
+        ]
+      ]
+    },
+    {
+      "label": "Operate",
+      "links": [
+        [
+          "Self-host",
+          "/self-host"
+        ],
+        [
+          "Install",
+          "/self-host/install"
+        ],
+        [
+          "Configure",
+          "/self-host/configure"
+        ],
+        [
+          "Backup and upgrade",
+          "/self-host/backup-and-upgrade"
+        ],
+        [
+          "Security",
+          "/self-host/security"
+        ],
+        [
+          "Troubleshoot",
+          "/self-host/troubleshooting"
+        ],
+        [
+          "Optional hosted connection",
+          "/self-host/bind-account"
+        ]
+      ]
+    },
+    {
+      "label": "Build",
+      "links": [
+        [
+          "Developer overview",
+          "/build"
+        ],
+        [
+          "Runtime capabilities",
+          "/build/runtime-capabilities"
+        ],
+        [
+          "API",
+          "/build/api"
+        ],
+        [
+          "WebSocket events",
+          "/build/websocket"
+        ],
+        [
+          "MCP and agents",
+          "/build/mcp"
+        ],
+        [
+          "Webhooks",
+          "/build/webhooks"
+        ],
+        [
+          "Extensions",
+          "/build/extensions"
+        ],
+        [
+          "Reference",
+          "/reference"
+        ]
+      ]
+    },
+    {
+      "label": "Project",
+      "links": [
+        [
+          "Project overview",
+          "/project"
+        ],
+        [
+          "Architecture",
+          "/project/architecture"
+        ],
+        [
+          "Whitepaper",
+          "/project/whitepaper"
+        ],
+        [
+          "Fees and economics",
+          "/project/fees"
+        ],
+        [
+          "Security model",
+          "/project/security"
+        ],
+        [
+          "Legal and privacy",
+          "/project/legal-and-privacy"
+        ],
+        [
+          "Release scope",
+          "/project/release-scope"
+        ],
+        [
+          "Governance",
+          "/project/governance"
+        ],
+        [
+          "Decisions and proposals",
+          "/project/decisions"
+        ],
+        [
+          "RFCs",
+          "/project/rfcs"
+        ],
+        [
+          "ADRs",
+          "/project/adrs"
+        ],
+        [
+          "History",
+          "/project/history"
+        ],
+        [
+          "Releases",
+          "/releases"
+        ]
+      ]
+    },
+    {
+      "label": "Community",
+      "links": [
+        [
+          "Contribute",
+          "/contribute"
+        ],
+        [
+          "Get help",
+          "/support"
+        ]
+      ]
+    }
+  ],
+  "zh-CN": [
+    {
+      "label": "开始",
+      "links": [
+        [
+          "概览",
+          "/zh/start"
+        ],
+        [
+          "选择托管方式",
+          "/zh/start/choose-deployment"
+        ],
+        [
+          "Agent 使用指南",
+          "/zh/agents"
+        ]
+      ]
+    },
+    {
+      "label": "使用 Mobazha",
+      "links": [
+        [
+          "卖家指南",
+          "/zh/sell"
+        ],
+        [
+          "买家指南",
+          "/zh/buy"
+        ]
+      ]
+    },
+    {
+      "label": "自行托管",
+      "links": [
+        [
+          "节点概览",
+          "/zh/self-host"
+        ],
+        [
+          "安装",
+          "/zh/self-host/install"
+        ]
+      ]
+    },
+    {
+      "label": "开发",
+      "links": [
+        [
+          "开发者概览",
+          "/zh/build"
+        ],
+        [
+          "运行时能力",
+          "/zh/build/runtime-capabilities"
+        ]
+      ]
+    },
+    {
+      "label": "项目信任",
+      "links": [
+        [
+          "白皮书",
+          "/zh/project/whitepaper"
+        ],
+        [
+          "收费与经济模式",
+          "/zh/project/fees"
+        ],
+        [
+          "获取帮助",
+          "/zh/support"
+        ]
+      ]
+    }
+  ]
+}
