@@ -111,6 +111,10 @@ Every content change should:
 5. verify affected public links and routes;
 6. commit the page, generated artifacts, and source-policy changes together.
 
+Freshness budgets, rendered accessibility checks, responsive contracts, visual
+evidence validation, and the privacy-safe measurement boundary are governed by
+[`QUALITY_AND_MEASUREMENT.md`](./QUALITY_AND_MEASUREMENT.md).
+
 Core translations must point to their English canonical page, match its
 lifecycle status, and carry a translation review date. The English source is
 the policy-authoring authority during the first public phase; a translation

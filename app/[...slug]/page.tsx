@@ -48,7 +48,7 @@ function DocumentBlock({ block, isChinese }: { block: DocBlock; isChinese: boole
     return <ol>{block.items.map((item, index) => <li key={`${index}-${item}`}><InlineMarkdown text={item} /></li>)}</ol>;
   }
   if (block.type === "code") {
-    return <div className="doc-code"><div><span>{block.language}</span><CopyCodeButton code={block.code} language={block.language} /></div><pre><code>{block.code}</code></pre></div>;
+    return <div className="doc-code"><div><span>{block.language}</span><CopyCodeButton code={block.code} language={block.language} /></div><pre aria-label={isChinese ? "可横向滚动的代码示例" : "Scrollable code example"} tabIndex={0}><code>{block.code}</code></pre></div>;
   }
   if (block.type === "callout") {
     const label = calloutLabels[isChinese ? "zh" : "en"][block.tone];
@@ -56,7 +56,7 @@ function DocumentBlock({ block, isChinese }: { block: DocBlock; isChinese: boole
   }
   if (block.type === "table") {
     return (
-      <div className="doc-table-wrap">
+      <div className="doc-table-wrap" aria-label={isChinese ? "可横向滚动的数据表" : "Scrollable data table"} role="region" tabIndex={0}>
         <table>
           <thead><tr>{block.headers.map((header, index) => <th key={`${index}-${header}`}><InlineMarkdown text={header} /></th>)}</tr></thead>
           <tbody>{block.rows.map((row, rowIndex) => (

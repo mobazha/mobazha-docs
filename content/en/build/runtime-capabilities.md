@@ -69,10 +69,19 @@ denial. Unsupported profiles, duplicate feature IDs, absent capabilities,
 restricted external resources, and features missing from the build fail
 closed. Backend authorization remains authoritative after a route is visible.
 
-This slice resolves feature eligibility for routes and navigation. Provider,
-workflow, and action contributions, browser-extension shell adoption, dynamic
-plugins, remote UI, and a universal product manifest are not current public
-contracts.
+Product actions are the second Commerce Kit dogfood slice. The shared
+`CommerceProductActionButtons` contract owns stable `add-to-cart` and `buy-now`
+identity, disabled state, callback wiring, and an optional host-rendering
+adapter. Unified consumes it in desktop detail, mobile detail, and the
+responsive bottom bar while retaining its own buttons, layout, localization,
+inventory, payment, and asset policy.
+
+The resolver still projects feature eligibility only for routes and
+navigation. Entity-scoped product policy is not a global capability, and the
+product-action API remains provisional until a second independent application
+proves the same boundary. Generic provider, workflow, and action contribution,
+browser-extension shell adoption, dynamic plugins, remote UI, and a universal
+product manifest are not current public contracts.
 
 A downstream sovereign distribution also validates its build-local catalog
 against the complete runtime profile and backend capability snapshot. Local UI

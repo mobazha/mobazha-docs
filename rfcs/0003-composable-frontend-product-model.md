@@ -77,6 +77,14 @@ backend capability can narrow one another without switching on a private
 product name. Authentication rendering remains host-owned and backend
 authorization remains authoritative.
 
+Product actions are the second Commerce Kit dogfood slice. A shared component
+owns stable add-to-cart and buy-now identity, disabled state, callback wiring,
+and an optional host-rendering adapter. Unified consumes it across desktop,
+mobile, and responsive-bottom-bar product views while retaining host-owned
+buttons, layout, localization, inventory, payment, and asset policy. This is
+still one application implementation and does not satisfy the two-application
+promotion rule or place entity-scoped policy in the global resolver.
+
 A downstream sovereign distribution now applies the same constitution to its
 build-local catalog. It validates its shell profile and capability readiness,
 gates public checkout and administration on backend capabilities, and applies a
@@ -85,8 +93,9 @@ prove that the presentation policy cannot expose a route or navigation item
 when the authoritative backend capability is absent. Its implementation and
 product vocabulary remain outside the public frontend.
 
-This closes the first route/navigation composition baseline but does not
-complete or accept the RFC. Provider, action, and general feature-catalog
+This closes the first route/navigation composition baseline and validates a
+provisional host-rendered action boundary, but does not complete or accept the
+RFC. Provider, generic action projection, and general feature-catalog
 contributions remain unimplemented target stages; the browser-extension shell
 has not adopted the lifecycle; and no dynamic plugin, remote UI, Agent surface
 protocol, or universal manifest is introduced. Existing feature-owned
@@ -279,7 +288,7 @@ designing a universal product manifest upfront:
 | Current foundation | Runtime Config dimensions and Commerce Kit Guest Checkout | Existing products continue to build and run |
 | Composition inventory | Hosted, standalone, marketplace, embedded, and sovereign condition audit | Every condition classified by an independent dimension |
 | Resolver baseline | Shared route/navigation/provider/action projection | Pending, invalid, and excluded reasons are deterministic |
-| Public vertical slices | Guest Checkout, product actions, cart summary | At least two real applications consume equivalent contracts |
+| Public vertical slices | Guest Checkout shipped; product actions dogfooded; cart summary pending | At least two real applications consume equivalent contracts |
 | Private composition | Public kit plus private distribution-local feature | Private code remains physically absent from public artifacts |
 | Release governance | Versioned profile/schema and product matrix | Packed artifacts and final binaries prove claimed compositions |
 
@@ -392,8 +401,9 @@ capability absent from the authoritative backend snapshot.
 
 ## Open questions
 
-- Which product actions and cart-summary decisions should be the next mandatory
-  migrations to the single resolver?
+- Which product-action decisions are global profile or capability concerns that
+  should enter the resolver, and which must remain entity-scoped host policy?
+- Which cart-summary decisions should become the next mandatory shared slice?
 - Which additional deployment, experience, and channel combinations have
   enough product evidence to join the current supported profile matrix?
 - Which second provider implementation would justify replacing the current

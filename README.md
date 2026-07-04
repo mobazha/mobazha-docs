@@ -34,6 +34,9 @@ The human-facing experience baseline is recorded in
 information architecture, page contracts, rollout order, and acceptance tests
 live in
 [`docs/HUMAN_EXPERIENCE_IMPLEMENTATION_PLAN.md`](./docs/HUMAN_EXPERIENCE_IMPLEMENTATION_PLAN.md).
+Rendered accessibility, responsive behavior, visual evidence, freshness, and
+privacy-safe measurement are governed by
+[`docs/QUALITY_AND_MEASUREMENT.md`](./docs/QUALITY_AND_MEASUREMENT.md).
 
 ## Local development
 
@@ -46,9 +49,16 @@ Production validation:
 
 ```bash
 npm run generate:content
-npm run lint
-npm run build
+npm run check
+npx playwright install chromium chromium-headless-shell
+npm run test:experience
+npm run check:source-contracts:strict
 ```
+
+`npm run check` includes content and record validation, freshness and visual
+evidence gates, lint, and the production build. Browser checks cover desktop
+and mobile reading contracts, keyboard navigation, WCAG 2.1 A/AA, published
+routes, and Agent discovery endpoints.
 
 Markdown under `content/<language>/` owns page content and YAML frontmatter.
 The path beneath the language directory defines the public URL; for example,

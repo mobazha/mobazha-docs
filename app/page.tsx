@@ -41,7 +41,8 @@ const paths = [
 
 export default function Home() {
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
+      <a className="skip-link" href="#main-content">Skip to main content</a>
       <SiteHeader />
 
       <section className="hero">

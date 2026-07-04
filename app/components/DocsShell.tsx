@@ -52,7 +52,8 @@ export function DocsShell({ activePath, children }: { activePath: string; childr
   const activeGroup = activeNavGroupForPath(activePath);
   const activeLabel = activeGroup?.links.find(([, href]) => href === activePath)?.[0];
   return (
-    <main lang={isChinese ? "zh-CN" : "en"}>
+    <main id="main-content" lang={isChinese ? "zh-CN" : "en"} tabIndex={-1}>
+      <a className="skip-link" href="#main-content">{isChinese ? "跳到主要内容" : "Skip to main content"}</a>
       <SiteHeader activePath={activePath} />
       <div className="docs-layout">
         <aside className="docs-sidebar" aria-label={isChinese ? "文档导航" : "Documentation navigation"}>

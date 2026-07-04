@@ -82,7 +82,7 @@ export function DocsSearch({ language = "en" }: { language?: "en" | "zh-CN" }) {
       {open && (
         <div className="docs-search-results" id="docs-search-results" role="listbox">
           {results.length ? results.map((doc) => (
-            <Link href={doc.path} key={doc.path} onClick={() => setFocused(false)}>
+            <Link href={doc.path} key={doc.path} onClick={() => setFocused(false)} role="option" aria-selected="false">
               <span>{doc.title}</span>
               <small>{doc.status} · {doc.path}</small>
             </Link>

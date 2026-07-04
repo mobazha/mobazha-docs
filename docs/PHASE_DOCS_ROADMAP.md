@@ -67,8 +67,11 @@ count.
   errors, retries, idempotency, WebSocket, MCP, and webhook verification.
 - Recorded the first shipped frontend-composition slice: Guest Checkout,
   marketplace-operator, and marketplace-seller-review route and navigation
-  eligibility now consume one fail-closed resolver, while provider, workflow,
-  action, browser-extension, and dynamic-plugin claims remain out of scope.
+  eligibility now consume one fail-closed resolver.
+- Recorded the second Commerce Kit dogfood slice: product views share stable
+  add-to-cart and buy-now action identity and host-rendering contracts, while
+  entity policy remains host-owned and generic provider, workflow, action,
+  browser-extension, and dynamic-plugin claims remain out of scope.
 - Added typed content blocks and page-specific quality gates so guides can use
   ordered steps, tables, repeated code examples, callouts, and verification
   without losing structure in Agent publications.
@@ -94,8 +97,11 @@ count.
   local-TOC, section-anchor, and copyable-code foundations.
 - Moved full trust metadata into progressive disclosure while preserving visible
   lifecycle and material applicability.
-- Migrated `/`, `/start`, `/buy`, `/sell`, `/self-host`, and
-  `/build/quickstart`; reviewed product visuals remain before the flagship exit gate.
+- Migrated all 54 English and 14 Chinese pages to explicit outcome, effort,
+  journey, page-type, and primary-action contracts.
+- Published reviewed responsive conceptual models for buyer, seller, and
+  self-host journeys; real product screenshots remain behind the pricing,
+  representative-data, privacy, provenance, and editorial publication gate.
 - Govern real product screenshots, expected outputs, and conceptual diagrams as evidence.
 
 The baseline and execution contract are maintained in
@@ -123,7 +129,10 @@ The baseline and execution contract are maintained in
 - Test code samples, internal links, public source links, and structured data continuously.
 - Moved page authority from inline TypeScript into reviewable Markdown with
   deterministic generated registries and stale-output validation.
-- Measure zero-result searches, repeated support questions, and stale-page reports.
+- Defined the privacy-safe aggregate event vocabulary for zero-result search,
+  journey, action, navigation, and stale-report outcomes. Custom telemetry
+  remains intentionally disabled until retention, access, processor, opt-out,
+  deployment ownership, and public privacy disclosure are accepted.
 
 ### Wave 5 — Release-integrated maintenance: in progress
 
@@ -134,7 +143,9 @@ The baseline and execution contract are maintained in
   source manifest now records reviewed revisions and includes an explicit
   upstream contract check.
 - Generate API reference from approved tagged specifications.
-- Add freshness ownership, review reminders, redirects, and deprecation windows.
+- Added freshness budgets and weekly review failures for Current, Beta, Draft,
+  Deprecated, Historical, task-tested, and visual-evidence records; redirects
+  and deprecation windows continue to follow the lifecycle policy.
 - Accepted ADR-0002 and promoted docs.mobazha.org from a routing surface to the canonical public knowledge authority.
 - Migrated fees, compatibility, release maturity, public history, distribution, runtime-composition meaning, token identifiers, and public product outcomes out of duplicate repository prose.
 - Keep implementation contracts, code-near design, and tagged release evidence in their owning repositories with machine-checked canonical links.

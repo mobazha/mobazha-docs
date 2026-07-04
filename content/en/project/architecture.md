@@ -48,9 +48,12 @@ Frontend products are compositions rather than values in one product-type enum. 
 
 The first Unified implementation slice now resolves Guest Checkout,
 marketplace-operator, and marketplace-seller-review route and navigation
-eligibility from one fail-closed result. It does not yet compose providers,
-workflows, or actions, and it does not turn the browser-extension shell or
-private distributions into public runtime plugins.
+eligibility from one fail-closed result. A second dogfood slice shares stable
+add-to-cart and buy-now action identity and host-rendering contracts across
+Unified product views, while inventory, payment, asset policy, layout, and
+localization remain host-owned. The resolver does not yet project generic
+providers, workflows, or actions, and it does not turn the browser-extension
+shell or private distributions into public runtime plugins.
 
 [Draft RFC-0003](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0003-composable-frontend-product-model.md) defines the target model and explicitly excludes dynamic plugins, remote React code, Agent surfaces, and a plugin marketplace.
 

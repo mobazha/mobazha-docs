@@ -3,7 +3,8 @@ import { SiteHeader } from "@/app/components/DocsShell";
 
 export default function NotFound() {
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
+      <a className="skip-link" href="#main-content">Skip to main content</a>
       <SiteHeader />
       <section className="not-found">
         <p>404 · DOCUMENT NOT FOUND</p>
