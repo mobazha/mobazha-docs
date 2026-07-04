@@ -9,6 +9,13 @@ audiences:
 evidenceLabel: Unified token identifier implementation and tests
 evidenceUrl: https://github.com/mobazha/mobazha-unified/blob/main/packages/core/utils/tokenIdentifier.ts
 reviewed: 2026-07-04
+pageType: concept
+outcome: Parse and compare a token identifier without treating recognition as ownership, price, transfer authority, or runtime support.
+estimatedTime: 6 minutes
+journey: build
+primaryAction:
+  label: Review the identifier shape
+  href: /build/token-identifiers#public-identifier-shape
 ---
 
 ## Public identifier shape

@@ -128,6 +128,13 @@
     "evidenceUrl": "https://github.com/mobazha",
     "reviewed": "2026-07-04",
     "pageType": "hub",
+    "outcome": "Choose the current public contract for an integration and make the first scoped call without assuming every deployment is identical.",
+    "estimatedTime": "5 minutes",
+    "journey": "build",
+    "primaryAction": {
+      "label": "Make the first API call",
+      "href": "/build/quickstart"
+    },
     "language": "en",
     "sections": [
       {
@@ -283,6 +290,20 @@
           {
             "type": "paragraph",
             "text": "The runtime call should return a successful JSON envelope describing the Node schema, deployment composition, readiness, and effective capabilities. Record the Node version and capability you intend to use. A missing or unavailable capability is a decision to stop or degrade the integration—not a reason to enable a frontend-only switch."
+          },
+          {
+            "type": "paragraph",
+            "text": "A default standalone store currently returns this representative projection when the response is narrowed to the composition fields. Capability and feature values vary by the connected Node and remain authoritative."
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "code": "curl -fsS http://127.0.0.1:5102/v1/runtime-config |\n  jq '.data | {schemaVersion, authMode, deployment, experience, capabilitiesReady}'"
+          },
+          {
+            "type": "code",
+            "language": "json",
+            "code": "{\n  \"schemaVersion\": 3,\n  \"authMode\": \"standalone\",\n  \"deployment\": {\n    \"mode\": \"standalone\",\n    \"allowExternalResources\": true\n  },\n  \"experience\": {\n    \"kind\": \"store\"\n  },\n  \"capabilitiesReady\": true\n}"
           }
         ]
       },
@@ -630,6 +651,13 @@
     "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/extensions",
     "reviewed": "2026-07-04",
     "pageType": "concept",
+    "outcome": "Select the narrowest extension mechanism without transferring Core order, payment, settlement, key, or audit authority.",
+    "estimatedTime": "12 minutes",
+    "journey": "build",
+    "primaryAction": {
+      "label": "Choose the mechanism",
+      "href": "/build/extensions#choose-the-mechanism"
+    },
     "language": "en",
     "sections": [
       {
@@ -1189,6 +1217,13 @@
     "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config",
     "reviewed": "2026-07-04",
     "pageType": "concept",
+    "outcome": "Decide whether a feature is effectively available without confusing code presence, product profile, capability, permission, or readiness.",
+    "estimatedTime": "8 minutes",
+    "journey": "build",
+    "primaryAction": {
+      "label": "Review effective availability",
+      "href": "/build/runtime-capabilities#effective-availability"
+    },
     "language": "en",
     "sections": [
       {
@@ -1332,6 +1367,13 @@
     "evidenceUrl": "https://github.com/mobazha/mobazha-unified/blob/main/packages/core/utils/tokenIdentifier.ts",
     "reviewed": "2026-07-04",
     "pageType": "concept",
+    "outcome": "Parse and compare a token identifier without treating recognition as ownership, price, transfer authority, or runtime support.",
+    "estimatedTime": "6 minutes",
+    "journey": "build",
+    "primaryAction": {
+      "label": "Review the identifier shape",
+      "href": "/build/token-identifiers#public-identifier-shape"
+    },
     "language": "en",
     "sections": [
       {
@@ -3787,7 +3829,14 @@
     "evidenceLabel": "Mobazha GitHub organization",
     "evidenceUrl": "https://github.com/mobazha",
     "reviewed": "2026-07-04",
-    "pageType": "concept",
+    "pageType": "hub",
+    "outcome": "Find the authority that owns a public explanation, runtime fact, versioned contract, or implementation claim.",
+    "estimatedTime": "3 minutes",
+    "journey": "build",
+    "primaryAction": {
+      "label": "Review authority ownership",
+      "href": "/reference#authority-ownership"
+    },
     "language": "en",
     "sections": [
       {
@@ -4116,6 +4165,15 @@
             "type": "code",
             "language": "text",
             "code": "./mobazha doctor --json\n./mobazha backup --output mobazha-backup.tar.gz"
+          },
+          {
+            "type": "paragraph",
+            "text": "The backup command reports the resolved source and output path, then the final archive size. Paths and size are deployment-specific."
+          },
+          {
+            "type": "code",
+            "language": "text",
+            "code": "Backing up <data-dir> → <absolute-output-path>/mobazha-backup.tar.gz\nBackup complete: <absolute-output-path>/mobazha-backup.tar.gz (<size> MB)"
           }
         ]
       },
@@ -4166,7 +4224,14 @@
     "evidenceLabel": "Mobazha public release boundary",
     "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/README.md",
     "reviewed": "2026-07-04",
-    "pageType": "concept",
+    "pageType": "policy",
+    "outcome": "Determine whether an optional hosted connection has a stable public contract before exchanging node or account authority.",
+    "estimatedTime": "4 minutes",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "Read the current status",
+      "href": "/self-host/bind-account#what-is-stable-today"
+    },
     "language": "en",
     "sections": [
       {
@@ -4432,6 +4497,24 @@
           {
             "type": "paragraph",
             "text": "Verify that diagnostics complete, the embedded UI opens, the runtime snapshot has a supported schema, and optional capabilities remain unavailable until configured and healthy."
+          }
+        ]
+      },
+      {
+        "heading": "Representative diagnostic output",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "`doctor --json` returns pass, warning, and failure counts plus named checks. Paths, capacities, versions, and optional dependency results vary by host. A healthy local Node should report zero failed checks; warnings must still be reviewed against the intended deployment."
+          },
+          {
+            "type": "code",
+            "language": "json",
+            "code": "{\n  \"pass\": 7,\n  \"warn\": 3,\n  \"fail\": 0,\n  \"results\": [\n    {\n      \"name\": \"Data directory\",\n      \"status\": \"PASS\",\n      \"detail\": \"<data-dir> (database found: <database-path>)\"\n    },\n    {\n      \"name\": \"Node API\",\n      \"status\": \"PASS\",\n      \"detail\": \"healthy\"\n    }\n  ]\n}"
+          },
+          {
+            "type": "paragraph",
+            "text": "The list above is shortened to show the contract shape. Preserve the complete local result for operations, but redact paths and environment detail before sharing it publicly."
           }
         ]
       },
@@ -5775,6 +5858,13 @@
     "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/README.md",
     "reviewed": "2026-07-04",
     "pageType": "concept",
+    "outcome": "Choose hosted or self-hosted operation from the control and operational responsibility you actually need.",
+    "estimatedTime": "5 minutes",
+    "journey": "start",
+    "primaryAction": {
+      "label": "Apply the decision rule",
+      "href": "/start/choose-deployment#decision-rule"
+    },
     "language": "en",
     "sections": [
       {
@@ -5871,7 +5961,14 @@
     "evidenceLabel": "Mobazha public support surfaces",
     "evidenceUrl": "https://mobazha.org/status",
     "reviewed": "2026-07-04",
-    "pageType": "concept",
+    "pageType": "hub",
+    "outcome": "Route a product question, reproducible defect, documentation problem, or security concern to the correct public or private channel.",
+    "estimatedTime": "3 minutes",
+    "journey": "community",
+    "primaryAction": {
+      "label": "Choose a support channel",
+      "href": "/support#choose-the-channel"
+    },
     "language": "en",
     "sections": [
       {

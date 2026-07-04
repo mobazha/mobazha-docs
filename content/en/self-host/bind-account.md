@@ -7,6 +7,13 @@ audiences:
 evidenceLabel: Mobazha public release boundary
 evidenceUrl: https://github.com/mobazha/mobazha/blob/main/README.md
 reviewed: 2026-07-04
+pageType: policy
+outcome: Determine whether an optional hosted connection has a stable public contract before exchanging node or account authority.
+estimatedTime: 4 minutes
+journey: operate
+primaryAction:
+  label: Read the current status
+  href: /self-host/bind-account#what-is-stable-today
 ---
 
 ## What is stable today

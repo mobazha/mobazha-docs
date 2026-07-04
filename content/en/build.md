@@ -9,6 +9,12 @@ evidenceLabel: Mobazha public source organization
 evidenceUrl: https://github.com/mobazha
 reviewed: 2026-07-04
 pageType: hub
+outcome: Choose the current public contract for an integration and make the first scoped call without assuming every deployment is identical.
+estimatedTime: 5 minutes
+journey: build
+primaryAction:
+  label: Make the first API call
+  href: /build/quickstart
 ---
 
 ## Integration rule

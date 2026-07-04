@@ -7,6 +7,13 @@ audiences:
 evidenceLabel: Mobazha public support surfaces
 evidenceUrl: https://mobazha.org/status
 reviewed: 2026-07-04
+pageType: hub
+outcome: Route a product question, reproducible defect, documentation problem, or security concern to the correct public or private channel.
+estimatedTime: 3 minutes
+journey: community
+primaryAction:
+  label: Choose a support channel
+  href: /support#choose-the-channel
 ---
 
 ## Choose the channel

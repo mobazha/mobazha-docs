@@ -68,6 +68,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "concept",
+      "outcome": "Choose hosted or self-hosted operation from the control and operational responsibility you actually need.",
+      "estimated_time": "5 minutes",
+      "journey": "start",
+      "primary_action": {
+        "label": "Apply the decision rule",
+        "href": "/start/choose-deployment#decision-rule"
+      },
       "language": "en"
     },
     {
@@ -822,7 +829,14 @@
         "label": "Mobazha public release boundary"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "policy",
+      "outcome": "Determine whether an optional hosted connection has a stable public contract before exchanging node or account authority.",
+      "estimated_time": "4 minutes",
+      "journey": "operate",
+      "primary_action": {
+        "label": "Read the current status",
+        "href": "/self-host/bind-account#what-is-stable-today"
+      },
       "language": "en"
     },
     {
@@ -848,6 +862,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "hub",
+      "outcome": "Choose the current public contract for an integration and make the first scoped call without assuming every deployment is identical.",
+      "estimated_time": "5 minutes",
+      "journey": "build",
+      "primary_action": {
+        "label": "Make the first API call",
+        "href": "/build/quickstart"
+      },
       "language": "en"
     },
     {
@@ -974,6 +995,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "concept",
+      "outcome": "Decide whether a feature is effectively available without confusing code presence, product profile, capability, permission, or readiness.",
+      "estimated_time": "8 minutes",
+      "journey": "build",
+      "primary_action": {
+        "label": "Review effective availability",
+        "href": "/build/runtime-capabilities#effective-availability"
+      },
       "language": "en"
     },
     {
@@ -1000,6 +1028,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "concept",
+      "outcome": "Parse and compare a token identifier without treating recognition as ownership, price, transfer authority, or runtime support.",
+      "estimated_time": "6 minutes",
+      "journey": "build",
+      "primary_action": {
+        "label": "Review the identifier shape",
+        "href": "/build/token-identifiers#public-identifier-shape"
+      },
       "language": "en"
     },
     {
@@ -1157,6 +1192,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "concept",
+      "outcome": "Select the narrowest extension mechanism without transferring Core order, payment, settlement, key, or audit authority.",
+      "estimated_time": "12 minutes",
+      "journey": "build",
+      "primary_action": {
+        "label": "Choose the mechanism",
+        "href": "/build/extensions#choose-the-mechanism"
+      },
       "language": "en"
     },
     {
@@ -1182,7 +1224,14 @@
         "label": "Mobazha GitHub organization"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "hub",
+      "outcome": "Find the authority that owns a public explanation, runtime fact, versioned contract, or implementation claim.",
+      "estimated_time": "3 minutes",
+      "journey": "build",
+      "primary_action": {
+        "label": "Review authority ownership",
+        "href": "/reference#authority-ownership"
+      },
       "language": "en"
     },
     {
@@ -1671,7 +1720,14 @@
         "label": "Mobazha public support surfaces"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "hub",
+      "outcome": "Route a product question, reproducible defect, documentation problem, or security concern to the correct public or private channel.",
+      "estimated_time": "3 minutes",
+      "journey": "community",
+      "primary_action": {
+        "label": "Choose a support channel",
+        "href": "/support#choose-the-channel"
+      },
       "language": "en"
     },
     {

@@ -47,6 +47,14 @@ Run diagnostics and create a compressed backup before a release change.
 ./mobazha backup --output mobazha-backup.tar.gz
 ```
 
+The backup command reports the resolved source and output path, then the final
+archive size. Paths and size are deployment-specific.
+
+```text
+Backing up <data-dir> → <absolute-output-path>/mobazha-backup.tar.gz
+Backup complete: <absolute-output-path>/mobazha-backup.tar.gz (<size> MB)
+```
+
 ## Expected result and verification
 
 The backup command should finish without error and produce a non-empty archive at the requested path. Record its size, creation time, source version, and a cryptographic checksum. Keep secrets and recovery material under a separate access policy even when the archive contains encrypted data.

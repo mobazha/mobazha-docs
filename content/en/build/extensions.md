@@ -9,6 +9,13 @@ audiences:
 evidenceLabel: Mobazha Open Core extension contracts
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main/docs/extensions
 reviewed: 2026-07-04
+pageType: concept
+outcome: Select the narrowest extension mechanism without transferring Core order, payment, settlement, key, or audit authority.
+estimatedTime: 12 minutes
+journey: build
+primaryAction:
+  label: Choose the mechanism
+  href: /build/extensions#choose-the-mechanism
 ---
 
 ## Choose the mechanism

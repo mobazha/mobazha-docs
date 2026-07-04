@@ -9,6 +9,13 @@ audiences:
 evidenceLabel: Mobazha GitHub organization
 evidenceUrl: https://github.com/mobazha
 reviewed: 2026-07-04
+pageType: hub
+outcome: Find the authority that owns a public explanation, runtime fact, versioned contract, or implementation claim.
+estimatedTime: 3 minutes
+journey: build
+primaryAction:
+  label: Review authority ownership
+  href: /reference#authority-ownership
 ---
 
 ## Authority ownership

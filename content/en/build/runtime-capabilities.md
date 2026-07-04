@@ -9,6 +9,13 @@ audiences:
 evidenceLabel: Unified runtime configuration implementation
 evidenceUrl: https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config
 reviewed: 2026-07-04
+pageType: concept
+outcome: Decide whether a feature is effectively available without confusing code presence, product profile, capability, permission, or readiness.
+estimatedTime: 8 minutes
+journey: build
+primaryAction:
+  label: Review effective availability
+  href: /build/runtime-capabilities#effective-availability
 ---
 
 ## Effective availability

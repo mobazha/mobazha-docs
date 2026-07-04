@@ -44,6 +44,30 @@ the Node version and capability you intend to use. A missing or unavailable
 capability is a decision to stop or degrade the integration—not a reason to
 enable a frontend-only switch.
 
+A default standalone store currently returns this representative projection
+when the response is narrowed to the composition fields. Capability and
+feature values vary by the connected Node and remain authoritative.
+
+```bash
+curl -fsS http://127.0.0.1:5102/v1/runtime-config |
+  jq '.data | {schemaVersion, authMode, deployment, experience, capabilitiesReady}'
+```
+
+```json
+{
+  "schemaVersion": 3,
+  "authMode": "standalone",
+  "deployment": {
+    "mode": "standalone",
+    "allowExternalResources": true
+  },
+  "experience": {
+    "kind": "store"
+  },
+  "capabilitiesReady": true
+}
+```
+
 ## Authentication choices
 
 - HTTP Basic authentication is available for the standalone administrator boundary.

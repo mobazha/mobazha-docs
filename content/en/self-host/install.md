@@ -59,6 +59,37 @@ curl -fsS http://127.0.0.1:5102/v1/runtime-config | jq
 
 Verify that diagnostics complete, the embedded UI opens, the runtime snapshot has a supported schema, and optional capabilities remain unavailable until configured and healthy.
 
+## Representative diagnostic output
+
+`doctor --json` returns pass, warning, and failure counts plus named checks.
+Paths, capacities, versions, and optional dependency results vary by host. A
+healthy local Node should report zero failed checks; warnings must still be
+reviewed against the intended deployment.
+
+```json
+{
+  "pass": 7,
+  "warn": 3,
+  "fail": 0,
+  "results": [
+    {
+      "name": "Data directory",
+      "status": "PASS",
+      "detail": "<data-dir> (database found: <database-path>)"
+    },
+    {
+      "name": "Node API",
+      "status": "PASS",
+      "detail": "healthy"
+    }
+  ]
+}
+```
+
+The list above is shortened to show the contract shape. Preserve the complete
+local result for operations, but redact paths and environment detail before
+sharing it publicly.
+
 ## Optional background service
 
 After validating an interactive start, install and inspect the supported background service.

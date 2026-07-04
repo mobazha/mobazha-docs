@@ -10,6 +10,13 @@ audiences:
 evidenceLabel: Mobazha public product and release boundaries
 evidenceUrl: https://github.com/mobazha/mobazha/blob/main/README.md
 reviewed: 2026-07-04
+pageType: concept
+outcome: Choose hosted or self-hosted operation from the control and operational responsibility you actually need.
+estimatedTime: 5 minutes
+journey: start
+primaryAction:
+  label: Apply the decision rule
+  href: /start/choose-deployment#decision-rule
 ---
 
 ## Hosted service

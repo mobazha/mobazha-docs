@@ -78,6 +78,9 @@ Review the client used by hosted and self-hosted deployments.
 - URL: /start/choose-deployment
 - Status: beta
 - Page type: concept
+- Outcome: Choose hosted or self-hosted operation from the control and operational responsibility you actually need.
+- Estimated time: 5 minutes
+- Journey: start
 - Applies to: Mobazha v0.3 release candidate
 - Audience: sellers, operators, evaluators, agents
 - Knowledge authority: https://docs.mobazha.org/start/choose-deployment
@@ -788,6 +791,28 @@ Run diagnostics in a second terminal:
 curl -fsS http://127.0.0.1:5102/v1/runtime-config | jq
 ```
 Verify that diagnostics complete, the embedded UI opens, the runtime snapshot has a supported schema, and optional capabilities remain unavailable until configured and healthy.
+Representative diagnostic output
+`doctor --json` returns pass, warning, and failure counts plus named checks. Paths, capacities, versions, and optional dependency results vary by host. A healthy local Node should report zero failed checks; warnings must still be reviewed against the intended deployment.
+```json
+{
+  "pass": 7,
+  "warn": 3,
+  "fail": 0,
+  "results": [
+    {
+      "name": "Data directory",
+      "status": "PASS",
+      "detail": "<data-dir> (database found: <database-path>)"
+    },
+    {
+      "name": "Node API",
+      "status": "PASS",
+      "detail": "healthy"
+    }
+  ]
+}
+```
+The list above is shortened to show the contract shape. Preserve the complete local result for operations, but redact paths and environment detail before sharing it publicly.
 Optional background service
 After validating an interactive start, install and inspect the supported background service.
 ```text
@@ -986,6 +1011,11 @@ Run diagnostics and create a compressed backup before a release change.
 ./mobazha doctor --json
 ./mobazha backup --output mobazha-backup.tar.gz
 ```
+The backup command reports the resolved source and output path, then the final archive size. Paths and size are deployment-specific.
+```text
+Backing up <data-dir> → <absolute-output-path>/mobazha-backup.tar.gz
+Backup complete: <absolute-output-path>/mobazha-backup.tar.gz (<size> MB)
+```
 Expected result and verification
 The backup command should finish without error and produce a non-empty archive at the requested path. Record its size, creation time, source version, and a cryptographic checksum. Keep secrets and recovery material under a separate access policy even when the archive contains encrypted data.
 After upgrade, compare effective capabilities and complete a small testnet journey. Do not declare success from process health alone.
@@ -1105,7 +1135,10 @@ Node issues
 ### Connect optional hosted capabilities
 - URL: /self-host/bind-account
 - Status: draft
-- Page type: concept
+- Page type: policy
+- Outcome: Determine whether an optional hosted connection has a stable public contract before exchanging node or account authority.
+- Estimated time: 4 minutes
+- Journey: operate
 - Applies to: Design direction; not a shipped guarantee
 - Audience: operators
 - Knowledge authority: https://docs.mobazha.org/self-host/bind-account
@@ -1132,6 +1165,9 @@ Automated tests cover connection, denial, expiry, revocation, and recovery.
 - URL: /build
 - Status: beta
 - Page type: hub
+- Outcome: Choose the current public contract for an integration and make the first scoped call without assuming every deployment is identical.
+- Estimated time: 5 minutes
+- Journey: build
 - Applies to: Mobazha v0.3 release candidate
 - Audience: developers, agent builders
 - Knowledge authority: https://docs.mobazha.org/build
@@ -1348,6 +1384,9 @@ Re-run negative, timeout, duplicate, and conflict tests against every supported 
 - URL: /build/runtime-capabilities
 - Status: beta
 - Page type: concept
+- Outcome: Decide whether a feature is effectively available without confusing code presence, product profile, capability, permission, or readiness.
+- Estimated time: 8 minutes
+- Journey: build
 - Applies to: Mobazha v0.3 release candidate
 - Audience: developers, agent builders, operators
 - Knowledge authority: https://docs.mobazha.org/build/runtime-capabilities
@@ -1403,6 +1442,9 @@ Frontend product composition implementation
 - URL: /build/token-identifiers
 - Status: beta
 - Page type: concept
+- Outcome: Parse and compare a token identifier without treating recognition as ownership, price, transfer authority, or runtime support.
+- Estimated time: 6 minutes
+- Journey: build
 - Applies to: Mobazha v0.3 release candidate
 - Audience: developers, integrators, agent builders
 - Knowledge authority: https://docs.mobazha.org/build/token-identifiers
@@ -1462,6 +1504,25 @@ curl -sS http://127.0.0.1:5102/v1/runtime-config | jq
 The example assumes the default local listener. Do not disable authentication or expose an administrative listener merely to make an example work.
 Expected result
 The runtime call should return a successful JSON envelope describing the Node schema, deployment composition, readiness, and effective capabilities. Record the Node version and capability you intend to use. A missing or unavailable capability is a decision to stop or degrade the integration—not a reason to enable a frontend-only switch.
+A default standalone store currently returns this representative projection when the response is narrowed to the composition fields. Capability and feature values vary by the connected Node and remain authoritative.
+```bash
+curl -fsS http://127.0.0.1:5102/v1/runtime-config |
+  jq '.data | {schemaVersion, authMode, deployment, experience, capabilitiesReady}'
+```
+```json
+{
+  "schemaVersion": 3,
+  "authMode": "standalone",
+  "deployment": {
+    "mode": "standalone",
+    "allowExternalResources": true
+  },
+  "experience": {
+    "kind": "store"
+  },
+  "capabilitiesReady": true
+}
+```
 Authentication choices
 HTTP Basic authentication is available for the standalone administrator boundary.
 Bearer JWTs represent hosted identities where the deployment supports them.
@@ -1656,6 +1717,9 @@ Rotate an exposed endpoint secret and reject signatures outside the replay windo
 - URL: /build/extensions
 - Status: draft
 - Page type: concept
+- Outcome: Select the narrowest extension mechanism without transferring Core order, payment, settlement, key, or audit authority.
+- Estimated time: 12 minutes
+- Journey: build
 - Applies to: Design direction; not a shipped guarantee
 - Audience: extension developers, architects, security reviewers
 - Knowledge authority: https://docs.mobazha.org/build/extensions
@@ -1781,7 +1845,10 @@ Target platform model; not shipped-capability authority.
 ### Reference and source map
 - URL: /reference
 - Status: current
-- Page type: concept
+- Page type: hub
+- Outcome: Find the authority that owns a public explanation, runtime fact, versioned contract, or implementation claim.
+- Estimated time: 3 minutes
+- Journey: build
 - Applies to: Current public project policy or service surface
 - Audience: developers, contributors, agents
 - Knowledge authority: https://docs.mobazha.org/reference
@@ -2391,7 +2458,10 @@ Improve this documentation
 ### Get help and report problems
 - URL: /support
 - Status: current
-- Page type: concept
+- Page type: hub
+- Outcome: Route a product question, reproducible defect, documentation problem, or security concern to the correct public or private channel.
+- Estimated time: 3 minutes
+- Journey: community
 - Applies to: Current public project policy or service surface
 - Audience: everyone
 - Knowledge authority: https://docs.mobazha.org/support
