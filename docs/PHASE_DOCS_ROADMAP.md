@@ -71,8 +71,9 @@ count.
   Core authority, trust levels, capability gates, and proposal review.
 - Publish an explicit current-versus-target matrix so static v1 behavior is not
   confused with planned allowlist, health, upgrade, third-party, or Wasm runtimes.
-- Use Collectibles as the first worked Order Extension case without promoting
-  NFT vocabulary into generic Core contracts.
+- Present Order Extension as a generic order-associated resource lifecycle
+  contract and use Collectibles as its first worked provider without promoting
+  NFT vocabulary into Core or claiming candidate resource providers are shipped.
 - Maintain tested first-call examples and link the generated API specification without forking it.
 - Connect repository READMEs and in-product Help entry points back to the portal.
 - Unified Footer and Help & Support now route to canonical task pages; release
@@ -86,6 +87,9 @@ count.
 - Add a visible history and supersession path for replaced proposals.
 - Established public RFC, ADR, whitepaper-versioning, and history registries;
   RFC-0001 now tracks the whitepaper publication gates.
+- Keep the Draft Composable Extension Platform RFC explicit about independent
+  classification axes, Core authority, domain-specific contracts, and the
+  current-versus-target boundary for multiple runtimes.
 
 ### Wave 4 — Agent and localization quality: in progress
 

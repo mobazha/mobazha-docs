@@ -1,0 +1,298 @@
+# RFC-0002: Composable Extension Platform Model
+
+- Status: Draft
+- Authors: Mobazha architecture and documentation maintainers
+- Created: 2026-07-04
+- Updated: 2026-07-04
+- Decision owners: Mobazha Open Core and distribution maintainers
+- Affected surfaces: Node, distributions, extension SDKs, hosted service, docs
+- Supersedes: None
+- Superseded by: None
+
+## Summary
+
+Define Mobazha's target extension platform as a Core-owned commerce kernel,
+typed domain contracts, a module control plane, and a trust-tiered runtime
+fabric. The model supports multiple payment rails, service providers, and
+multi-stage resource integrations without mixing packaging, business domain,
+contract role, runtime, trust, or lifecycle into one plugin taxonomy.
+
+This RFC consolidates the long-term direction. It does not claim that every
+control-plane gate or runtime described here is implemented. The current
+static Order Extension v1 path and the Collectibles provider remain the first
+implemented slice.
+
+## Problem and evidence
+
+Open Core already contains narrow Ports, statically composed Modules, payment
+plugins, policy Functions, Controllers, and a typed Order Extension path. They
+solve different problems. Treating them as peer “plugin types” obscures who
+owns state, which domain contract applies, how code is isolated, and whether a
+capability is actually available.
+
+The same ambiguity becomes dangerous as the platform adds:
+
+- payment rails with escrow, observed direct payment, or provider-session
+  lifecycles;
+- inventory, fulfillment, tax, messaging, content, key, and other services;
+- order-associated resources whose reservation, delivery, and evidence span
+  several stages;
+- first-party, reviewed partner, and untrusted implementations with different
+  runtime requirements.
+
+ADR-018 in Open Core establishes authority and extension-role boundaries. The
+implemented Order Extension contract demonstrates durable declarations,
+resource reservations, lifecycle delivery, and settlement attestations with
+Collectibles as the first provider. This RFC defines how those pieces fit into
+one platform and how the target should mature.
+
+## Proposal
+
+### 1. Stable platform boundary
+
+Adopt this target model:
+
+```text
+Module Control Plane
+  manifest · dependency · compatibility · authorization · configuration
+  effective capability · health · lifecycle · provenance
+                         |
+                         v
+Trust-tiered Runtime Fabric
+  static in-process · isolated process/remote · restricted Wasm
+                         |
+                         v
+Typed Domain Contracts and Core Command Gate
+  payment · order resource · inventory · fulfillment · tax · notification
+                         |
+                         v
+Core-owned Commerce Kernel
+  order · payment · refund · dispute · settlement · durable facts · audit
+```
+
+The control plane decides what may run. Runtime drivers decide where and how
+it runs. Typed contracts decide what may be exchanged. The Core command gate
+decides whether extension input may affect Core-owned state. None of these
+layers grants another layer's authority implicitly.
+
+### 2. Keep classification axes independent
+
+Every extension is described across independent dimensions instead of being
+placed in one overloaded plugin hierarchy:
+
+| Dimension | Examples |
+|---|---|
+| Packaging and release | Module |
+| Business domain | Payment, order resource, inventory, fulfillment, tax, notification |
+| Contract role | Port, Function, Controller, typed domain contract |
+| Authority of output | Declaration, decision, observation, attestation |
+| Interaction | Synchronous call, durable event, reconciliation |
+| Runtime | Static in-process, isolated process or remote, Wasm |
+| Trust | First-party, reviewed partner, untrusted |
+| Lifecycle | Desired, verified, ready, degraded, draining, failed |
+| Data ownership | Core-owned, module-owned, external-system-owned |
+| Tenant scope | Distribution, tenant, store, order, or resource |
+
+A Collectibles package, for example, is a first-party Module in the order
+resource domain. It implements declaration, reservation, Controller, and
+attestation contracts and currently runs in the static runtime. “Module,”
+“Controller,” “static,” and “Collectibles” are therefore answers on different
+axes, not competing types.
+
+### 3. Preserve domain-specific capability families
+
+Uniform governance must not produce one universal business interface.
+
+Payment is a Core-owned bounded context with rail-specific adapters and a
+normalized Core lifecycle. At minimum, its model distinguishes escrow,
+direct-observed payment, and provider-session payment. A payment capability
+descriptor states supported networks and assets, lifecycle operations,
+execution authority, confirmation semantics, runtime, and trust. Adding a
+payment method never grants settlement authority or bypasses the payment state
+machine.
+
+Order resource extensions bind a provider-owned resource or multi-stage domain
+process to an order through versioned declarations and, only when needed,
+reservation, durable delivery, observation, or attestation contracts. They do
+not replace the order or payment domain.
+
+Inventory, fulfillment, tax, notification, content, messaging, and key access
+retain separate typed contracts and owners. Shared infrastructure adapters
+that Core requires remain Ports; they are not promoted into arbitrary business
+Modules merely to fit a plugin model.
+
+### 4. Define Order Extension by lifecycle need, not product name
+
+`OrderExtension` is appropriate when an order-associated binding must survive
+restart and provider absence, scarce capacity must be reserved before funding,
+external work must be driven from durable facts, or Core must validate evidence
+before a Core-owned transition.
+
+Candidate resources include collectible Hub slots, limited inventory,
+gift-card redemption quotas, event tickets, regulated product lots, and
+made-to-order production capacity. These are modeling candidates, not claims
+of shipped providers. Each provider uses a namespaced type and private domain
+payload and receives only the sub-capabilities it needs.
+
+Collectibles is the first implementation of this broader contract. NFT, chain,
+mint, collection, and Hub vocabulary remains in the Collectibles module. A
+future ticket, quota, lot, or production provider does not inherit that
+vocabulary. Cross-product taxonomies should be introduced only after another
+implementation proves a stable shared concept.
+
+### 5. Admit only typed, authority-limited interactions
+
+Extensions may submit four kinds of input:
+
+- declaration: versioned intent or resource binding for Core to persist;
+- decision: bounded deterministic policy output;
+- observation: a report about an external fact;
+- attestation: signed or otherwise verifiable evidence for a declared
+  condition.
+
+Core validates identity, tenant and resource binding, authorization, contract
+version, expected state, idempotency, freshness, and policy. Any accepted
+financial effect re-enters a versioned Core command and state machine. An
+extension cannot write Core tables, mutate an order directly, choose a payout
+destination, or obtain a complete Core service locator.
+
+### 6. Make capability exposure computed and fail closed
+
+The target effective capability is the intersection of:
+
+```text
+distribution allowlist
+  ∩ contract compatible
+  ∩ installed or statically composed
+  ∩ authorized for the tenant and scope
+  ∩ configured
+  ∩ healthy and lifecycle-ready
+```
+
+Manifests are declarations, not proof. Effective capabilities are computed by
+the control plane and exposed only after all applicable gates pass. Source
+presence, a registered identifier, or static linkage alone does not establish
+availability.
+
+### 7. Match runtime isolation to trust and behavior
+
+- Reviewed first-party capabilities use static in-process composition by
+  default when low latency and transactional coordination justify it.
+- Independently distributed or partner infrastructure uses an isolated
+  process or remote runtime by default, with authenticated versioned protocols,
+  bounded credentials, deadlines, backpressure, and reconciliation.
+- Merchant-authored deterministic policy uses a restricted Wasm runtime when
+  introduced, with explicit fuel, memory, host-call, and output limits.
+
+Runtime is a deployment choice constrained by the same typed domain contract.
+Static and process implementations may share contract semantics without
+sharing lifecycle transport or trust assumptions. Financial modules are not
+hot-swapped mid-operation; draining and recovery preserve the provider and
+contract binding of existing work.
+
+### 8. Evolve by proven slices
+
+| Stage | Outcome | Exit evidence |
+|---|---|---|
+| Current static slice | Typed composition and Order Extension v1 | Existing conformance and Collectibles cutover tests |
+| Static hardening | Distribution/tenant gates, health, drain, upgrade, rollback | Negative tests, upgrade and recovery drills |
+| Second resource provider | Validate Order Extension generality | No NFT vocabulary in Core; only evidence-backed shared concepts |
+| Process runtime | Isolated partner or third-party Controller/provider | Protocol compatibility, credential isolation, retry and reconciliation tests |
+| Wasm runtime | Untrusted deterministic Functions | Sandbox limits, deterministic fixtures, security review |
+| Ecosystem readiness | Stable SDK, compatibility kit, provenance and operator tooling | Version policy, conformance suite, support and removal policy |
+
+No stage requires building a universal workflow engine, public marketplace, or
+dynamic hot-reload system. New abstractions are extracted only after repeated
+domain evidence.
+
+## Security, privacy, and abuse analysis
+
+The control plane fails closed on unknown contracts, unhealthy providers,
+missing authorization, and incompatible versions. Runtime credentials are
+least-privilege, tenant-scoped, rotatable, and unavailable to pure Functions.
+Secrets and raw signing material are never placed in module manifests or
+generic extension payloads.
+
+Core remains the sole authority for order, payment, refund, dispute, and
+settlement state. Durable events are at-least-once, replay-safe, tenant-bound,
+observable, and recoverable. Observations and attestations are untrusted input
+until verified against issuer, resource, state version, freshness, replay, and
+policy. Third-party runtimes require authenticated transport, bounded payloads,
+timeouts, backpressure, provenance, audit, and a kill path.
+
+Order-extension payloads may contain provider or regulated-product data. Each
+contract must minimize persisted fields, classify sensitivity, define
+retention and deletion behavior, and prevent one extension from reading
+another provider's opaque data.
+
+## Economic and legal analysis
+
+This RFC defines architecture, not fees, provider economics, or legal
+classification. Payment providers, gift-card issuers, event operators, and
+regulated-product sellers retain their applicable commercial and legal
+obligations. A module manifest or capability declaration does not establish
+licensing, compliance, availability, or endorsement. Later provider RFCs must
+identify payer, recipient, fee basis, refunds, data controller, jurisdiction,
+and required legal review where applicable.
+
+## Alternatives
+
+- One global hook bus: rejected because ordering, authority, compatibility,
+  and recovery become implicit.
+- One universal plugin or service interface: rejected because it creates a
+  service locator and erases domain ownership.
+- Model runtime types as business capability types: rejected because static,
+  process, and Wasm are execution choices rather than payment or fulfillment
+  semantics.
+- Put product taxonomies in Core: rejected until repeated implementations
+  establish stable cross-domain concepts.
+- Run every extension out of process: rejected as a default for reviewed
+  first-party transactional composition, while retained for lower-trust or
+  independently distributed infrastructure.
+- Build a universal workflow engine now: rejected because the current evidence
+  supports typed lifecycle contracts, not arbitrary workflow programmability.
+
+## Rollout and rollback
+
+ADR-018 and the Open Core extension contracts remain the normative authority
+for implemented behavior. This RFC is Draft and changes no runtime capability.
+Implementation proceeds stage by stage behind explicit composition and
+capability gates. Each stage requires contract fixtures, authority-negative
+tests, failure and recovery tests, observability, migration notes, and a
+rollback or drain plan.
+
+Existing in-flight operations retain their persisted provider, contract
+version, resource binding, and state version. A provider removal first blocks
+new declarations, then drains or reconciles existing work. If a new runtime or
+control-plane gate fails, operators disable new admission and return to the
+last compatible implementation without rewriting Core financial history.
+
+## Documentation impact
+
+- Keep ADR-018 and Open Core extension contracts authoritative for shipped
+  implementation boundaries.
+- State explicitly that Order Extension is generic and Collectibles is its
+  first provider.
+- Add the independent classification axes and platform layers to the public
+  extension guide.
+- Keep current-versus-target capability language in human and Agent surfaces.
+- Add domain-specific specifications only when their contracts and owners are
+  stable; do not turn this RFC into one universal API specification.
+
+## Open questions
+
+- Which resource category should be the second implementation used to validate
+  or revise the generic Order Extension contract?
+- Which authenticated protocol and compatibility window should the first
+  process runtime standardize?
+- Which lifecycle states and health signals are mandatory for the first
+  control-plane release?
+- What review and provenance requirements distinguish reviewed partners from
+  untrusted third parties?
+- Which tenant and operator surfaces expose desired versus effective
+  capabilities without leaking sensitive configuration?
+
+## Decision
+
+Pending maintainer review. Until accepted, this RFC is an organizing model and
+roadmap; ADR-018 and versioned Open Core contracts govern implemented behavior.

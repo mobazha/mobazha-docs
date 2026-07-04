@@ -26,7 +26,8 @@ Open Core owns order, payment, refund, dispute, settlement, key-custody, and aud
 - Every financial change returns through a validated Core command and state machine.
 - Effective capabilities remain closed until distribution, compatibility, composition, authorization, configuration, and health gates all pass.
 
-- [Open Core extension guide](/build/extensions) — Mechanism selection, authority flow, trust levels, current implementation, and Collectibles as the first case.
+- [Open Core extension guide](/build/extensions) — Mechanism selection, authority flow, trust levels, current implementation, and Collectibles as the first Order Extension provider.
+- [Draft Composable Extension Platform RFC](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0002-composable-extension-platform.md) — Target control-plane and multi-runtime model; it does not expand current runtime capability.
 
 ## Authority order
 

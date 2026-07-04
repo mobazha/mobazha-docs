@@ -603,7 +603,7 @@
               "Module: assemble reviewed capabilities into a distribution.",
               "Function: customize a bounded deterministic business decision.",
               "Controller: reconcile an external system or perform external I/O.",
-              "OrderExtension: attach versioned domain data and lifecycle to an order."
+              "OrderExtension: bind a versioned resource or multi-stage domain process to an order."
             ]
           },
           {
@@ -654,6 +654,95 @@
         ]
       },
       {
+        "heading": "Target platform model under review",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The Draft [Composable Extension Platform RFC](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0002-composable-extension-platform.md) organizes the long-term target as:"
+          },
+          {
+            "type": "code",
+            "language": "text",
+            "code": "Module Control Plane\n  -> Trust-tiered Runtime Fabric\n  -> Typed Domain Contracts and Core Command Gate\n  -> Core-owned Commerce Kernel"
+          },
+          {
+            "type": "paragraph",
+            "text": "The control plane governs identity, compatibility, dependencies, authorization, configuration, health, and lifecycle. Runtime drivers govern where code executes. Typed contracts govern what it may exchange. Core alone decides whether an input may change Core-owned state."
+          },
+          {
+            "type": "paragraph",
+            "text": "Do not collapse these independent dimensions into one plugin taxonomy:"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Dimension",
+              "Examples"
+            ],
+            "rows": [
+              [
+                "Packaging",
+                "Module"
+              ],
+              [
+                "Business domain",
+                "Payment, order resource, inventory, fulfillment, tax, notification"
+              ],
+              [
+                "Contract role",
+                "Port, Function, Controller, typed domain contract"
+              ],
+              [
+                "Output authority",
+                "Declaration, decision, observation, attestation"
+              ],
+              [
+                "Interaction",
+                "Synchronous call, durable event, reconciliation"
+              ],
+              [
+                "Runtime",
+                "Static in-process, isolated process or remote, Wasm"
+              ],
+              [
+                "Trust",
+                "First-party, reviewed partner, untrusted"
+              ],
+              [
+                "Lifecycle",
+                "Desired, verified, ready, degraded, draining, failed"
+              ],
+              [
+                "Data ownership",
+                "Core, module, or external system"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "This model is a Draft direction, not evidence that every control-plane gate or runtime is currently available."
+          }
+        ]
+      },
+      {
+        "heading": "Keep capability families domain-specific",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Payment is a Core-owned bounded context. Escrow, directly observed payment, and provider checkout sessions may use different adapters, but payment, refund, dispute, and settlement state remains in Core.",
+              "OrderExtension binds an order-associated resource or multi-stage domain process through only the declaration, reservation, durable delivery, observation, or attestation contracts it needs.",
+              "Inventory, fulfillment, tax, notification, and other provider families retain narrow typed contracts and explicit owners.",
+              "Content, messaging, keys, storage, and similar Core-required infrastructure remain Ports when their purpose is implementation replacement. They do not become arbitrary business Modules."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Uniform module governance does not imply one universal business interface."
+          }
+        ]
+      },
+      {
         "heading": "Capability and trust gates",
         "blocks": [
           {
@@ -690,8 +779,20 @@
         ]
       },
       {
-        "heading": "Collectibles as the first case",
+        "heading": "OrderExtension scope and the first provider",
         "blocks": [
+          {
+            "type": "paragraph",
+            "text": "OrderExtension is not a Collectibles or NFT category. Use it when an order-associated binding must survive restarts and provider absence, scarce capacity must be reserved before funding, external work must be driven durably, or Core must validate evidence before a Core-owned transition."
+          },
+          {
+            "type": "paragraph",
+            "text": "Candidate resources include collectible Hub slots, limited inventory, gift-card redemption quotas, event tickets, regulated product lots, and made-to-order capacity. These are modeling candidates, not shipped providers. Each provider keeps a namespaced type and private domain payload and receives only the sub-capabilities it needs."
+          },
+          {
+            "type": "paragraph",
+            "text": "Collectibles is the first implemented provider:"
+          },
           {
             "type": "unordered-list",
             "items": [
@@ -705,7 +806,7 @@
           },
           {
             "type": "paragraph",
-            "text": "Collectibles proves the architecture without turning NFT concepts into universal Core abstractions. Product-specific hooks, settlement commands, queues, and FiatMetadata mirroring were removed during the direct development-time cutover."
+            "text": "Collectibles proves the first slice without defining the scope of OrderExtension or turning NFT concepts into universal Core abstractions. Product-specific hooks, settlement commands, queues, and FiatMetadata mirroring were removed during the direct development-time cutover."
           }
         ]
       },
@@ -766,6 +867,11 @@
               {
                 "label": "Payment plugin architecture",
                 "href": "https://github.com/mobazha/mobazha/blob/main/docs/plugins/PAYMENT_PLUGIN_ARCHITECTURE.md"
+              },
+              {
+                "label": "Draft Composable Extension Platform RFC",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0002-composable-extension-platform.md",
+                "description": "Target platform model; not shipped-capability authority."
               }
             ]
           }
@@ -2252,7 +2358,12 @@
               {
                 "label": "Open Core extension guide",
                 "href": "/build/extensions",
-                "description": "Mechanism selection, authority flow, trust levels, current implementation, and Collectibles as the first case."
+                "description": "Mechanism selection, authority flow, trust levels, current implementation, and Collectibles as the first Order Extension provider."
+              },
+              {
+                "label": "Draft Composable Extension Platform RFC",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0002-composable-extension-platform.md",
+                "description": "Target control-plane and multi-runtime model; it does not expand current runtime capability."
               }
             ]
           }
@@ -3034,6 +3145,11 @@
                 "label": "RFC-0001: Founding whitepaper publication contract",
                 "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0001-whitepaper-publication-contract.md",
                 "description": "Review; defines the evidence and approvals needed to advance the whitepaper."
+              },
+              {
+                "label": "RFC-0002: Composable Extension Platform Model",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0002-composable-extension-platform.md",
+                "description": "Draft; separates domain, contract role, runtime, trust, lifecycle, and packaging while defining the target multi-runtime platform."
               },
               {
                 "label": "RFC template",
@@ -5586,7 +5702,7 @@
               "Module：把经过审核的能力组合进一个发行形态。",
               "Function：定制有边界且确定性的业务决策。",
               "Controller：协调外部系统或执行外部 I/O。",
-              "OrderExtension：为订单附加带版本的领域数据和生命周期。"
+              "OrderExtension：把带版本的资源或跨阶段领域过程绑定到订单。"
             ]
           },
           {
@@ -5637,6 +5753,95 @@
         ]
       },
       {
+        "heading": "评审中的目标平台模型",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Draft 状态的[可组装扩展平台 RFC](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0002-composable-extension-platform.md)把长期目标整理为："
+          },
+          {
+            "type": "code",
+            "language": "text",
+            "code": "模块控制面\n  -> 按信任分级的运行时层\n  -> 类型化领域契约与 Core 命令门\n  -> Core 拥有的商务内核"
+          },
+          {
+            "type": "paragraph",
+            "text": "控制面治理身份、兼容性、依赖、授权、配置、健康和生命周期；运行时驱动决定代码在哪里执行；类型化契约限制可以交换什么；只有 Core 能决定输入是否可以改变 Core 拥有的状态。"
+          },
+          {
+            "type": "paragraph",
+            "text": "以下维度彼此独立，不能压成一个混杂的插件分类："
+          },
+          {
+            "type": "table",
+            "headers": [
+              "维度",
+              "示例"
+            ],
+            "rows": [
+              [
+                "包装与发布",
+                "Module"
+              ],
+              [
+                "业务领域",
+                "支付、订单资源、库存、履约、税务、通知"
+              ],
+              [
+                "契约角色",
+                "Port、Function、Controller、类型化领域契约"
+              ],
+              [
+                "输出权威",
+                "声明、决策、观察、证明"
+              ],
+              [
+                "交互方式",
+                "同步调用、持久事件、对账"
+              ],
+              [
+                "运行方式",
+                "进程内静态组合、隔离进程或远程、Wasm"
+              ],
+              [
+                "信任级别",
+                "第一方、经审核合作方、不可信"
+              ],
+              [
+                "生命周期",
+                "Desired、Verified、Ready、Degraded、Draining、Failed"
+              ],
+              [
+                "数据所有权",
+                "Core、模块或外部系统"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "该模型目前是 Draft 方向，不代表每个控制面门槛和运行时都已可用。"
+          }
+        ]
+      },
+      {
+        "heading": "保持领域能力族独立",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "支付是 Core 拥有的限界上下文。托管支付、直接观察支付和提供方结账会话可以使用不同适配器，但支付、退款、争议和结算状态仍由 Core 拥有。",
+              "OrderExtension 通过声明、预留、持久投递、观察或证明中的必要子契约，把订单关联资源或跨阶段领域过程绑定到订单。",
+              "库存、履约、税务、通知等提供方能力保留窄小的类型化契约和明确所有者。",
+              "内容、消息、密钥、存储等 Core 必需基础设施在用于替换实现时仍是 Port，不因此变成任意业务 Module。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "统一模块治理不等于一个万能业务接口。"
+          }
+        ]
+      },
+      {
         "heading": "能力与信任门槛",
         "blocks": [
           {
@@ -5673,8 +5878,20 @@
         ]
       },
       {
-        "heading": "Collectibles 首个落地案例",
+        "heading": "OrderExtension 范围与首个提供方",
         "blocks": [
+          {
+            "type": "paragraph",
+            "text": "OrderExtension 不是 Collectibles 或 NFT 分类。当订单关联绑定必须在重启或提供方缺席时仍可恢复、稀缺容量需要在付款前预留、外部工作需要持久驱动，或者 Core 在自身状态迁移前必须校验证据时，才应使用该契约。"
+          },
+          {
+            "type": "paragraph",
+            "text": "候选资源包括收藏卡 Hub 名额、限量库存、礼品卡兑换额度、活动门票、受监管商品批次和定制生产名额。它们只是建模候选，不代表对应提供方已经交付。每个提供方保留独立命名空间类型和私有领域载荷，并且只获得所需的子能力。"
+          },
+          {
+            "type": "paragraph",
+            "text": "Collectibles 是首个已实现的提供方："
+          },
           {
             "type": "unordered-list",
             "items": [
@@ -5688,7 +5905,7 @@
           },
           {
             "type": "paragraph",
-            "text": "Collectibles 用来证明架构，而不是把 NFT 概念提升为万能 Core 抽象。开发期直接切换已经移除产品专用 Hook、结算命令、队列和 FiatMetadata 镜像。"
+            "text": "Collectibles 用来验证第一个实现切片，但不定义 OrderExtension 的范围，也不把 NFT 概念提升为万能 Core 抽象。开发期直接切换已经移除产品专用 Hook、结算命令、队列和 FiatMetadata 镜像。"
           }
         ]
       },
@@ -5749,6 +5966,11 @@
               {
                 "label": "支付插件架构",
                 "href": "https://github.com/mobazha/mobazha/blob/main/docs/plugins/PAYMENT_PLUGIN_ARCHITECTURE.md"
+              },
+              {
+                "label": "Draft 可组装扩展平台 RFC",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0002-composable-extension-platform.md",
+                "description": "目标平台模型，不是已交付能力的权威来源。"
               },
               {
                 "label": "English canonical page",

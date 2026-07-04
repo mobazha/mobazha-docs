@@ -306,7 +306,7 @@
       },
       "required_claims": [
         "Use a Port to replace a narrow Core-required implementation and a Module to compose reviewed capabilities.",
-        "Use a Function for a bounded deterministic decision, a Controller for external reconciliation or I/O, and OrderExtension for versioned order-associated domain data and lifecycle."
+        "Use a Function for a bounded deterministic decision, a Controller for external reconciliation or I/O, and OrderExtension for a versioned order-associated resource or multi-stage domain process."
       ],
       "forbidden_claims": [
         "Use a global hook or complete Core service locator for every extension.",
@@ -329,6 +329,24 @@
       "forbidden_claims": [
         "A Controller may directly call an internal settlement service or choose the payout destination.",
         "A valid extension signature bypasses Core order-state and authorization checks."
+      ],
+      "sources": [
+        "/build/extensions"
+      ]
+    },
+    {
+      "id": "order-extension-scope",
+      "question": {
+        "en": "Is OrderExtension an NFT-specific contract?",
+        "zh-CN": "OrderExtension 是 NFT 专用契约吗？"
+      },
+      "required_claims": [
+        "No. OrderExtension is a generic contract for durable order-associated resource bindings and multi-stage domain processes.",
+        "Collectibles is the first implemented provider; future quota, inventory, ticket, lot, or made-to-order providers keep their own namespaced types and payloads."
+      ],
+      "forbidden_claims": [
+        "OrderExtension and Collectibles are interchangeable names.",
+        "The candidate resource examples prove those providers are already shipped."
       ],
       "sources": [
         "/build/extensions"

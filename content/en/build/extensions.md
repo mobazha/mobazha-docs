@@ -17,7 +17,7 @@ reviewed: 2026-07-04
 - Module: assemble reviewed capabilities into a distribution.
 - Function: customize a bounded deterministic business decision.
 - Controller: reconcile an external system or perform external I/O.
-- OrderExtension: attach versioned domain data and lifecycle to an order.
+- OrderExtension: bind a versioned resource or multi-stage domain process to an order.
 
 Use the narrowest mechanism that matches one responsibility. A package may implement more than one role, but each public contract has one authority boundary. A callback is not automatically a Port, and a Module is not a service locator.
 
@@ -49,6 +49,44 @@ extension input
 - New extension points are deliberate and domain-scoped, with an owner, schema, authority boundary, failure semantics, idempotency, recovery, tests, and a removal plan.
 - There is no global named hook bus, mutable runtime registry, or universal Core service locator.
 
+## Target platform model under review
+
+The Draft [Composable Extension Platform RFC](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0002-composable-extension-platform.md) organizes the long-term target as:
+
+```text
+Module Control Plane
+  -> Trust-tiered Runtime Fabric
+  -> Typed Domain Contracts and Core Command Gate
+  -> Core-owned Commerce Kernel
+```
+
+The control plane governs identity, compatibility, dependencies, authorization, configuration, health, and lifecycle. Runtime drivers govern where code executes. Typed contracts govern what it may exchange. Core alone decides whether an input may change Core-owned state.
+
+Do not collapse these independent dimensions into one plugin taxonomy:
+
+| Dimension | Examples |
+|---|---|
+| Packaging | Module |
+| Business domain | Payment, order resource, inventory, fulfillment, tax, notification |
+| Contract role | Port, Function, Controller, typed domain contract |
+| Output authority | Declaration, decision, observation, attestation |
+| Interaction | Synchronous call, durable event, reconciliation |
+| Runtime | Static in-process, isolated process or remote, Wasm |
+| Trust | First-party, reviewed partner, untrusted |
+| Lifecycle | Desired, verified, ready, degraded, draining, failed |
+| Data ownership | Core, module, or external system |
+
+This model is a Draft direction, not evidence that every control-plane gate or runtime is currently available.
+
+## Keep capability families domain-specific
+
+- Payment is a Core-owned bounded context. Escrow, directly observed payment, and provider checkout sessions may use different adapters, but payment, refund, dispute, and settlement state remains in Core.
+- OrderExtension binds an order-associated resource or multi-stage domain process through only the declaration, reservation, durable delivery, observation, or attestation contracts it needs.
+- Inventory, fulfillment, tax, notification, and other provider families retain narrow typed contracts and explicit owners.
+- Content, messaging, keys, storage, and similar Core-required infrastructure remain Ports when their purpose is implementation replacement. They do not become arbitrary business Modules.
+
+Uniform module governance does not imply one universal business interface.
+
 ## Capability and trust gates
 
 An extension capability remains unavailable until every activation gate passes. Source presence, a known identifier, or linked code is not evidence that the capability is enabled.
@@ -73,7 +111,13 @@ The static order-extension v1 path currently validates exact contract names, imm
 
 Distribution allowlists, per-tenant authorization and configuration, structured module health, drain, upgrade, rollback, a third-party process runtime, and a Wasm Function runtime remain governance targets. Do not describe those targets as generally available capabilities.
 
-## Collectibles as the first case
+## OrderExtension scope and the first provider
+
+OrderExtension is not a Collectibles or NFT category. Use it when an order-associated binding must survive restarts and provider absence, scarce capacity must be reserved before funding, external work must be driven durably, or Core must validate evidence before a Core-owned transition.
+
+Candidate resources include collectible Hub slots, limited inventory, gift-card redemption quotas, event tickets, regulated product lots, and made-to-order capacity. These are modeling candidates, not shipped providers. Each provider keeps a namespaced type and private domain payload and receives only the sub-capabilities it needs.
+
+Collectibles is the first implemented provider:
 
 - Signed NFT metadata becomes a versioned OrderExtension declaration produced by the Collectibles module.
 - Token or inventory allocation is handled through a module-owned ReservationPort before funding.
@@ -82,7 +126,7 @@ Distribution allowlists, per-tenant authorization and configuration, structured 
 - Seller payout remains an existing Core conditional-settlement command.
 - NFT, chain, mint, certificate, and provider vocabulary stays outside generic Core APIs.
 
-Collectibles proves the architecture without turning NFT concepts into universal Core abstractions. Product-specific hooks, settlement commands, queues, and FiatMetadata mirroring were removed during the direct development-time cutover.
+Collectibles proves the first slice without defining the scope of OrderExtension or turning NFT concepts into universal Core abstractions. Product-specific hooks, settlement commands, queues, and FiatMetadata mirroring were removed during the direct development-time cutover.
 
 ## Review a new extension point
 
@@ -104,3 +148,4 @@ If those answers are not stable, keep the mechanism private to its implementatio
 - [Collectibles order-extension evolution](https://github.com/mobazha/mobazha/blob/main/docs/extensions/ORDER_EXTENSION_EVOLUTION_PLAN.md)
 - [Conformance](https://github.com/mobazha/mobazha/blob/main/docs/extensions/CONFORMANCE.md)
 - [Payment plugin architecture](https://github.com/mobazha/mobazha/blob/main/docs/plugins/PAYMENT_PLUGIN_ARCHITECTURE.md)
+- [Draft Composable Extension Platform RFC](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0002-composable-extension-platform.md) — Target platform model; not shipped-capability authority.

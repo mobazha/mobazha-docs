@@ -9,6 +9,7 @@ record; it does not activate behavior.
 | RFC | Title | Status | Updated |
 |---|---|---|---|
 | [0001](./0001-whitepaper-publication-contract.md) | Founding whitepaper publication contract | Review | 2026-07-04 |
+| [0002](./0002-composable-extension-platform.md) | Composable Extension Platform Model | Draft | 2026-07-04 |
 
 Start from [`0000-template.md`](./0000-template.md). Allocate the next number,
 keep the filename stable, and update this table in the same change.
