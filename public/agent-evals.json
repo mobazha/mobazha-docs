@@ -282,6 +282,25 @@
       ]
     },
     {
+      "id": "frontend-composition-scope",
+      "question": {
+        "en": "Does the frontend composition resolver make every route or plugin dynamically available?",
+        "zh-CN": "前端组合解析器是否会让所有路由或插件都动态可用？"
+      },
+      "required_claims": [
+        "The current resolver can enable only feature code already included in the build and allowed by the supported profile and authoritative backend capability.",
+        "The first slices cover Guest Checkout, marketplace operator, and marketplace seller-review route and navigation eligibility."
+      ],
+      "forbidden_claims": [
+        "The resolver is a dynamic plugin, remote UI, or universal product-manifest system.",
+        "Provider, workflow, action, and browser-extension composition are fully shipped public contracts."
+      ],
+      "sources": [
+        "/build/runtime-capabilities",
+        "/project/architecture"
+      ]
+    },
+    {
       "id": "independent-operator-privacy",
       "question": {
         "en": "Which privacy policy applies to an independent operator?",

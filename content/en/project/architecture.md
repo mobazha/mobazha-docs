@@ -39,6 +39,12 @@ Frontend products are compositions rather than values in one product-type enum. 
 - At runtime, routes, navigation, providers, workflows, and actions resolve from the same composition and can only narrow authoritative backend capabilities.
 - Hosted, standalone, marketplace, embedded, extension, and sovereign concerns must not be collapsed into scattered product-name checks.
 
+The first Unified implementation slice now resolves Guest Checkout,
+marketplace-operator, and marketplace-seller-review route and navigation
+eligibility from one fail-closed result. It does not yet compose providers,
+workflows, or actions, and it does not turn the browser-extension shell or
+private distributions into public runtime plugins.
+
 [Draft RFC-0003](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0003-composable-frontend-product-model.md) defines the target model and explicitly excludes dynamic plugins, remote React code, Agent surfaces, and a plugin marketplace.
 
 ## Authority order

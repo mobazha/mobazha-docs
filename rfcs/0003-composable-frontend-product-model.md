@@ -62,6 +62,27 @@ checks. [RFC-0002](./0002-composable-extension-platform.md) governs the backend
 extension platform; this RFC governs how frontend products are assembled from
 the capabilities that a backend and distribution make available.
 
+## Implementation status
+
+Unified now contains the first implementation slice proposed by this RFC. A
+pure resolver accepts validated Runtime Config, readiness, presentation
+channel, storefront context, supported profiles, and the build-included
+feature catalog. It returns `pending`, `ready`, or `invalid`, enabled and
+excluded feature IDs, and structured diagnostics.
+
+Guest Checkout, marketplace-operator, and marketplace-seller-review route and
+navigation boundaries consume this resolved result. The implementation proves
+that build presence, supported profile, request context, and authoritative
+backend capability can narrow one another without switching on a private
+product name. Authentication rendering remains host-owned and backend
+authorization remains authoritative.
+
+This does not complete or accept the RFC. The current resolver projects feature
+eligibility for routes and navigation only. Provider, workflow, action, and
+general feature-catalog contributions remain unimplemented target stages; the
+browser-extension shell has not adopted the lifecycle; and no dynamic plugin,
+remote UI, Agent surface protocol, or universal manifest is introduced.
+
 ## Proposal
 
 ### 1. Stable product-composition boundary
@@ -362,10 +383,10 @@ capability absent from the authoritative backend snapshot.
 
 ## Open questions
 
-- Which existing product conditions should be the first mandatory migration to
-  a single resolver?
-- Which deployment/experience/channel combinations are explicitly supported,
-  and which must fail composition?
+- Which product actions and cart-summary decisions should be the next mandatory
+  migrations to the single resolver?
+- Which additional deployment, experience, and channel combinations have
+  enough product evidence to join the current supported profile matrix?
 - Does the first resolver need provider contributions, or can applications keep
   the provider graph static until a second implementation proves the contract?
 - Which structured diagnostic fields are safe and useful across public and

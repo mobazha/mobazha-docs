@@ -65,6 +65,10 @@ count.
   network and TLS boundaries, monitoring, backup, upgrade, and troubleshooting.
 - Expanded the developer path from first API call through authentication,
   errors, retries, idempotency, WebSocket, MCP, and webhook verification.
+- Recorded the first shipped frontend-composition slice: Guest Checkout,
+  marketplace-operator, and marketplace-seller-review route and navigation
+  eligibility now consume one fail-closed resolver, while provider, workflow,
+  action, browser-extension, and dynamic-plugin claims remain out of scope.
 - Added typed content blocks and page-specific quality gates so guides can use
   ordered steps, tables, repeated code examples, callouts, and verification
   without losing structure in Agent publications.

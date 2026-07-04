@@ -41,8 +41,23 @@ translationOf: build/runtime-capabilities
 - 权限描述当前主体可以做什么。
 - 功能开关只用于实验或紧急关闭，不能替代授权。
 
+## 当前前端组合切片
+
+Unified 当前主分支已经实现纯函数式前端特性解析器。解析器同时读取经过校验的 Runtime Config、就绪状态、展示渠道、店铺请求上下文、受支持产品档案矩阵，以及构建产物中实际包含的特性，返回 `pending`、`ready` 或 `invalid`、启用和排除的特性 ID，以及结构化诊断。
+
+首批接入统一解析结果的特性是：
+
+- Guest Checkout，由有效的 `commerce.checkout` 能力控制；
+- 市场运营路由与导航，只在受支持的托管市场档案且非店铺上下文中出现；
+- 市场卖家审核路由与导航，使用同一组合边界。
+
+能力仍在加载时保持等待状态，不能被解释为权威拒绝。档案不受支持、特性 ID 重复、后端能力缺失、外部资源受限或构建产物没有对应代码时都必须失败关闭。路由可见之后，后端授权仍然是操作权威。
+
+当前切片只解析路由和导航的特性资格。Provider、工作流和操作贡献、浏览器扩展外壳接入、动态插件、远程 UI 和万能产品清单都不是当前公开契约。
+
 ## 实现证据
 
 - [兼容性政策](/project/compatibility)
 - [Unified 运行时配置代码](https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config)
+- [前端产品组合实现说明](https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/FRONTEND_PRODUCT_COMPOSITION.md)
 - [English canonical page](/build/runtime-capabilities)

@@ -41,6 +41,32 @@ distribution allowlist
 - Permissions describe what the current actor may do.
 - Feature flags describe experiments or kill switches and cannot replace authorization.
 
+## Current frontend composition slice
+
+The current Unified main branch implements a pure frontend feature resolver
+over the validated Runtime Config, its readiness state, the presentation
+channel, storefront request context, a supported-profile matrix, and the
+features physically included in the build. It returns `pending`, `ready`, or
+`invalid`, enabled and excluded feature IDs, and structured diagnostics.
+
+The first resolved feature slices are:
+
+- Guest Checkout, gated by the effective `commerce.checkout` capability;
+- marketplace operator routes and navigation, limited to a supported hosted
+  marketplace profile outside storefront context;
+- marketplace seller-review routes and navigation under the same composition
+  boundary.
+
+Pending capability state remains a loading state rather than an authoritative
+denial. Unsupported profiles, duplicate feature IDs, absent capabilities,
+restricted external resources, and features missing from the build fail
+closed. Backend authorization remains authoritative after a route is visible.
+
+This slice resolves feature eligibility for routes and navigation. Provider,
+workflow, and action contributions, browser-extension shell adoption, dynamic
+plugins, remote UI, and a universal product manifest are not current public
+contracts.
+
 ## Fail-closed client behavior
 
 - Do not render or call an optional feature until an authoritative capability snapshot is ready.
@@ -50,3 +76,4 @@ distribution allowlist
 
 - [Compatibility policy](/project/compatibility)
 - [Unified runtime configuration code](https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config)
+- [Frontend product composition implementation](https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/FRONTEND_PRODUCT_COMPOSITION.md)
