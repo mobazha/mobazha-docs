@@ -45,6 +45,7 @@ make correct guidance understandable and worth following.
    clearly labeled conceptual diagrams.
 7. The initial redesign covers five flagship journeys before the pattern is
    applied to all 68 pages.
+
 ## Target information architecture
 
 ### Global navigation
