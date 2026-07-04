@@ -45,6 +45,9 @@ The site runs as a Cloudflare Worker because its vinext routes use server-side
 rendering. It intentionally uses Workers Builds rather than a Pages static
 output directory.
 
+Production is available at <https://docs.mobazha.org>; the underlying Worker is
+<https://mobazha-docs.526567244.workers.dev>.
+
 Connect `mobazha/mobazha-docs` from Cloudflare **Workers & Pages → Create →
 Import a repository** and use:
 
@@ -59,8 +62,8 @@ Import a repository** and use:
 
 The Worker name must match `wrangler.jsonc`. Cloudflare creates and retains the
 build credential when the Git repository is connected; no Cloudflare token is
-stored in this repository. After the first successful deployment, add
-`docs.mobazha.org` under **Settings → Domains & Routes**.
+stored in this repository. The `docs.mobazha.org` custom domain is managed from
+the Worker's **Domains** tab.
 
 Local authenticated deployment is also available with `npm run deploy`. Use
 `npm run deploy:dry-run` to validate packaging without publishing.
