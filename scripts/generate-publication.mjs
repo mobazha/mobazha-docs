@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync } from "node:fs";
-import { docApplicability, docs, navGroups } from "../app/lib/docs.ts";
+import { docApplicability, docs, navGroups } from "./load-docs.mjs";
 import { renderPublication } from "./publication.mjs";
 
 const sources = JSON.parse(readFileSync(new URL("../sources.json", import.meta.url), "utf8"));

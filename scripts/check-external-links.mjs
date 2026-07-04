@@ -1,5 +1,5 @@
 import { access } from "node:fs/promises";
-import { docs } from "../app/lib/docs.ts";
+import { docs } from "./load-docs.mjs";
 
 const links = new Set();
 for (const doc of docs) {

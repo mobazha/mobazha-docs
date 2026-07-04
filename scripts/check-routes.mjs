@@ -1,4 +1,4 @@
-import { docs } from "../app/lib/docs.ts";
+import { docs } from "./load-docs.mjs";
 
 const base = (process.argv[2] ?? process.env.BASE_URL ?? "http://127.0.0.1:3000").replace(/\/$/, "");
 const routes = [
