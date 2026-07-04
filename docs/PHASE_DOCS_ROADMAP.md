@@ -67,6 +67,8 @@ count.
   NFT vocabulary into generic Core contracts.
 - Add tested first-call examples and link the generated API specification without forking it.
 - Connect repository READMEs and in-product Help entry points back to the portal.
+- Unified Footer and Help & Support now route to canonical task pages; release
+  notes in Node and Unified link the corresponding public guidance.
 
 ### Wave 3 — Trust and project knowledge: in progress
 
@@ -91,6 +93,8 @@ count.
 ### Wave 5 — Release-integrated maintenance: in progress
 
 - Require affected documentation and compatibility notes in release checklists.
+- Node and Unified tag workflows now require a versioned release note, live
+  guidance, and an exact reviewed source revision before release creation.
 - Record source commit or tag applicability for versioned pages. The public
   source manifest now records reviewed revisions and includes an explicit
   upstream contract check.

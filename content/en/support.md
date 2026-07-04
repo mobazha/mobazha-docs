@@ -11,6 +11,7 @@ reviewed: 2026-07-04
 
 ## Choose the channel
 
+- In Mobazha Unified, open Me → Help & Support → Documentation. The same canonical portal is linked from the desktop Footer.
 - [Documentation issues](https://github.com/mobazha/mobazha-docs/issues) — Stale, missing, unclear, or conflicting documentation.
 - [Node issues](https://github.com/mobazha/mobazha/issues) — Reproducible backend, deployment, API, payment, or operator defects.
 - [Unified issues](https://github.com/mobazha/mobazha-unified/issues) — Buyer, seller, browser, responsive, or frontend defects.

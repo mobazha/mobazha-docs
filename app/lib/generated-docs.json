@@ -1492,6 +1492,13 @@
         ]
       },
       {
+        "heading": "Documentation release gate",
+        "body": [
+          "Node and Unified tag workflows verify that a versioned release note exists, required public guidance is reachable, and the documentation source manifest reviews the exact commit being tagged. A tag must not create a release while its public instructions still describe a different source revision.",
+          "This gate establishes documentation readiness; it does not replace tests, artifact provenance, signatures, SBOM review, migration validation, or runtime capability checks."
+        ]
+      },
+      {
         "heading": "Release sources",
         "links": [
           {
@@ -1505,6 +1512,10 @@
           {
             "label": "Published GitHub releases",
             "href": "https://github.com/mobazha/mobazha/releases"
+          },
+          {
+            "label": "Reviewed public source revisions",
+            "href": "/sources.json"
           }
         ]
       }
@@ -2046,6 +2057,9 @@
     "sections": [
       {
         "heading": "Choose the channel",
+        "bullets": [
+          "In Mobazha Unified, open Me → Help & Support → Documentation. The same canonical portal is linked from the desktop Footer."
+        ],
         "links": [
           {
             "label": "Documentation issues",
