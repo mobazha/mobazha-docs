@@ -53,7 +53,7 @@ The first resolved feature slices are:
 
 - Guest Checkout, gated by the effective `commerce.checkout` capability;
 - marketplace operator routes and navigation, limited to a supported hosted
-  marketplace profile outside storefront context;
+  profile outside storefront request context;
 - marketplace seller-review routes and navigation under the same composition
   boundary.
 
@@ -66,6 +66,12 @@ This slice resolves feature eligibility for routes and navigation. Provider,
 workflow, and action contributions, browser-extension shell adoption, dynamic
 plugins, remote UI, and a universal product manifest are not current public
 contracts.
+
+A downstream sovereign distribution also validates its build-local catalog
+against the complete runtime profile and backend capability snapshot. Local UI
+policy can hide an included feature, but it cannot expose that feature when the
+backend capability is absent. Distribution-local source and vocabulary remain
+outside the public frontend.
 
 ## Fail-closed client behavior
 

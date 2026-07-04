@@ -77,11 +77,20 @@ backend capability can narrow one another without switching on a private
 product name. Authentication rendering remains host-owned and backend
 authorization remains authoritative.
 
-This does not complete or accept the RFC. The current resolver projects feature
-eligibility for routes and navigation only. Provider, workflow, action, and
-general feature-catalog contributions remain unimplemented target stages; the
-browser-extension shell has not adopted the lifecycle; and no dynamic plugin,
-remote UI, Agent surface protocol, or universal manifest is introduced.
+A downstream sovereign distribution now applies the same constitution to its
+build-local catalog. It validates its shell profile and capability readiness,
+gates public checkout and administration on backend capabilities, and applies a
+local presentation policy only as an additional restriction. Browser tests
+prove that the presentation policy cannot expose a route or navigation item
+when the authoritative backend capability is absent. Its implementation and
+product vocabulary remain outside the public frontend.
+
+This closes the first route/navigation composition baseline but does not
+complete or accept the RFC. Provider, action, and general feature-catalog
+contributions remain unimplemented target stages; the browser-extension shell
+has not adopted the lifecycle; and no dynamic plugin, remote UI, Agent surface
+protocol, or universal manifest is introduced. Existing feature-owned
+workflows remain valid without a universal workflow registry.
 
 ## Proposal
 
@@ -387,10 +396,10 @@ capability absent from the authoritative backend snapshot.
   migrations to the single resolver?
 - Which additional deployment, experience, and channel combinations have
   enough product evidence to join the current supported profile matrix?
-- Does the first resolver need provider contributions, or can applications keep
-  the provider graph static until a second implementation proves the contract?
-- Which structured diagnostic fields are safe and useful across public and
-  private distributions?
+- Which second provider implementation would justify replacing the current
+  static host-owned provider graph with a contribution contract?
+- When should the implementation diagnostic fields receive a public schema and
+  compatibility window?
 - When should profile and feature requirement schemas receive independent
   versions and compatibility windows?
 - Should browser-extension application-source aliases remain an internal build

@@ -1256,7 +1256,7 @@
           },
           {
             "type": "paragraph",
-            "text": "marketplace profile outside storefront context;"
+            "text": "profile outside storefront request context;"
           },
           {
             "type": "unordered-list",
@@ -1275,6 +1275,10 @@
           {
             "type": "paragraph",
             "text": "This slice resolves feature eligibility for routes and navigation. Provider, workflow, and action contributions, browser-extension shell adoption, dynamic plugins, remote UI, and a universal product manifest are not current public contracts."
+          },
+          {
+            "type": "paragraph",
+            "text": "A downstream sovereign distribution also validates its build-local catalog against the complete runtime profile and backend capability snapshot. Local UI policy can hide an included feature, but it cannot expose that feature when the backend capability is absent. Distribution-local source and vocabulary remain outside the public frontend."
           }
         ]
       },
@@ -6477,7 +6481,7 @@
             "type": "unordered-list",
             "items": [
               "Guest Checkout，由有效的 `commerce.checkout` 能力控制；",
-              "市场运营路由与导航，只在受支持的托管市场档案且非店铺上下文中出现；",
+              "市场运营路由与导航，只在受支持的托管档案且非店铺请求上下文中出现；",
               "市场卖家审核路由与导航，使用同一组合边界。"
             ]
           },
@@ -6488,6 +6492,10 @@
           {
             "type": "paragraph",
             "text": "当前切片只解析路由和导航的特性资格。Provider、工作流和操作贡献、浏览器扩展外壳接入、动态插件、远程 UI 和万能产品清单都不是当前公开契约。"
+          },
+          {
+            "type": "paragraph",
+            "text": "一个下游自主发行也已经使用完整 runtime profile 与后端能力快照校验其构建内 catalog。本地 UI policy 可以隐藏已编入构建的特性，但后端能力缺失时不能暴露对应路由或导航。发行本地源码和产品词汇继续留在公共前端之外。"
           }
         ]
       },
