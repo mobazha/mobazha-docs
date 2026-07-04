@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { DocTableOfContents } from "@/app/components/DocTableOfContents";
 import { docApplicability, type DocPage, visualsById } from "@/app/lib/docs";
 
 type ExperienceLabels = {
@@ -131,17 +132,5 @@ export function TrustPanel({
 
 export function PageTableOfContents({ doc, label }: { doc: DocPage; label: string }) {
   if (doc.sections.length < 2) return null;
-
-  return (
-    <nav className="doc-toc-sidebar" aria-label={label}>
-      <span>{label}</span>
-      <ol>
-        {doc.sections.map((section, index) => (
-          <li key={`${index}-${section.heading}`}>
-            <a href={`#${sectionId(section.heading, index)}`}>{section.heading}</a>
-          </li>
-        ))}
-      </ol>
-    </nav>
-  );
+  return <DocTableOfContents label={label} sections={doc.sections} />;
 }

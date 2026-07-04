@@ -102,3 +102,9 @@ test("reduced-motion preference removes meaningful transitions", async ({ page }
   );
   expect(transitionSeconds).toBeLessThanOrEqual(0.00001);
 });
+
+test("/start resolves to the portal home", async ({ page }) => {
+  await page.goto("/start");
+  await expect(page).toHaveURL(/\/$/);
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Trusted guides");
+});

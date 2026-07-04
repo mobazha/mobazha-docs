@@ -511,6 +511,12 @@ a { color: inherit; text-decoration: none; }
   color: var(--portal-accent);
 }
 
+.doc-toc-sidebar a.active {
+  border-left-color: var(--portal-accent);
+  color: var(--portal-accent);
+  font-weight: 600;
+}
+
 .doc-content { padding-top: 8px; }
 
 .doc-content section {
