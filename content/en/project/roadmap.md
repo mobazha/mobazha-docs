@@ -10,6 +10,13 @@ audiences:
 evidenceLabel: Public repository milestones and implementation roadmaps
 evidenceUrl: https://github.com/mobazha
 reviewed: 2026-07-04
+pageType: concept
+outcome: Understand current outcomes and near-term direction without turning exploration areas into release commitments.
+estimatedTime: 6 minutes
+journey: understand
+primaryAction:
+  label: Review near-term outcomes
+  href: /project/roadmap#near-term-outcomes
 ---
 
 ## Current outcome

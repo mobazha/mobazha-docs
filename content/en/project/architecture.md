@@ -9,6 +9,13 @@ audiences:
 evidenceLabel: Mobazha public repositories
 evidenceUrl: https://github.com/mobazha
 reviewed: 2026-07-04
+pageType: concept
+outcome: Identify which system owns client presentation, runtime capability, transaction state, extension authority, and public policy.
+estimatedTime: 10 minutes
+journey: understand
+primaryAction:
+  label: Review the authority order
+  href: /project/architecture#authority-order
 ---
 
 ## Core boundary

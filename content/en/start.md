@@ -10,6 +10,7 @@ evidenceUrl: https://github.com/mobazha
 reviewed: 2026-07-04
 pageType: hub
 outcome: Reach the shortest trustworthy path for the job you want to complete.
+estimatedTime: 3 minutes
 journey: start
 primaryAction:
   label: Explore the hosted app

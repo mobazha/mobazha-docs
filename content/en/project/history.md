@@ -10,6 +10,13 @@ audiences:
 evidenceLabel: Mobazha public history registry
 evidenceUrl: https://github.com/mobazha/mobazha-docs/tree/main/history
 reviewed: 2026-07-04
+pageType: policy
+outcome: Preserve superseded public reasoning without allowing historical proposals to masquerade as current policy.
+estimatedTime: 5 minutes
+journey: understand
+primaryAction:
+  label: Review the preservation rule
+  href: /project/history#preservation-rule
 ---
 
 ## Preservation rule

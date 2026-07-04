@@ -10,6 +10,13 @@ audiences:
 evidenceLabel: Public Mobazha ADR registry
 evidenceUrl: https://github.com/mobazha/mobazha-docs/tree/main/adrs
 reviewed: 2026-07-04
+pageType: hub
+outcome: Find an accepted architectural decision and distinguish it from a proposal or repository-local implementation note.
+estimatedTime: 5 minutes
+journey: understand
+primaryAction:
+  label: Open the ADR registry
+  href: /project/adrs#current-registry
 ---
 
 ## What belongs in an ADR

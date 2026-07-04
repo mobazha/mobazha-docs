@@ -9,6 +9,13 @@ audiences:
 evidenceLabel: Mobazha public repositories and project records
 evidenceUrl: https://github.com/mobazha
 reviewed: 2026-07-04
+pageType: hub
+outcome: Distinguish current policy, release evidence, proposals, decisions, and history before relying on a project claim.
+estimatedTime: 5 minutes
+journey: understand
+primaryAction:
+  label: Learn how to read project records
+  href: /project#how-to-read-project-documents
 ---
 
 ## How to read project documents

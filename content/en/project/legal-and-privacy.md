@@ -10,6 +10,13 @@ audiences:
 evidenceLabel: Mobazha public policies and repository notices
 evidenceUrl: https://mobazha.org/terms
 reviewed: 2026-07-04
+pageType: policy
+outcome: Identify which license, terms, privacy notice, trademark rule, and operator obligation applies to a specific deployment.
+estimatedTime: 8 minutes
+journey: understand
+primaryAction:
+  label: Determine which document applies
+  href: /project/legal-and-privacy#which-document-applies
 ---
 
 ## Which document applies

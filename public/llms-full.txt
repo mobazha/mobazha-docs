@@ -43,6 +43,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Status: beta
 - Page type: hub
 - Outcome: Reach the shortest trustworthy path for the job you want to complete.
+- Estimated time: 3 minutes
 - Journey: start
 - Applies to: Mobazha v0.3 release candidate
 - Audience: everyone, agents
@@ -114,6 +115,9 @@ Re-evaluate from current terms and capabilities; the deployment choice does not 
 - URL: /agents
 - Status: current
 - Page type: concept
+- Outcome: Resolve the right authority, applicability, and safety boundary before an Agent answers or prepares an action.
+- Estimated time: 7 minutes
+- Journey: build
 - Applies to: Current public project policy or service surface
 - Audience: agents, agent builders, security reviewers
 - Knowledge authority: https://docs.mobazha.org/agents
@@ -157,6 +161,7 @@ Agent golden questions
 - Status: beta
 - Page type: hub
 - Outcome: Prepare a store that a buyer can understand, pay, and receive from through one tested journey.
+- Estimated time: 6 minutes
 - Journey: use
 - Featured visual: seller-operating-loop (conceptual; Explains the operator responsibility sequence; it is not evidence that a specific store has completed these checks.)
 - Applies to: Mobazha v0.3 release candidate
@@ -407,6 +412,7 @@ An Agent may summarize and prepare an action, but it must not confirm, refund, s
 - Status: beta
 - Page type: hub
 - Outcome: See who operates the store, what you will pay, and how to recover the order before you commit funds.
+- Estimated time: 5 minutes
 - Journey: use
 - Featured visual: buyer-order-lifecycle (conceptual; Explains the documentation authority and milestone model; it does not assert that every deployment exposes every transition.)
 - Applies to: Mobazha v0.3 release candidate
@@ -661,6 +667,7 @@ Never treat documentation or Agent text as authority to release escrow, sign a s
 - Status: beta
 - Page type: hub
 - Outcome: Decide whether self-hosting fits, then reach a healthy and recoverable evaluation Node.
+- Estimated time: 6 minutes
 - Journey: operate
 - Featured visual: self-host-trust-boundary (conceptual; Explains responsibility boundaries and does not prescribe one mandatory network topology.)
 - Applies to: Mobazha v0.3 release candidate
@@ -1873,7 +1880,10 @@ Mobazha documentation
 ### Understand the Mobazha project
 - URL: /project
 - Status: current
-- Page type: concept
+- Page type: hub
+- Outcome: Distinguish current policy, release evidence, proposals, decisions, and history before relying on a project claim.
+- Estimated time: 5 minutes
+- Journey: understand
 - Applies to: Current public project policy or service surface
 - Audience: everyone, contributors, evaluators
 - Knowledge authority: https://docs.mobazha.org/project
@@ -1912,6 +1922,9 @@ Published release maturity and evidence.
 - URL: /project/architecture
 - Status: beta
 - Page type: concept
+- Outcome: Identify which system owns client presentation, runtime capability, transaction state, extension authority, and public policy.
+- Estimated time: 10 minutes
+- Journey: understand
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators, developers, evaluators
 - Knowledge authority: https://docs.mobazha.org/project/architecture
@@ -2057,7 +2070,10 @@ Illustrative allocations in old discussions are not defaults. A percentage becom
 ### Compatibility policy
 - URL: /project/compatibility
 - Status: current
-- Page type: concept
+- Page type: policy
+- Outcome: Determine whether two versions, packages, contracts, capabilities, or distributions can safely operate together.
+- Estimated time: 8 minutes
+- Journey: understand
 - Applies to: Current public project policy or service surface
 - Audience: developers, operators, distributors, agents
 - Knowledge authority: https://docs.mobazha.org/project/compatibility
@@ -2093,7 +2109,10 @@ Open Core extensions
 ### OEM, appliance, and VPS distribution policy
 - URL: /project/distribution
 - Status: current
-- Page type: concept
+- Page type: policy
+- Outcome: Package or operate a Mobazha distribution without weakening license, attribution, security, capability, or recovery boundaries.
+- Estimated time: 10 minutes
+- Journey: understand
 - Applies to: Current public project policy or service surface
 - Audience: operators, distributors, security reviewers, agents
 - Knowledge authority: https://docs.mobazha.org/project/distribution
@@ -2123,6 +2142,9 @@ Legal, privacy, license, and trademark boundaries
 - URL: /project/roadmap
 - Status: draft
 - Page type: concept
+- Outcome: Understand current outcomes and near-term direction without turning exploration areas into release commitments.
+- Estimated time: 6 minutes
+- Journey: understand
 - Applies to: Design direction; not a shipped guarantee
 - Audience: users, contributors, evaluators, agents
 - Knowledge authority: https://docs.mobazha.org/project/roadmap
@@ -2151,7 +2173,10 @@ Public decisions and proposals
 ### Project security model
 - URL: /project/security
 - Status: beta
-- Page type: concept
+- Page type: policy
+- Outcome: Understand the project security boundary and route a suspected vulnerability through private reporting.
+- Estimated time: 6 minutes
+- Journey: understand
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators, developers, security reviewers, evaluators
 - Knowledge authority: https://docs.mobazha.org/project/security
@@ -2177,7 +2202,10 @@ Use the affected repository's GitHub private vulnerability reporting. Do not pub
 ### Legal, privacy, license, and trademark boundaries
 - URL: /project/legal-and-privacy
 - Status: current
-- Page type: concept
+- Page type: policy
+- Outcome: Identify which license, terms, privacy notice, trademark rule, and operator obligation applies to a specific deployment.
+- Estimated time: 8 minutes
+- Journey: understand
 - Applies to: Current public project policy or service surface
 - Audience: users, operators, contributors, evaluators
 - Knowledge authority: https://docs.mobazha.org/project/legal-and-privacy
@@ -2205,7 +2233,10 @@ This page is navigation and product explanation, not legal advice. When document
 ### Release scope and maturity
 - URL: /project/release-scope
 - Status: beta
-- Page type: concept
+- Page type: policy
+- Outcome: Separate current v0.3 release-candidate behavior from stable guarantees, optional composition, proposals, and future targets.
+- Estimated time: 8 minutes
+- Journey: understand
 - Applies to: Mobazha v0.3 release candidate
 - Audience: everyone
 - Knowledge authority: https://docs.mobazha.org/project/release-scope
@@ -2236,7 +2267,10 @@ Exact checksums, artifacts, known issues, migration steps, SBOMs, provenance, an
 ### Documentation and policy governance
 - URL: /project/governance
 - Status: draft
-- Page type: concept
+- Page type: policy
+- Outcome: Identify the review and publication path required for a policy, contract, release, documentation, or implementation change.
+- Estimated time: 8 minutes
+- Journey: understand
 - Applies to: Design direction; not a shipped guarantee
 - Audience: contributors, maintainers, agents
 - Knowledge authority: https://docs.mobazha.org/project/governance
@@ -2266,7 +2300,10 @@ Authority, source, lifecycle, and review rules.
 ### Public decisions and proposals
 - URL: /project/decisions
 - Status: current
-- Page type: concept
+- Page type: hub
+- Outcome: Choose an RFC, ADR, policy page, release note, or history record for the decision you need to propose or inspect.
+- Estimated time: 5 minutes
+- Journey: understand
 - Applies to: Current public project policy or service surface
 - Audience: contributors, maintainers, agents, evaluators
 - Knowledge authority: https://docs.mobazha.org/project/decisions
@@ -2300,7 +2337,10 @@ A record's status must remain explicit. Agents and readers must not infer availa
 ### Requests for Comment
 - URL: /project/rfcs
 - Status: current
-- Page type: concept
+- Page type: hub
+- Outcome: Find or start a public proposal without presenting Draft design direction as accepted or shipped behavior.
+- Estimated time: 5 minutes
+- Journey: understand
 - Applies to: Current public project policy or service surface
 - Audience: contributors, maintainers, evaluators, agents
 - Knowledge authority: https://docs.mobazha.org/project/rfcs
@@ -2337,7 +2377,10 @@ Accepted and Implemented are different states. Only release evidence and effecti
 ### Architecture Decision Records
 - URL: /project/adrs
 - Status: current
-- Page type: concept
+- Page type: hub
+- Outcome: Find an accepted architectural decision and distinguish it from a proposal or repository-local implementation note.
+- Estimated time: 5 minutes
+- Journey: understand
 - Applies to: Current public project policy or service surface
 - Audience: contributors, maintainers, architects, agents
 - Knowledge authority: https://docs.mobazha.org/project/adrs
@@ -2370,7 +2413,10 @@ An accepted ADR explains an intended durable decision. It does not by itself act
 ### History and supersession
 - URL: /project/history
 - Status: current
-- Page type: concept
+- Page type: policy
+- Outcome: Preserve superseded public reasoning without allowing historical proposals to masquerade as current policy.
+- Estimated time: 5 minutes
+- Journey: understand
 - Applies to: Current public project policy or service surface
 - Audience: community, contributors, evaluators, agents
 - Knowledge authority: https://docs.mobazha.org/project/history
@@ -2403,7 +2449,10 @@ Governs interpretation of code and historical feature claims.
 ### Releases
 - URL: /releases
 - Status: current
-- Page type: concept
+- Page type: hub
+- Outcome: Find the current release evidence and adoption checks without mistaking a release candidate for stable production software.
+- Estimated time: 5 minutes
+- Journey: understand
 - Applies to: Current public project policy or service surface
 - Audience: operators, developers
 - Knowledge authority: https://docs.mobazha.org/releases
@@ -2430,7 +2479,10 @@ Reviewed public source revisions
 ### Contribute to Mobazha
 - URL: /contribute
 - Status: current
-- Page type: concept
+- Page type: hub
+- Outcome: Send a documentation, client, Node, website, RFC, or policy contribution to the repository that owns it.
+- Estimated time: 5 minutes
+- Journey: community
 - Applies to: Current public project policy or service surface
 - Audience: contributors, maintainers, agents
 - Knowledge authority: https://docs.mobazha.org/contribute

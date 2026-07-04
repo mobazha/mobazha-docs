@@ -10,6 +10,7 @@ evidenceUrl: https://github.com/mobazha/mobazha/tree/main
 reviewed: 2026-07-04
 pageType: hub
 outcome: Decide whether self-hosting fits, then reach a healthy and recoverable evaluation Node.
+estimatedTime: 6 minutes
 journey: operate
 primaryAction:
   label: Check the requirements

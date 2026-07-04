@@ -10,6 +10,13 @@ audiences:
 evidenceLabel: Mobazha documentation decision process
 evidenceUrl: https://github.com/mobazha/mobazha-docs/blob/main/docs/CONTENT_GOVERNANCE.md
 reviewed: 2026-07-04
+pageType: hub
+outcome: Choose an RFC, ADR, policy page, release note, or history record for the decision you need to propose or inspect.
+estimatedTime: 5 minutes
+journey: understand
+primaryAction:
+  label: Choose the record type
+  href: /project/decisions#choose-the-right-record
 ---
 
 ## Choose the right record

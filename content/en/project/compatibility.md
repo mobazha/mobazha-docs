@@ -10,6 +10,13 @@ audiences:
 evidenceLabel: Node public contracts and conformance sources
 evidenceUrl: https://github.com/mobazha/mobazha
 reviewed: 2026-07-04
+pageType: policy
+outcome: Determine whether two versions, packages, contracts, capabilities, or distributions can safely operate together.
+estimatedTime: 8 minutes
+journey: understand
+primaryAction:
+  label: Review compatibility surfaces
+  href: /project/compatibility#compatibility-surfaces
 ---
 
 ## Compatibility surfaces

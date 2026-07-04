@@ -9,6 +9,13 @@ audiences:
 evidenceLabel: Mobazha public governance and documentation policy
 evidenceUrl: https://github.com/mobazha/mobazha/blob/main/GOVERNANCE.md
 reviewed: 2026-07-04
+pageType: policy
+outcome: Identify the review and publication path required for a policy, contract, release, documentation, or implementation change.
+estimatedTime: 8 minutes
+journey: understand
+primaryAction:
+  label: Classify the change
+  href: /project/governance#change-classes
 ---
 
 ## Change classes

@@ -9,6 +9,13 @@ audiences:
 evidenceLabel: Mobazha contribution and governance policies
 evidenceUrl: https://github.com/mobazha/mobazha/blob/main/CONTRIBUTING.md
 reviewed: 2026-07-04
+pageType: hub
+outcome: Send a documentation, client, Node, website, RFC, or policy contribution to the repository that owns it.
+estimatedTime: 5 minutes
+journey: community
+primaryAction:
+  label: Choose the owning repository
+  href: /contribute#choose-the-repository
 ---
 
 ## Choose the repository

@@ -8,6 +8,13 @@ audiences:
 evidenceLabel: Mobazha GitHub releases
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main/docs/releases
 reviewed: 2026-07-04
+pageType: hub
+outcome: Find the current release evidence and adoption checks without mistaking a release candidate for stable production software.
+estimatedTime: 5 minutes
+journey: understand
+primaryAction:
+  label: Review the current release candidate
+  href: /releases#current-release-candidate
 ---
 
 ## Current release candidate

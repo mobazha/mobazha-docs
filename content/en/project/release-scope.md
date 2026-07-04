@@ -7,6 +7,13 @@ audiences:
 evidenceLabel: Mobazha releases and repository documentation
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main/docs/releases
 reviewed: 2026-07-04
+pageType: policy
+outcome: Separate current v0.3 release-candidate behavior from stable guarantees, optional composition, proposals, and future targets.
+estimatedTime: 8 minutes
+journey: understand
+primaryAction:
+  label: Review the current release boundary
+  href: /project/release-scope#current-v0-3-release-candidate-boundary
 ---
 
 ## Status vocabulary

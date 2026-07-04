@@ -10,6 +10,7 @@ evidenceUrl: https://github.com/mobazha/mobazha-unified
 reviewed: 2026-07-04
 pageType: hub
 outcome: See who operates the store, what you will pay, and how to recover the order before you commit funds.
+estimatedTime: 5 minutes
 journey: use
 primaryAction:
   label: Open the hosted app

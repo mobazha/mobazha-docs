@@ -36,6 +36,7 @@
       "reviewed": "2026-07-04",
       "page_type": "hub",
       "outcome": "Reach the shortest trustworthy path for the job you want to complete.",
+      "estimated_time": "3 minutes",
       "journey": "start",
       "primary_action": {
         "label": "Explore the hosted app",
@@ -101,6 +102,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "concept",
+      "outcome": "Resolve the right authority, applicability, and safety boundary before an Agent answers or prepares an action.",
+      "estimated_time": "7 minutes",
+      "journey": "build",
+      "primary_action": {
+        "label": "Discover the Agent endpoints",
+        "href": "/agents#discovery-endpoints"
+      },
       "language": "en"
     },
     {
@@ -127,6 +135,7 @@
       "reviewed": "2026-07-04",
       "page_type": "hub",
       "outcome": "Prepare a store that a buyer can understand, pay, and receive from through one tested journey.",
+      "estimated_time": "6 minutes",
       "journey": "use",
       "primary_action": {
         "label": "Prepare your store",
@@ -341,6 +350,7 @@
       "reviewed": "2026-07-04",
       "page_type": "hub",
       "outcome": "See who operates the store, what you will pay, and how to recover the order before you commit funds.",
+      "estimated_time": "5 minutes",
       "journey": "use",
       "primary_action": {
         "label": "Open the hosted app",
@@ -525,6 +535,7 @@
       "reviewed": "2026-07-04",
       "page_type": "hub",
       "outcome": "Decide whether self-hosting fits, then reach a healthy and recoverable evaluation Node.",
+      "estimated_time": "6 minutes",
       "journey": "operate",
       "primary_action": {
         "label": "Check the requirements",
@@ -1257,7 +1268,14 @@
         "label": "Mobazha public repositories and project records"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "hub",
+      "outcome": "Distinguish current policy, release evidence, proposals, decisions, and history before relying on a project claim.",
+      "estimated_time": "5 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Learn how to read project records",
+        "href": "/project#how-to-read-project-documents"
+      },
       "language": "en"
     },
     {
@@ -1284,6 +1302,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "concept",
+      "outcome": "Identify which system owns client presentation, runtime capability, transaction state, extension authority, and public policy.",
+      "estimated_time": "10 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Review the authority order",
+        "href": "/project/architecture#authority-order"
+      },
       "language": "en"
     },
     {
@@ -1379,7 +1404,14 @@
         "label": "Node public contracts and conformance sources"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "policy",
+      "outcome": "Determine whether two versions, packages, contracts, capabilities, or distributions can safely operate together.",
+      "estimated_time": "8 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Review compatibility surfaces",
+        "href": "/project/compatibility#compatibility-surfaces"
+      },
       "language": "en"
     },
     {
@@ -1406,7 +1438,14 @@
         "label": "Standalone packaging and distribution checks"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "policy",
+      "outcome": "Package or operate a Mobazha distribution without weakening license, attribution, security, capability, or recovery boundaries.",
+      "estimated_time": "10 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Review permitted distribution",
+        "href": "/project/distribution#permitted-distribution"
+      },
       "language": "en"
     },
     {
@@ -1434,6 +1473,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "concept",
+      "outcome": "Understand current outcomes and near-term direction without turning exploration areas into release commitments.",
+      "estimated_time": "6 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Review near-term outcomes",
+        "href": "/project/roadmap#near-term-outcomes"
+      },
       "language": "en"
     },
     {
@@ -1460,7 +1506,14 @@
         "label": "Mobazha public security sources"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "policy",
+      "outcome": "Understand the project security boundary and route a suspected vulnerability through private reporting.",
+      "estimated_time": "6 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Review security reporting",
+        "href": "/project/security#security-reporting"
+      },
       "language": "en"
     },
     {
@@ -1487,7 +1540,14 @@
         "label": "Mobazha public policies and repository notices"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "policy",
+      "outcome": "Identify which license, terms, privacy notice, trademark rule, and operator obligation applies to a specific deployment.",
+      "estimated_time": "8 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Determine which document applies",
+        "href": "/project/legal-and-privacy#which-document-applies"
+      },
       "language": "en"
     },
     {
@@ -1511,7 +1571,14 @@
         "label": "Mobazha releases and repository documentation"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "policy",
+      "outcome": "Separate current v0.3 release-candidate behavior from stable guarantees, optional composition, proposals, and future targets.",
+      "estimated_time": "8 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Review the current release boundary",
+        "href": "/project/release-scope#current-v0-3-release-candidate-boundary"
+      },
       "language": "en"
     },
     {
@@ -1537,7 +1604,14 @@
         "label": "Mobazha public governance and documentation policy"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "policy",
+      "outcome": "Identify the review and publication path required for a policy, contract, release, documentation, or implementation change.",
+      "estimated_time": "8 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Classify the change",
+        "href": "/project/governance#change-classes"
+      },
       "language": "en"
     },
     {
@@ -1564,7 +1638,14 @@
         "label": "Mobazha documentation decision process"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "hub",
+      "outcome": "Choose an RFC, ADR, policy page, release note, or history record for the decision you need to propose or inspect.",
+      "estimated_time": "5 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Choose the record type",
+        "href": "/project/decisions#choose-the-right-record"
+      },
       "language": "en"
     },
     {
@@ -1591,7 +1672,14 @@
         "label": "Public Mobazha RFC registry"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "hub",
+      "outcome": "Find or start a public proposal without presenting Draft design direction as accepted or shipped behavior.",
+      "estimated_time": "5 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Open the RFC registry",
+        "href": "/project/rfcs#current-registry"
+      },
       "language": "en"
     },
     {
@@ -1618,7 +1706,14 @@
         "label": "Public Mobazha ADR registry"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "hub",
+      "outcome": "Find an accepted architectural decision and distinguish it from a proposal or repository-local implementation note.",
+      "estimated_time": "5 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Open the ADR registry",
+        "href": "/project/adrs#current-registry"
+      },
       "language": "en"
     },
     {
@@ -1645,7 +1740,14 @@
         "label": "Mobazha public history registry"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "policy",
+      "outcome": "Preserve superseded public reasoning without allowing historical proposals to masquerade as current policy.",
+      "estimated_time": "5 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Review the preservation rule",
+        "href": "/project/history#preservation-rule"
+      },
       "language": "en"
     },
     {
@@ -1670,7 +1772,14 @@
         "label": "Mobazha GitHub releases"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "hub",
+      "outcome": "Find the current release evidence and adoption checks without mistaking a release candidate for stable production software.",
+      "estimated_time": "5 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Review the current release candidate",
+        "href": "/releases#current-release-candidate"
+      },
       "language": "en"
     },
     {
@@ -1696,7 +1805,14 @@
         "label": "Mobazha contribution and governance policies"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "hub",
+      "outcome": "Send a documentation, client, Node, website, RFC, or policy contribution to the repository that owns it.",
+      "estimated_time": "5 minutes",
+      "journey": "community",
+      "primary_action": {
+        "label": "Choose the owning repository",
+        "href": "/contribute#choose-the-repository"
+      },
       "language": "en"
     },
     {

@@ -10,6 +10,7 @@ evidenceUrl: https://github.com/mobazha/mobazha/tree/main
 reviewed: 2026-07-04
 pageType: hub
 outcome: Prepare a store that a buyer can understand, pay, and receive from through one tested journey.
+estimatedTime: 6 minutes
 journey: use
 primaryAction:
   label: Prepare your store

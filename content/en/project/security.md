@@ -10,6 +10,13 @@ audiences:
 evidenceLabel: Mobazha public security sources
 evidenceUrl: https://github.com/mobazha/mobazha/blob/main/SECURITY.md
 reviewed: 2026-07-04
+pageType: policy
+outcome: Understand the project security boundary and route a suspected vulnerability through private reporting.
+estimatedTime: 6 minutes
+journey: understand
+primaryAction:
+  label: Review security reporting
+  href: /project/security#security-reporting
 ---
 
 ## Trust boundaries

@@ -9,6 +9,13 @@ audiences:
 evidenceLabel: Mobazha documentation knowledge contract
 evidenceUrl: https://github.com/mobazha/mobazha-docs
 reviewed: 2026-07-04
+pageType: concept
+outcome: Resolve the right authority, applicability, and safety boundary before an Agent answers or prepares an action.
+estimatedTime: 7 minutes
+journey: build
+primaryAction:
+  label: Discover the Agent endpoints
+  href: /agents#discovery-endpoints
 ---
 
 ## Discovery endpoints

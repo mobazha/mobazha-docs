@@ -10,6 +10,13 @@ audiences:
 evidenceLabel: Standalone packaging and distribution checks
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main/deploy/standalone
 reviewed: 2026-07-04
+pageType: policy
+outcome: Package or operate a Mobazha distribution without weakening license, attribution, security, capability, or recovery boundaries.
+estimatedTime: 10 minutes
+journey: understand
+primaryAction:
+  label: Review permitted distribution
+  href: /project/distribution#permitted-distribution
 ---
 
 ## Permitted distribution

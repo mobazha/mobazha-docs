@@ -10,6 +10,13 @@ audiences:
 evidenceLabel: Public Mobazha RFC registry
 evidenceUrl: https://github.com/mobazha/mobazha-docs/tree/main/rfcs
 reviewed: 2026-07-04
+pageType: hub
+outcome: Find or start a public proposal without presenting Draft design direction as accepted or shipped behavior.
+estimatedTime: 5 minutes
+journey: understand
+primaryAction:
+  label: Open the RFC registry
+  href: /project/rfcs#current-registry
 ---
 
 ## When an RFC is required
