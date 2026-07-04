@@ -16,6 +16,8 @@
     "deploy:preview:built": "wrangler versions upload --config dist/server/wrangler.json",
     "deploy:dry-run": "npm run build && wrangler deploy --dry-run --config dist/server/wrangler.json",
     "generate:content": "node scripts/generate-doc-registry.mjs && node scripts/generate-publication.mjs",
+    "sync:openapi": "node scripts/sync-openapi.mjs",
+    "check:openapi": "node scripts/sync-openapi.mjs --check",
     "check:routes": "node scripts/check-routes.mjs",
     "check:external-links": "node scripts/check-external-links.mjs",
     "check:source-contracts": "node scripts/check-source-contracts.mjs",
@@ -27,9 +29,10 @@
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "validate:content": "node scripts/validate-content.mjs",
     "validate:records": "node scripts/validate-records.mjs",
-    "check": "npm run test:content && npm run validate:content && npm run validate:records && npm run check:freshness && npm run check:visual-evidence && npm run lint && npm run build"
+    "check": "npm run test:content && npm run validate:content && npm run validate:records && npm run check:freshness && npm run check:visual-evidence && npm run check:openapi && npm run lint && npm run build"
   },
   "dependencies": {
+    "@scalar/api-reference-react": "^0.9.53",
     "next": "16.2.10",
     "react": "19.2.6",
     "react-dom": "19.2.6"

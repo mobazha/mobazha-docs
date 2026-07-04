@@ -108,3 +108,4 @@ Implementation evidence: the versioned sources linked from each page.
 - [Discovery manifest](/.well-known/mobazha-docs.json)
 - [Expanded agent context](/llms-full.txt)
 - [Node OpenAPI contract](/openapi.json)
+- [Human API reference](/api-reference)

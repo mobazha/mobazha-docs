@@ -16,6 +16,7 @@ const discoveryPaths = [
 ];
 
 test("published pages and Agent discovery endpoints remain reachable", async ({ request }) => {
+  test.setTimeout(60_000);
   const failures = [];
   for (const path of [...new Set([...pagePaths, ...discoveryPaths])]) {
     const response = await request.get(path);

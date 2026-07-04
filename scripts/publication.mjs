@@ -87,6 +87,7 @@ ${llmsSections}
 - [Discovery manifest](/.well-known/mobazha-docs.json)
 - [Expanded agent context](/llms-full.txt)
 - [Node OpenAPI contract](/openapi.json)
+- [Human API reference](/api-reference)
 `;
 
   const recordsByPath = new Map(records.map((record) => [record.path, record]));
@@ -158,6 +159,7 @@ for governed visual claims and provenance, and /llms.txt for compact navigation.
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>${baseUrl}/</loc><lastmod>${reviewed}</lastmod></url>
 ${records.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc><lastmod>${doc.reviewed}</lastmod></url>`).join("\n")}
+  <url><loc>${baseUrl}/api-reference</loc><lastmod>${reviewed}</lastmod></url>
 </urlset>
 `;
 
@@ -192,6 +194,7 @@ ${records.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc><lastmo
       history: "/project/history",
     },
     openapi: "/openapi.json",
+    api_reference: "/api-reference",
     sitemap: "/sitemap.xml",
     status: "beta",
     reviewed,

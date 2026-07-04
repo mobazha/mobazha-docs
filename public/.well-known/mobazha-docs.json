@@ -35,6 +35,7 @@
     "history": "/project/history"
   },
   "openapi": "/openapi.json",
+  "api_reference": "/api-reference",
   "sitemap": "/sitemap.xml",
   "status": "beta",
   "reviewed": "2026-07-04"

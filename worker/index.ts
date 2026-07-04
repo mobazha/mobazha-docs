@@ -1,6 +1,7 @@
 /** Cloudflare Worker entry point for the vinext-starter template. */
 import { handleImageOptimization, DEFAULT_DEVICE_SIZES, DEFAULT_IMAGE_SIZES } from "vinext/server/image-optimization";
 import handler from "vinext/server/app-router-entry";
+import openapiMetadata from "../app/lib/generated-openapi-metadata.json";
 
 interface Env {
   ASSETS: Fetcher;
@@ -30,10 +31,7 @@ const worker = {
     const url = new URL(request.url);
 
     if (url.pathname === "/openapi.json") {
-      return Response.redirect(
-        "https://raw.githubusercontent.com/mobazha/mobazha/main/api-spec/openapi.json",
-        307,
-      );
+      return Response.redirect(new URL(openapiMetadata.publicPath, request.url), 307);
     }
 
     if (url.pathname === "/_vinext/image") {

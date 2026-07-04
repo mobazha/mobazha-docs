@@ -55,39 +55,43 @@ export function DocumentHero({
   const language = isChinese ? "zh" : "en";
   const journey = doc.journey ? journeyLabels[language][doc.journey] : undefined;
   const type = pageTypeLabels[language][doc.pageType];
+
+  return (
+    <header className={`doc-title-block doc-title-${doc.pageType}`}>
+      <div className="doc-title-context">
+        <span className={`doc-status status-${doc.status.toLowerCase()}`}>{statusLabel}</span>
+        <span>{journey ? `${journey} · ${type}` : type}</span>
+      </div>
+      <h1>{doc.title}</h1>
+      <p>{doc.outcome ?? doc.summary}</p>
+      {(doc.primaryAction || doc.estimatedTime) && (
+        <div className="doc-hero-actions">
+          {doc.primaryAction && <PrimaryAction action={doc.primaryAction} />}
+          {doc.estimatedTime && <span className="doc-time"><b>{labels.estimatedTime}</b>{doc.estimatedTime}</span>}
+        </div>
+      )}
+    </header>
+  );
+}
+
+export function FeaturedVisual({ doc, isChinese }: { doc: DocPage; isChinese: boolean }) {
   const visual = doc.featuredVisual ? visualsById.get(doc.featuredVisual) : undefined;
+  if (!visual) return null;
+
   const visualKind = isChinese ? "概念模型" : "Conceptual model";
   const visualDetails = isChinese ? "查看证据详情" : "Evidence details";
 
   return (
-    <header className={`doc-title-block doc-title-${doc.pageType}${visual ? " has-featured-visual" : ""}`}>
-      <div className="doc-hero-copy">
-        <div className="doc-title-context">
-          <span className={`doc-status status-${doc.status.toLowerCase()}`}>{statusLabel}</span>
-          <span>{journey ? `${journey} · ${type}` : type}</span>
-        </div>
-        <h1>{doc.title}</h1>
-        <p>{doc.outcome ?? doc.summary}</p>
-        {(doc.primaryAction || doc.estimatedTime) && (
-          <div className="doc-hero-actions">
-            {doc.primaryAction && <PrimaryAction action={doc.primaryAction} />}
-            {doc.estimatedTime && <span className="doc-time"><b>{labels.estimatedTime}</b>{doc.estimatedTime}</span>}
-          </div>
-        )}
-      </div>
-      {visual && (
-        <figure className="doc-featured-visual">
-          <Image className="visual-desktop" src={visual.src} width={visual.width} height={visual.height} alt={visual.alt} priority />
-          {visual.mobile_src && visual.mobile_width && visual.mobile_height && (
-            <Image className="visual-mobile" src={visual.mobile_src} width={visual.mobile_width} height={visual.mobile_height} alt={visual.alt} priority />
-          )}
-          <figcaption>
-            <span><b>{visualKind}</b>{visual.caption}</span>
-            <a href="/visual-evidence.json">{visualDetails} ↗</a>
-          </figcaption>
-        </figure>
+    <figure className="doc-featured-visual">
+      <Image className="visual-desktop" src={visual.src} width={visual.width} height={visual.height} alt={visual.alt} />
+      {visual.mobile_src && visual.mobile_width && visual.mobile_height && (
+        <Image className="visual-mobile" src={visual.mobile_src} width={visual.mobile_width} height={visual.mobile_height} alt={visual.alt} />
       )}
-    </header>
+      <figcaption>
+        <span><b>{visualKind}</b>{visual.caption}</span>
+        <a href="/visual-evidence.json">{visualDetails} ↗</a>
+      </figcaption>
+    </figure>
   );
 }
 
@@ -126,15 +130,18 @@ export function TrustPanel({
 }
 
 export function PageTableOfContents({ doc, label }: { doc: DocPage; label: string }) {
-  if (!["reference", "policy"].includes(doc.pageType) || doc.sections.length < 4) return null;
+  if (doc.sections.length < 2) return null;
+
   return (
-    <nav className="doc-toc" aria-label={label}>
+    <nav className="doc-toc-sidebar" aria-label={label}>
       <span>{label}</span>
-      <div>
+      <ol>
         {doc.sections.map((section, index) => (
-          <a href={`#${sectionId(section.heading, index)}`} key={`${index}-${section.heading}`}>{section.heading}</a>
+          <li key={`${index}-${section.heading}`}>
+            <a href={`#${sectionId(section.heading, index)}`}>{section.heading}</a>
+          </li>
         ))}
-      </div>
+      </ol>
     </nav>
   );
 }

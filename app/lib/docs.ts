@@ -104,7 +104,27 @@ export function navGroupsForPath(path: string): NavGroup[] {
 }
 
 export function activeNavGroupForPath(path: string): NavGroup | undefined {
-  return navGroupsForPath(path).find((group) => group.links.some(([, href]) => href === path));
+  const groups = navGroupsForPath(path);
+  if (path === "/" || path === "/zh") {
+    return groups[0];
+  }
+
+  const exact = groups.find((group) => group.links.some(([, href]) => href === path));
+  if (exact) return exact;
+
+  let best: NavGroup | undefined;
+  let bestLength = 0;
+  for (const group of groups) {
+    for (const [, href] of group.links) {
+      if (path === href || path.startsWith(`${href}/`)) {
+        if (href.length > bestLength) {
+          bestLength = href.length;
+          best = group;
+        }
+      }
+    }
+  }
+  return best;
 }
 
 export const docs = generatedDocuments as DocPage[];

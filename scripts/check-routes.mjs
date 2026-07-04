@@ -20,6 +20,7 @@ const routes = [
   "/sitemap.xml",
   "/robots.txt",
   "/favicon.svg",
+  "/api-reference",
   "/openapi.json",
   ...visualEvidence.visuals.map((visual) => visual.src),
   ...visualEvidence.visuals.map((visual) => visual.mobile_src).filter(Boolean),

@@ -4,8 +4,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { CopyCodeButton } from "@/app/components/CopyCodeButton";
-import { DocumentHero, PageTableOfContents, sectionId, TrustPanel } from "@/app/components/DocumentExperience";
+import { DocumentHero, FeaturedVisual, PageTableOfContents, sectionId, TrustPanel } from "@/app/components/DocumentExperience";
 import { DocsShell } from "@/app/components/DocsShell";
+import { PageToolbar } from "@/app/components/PageToolbar";
 import { activeNavGroupForPath, docs, docsBySlug, translationPathFor, type DocBlock } from "@/app/lib/docs";
 
 type PageProps = { params: Promise<{ slug: string[] }> };
@@ -176,31 +177,37 @@ export default async function DocumentationPage({ params }: PageProps) {
   return (
     <DocsShell activePath={path}>
       <div className={`doc-page doc-page-${doc.pageType}`}>
-        <div className="doc-breadcrumb"><Link href="/">{labels.docs}</Link><span>/</span><span>{key}</span></div>
-        <DocumentHero doc={doc} isChinese={isChinese} labels={labels} statusLabel={statusLabel} />
-        <TrustPanel doc={doc} labels={labels} open={doc.pageType === "policy"} />
-        <PageTableOfContents doc={doc} label={labels.onThisPage} />
+        <div className="doc-page-grid">
+          <div className="doc-page-main">
+            <div className="doc-breadcrumb"><Link href="/">{labels.docs}</Link><span>/</span><span>{key}</span></div>
+            <PageToolbar doc={doc} isChinese={isChinese} />
+            <DocumentHero doc={doc} isChinese={isChinese} labels={labels} statusLabel={statusLabel} />
+            <TrustPanel doc={doc} labels={labels} open={doc.pageType === "policy"} />
+            <FeaturedVisual doc={doc} isChinese={isChinese} />
 
-        <div className="doc-content">
-          {doc.sections.map((section, sectionIndex) => (
-            <section id={sectionId(section.heading, sectionIndex)} key={`${sectionIndex}-${section.heading}`}>
-              <h2>{section.heading}</h2>
-              {section.blocks.map((block, index) => <DocumentBlock block={block} isChinese={isChinese} key={`${section.heading}-${index}`} />)}
-            </section>
-          ))}
+            <div className="doc-content">
+              {doc.sections.map((section, sectionIndex) => (
+                <section id={sectionId(section.heading, sectionIndex)} key={`${sectionIndex}-${section.heading}`}>
+                  <h2>{section.heading}</h2>
+                  {section.blocks.map((block, index) => <DocumentBlock block={block} isChinese={isChinese} key={`${section.heading}-${index}`} />)}
+                </section>
+              ))}
+            </div>
+
+            {(previous || next) && (
+              <nav className="doc-pagination" aria-label={labels.navigation}>
+                {previous ? <Link href={previous[1]}><small>{labels.previous}</small><b>← {previous[0]}</b></Link> : <span />}
+                {next ? <Link href={next[1]}><small>{labels.next}</small><b>{next[0]} →</b></Link> : <span />}
+              </nav>
+            )}
+
+            <footer className="doc-footer">
+              <div><span>{labels.stale}</span><a href="https://github.com/mobazha/mobazha-docs/issues/new">{labels.issue}</a></div>
+              <div><span>{labels.agentResources}</span><a href={isChinese ? "/zh/agents" : "/agents"}>{labels.agentGuide}</a><a href="/llms.txt">llms.txt</a><a href="/docs-index.json">Index</a></div>
+            </footer>
+          </div>
+          <PageTableOfContents doc={doc} label={labels.onThisPage} />
         </div>
-
-        {(previous || next) && (
-          <nav className="doc-pagination" aria-label={labels.navigation}>
-            {previous ? <Link href={previous[1]}><small>{labels.previous}</small><b>← {previous[0]}</b></Link> : <span />}
-            {next ? <Link href={next[1]}><small>{labels.next}</small><b>{next[0]} →</b></Link> : <span />}
-          </nav>
-        )}
-
-        <footer className="doc-footer">
-          <div><span>{labels.stale}</span><a href="https://github.com/mobazha/mobazha-docs/issues/new">{labels.issue}</a></div>
-          <div><span>{labels.agentResources}</span><a href={isChinese ? "/zh/agents" : "/agents"}>{labels.agentGuide}</a><a href="/llms.txt">llms.txt</a><a href="/docs-index.json">Index</a></div>
-        </footer>
       </div>
     </DocsShell>
   );

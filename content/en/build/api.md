@@ -19,11 +19,12 @@ primaryAction:
 
 ## Contract and entry points
 
-Mobazha Node exposes versioned HTTP routes under /v1/ and WebSocket connections under /ws. The generated OpenAPI document describes request methods, paths, schemas, response envelopes, and declared authentication mechanisms for the current main branch.
+Mobazha Node exposes versioned HTTP routes under /v1/ and WebSocket connections under /ws. The generated OpenAPI document describes request methods, paths, schemas, response envelopes, and declared authentication mechanisms for the reviewed source revision shown in the API Reference.
 
 The specification is a release-candidate contract, not proof that every optional operation is enabled by a particular backend. Read /v1/runtime-config and capability endpoints before exposing optional UI or automation.
 
-- [OpenAPI JSON](/openapi.json) — Canonical redirect to the generated specification in mobazha/mobazha.
+- [Browse the API Reference](/api-reference) — Search operations and schemas in a read-only, human-oriented reference.
+- [Download OpenAPI JSON](/openapi.json) — Use the same reviewed contract with generators, agents, and CI.
 - [API source and generator](https://github.com/mobazha/mobazha/tree/main/api-spec) — Inspect the generated artifact and its owning repository.
 
 ## First capability call

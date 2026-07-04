@@ -5,10 +5,11 @@ import { DocsSearch } from "@/app/components/DocsSearch";
 
 export function SiteHeader({ activePath }: { activePath?: string }) {
   const isChinese = activePath?.startsWith("/zh/") ?? false;
-  const activeDoc = activePath ? docsBySlug.get(activePath.slice(1)) : undefined;
+  const activeDoc = activePath && activePath !== "/" ? docsBySlug.get(activePath.slice(1)) : undefined;
   const languagePath = activeDoc
-    ? translationPathFor(activeDoc) ?? (isChinese ? "/start" : "/zh/start")
-    : "/zh/start";
+    ? translationPathFor(activeDoc) ?? (isChinese ? "/" : "/zh/start")
+    : activePath === "/api-reference" ? "/zh/build/api"
+    : isChinese ? "/" : "/zh/start";
   const primaryLinks = isChinese
     ? [["使用", "/zh/buy"], ["自行托管", "/zh/self-host"], ["开发", "/zh/build"], ["了解", "/zh/project/whitepaper"], ["社区", "/zh/support"]]
     : [["Buy & sell", "/buy"], ["Operate", "/self-host"], ["Build", "/build"], ["Understand", "/project"], ["Community", "/support"]];
@@ -16,7 +17,7 @@ export function SiteHeader({ activePath }: { activePath?: string }) {
     if (!activePath) return false;
     if (href.endsWith("/buy") || href === "/buy") return /\/(buy|sell)(\/|$)/.test(activePath);
     if (href.endsWith("/self-host")) return activePath.includes("/self-host");
-    if (href.endsWith("/build")) return activePath.includes("/build") || activePath === "/reference";
+    if (href.endsWith("/build")) return activePath.includes("/build") || activePath === "/reference" || activePath === "/api-reference";
     if (href.endsWith("/project") || href.endsWith("/project/whitepaper")) {
       return activePath.includes("/project") || activePath === "/releases";
     }
@@ -36,6 +37,7 @@ export function SiteHeader({ activePath }: { activePath?: string }) {
         ))}
       </nav>
       <div className="header-actions">
+        <DocsSearch language={isChinese ? "zh-CN" : "en"} variant="header" />
         <Link className="language-link" href={languagePath} hrefLang={isChinese ? "en" : "zh-CN"}>
           {isChinese ? "English" : "中文"}
         </Link>
@@ -50,14 +52,15 @@ export function SiteHeader({ activePath }: { activePath?: string }) {
 export function DocsShell({ activePath, children }: { activePath: string; children: ReactNode }) {
   const isChinese = activePath.startsWith("/zh/");
   const activeGroup = activeNavGroupForPath(activePath);
-  const activeLabel = activeGroup?.links.find(([, href]) => href === activePath)?.[0];
+  const activeLabel = activeGroup?.links.find(([, href]) => href === activePath)?.[0]
+    ?? activeGroup?.links.find(([, href]) => activePath.startsWith(`${href}/`))?.[0];
+
   return (
     <main id="main-content" lang={isChinese ? "zh-CN" : "en"} tabIndex={-1}>
       <a className="skip-link" href="#main-content">{isChinese ? "跳到主要内容" : "Skip to main content"}</a>
       <SiteHeader activePath={activePath} />
       <div className="docs-layout">
         <aside className="docs-sidebar" aria-label={isChinese ? "文档导航" : "Documentation navigation"}>
-          <DocsSearch language={isChinese ? "zh-CN" : "en"} />
           {activeGroup && (
             <details className="mobile-journey-menu">
               <summary><span>{activeGroup.label}</span><b>{activeLabel}</b></summary>
@@ -81,7 +84,7 @@ export function DocsShell({ activePath, children }: { activePath: string; childr
               {activeGroup.links.map(([label, href]) => (
                 <Link
                   aria-current={activePath === href ? "page" : undefined}
-                  className={activePath === href ? "active" : ""}
+                  className={activePath === href || activePath.startsWith(`${href}/`) ? "active" : ""}
                   href={href}
                   key={href}
                 >
@@ -91,7 +94,7 @@ export function DocsShell({ activePath, children }: { activePath: string; childr
             </nav>
           )}
         </aside>
-        <article className="doc-article">{children}</article>
+        <div className="doc-article">{children}</div>
       </div>
     </main>
   );

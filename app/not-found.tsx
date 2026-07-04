@@ -13,8 +13,8 @@ export default function NotFound() {
           Start from a task, search the documentation, or report a broken public link.
         </span>
         <div>
-          <Link className="primary-action" href="/start">Browse documentation →</Link>
-          <a className="secondary-action" href="https://github.com/mobazha/mobazha-docs/issues/new">Report a broken link</a>
+          <Link className="doc-primary-action" href="/">Browse documentation<span aria-hidden="true">→</span></Link>
+          <a className="portal-secondary-action" href="https://github.com/mobazha/mobazha-docs/issues/new">Report a broken link</a>
         </div>
       </section>
     </main>

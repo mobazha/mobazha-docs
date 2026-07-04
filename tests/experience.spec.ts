@@ -6,6 +6,7 @@ const routes = [
   "/buy",
   "/self-host/install",
   "/build/api",
+  "/api-reference",
   "/project/fees",
   "/zh/buy",
   "/zh/self-host/install",
@@ -19,7 +20,7 @@ for (const route of routes) {
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow, "page-level horizontal overflow").toBeLessThanOrEqual(1);
 
-    if (route !== "/") {
+    if (route !== "/" && route !== "/api-reference") {
       const action = page.locator(".doc-primary-action");
       await expect(action).toBeVisible();
       const actionBox = await action.boundingBox();
@@ -31,13 +32,29 @@ for (const route of routes) {
       expect(bodyFontSizes.every((size) => size >= 16), "article prose stays at least 16px").toBeTruthy();
     }
 
-    const results = await new AxeBuilder({ page })
-      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
-      .analyze();
+    const accessibility = new AxeBuilder({ page })
+      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"]);
+    if (route === "/api-reference") accessibility.include(".api-reference-intro");
+    const results = await accessibility.analyze();
     const serious = results.violations.filter((violation) => ["critical", "serious"].includes(violation.impact ?? ""));
     expect(serious, serious.map((violation) => `${violation.id}: ${violation.help}`).join("\n")).toEqual([]);
   });
 }
+
+test("API reference uses the reviewed contract without enabling requests", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "the shared route test covers mobile layout");
+  test.setTimeout(60_000);
+  await page.goto("/api-reference");
+  await expect(page.locator(".api-reference-intro").getByRole("heading", { name: "Mobazha Node API", exact: true })).toBeVisible();
+  await expect(page.getByText("Read-only reference")).toBeVisible();
+  await expect(page.getByPlaceholder(/Search/).first()).toBeVisible({ timeout: 20_000 });
+  await expect(page.getByText("Test Request", { exact: true })).toHaveCount(0);
+
+  const contractResponse = await page.request.get("/openapi.json");
+  expect(contractResponse.ok()).toBeTruthy();
+  expect(contractResponse.url()).toContain("/openapi/revisions/");
+  expect((await contractResponse.json()).openapi).toBe("3.1.0");
+});
 
 test("keyboard users can bypass navigation and reach the document", async ({ page }) => {
   await page.goto("/buy");
@@ -49,7 +66,7 @@ test("keyboard users can bypass navigation and reach the document", async ({ pag
 });
 
 test("desktop search supports keyboard selection and navigation", async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== "desktop-chromium", "desktop sidebar search is intentionally hidden on mobile");
+  test.skip(testInfo.project.name !== "desktop-chromium", "header search layout is optimized for desktop");
   const indexReady = page.waitForResponse((response) => response.url().endsWith("/docs-index.json") && response.ok());
   await page.goto("/buy");
   await indexReady;
@@ -64,7 +81,7 @@ test("desktop search supports keyboard selection and navigation", async ({ page 
 });
 
 test("Chinese search stays inside the Chinese knowledge surface", async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== "desktop-chromium", "desktop sidebar search is intentionally hidden on mobile");
+  test.skip(testInfo.project.name !== "desktop-chromium", "header search layout is optimized for desktop");
   const indexReady = page.waitForResponse((response) => response.url().endsWith("/docs-index.json") && response.ok());
   await page.goto("/zh/buy");
   await indexReady;
@@ -80,7 +97,7 @@ test("Chinese search stays inside the Chinese knowledge surface", async ({ page 
 test("reduced-motion preference removes meaningful transitions", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  const transitionSeconds = await page.locator(".path-card").first().evaluate((node) =>
+  const transitionSeconds = await page.locator(".portal-journey-card").first().evaluate((node) =>
     Number.parseFloat(getComputedStyle(node).transitionDuration),
   );
   expect(transitionSeconds).toBeLessThanOrEqual(0.00001);

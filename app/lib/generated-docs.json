@@ -249,7 +249,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "Mobazha Node exposes versioned HTTP routes under /v1/ and WebSocket connections under /ws. The generated OpenAPI document describes request methods, paths, schemas, response envelopes, and declared authentication mechanisms for the current main branch."
+            "text": "Mobazha Node exposes versioned HTTP routes under /v1/ and WebSocket connections under /ws. The generated OpenAPI document describes request methods, paths, schemas, response envelopes, and declared authentication mechanisms for the reviewed source revision shown in the API Reference."
           },
           {
             "type": "paragraph",
@@ -259,9 +259,14 @@
             "type": "links",
             "items": [
               {
-                "label": "OpenAPI JSON",
+                "label": "Browse the API Reference",
+                "href": "/api-reference",
+                "description": "Search operations and schemas in a read-only, human-oriented reference."
+              },
+              {
+                "label": "Download OpenAPI JSON",
                 "href": "/openapi.json",
-                "description": "Canonical redirect to the generated specification in mobazha/mobazha."
+                "description": "Use the same reviewed contract with generators, agents, and CI."
               },
               {
                 "label": "API source and generator",

@@ -53,6 +53,7 @@ const allowedInternal = new Set([
   "/visual-evidence.schema.json",
   "/.well-known/mobazha-docs.json",
   "/openapi.json",
+  "/api-reference",
   "/sitemap.xml",
 ]);
 
