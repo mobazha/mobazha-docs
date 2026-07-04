@@ -73,10 +73,12 @@ translation never creates a separate policy authority. Public changes update
 human pages and generated machine-readable indexes in the same commit.
 
 `agent-evals.json` is the machine-readable answer-safety contract behind the
-human golden-question set. `sources.json` records the reviewed public source
-revision when one exists. Run `npm run check:source-contracts` to compare those
-snapshots with current public branches and verify the critical Node API
-contract before a source-driven documentation review.
+human golden-question set. `sources.json` records the last reviewed public
+source revision when one exists. `npm run check:source-contracts` reports
+upstream branch drift without requiring a hash-only documentation commit and
+still verifies the critical Node API contract. Use
+`npm run check:source-contracts:strict` when an explicit source review or
+release gate requires every recorded revision to match the current branch.
 
 ## Cloudflare deployment
 

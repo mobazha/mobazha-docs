@@ -19,6 +19,7 @@
     "check:routes": "node scripts/check-routes.mjs",
     "check:external-links": "node scripts/check-external-links.mjs",
     "check:source-contracts": "node scripts/check-source-contracts.mjs",
+    "check:source-contracts:strict": "node scripts/check-source-contracts.mjs --require-current",
     "test:content": "node --test scripts/content-files.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "validate:content": "node scripts/validate-content.mjs",

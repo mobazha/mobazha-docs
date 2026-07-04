@@ -2,7 +2,9 @@ import { readFileSync } from "node:fs";
 
 const sources = JSON.parse(readFileSync(new URL("../sources.json", import.meta.url), "utf8"));
 const failures = [];
+const drift = [];
 const fail = (message) => failures.push(message);
+const requireCurrent = process.argv.includes("--require-current");
 const githubHeaders = {
   accept: "application/vnd.github+json",
   "user-agent": "mobazha-docs-source-contract-check/1.0",
@@ -26,7 +28,12 @@ for (const source of sources.sources) {
   try {
     const current = await fetchJson(`https://api.github.com/repos/${repository}/commits/main`, repository);
     if (current.sha !== source.revision) {
-      fail(`${source.id} moved from reviewed revision ${source.revision.slice(0, 12)} to ${current.sha.slice(0, 12)}; review and update sources.json`);
+      const message = `${source.id} moved from reviewed revision ${source.revision.slice(0, 12)} to ${current.sha.slice(0, 12)}`;
+      if (requireCurrent) fail(`${message}; review and update sources.json`);
+      else {
+        drift.push(message);
+        console.warn(`source revision drift (non-blocking): ${message}`);
+      }
     } else {
       console.log(`source revision current: ${source.id} ${current.sha.slice(0, 12)}`);
     }
@@ -62,4 +69,5 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`source contract check passed: ${sources.sources.length} public sources`);
+const driftSummary = drift.length ? `; ${drift.length} upstream revision(s) pending review` : "";
+console.log(`source contract check passed: ${sources.sources.length} public sources${driftSummary}`);

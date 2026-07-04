@@ -117,8 +117,12 @@ the policy-authoring authority during the first public phase; a translation
 may clarify language but must not introduce a separate product promise.
 
 When a public source revision is recorded in `sources.json`, run
-`npm run check:source-contracts` before a source-driven review. A changed
-revision is a review trigger, not proof that the published guidance is wrong.
+`npm run check:source-contracts` before a source-driven review. During active
+development, a changed upstream revision is reported but does not fail the
+check or require a hash-only commit; it is a review trigger, not proof that the
+published guidance is wrong. Use `npm run check:source-contracts:strict` for an
+explicit synchronized-source review. Release workflows separately require the
+released commit to match the reviewed manifest revision.
 
 ## Corrections and conflicts
 
