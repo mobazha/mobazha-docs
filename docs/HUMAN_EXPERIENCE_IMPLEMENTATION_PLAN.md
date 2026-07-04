@@ -13,8 +13,7 @@
 | HX-1 | Implemented locally | Journey-first global navigation, role-scoped sidebars, compact first screen, and `TrustPanel` |
 | HX-2 | Implemented locally | Human-experience metadata, page-type styling, section anchors, local TOC, and copyable code |
 | HX-3 | Complete | Flagship journeys are live; `/buy`, `/sell`, and `/self-host` use reviewed desktop/mobile models, with schema 1.7 discovery and `/visual-evidence.json` verified in production |
-| HX-4 | In progress | Checkout, Guest Checkout, order status, resolution, store setup, requirements, and install now expose outcomes, effort, and direct starting actions |
-| HX-5–HX-6 | Planned | Policy/concept refinement, localization, and measurement |
+| HX-4–HX-6 | Planned | Follow-on task/reference migration, localization, and measurement |
 
 Local implementation is not considered delivered until the complete build,
 route checks, desktop and mobile walkthroughs, staged review, and production
@@ -46,31 +45,6 @@ make correct guidance understandable and worth following.
    clearly labeled conceptual diagrams.
 7. The initial redesign covers five flagship journeys before the pattern is
    applied to all 68 pages.
-8. Human-readable type never depends on sub-11px labels or sub-13px supporting
-   copy; the default article body is 16px with a 1.75 line height.
-
-## Typography and density contract
-
-Typography must support sustained reading before visual novelty. Use these
-minimum desktop sizes as shared product tokens:
-
-| Role | Size | Use |
-|---|---:|---|
-| Display | 52–72px | Documentation home promise only |
-| Page title | 38–52px | Hub, task, reference, policy, and concept outcomes |
-| Section title | 30px | Major decisions and task stages |
-| Subheading | 20px | Local choices inside a section |
-| Lead | 18px | One short outcome or orientation paragraph |
-| Body | 16px | Instructions, explanations, and lists |
-| Navigation and actions | 14px | Header, sidebar, buttons, and task cards |
-| Caption and metadata value | 12–13px | Provenance, estimated time, figures, and compact values |
-| Label | 11px | Uppercase category labels only; never essential prose |
-
-Do not compensate for weak hierarchy by increasing the title alone. Reduce
-empty vertical space, keep action labels readable, and make cards earn their
-height with a decision, result, or proof. On mobile, preserve body and action
-sizes while allowing titles to contract.
-
 ## Target information architecture
 
 ### Global navigation
