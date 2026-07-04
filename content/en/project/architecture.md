@@ -29,6 +29,18 @@ Open Core owns order, payment, refund, dispute, settlement, key-custody, and aud
 - [Open Core extension guide](/build/extensions) — Mechanism selection, authority flow, trust levels, current implementation, and Collectibles as the first Order Extension provider.
 - [Draft Composable Extension Platform RFC](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0002-composable-extension-platform.md) — Target control-plane and multi-runtime model; it does not expand current runtime capability.
 
+## Frontend product composition boundary
+
+Frontend products are compositions rather than values in one product-type enum. Deployment, root experience, authentication, presentation channel, network policy, branding, build-time code inclusion, and backend capability remain independent dimensions.
+
+- Public frontend packages define product-neutral contracts and reusable commerce behavior.
+- Distribution owners select the shell, build-time feature set, product profile, brand, and any distribution-local code.
+- Private feature code can participate through compatible composition contracts while remaining physically absent from public artifacts.
+- At runtime, routes, navigation, providers, workflows, and actions resolve from the same composition and can only narrow authoritative backend capabilities.
+- Hosted, standalone, marketplace, embedded, extension, and sovereign concerns must not be collapsed into scattered product-name checks.
+
+[Draft RFC-0003](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0003-composable-frontend-product-model.md) defines the target model and explicitly excludes dynamic plugins, remote React code, Agent surfaces, and a plugin marketplace.
+
 ## Authority order
 
 - Transaction state: the backend that owns the order.

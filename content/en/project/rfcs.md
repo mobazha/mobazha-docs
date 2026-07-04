@@ -33,6 +33,7 @@ reviewed: 2026-07-04
 
 - [RFC-0001: Founding whitepaper publication contract](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0001-whitepaper-publication-contract.md) — Review; defines the evidence and approvals needed to advance the whitepaper.
 - [RFC-0002: Composable Extension Platform Model](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0002-composable-extension-platform.md) — Draft; separates domain, contract role, runtime, trust, lifecycle, and packaging while defining the target multi-runtime platform.
+- [RFC-0003: Composable Frontend Product Model](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0003-composable-frontend-product-model.md) — Draft; separates deployment, experience, channel, code inclusion, and effective capability so public and private distributions can assemble coherent products without product-name branching.
 - [RFC template](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0000-template.md) — Required metadata and review questions.
 - [Repository RFC guide](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/README.md)
 
