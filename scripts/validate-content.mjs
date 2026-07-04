@@ -91,16 +91,18 @@ for (const doc of docs) {
   if (doc.lastTested !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(doc.lastTested)) {
     fail(`invalid last-tested date on /${doc.slug}`);
   }
-  if (doc.outcome !== undefined && (typeof doc.outcome !== "string" || !doc.outcome.trim())) {
+  if (typeof doc.outcome !== "string" || !doc.outcome.trim()) {
     fail(`invalid outcome on /${doc.slug}`);
   }
-  if (doc.estimatedTime !== undefined && (typeof doc.estimatedTime !== "string" || !doc.estimatedTime.trim())) {
+  if (typeof doc.estimatedTime !== "string" || !doc.estimatedTime.trim()) {
     fail(`invalid estimated time on /${doc.slug}`);
   }
-  if (doc.journey !== undefined && !new Set(["start", "use", "operate", "build", "understand", "community"]).has(doc.journey)) {
+  if (!new Set(["start", "use", "operate", "build", "understand", "community"]).has(doc.journey)) {
     fail(`unsupported journey on /${doc.slug}`);
   }
-  if (doc.primaryAction !== undefined) {
+  if (doc.primaryAction === undefined) {
+    fail(`missing primary action on /${doc.slug}`);
+  } else {
     if (typeof doc.primaryAction !== "object" || !doc.primaryAction.label?.trim() || !doc.primaryAction.href?.trim()) {
       fail(`invalid primary action on /${doc.slug}`);
     } else {
@@ -133,6 +135,9 @@ for (const doc of docs) {
     if (!canonical) fail(`Chinese document /${doc.slug} points to missing canonical document`);
     if (canonical && canonical.status !== doc.status) fail(`translation status mismatch on /${doc.slug}`);
     if (canonical && canonical.version !== doc.version) fail(`translation version mismatch on /${doc.slug}`);
+    if (canonical && canonical.pageType !== doc.pageType) fail(`translation page type mismatch on /${doc.slug}`);
+    if (canonical && canonical.journey !== doc.journey) fail(`translation journey mismatch on /${doc.slug}`);
+    if (canonical && canonical.featuredVisual !== doc.featuredVisual) fail(`translation featured visual mismatch on /${doc.slug}`);
     const canonicalPath = `/${doc.translationOf}`;
     const linksCanonical = documentLinks(doc).includes(canonicalPath);
     if (!linksCanonical) fail(`Chinese document /${doc.slug} does not link to ${canonicalPath}`);
@@ -144,10 +149,10 @@ for (const doc of docs) {
   const blocks = doc.sections.flatMap((section) => section.blocks ?? []);
   if (doc.pageType === "task") {
     if (!doc.lastTested) fail(`task page /${doc.slug} is missing lastTested`);
-    if (!/Before you start|Prerequisites|Requirements/i.test(headings)) fail(`task page /${doc.slug} is missing prerequisites`);
+    if (!/Before you start|Prerequisites|Requirements|开始前|前置条件|要求/i.test(headings)) fail(`task page /${doc.slug} is missing prerequisites`);
     if (!blocks.some((block) => block.type === "ordered-list")) fail(`task page /${doc.slug} is missing ordered steps`);
-    if (!/Verify|Expected result|Success criteria/i.test(headings)) fail(`task page /${doc.slug} is missing verification`);
-    if (!/Troubleshoot|Recovery|Rollback|If something fails/i.test(headings)) fail(`task page /${doc.slug} is missing failure or recovery guidance`);
+    if (!/Verify|Expected result|Success criteria|验证|预期结果|成功标准/i.test(headings)) fail(`task page /${doc.slug} is missing verification`);
+    if (!/Troubleshoot|Recovery|Rollback|If something fails|故障排查|恢复|回滚|失败/i.test(headings)) fail(`task page /${doc.slug} is missing failure or recovery guidance`);
   }
   if (doc.pageType === "reference") {
     const text = documentText(doc);

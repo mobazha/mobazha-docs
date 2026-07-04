@@ -9,6 +9,14 @@ evidenceLabel: Mobazha Node 公开部署源码
 evidenceUrl: https://github.com/mobazha/mobazha
 reviewed: 2026-07-04
 translationOf: self-host
+pageType: hub
+outcome: 判断自行托管是否适合，并运行一个健康、可恢复的测试网 Node。
+estimatedTime: 6 分钟
+journey: operate
+primaryAction:
+  label: 开始安装
+  href: /zh/self-host/install
+featuredVisual: self-host-trust-boundary
 ---
 
 ## 当前发布边界

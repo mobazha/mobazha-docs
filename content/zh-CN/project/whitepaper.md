@@ -11,6 +11,13 @@ evidenceUrl: https://github.com/mobazha/mobazha-docs
 reviewed: 2026-07-04
 version: 0.1-review
 translationOf: project/whitepaper
+pageType: concept
+outcome: 理解 Mobazha 的长期方向，同时把它与当前发布保证和服务承诺区分开。
+estimatedTime: 12 分钟
+journey: understand
+primaryAction:
+  label: 阅读核心命题
+  href: /zh/project/whitepaper#核心命题
 ---
 
 ## 核心命题

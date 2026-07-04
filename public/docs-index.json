@@ -1868,7 +1868,14 @@
         "label": "Mobazha 公开仓库"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "hub",
+      "outcome": "从当前要完成的任务进入最短且可信的 Mobazha 路径。",
+      "estimated_time": "3 分钟",
+      "journey": "start",
+      "primary_action": {
+        "label": "体验托管应用",
+        "href": "https://app.mobazha.org"
+      },
       "language": "zh-CN",
       "translation_of": "/start"
     },
@@ -1897,6 +1904,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "concept",
+      "outcome": "根据真正需要的控制权和运维责任，选择托管或自行托管。",
+      "estimated_time": "5 分钟",
+      "journey": "start",
+      "primary_action": {
+        "label": "应用决策规则",
+        "href": "/zh/start/choose-deployment#决策规则"
+      },
       "language": "zh-CN",
       "translation_of": "/start/choose-deployment"
     },
@@ -1924,6 +1938,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "concept",
+      "outcome": "在 Agent 回答或准备操作前，确定正确的权威来源、适用范围和安全边界。",
+      "estimated_time": "7 分钟",
+      "journey": "build",
+      "primary_action": {
+        "label": "查看机器可读入口",
+        "href": "/zh/agents#机器可读入口"
+      },
       "language": "zh-CN",
       "translation_of": "/agents"
     },
@@ -1949,7 +1970,32 @@
         "label": "Mobazha Node 与 Unified 公开实现"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "hub",
+      "outcome": "准备一个买家能理解、付款并完成收货验证的店铺旅程。",
+      "estimated_time": "6 分钟",
+      "journey": "use",
+      "primary_action": {
+        "label": "检查开店条件",
+        "href": "/zh/sell#开店前"
+      },
+      "featured_visual": {
+        "id": "seller-operating-loop",
+        "src": "/images/docs/sell/store-operating-loop.svg",
+        "mobile_src": "/images/docs/sell/store-operating-loop-mobile.svg",
+        "kind": "conceptual",
+        "width": 760,
+        "height": 420,
+        "mobile_width": 360,
+        "mobile_height": 560,
+        "alt": "Conceptual seller operating loop covering store identity and policy, listings, payment readiness, a test purchase, and ongoing order operations.",
+        "caption": "A store is ready only when the complete buyer journey has been tested.",
+        "claim": "Explains the operator responsibility sequence; it is not evidence that a specific store has completed these checks.",
+        "privacy_review": "synthetic-only",
+        "source": "https://github.com/mobazha/mobazha-docs",
+        "source_revision": "docs-model-v1",
+        "applies_to": "Mobazha v0.3 release-candidate guidance",
+        "reviewed": "2026-07-04"
+      },
       "language": "zh-CN",
       "translation_of": "/sell"
     },
@@ -1975,7 +2021,32 @@
         "label": "Mobazha Unified 公开客户端"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "hub",
+      "outcome": "在付款前看清店铺运营者、完整成本和订单恢复路径。",
+      "estimated_time": "5 分钟",
+      "journey": "use",
+      "primary_action": {
+        "label": "打开托管应用",
+        "href": "https://app.mobazha.org"
+      },
+      "featured_visual": {
+        "id": "buyer-order-lifecycle",
+        "src": "/images/docs/buy/order-lifecycle.svg",
+        "mobile_src": "/images/docs/buy/order-lifecycle-mobile.svg",
+        "kind": "conceptual",
+        "width": 760,
+        "height": 420,
+        "mobile_width": 360,
+        "mobile_height": 560,
+        "alt": "Conceptual buyer journey from reviewing one seller quote through payment, fulfillment, and completion, with recovery actions dependent on active order state.",
+        "caption": "One seller-owned order, from reviewed quote to observable completion.",
+        "claim": "Explains the documentation authority and milestone model; it does not assert that every deployment exposes every transition.",
+        "privacy_review": "synthetic-only",
+        "source": "https://github.com/mobazha/mobazha-docs",
+        "source_revision": "docs-model-v1",
+        "applies_to": "Mobazha v0.3 release-candidate guidance",
+        "reviewed": "2026-07-04"
+      },
       "language": "zh-CN",
       "translation_of": "/buy"
     },
@@ -2001,7 +2072,32 @@
         "label": "Mobazha Node 公开部署源码"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "hub",
+      "outcome": "判断自行托管是否适合，并运行一个健康、可恢复的测试网 Node。",
+      "estimated_time": "6 分钟",
+      "journey": "operate",
+      "primary_action": {
+        "label": "开始安装",
+        "href": "/zh/self-host/install"
+      },
+      "featured_visual": {
+        "id": "self-host-trust-boundary",
+        "src": "/images/docs/self-host/operator-trust-boundary.svg",
+        "mobile_src": "/images/docs/self-host/operator-trust-boundary-mobile.svg",
+        "kind": "conceptual",
+        "width": 760,
+        "height": 420,
+        "mobile_width": 360,
+        "mobile_height": 560,
+        "alt": "Conceptual self-hosting boundary showing clients entering through an operator-controlled network boundary to a Mobazha Node and local data, with payment systems and optional hosted services remaining separate dependencies.",
+        "caption": "Self-hosting moves operational control to the Node operator; external dependencies remain explicit.",
+        "claim": "Explains responsibility boundaries and does not prescribe one mandatory network topology.",
+        "privacy_review": "synthetic-only",
+        "source": "https://github.com/mobazha/mobazha-docs",
+        "source_revision": "docs-model-v1",
+        "applies_to": "Mobazha v0.3 release-candidate guidance",
+        "reviewed": "2026-07-04"
+      },
       "language": "zh-CN",
       "translation_of": "/self-host"
     },
@@ -2027,7 +2123,15 @@
         "label": "Mobazha Node 快速开始"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
+      "outcome": "从记录过版本的公开源码启动本地测试网 Node，并验证健康边界。",
+      "estimated_time": "15–30 分钟",
+      "journey": "operate",
+      "primary_action": {
+        "label": "检查开始前条件",
+        "href": "/zh/self-host/install#开始前"
+      },
       "language": "zh-CN",
       "translation_of": "/self-host/install"
     },
@@ -2053,7 +2157,14 @@
         "label": "Mobazha 公开源码组织"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "hub",
+      "outcome": "选择当前可用的公共集成契约，并在不假设所有部署相同的前提下开始开发。",
+      "estimated_time": "5 分钟",
+      "journey": "build",
+      "primary_action": {
+        "label": "查看公开界面",
+        "href": "/zh/build#公开界面"
+      },
       "language": "zh-CN",
       "translation_of": "/build"
     },
@@ -2081,6 +2192,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "concept",
+      "outcome": "判断功能是否实际可用，同时区分源码存在、产品组合、能力、权限和就绪状态。",
+      "estimated_time": "8 分钟",
+      "journey": "build",
+      "primary_action": {
+        "label": "查看有效能力交集",
+        "href": "/zh/build/runtime-capabilities#有效能力交集"
+      },
       "language": "zh-CN",
       "translation_of": "/build/runtime-capabilities"
     },
@@ -2108,6 +2226,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "concept",
+      "outcome": "解析和比较 Token 标识，同时不把可识别性误认为所有权、价格、转移权限或运行时支持。",
+      "estimated_time": "6 分钟",
+      "journey": "build",
+      "primary_action": {
+        "label": "查看标识结构",
+        "href": "/zh/build/token-identifiers#公共标识结构"
+      },
       "language": "zh-CN",
       "translation_of": "/build/token-identifiers"
     },
@@ -2135,6 +2260,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "concept",
+      "outcome": "选择最窄的扩展机制，同时不转移 Core 对订单、付款、结算、密钥和审计的权威。",
+      "estimated_time": "12 分钟",
+      "journey": "build",
+      "primary_action": {
+        "label": "选择扩展机制",
+        "href": "/zh/build/extensions#选择正确的机制"
+      },
       "language": "zh-CN",
       "translation_of": "/build/extensions"
     },
@@ -2162,6 +2294,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "concept",
+      "outcome": "理解 Mobazha 的长期方向，同时把它与当前发布保证和服务承诺区分开。",
+      "estimated_time": "12 分钟",
+      "journey": "understand",
+      "primary_action": {
+        "label": "阅读核心命题",
+        "href": "/zh/project/whitepaper#核心命题"
+      },
       "version": "0.1-review",
       "language": "zh-CN",
       "translation_of": "/project/whitepaper"
@@ -2191,7 +2330,14 @@
         "label": "Mobazha 公开实现与发布证据"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "policy",
+      "outcome": "在同意交易前，区分平台、服务商、网络、运营者、推荐、税费和可选服务收费。",
+      "estimated_time": "7 分钟",
+      "journey": "understand",
+      "primary_action": {
+        "label": "查看报价披露要求",
+        "href": "/zh/project/fees#报价必须说明"
+      },
       "language": "zh-CN",
       "translation_of": "/project/fees"
     },
@@ -2216,7 +2362,14 @@
         "label": "Mobazha 公开支持入口"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "hub",
+      "outcome": "把产品问题、可复现缺陷、文档问题或安全问题送到正确的公开或私密渠道。",
+      "estimated_time": "3 分钟",
+      "journey": "community",
+      "primary_action": {
+        "label": "选择支持渠道",
+        "href": "/zh/support#选择渠道"
+      },
       "language": "zh-CN",
       "translation_of": "/support"
     }

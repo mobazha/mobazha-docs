@@ -9,6 +9,13 @@ evidenceLabel: Mobazha 公开源码组织
 evidenceUrl: https://github.com/mobazha
 reviewed: 2026-07-04
 translationOf: build
+pageType: hub
+outcome: 选择当前可用的公共集成契约，并在不假设所有部署相同的前提下开始开发。
+estimatedTime: 5 分钟
+journey: build
+primaryAction:
+  label: 查看公开界面
+  href: /zh/build#公开界面
 ---
 
 ## 集成原则

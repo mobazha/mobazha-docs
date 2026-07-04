@@ -9,6 +9,13 @@ evidenceLabel: Mobazha 公开仓库
 evidenceUrl: https://github.com/mobazha
 reviewed: 2026-07-04
 translationOf: start
+pageType: hub
+outcome: 从当前要完成的任务进入最短且可信的 Mobazha 路径。
+estimatedTime: 3 分钟
+journey: start
+primaryAction:
+  label: 体验托管应用
+  href: https://app.mobazha.org
 ---
 
 ## 选择你的路径

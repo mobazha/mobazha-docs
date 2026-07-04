@@ -6170,6 +6170,13 @@
     "evidenceUrl": "https://github.com/mobazha/mobazha-docs",
     "reviewed": "2026-07-04",
     "pageType": "concept",
+    "outcome": "在 Agent 回答或准备操作前，确定正确的权威来源、适用范围和安全边界。",
+    "estimatedTime": "7 分钟",
+    "journey": "build",
+    "primaryAction": {
+      "label": "查看机器可读入口",
+      "href": "/zh/agents#机器可读入口"
+    },
     "language": "zh-CN",
     "translationOf": "agents",
     "sections": [
@@ -6254,7 +6261,14 @@
     "evidenceLabel": "Mobazha 公开源码组织",
     "evidenceUrl": "https://github.com/mobazha",
     "reviewed": "2026-07-04",
-    "pageType": "concept",
+    "pageType": "hub",
+    "outcome": "选择当前可用的公共集成契约，并在不假设所有部署相同的前提下开始开发。",
+    "estimatedTime": "5 分钟",
+    "journey": "build",
+    "primaryAction": {
+      "label": "查看公开界面",
+      "href": "/zh/build#公开界面"
+    },
     "language": "zh-CN",
     "translationOf": "build",
     "sections": [
@@ -6322,6 +6336,13 @@
     "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/extensions",
     "reviewed": "2026-07-04",
     "pageType": "concept",
+    "outcome": "选择最窄的扩展机制，同时不转移 Core 对订单、付款、结算、密钥和审计的权威。",
+    "estimatedTime": "12 分钟",
+    "journey": "build",
+    "primaryAction": {
+      "label": "选择扩展机制",
+      "href": "/zh/build/extensions#选择正确的机制"
+    },
     "language": "zh-CN",
     "translationOf": "build/extensions",
     "sections": [
@@ -6632,6 +6653,13 @@
     "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config",
     "reviewed": "2026-07-04",
     "pageType": "concept",
+    "outcome": "判断功能是否实际可用，同时区分源码存在、产品组合、能力、权限和就绪状态。",
+    "estimatedTime": "8 分钟",
+    "journey": "build",
+    "primaryAction": {
+      "label": "查看有效能力交集",
+      "href": "/zh/build/runtime-capabilities#有效能力交集"
+    },
     "language": "zh-CN",
     "translationOf": "build/runtime-capabilities",
     "sections": [
@@ -6757,6 +6785,13 @@
     "evidenceUrl": "https://github.com/mobazha/mobazha-unified/blob/main/packages/core/utils/tokenIdentifier.ts",
     "reviewed": "2026-07-04",
     "pageType": "concept",
+    "outcome": "解析和比较 Token 标识，同时不把可识别性误认为所有权、价格、转移权限或运行时支持。",
+    "estimatedTime": "6 分钟",
+    "journey": "build",
+    "primaryAction": {
+      "label": "查看标识结构",
+      "href": "/zh/build/token-identifiers#公共标识结构"
+    },
     "language": "zh-CN",
     "translationOf": "build/token-identifiers",
     "sections": [
@@ -6846,7 +6881,15 @@
     "evidenceLabel": "Mobazha Unified 公开客户端",
     "evidenceUrl": "https://github.com/mobazha/mobazha-unified",
     "reviewed": "2026-07-04",
-    "pageType": "concept",
+    "pageType": "hub",
+    "outcome": "在付款前看清店铺运营者、完整成本和订单恢复路径。",
+    "estimatedTime": "5 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "打开托管应用",
+      "href": "https://app.mobazha.org"
+    },
+    "featuredVisual": "buyer-order-lifecycle",
     "language": "zh-CN",
     "translationOf": "buy",
     "sections": [
@@ -6934,7 +6977,14 @@
     "evidenceLabel": "Mobazha 公开实现与发布证据",
     "evidenceUrl": "https://github.com/mobazha/mobazha",
     "reviewed": "2026-07-04",
-    "pageType": "concept",
+    "pageType": "policy",
+    "outcome": "在同意交易前，区分平台、服务商、网络、运营者、推荐、税费和可选服务收费。",
+    "estimatedTime": "7 分钟",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "查看报价披露要求",
+      "href": "/zh/project/fees#报价必须说明"
+    },
     "language": "zh-CN",
     "translationOf": "project/fees",
     "sections": [
@@ -7059,6 +7109,13 @@
     "reviewed": "2026-07-04",
     "version": "0.1-review",
     "pageType": "concept",
+    "outcome": "理解 Mobazha 的长期方向，同时把它与当前发布保证和服务承诺区分开。",
+    "estimatedTime": "12 分钟",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "阅读核心命题",
+      "href": "/zh/project/whitepaper#核心命题"
+    },
     "language": "zh-CN",
     "translationOf": "project/whitepaper",
     "sections": [
@@ -7189,7 +7246,15 @@
     "evidenceLabel": "Mobazha Node 公开部署源码",
     "evidenceUrl": "https://github.com/mobazha/mobazha",
     "reviewed": "2026-07-04",
-    "pageType": "concept",
+    "pageType": "hub",
+    "outcome": "判断自行托管是否适合，并运行一个健康、可恢复的测试网 Node。",
+    "estimatedTime": "6 分钟",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "开始安装",
+      "href": "/zh/self-host/install"
+    },
+    "featuredVisual": "self-host-trust-boundary",
     "language": "zh-CN",
     "translationOf": "self-host",
     "sections": [
@@ -7260,16 +7325,52 @@
     "evidenceLabel": "Mobazha Node 快速开始",
     "evidenceUrl": "https://github.com/mobazha/mobazha#quick-start",
     "reviewed": "2026-07-04",
-    "pageType": "concept",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "从记录过版本的公开源码启动本地测试网 Node，并验证健康边界。",
+    "estimatedTime": "15–30 分钟",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "检查开始前条件",
+      "href": "/zh/self-host/install#开始前"
+    },
     "language": "zh-CN",
     "translationOf": "self-host/install",
     "sections": [
       {
-        "heading": "源码构建路径",
+        "heading": "开始前",
         "blocks": [
           {
             "type": "paragraph",
-            "text": "当前候选版本需要 Go 1.26.4、Git，以及受支持的 macOS 或 Linux 环境。使用纯 Go 加密实现构建，并先在测试网评估付款流程。"
+            "text": "当前候选版本需要 Go 1.26.4、Git，以及受支持的 macOS 或 Linux 环境。先准备专用数据目录，确认磁盘空间、本地防火墙策略、备份位置以及管理员会话由谁控制。付款流程只能先在测试网评估。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "查看英文详细要求",
+                "href": "/self-host/requirements"
+              },
+              {
+                "label": "查看英文发布边界",
+                "href": "/project/release-scope"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "安装步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "克隆公开 Node 仓库，并记录准备评估的准确 commit。",
+              "使用下面的纯 Go 加密实现构建二进制文件。",
+              "为服务账号初始化测试网数据目录。",
+              "在默认的仅本机监听地址启动 Node，并打开内嵌 UI。",
+              "保持终端可见，直到首次启动和健康检查完成。"
+            ]
           },
           {
             "type": "code",
@@ -7284,7 +7385,7 @@
         ]
       },
       {
-        "heading": "启动后的默认边界",
+        "heading": "预期结果与验证",
         "blocks": [
           {
             "type": "unordered-list",
@@ -7294,16 +7395,61 @@
               "HTTP 位于 /v1/，WebSocket 位于 /ws，MCP Streamable HTTP 位于 /v1/mcp。",
               "保持本地监听；在远程暴露前配置 TLS、认证、防火墙、更新与恢复方案。"
             ]
+          },
+          {
+            "type": "paragraph",
+            "text": "在第二个终端运行："
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "code": "./mobazha doctor --json\ncurl -fsS http://127.0.0.1:5102/v1/runtime-config | jq"
+          },
+          {
+            "type": "paragraph",
+            "text": "确认诊断能够完成、内嵌 UI 可以打开、运行时快照使用受支持的 schema，并且尚未配置或不健康的可选能力保持不可用。"
+          },
+          {
+            "type": "paragraph",
+            "text": "`doctor --json` 会返回通过、警告和失败数量以及具名检查。路径、容量、版本与可选依赖结果会因主机而异；健康的本地 Node 应有零项失败，警告仍需按目标部署逐项审阅。"
+          },
+          {
+            "type": "code",
+            "language": "json",
+            "code": "{\n  \"pass\": 7,\n  \"warn\": 3,\n  \"fail\": 0,\n  \"results\": [\n    {\n      \"name\": \"Data directory\",\n      \"status\": \"PASS\",\n      \"detail\": \"<data-dir> (database found: <database-path>)\"\n    },\n    {\n      \"name\": \"Node API\",\n      \"status\": \"PASS\",\n      \"detail\": \"healthy\"\n    }\n  ]\n}"
+          },
+          {
+            "type": "paragraph",
+            "text": "这里的列表经过缩短，只展示输出契约形状。运维时保留完整本地结果；公开分享前必须移除路径和环境细节。"
           }
         ]
       },
       {
-        "heading": "后台服务与诊断",
+        "heading": "可选后台服务",
         "blocks": [
+          {
+            "type": "paragraph",
+            "text": "完成交互式启动验证后，再安装并检查受支持的后台服务。"
+          },
           {
             "type": "code",
             "language": "text",
             "code": "./mobazha service install\n./mobazha service status\n./mobazha doctor --json"
+          }
+        ]
+      },
+      {
+        "heading": "失败时恢复",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "构建失败时，确认 `go version`、检出的 commit、平台工具链和可用存储空间。",
+              "启动失败时，保留脱敏诊断，并确认数据目录所有权和端口占用。",
+              "UI 无法打开时，先测试本地监听，不要直接修改 DNS、TLS 或防火墙。",
+              "运行时能力未就绪时，检查配置和依赖，不要手动强制开启前端入口。",
+              "只能删除明确创建的可丢弃测试目录；不要为了重试安装而删除店铺的唯一数据副本。"
+            ]
           }
         ]
       },
@@ -7342,7 +7488,15 @@
     "evidenceLabel": "Mobazha Node 与 Unified 公开实现",
     "evidenceUrl": "https://github.com/mobazha/mobazha-unified",
     "reviewed": "2026-07-04",
-    "pageType": "concept",
+    "pageType": "hub",
+    "outcome": "准备一个买家能理解、付款并完成收货验证的店铺旅程。",
+    "estimatedTime": "6 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "检查开店条件",
+      "href": "/zh/sell#开店前"
+    },
+    "featuredVisual": "seller-operating-loop",
     "language": "zh-CN",
     "translationOf": "sell",
     "sections": [
@@ -7427,7 +7581,14 @@
     "evidenceLabel": "Mobazha 公开仓库",
     "evidenceUrl": "https://github.com/mobazha",
     "reviewed": "2026-07-04",
-    "pageType": "concept",
+    "pageType": "hub",
+    "outcome": "从当前要完成的任务进入最短且可信的 Mobazha 路径。",
+    "estimatedTime": "3 分钟",
+    "journey": "start",
+    "primaryAction": {
+      "label": "体验托管应用",
+      "href": "https://app.mobazha.org"
+    },
     "language": "zh-CN",
     "translationOf": "start",
     "sections": [
@@ -7496,6 +7657,13 @@
     "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/README.md",
     "reviewed": "2026-07-04",
     "pageType": "concept",
+    "outcome": "根据真正需要的控制权和运维责任，选择托管或自行托管。",
+    "estimatedTime": "5 分钟",
+    "journey": "start",
+    "primaryAction": {
+      "label": "应用决策规则",
+      "href": "/zh/start/choose-deployment#决策规则"
+    },
     "language": "zh-CN",
     "translationOf": "start/choose-deployment",
     "sections": [
@@ -7580,7 +7748,14 @@
     "evidenceLabel": "Mobazha 公开支持入口",
     "evidenceUrl": "https://mobazha.org/status",
     "reviewed": "2026-07-04",
-    "pageType": "concept",
+    "pageType": "hub",
+    "outcome": "把产品问题、可复现缺陷、文档问题或安全问题送到正确的公开或私密渠道。",
+    "estimatedTime": "3 分钟",
+    "journey": "community",
+    "primaryAction": {
+      "label": "选择支持渠道",
+      "href": "/zh/support#选择渠道"
+    },
     "language": "zh-CN",
     "translationOf": "support",
     "sections": [

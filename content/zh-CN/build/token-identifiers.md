@@ -10,6 +10,13 @@ evidenceLabel: Unified 代币标识实现与测试
 evidenceUrl: https://github.com/mobazha/mobazha-unified/blob/main/packages/core/utils/tokenIdentifier.ts
 reviewed: 2026-07-04
 translationOf: build/token-identifiers
+pageType: concept
+outcome: 解析和比较 Token 标识，同时不把可识别性误认为所有权、价格、转移权限或运行时支持。
+estimatedTime: 6 分钟
+journey: build
+primaryAction:
+  label: 查看标识结构
+  href: /zh/build/token-identifiers#公共标识结构
 ---
 
 ## 公共标识结构

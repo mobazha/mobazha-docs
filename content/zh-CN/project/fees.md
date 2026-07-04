@@ -12,6 +12,13 @@ evidenceLabel: Mobazha 公开实现与发布证据
 evidenceUrl: https://github.com/mobazha/mobazha
 reviewed: 2026-07-04
 translationOf: project/fees
+pageType: policy
+outcome: 在同意交易前，区分平台、服务商、网络、运营者、推荐、税费和可选服务收费。
+estimatedTime: 7 分钟
+journey: understand
+primaryAction:
+  label: 查看报价披露要求
+  href: /zh/project/fees#报价必须说明
 ---
 
 ## 不要把所有资金流都叫作佣金

@@ -10,6 +10,13 @@ evidenceLabel: Mobazha Open Core 扩展契约
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main/docs/extensions
 reviewed: 2026-07-04
 translationOf: build/extensions
+pageType: concept
+outcome: 选择最窄的扩展机制，同时不转移 Core 对订单、付款、结算、密钥和审计的权威。
+estimatedTime: 12 分钟
+journey: build
+primaryAction:
+  label: 选择扩展机制
+  href: /zh/build/extensions#选择正确的机制
 ---
 
 ## 选择正确的机制

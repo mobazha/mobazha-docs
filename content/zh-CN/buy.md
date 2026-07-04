@@ -9,6 +9,14 @@ evidenceLabel: Mobazha Unified 公开客户端
 evidenceUrl: https://github.com/mobazha/mobazha-unified
 reviewed: 2026-07-04
 translationOf: buy
+pageType: hub
+outcome: 在付款前看清店铺运营者、完整成本和订单恢复路径。
+estimatedTime: 5 分钟
+journey: use
+primaryAction:
+  label: 打开托管应用
+  href: https://app.mobazha.org
+featuredVisual: buyer-order-lifecycle
 ---
 
 ## 确认前

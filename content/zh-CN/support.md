@@ -8,6 +8,13 @@ evidenceLabel: Mobazha 公开支持入口
 evidenceUrl: https://mobazha.org/status
 reviewed: 2026-07-04
 translationOf: support
+pageType: hub
+outcome: 把产品问题、可复现缺陷、文档问题或安全问题送到正确的公开或私密渠道。
+estimatedTime: 3 分钟
+journey: community
+primaryAction:
+  label: 选择支持渠道
+  href: /zh/support#选择渠道
 ---
 
 ## 选择渠道

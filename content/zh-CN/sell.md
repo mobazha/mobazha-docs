@@ -9,6 +9,14 @@ evidenceLabel: Mobazha Node 与 Unified 公开实现
 evidenceUrl: https://github.com/mobazha/mobazha-unified
 reviewed: 2026-07-04
 translationOf: sell
+pageType: hub
+outcome: 准备一个买家能理解、付款并完成收货验证的店铺旅程。
+estimatedTime: 6 分钟
+journey: use
+primaryAction:
+  label: 检查开店条件
+  href: /zh/sell#开店前
+featuredVisual: seller-operating-loop
 ---
 
 ## 开店前

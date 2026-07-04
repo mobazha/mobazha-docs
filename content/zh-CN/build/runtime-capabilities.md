@@ -10,6 +10,13 @@ evidenceLabel: Unified 运行时配置实现
 evidenceUrl: https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config
 reviewed: 2026-07-04
 translationOf: build/runtime-capabilities
+pageType: concept
+outcome: 判断功能是否实际可用，同时区分源码存在、产品组合、能力、权限和就绪状态。
+estimatedTime: 8 分钟
+journey: build
+primaryAction:
+  label: 查看有效能力交集
+  href: /zh/build/runtime-capabilities#有效能力交集
 ---
 
 ## 有效能力交集

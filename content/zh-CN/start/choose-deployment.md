@@ -11,6 +11,13 @@ evidenceLabel: Mobazha 公开产品与发布边界
 evidenceUrl: https://github.com/mobazha/mobazha/blob/main/README.md
 reviewed: 2026-07-04
 translationOf: start/choose-deployment
+pageType: concept
+outcome: 根据真正需要的控制权和运维责任，选择托管或自行托管。
+estimatedTime: 5 分钟
+journey: start
+primaryAction:
+  label: 应用决策规则
+  href: /zh/start/choose-deployment#决策规则
 ---
 
 ## 托管服务

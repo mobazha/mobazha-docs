@@ -10,6 +10,13 @@ evidenceLabel: Mobazha 文档知识契约
 evidenceUrl: https://github.com/mobazha/mobazha-docs
 reviewed: 2026-07-04
 translationOf: agents
+pageType: concept
+outcome: 在 Agent 回答或准备操作前，确定正确的权威来源、适用范围和安全边界。
+estimatedTime: 7 分钟
+journey: build
+primaryAction:
+  label: 查看机器可读入口
+  href: /zh/agents#机器可读入口
 ---
 
 ## 权威解析顺序
