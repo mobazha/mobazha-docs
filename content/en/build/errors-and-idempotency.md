@@ -10,6 +10,12 @@ evidenceUrl: https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json
 reviewed: 2026-07-04
 pageType: reference
 lastTested: 2026-07-04
+outcome: Decide whether to stop, correct, reconcile, or retry without duplicating a protected business action.
+estimatedTime: 8 minutes
+journey: build
+primaryAction:
+  label: Review the retry decision
+  href: /build/errors-and-idempotency#retry-decision
 ---
 
 ## Error classes

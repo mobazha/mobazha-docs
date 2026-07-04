@@ -247,6 +247,9 @@ Operate incoming orders
 - URL: /sell/listings
 - Status: beta
 - Page type: task
+- Outcome: Publish one listing that a buyer can understand, quote, and purchase through its intended fulfillment path.
+- Estimated time: 15–30 minutes
+- Journey: use
 - Applies to: Mobazha v0.3 release candidate
 - Audience: sellers
 - Knowledge authority: https://docs.mobazha.org/sell/listings
@@ -283,6 +286,9 @@ When editing a listing with active orders, preserve the version and terms accept
 - URL: /sell/shipping
 - Status: beta
 - Page type: task
+- Outcome: Offer only delivery methods that apply to the buyer destination and remain attached to the created order.
+- Estimated time: 15–30 minutes
+- Journey: use
 - Applies to: Mobazha v0.3 release candidate
 - Audience: sellers, operators
 - Knowledge authority: https://docs.mobazha.org/sell/shipping
@@ -318,6 +324,9 @@ Do not attach physical shipping charges to digital or service flows merely to sa
 - URL: /sell/payments
 - Status: beta
 - Page type: task
+- Outcome: Enable one payment method only after its configuration, health, observation, and recovery path are proven.
+- Estimated time: 20–40 minutes
+- Journey: use
 - Applies to: Mobazha v0.3 release candidate
 - Audience: sellers, operators
 - Knowledge authority: https://docs.mobazha.org/sell/payments
@@ -354,6 +363,9 @@ The default open-source release candidate enables BTC, BCH, and LTC subject to e
 - URL: /sell/orders
 - Status: beta
 - Page type: task
+- Outcome: Move one paid order through fulfillment using only actions valid for its current state.
+- Estimated time: 5 minutes per review
+- Journey: use
 - Applies to: Mobazha v0.3 release candidate
 - Audience: sellers, operators, agents
 - Knowledge authority: https://docs.mobazha.org/sell/orders
@@ -798,6 +810,9 @@ Remove only a disposable test data directory you deliberately created; never del
 - URL: /self-host/configure
 - Status: beta
 - Page type: task
+- Outcome: Run one explicit Node profile whose data, listener, dependencies, backup, and rollback owner are known.
+- Estimated time: 20–40 minutes
+- Journey: operate
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators
 - Knowledge authority: https://docs.mobazha.org/self-host/configure
@@ -848,6 +863,9 @@ Restore from a verified backup only through a release-compatible procedure.
 - URL: /self-host/network-and-tls
 - Status: beta
 - Page type: concept
+- Outcome: Choose a network boundary that keeps administration private and exposes only authenticated routes intentionally.
+- Estimated time: 7 minutes
+- Journey: operate
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators, security reviewers
 - Knowledge authority: https://docs.mobazha.org/self-host/network-and-tls
@@ -894,6 +912,9 @@ From outside the trusted boundary, enumerate only the intended public routes and
 - URL: /self-host/monitoring
 - Status: beta
 - Page type: task
+- Outcome: Detect process, storage, capability, and dependency degradation before it becomes an order incident.
+- Estimated time: 20–40 minutes
+- Journey: operate
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators
 - Knowledge authority: https://docs.mobazha.org/self-host/monitoring
@@ -931,6 +952,9 @@ If alerts contain secrets or personal data, treat that as an incident and rotate
 - URL: /self-host/backup-and-upgrade
 - Status: beta
 - Page type: task
+- Outcome: Produce a verified backup and upgrade one reviewed release without losing a recoverable rollback point.
+- Estimated time: 30–60 minutes
+- Journey: operate
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators
 - Knowledge authority: https://docs.mobazha.org/self-host/backup-and-upgrade
@@ -975,7 +999,10 @@ Report missing restore instructions as a release blocker, not as an operator det
 ### Secure a self-hosted node
 - URL: /self-host/security
 - Status: beta
-- Page type: concept
+- Page type: policy
+- Outcome: Establish the minimum host, identity, secret, payment, monitoring, and recovery controls for a Node you operate.
+- Estimated time: 10 minutes
+- Journey: operate
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators, security reviewers
 - Knowledge authority: https://docs.mobazha.org/self-host/security
@@ -1005,6 +1032,9 @@ Supply-chain audit baseline
 - URL: /self-host/troubleshooting
 - Status: beta
 - Page type: task
+- Outcome: Isolate one failing boundary and preserve a reproducible, sanitized test before making recovery changes.
+- Estimated time: 10–30 minutes
+- Journey: operate
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators, support
 - Knowledge authority: https://docs.mobazha.org/self-host/troubleshooting
@@ -1190,6 +1220,9 @@ HTTP API and OpenAPI
 - URL: /build/authentication
 - Status: beta
 - Page type: reference
+- Outcome: Choose the supported identity and issue the narrowest credential required by one integration.
+- Estimated time: 10 minutes
+- Journey: build
 - Applies to: Mobazha v0.3 release candidate
 - Audience: developers, operators, agent builders
 - Knowledge authority: https://docs.mobazha.org/build/authentication
@@ -1226,6 +1259,8 @@ curl -fsS \
   -H "Authorization: Bearer $MBZ_API_TOKEN" \
   "$BASE_URL/v1/webhooks" | jq
 ```
+Verify the credential boundary
+Call one read-only route required by the integration and one route outside its scope in a disposable environment. The intended route should succeed; the out-of-scope route should return `403` without widening the token. An invalid or revoked token should return `401`. Record the token owner, purpose, scopes, creation time, rotation plan, and revocation path without recording the secret.
 Authorization and scope rules
 Grant read scopes separately from create, manage, spend, settlement, or administrative scopes.
 MCP requires `ai:use` at the transport boundary and each tool's domain scope.
@@ -1244,6 +1279,9 @@ Pin automation to a tested Node version and re-read OpenAPI security and scope r
 - URL: /build/errors-and-idempotency
 - Status: beta
 - Page type: reference
+- Outcome: Decide whether to stop, correct, reconcile, or retry without duplicating a protected business action.
+- Estimated time: 8 minutes
+- Journey: build
 - Applies to: Mobazha v0.3 release candidate
 - Audience: developers, agent builders
 - Knowledge authority: https://docs.mobazha.org/build/errors-and-idempotency
@@ -1385,6 +1423,9 @@ Runtime capability rules
 - URL: /build/api
 - Status: beta
 - Page type: reference
+- Outcome: Identify the current Node contract and confirm a capability before building against its versioned route.
+- Estimated time: 7 minutes
+- Journey: build
 - Applies to: Mobazha v0.3 release candidate
 - Audience: developers
 - Knowledge authority: https://docs.mobazha.org/build/api
@@ -1407,6 +1448,8 @@ A local Node publishes its frontend runtime snapshot without requiring an authen
 curl -sS http://127.0.0.1:5102/v1/runtime-config | jq
 ```
 The example assumes the default local listener. Do not disable authentication or expose an administrative listener merely to make an example work.
+Expected result
+The runtime call should return a successful JSON envelope describing the Node schema, deployment composition, readiness, and effective capabilities. Record the Node version and capability you intend to use. A missing or unavailable capability is a decision to stop or degrade the integration—not a reason to enable a frontend-only switch.
 Authentication choices
 HTTP Basic authentication is available for the standalone administrator boundary.
 Bearer JWTs represent hosted identities where the deployment supports them.
@@ -1437,6 +1480,9 @@ Errors, retries, and idempotency
 - URL: /build/websocket
 - Status: beta
 - Page type: reference
+- Outcome: Use an authenticated event as a refresh signal and recover current state after reconnecting.
+- Estimated time: 10 minutes
+- Journey: build
 - Applies to: Mobazha v0.3 release candidate
 - Audience: developers, client maintainers
 - Knowledge authority: https://docs.mobazha.org/build/websocket
@@ -1466,6 +1512,8 @@ async function onOrderEvent(orderId) {
   return api.get(`/v1/orders/${orderId}`);
 }
 ```
+Expected result
+After authenticating, the client should receive only events allowed for the resolved identity and deployment. Disconnect the client briefly, reconnect with bounded backoff, and confirm it refreshes current resource state through HTTP before enabling an action. The integration is not complete if it requires every transient event to arrive exactly once or in business-state order.
 Authentication and connection errors
 Use the authentication mechanism supported by the deployed client and gateway. Avoid credentials in WebSocket URLs when a safer session, cookie, header, or subprotocol boundary is available. A failed authentication must not degrade into an anonymous administrative connection.
 Back off with jitter after disconnect and cap retries.
@@ -1481,6 +1529,9 @@ Shared client
 - URL: /build/mcp
 - Status: beta
 - Page type: reference
+- Outcome: Initialize an authenticated MCP session and discover only the tools permitted for its resolved scopes.
+- Estimated time: 10 minutes
+- Journey: build
 - Applies to: Mobazha v0.3 release candidate
 - Audience: agent builders, security reviewers
 - Knowledge authority: https://docs.mobazha.org/build/mcp
@@ -1510,6 +1561,8 @@ curl -i -sS http://127.0.0.1:5102/v1/mcp \
   --data '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"example","version":"0.1.0"}}}'
 ```
 After initialization, complete the SDK's initialized notification, list available tools, and call only a tool returned for the current identity and scope set.
+Expected result
+Initialization should return an MCP session compatible with the requested protocol version. Tool discovery should expose only tools permitted by `ai:use`, the resolved identity, domain scopes, runtime capabilities, and the connected Node version. Repeat discovery with a narrower disposable token and confirm protected tools disappear or reject access rather than relying on prompt instructions to constrain them.
 Non-bypassable boundaries
 Authenticate the human, service, or agent identity appropriate to the action.
 Request the narrowest scopes and make spend or settlement authority explicit.
@@ -1530,6 +1583,9 @@ A successful tool response does not replace user confirmation, payment evidence,
 - URL: /build/webhooks
 - Status: beta
 - Page type: reference
+- Outcome: Authenticate, durably accept, deduplicate, and safely reconcile one webhook delivery.
+- Estimated time: 15 minutes
+- Journey: build
 - Applies to: Mobazha v0.3 release candidate
 - Audience: developers, operators
 - Knowledge authority: https://docs.mobazha.org/build/webhooks
@@ -1571,6 +1627,8 @@ export function verifyMobazhaWebhook({ secret, webhookId, timestamp, signature, 
 Use the exact raw request bytes. Parsing and re-serializing JSON before verification can change the signed body.
 Signing implementation
 CloudEvent envelope
+Verification exercise
+Register a non-production endpoint, trigger one test delivery, and preserve its delivery ID. Confirm that a valid request is durably accepted once, the exact same delivery is deduplicated, an altered body fails signature verification, and a timestamp outside the replay window is rejected. Then reconcile the referenced resource through the HTTP API instead of trusting event order.
 Standalone defaults
 The current standalone defaults are five total delivery attempts, exponential backoff beginning at 30 seconds and capped at one hour, a 10-second request timeout, five-second polling, and seven-day completed-delivery retention. Deployments may override these values, so consumers must not infer a guaranteed retry schedule from the defaults.
 Delivery is at least once in practice: duplicates and reordering are expected integration conditions, not exceptional bugs.
@@ -1818,6 +1876,9 @@ Evidence links support a public explanation but do not create a second policy au
 - URL: /project/whitepaper
 - Status: draft
 - Page type: concept
+- Outcome: Understand Mobazha's durable direction while separating it from current release guarantees and service promises.
+- Estimated time: 12 minutes
+- Journey: understand
 - Applies to: Design direction; not a shipped guarantee
 - Audience: community, contributors, evaluators
 - Knowledge authority: https://docs.mobazha.org/project/whitepaper
@@ -1871,7 +1932,10 @@ Draft direction is not shipped behavior, a financial product, a revenue guarante
 ### Fees and sustainable economics
 - URL: /project/fees
 - Status: current
-- Page type: concept
+- Page type: policy
+- Outcome: Distinguish platform, provider, network, operator, referral, tax, and optional-service charges before consent.
+- Estimated time: 7 minutes
+- Journey: understand
 - Applies to: Current public project policy or service surface
 - Audience: buyers, sellers, operators, evaluators, agents
 - Knowledge authority: https://docs.mobazha.org/project/fees

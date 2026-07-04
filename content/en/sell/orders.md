@@ -11,6 +11,12 @@ evidenceUrl: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/a
 reviewed: 2026-07-04
 pageType: task
 lastTested: 2026-07-04
+outcome: Move one paid order through fulfillment using only actions valid for its current state.
+estimatedTime: 5 minutes per review
+journey: use
+primaryAction:
+  label: Review an incoming order
+  href: /sell/orders#before-you-start
 ---
 
 ## Before you start

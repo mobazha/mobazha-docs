@@ -9,6 +9,12 @@ evidenceUrl: https://github.com/mobazha/mobazha
 reviewed: 2026-07-04
 pageType: task
 lastTested: 2026-07-04
+outcome: Run one explicit Node profile whose data, listener, dependencies, backup, and rollback owner are known.
+estimatedTime: 20–40 minutes
+journey: operate
+primaryAction:
+  label: Record the deployment profile
+  href: /self-host/configure#before-you-start
 ---
 
 ## Before you start

@@ -13,7 +13,7 @@
 | HX-1 | Complete | Journey-first global navigation, role-scoped sidebars, compact first screen, and `TrustPanel` are live |
 | HX-2 | Complete | Human-experience metadata, page-type styling, section anchors, local TOC, and copyable code are live |
 | HX-3 | Complete | Flagship journeys are live; `/buy`, `/sell`, and `/self-host` use reviewed desktop/mobile models, with schema 1.7 discovery and `/visual-evidence.json` verified in production |
-| HX-4 | In progress | Checkout, Guest Checkout, order status, resolution, store setup, requirements, and install now expose outcomes, effort, and direct starting actions |
+| HX-4 | In progress | 25 high-use task, reference, policy, and concept pages now expose outcomes, effort, and direct starts; developer references include observable verification exercises |
 | HX-5–HX-6 | Planned | Policy/concept refinement, localization, and measurement |
 
 Local implementation is not considered delivered until the complete build,
@@ -230,9 +230,14 @@ explicitly evaluating those properties.
 | 4 | `/self-host` | Decide whether and how to run a Node | Requirements summary, install CTA, topology diagram, observable health result |
 | 5 | `/build/quickstart` | Make the first authenticated API call | Code above the fold, copy action, expected response, version and auth context |
 
-After these five establish the system, migrate checkout, guest checkout, order
-status, store setup, install, webhooks, fees, and whitepaper entry pages in that
-order. Do not mechanically apply visual components to every policy page.
+The first follow-on sequence—checkout, Guest Checkout, order status, store
+setup, install, webhooks, fees, and the whitepaper entry—is now migrated. The
+same contract also covers buyer resolution, seller listings, shipping,
+payments, orders, Node requirements, configuration, network boundary,
+monitoring, backup and upgrade, security, troubleshooting, HTTP API,
+authentication, errors and idempotency, WebSocket, and MCP. Continue with
+remaining high-use references and Chinese counterparts; do not mechanically
+apply visual components to every policy page.
 
 ## Work packages
 

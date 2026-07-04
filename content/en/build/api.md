@@ -9,6 +9,12 @@ evidenceUrl: https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json
 reviewed: 2026-07-04
 pageType: reference
 lastTested: 2026-07-04
+outcome: Identify the current Node contract and confirm a capability before building against its versioned route.
+estimatedTime: 7 minutes
+journey: build
+primaryAction:
+  label: Run the capability call
+  href: /build/api#first-capability-call
 ---
 
 ## Contract and entry points
@@ -29,6 +35,14 @@ curl -sS http://127.0.0.1:5102/v1/runtime-config | jq
 ```
 
 > **Important:** The example assumes the default local listener. Do not disable authentication or expose an administrative listener merely to make an example work.
+
+## Expected result
+
+The runtime call should return a successful JSON envelope describing the Node
+schema, deployment composition, readiness, and effective capabilities. Record
+the Node version and capability you intend to use. A missing or unavailable
+capability is a decision to stop or degrade the integration—not a reason to
+enable a frontend-only switch.
 
 ## Authentication choices
 

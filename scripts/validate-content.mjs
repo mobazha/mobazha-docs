@@ -7,6 +7,14 @@ const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf
 const failures = [];
 const fail = (message) => failures.push(message);
 const canonicalBaseUrl = "https://docs.mobazha.org";
+const sectionId = (heading, index) => {
+  const normalized = heading
+    .normalize("NFKD")
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, "-")
+    .replace(/^-+|-+$/g, "");
+  return normalized || `section-${index + 1}`;
+};
 const retiredPolicyEvidence = new Set([
   "https://github.com/mobazha/mobazha/blob/main/docs/project/COMPATIBILITY.md",
   "https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES.md",
@@ -103,6 +111,12 @@ for (const doc of docs) {
       if (!doc.primaryAction.href.startsWith("/") && !doc.primaryAction.href.startsWith("https://")) {
         fail(`/${doc.slug} has a non-HTTPS primary action ${doc.primaryAction.href}`);
       }
+      const [targetPath, fragment] = doc.primaryAction.href.split("#", 2);
+      if (targetPath.startsWith("/") && fragment) {
+        const target = docs.find((candidate) => `/${candidate.slug}` === targetPath);
+        const targetSections = new Set(target?.sections.map((section, index) => sectionId(section.heading, index)) ?? []);
+        if (!targetSections.has(fragment)) fail(`/${doc.slug} has a primary action to unknown section ${doc.primaryAction.href}`);
+      }
     }
   }
   if (doc.featuredVisual !== undefined && (typeof doc.featuredVisual !== "string" || !doc.featuredVisual.trim())) {
@@ -125,6 +139,8 @@ for (const doc of docs) {
   }
 
   const headings = doc.sections.map((section) => section.heading).join("\n");
+  const sectionIds = doc.sections.map((section, index) => sectionId(section.heading, index));
+  if (new Set(sectionIds).size !== sectionIds.length) fail(`duplicate rendered section id on /${doc.slug}`);
   const blocks = doc.sections.flatMap((section) => section.blocks ?? []);
   if (doc.pageType === "task") {
     if (!doc.lastTested) fail(`task page /${doc.slug} is missing lastTested`);

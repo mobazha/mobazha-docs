@@ -9,6 +9,12 @@ evidenceUrl: https://github.com/mobazha/mobazha
 reviewed: 2026-07-04
 pageType: task
 lastTested: 2026-07-04
+outcome: Detect process, storage, capability, and dependency degradation before it becomes an order incident.
+estimatedTime: 20–40 minutes
+journey: operate
+primaryAction:
+  label: Define the alert boundary
+  href: /self-host/monitoring#before-you-start
 ---
 
 ## Before you start

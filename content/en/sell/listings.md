@@ -9,6 +9,12 @@ evidenceUrl: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/a
 reviewed: 2026-07-04
 pageType: task
 lastTested: 2026-07-04
+outcome: Publish one listing that a buyer can understand, quote, and purchase through its intended fulfillment path.
+estimatedTime: 15–30 minutes
+journey: use
+primaryAction:
+  label: Prepare the listing inputs
+  href: /sell/listings#before-you-start
 ---
 
 ## Before you start

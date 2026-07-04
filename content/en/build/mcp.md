@@ -10,6 +10,12 @@ evidenceUrl: https://github.com/mobazha/mobazha/tree/main/pkg/mcp
 reviewed: 2026-07-04
 pageType: reference
 lastTested: 2026-07-04
+outcome: Initialize an authenticated MCP session and discover only the tools permitted for its resolved scopes.
+estimatedTime: 10 minutes
+journey: build
+primaryAction:
+  label: Initialize the transport
+  href: /build/mcp#initialize-the-transport
 ---
 
 ## Current transport
@@ -40,6 +46,15 @@ curl -i -sS http://127.0.0.1:5102/v1/mcp \
 ```
 
 After initialization, complete the SDK's initialized notification, list available tools, and call only a tool returned for the current identity and scope set.
+
+## Expected result
+
+Initialization should return an MCP session compatible with the requested
+protocol version. Tool discovery should expose only tools permitted by
+`ai:use`, the resolved identity, domain scopes, runtime capabilities, and the
+connected Node version. Repeat discovery with a narrower disposable token and
+confirm protected tools disappear or reject access rather than relying on
+prompt instructions to constrain them.
 
 ## Non-bypassable boundaries
 

@@ -10,6 +10,12 @@ evidenceUrl: https://github.com/mobazha/mobazha#operations
 reviewed: 2026-07-04
 pageType: task
 lastTested: 2026-07-04
+outcome: Isolate one failing boundary and preserve a reproducible, sanitized test before making recovery changes.
+estimatedTime: 10–30 minutes
+journey: operate
+primaryAction:
+  label: Capture the starting state
+  href: /self-host/troubleshooting#before-you-start
 ---
 
 ## Before you start

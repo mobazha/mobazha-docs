@@ -10,6 +10,12 @@ evidenceUrl: https://github.com/mobazha/mobazha/tree/main/pkg/webhook
 reviewed: 2026-07-04
 pageType: reference
 lastTested: 2026-07-04
+outcome: Authenticate, durably accept, deduplicate, and safely reconcile one webhook delivery.
+estimatedTime: 15 minutes
+journey: build
+primaryAction:
+  label: Implement delivery verification
+  href: /build/webhooks#delivery-envelope-and-verification
 ---
 
 ## Consumer checklist
@@ -52,6 +58,14 @@ Use the exact raw request bytes. Parsing and re-serializing JSON before verifica
 
 - [Signing implementation](https://github.com/mobazha/mobazha/blob/main/pkg/webhook/signer.go)
 - [CloudEvent envelope](https://github.com/mobazha/mobazha/blob/main/pkg/webhook/events.go)
+
+## Verification exercise
+
+Register a non-production endpoint, trigger one test delivery, and preserve its
+delivery ID. Confirm that a valid request is durably accepted once, the exact
+same delivery is deduplicated, an altered body fails signature verification,
+and a timestamp outside the replay window is rejected. Then reconcile the
+referenced resource through the HTTP API instead of trusting event order.
 
 ## Standalone defaults
 

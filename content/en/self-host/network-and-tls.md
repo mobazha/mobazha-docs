@@ -9,6 +9,12 @@ evidenceLabel: Node listener and API surfaces
 evidenceUrl: https://github.com/mobazha/mobazha
 reviewed: 2026-07-04
 pageType: concept
+outcome: Choose a network boundary that keeps administration private and exposes only authenticated routes intentionally.
+estimatedTime: 7 minutes
+journey: operate
+primaryAction:
+  label: Review the recommended boundary
+  href: /self-host/network-and-tls#recommended-boundary
 ---
 
 ## Recommended boundary

@@ -8,6 +8,13 @@ audiences:
 evidenceLabel: Mobazha security policy and extension security model
 evidenceUrl: https://github.com/mobazha/mobazha/blob/main/SECURITY.md
 reviewed: 2026-07-04
+pageType: policy
+outcome: Establish the minimum host, identity, secret, payment, monitoring, and recovery controls for a Node you operate.
+estimatedTime: 10 minutes
+journey: operate
+primaryAction:
+  label: Review the operator baseline
+  href: /self-host/security#minimum-operator-baseline
 ---
 
 ## Minimum operator baseline

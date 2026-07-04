@@ -221,6 +221,13 @@
     "reviewed": "2026-07-04",
     "pageType": "reference",
     "lastTested": "2026-07-04",
+    "outcome": "Identify the current Node contract and confirm a capability before building against its versioned route.",
+    "estimatedTime": "7 minutes",
+    "journey": "build",
+    "primaryAction": {
+      "label": "Run the capability call",
+      "href": "/build/api#first-capability-call"
+    },
     "language": "en",
     "sections": [
       {
@@ -267,6 +274,15 @@
             "type": "callout",
             "tone": "important",
             "text": "The example assumes the default local listener. Do not disable authentication or expose an administrative listener merely to make an example work."
+          }
+        ]
+      },
+      {
+        "heading": "Expected result",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The runtime call should return a successful JSON envelope describing the Node schema, deployment composition, readiness, and effective capabilities. Record the Node version and capability you intend to use. A missing or unavailable capability is a decision to stop or degrade the integration—not a reason to enable a frontend-only switch."
           }
         ]
       },
@@ -360,6 +376,13 @@
     "reviewed": "2026-07-04",
     "pageType": "reference",
     "lastTested": "2026-07-04",
+    "outcome": "Choose the supported identity and issue the narrowest credential required by one integration.",
+    "estimatedTime": "10 minutes",
+    "journey": "build",
+    "primaryAction": {
+      "label": "Review scoped API tokens",
+      "href": "/build/authentication#scoped-api-tokens"
+    },
     "language": "en",
     "sections": [
       {
@@ -407,6 +430,15 @@
             "type": "code",
             "language": "bash",
             "code": "BASE_URL=http://127.0.0.1:5102\n\ncurl -fsS \\\n  -u \"$MBZ_ADMIN_USER:$MBZ_ADMIN_PASSWORD\" \\\n  \"$BASE_URL/v1/auth/tokens\" | jq\n\ncurl -fsS \\\n  -H \"Authorization: Bearer $MBZ_API_TOKEN\" \\\n  \"$BASE_URL/v1/webhooks\" | jq"
+          }
+        ]
+      },
+      {
+        "heading": "Verify the credential boundary",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Call one read-only route required by the integration and one route outside its scope in a disposable environment. The intended route should succeed; the out-of-scope route should return `403` without widening the token. An invalid or revoked token should return `401`. Record the token owner, purpose, scopes, creation time, rotation plan, and revocation path without recording the secret."
           }
         ]
       },
@@ -467,6 +499,13 @@
     "reviewed": "2026-07-04",
     "pageType": "reference",
     "lastTested": "2026-07-04",
+    "outcome": "Decide whether to stop, correct, reconcile, or retry without duplicating a protected business action.",
+    "estimatedTime": "8 minutes",
+    "journey": "build",
+    "primaryAction": {
+      "label": "Review the retry decision",
+      "href": "/build/errors-and-idempotency#retry-decision"
+    },
     "language": "en",
     "sections": [
       {
@@ -896,6 +935,13 @@
     "reviewed": "2026-07-04",
     "pageType": "reference",
     "lastTested": "2026-07-04",
+    "outcome": "Initialize an authenticated MCP session and discover only the tools permitted for its resolved scopes.",
+    "estimatedTime": "10 minutes",
+    "journey": "build",
+    "primaryAction": {
+      "label": "Initialize the transport",
+      "href": "/build/mcp#initialize-the-transport"
+    },
     "language": "en",
     "sections": [
       {
@@ -950,6 +996,15 @@
           {
             "type": "paragraph",
             "text": "After initialization, complete the SDK's initialized notification, list available tools, and call only a tool returned for the current identity and scope set."
+          }
+        ]
+      },
+      {
+        "heading": "Expected result",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Initialization should return an MCP session compatible with the requested protocol version. Tool discovery should expose only tools permitted by `ai:use`, the resolved identity, domain scopes, runtime capabilities, and the connected Node version. Repeat discovery with a narrower disposable token and confirm protected tools disappear or reject access rather than relying on prompt instructions to constrain them."
           }
         ]
       },
@@ -1313,6 +1368,13 @@
     "reviewed": "2026-07-04",
     "pageType": "reference",
     "lastTested": "2026-07-04",
+    "outcome": "Authenticate, durably accept, deduplicate, and safely reconcile one webhook delivery.",
+    "estimatedTime": "15 minutes",
+    "journey": "build",
+    "primaryAction": {
+      "label": "Implement delivery verification",
+      "href": "/build/webhooks#delivery-envelope-and-verification"
+    },
     "language": "en",
     "sections": [
       {
@@ -1395,6 +1457,15 @@
         ]
       },
       {
+        "heading": "Verification exercise",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Register a non-production endpoint, trigger one test delivery, and preserve its delivery ID. Confirm that a valid request is durably accepted once, the exact same delivery is deduplicated, an altered body fails signature verification, and a timestamp outside the replay window is rejected. Then reconcile the referenced resource through the HTTP API instead of trusting event order."
+          }
+        ]
+      },
+      {
         "heading": "Standalone defaults",
         "blocks": [
           {
@@ -1446,6 +1517,13 @@
     "reviewed": "2026-07-04",
     "pageType": "reference",
     "lastTested": "2026-07-04",
+    "outcome": "Use an authenticated event as a refresh signal and recover current state after reconnecting.",
+    "estimatedTime": "10 minutes",
+    "journey": "build",
+    "primaryAction": {
+      "label": "Review client behavior",
+      "href": "/build/websocket#client-behavior"
+    },
     "language": "en",
     "sections": [
       {
@@ -1479,6 +1557,15 @@
             "type": "code",
             "language": "javascript",
             "code": "function reconnectDelay(attempt) {\n  const capped = Math.min(30_000, 500 * 2 ** attempt);\n  return capped / 2 + Math.random() * capped / 2;\n}\n\nasync function onOrderEvent(orderId) {\n  // The event is a refresh signal. Read protected state before acting.\n  return api.get(`/v1/orders/${orderId}`);\n}"
+          }
+        ]
+      },
+      {
+        "heading": "Expected result",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "After authenticating, the client should receive only events allowed for the resolved identity and deployment. Disconnect the client briefly, reconnect with bounded backoff, and confirm it refreshes current resource state through HTTP before enabling an action. The integration is not complete if it requires every transient event to arrive exactly once or in business-state order."
           }
         ]
       },
@@ -2797,7 +2884,14 @@
     "evidenceLabel": "Mobazha public implementation and release evidence",
     "evidenceUrl": "https://github.com/mobazha/mobazha",
     "reviewed": "2026-07-04",
-    "pageType": "concept",
+    "pageType": "policy",
+    "outcome": "Distinguish platform, provider, network, operator, referral, tax, and optional-service charges before consent.",
+    "estimatedTime": "7 minutes",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "Review the quote contract",
+      "href": "/project/fees#required-quote-contract"
+    },
     "language": "en",
     "sections": [
       {
@@ -3466,6 +3560,13 @@
     "reviewed": "2026-07-04",
     "version": "0.1-review",
     "pageType": "concept",
+    "outcome": "Understand Mobazha's durable direction while separating it from current release guarantees and service promises.",
+    "estimatedTime": "12 minutes",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "Read the thesis",
+      "href": "/project/whitepaper#thesis"
+    },
     "language": "en",
     "sections": [
       {
@@ -3903,6 +4004,13 @@
     "reviewed": "2026-07-04",
     "pageType": "task",
     "lastTested": "2026-07-04",
+    "outcome": "Produce a verified backup and upgrade one reviewed release without losing a recoverable rollback point.",
+    "estimatedTime": "30–60 minutes",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "Prepare the recovery point",
+      "href": "/self-host/backup-and-upgrade#before-you-start"
+    },
     "language": "en",
     "sections": [
       {
@@ -4067,6 +4175,13 @@
     "reviewed": "2026-07-04",
     "pageType": "task",
     "lastTested": "2026-07-04",
+    "outcome": "Run one explicit Node profile whose data, listener, dependencies, backup, and rollback owner are known.",
+    "estimatedTime": "20–40 minutes",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "Record the deployment profile",
+      "href": "/self-host/configure#before-you-start"
+    },
     "language": "en",
     "sections": [
       {
@@ -4335,6 +4450,13 @@
     "reviewed": "2026-07-04",
     "pageType": "task",
     "lastTested": "2026-07-04",
+    "outcome": "Detect process, storage, capability, and dependency degradation before it becomes an order incident.",
+    "estimatedTime": "20–40 minutes",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "Define the alert boundary",
+      "href": "/self-host/monitoring#before-you-start"
+    },
     "language": "en",
     "sections": [
       {
@@ -4412,6 +4534,13 @@
     "evidenceUrl": "https://github.com/mobazha/mobazha",
     "reviewed": "2026-07-04",
     "pageType": "concept",
+    "outcome": "Choose a network boundary that keeps administration private and exposes only authenticated routes intentionally.",
+    "estimatedTime": "7 minutes",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "Review the recommended boundary",
+      "href": "/self-host/network-and-tls#recommended-boundary"
+    },
     "language": "en",
     "sections": [
       {
@@ -4617,7 +4746,14 @@
     "evidenceLabel": "Mobazha security policy and extension security model",
     "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/SECURITY.md",
     "reviewed": "2026-07-04",
-    "pageType": "concept",
+    "pageType": "policy",
+    "outcome": "Establish the minimum host, identity, secret, payment, monitoring, and recovery controls for a Node you operate.",
+    "estimatedTime": "10 minutes",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "Review the operator baseline",
+      "href": "/self-host/security#minimum-operator-baseline"
+    },
     "language": "en",
     "sections": [
       {
@@ -4691,6 +4827,13 @@
     "reviewed": "2026-07-04",
     "pageType": "task",
     "lastTested": "2026-07-04",
+    "outcome": "Isolate one failing boundary and preserve a reproducible, sanitized test before making recovery changes.",
+    "estimatedTime": "10–30 minutes",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "Capture the starting state",
+      "href": "/self-host/troubleshooting#before-you-start"
+    },
     "language": "en",
     "sections": [
       {
@@ -5005,6 +5148,13 @@
     "reviewed": "2026-07-04",
     "pageType": "task",
     "lastTested": "2026-07-04",
+    "outcome": "Publish one listing that a buyer can understand, quote, and purchase through its intended fulfillment path.",
+    "estimatedTime": "15–30 minutes",
+    "journey": "use",
+    "primaryAction": {
+      "label": "Prepare the listing inputs",
+      "href": "/sell/listings#before-you-start"
+    },
     "language": "en",
     "sections": [
       {
@@ -5090,6 +5240,13 @@
     "reviewed": "2026-07-04",
     "pageType": "task",
     "lastTested": "2026-07-04",
+    "outcome": "Move one paid order through fulfillment using only actions valid for its current state.",
+    "estimatedTime": "5 minutes per review",
+    "journey": "use",
+    "primaryAction": {
+      "label": "Review an incoming order",
+      "href": "/sell/orders#before-you-start"
+    },
     "language": "en",
     "sections": [
       {
@@ -5175,6 +5332,13 @@
     "reviewed": "2026-07-04",
     "pageType": "task",
     "lastTested": "2026-07-04",
+    "outcome": "Enable one payment method only after its configuration, health, observation, and recovery path are proven.",
+    "estimatedTime": "20–40 minutes",
+    "journey": "use",
+    "primaryAction": {
+      "label": "Begin the payment readiness check",
+      "href": "/sell/payments#before-you-start"
+    },
     "language": "en",
     "sections": [
       {
@@ -5259,6 +5423,13 @@
     "reviewed": "2026-07-04",
     "pageType": "task",
     "lastTested": "2026-07-04",
+    "outcome": "Offer only delivery methods that apply to the buyer destination and remain attached to the created order.",
+    "estimatedTime": "15–30 minutes",
+    "journey": "use",
+    "primaryAction": {
+      "label": "Map delivery requirements",
+      "href": "/sell/shipping#before-you-start"
+    },
     "language": "en",
     "sections": [
       {

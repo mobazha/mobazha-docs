@@ -11,6 +11,13 @@ audiences:
 evidenceLabel: Mobazha public implementation and release evidence
 evidenceUrl: https://github.com/mobazha/mobazha
 reviewed: 2026-07-04
+pageType: policy
+outcome: Distinguish platform, provider, network, operator, referral, tax, and optional-service charges before consent.
+estimatedTime: 7 minutes
+journey: understand
+primaryAction:
+  label: Review the quote contract
+  href: /project/fees#required-quote-contract
 ---
 
 ## Do not collapse every flow into ‘commission’

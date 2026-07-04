@@ -10,6 +10,12 @@ evidenceUrl: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/a
 reviewed: 2026-07-04
 pageType: task
 lastTested: 2026-07-04
+outcome: Offer only delivery methods that apply to the buyer destination and remain attached to the created order.
+estimatedTime: 15–30 minutes
+journey: use
+primaryAction:
+  label: Map delivery requirements
+  href: /sell/shipping#before-you-start
 ---
 
 ## Before you start

@@ -11,6 +11,12 @@ evidenceUrl: https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json
 reviewed: 2026-07-04
 pageType: reference
 lastTested: 2026-07-04
+outcome: Choose the supported identity and issue the narrowest credential required by one integration.
+estimatedTime: 10 minutes
+journey: build
+primaryAction:
+  label: Review scoped API tokens
+  href: /build/authentication#scoped-api-tokens
 ---
 
 ## Authentication models
@@ -38,6 +44,14 @@ curl -fsS \
   -H "Authorization: Bearer $MBZ_API_TOKEN" \
   "$BASE_URL/v1/webhooks" | jq
 ```
+
+## Verify the credential boundary
+
+Call one read-only route required by the integration and one route outside its
+scope in a disposable environment. The intended route should succeed; the
+out-of-scope route should return `403` without widening the token. An invalid
+or revoked token should return `401`. Record the token owner, purpose, scopes,
+creation time, rotation plan, and revocation path without recording the secret.
 
 ## Authorization and scope rules
 

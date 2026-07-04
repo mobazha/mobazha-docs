@@ -9,6 +9,12 @@ evidenceUrl: https://github.com/mobazha/mobazha/tree/main/docs/releases
 reviewed: 2026-07-04
 pageType: task
 lastTested: 2026-07-04
+outcome: Produce a verified backup and upgrade one reviewed release without losing a recoverable rollback point.
+estimatedTime: 30–60 minutes
+journey: operate
+primaryAction:
+  label: Prepare the recovery point
+  href: /self-host/backup-and-upgrade#before-you-start
 ---
 
 ## Before you start

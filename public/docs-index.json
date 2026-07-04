@@ -201,6 +201,13 @@
       "reviewed": "2026-07-04",
       "page_type": "task",
       "last_tested": "2026-07-04",
+      "outcome": "Publish one listing that a buyer can understand, quote, and purchase through its intended fulfillment path.",
+      "estimated_time": "15–30 minutes",
+      "journey": "use",
+      "primary_action": {
+        "label": "Prepare the listing inputs",
+        "href": "/sell/listings#before-you-start"
+      },
       "language": "en"
     },
     {
@@ -227,6 +234,13 @@
       "reviewed": "2026-07-04",
       "page_type": "task",
       "last_tested": "2026-07-04",
+      "outcome": "Offer only delivery methods that apply to the buyer destination and remain attached to the created order.",
+      "estimated_time": "15–30 minutes",
+      "journey": "use",
+      "primary_action": {
+        "label": "Map delivery requirements",
+        "href": "/sell/shipping#before-you-start"
+      },
       "language": "en"
     },
     {
@@ -253,6 +267,13 @@
       "reviewed": "2026-07-04",
       "page_type": "task",
       "last_tested": "2026-07-04",
+      "outcome": "Enable one payment method only after its configuration, health, observation, and recovery path are proven.",
+      "estimated_time": "20–40 minutes",
+      "journey": "use",
+      "primary_action": {
+        "label": "Begin the payment readiness check",
+        "href": "/sell/payments#before-you-start"
+      },
       "language": "en"
     },
     {
@@ -280,6 +301,13 @@
       "reviewed": "2026-07-04",
       "page_type": "task",
       "last_tested": "2026-07-04",
+      "outcome": "Move one paid order through fulfillment using only actions valid for its current state.",
+      "estimated_time": "5 minutes per review",
+      "journey": "use",
+      "primary_action": {
+        "label": "Review an incoming order",
+        "href": "/sell/orders#before-you-start"
+      },
       "language": "en"
     },
     {
@@ -603,6 +631,13 @@
       "reviewed": "2026-07-04",
       "page_type": "task",
       "last_tested": "2026-07-04",
+      "outcome": "Run one explicit Node profile whose data, listener, dependencies, backup, and rollback owner are known.",
+      "estimated_time": "20–40 minutes",
+      "journey": "operate",
+      "primary_action": {
+        "label": "Record the deployment profile",
+        "href": "/self-host/configure#before-you-start"
+      },
       "language": "en"
     },
     {
@@ -628,6 +663,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "concept",
+      "outcome": "Choose a network boundary that keeps administration private and exposes only authenticated routes intentionally.",
+      "estimated_time": "7 minutes",
+      "journey": "operate",
+      "primary_action": {
+        "label": "Review the recommended boundary",
+        "href": "/self-host/network-and-tls#recommended-boundary"
+      },
       "language": "en"
     },
     {
@@ -653,6 +695,13 @@
       "reviewed": "2026-07-04",
       "page_type": "task",
       "last_tested": "2026-07-04",
+      "outcome": "Detect process, storage, capability, and dependency degradation before it becomes an order incident.",
+      "estimated_time": "20–40 minutes",
+      "journey": "operate",
+      "primary_action": {
+        "label": "Define the alert boundary",
+        "href": "/self-host/monitoring#before-you-start"
+      },
       "language": "en"
     },
     {
@@ -678,6 +727,13 @@
       "reviewed": "2026-07-04",
       "page_type": "task",
       "last_tested": "2026-07-04",
+      "outcome": "Produce a verified backup and upgrade one reviewed release without losing a recoverable rollback point.",
+      "estimated_time": "30–60 minutes",
+      "journey": "operate",
+      "primary_action": {
+        "label": "Prepare the recovery point",
+        "href": "/self-host/backup-and-upgrade#before-you-start"
+      },
       "language": "en"
     },
     {
@@ -702,7 +758,14 @@
         "label": "Mobazha security policy and extension security model"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "policy",
+      "outcome": "Establish the minimum host, identity, secret, payment, monitoring, and recovery controls for a Node you operate.",
+      "estimated_time": "10 minutes",
+      "journey": "operate",
+      "primary_action": {
+        "label": "Review the operator baseline",
+        "href": "/self-host/security#minimum-operator-baseline"
+      },
       "language": "en"
     },
     {
@@ -729,6 +792,13 @@
       "reviewed": "2026-07-04",
       "page_type": "task",
       "last_tested": "2026-07-04",
+      "outcome": "Isolate one failing boundary and preserve a reproducible, sanitized test before making recovery changes.",
+      "estimated_time": "10–30 minutes",
+      "journey": "operate",
+      "primary_action": {
+        "label": "Capture the starting state",
+        "href": "/self-host/troubleshooting#before-you-start"
+      },
       "language": "en"
     },
     {
@@ -838,6 +908,13 @@
       "reviewed": "2026-07-04",
       "page_type": "reference",
       "last_tested": "2026-07-04",
+      "outcome": "Choose the supported identity and issue the narrowest credential required by one integration.",
+      "estimated_time": "10 minutes",
+      "journey": "build",
+      "primary_action": {
+        "label": "Review scoped API tokens",
+        "href": "/build/authentication#scoped-api-tokens"
+      },
       "language": "en"
     },
     {
@@ -864,6 +941,13 @@
       "reviewed": "2026-07-04",
       "page_type": "reference",
       "last_tested": "2026-07-04",
+      "outcome": "Decide whether to stop, correct, reconcile, or retry without duplicating a protected business action.",
+      "estimated_time": "8 minutes",
+      "journey": "build",
+      "primary_action": {
+        "label": "Review the retry decision",
+        "href": "/build/errors-and-idempotency#retry-decision"
+      },
       "language": "en"
     },
     {
@@ -941,6 +1025,13 @@
       "reviewed": "2026-07-04",
       "page_type": "reference",
       "last_tested": "2026-07-04",
+      "outcome": "Identify the current Node contract and confirm a capability before building against its versioned route.",
+      "estimated_time": "7 minutes",
+      "journey": "build",
+      "primary_action": {
+        "label": "Run the capability call",
+        "href": "/build/api#first-capability-call"
+      },
       "language": "en"
     },
     {
@@ -967,6 +1058,13 @@
       "reviewed": "2026-07-04",
       "page_type": "reference",
       "last_tested": "2026-07-04",
+      "outcome": "Use an authenticated event as a refresh signal and recover current state after reconnecting.",
+      "estimated_time": "10 minutes",
+      "journey": "build",
+      "primary_action": {
+        "label": "Review client behavior",
+        "href": "/build/websocket#client-behavior"
+      },
       "language": "en"
     },
     {
@@ -993,6 +1091,13 @@
       "reviewed": "2026-07-04",
       "page_type": "reference",
       "last_tested": "2026-07-04",
+      "outcome": "Initialize an authenticated MCP session and discover only the tools permitted for its resolved scopes.",
+      "estimated_time": "10 minutes",
+      "journey": "build",
+      "primary_action": {
+        "label": "Initialize the transport",
+        "href": "/build/mcp#initialize-the-transport"
+      },
       "language": "en"
     },
     {
@@ -1019,6 +1124,13 @@
       "reviewed": "2026-07-04",
       "page_type": "reference",
       "last_tested": "2026-07-04",
+      "outcome": "Authenticate, durably accept, deduplicate, and safely reconcile one webhook delivery.",
+      "estimated_time": "15 minutes",
+      "journey": "build",
+      "primary_action": {
+        "label": "Implement delivery verification",
+        "href": "/build/webhooks#delivery-envelope-and-verification"
+      },
       "language": "en"
     },
     {
@@ -1149,6 +1261,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "concept",
+      "outcome": "Understand Mobazha's durable direction while separating it from current release guarantees and service promises.",
+      "estimated_time": "12 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Read the thesis",
+        "href": "/project/whitepaper#thesis"
+      },
       "version": "0.1-review",
       "language": "en"
     },
@@ -1177,7 +1296,14 @@
         "label": "Mobazha public implementation and release evidence"
       },
       "reviewed": "2026-07-04",
-      "page_type": "concept",
+      "page_type": "policy",
+      "outcome": "Distinguish platform, provider, network, operator, referral, tax, and optional-service charges before consent.",
+      "estimated_time": "7 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Review the quote contract",
+        "href": "/project/fees#required-quote-contract"
+      },
       "language": "en"
     },
     {

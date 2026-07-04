@@ -10,6 +10,12 @@ evidenceUrl: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/a
 reviewed: 2026-07-04
 pageType: task
 lastTested: 2026-07-04
+outcome: Enable one payment method only after its configuration, health, observation, and recovery path are proven.
+estimatedTime: 20–40 minutes
+journey: use
+primaryAction:
+  label: Begin the payment readiness check
+  href: /sell/payments#before-you-start
 ---
 
 ## Before you start

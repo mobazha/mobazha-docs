@@ -9,6 +9,13 @@ audiences:
 evidenceLabel: Public-review edition prepared for the Mobazha project
 reviewed: 2026-07-04
 version: 0.1-review
+pageType: concept
+outcome: Understand Mobazha's durable direction while separating it from current release guarantees and service promises.
+estimatedTime: 12 minutes
+journey: understand
+primaryAction:
+  label: Read the thesis
+  href: /project/whitepaper#thesis
 ---
 
 ## Thesis

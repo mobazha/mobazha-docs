@@ -10,6 +10,12 @@ evidenceUrl: https://github.com/mobazha/mobazha/blob/main/internal/api/ws.go
 reviewed: 2026-07-04
 pageType: reference
 lastTested: 2026-07-04
+outcome: Use an authenticated event as a refresh signal and recover current state after reconnecting.
+estimatedTime: 10 minutes
+journey: build
+primaryAction:
+  label: Review client behavior
+  href: /build/websocket#client-behavior
 ---
 
 ## Current connection boundary
@@ -37,6 +43,14 @@ async function onOrderEvent(orderId) {
   return api.get(`/v1/orders/${orderId}`);
 }
 ```
+
+## Expected result
+
+After authenticating, the client should receive only events allowed for the
+resolved identity and deployment. Disconnect the client briefly, reconnect
+with bounded backoff, and confirm it refreshes current resource state through
+HTTP before enabling an action. The integration is not complete if it requires
+every transient event to arrive exactly once or in business-state order.
 
 ## Authentication and connection errors
 
