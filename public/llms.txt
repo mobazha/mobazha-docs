@@ -9,7 +9,7 @@ Public knowledge authority: the canonical page on docs.mobazha.org.
 Implementation evidence: the versioned sources linked from each page.
 
 ## Start
-- [Overview](/start)
+- [Overview](/)
 - [Choose a deployment](/start/choose-deployment)
 - [For agents](/agents)
 
@@ -77,7 +77,7 @@ Implementation evidence: the versioned sources linked from each page.
 - [Get help](/support)
 
 ## 开始
-- [概览](/zh/start)
+- [概览](/zh)
 - [选择托管方式](/zh/start/choose-deployment)
 - [Agent 使用指南](/zh/agents)
 

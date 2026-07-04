@@ -13,38 +13,6 @@
   "implementation_authority": "versioned code, generated contracts, conformance tests, and tagged release evidence",
   "documents": [
     {
-      "id": "start",
-      "path": "/start",
-      "canonical_url": "https://docs.mobazha.org/start",
-      "title": "Choose how you want to use Mobazha",
-      "summary": "Start as a buyer, seller, Node operator, developer, or project evaluator without learning the repository layout first.",
-      "status": "beta",
-      "audiences": [
-        "everyone",
-        "agents"
-      ],
-      "applies_to": "Mobazha v0.3 release candidate",
-      "knowledge_authority": {
-        "kind": "public-knowledge",
-        "url": "https://docs.mobazha.org/start",
-        "label": "Choose how you want to use Mobazha"
-      },
-      "evidence": {
-        "source": "https://github.com/mobazha",
-        "label": "Mobazha public repositories"
-      },
-      "reviewed": "2026-07-04",
-      "page_type": "hub",
-      "outcome": "Reach the shortest trustworthy path for the job you want to complete.",
-      "estimated_time": "3 minutes",
-      "journey": "start",
-      "primary_action": {
-        "label": "Explore the hosted app",
-        "href": "https://app.mobazha.org"
-      },
-      "language": "en"
-    },
-    {
       "id": "start-choose-deployment",
       "path": "/start/choose-deployment",
       "canonical_url": "https://docs.mobazha.org/start/choose-deployment",
@@ -1853,39 +1821,6 @@
       "language": "en"
     },
     {
-      "id": "zh-start",
-      "path": "/zh/start",
-      "canonical_url": "https://docs.mobazha.org/zh/start",
-      "title": "从你要完成的任务开始",
-      "summary": "Mobazha 是一套开放商业技术栈，可用于自行托管商店、托管服务、市场、结账和 Agent 自动化。",
-      "status": "beta",
-      "audiences": [
-        "所有人",
-        "agent"
-      ],
-      "applies_to": "Mobazha v0.3 候选版本",
-      "knowledge_authority": {
-        "kind": "public-knowledge",
-        "url": "https://docs.mobazha.org/zh/start",
-        "label": "从你要完成的任务开始"
-      },
-      "evidence": {
-        "source": "https://github.com/mobazha",
-        "label": "Mobazha 公开仓库"
-      },
-      "reviewed": "2026-07-04",
-      "page_type": "hub",
-      "outcome": "从当前要完成的任务进入最短且可信的 Mobazha 路径。",
-      "estimated_time": "3 分钟",
-      "journey": "start",
-      "primary_action": {
-        "label": "体验托管应用",
-        "href": "https://app.mobazha.org"
-      },
-      "language": "zh-CN",
-      "translation_of": "/start"
-    },
-    {
       "id": "zh-start-choose-deployment",
       "path": "/zh/start/choose-deployment",
       "canonical_url": "https://docs.mobazha.org/zh/start/choose-deployment",
@@ -2384,6 +2319,71 @@
       },
       "language": "zh-CN",
       "translation_of": "/support"
+    },
+    {
+      "id": "start",
+      "path": "/start",
+      "canonical_url": "https://docs.mobazha.org/start",
+      "title": "Choose how you want to use Mobazha",
+      "summary": "Start as a buyer, seller, Node operator, developer, or project evaluator without learning the repository layout first.",
+      "status": "beta",
+      "audiences": [
+        "everyone",
+        "agents"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/start",
+        "label": "Choose how you want to use Mobazha"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha public repositories"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "hub",
+      "outcome": "Reach the shortest trustworthy path for the job you want to complete.",
+      "estimated_time": "3 minutes",
+      "journey": "start",
+      "primary_action": {
+        "label": "Explore the hosted app",
+        "href": "https://app.mobazha.org"
+      },
+      "language": "en"
+    },
+    {
+      "id": "zh-start",
+      "path": "/zh/start",
+      "canonical_url": "https://docs.mobazha.org/zh/start",
+      "title": "从你要完成的任务开始",
+      "summary": "Mobazha 是一套开放商业技术栈，可用于自行托管商店、托管服务、市场、结账和 Agent 自动化。",
+      "status": "beta",
+      "audiences": [
+        "所有人",
+        "agent"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/start",
+        "label": "从你要完成的任务开始"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha 公开仓库"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "hub",
+      "outcome": "从当前要完成的任务进入最短且可信的 Mobazha 路径。",
+      "estimated_time": "3 分钟",
+      "journey": "start",
+      "primary_action": {
+        "label": "体验托管应用",
+        "href": "https://app.mobazha.org"
+      },
+      "language": "zh-CN",
+      "translation_of": "/start"
     }
   ]
 }

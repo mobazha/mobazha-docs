@@ -169,7 +169,7 @@ ${records.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc><lastmo
     canonical_base_url: baseUrl,
     canonical_language: "en",
     languages: ["en", "zh-CN"],
-    language_starts: { en: "/", "zh-CN": "/zh/start" },
+    language_starts: { en: "/", "zh-CN": "/zh" },
     human_start: "/",
     agent_start: "/agents",
     llms: "/llms.txt",

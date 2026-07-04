@@ -38,43 +38,6 @@ amount, and confirmation point. Old illustrative percentages are not current def
 
 ## Documents
 
-### Choose how you want to use Mobazha
-- URL: /start
-- Status: beta
-- Page type: hub
-- Outcome: Reach the shortest trustworthy path for the job you want to complete.
-- Estimated time: 3 minutes
-- Journey: start
-- Applies to: Mobazha v0.3 release candidate
-- Audience: everyone, agents
-- Knowledge authority: https://docs.mobazha.org/start
-- Evidence: https://github.com/mobazha
-- Reviewed: 2026-07-04
-- Language: en
-- Summary: Start as a buyer, seller, Node operator, developer, or project evaluator without learning the repository layout first.
-
-Choose your path
-Buy from a store
-Review the seller, total cost, payment instruction, order state, and recovery path.
-Start selling
-Prepare a store, publish listings, accept supported payments, and fulfill orders.
-Run your own Node
-Evaluate, install, secure, monitor, and recover a self-hosted deployment.
-Build an integration
-Use the API, events, MCP, webhooks, and extension contracts.
-Understand the project
-Inspect architecture, release scope, economics, governance, and security.
-Know the current maturity
-Mobazha is currently release-candidate software. A page marked Current describes reviewed behavior; Beta may change; Draft communicates direction and is not a promise.
-The connected backend is authoritative for runtime capabilities. A document never grants a capability that the backend does not advertise.
-Go directly to a public surface
-Use the hosted application
-Explore the current hosted buyer and seller experience.
-Run the open-source node
-Build the release candidate from source and operate it yourself.
-Inspect the shared frontend
-Review the client used by hosted and self-hosted deployments.
-
 ### Choose hosted or self-hosted Mobazha
 - URL: /start/choose-deployment
 - Status: beta
@@ -2546,35 +2509,6 @@ Do not include access tokens, private keys, seeds, wallet recovery material, cus
 Security exception
 Suspected vulnerabilities, leaked credentials, signing-key concerns, and exploits must use private vulnerability reporting in the affected GitHub repository. Do not first disclose them through community chat or a public issue.
 
-### 从你要完成的任务开始
-- URL: /zh/start
-- Status: beta
-- Page type: hub
-- Outcome: 从当前要完成的任务进入最短且可信的 Mobazha 路径。
-- Estimated time: 3 分钟
-- Journey: start
-- Applies to: Mobazha v0.3 候选版本
-- Audience: 所有人, agent
-- Knowledge authority: https://docs.mobazha.org/zh/start
-- Evidence: https://github.com/mobazha
-- Reviewed: 2026-07-04
-- Language: zh-CN
-- Translation of: /start
-- Summary: Mobazha 是一套开放商业技术栈，可用于自行托管商店、托管服务、市场、结账和 Agent 自动化。
-
-选择你的路径
-卖家：创建店铺、发布商品、接收订单并履约。
-买家：理解结账、付款、证据、退款与争议处理。
-运营者：在自己控制的基础设施上运行 Mobazha Node。
-开发者：通过后端实际公开的 HTTP、WebSocket、Webhook 与 MCP 能力集成。
-评估者：查看架构、发布范围、经济模式、治理和安全边界。
-先看状态，再执行说明
-Mobazha 当前属于候选版本。Current 表示已审阅的公开政策或稳定事实；Beta 表示可用但仍可能变化；Draft 表示方向或提案，不是交付承诺。
-运行时能力以你连接的后端版本和有效能力响应为准。文档不能替后端启用功能，也不能代替授权。
-选择托管方式
-Agent 使用指南
-English canonical page
-
 ### 选择托管服务或自行托管
 - URL: /zh/start/choose-deployment
 - Status: beta
@@ -3208,6 +3142,72 @@ Discord
 不要提交访问令牌、私钥、助记词、恢复材料、客户数据或私有基础设施信息。
 安全问题例外
 漏洞、凭证泄露、签名密钥问题和利用方式必须通过受影响 GitHub 仓库的私有漏洞报告渠道提交，不要先发到公开 Issue 或社区聊天。
+English canonical page
+
+### Choose how you want to use Mobazha
+- URL: /start
+- Status: beta
+- Page type: hub
+- Outcome: Reach the shortest trustworthy path for the job you want to complete.
+- Estimated time: 3 minutes
+- Journey: start
+- Applies to: Mobazha v0.3 release candidate
+- Audience: everyone, agents
+- Knowledge authority: https://docs.mobazha.org/start
+- Evidence: https://github.com/mobazha
+- Reviewed: 2026-07-04
+- Language: en
+- Summary: Start as a buyer, seller, Node operator, developer, or project evaluator without learning the repository layout first.
+
+Choose your path
+Buy from a store
+Review the seller, total cost, payment instruction, order state, and recovery path.
+Start selling
+Prepare a store, publish listings, accept supported payments, and fulfill orders.
+Run your own Node
+Evaluate, install, secure, monitor, and recover a self-hosted deployment.
+Build an integration
+Use the API, events, MCP, webhooks, and extension contracts.
+Understand the project
+Inspect architecture, release scope, economics, governance, and security.
+Know the current maturity
+Mobazha is currently release-candidate software. A page marked Current describes reviewed behavior; Beta may change; Draft communicates direction and is not a promise.
+The connected backend is authoritative for runtime capabilities. A document never grants a capability that the backend does not advertise.
+Go directly to a public surface
+Use the hosted application
+Explore the current hosted buyer and seller experience.
+Run the open-source node
+Build the release candidate from source and operate it yourself.
+Inspect the shared frontend
+Review the client used by hosted and self-hosted deployments.
+
+### 从你要完成的任务开始
+- URL: /zh/start
+- Status: beta
+- Page type: hub
+- Outcome: 从当前要完成的任务进入最短且可信的 Mobazha 路径。
+- Estimated time: 3 分钟
+- Journey: start
+- Applies to: Mobazha v0.3 候选版本
+- Audience: 所有人, agent
+- Knowledge authority: https://docs.mobazha.org/zh/start
+- Evidence: https://github.com/mobazha
+- Reviewed: 2026-07-04
+- Language: zh-CN
+- Translation of: /start
+- Summary: Mobazha 是一套开放商业技术栈，可用于自行托管商店、托管服务、市场、结账和 Agent 自动化。
+
+选择你的路径
+卖家：创建店铺、发布商品、接收订单并履约。
+买家：理解结账、付款、证据、退款与争议处理。
+运营者：在自己控制的基础设施上运行 Mobazha Node。
+开发者：通过后端实际公开的 HTTP、WebSocket、Webhook 与 MCP 能力集成。
+评估者：查看架构、发布范围、经济模式、治理和安全边界。
+先看状态，再执行说明
+Mobazha 当前属于候选版本。Current 表示已审阅的公开政策或稳定事实；Beta 表示可用但仍可能变化；Draft 表示方向或提案，不是交付承诺。
+运行时能力以你连接的后端版本和有效能力响应为准。文档不能替后端启用功能，也不能代替授权。
+选择托管方式
+Agent 使用指南
 English canonical page
 
 Use /docs-index.json for structured metadata, /sources.json for the public-source

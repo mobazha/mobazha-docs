@@ -108,3 +108,15 @@ test("/start resolves to the portal home", async ({ page }) => {
   await expect(page).toHaveURL(/\/$/);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Trusted guides");
 });
+
+test("/zh/start resolves to the Chinese portal home", async ({ page }) => {
+  await page.goto("/zh/start");
+  await expect(page).toHaveURL(/\/zh$/);
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("可信指南");
+});
+
+test("/zh keeps the Chinese portal home contract", async ({ page }) => {
+  await page.goto("/zh");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("可信指南");
+  await expect(page.getByRole("combobox", { name: "搜索文档" })).toBeVisible();
+});

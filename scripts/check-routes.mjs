@@ -6,6 +6,9 @@ const visualEvidence = JSON.parse(readFileSync(new URL("../visual-evidence.json"
 const base = (process.argv[2] ?? process.env.BASE_URL ?? "http://127.0.0.1:3000").replace(/\/$/, "");
 const routes = [
   "/",
+  "/zh",
+  "/start",
+  "/zh/start",
   ...docs.map((doc) => `/${doc.slug}`),
   "/docs-index.json",
   "/sources.json",

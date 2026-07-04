@@ -41,6 +41,7 @@ const expectedFiles = renderPublication({ docs, navGroups, docApplicability, sou
 const paths = new Set(docs.map((doc) => `/${doc.slug}`));
 const allowedInternal = new Set([
   "/",
+  "/zh",
   ...paths,
   "/llms.txt",
   "/llms-full.txt",
@@ -70,10 +71,19 @@ for (const [path, expected] of Object.entries(expectedFiles)) {
 
 if (new Set(docs.map((doc) => doc.slug)).size !== docs.length) fail("duplicate document slug");
 
+const portalNavRoutes = new Set(["/", "/zh"]);
+const redirectedHubSlugs = new Set(["start", "zh/start"]);
+
 const navPaths = navGroups.flatMap((group) => group.links.map(([, path]) => path));
 if (new Set(navPaths).size !== navPaths.length) fail("duplicate navigation path");
-for (const path of navPaths) if (!paths.has(path)) fail(`navigation points to unknown document ${path}`);
-for (const path of paths) if (!navPaths.includes(path)) fail(`${path} is missing from navigation`);
+for (const path of navPaths) {
+  if (portalNavRoutes.has(path)) continue;
+  if (!paths.has(path)) fail(`navigation points to unknown document ${path}`);
+}
+for (const doc of docs) {
+  if (redirectedHubSlugs.has(doc.slug)) continue;
+  if (!navPaths.includes(`/${doc.slug}`)) fail(`/${doc.slug} is missing from navigation`);
+}
 
 for (const doc of docs) {
   if (!doc.slug || !doc.title || !doc.summary || !doc.evidenceLabel || !doc.audiences.length || !doc.sections.length) {

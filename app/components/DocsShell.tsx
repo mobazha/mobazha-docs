@@ -3,13 +3,26 @@ import Link from "next/link";
 import { activeNavGroupForPath, docsBySlug, translationPathFor } from "@/app/lib/docs";
 import { DocsSearch } from "@/app/components/DocsSearch";
 
+function isChinesePath(activePath?: string): boolean {
+  return activePath === "/zh" || (activePath?.startsWith("/zh/") ?? false);
+}
+
+function isNavLinkActive(activePath: string, href: string): boolean {
+  return activePath === href
+    || activePath.startsWith(`${href}/`)
+    || (href === "/" && activePath === "/")
+    || (href === "/zh" && activePath === "/zh");
+}
+
 export function SiteHeader({ activePath }: { activePath?: string }) {
-  const isChinese = activePath?.startsWith("/zh/") ?? false;
-  const activeDoc = activePath && activePath !== "/" ? docsBySlug.get(activePath.slice(1)) : undefined;
+  const isChinese = isChinesePath(activePath);
+  const activeDoc = activePath && activePath !== "/" && activePath !== "/zh"
+    ? docsBySlug.get(activePath.slice(1))
+    : undefined;
   const languagePath = activeDoc
-    ? translationPathFor(activeDoc) ?? (isChinese ? "/" : "/zh/start")
+    ? translationPathFor(activeDoc) ?? (isChinese ? "/" : "/zh")
     : activePath === "/api-reference" ? "/zh/build/api"
-    : isChinese ? "/" : "/zh/start";
+    : isChinese ? "/" : "/zh";
   const primaryLinks = isChinese
     ? [["使用", "/zh/buy"], ["自行托管", "/zh/self-host"], ["开发", "/zh/build"], ["了解", "/zh/project/whitepaper"], ["社区", "/zh/support"]]
     : [["Buy & sell", "/buy"], ["Operate", "/self-host"], ["Build", "/build"], ["Understand", "/project"], ["Community", "/support"]];
@@ -27,7 +40,7 @@ export function SiteHeader({ activePath }: { activePath?: string }) {
 
   return (
     <header className="site-header">
-      <Link className="brand" href="/" aria-label="Mobazha documentation home">
+      <Link className="brand" href={isChinese ? "/zh" : "/"} aria-label="Mobazha documentation home">
         <span className="brand-mark">M</span>
         <span>Mobazha Docs</span>
       </Link>
@@ -50,7 +63,7 @@ export function SiteHeader({ activePath }: { activePath?: string }) {
 }
 
 export function DocsShell({ activePath, children }: { activePath: string; children: ReactNode }) {
-  const isChinese = activePath.startsWith("/zh/");
+  const isChinese = isChinesePath(activePath);
   const activeGroup = activeNavGroupForPath(activePath);
   const activeLabel = activeGroup?.links.find(([, href]) => href === activePath)?.[0]
     ?? activeGroup?.links.find(([, href]) => activePath.startsWith(`${href}/`))?.[0];
@@ -67,8 +80,8 @@ export function DocsShell({ activePath, children }: { activePath: string; childr
               <nav aria-label={activeGroup.label}>
                 {activeGroup.links.map(([label, href]) => (
                   <Link
-                    aria-current={activePath === href ? "page" : undefined}
-                    className={activePath === href ? "active" : ""}
+                    aria-current={isNavLinkActive(activePath, href) ? "page" : undefined}
+                    className={isNavLinkActive(activePath, href) ? "active" : ""}
                     href={href}
                     key={href}
                   >
@@ -83,8 +96,8 @@ export function DocsShell({ activePath, children }: { activePath: string; childr
               <p>{activeGroup.label}</p>
               {activeGroup.links.map(([label, href]) => (
                 <Link
-                  aria-current={activePath === href ? "page" : undefined}
-                  className={activePath === href || activePath.startsWith(`${href}/`) ? "active" : ""}
+                  aria-current={isNavLinkActive(activePath, href) ? "page" : undefined}
+                  className={isNavLinkActive(activePath, href) ? "active" : ""}
                   href={href}
                   key={href}
                 >

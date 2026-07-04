@@ -9,7 +9,7 @@
   ],
   "language_starts": {
     "en": "/",
-    "zh-CN": "/zh/start"
+    "zh-CN": "/zh"
   },
   "human_start": "/",
   "agent_start": "/agents",
