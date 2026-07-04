@@ -105,6 +105,16 @@ embed an unreviewed screenshot directly. Conceptual diagrams must be labeled
 as conceptual, and screenshots or terminal output must state exactly what they
 prove and which build they came from.
 
+## Readability baseline
+
+Write and design for sustained task reading. The rendered body baseline is
+16px, navigation and actions are 14px, supporting captions are 12–13px, and
+11px is reserved for short uppercase category labels. Do not place essential
+instructions, provenance, errors, or transaction meaning below these sizes.
+Page titles establish direction; they must not overpower the action and first
+useful section. Prefer tighter, meaningful layouts over tall cards or empty
+space used only to imply importance.
+
 ## Definition of ready
 
 Before publication, confirm that:

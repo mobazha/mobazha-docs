@@ -205,6 +205,9 @@ Understand fees
 - URL: /sell/store-setup
 - Status: beta
 - Page type: task
+- Outcome: Publish a store that can complete one representative buyer journey without hidden operator steps.
+- Estimated time: 30–60 minutes
+- Journey: use
 - Applies to: Mobazha v0.3 release candidate
 - Audience: sellers, operators
 - Knowledge authority: https://docs.mobazha.org/sell/store-setup
@@ -452,6 +455,9 @@ Get help
 - URL: /buy/checkout
 - Status: beta
 - Page type: task
+- Outcome: Create one order from a reviewed seller quote and keep the identifiers needed to recover it.
+- Estimated time: 5–10 minutes
+- Journey: use
 - Applies to: Mobazha v0.3 release candidate
 - Audience: buyers, agents
 - Knowledge authority: https://docs.mobazha.org/buy/checkout
@@ -496,6 +502,9 @@ Use only transitions available for the active order.
 - URL: /buy/guest-checkout
 - Status: beta
 - Page type: task
+- Outcome: Create a recoverable order without attaching a buyer account to the request.
+- Estimated time: 5 minutes
+- Journey: use
 - Applies to: Mobazha v0.3 release candidate
 - Audience: buyers, sellers, agents
 - Knowledge authority: https://docs.mobazha.org/buy/guest-checkout
@@ -548,6 +557,9 @@ Share the tracking link only with parties who need it. Do not post order tokens,
 - URL: /buy/order-status
 - Status: beta
 - Page type: task
+- Outcome: Decide what the current order state proves and which recovery action is safe to take next.
+- Estimated time: 3 minutes
+- Journey: use
 - Applies to: Mobazha v0.3 release candidate
 - Audience: buyers, support, agents
 - Knowledge authority: https://docs.mobazha.org/buy/order-status
@@ -595,6 +607,9 @@ Do not attempt database edits or direct settlement calls to repair a buyer order
 - URL: /buy/cancel-refund-dispute
 - Status: beta
 - Page type: task
+- Outcome: Choose a valid resolution path for the active order without losing the evidence behind it.
+- Estimated time: 5 minutes to assess
+- Journey: use
 - Applies to: Mobazha v0.3 release candidate
 - Audience: buyers, sellers, agents
 - Knowledge authority: https://docs.mobazha.org/buy/cancel-refund-dispute
@@ -673,6 +688,9 @@ Connect an optional hosted account
 - URL: /self-host/requirements
 - Status: beta
 - Page type: policy
+- Outcome: Decide whether your team can safely own the host, network, recovery, updates, and incident response.
+- Estimated time: 10 minutes
+- Journey: operate
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators, evaluators
 - Knowledge authority: https://docs.mobazha.org/self-host/requirements
@@ -717,6 +735,9 @@ Back up and upgrade
 - URL: /self-host/install
 - Status: beta
 - Page type: task
+- Outcome: Start a local testnet Node from a recorded source revision and verify its health boundary.
+- Estimated time: 15–30 minutes
+- Journey: operate
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators, developers
 - Knowledge authority: https://docs.mobazha.org/self-host/install

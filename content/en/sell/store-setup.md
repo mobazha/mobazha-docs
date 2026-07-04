@@ -10,6 +10,12 @@ evidenceUrl: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/a
 reviewed: 2026-07-04
 pageType: task
 lastTested: 2026-07-04
+outcome: Publish a store that can complete one representative buyer journey without hidden operator steps.
+estimatedTime: 30–60 minutes
+journey: use
+primaryAction:
+  label: Begin the readiness check
+  href: /sell/store-setup#before-you-start
 ---
 
 ## Before you start

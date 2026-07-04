@@ -11,6 +11,12 @@ evidenceUrl: https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/c
 reviewed: 2026-07-04
 pageType: task
 lastTested: 2026-07-04
+outcome: Decide what the current order state proves and which recovery action is safe to take next.
+estimatedTime: 3 minutes
+journey: use
+primaryAction:
+  label: Reconcile an order
+  href: /buy/order-status#before-you-start
 ---
 
 ## Before you start

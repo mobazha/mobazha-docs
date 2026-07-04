@@ -9,6 +9,12 @@ evidenceLabel: Node build and standalone deployment sources
 evidenceUrl: https://github.com/mobazha/mobazha
 reviewed: 2026-07-04
 pageType: policy
+outcome: Decide whether your team can safely own the host, network, recovery, updates, and incident response.
+estimatedTime: 10 minutes
+journey: operate
+primaryAction:
+  label: Review the operating baseline
+  href: /self-host/requirements#current-software-baseline
 ---
 
 ## Current software baseline

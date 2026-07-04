@@ -169,6 +169,13 @@
       "reviewed": "2026-07-04",
       "page_type": "task",
       "last_tested": "2026-07-04",
+      "outcome": "Publish a store that can complete one representative buyer journey without hidden operator steps.",
+      "estimated_time": "30–60 minutes",
+      "journey": "use",
+      "primary_action": {
+        "label": "Begin the readiness check",
+        "href": "/sell/store-setup#before-you-start"
+      },
       "language": "en"
     },
     {
@@ -348,6 +355,13 @@
       "reviewed": "2026-07-04",
       "page_type": "task",
       "last_tested": "2026-07-04",
+      "outcome": "Create one order from a reviewed seller quote and keep the identifiers needed to recover it.",
+      "estimated_time": "5–10 minutes",
+      "journey": "use",
+      "primary_action": {
+        "label": "Start the checkout checks",
+        "href": "/buy/checkout#before-you-start"
+      },
       "language": "en"
     },
     {
@@ -375,6 +389,13 @@
       "reviewed": "2026-07-04",
       "page_type": "task",
       "last_tested": "2026-07-04",
+      "outcome": "Create a recoverable order without attaching a buyer account to the request.",
+      "estimated_time": "5 minutes",
+      "journey": "use",
+      "primary_action": {
+        "label": "Check Guest Checkout readiness",
+        "href": "/buy/guest-checkout#before-you-start"
+      },
       "language": "en"
     },
     {
@@ -402,6 +423,13 @@
       "reviewed": "2026-07-04",
       "page_type": "task",
       "last_tested": "2026-07-04",
+      "outcome": "Decide what the current order state proves and which recovery action is safe to take next.",
+      "estimated_time": "3 minutes",
+      "journey": "use",
+      "primary_action": {
+        "label": "Reconcile an order",
+        "href": "/buy/order-status#before-you-start"
+      },
       "language": "en"
     },
     {
@@ -429,6 +457,13 @@
       "reviewed": "2026-07-04",
       "page_type": "task",
       "last_tested": "2026-07-04",
+      "outcome": "Choose a valid resolution path for the active order without losing the evidence behind it.",
+      "estimated_time": "5 minutes to assess",
+      "journey": "use",
+      "primary_action": {
+        "label": "Assess the active order",
+        "href": "/buy/cancel-refund-dispute#before-you-start"
+      },
       "language": "en"
     },
     {
@@ -503,6 +538,13 @@
       },
       "reviewed": "2026-07-04",
       "page_type": "policy",
+      "outcome": "Decide whether your team can safely own the host, network, recovery, updates, and incident response.",
+      "estimated_time": "10 minutes",
+      "journey": "operate",
+      "primary_action": {
+        "label": "Review the operating baseline",
+        "href": "/self-host/requirements#current-software-baseline"
+      },
       "language": "en"
     },
     {
@@ -529,6 +571,13 @@
       "reviewed": "2026-07-04",
       "page_type": "task",
       "last_tested": "2026-07-04",
+      "outcome": "Start a local testnet Node from a recorded source revision and verify its health boundary.",
+      "estimated_time": "15–30 minutes",
+      "journey": "operate",
+      "primary_action": {
+        "label": "Review prerequisites",
+        "href": "/self-host/install#before-you-start"
+      },
       "language": "en"
     },
     {

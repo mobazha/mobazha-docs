@@ -11,6 +11,12 @@ evidenceUrl: https://github.com/mobazha/mobazha-unified/blob/main/packages/core/
 reviewed: 2026-07-04
 pageType: task
 lastTested: 2026-07-04
+outcome: Create a recoverable order without attaching a buyer account to the request.
+estimatedTime: 5 minutes
+journey: use
+primaryAction:
+  label: Check Guest Checkout readiness
+  href: /buy/guest-checkout#before-you-start
 ---
 
 ## Before you start

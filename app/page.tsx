@@ -47,7 +47,7 @@ export default function Home() {
       <section className="hero">
         <div className="hero-glow" aria-hidden="true" />
         <div className="status-pill"><span /> Open-source commerce stack</div>
-        <h1>Open commerce, operated by<br /><em>the people who use it.</em></h1>
+        <h1>Open commerce.<br /><em>Run by the people who use it.</em></h1>
         <p>
           Buy from independent stores, run a store or Node under your control,
           or build on public interfaces without one marketplace owning every path.

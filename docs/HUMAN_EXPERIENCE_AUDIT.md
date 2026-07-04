@@ -124,6 +124,20 @@ Useful links exist, but they usually appear as equal-weight cards at the bottom
 of the page. The hosted application, first checkout, store setup, install, and
 first API call need a visible primary action or start point.
 
+### Typography creates spectacle at the top and strain below it
+
+The baseline home hero reaches 84px while navigation, task-card descriptions,
+metadata, captions, code, and table text frequently fall between 8px and 13px.
+This makes the first screen feel oversized but the material a reader must
+actually follow feel compressed. The contrast is especially costly on dense
+task pages and high-resolution laptop displays.
+
+The correction caps the home display at 72px, keeps document titles at
+38–52px, and establishes 16px article text, 14px navigation and actions,
+12–13px supporting text, and 11px as the smallest category label. Mobile
+preserves readable body and action sizes instead of scaling the entire system
+down uniformly.
+
 ### Product differentiation is implicit
 
 The visual system is clean but could describe many API or Web3 projects.

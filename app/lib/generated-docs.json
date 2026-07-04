@@ -1709,6 +1709,13 @@
     "reviewed": "2026-07-04",
     "pageType": "task",
     "lastTested": "2026-07-04",
+    "outcome": "Choose a valid resolution path for the active order without losing the evidence behind it.",
+    "estimatedTime": "5 minutes to assess",
+    "journey": "use",
+    "primaryAction": {
+      "label": "Assess the active order",
+      "href": "/buy/cancel-refund-dispute#before-you-start"
+    },
     "language": "en",
     "sections": [
       {
@@ -1792,6 +1799,13 @@
     "reviewed": "2026-07-04",
     "pageType": "task",
     "lastTested": "2026-07-04",
+    "outcome": "Create one order from a reviewed seller quote and keep the identifiers needed to recover it.",
+    "estimatedTime": "5–10 minutes",
+    "journey": "use",
+    "primaryAction": {
+      "label": "Start the checkout checks",
+      "href": "/buy/checkout#before-you-start"
+    },
     "language": "en",
     "sections": [
       {
@@ -1903,6 +1917,13 @@
     "reviewed": "2026-07-04",
     "pageType": "task",
     "lastTested": "2026-07-04",
+    "outcome": "Create a recoverable order without attaching a buyer account to the request.",
+    "estimatedTime": "5 minutes",
+    "journey": "use",
+    "primaryAction": {
+      "label": "Check Guest Checkout readiness",
+      "href": "/buy/guest-checkout#before-you-start"
+    },
     "language": "en",
     "sections": [
       {
@@ -2019,6 +2040,13 @@
     "reviewed": "2026-07-04",
     "pageType": "task",
     "lastTested": "2026-07-04",
+    "outcome": "Decide what the current order state proves and which recovery action is safe to take next.",
+    "estimatedTime": "3 minutes",
+    "journey": "use",
+    "primaryAction": {
+      "label": "Reconcile an order",
+      "href": "/buy/order-status#before-you-start"
+    },
     "language": "en",
     "sections": [
       {
@@ -4155,6 +4183,13 @@
     "reviewed": "2026-07-04",
     "pageType": "task",
     "lastTested": "2026-07-04",
+    "outcome": "Start a local testnet Node from a recorded source revision and verify its health boundary.",
+    "estimatedTime": "15–30 minutes",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "Review prerequisites",
+      "href": "/self-host/install#before-you-start"
+    },
     "language": "en",
     "sections": [
       {
@@ -4471,6 +4506,13 @@
     "evidenceUrl": "https://github.com/mobazha/mobazha",
     "reviewed": "2026-07-04",
     "pageType": "policy",
+    "outcome": "Decide whether your team can safely own the host, network, recovery, updates, and incident response.",
+    "estimatedTime": "10 minutes",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "Review the operating baseline",
+      "href": "/self-host/requirements#current-software-baseline"
+    },
     "language": "en",
     "sections": [
       {
@@ -5300,6 +5342,13 @@
     "reviewed": "2026-07-04",
     "pageType": "task",
     "lastTested": "2026-07-04",
+    "outcome": "Publish a store that can complete one representative buyer journey without hidden operator steps.",
+    "estimatedTime": "30–60 minutes",
+    "journey": "use",
+    "primaryAction": {
+      "label": "Begin the readiness check",
+      "href": "/sell/store-setup#before-you-start"
+    },
     "language": "en",
     "sections": [
       {

@@ -11,6 +11,12 @@ evidenceUrl: https://github.com/mobazha/mobazha/tree/main/api-spec
 reviewed: 2026-07-04
 pageType: task
 lastTested: 2026-07-04
+outcome: Choose a valid resolution path for the active order without losing the evidence behind it.
+estimatedTime: 5 minutes to assess
+journey: use
+primaryAction:
+  label: Assess the active order
+  href: /buy/cancel-refund-dispute#before-you-start
 ---
 
 ## Before you start

@@ -10,6 +10,12 @@ evidenceUrl: https://github.com/mobazha/mobazha#quick-start
 reviewed: 2026-07-04
 pageType: task
 lastTested: 2026-07-04
+outcome: Start a local testnet Node from a recorded source revision and verify its health boundary.
+estimatedTime: 15–30 minutes
+journey: operate
+primaryAction:
+  label: Review prerequisites
+  href: /self-host/install#before-you-start
 ---
 
 ## Before you start

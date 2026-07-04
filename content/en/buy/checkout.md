@@ -10,6 +10,12 @@ evidenceUrl: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/a
 reviewed: 2026-07-04
 pageType: task
 lastTested: 2026-07-04
+outcome: Create one order from a reviewed seller quote and keep the identifiers needed to recover it.
+estimatedTime: 5–10 minutes
+journey: use
+primaryAction:
+  label: Start the checkout checks
+  href: /buy/checkout#before-you-start
 ---
 
 ## Before you start
