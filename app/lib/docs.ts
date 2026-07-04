@@ -60,7 +60,9 @@ export type NavGroup = {
 export type VisualEvidence = {
   id: string;
   src: string;
+  sha256: string;
   mobile_src?: string;
+  mobile_sha256?: string;
   kind: "product-screenshot" | "terminal-output" | "conceptual";
   width: number;
   height: number;

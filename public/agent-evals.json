@@ -290,7 +290,8 @@
       "required_claims": [
         "The current resolver can enable only feature code already included in the build and allowed by the supported profile and authoritative backend capability.",
         "The first resolver slices cover Guest Checkout, marketplace operator, and marketplace seller-review route and navigation eligibility.",
-        "Product views share provisional add-to-cart and buy-now action identity and host-rendering contracts while inventory, payment, asset policy, layout, and localization remain host-owned."
+        "Product views share provisional add-to-cart and buy-now action identity and host-rendering contracts while inventory, payment, asset policy, layout, and localization remain host-owned.",
+        "Cart views share provisional item-count, total, checkout-disabled, and checkout-action semantics while seller grouping, authentication, currency, channel policy, storage, and navigation remain host-owned."
       ],
       "forbidden_claims": [
         "The resolver is a dynamic plugin, remote UI, or universal product-manifest system.",

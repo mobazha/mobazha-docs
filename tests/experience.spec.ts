@@ -47,3 +47,41 @@ test("keyboard users can bypass navigation and reach the document", async ({ pag
   await skip.press("Enter");
   await expect(page.locator("#main-content")).toBeFocused();
 });
+
+test("desktop search supports keyboard selection and navigation", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "desktop sidebar search is intentionally hidden on mobile");
+  const indexReady = page.waitForResponse((response) => response.url().endsWith("/docs-index.json") && response.ok());
+  await page.goto("/buy");
+  await indexReady;
+  const search = page.getByRole("combobox", { name: "Search documentation" });
+  await search.fill("refund");
+  await expect(page.getByRole("option").first()).toBeVisible();
+  await search.press("ArrowDown");
+  await expect(search).toHaveAttribute("aria-activedescendant", "docs-search-option-0");
+  await expect(page.locator("#docs-search-option-0")).toHaveAttribute("aria-selected", "true");
+  await search.press("Enter");
+  await expect(page).toHaveURL(/\/buy\/cancel-refund-dispute$/);
+});
+
+test("Chinese search stays inside the Chinese knowledge surface", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "desktop sidebar search is intentionally hidden on mobile");
+  const indexReady = page.waitForResponse((response) => response.url().endsWith("/docs-index.json") && response.ok());
+  await page.goto("/zh/buy");
+  await indexReady;
+  const search = page.getByRole("combobox", { name: "搜索文档" });
+  await search.fill("收费");
+  const results = page.getByRole("option");
+  await expect(results.first()).toHaveAttribute("href", "/zh/project/fees");
+  const paths = await results.evaluateAll((options) => options.map((option) => option.getAttribute("href")));
+  expect(paths.length).toBeGreaterThan(0);
+  expect(paths.every((path) => path?.startsWith("/zh/"))).toBeTruthy();
+});
+
+test("reduced-motion preference removes meaningful transitions", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  const transitionSeconds = await page.locator(".path-card").first().evaluate((node) =>
+    Number.parseFloat(getComputedStyle(node).transitionDuration),
+  );
+  expect(transitionSeconds).toBeLessThanOrEqual(0.00001);
+});

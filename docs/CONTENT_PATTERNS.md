@@ -103,7 +103,9 @@ For a featured visual, reference an entry in
 [`../visual-evidence.json`](../visual-evidence.json) from frontmatter. Do not
 embed an unreviewed screenshot directly. Conceptual diagrams must be labeled
 as conceptual, and screenshots or terminal output must state exactly what they
-prove and which build they came from.
+prove and which build they came from. Schema 1.1 records reviewed dimensions
+and SHA-256 digests for SVG or PNG assets so a replacement requires an explicit
+evidence review rather than silently inheriting the old claim.
 
 ## Readability baseline
 

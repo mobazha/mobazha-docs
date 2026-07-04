@@ -36,9 +36,18 @@ const evidence = readJson("visual-evidence.json");
 checkAge("visual evidence catalog", evidence.reviewed, 180);
 for (const visual of evidence.visuals) checkAge(`visual ${visual.id}`, visual.reviewed, 180);
 
+const sources = readJson("sources.json");
+checkAge("public source catalog", sources.reviewed, 90);
+for (const source of sources.sources) {
+  if (source.reviewed) checkAge(`source ${source.id}`, source.reviewed, 90);
+}
+
+const agentEvals = readJson("agent-evals.json");
+checkAge("Agent evaluation contract", agentEvals.reviewed, 180);
+
 if (failures.length) {
   console.error(`freshness check failed (${now.toISOString().slice(0, 10)}):\n- ${failures.join("\n- ")}`);
   process.exit(1);
 }
 
-console.log(`freshness check passed: ${documents.length} documents, ${evidence.visuals.length} visuals`);
+console.log(`freshness check passed: ${documents.length} documents, ${evidence.visuals.length} visuals, ${sources.sources.length} sources, and the Agent evaluation contract`);

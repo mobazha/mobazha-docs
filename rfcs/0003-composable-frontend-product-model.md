@@ -85,6 +85,13 @@ buttons, layout, localization, inventory, payment, and asset policy. This is
 still one application implementation and does not satisfy the two-application
 promotion rule or place entity-scoped policy in the global resolver.
 
+Cart summary follows the same provisional boundary. Shared content normalizes
+item count, total, checkout-disabled state, checkout action, and optional host
+rendering. Unified uses it in drawer, desktop seller-group, multi-seller, and
+mobile fixed-bar views while seller grouping, authentication and registration
+routing, currency formatting, channel-native calls to action, cart storage,
+and checkout navigation remain host-owned.
+
 A downstream sovereign distribution now applies the same constitution to its
 build-local catalog. It validates its shell profile and capability readiness,
 gates public checkout and administration on backend capabilities, and applies a
@@ -93,10 +100,11 @@ prove that the presentation policy cannot expose a route or navigation item
 when the authoritative backend capability is absent. Its implementation and
 product vocabulary remain outside the public frontend.
 
-This closes the first route/navigation composition baseline and validates a
-provisional host-rendered action boundary, but does not complete or accept the
-RFC. Provider, generic action projection, and general feature-catalog
-contributions remain unimplemented target stages; the browser-extension shell
+This closes the first route/navigation composition baseline and validates
+provisional host-rendered product-action and cart-summary boundaries, but does
+not complete or accept the RFC. Provider, generic action projection, and
+general feature-catalog contributions remain unimplemented target stages; the
+browser-extension shell
 has not adopted the lifecycle; and no dynamic plugin, remote UI, Agent surface
 protocol, or universal manifest is introduced. Existing feature-owned
 workflows remain valid without a universal workflow registry.
@@ -288,7 +296,7 @@ designing a universal product manifest upfront:
 | Current foundation | Runtime Config dimensions and Commerce Kit Guest Checkout | Existing products continue to build and run |
 | Composition inventory | Hosted, standalone, marketplace, embedded, and sovereign condition audit | Every condition classified by an independent dimension |
 | Resolver baseline | Shared route/navigation/provider/action projection | Pending, invalid, and excluded reasons are deterministic |
-| Public vertical slices | Guest Checkout shipped; product actions dogfooded; cart summary pending | At least two real applications consume equivalent contracts |
+| Public vertical slices | Guest Checkout shipped; product actions and cart summary dogfooded | At least two real applications consume equivalent contracts |
 | Private composition | Public kit plus private distribution-local feature | Private code remains physically absent from public artifacts |
 | Release governance | Versioned profile/schema and product matrix | Packed artifacts and final binaries prove claimed compositions |
 
@@ -403,7 +411,9 @@ capability absent from the authoritative backend snapshot.
 
 - Which product-action decisions are global profile or capability concerns that
   should enter the resolver, and which must remain entity-scoped host policy?
-- Which cart-summary decisions should become the next mandatory shared slice?
+- Which cart-summary decisions, if any, are global profile or capability
+  concerns rather than host-owned entity and navigation policy?
+- Which small administration primitive should become the next shared slice?
 - Which additional deployment, experience, and channel combinations have
   enough product evidence to join the current supported profile matrix?
 - Which second provider implementation would justify replacing the current

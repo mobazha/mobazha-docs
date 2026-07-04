@@ -68,10 +68,12 @@ count.
 - Recorded the first shipped frontend-composition slice: Guest Checkout,
   marketplace-operator, and marketplace-seller-review route and navigation
   eligibility now consume one fail-closed resolver.
-- Recorded the second Commerce Kit dogfood slice: product views share stable
-  add-to-cart and buy-now action identity and host-rendering contracts, while
-  entity policy remains host-owned and generic provider, workflow, action,
-  browser-extension, and dynamic-plugin claims remain out of scope.
+- Recorded the next Commerce Kit dogfood slices: product views share stable
+  add-to-cart and buy-now action identity, and cart views share normalized
+  summary and checkout state through host-rendering contracts. Entity, seller,
+  authentication, currency, channel, storage, and navigation policy remains
+  host-owned; generic provider, workflow, action, browser-extension, and
+  dynamic-plugin claims remain out of scope.
 - Added typed content blocks and page-specific quality gates so guides can use
   ordered steps, tables, repeated code examples, callouts, and verification
   without losing structure in Agent publications.

@@ -144,7 +144,9 @@
       "featured_visual": {
         "id": "seller-operating-loop",
         "src": "/images/docs/sell/store-operating-loop.svg",
+        "sha256": "e05ce5ef770dc832404864ef24750f8f0ca54a449f48575d5b3f00cc569a5db3",
         "mobile_src": "/images/docs/sell/store-operating-loop-mobile.svg",
+        "mobile_sha256": "090e99fdddfc5e62737676c84f484ffd71b1262a5b1b025d1fb7ec900a9306d8",
         "kind": "conceptual",
         "width": 760,
         "height": 420,
@@ -359,7 +361,9 @@
       "featured_visual": {
         "id": "buyer-order-lifecycle",
         "src": "/images/docs/buy/order-lifecycle.svg",
+        "sha256": "aa9b5fa9b8a3fc8d051eb6be36b1754148146d93e46712920dce3b6b0e3f54a7",
         "mobile_src": "/images/docs/buy/order-lifecycle-mobile.svg",
+        "mobile_sha256": "e9da65c01633deb565734d262a92cd4400dc83ffe3fefad3f7977f3247905233",
         "kind": "conceptual",
         "width": 760,
         "height": 420,
@@ -544,7 +548,9 @@
       "featured_visual": {
         "id": "self-host-trust-boundary",
         "src": "/images/docs/self-host/operator-trust-boundary.svg",
+        "sha256": "ec2bd699563cc7cd8f16e7552b57629fb5cd387281d1dd027f9296c941bc6c2e",
         "mobile_src": "/images/docs/self-host/operator-trust-boundary-mobile.svg",
+        "mobile_sha256": "30f9938ccbebc1fd4f30461c6cab49321bcdd1887b19a2d78d3177ac7d897b62",
         "kind": "conceptual",
         "width": 760,
         "height": 420,
@@ -1981,7 +1987,9 @@
       "featured_visual": {
         "id": "seller-operating-loop",
         "src": "/images/docs/sell/store-operating-loop.svg",
+        "sha256": "e05ce5ef770dc832404864ef24750f8f0ca54a449f48575d5b3f00cc569a5db3",
         "mobile_src": "/images/docs/sell/store-operating-loop-mobile.svg",
+        "mobile_sha256": "090e99fdddfc5e62737676c84f484ffd71b1262a5b1b025d1fb7ec900a9306d8",
         "kind": "conceptual",
         "width": 760,
         "height": 420,
@@ -2032,7 +2040,9 @@
       "featured_visual": {
         "id": "buyer-order-lifecycle",
         "src": "/images/docs/buy/order-lifecycle.svg",
+        "sha256": "aa9b5fa9b8a3fc8d051eb6be36b1754148146d93e46712920dce3b6b0e3f54a7",
         "mobile_src": "/images/docs/buy/order-lifecycle-mobile.svg",
+        "mobile_sha256": "e9da65c01633deb565734d262a92cd4400dc83ffe3fefad3f7977f3247905233",
         "kind": "conceptual",
         "width": 760,
         "height": 420,
@@ -2083,7 +2093,9 @@
       "featured_visual": {
         "id": "self-host-trust-boundary",
         "src": "/images/docs/self-host/operator-trust-boundary.svg",
+        "sha256": "ec2bd699563cc7cd8f16e7552b57629fb5cd387281d1dd027f9296c941bc6c2e",
         "mobile_src": "/images/docs/self-host/operator-trust-boundary-mobile.svg",
+        "mobile_sha256": "30f9938ccbebc1fd4f30461c6cab49321bcdd1887b19a2d78d3177ac7d897b62",
         "kind": "conceptual",
         "width": 760,
         "height": 420,

@@ -15,7 +15,7 @@
 | HX-3 | Complete | Flagship journeys are live; `/buy`, `/sell`, and `/self-host` use reviewed desktop/mobile models, with schema 1.7 discovery and `/visual-evidence.json` verified in production |
 | HX-4 | Complete | All 54 English pages expose human-first outcomes and direct starts; API, Node diagnostics, backup, and integration references include observable outputs or verification exercises |
 | HX-5 | Complete | All 54 English and 14 Chinese pages use explicit human-first outcomes and direct starts; translation validation preserves page type, journey, and shared visual applicability |
-| HX-6 | In progress | Responsive and WCAG browser checks, route coverage, visual evidence integrity, freshness budgets, and scheduled source/link reviews are implemented; aggregate telemetry remains intentionally off pending an accepted privacy decision |
+| HX-6 | In progress | Responsive and WCAG browser checks, keyboard search, route coverage, digest-locked visual evidence, expanded freshness budgets, and scheduled source/link reviews are implemented; aggregate telemetry remains intentionally off pending an accepted privacy decision |
 
 Local implementation is not considered delivered until the complete build,
 route checks, desktop and mobile walkthroughs, staged review, and production
@@ -185,7 +185,7 @@ The source manifest is [`../visual-evidence.json`](../visual-evidence.json),
 validated by [`../visual-evidence.schema.json`](../visual-evidence.schema.json).
 Pages reference a stable evidence ID rather than an asset path. The manifest
 owns the asset, caption, claim boundary, provenance, applicability, and review
-date, dimensions, responsive variant, and privacy-review result, and is
+date, dimensions, responsive variant, reviewed digest, and privacy-review result, and is
 published at `/visual-evidence.json` for people and Agents.
 
 ### Real screenshot publication gate

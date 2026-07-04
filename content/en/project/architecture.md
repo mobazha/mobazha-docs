@@ -51,7 +51,10 @@ marketplace-operator, and marketplace-seller-review route and navigation
 eligibility from one fail-closed result. A second dogfood slice shares stable
 add-to-cart and buy-now action identity and host-rendering contracts across
 Unified product views, while inventory, payment, asset policy, layout, and
-localization remain host-owned. The resolver does not yet project generic
+localization remain host-owned. A cart-summary slice similarly normalizes item
+count, total, disabled state, and checkout action while leaving seller grouping,
+authentication, currency display, channel policy, storage, and navigation with
+the host. The resolver does not yet project generic
 providers, workflows, or actions, and it does not turn the browser-extension
 shell or private distributions into public runtime plugins.
 

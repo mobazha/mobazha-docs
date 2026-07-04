@@ -76,10 +76,18 @@ adapter. Unified consumes it in desktop detail, mobile detail, and the
 responsive bottom bar while retaining its own buttons, layout, localization,
 inventory, payment, and asset policy.
 
+Cart summary is the next dogfood slice. Shared summary content normalizes item
+count, total, checkout-disabled state, checkout action, and optional host
+rendering. Unified consumes it in the drawer, desktop seller-group footer,
+multi-seller total, and mobile fixed bar while seller grouping, authentication
+and registration routing, currency display, channel-native calls to action,
+cart storage, and checkout navigation remain host-owned.
+
 The resolver still projects feature eligibility only for routes and
 navigation. Entity-scoped product policy is not a global capability, and the
-product-action API remains provisional until a second independent application
-proves the same boundary. Generic provider, workflow, and action contribution,
+product-action and cart-summary APIs remain provisional until a second
+independent application proves the same boundaries. Generic provider,
+workflow, and action contribution,
 browser-extension shell adoption, dynamic plugins, remote UI, and a universal
 product manifest are not current public contracts.
 

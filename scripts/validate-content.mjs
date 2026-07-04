@@ -171,7 +171,7 @@ for (const doc of docs) {
   }
 }
 
-if (!visualEvidence || visualEvidence.schema_version !== "1.0" || !/^\d{4}-\d{2}-\d{2}$/.test(visualEvidence.reviewed) || !Array.isArray(visualEvidence.visuals)) {
+if (!visualEvidence || visualEvidence.schema_version !== "1.1" || !/^\d{4}-\d{2}-\d{2}$/.test(visualEvidence.reviewed) || !Array.isArray(visualEvidence.visuals)) {
   fail("invalid visual evidence catalog");
 } else {
   const visualIds = new Set();
@@ -180,12 +180,14 @@ if (!visualEvidence || visualEvidence.schema_version !== "1.0" || !/^\d{4}-\d{2}
     visualIds.add(visual.id);
     if (!new Set(["product-screenshot", "terminal-output", "conceptual"]).has(visual.kind)) fail(`invalid visual kind on ${visual.id}`);
     if (!visual.src?.startsWith("/images/docs/") || !existsSync(new URL(`../public${visual.src}`, import.meta.url))) fail(`missing visual asset ${visual.src ?? "<unknown>"}`);
+    if (!/^[a-f0-9]{64}$/.test(visual.sha256 ?? "")) fail(`invalid visual digest on ${visual.id}`);
     if (!Number.isInteger(visual.width) || visual.width < 1 || !Number.isInteger(visual.height) || visual.height < 1) fail(`invalid visual dimensions on ${visual.id}`);
     if (visual.mobile_src !== undefined) {
       if (!visual.mobile_src.startsWith("/images/docs/") || !existsSync(new URL(`../public${visual.mobile_src}`, import.meta.url))) fail(`missing mobile visual asset ${visual.mobile_src}`);
+      if (!/^[a-f0-9]{64}$/.test(visual.mobile_sha256 ?? "")) fail(`invalid mobile visual digest on ${visual.id}`);
       if (!Number.isInteger(visual.mobile_width) || visual.mobile_width < 1 || !Number.isInteger(visual.mobile_height) || visual.mobile_height < 1) fail(`invalid mobile visual dimensions on ${visual.id}`);
-    } else if (visual.mobile_width !== undefined || visual.mobile_height !== undefined) {
-      fail(`mobile visual dimensions without an asset on ${visual.id}`);
+    } else if (visual.mobile_sha256 !== undefined || visual.mobile_width !== undefined || visual.mobile_height !== undefined) {
+      fail(`mobile visual metadata without an asset on ${visual.id}`);
     }
     if (!visual.alt?.trim() || !visual.caption?.trim() || !visual.claim?.trim()) fail(`incomplete visual description on ${visual.id}`);
     if (!new Set(["synthetic-only", "redacted", "public-demo-reviewed"]).has(visual.privacy_review)) fail(`invalid visual privacy review on ${visual.id}`);

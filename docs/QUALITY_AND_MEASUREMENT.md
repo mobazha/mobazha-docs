@@ -14,15 +14,21 @@ as complete:
 2. Human experience: representative English and Chinese journeys retain a
    visible outcome and action, readable body type, and no page-level overflow
    at 1280×720 and 390×844.
-3. Accessibility: representative routes have no critical or serious WCAG 2.1
-   A/AA violations, and keyboard users can bypass repeated navigation.
+3. Accessibility: every published page is checked at desktop size,
+   representative English and Chinese journeys are also checked on mobile,
+   and keyboard users can bypass repeated navigation and operate search.
 4. Evidence and freshness: visual assets match their manifest dimensions and
-   accessibility metadata; reviewed and last-tested dates stay within budget.
+   accessibility metadata, and reviewed SHA-256 digests prevent silent asset
+   replacement; reviewed and last-tested dates stay within budget.
 
 `npm run check` covers deterministic repository checks. `npm run
 test:experience` starts the public surface in Chromium and covers rendered
 behavior. The scheduled workflow additionally checks external links and exact
 upstream source revisions.
+
+Visual evidence schema 1.1 accepts reviewed SVG models and PNG product or
+terminal captures. Dimensions and SHA-256 digests must match the manifest;
+conceptual SVGs additionally require an internal title and description.
 
 ## Freshness budgets
 
@@ -33,6 +39,8 @@ upstream source revisions.
 | Draft, Deprecated, or visual evidence | 180 days |
 | Historical page | 365 days |
 | Executable task `lastTested` | 90 days |
+| Public source catalog and reviewed source | 90 days |
+| Agent evaluation contract | 180 days |
 
 A failed freshness check is a review request, not evidence that the content is
 automatically false. The reviewer must inspect the authority and implementation
