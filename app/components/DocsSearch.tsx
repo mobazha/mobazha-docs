@@ -10,9 +10,10 @@ type SearchDocument = {
   summary: string;
   status: string;
   audiences: string[];
+  language: "en" | "zh-CN";
 };
 
-export function DocsSearch() {
+export function DocsSearch({ language = "en" }: { language?: "en" | "zh-CN" }) {
   const [documents, setDocuments] = useState<SearchDocument[]>([]);
   const [query, setQuery] = useState("");
   const [focused, setFocused] = useState(false);
@@ -36,6 +37,7 @@ export function DocsSearch() {
     const normalized = query.trim().toLowerCase();
     if (!normalized) return [];
     return documents
+      .filter((doc) => doc.language === language)
       .map((doc) => {
         const title = doc.title.toLowerCase();
         const path = doc.path.toLowerCase();
@@ -47,7 +49,9 @@ export function DocsSearch() {
       .sort((a, b) => b.score - a.score || a.doc.title.localeCompare(b.doc.title))
       .slice(0, 6)
       .map((result) => result.doc);
-  }, [documents, query]);
+  }, [documents, language, query]);
+
+  const isChinese = language === "zh-CN";
 
   const open = focused && query.trim().length > 0;
 
@@ -55,12 +59,12 @@ export function DocsSearch() {
     <div className="docs-search" onBlur={(event) => {
       if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false);
     }}>
-      <label htmlFor="docs-search-input">Search documentation</label>
+      <label htmlFor="docs-search-input">{isChinese ? "搜索文档" : "Search documentation"}</label>
       <input
         id="docs-search-input"
         type="search"
         value={query}
-        placeholder="Search docs…"
+        placeholder={isChinese ? "搜索文档…" : "Search docs…"}
         autoComplete="off"
         onChange={(event) => setQuery(event.target.value)}
         onFocus={() => setFocused(true)}
@@ -82,7 +86,7 @@ export function DocsSearch() {
               <span>{doc.title}</span>
               <small>{doc.status} · {doc.path}</small>
             </Link>
-          )) : <p>No matching documentation</p>}
+          )) : <p>{isChinese ? "没有匹配的文档" : "No matching documentation"}</p>}
         </div>
       )}
     </div>

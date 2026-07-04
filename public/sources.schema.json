@@ -13,6 +13,8 @@
         "properties": {
           "id": { "type": "string" },
           "repository": { "type": "string" },
+          "revision": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+          "reviewed": { "type": "string", "format": "date" },
           "owns": { "type": "array", "items": { "type": "string" } }
         }
       }

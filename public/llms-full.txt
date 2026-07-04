@@ -43,6 +43,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: everyone, agents
 - Source: https://github.com/mobazha
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Mobazha is an open commerce stack for running, using, and extending independent marketplaces and stores.
 
 ### Choose hosted or self-hosted Mobazha
@@ -52,6 +53,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: sellers, operators, evaluators, agents
 - Source: https://github.com/mobazha/mobazha/blob/main/README.md
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Choose the operating model from control, responsibility, integrations, and service needs—not from a false free-versus-paid shortcut.
 
 ### Use Mobazha documentation as an Agent
@@ -61,6 +63,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: agents, agent builders, security reviewers
 - Source: https://github.com/mobazha/mobazha-docs
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Resolve authority, applicability, and user consent before turning documentation into an action.
 
 ### Sell through a Mobazha store
@@ -70,6 +73,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: sellers, operators
 - Source: https://github.com/mobazha/mobazha/tree/main
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: A practical map from store setup to settlement, with costs and responsibilities visible before an order is accepted.
 
 ### Buy with inspectable terms
@@ -79,6 +83,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: buyers, agents
 - Source: https://github.com/mobazha/mobazha-unified
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Confirm the seller, item, delivery terms, payment route, and complete cost breakdown before committing funds.
 
 ### Operate your own Mobazha Node
@@ -88,6 +93,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: operators, developers
 - Source: https://github.com/mobazha/mobazha/tree/main
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Self-hosting keeps store data and operations under the operator's control and does not require an optional managed-service subscription.
 
 ### Install a Mobazha Node
@@ -97,6 +103,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: operators, developers
 - Source: https://github.com/mobazha/mobazha#quick-start
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Build the release candidate from public source, start it locally, and verify the UI and health boundary before exposing it.
 
 ### Configure a self-hosted node
@@ -106,6 +113,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: operators
 - Source: https://github.com/mobazha/mobazha
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Make deployment mode, data location, network exposure, payments, and external dependencies explicit and recoverable.
 
 ### Back up and upgrade safely
@@ -115,6 +123,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: operators
 - Source: https://github.com/mobazha/mobazha/tree/main/docs/releases
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Treat upgrade readiness as a recoverability exercise, not only a package update.
 
 ### Secure a self-hosted node
@@ -124,6 +133,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: operators, security reviewers
 - Source: https://github.com/mobazha/mobazha/blob/main/SECURITY.md
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Protect the host, administrative boundary, signing material, payment integrations, backups, and recovery path as one system.
 
 ### Troubleshoot a Mobazha Node
@@ -133,6 +143,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: operators, support
 - Source: https://github.com/mobazha/mobazha#operations
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Diagnose version, process, health, capability, configuration, and dependency failures without exposing sensitive data.
 
 ### Connect optional hosted capabilities
@@ -142,6 +153,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: operators
 - Source: https://github.com/mobazha/mobazha/blob/main/README.md
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Keep local node ownership separate from any optional account or hosted service connection.
 
 ### Build on advertised capabilities
@@ -151,6 +163,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: developers, agent builders
 - Source: https://github.com/mobazha
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Integrations should discover what a backend supports instead of assuming every Mobazha deployment exposes the same surface.
 
 ### Runtime capabilities and product composition
@@ -160,6 +173,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: developers, agent builders, operators
 - Source: https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Discover effective behavior from the connected backend and keep deployment, experience, capabilities, permissions, and experiments separate.
 
 ### HTTP API and OpenAPI
@@ -169,6 +183,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: developers
 - Source: https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Use the generated Mobazha Node OpenAPI contract as the operation and schema reference, then verify runtime capabilities before calling optional features.
 
 ### WebSocket events
@@ -178,6 +193,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: developers, client maintainers
 - Source: https://github.com/mobazha/mobazha/blob/main/internal/api/ws.go
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Use authenticated WebSocket events for timely UI updates, then reconcile important state through the authoritative HTTP API.
 
 ### MCP and agent integrations
@@ -187,6 +203,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: agent builders, security reviewers
 - Source: https://github.com/mobazha/mobazha/tree/main/pkg/mcp
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Agents can discover and invoke permitted commerce capabilities, but cannot replace user consent, policy, or backend authorization.
 
 ### Webhook integration contract
@@ -196,6 +213,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: developers, operators
 - Source: https://github.com/mobazha/mobazha/tree/main/pkg/webhook
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Design consumers for authentication, retries, duplication, reordering, and version change before depending on event delivery.
 
 ### Extend Mobazha through public contracts
@@ -205,6 +223,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: extension developers, architects, security reviewers
 - Source: https://github.com/mobazha/mobazha/tree/main/docs/extensions
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Choose the narrowest typed extension mechanism and preserve Core authority, capability gates, isolation, recovery, and audit.
 
 ### Reference and source map
@@ -214,6 +233,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: developers, contributors, agents
 - Source: https://github.com/mobazha
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Find the repository that owns a fact before proposing or automating a change.
 
 ### Understand the Mobazha project
@@ -223,6 +243,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: everyone, contributors, evaluators
 - Source: https://github.com/mobazha/mobazha/tree/main/docs/project
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Separate what ships now from project principles, reviewed policy, historical proposals, and long-term direction.
 
 ### Architecture and trust boundaries
@@ -232,6 +253,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: operators, developers, evaluators
 - Source: https://github.com/mobazha
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Mobazha separates user clients, independently operated backends, optional hosted services, and external payment or delivery systems.
 
 ### Founding whitepaper
@@ -241,6 +263,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: community, contributors, evaluators
 - Source: docs-curation
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: A public-review account of Mobazha's problem framing, trust model, human-and-Agent interfaces, and approach to sustainable open commerce.
 
 ### Fees and sustainable economics
@@ -250,6 +273,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: buyers, sellers, operators, evaluators, agents
 - Source: https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES.md
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Mobazha does not define one unavoidable commission for every transaction. Each actual charge must identify its owner, purpose, basis, and point of consent.
 
 ### Project security model
@@ -259,6 +283,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: operators, developers, security reviewers, evaluators
 - Source: https://github.com/mobazha/mobazha/blob/main/SECURITY.md
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Security depends on explicit authority, fail-closed capabilities, protected signing material, hostile-input assumptions, and private disclosure.
 
 ### Legal, privacy, license, and trademark boundaries
@@ -268,6 +293,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: users, operators, contributors, evaluators
 - Source: https://mobazha.org/terms
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Separate software licenses, hosted-service terms, privacy commitments, third-party obligations, and trademark rights.
 
 ### Release scope and maturity
@@ -277,6 +303,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: everyone
 - Source: https://github.com/mobazha/mobazha/tree/main/docs/releases
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: The documentation distinguishes current release-candidate behavior from previews and future design.
 
 ### Documentation and policy governance
@@ -286,6 +313,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: contributors, maintainers, agents
 - Source: https://github.com/mobazha/mobazha/blob/main/GOVERNANCE.md
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Important project claims need an owner, source, review date, status, and visible change path.
 
 ### Releases
@@ -295,6 +323,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: operators, developers
 - Source: https://github.com/mobazha/mobazha/tree/main/docs/releases
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Use repository releases for exact versions, migration notes, checksums, and known issues.
 
 ### Contribute to Mobazha
@@ -304,6 +333,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: contributors, maintainers, agents
 - Source: https://github.com/mobazha/mobazha/blob/main/CONTRIBUTING.md
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Choose the owning repository, agree on large changes early, preserve public contracts, add tests, update documentation, and sign off commits.
 
 ### Get help and report problems
@@ -313,7 +343,140 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Audience: everyone
 - Source: https://mobazha.org/status
 - Reviewed: 2026-07-04
+- Language: en
 - Summary: Use public support for reproducible product questions, repository issues for defects, and private reporting for security problems.
 
+### 从你要完成的任务开始
+- URL: /zh/start
+- Status: beta
+- Applies to: Mobazha v0.3 候选版本
+- Audience: 所有人, agent
+- Source: https://github.com/mobazha
+- Reviewed: 2026-07-04
+- Language: zh-CN
+- Translation of: /start
+- Summary: Mobazha 是一套开放商业技术栈，可用于自行托管商店、托管服务、市场、结账和 Agent 自动化。
+
+### 选择托管服务或自行托管
+- URL: /zh/start/choose-deployment
+- Status: beta
+- Applies to: Mobazha v0.3 候选版本
+- Audience: 卖家, 运营者, 评估者, agent
+- Source: https://github.com/mobazha/mobazha/blob/main/README.md
+- Reviewed: 2026-07-04
+- Language: zh-CN
+- Translation of: /start/choose-deployment
+- Summary: 根据控制权、运维责任、集成需求和服务价值选择，而不是把它简化成“免费或收费”。
+
+### Agent 如何使用 Mobazha 文档
+- URL: /zh/agents
+- Status: current
+- Applies to: 当前公开项目政策或服务界面
+- Audience: agent, agent 开发者, 安全评审者
+- Source: https://github.com/mobazha/mobazha-docs
+- Reviewed: 2026-07-04
+- Language: zh-CN
+- Translation of: /agents
+- Summary: 在把文档转化为操作之前，先确认权威来源、适用版本、身份、权限和用户同意。
+
+### 通过 Mobazha 开店与销售
+- URL: /zh/sell
+- Status: beta
+- Applies to: Mobazha v0.3 候选版本
+- Audience: 卖家, 运营者
+- Source: https://github.com/mobazha/mobazha-unified
+- Reviewed: 2026-07-04
+- Language: zh-CN
+- Translation of: /sell
+- Summary: 从店铺准备、商品发布、报价与付款，到订单履约和售后，保持责任与成本透明。
+
+### 在条款与成本透明的前提下购买
+- URL: /zh/buy
+- Status: beta
+- Applies to: Mobazha v0.3 候选版本
+- Audience: 买家, agent
+- Source: https://github.com/mobazha/mobazha-unified
+- Reviewed: 2026-07-04
+- Language: zh-CN
+- Translation of: /buy
+- Summary: 付款前确认卖家、商品、配送、支付路径、完整成本和争议规则。
+
+### 运行自己的 Mobazha Node
+- URL: /zh/self-host
+- Status: beta
+- Applies to: Mobazha v0.3 候选版本
+- Audience: 运营者, 开发者
+- Source: https://github.com/mobazha/mobazha
+- Reviewed: 2026-07-04
+- Language: zh-CN
+- Translation of: /self-host
+- Summary: 自行托管让店铺数据与运营处于你的控制之下，同时把安全、备份、升级和可用性责任交给你。
+
+### 安装 Mobazha Node
+- URL: /zh/self-host/install
+- Status: beta
+- Applies to: Mobazha v0.3 候选版本
+- Audience: 运营者, 开发者
+- Source: https://github.com/mobazha/mobazha#quick-start
+- Reviewed: 2026-07-04
+- Language: zh-CN
+- Translation of: /self-host/install
+- Summary: 从公开源码构建候选版本，在本地和测试网启动，并在对外暴露前验证 UI 与运行边界。
+
+### 基于后端实际公开的能力进行开发
+- URL: /zh/build
+- Status: beta
+- Applies to: Mobazha v0.3 候选版本
+- Audience: 开发者, agent 开发者
+- Source: https://github.com/mobazha
+- Reviewed: 2026-07-04
+- Language: zh-CN
+- Translation of: /build
+- Summary: 集成应发现当前后端支持什么，而不是假设每种 Mobazha 部署都公开相同能力。
+
+### 运行时能力与产品组合
+- URL: /zh/build/runtime-capabilities
+- Status: beta
+- Applies to: Mobazha v0.3 候选版本
+- Audience: 开发者, agent 开发者, 运营者
+- Source: https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md
+- Reviewed: 2026-07-04
+- Language: zh-CN
+- Translation of: /build/runtime-capabilities
+- Summary: 从后端发现有效行为，并把部署方式、产品体验、能力、权限和实验开关分开处理。
+
+### Mobazha 创始白皮书
+- URL: /zh/project/whitepaper
+- Status: draft
+- Applies to: 设计方向，不代表已交付承诺
+- Audience: 社区, 贡献者, 评估者
+- Source: https://github.com/mobazha/mobazha-docs
+- Reviewed: 2026-07-04
+- Language: zh-CN
+- Translation of: /project/whitepaper
+- Summary: 关于问题定义、信任模型、人类与 Agent 接口，以及开放商业可持续路径的公开评审版。
+
+### 收费与可持续经济模式
+- URL: /zh/project/fees
+- Status: current
+- Applies to: 当前公开项目政策或服务界面
+- Audience: 买家, 卖家, 运营者, 评估者, agent
+- Source: https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES_ZH.md
+- Reviewed: 2026-07-04
+- Language: zh-CN
+- Translation of: /project/fees
+- Summary: Mobazha 不为所有交易定义一个无法避免的统一抽成；实际收费必须说明服务、收款方、依据和确认点。
+
+### 获取帮助与报告问题
+- URL: /zh/support
+- Status: current
+- Applies to: 当前公开项目政策或服务界面
+- Audience: 所有人
+- Source: https://mobazha.org/status
+- Reviewed: 2026-07-04
+- Language: zh-CN
+- Translation of: /support
+- Summary: 产品问题使用公开支持，缺陷提交到对应仓库，安全问题必须私下报告。
+
 Use /docs-index.json for structured metadata, /sources.json for the public-source
-allowlist, and /llms.txt for compact navigation.
+allowlist, /agent-evals.json for answer-safety evaluation, and /llms.txt for compact navigation.

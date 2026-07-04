@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docs.mobazha.org/agent-evals.schema.json",
+  "title": "Mobazha Agent Evaluation Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schema_version", "reviewed", "purpose", "evaluation_rules", "cases"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "1.0" },
+    "reviewed": { "type": "string", "format": "date" },
+    "purpose": { "type": "string", "minLength": 1 },
+    "evaluation_rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "question", "required_claims", "forbidden_claims", "sources"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+          "question": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["en", "zh-CN"],
+            "properties": {
+              "en": { "type": "string", "minLength": 1 },
+              "zh-CN": { "type": "string", "minLength": 1 }
+            }
+          },
+          "required_claims": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "forbidden_claims": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "sources": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "pattern": "^/" }
+          }
+        }
+      }
+    }
+  }
+}

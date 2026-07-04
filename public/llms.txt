@@ -50,9 +50,32 @@ Policy authority: the reviewed public source linked from each page.
 - [Contribute](/contribute)
 - [Get help](/support)
 
+## 开始
+- [概览](/zh/start)
+- [选择托管方式](/zh/start/choose-deployment)
+- [Agent 使用指南](/zh/agents)
+
+## 使用 Mobazha
+- [卖家指南](/zh/sell)
+- [买家指南](/zh/buy)
+
+## 自行托管
+- [节点概览](/zh/self-host)
+- [安装](/zh/self-host/install)
+
+## 开发
+- [开发者概览](/zh/build)
+- [运行时能力](/zh/build/runtime-capabilities)
+
+## 项目信任
+- [白皮书](/zh/project/whitepaper)
+- [收费与经济模式](/zh/project/fees)
+- [获取帮助](/zh/support)
+
 ## Machine-readable
 - [Documentation index](/docs-index.json)
 - [Public source manifest](/sources.json)
+- [Agent evaluation contract](/agent-evals.json)
 - [Discovery manifest](/.well-known/mobazha-docs.json)
 - [Expanded agent context](/llms-full.txt)
 - [Node OpenAPI contract](/openapi.json)

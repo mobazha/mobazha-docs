@@ -1,6 +1,6 @@
 # Phase DOCS: Mobazha Knowledge Surface
 
-- Status: Wave 2 in progress
+- Status: Waves 2–4 in progress
 - Public surface: <https://docs.mobazha.org>
 - Last reviewed: 2026-07-04
 
@@ -69,17 +69,21 @@ count.
 - Publish architecture, compatibility, security, governance, ADR, RFC, license, privacy, and release indexes.
 - Add a visible history and supersession path for replaced proposals.
 
-### Wave 4 — Agent and localization quality: planned
+### Wave 4 — Agent and localization quality: in progress
 
-- Turn the golden-question set into automated answer and citation evaluation.
-- Add English and Chinese core journeys with canonical-source and review metadata.
+- Published a bilingual machine-readable golden-question evaluation contract
+  with required claims, forbidden claims, and authority paths.
+- Published English and Chinese core journeys with per-page translation,
+  canonical-source, lifecycle, and review metadata.
 - Test code samples, internal links, public source links, and structured data continuously.
 - Measure zero-result searches, repeated support questions, and stale-page reports.
 
-### Wave 5 — Release-integrated maintenance: planned
+### Wave 5 — Release-integrated maintenance: in progress
 
 - Require affected documentation and compatibility notes in release checklists.
-- Record source commit or tag applicability for versioned pages.
+- Record source commit or tag applicability for versioned pages. The public
+  source manifest now records reviewed revisions and includes an explicit
+  upstream contract check.
 - Generate API reference from approved tagged specifications.
 - Add freshness ownership, review reminders, redirects, and deprecation windows.
 

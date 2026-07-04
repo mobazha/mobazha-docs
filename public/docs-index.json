@@ -1,7 +1,11 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "generated_from": "reviewed-public-sources",
   "canonical_language": "en",
+  "languages": [
+    "en",
+    "zh-CN"
+  ],
   "canonical_base_url": "https://docs.mobazha.org",
   "reviewed": "2026-07-04",
   "runtime_authority": "connected backend version and advertised effective capabilities",
@@ -21,7 +25,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha",
       "source_label": "Mobazha public repositories",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "start-choose-deployment",
@@ -39,7 +44,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha/mobazha/blob/main/README.md",
       "source_label": "Mobazha public product and release boundaries",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "agents",
@@ -56,7 +62,8 @@
       "applies_to": "Current public project policy or service surface",
       "source": "https://github.com/mobazha/mobazha-docs",
       "source_label": "Mobazha documentation knowledge contract",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "sell",
@@ -72,7 +79,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha/mobazha/tree/main",
       "source_label": "Mobazha README and release scope",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "buy",
@@ -88,7 +96,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha/mobazha-unified",
       "source_label": "Mobazha Unified public client",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "self-host",
@@ -104,7 +113,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha/mobazha/tree/main",
       "source_label": "Mobazha deployment sources",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "self-host-install",
@@ -120,7 +130,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha/mobazha#quick-start",
       "source_label": "Mobazha Node quick start",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "self-host-configure",
@@ -135,7 +146,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha/mobazha",
       "source_label": "Mobazha Node command and deployment sources",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "self-host-backup-and-upgrade",
@@ -150,7 +162,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
       "source_label": "Mobazha operations guidance",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "self-host-security",
@@ -166,7 +179,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha/mobazha/blob/main/SECURITY.md",
       "source_label": "Mobazha security policy and extension security model",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "self-host-troubleshooting",
@@ -182,7 +196,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha/mobazha#operations",
       "source_label": "Mobazha Node operations commands",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "self-host-bind-account",
@@ -197,7 +212,8 @@
       "applies_to": "Design direction; not a shipped guarantee",
       "source": "https://github.com/mobazha/mobazha/blob/main/README.md",
       "source_label": "Mobazha public release boundary",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "build",
@@ -213,7 +229,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha",
       "source_label": "Mobazha public source organization",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "build-runtime-capabilities",
@@ -230,7 +247,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md",
       "source_label": "Mobazha compatibility and Unified runtime contracts",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "build-api",
@@ -245,7 +263,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json",
       "source_label": "Generated Mobazha Node OpenAPI contract",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "build-websocket",
@@ -261,7 +280,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha/mobazha/blob/main/internal/api/ws.go",
       "source_label": "Mobazha WebSocket gateway and event registry",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "build-mcp",
@@ -277,7 +297,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha/mobazha/tree/main/pkg/mcp",
       "source_label": "Mobazha agent-capability sources",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "build-webhooks",
@@ -293,7 +314,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha/mobazha/tree/main/pkg/webhook",
       "source_label": "Mobazha webhook engine and OpenAPI contract",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "build-extensions",
@@ -310,7 +332,8 @@
       "applies_to": "Design direction; not a shipped guarantee",
       "source": "https://github.com/mobazha/mobazha/tree/main/docs/extensions",
       "source_label": "Mobazha Open Core extension contracts",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "reference",
@@ -327,7 +350,8 @@
       "applies_to": "Current public project policy or service surface",
       "source": "https://github.com/mobazha",
       "source_label": "Mobazha GitHub organization",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "project",
@@ -344,7 +368,8 @@
       "applies_to": "Current public project policy or service surface",
       "source": "https://github.com/mobazha/mobazha/tree/main/docs/project",
       "source_label": "Mobazha public project documents",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "project-architecture",
@@ -361,7 +386,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha",
       "source_label": "Mobazha public repositories",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "project-whitepaper",
@@ -378,7 +404,8 @@
       "applies_to": "Design direction; not a shipped guarantee",
       "source": "docs-curation",
       "source_label": "Public-review edition prepared for the Mobazha project",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "project-fees",
@@ -397,7 +424,8 @@
       "applies_to": "Current public project policy or service surface",
       "source": "https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES.md",
       "source_label": "Fees and Paid Services policy",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "project-security",
@@ -415,7 +443,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha/mobazha/blob/main/SECURITY.md",
       "source_label": "Mobazha public security sources",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "project-legal-and-privacy",
@@ -433,7 +462,8 @@
       "applies_to": "Current public project policy or service surface",
       "source": "https://mobazha.org/terms",
       "source_label": "Mobazha public policies and repository notices",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "project-release-scope",
@@ -448,7 +478,8 @@
       "applies_to": "Mobazha v0.3 release candidate",
       "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
       "source_label": "Mobazha releases and repository documentation",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "project-governance",
@@ -465,7 +496,8 @@
       "applies_to": "Design direction; not a shipped guarantee",
       "source": "https://github.com/mobazha/mobazha/blob/main/GOVERNANCE.md",
       "source_label": "Mobazha public governance and documentation policy",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "releases",
@@ -481,7 +513,8 @@
       "applies_to": "Current public project policy or service surface",
       "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
       "source_label": "Mobazha GitHub releases",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "contribute",
@@ -498,7 +531,8 @@
       "applies_to": "Current public project policy or service surface",
       "source": "https://github.com/mobazha/mobazha/blob/main/CONTRIBUTING.md",
       "source_label": "Mobazha contribution and governance policies",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
     },
     {
       "id": "support",
@@ -513,7 +547,231 @@
       "applies_to": "Current public project policy or service surface",
       "source": "https://mobazha.org/status",
       "source_label": "Mobazha public support surfaces",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "zh-start",
+      "path": "/zh/start",
+      "canonical_url": "https://docs.mobazha.org/zh/start",
+      "title": "从你要完成的任务开始",
+      "summary": "Mobazha 是一套开放商业技术栈，可用于自行托管商店、托管服务、市场、结账和 Agent 自动化。",
+      "status": "beta",
+      "audiences": [
+        "所有人",
+        "agent"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "source": "https://github.com/mobazha",
+      "source_label": "Mobazha 公开仓库",
+      "reviewed": "2026-07-04",
+      "language": "zh-CN",
+      "translation_of": "/start"
+    },
+    {
+      "id": "zh-start-choose-deployment",
+      "path": "/zh/start/choose-deployment",
+      "canonical_url": "https://docs.mobazha.org/zh/start/choose-deployment",
+      "title": "选择托管服务或自行托管",
+      "summary": "根据控制权、运维责任、集成需求和服务价值选择，而不是把它简化成“免费或收费”。",
+      "status": "beta",
+      "audiences": [
+        "卖家",
+        "运营者",
+        "评估者",
+        "agent"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "source": "https://github.com/mobazha/mobazha/blob/main/README.md",
+      "source_label": "Mobazha 公开产品与发布边界",
+      "reviewed": "2026-07-04",
+      "language": "zh-CN",
+      "translation_of": "/start/choose-deployment"
+    },
+    {
+      "id": "zh-agents",
+      "path": "/zh/agents",
+      "canonical_url": "https://docs.mobazha.org/zh/agents",
+      "title": "Agent 如何使用 Mobazha 文档",
+      "summary": "在把文档转化为操作之前，先确认权威来源、适用版本、身份、权限和用户同意。",
+      "status": "current",
+      "audiences": [
+        "agent",
+        "agent 开发者",
+        "安全评审者"
+      ],
+      "applies_to": "当前公开项目政策或服务界面",
+      "source": "https://github.com/mobazha/mobazha-docs",
+      "source_label": "Mobazha 文档知识契约",
+      "reviewed": "2026-07-04",
+      "language": "zh-CN",
+      "translation_of": "/agents"
+    },
+    {
+      "id": "zh-sell",
+      "path": "/zh/sell",
+      "canonical_url": "https://docs.mobazha.org/zh/sell",
+      "title": "通过 Mobazha 开店与销售",
+      "summary": "从店铺准备、商品发布、报价与付款，到订单履约和售后，保持责任与成本透明。",
+      "status": "beta",
+      "audiences": [
+        "卖家",
+        "运营者"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "source": "https://github.com/mobazha/mobazha-unified",
+      "source_label": "Mobazha Node 与 Unified 公开实现",
+      "reviewed": "2026-07-04",
+      "language": "zh-CN",
+      "translation_of": "/sell"
+    },
+    {
+      "id": "zh-buy",
+      "path": "/zh/buy",
+      "canonical_url": "https://docs.mobazha.org/zh/buy",
+      "title": "在条款与成本透明的前提下购买",
+      "summary": "付款前确认卖家、商品、配送、支付路径、完整成本和争议规则。",
+      "status": "beta",
+      "audiences": [
+        "买家",
+        "agent"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "source": "https://github.com/mobazha/mobazha-unified",
+      "source_label": "Mobazha Unified 公开客户端",
+      "reviewed": "2026-07-04",
+      "language": "zh-CN",
+      "translation_of": "/buy"
+    },
+    {
+      "id": "zh-self-host",
+      "path": "/zh/self-host",
+      "canonical_url": "https://docs.mobazha.org/zh/self-host",
+      "title": "运行自己的 Mobazha Node",
+      "summary": "自行托管让店铺数据与运营处于你的控制之下，同时把安全、备份、升级和可用性责任交给你。",
+      "status": "beta",
+      "audiences": [
+        "运营者",
+        "开发者"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "source": "https://github.com/mobazha/mobazha",
+      "source_label": "Mobazha Node 公开部署源码",
+      "reviewed": "2026-07-04",
+      "language": "zh-CN",
+      "translation_of": "/self-host"
+    },
+    {
+      "id": "zh-self-host-install",
+      "path": "/zh/self-host/install",
+      "canonical_url": "https://docs.mobazha.org/zh/self-host/install",
+      "title": "安装 Mobazha Node",
+      "summary": "从公开源码构建候选版本，在本地和测试网启动，并在对外暴露前验证 UI 与运行边界。",
+      "status": "beta",
+      "audiences": [
+        "运营者",
+        "开发者"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "source": "https://github.com/mobazha/mobazha#quick-start",
+      "source_label": "Mobazha Node 快速开始",
+      "reviewed": "2026-07-04",
+      "language": "zh-CN",
+      "translation_of": "/self-host/install"
+    },
+    {
+      "id": "zh-build",
+      "path": "/zh/build",
+      "canonical_url": "https://docs.mobazha.org/zh/build",
+      "title": "基于后端实际公开的能力进行开发",
+      "summary": "集成应发现当前后端支持什么，而不是假设每种 Mobazha 部署都公开相同能力。",
+      "status": "beta",
+      "audiences": [
+        "开发者",
+        "agent 开发者"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "source": "https://github.com/mobazha",
+      "source_label": "Mobazha 公开源码组织",
+      "reviewed": "2026-07-04",
+      "language": "zh-CN",
+      "translation_of": "/build"
+    },
+    {
+      "id": "zh-build-runtime-capabilities",
+      "path": "/zh/build/runtime-capabilities",
+      "canonical_url": "https://docs.mobazha.org/zh/build/runtime-capabilities",
+      "title": "运行时能力与产品组合",
+      "summary": "从后端发现有效行为，并把部署方式、产品体验、能力、权限和实验开关分开处理。",
+      "status": "beta",
+      "audiences": [
+        "开发者",
+        "agent 开发者",
+        "运营者"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "source": "https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md",
+      "source_label": "Mobazha 兼容性与 Unified 运行时契约",
+      "reviewed": "2026-07-04",
+      "language": "zh-CN",
+      "translation_of": "/build/runtime-capabilities"
+    },
+    {
+      "id": "zh-project-whitepaper",
+      "path": "/zh/project/whitepaper",
+      "canonical_url": "https://docs.mobazha.org/zh/project/whitepaper",
+      "title": "Mobazha 创始白皮书",
+      "summary": "关于问题定义、信任模型、人类与 Agent 接口，以及开放商业可持续路径的公开评审版。",
+      "status": "draft",
+      "audiences": [
+        "社区",
+        "贡献者",
+        "评估者"
+      ],
+      "applies_to": "设计方向，不代表已交付承诺",
+      "source": "https://github.com/mobazha/mobazha-docs",
+      "source_label": "Mobazha 白皮书中文维护译本",
+      "reviewed": "2026-07-04",
+      "language": "zh-CN",
+      "translation_of": "/project/whitepaper"
+    },
+    {
+      "id": "zh-project-fees",
+      "path": "/zh/project/fees",
+      "canonical_url": "https://docs.mobazha.org/zh/project/fees",
+      "title": "收费与可持续经济模式",
+      "summary": "Mobazha 不为所有交易定义一个无法避免的统一抽成；实际收费必须说明服务、收款方、依据和确认点。",
+      "status": "current",
+      "audiences": [
+        "买家",
+        "卖家",
+        "运营者",
+        "评估者",
+        "agent"
+      ],
+      "applies_to": "当前公开项目政策或服务界面",
+      "source": "https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES_ZH.md",
+      "source_label": "收费与付费服务公开政策",
+      "reviewed": "2026-07-04",
+      "language": "zh-CN",
+      "translation_of": "/project/fees"
+    },
+    {
+      "id": "zh-support",
+      "path": "/zh/support",
+      "canonical_url": "https://docs.mobazha.org/zh/support",
+      "title": "获取帮助与报告问题",
+      "summary": "产品问题使用公开支持，缺陷提交到对应仓库，安全问题必须私下报告。",
+      "status": "current",
+      "audiences": [
+        "所有人"
+      ],
+      "applies_to": "当前公开项目政策或服务界面",
+      "source": "https://mobazha.org/status",
+      "source_label": "Mobazha 公开支持入口",
+      "reviewed": "2026-07-04",
+      "language": "zh-CN",
+      "translation_of": "/support"
     }
   ]
 }

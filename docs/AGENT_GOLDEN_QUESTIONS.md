@@ -8,6 +8,11 @@ policy, Beta behavior, proposals, historical discussions, and private
 assumptions. An answer fails when it invents support, hides applicability, or
 uses a lower-authority source after a higher-authority source is available.
 
+The publishable machine contract is
+[`agent-evals.json`](../agent-evals.json). It carries bilingual questions,
+required claims, forbidden claims, and source paths; this page remains the
+human review view.
+
 | Question | Minimum correct answer | Primary authority |
 |---|---|---|
 | What is Mobazha? | An open-source commerce stack with a self-hostable Node, shared client, and optional hosted services; current public software is release-candidate quality. | `/start`, public READMEs |

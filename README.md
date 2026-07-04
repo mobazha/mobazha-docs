@@ -44,11 +44,19 @@ artifacts must not be edited by hand; `npm run generate:content` refreshes the
 document index, sitemap, Agent context, source manifest, and well-known
 discovery file. `npm run check` fails when those artifacts are stale.
 
-## Publishing contract
+## Language and publishing contract
 
-The English pages are canonical in the first public phase. Translations must
-identify their canonical source and review date. Public changes update human
-pages and generated machine-readable indexes in the same commit.
+English is the policy-authoring language in the first public phase. The core
+Chinese task and trust paths live under `/zh/`; each identifies its English
+canonical page, shares lifecycle status, and carries its own review date. A
+translation never creates a separate policy authority. Public changes update
+human pages and generated machine-readable indexes in the same commit.
+
+`agent-evals.json` is the machine-readable answer-safety contract behind the
+human golden-question set. `sources.json` records the reviewed public source
+revision when one exists. Run `npm run check:source-contracts` to compare those
+snapshots with current public branches and verify the critical Node API
+contract before a source-driven documentation review.
 
 ## Cloudflare deployment
 

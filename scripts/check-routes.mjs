@@ -7,6 +7,8 @@ const routes = [
   "/docs-index.json",
   "/sources.json",
   "/sources.schema.json",
+  "/agent-evals.json",
+  "/agent-evals.schema.json",
   "/llms.txt",
   "/llms-full.txt",
   "/.well-known/mobazha-docs.json",

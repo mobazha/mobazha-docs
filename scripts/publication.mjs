@@ -12,7 +12,7 @@ export function orderedDocuments(docs, navGroups) {
   return [...ordered, ...docs.filter((doc) => !included.has(doc.slug))];
 }
 
-export function renderPublication({ docs, navGroups, docApplicability, sources, sourceSchema }) {
+export function renderPublication({ docs, navGroups, docApplicability, sources, sourceSchema, agentEvals, agentEvalSchema }) {
   const ordered = orderedDocuments(docs, navGroups);
   const reviewed = ordered.map((doc) => doc.reviewed).sort().at(-1);
   const records = ordered.map((doc) => ({
@@ -27,12 +27,15 @@ export function renderPublication({ docs, navGroups, docApplicability, sources, 
     source: doc.sourceUrl ?? "docs-curation",
     source_label: doc.sourceLabel,
     reviewed: doc.reviewed,
+    language: doc.language ?? "en",
+    translation_of: doc.translationOf ? `/${doc.translationOf}` : undefined,
   }));
 
   const index = {
-    schema_version: "1.1",
+    schema_version: "1.2",
     generated_from: "reviewed-public-sources",
     canonical_language: "en",
+    languages: ["en", "zh-CN"],
     canonical_base_url: baseUrl,
     reviewed,
     runtime_authority: "connected backend version and advertised effective capabilities",
@@ -59,6 +62,7 @@ ${llmsSections}
 ## Machine-readable
 - [Documentation index](/docs-index.json)
 - [Public source manifest](/sources.json)
+- [Agent evaluation contract](/agent-evals.json)
 - [Discovery manifest](/.well-known/mobazha-docs.json)
 - [Expanded agent context](/llms-full.txt)
 - [Node OpenAPI contract](/openapi.json)
@@ -71,7 +75,8 @@ ${llmsSections}
 - Audience: ${doc.audiences.join(", ")}
 - Source: ${doc.source}
 - Reviewed: ${doc.reviewed}
-- Summary: ${doc.summary}`).join("\n\n");
+- Language: ${doc.language}
+${doc.translation_of ? `- Translation of: ${doc.translation_of}\n` : ""}- Summary: ${doc.summary}`).join("\n\n");
 
   const llmsFull = `# Mobazha agent context
 
@@ -114,7 +119,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 ${documentContext}
 
 Use /docs-index.json for structured metadata, /sources.json for the public-source
-allowlist, and /llms.txt for compact navigation.
+allowlist, /agent-evals.json for answer-safety evaluation, and /llms.txt for compact navigation.
 `;
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -125,16 +130,19 @@ ${records.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc><lastmo
 `;
 
   const discovery = {
-    schema_version: "1.1",
+    schema_version: "1.2",
     name: "Mobazha Documentation",
     canonical_base_url: baseUrl,
     canonical_language: "en",
+    languages: ["en", "zh-CN"],
+    language_starts: { en: "/start", "zh-CN": "/zh/start" },
     human_start: "/start",
     agent_start: "/agents",
     llms: "/llms.txt",
     llms_full: "/llms-full.txt",
     index: "/docs-index.json",
     sources: "/sources.json",
+    agent_evals: "/agent-evals.json",
     openapi: "/openapi.json",
     sitemap: "/sitemap.xml",
     status: "beta",
@@ -145,6 +153,10 @@ ${records.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc><lastmo
     ...sources,
     $schema: `${baseUrl}/sources.schema.json`,
   };
+  const publicAgentEvals = {
+    ...agentEvals,
+    $schema: `${baseUrl}/agent-evals.schema.json`,
+  };
 
   return {
     "public/docs-index.json": `${JSON.stringify(index, null, 2)}\n`,
@@ -154,5 +166,7 @@ ${records.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc><lastmo
     "public/.well-known/mobazha-docs.json": `${JSON.stringify(discovery, null, 2)}\n`,
     "public/sources.json": `${JSON.stringify(publicSources, null, 2)}\n`,
     "public/sources.schema.json": sourceSchema,
+    "public/agent-evals.json": `${JSON.stringify(publicAgentEvals, null, 2)}\n`,
+    "public/agent-evals.schema.json": agentEvalSchema,
   };
 }

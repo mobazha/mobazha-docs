@@ -23,17 +23,24 @@ export type DocPage = {
   sourceUrl?: string;
   reviewed: string;
   appliesTo?: string;
+  language?: "en" | "zh-CN";
+  translationOf?: string;
   sections: DocSection[];
 };
 
 export function docApplicability(doc: DocPage): string {
   if (doc.appliesTo) return doc.appliesTo;
+  if (doc.language === "zh-CN") {
+    if (doc.status === "Draft") return "设计方向，不代表已交付承诺";
+    if (doc.status === "Beta") return "Mobazha v0.3 候选版本";
+    return "当前公开项目政策或服务界面";
+  }
   if (doc.status === "Draft") return "Design direction; not a shipped guarantee";
   if (doc.status === "Beta") return "Mobazha v0.3 release candidate";
   return "Current public project policy or service surface";
 }
 
-export const navGroups = [
+export const englishNavGroups = [
   {
     label: "Start",
     links: [
@@ -96,6 +103,53 @@ export const navGroups = [
     ],
   },
 ] as const;
+
+export const chineseNavGroups = [
+  {
+    label: "开始",
+    links: [
+      ["概览", "/zh/start"],
+      ["选择托管方式", "/zh/start/choose-deployment"],
+      ["Agent 使用指南", "/zh/agents"],
+    ],
+  },
+  {
+    label: "使用 Mobazha",
+    links: [
+      ["卖家指南", "/zh/sell"],
+      ["买家指南", "/zh/buy"],
+    ],
+  },
+  {
+    label: "自行托管",
+    links: [
+      ["节点概览", "/zh/self-host"],
+      ["安装", "/zh/self-host/install"],
+    ],
+  },
+  {
+    label: "开发",
+    links: [
+      ["开发者概览", "/zh/build"],
+      ["运行时能力", "/zh/build/runtime-capabilities"],
+    ],
+  },
+  {
+    label: "项目信任",
+    links: [
+      ["白皮书", "/zh/project/whitepaper"],
+      ["收费与经济模式", "/zh/project/fees"],
+      ["获取帮助", "/zh/support"],
+    ],
+  },
+] as const;
+
+export const navGroups = englishNavGroups;
+export const publicationNavGroups = [...englishNavGroups, ...chineseNavGroups] as const;
+
+export function navGroupsForPath(path: string) {
+  return path.startsWith("/zh/") ? chineseNavGroups : englishNavGroups;
+}
 
 export const docs: DocPage[] = [
   {
@@ -957,6 +1011,7 @@ export const docs: DocPage[] = [
           { label: "Compact navigation", href: "/llms.txt", description: "Short task and policy map." },
           { label: "Expanded context", href: "/llms-full.txt", description: "Authority rules and every public document summary." },
           { label: "Document index", href: "/docs-index.json", description: "Structured titles, paths, statuses, audiences, sources, and review dates." },
+          { label: "Agent evaluation contract", href: "/agent-evals.json", description: "Bilingual required and forbidden claims for high-risk answers." },
           { label: "Discovery manifest", href: "/.well-known/mobazha-docs.json", description: "Stable machine entry points and canonical base URL." },
           { label: "OpenAPI contract", href: "/openapi.json", description: "Redirect to the generated Node API specification." },
         ],
@@ -987,6 +1042,7 @@ export const docs: DocPage[] = [
           "The public golden-question set records the minimum answers an Agent should produce without confusing current behavior, policy, proposals, or internal assumptions.",
         ],
         links: [
+          { label: "Machine-readable evaluation contract", href: "/agent-evals.json" },
           { label: "Agent golden questions", href: "https://github.com/mobazha/mobazha-docs/blob/main/docs/AGENT_GOLDEN_QUESTIONS.md" },
         ],
       },
@@ -1437,6 +1493,563 @@ export const docs: DocPage[] = [
       },
     ],
   },
+  {
+    slug: "zh/start",
+    title: "从你要完成的任务开始",
+    summary: "Mobazha 是一套开放商业技术栈，可用于自行托管商店、托管服务、市场、结账和 Agent 自动化。",
+    status: "Beta",
+    audiences: ["所有人", "Agent"],
+    sourceLabel: "Mobazha 公开仓库",
+    sourceUrl: "https://github.com/mobazha",
+    reviewed: "2026-07-04",
+    language: "zh-CN",
+    translationOf: "start",
+    sections: [
+      {
+        heading: "选择你的路径",
+        bullets: [
+          "卖家：创建店铺、发布商品、接收订单并履约。",
+          "买家：理解结账、付款、证据、退款与争议处理。",
+          "运营者：在自己控制的基础设施上运行 Mobazha Node。",
+          "开发者：通过后端实际公开的 HTTP、WebSocket、Webhook 与 MCP 能力集成。",
+          "评估者：查看架构、发布范围、经济模式、治理和安全边界。",
+        ],
+      },
+      {
+        heading: "先看状态，再执行说明",
+        body: [
+          "Mobazha 当前属于候选版本。Current 表示已审阅的公开政策或稳定事实；Beta 表示可用但仍可能变化；Draft 表示方向或提案，不是交付承诺。",
+          "运行时能力以你连接的后端版本和有效能力响应为准。文档不能替后端启用功能，也不能代替授权。",
+        ],
+        links: [
+          { label: "选择托管方式", href: "/zh/start/choose-deployment" },
+          { label: "Agent 使用指南", href: "/zh/agents" },
+          { label: "English canonical page", href: "/start" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "zh/start/choose-deployment",
+    title: "选择托管服务或自行托管",
+    summary: "根据控制权、运维责任、集成需求和服务价值选择，而不是把它简化成“免费或收费”。",
+    status: "Beta",
+    audiences: ["卖家", "运营者", "评估者", "Agent"],
+    sourceLabel: "Mobazha 公开产品与发布边界",
+    sourceUrl: "https://github.com/mobazha/mobazha/blob/main/README.md",
+    reviewed: "2026-07-04",
+    language: "zh-CN",
+    translationOf: "start/choose-deployment",
+    sections: [
+      {
+        heading: "托管服务",
+        body: [
+          "如果你希望先体验产品或开店，但不想维护服务器，可以使用托管应用。服务运营方负责部署、可用性和托管账号边界；当前 Beta 价格、限制和条款独立公布。",
+        ],
+        links: [
+          { label: "打开 Mobazha", href: "https://app.mobazha.org" },
+          { label: "当前价格", href: "https://mobazha.org/pricing" },
+        ],
+      },
+      {
+        heading: "自行托管",
+        body: [
+          "如果你需要控制部署、店铺数据、域名、备份、可用性和集成，可以运行开源 Node。你同时承担主机安全、恢复、升级和第三方成本。",
+        ],
+        bullets: [
+          "运行开源软件本身不会自动产生必须支付给 Mobazha 的中心化交易抽成。",
+          "v0.3 当前用于评估和测试网，尚不是稳定生产版本。",
+          "默认发布边界包含 BTC、BCH 和 LTC，但仍受运行时能力和卖家配置约束。",
+        ],
+      },
+      {
+        heading: "决策规则",
+        bullets: [
+          "希望减少运维工作时，优先考虑托管服务。",
+          "控制权、可移植性和独立可用性更重要时，考虑自行托管。",
+          "在投入真实业务前，先用测试网验证备份、付款、履约和恢复流程。",
+        ],
+        links: [
+          { label: "安装自行托管节点", href: "/zh/self-host/install" },
+          { label: "English canonical page", href: "/start/choose-deployment" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "zh/agents",
+    title: "Agent 如何使用 Mobazha 文档",
+    summary: "在把文档转化为操作之前，先确认权威来源、适用版本、身份、权限和用户同意。",
+    status: "Current",
+    audiences: ["Agent", "Agent 开发者", "安全评审者"],
+    sourceLabel: "Mobazha 文档知识契约",
+    sourceUrl: "https://github.com/mobazha/mobazha-docs",
+    reviewed: "2026-07-04",
+    language: "zh-CN",
+    translationOf: "agents",
+    sections: [
+      {
+        heading: "权威解析顺序",
+        bullets: [
+          "订单和交易状态以拥有该订单的后端为准。",
+          "功能是否可用以后端版本和有效能力响应为准。",
+          "付款事实以所选支付系统和确认记录为准。",
+          "项目级边界以审阅后的公开政策为准，实际金额以交易确认前的报价为准。",
+          "Draft 和 Beta 内容必须明确标注，不能被升级成已交付承诺。",
+        ],
+      },
+      {
+        heading: "操作安全",
+        bullets: [
+          "使用与动作相匹配的身份，并请求最小权限。",
+          "文档或提示词不能代替付款、结算、发布、删除等动作的授权与确认。",
+          "保留报价、规则、批准、订单和结果标识，便于审计。",
+          "来源、版本、收款方、价格或确认条件不明确时停止执行。",
+          "不要把密钥、恢复材料、客户数据或未脱敏日志放入提示词或公开 Issue。",
+        ],
+      },
+      {
+        heading: "机器可读入口",
+        links: [
+          { label: "文档索引", href: "/docs-index.json" },
+          { label: "完整 Agent 上下文", href: "/llms-full.txt" },
+          { label: "公开来源清单", href: "/sources.json" },
+          { label: "Agent 评估契约", href: "/agent-evals.json" },
+          { label: "OpenAPI", href: "/openapi.json" },
+          { label: "English canonical page", href: "/agents" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "zh/sell",
+    title: "通过 Mobazha 开店与销售",
+    summary: "从店铺准备、商品发布、报价与付款，到订单履约和售后，保持责任与成本透明。",
+    status: "Beta",
+    audiences: ["卖家", "运营者"],
+    sourceLabel: "Mobazha Node 与 Unified 公开实现",
+    sourceUrl: "https://github.com/mobazha/mobazha-unified",
+    reviewed: "2026-07-04",
+    language: "zh-CN",
+    translationOf: "sell",
+    sections: [
+      {
+        heading: "开店前",
+        bullets: [
+          "选择托管服务或自行托管。",
+          "配置后端和所在地区实际支持的付款方式。",
+          "公开配送、退货、退款和争议条款。",
+          "在接受订单前检查最终报价和所有收款方金额。",
+        ],
+      },
+      {
+        heading: "店铺与商品准备",
+        bullets: [
+          "设置可识别的店铺身份、联系方式、地区、币种展示和域名。",
+          "为商品提供准确的规格、库存、图片、价格和配送范围。",
+          "先配置配送模板、预计时间、退货条件和履约证据。",
+          "只启用后端公开且店铺有能力监控、结算的付款方式。",
+        ],
+      },
+      {
+        heading: "订单运营",
+        bullets: [
+          "确认订单前检查报价、付款状态、买家要求和履约义务。",
+          "不要用截图、聊天消息或 Agent 陈述代替后端验证后的付款状态。",
+          "通过订单流程记录发货或交付证据。",
+          "取消、退款、争议和完成必须遵循当前订单允许的状态转换。",
+        ],
+      },
+      {
+        heading: "继续",
+        links: [
+          { label: "打开托管应用", href: "https://app.mobazha.org" },
+          { label: "收费与经济模式", href: "/zh/project/fees" },
+          { label: "English canonical page", href: "/sell" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "zh/buy",
+    title: "在条款与成本透明的前提下购买",
+    summary: "付款前确认卖家、商品、配送、支付路径、完整成本和争议规则。",
+    status: "Beta",
+    audiences: ["买家", "Agent"],
+    sourceLabel: "Mobazha Unified 公开客户端",
+    sourceUrl: "https://github.com/mobazha/mobazha-unified",
+    reviewed: "2026-07-04",
+    language: "zh-CN",
+    translationOf: "buy",
+    sections: [
+      {
+        heading: "确认前",
+        bullets: [
+          "核对店铺身份、商品、数量、规格、配送地址和配送方式。",
+          "查看商品小计、运费、税费、折扣、网络或服务费用和最终总额。",
+          "阅读取消、退款、证据和争议规则。",
+          "Agent 建议是辅助，不是绕过用户确认或消费权限的授权。",
+        ],
+      },
+      {
+        heading: "付款",
+        bullets: [
+          "只使用当前订单显示的付款方式、资产、地址、金额和有效期。",
+          "不要复用过期报价、其他订单地址、截图或聊天中的付款信息。",
+          "交易广播、待确认交易和回执图片都不等于最终结算。",
+          "以拥有订单的后端所记录的验证状态为准。",
+        ],
+      },
+      {
+        heading: "履约与争议",
+        bullets: [
+          "保留订单号、报价、付款引用、消息、履约证据和政策版本。",
+          "根据当前订单允许的操作申请取消或退款。",
+          "支持争议时，通过产品内流程提交证据和期望的解决方式。",
+          "支付或托管机制只能执行已实现的条件，不能保证商品质量或特定裁决结果。",
+        ],
+      },
+      {
+        heading: "继续",
+        links: [
+          { label: "获取帮助", href: "/zh/support" },
+          { label: "收费与经济模式", href: "/zh/project/fees" },
+          { label: "English canonical page", href: "/buy" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "zh/self-host",
+    title: "运行自己的 Mobazha Node",
+    summary: "自行托管让店铺数据与运营处于你的控制之下，同时把安全、备份、升级和可用性责任交给你。",
+    status: "Beta",
+    audiences: ["运营者", "开发者"],
+    sourceLabel: "Mobazha Node 公开部署源码",
+    sourceUrl: "https://github.com/mobazha/mobazha",
+    reviewed: "2026-07-04",
+    language: "zh-CN",
+    translationOf: "self-host",
+    sections: [
+      {
+        heading: "当前发布边界",
+        body: [
+          "v0.3 是用于评估和测试网的候选版本。默认开源发布包含 BTC、BCH 和 LTC，实际可用性仍取决于有效能力集和卖家配置。稳定签名制品尚未正式发布。",
+        ],
+      },
+      {
+        heading: "运营者责任",
+        bullets: [
+          "保护主机、管理员入口、密钥和网络边界。",
+          "升级前备份数据与恢复材料，并验证可恢复性。",
+          "监控存储、可用性、付款依赖和回调。",
+          "只公开用户和 Agent 实际需要的接口。",
+        ],
+      },
+      {
+        heading: "独立运行边界",
+        body: [
+          "本地独立店铺无需 Mobazha 托管账号，也可进行管理、商品、数据导出和默认支持的 UTXO 付款流程。可选服务可能提供发现、搜索、路由、托管更新或支持，但必须单独说明权限、数据与价格。",
+        ],
+      },
+      {
+        heading: "开始安装",
+        links: [
+          { label: "安装节点", href: "/zh/self-host/install" },
+          { label: "English canonical page", href: "/self-host" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "zh/self-host/install",
+    title: "安装 Mobazha Node",
+    summary: "从公开源码构建候选版本，在本地和测试网启动，并在对外暴露前验证 UI 与运行边界。",
+    status: "Beta",
+    audiences: ["运营者", "开发者"],
+    sourceLabel: "Mobazha Node 快速开始",
+    sourceUrl: "https://github.com/mobazha/mobazha#quick-start",
+    reviewed: "2026-07-04",
+    language: "zh-CN",
+    translationOf: "self-host/install",
+    sections: [
+      {
+        heading: "源码构建路径",
+        body: [
+          "当前候选版本需要 Go 1.26.4、Git，以及受支持的 macOS 或 Linux 环境。使用纯 Go 加密实现构建，并先在测试网评估付款流程。",
+        ],
+        code: "git clone https://github.com/mobazha/mobazha.git\ncd mobazha\ngo build -tags goolm -o mobazha .\n./mobazha init --testnet\n./mobazha start --testnet --open",
+        note: "执行前先审阅命令。v0.3 不是稳定生产版本，签名发布制品仍待正式发布。",
+      },
+      {
+        heading: "启动后的默认边界",
+        bullets: [
+          "首次启动会在需要时初始化默认数据目录。",
+          "内嵌 Web UI 与 HTTP API 默认监听 http://127.0.0.1:5102。",
+          "HTTP 位于 /v1/，WebSocket 位于 /ws，MCP Streamable HTTP 位于 /v1/mcp。",
+          "保持本地监听；在远程暴露前配置 TLS、认证、防火墙、更新与恢复方案。",
+        ],
+      },
+      {
+        heading: "后台服务与诊断",
+        code: "./mobazha service install\n./mobazha service status\n./mobazha doctor --json",
+      },
+      {
+        heading: "继续",
+        links: [
+          { label: "部署源码", href: "https://github.com/mobazha/mobazha/tree/main/deploy/standalone" },
+          { label: "English canonical page", href: "/self-host/install" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "zh/build",
+    title: "基于后端实际公开的能力进行开发",
+    summary: "集成应发现当前后端支持什么，而不是假设每种 Mobazha 部署都公开相同能力。",
+    status: "Beta",
+    audiences: ["开发者", "Agent 开发者"],
+    sourceLabel: "Mobazha 公开源码组织",
+    sourceUrl: "https://github.com/mobazha",
+    reviewed: "2026-07-04",
+    language: "zh-CN",
+    translationOf: "build",
+    sections: [
+      {
+        heading: "集成原则",
+        body: [
+          "把连接后端的版本与有效能力响应作为运行时事实。文档描述接口与意图，但客户端必须处理能力不可用、被关闭或版本不同的情况。",
+        ],
+      },
+      {
+        heading: "公开界面",
+        bullets: [
+          "版本化 HTTP API 与 WebSocket 实时事件。",
+          "面向运营者的 Webhook 事件投递。",
+          "带身份、ai:use 和工具级权限边界的 MCP。",
+          "只有部署实际声明时才可使用的扩展和合约。",
+        ],
+      },
+      {
+        heading: "继续",
+        links: [
+          { label: "运行时能力", href: "/zh/build/runtime-capabilities" },
+          { label: "OpenAPI", href: "/openapi.json" },
+          { label: "English canonical page", href: "/build" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "zh/build/runtime-capabilities",
+    title: "运行时能力与产品组合",
+    summary: "从后端发现有效行为，并把部署方式、产品体验、能力、权限和实验开关分开处理。",
+    status: "Beta",
+    audiences: ["开发者", "Agent 开发者", "运营者"],
+    sourceLabel: "Mobazha 兼容性与 Unified 运行时契约",
+    sourceUrl: "https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md",
+    reviewed: "2026-07-04",
+    language: "zh-CN",
+    translationOf: "build/runtime-capabilities",
+    sections: [
+      {
+        heading: "有效能力交集",
+        code: "发布允许列表\n  ∩ 契约兼容\n  ∩ 已安装或静态组合\n  ∩ 已授权\n  ∩ 已配置\n  ∩ 健康",
+        body: [
+          "所有门槛都通过后，能力才能对外公开和使用。源码存在、标识符被识别、前端有组件或配置中出现名称，都不代表能力已启用。",
+        ],
+      },
+      {
+        heading: "客户端必须失败关闭",
+        bullets: [
+          "在权威能力快照就绪前，不渲染或调用可选功能。",
+          "允许未知的新增字段，但对畸形或不兼容版本安全拒绝。",
+          "导航、路由、操作控件和 Agent 工具使用同一能力键。",
+          "客户端隐藏控件不能代替服务端授权。",
+        ],
+      },
+      {
+        heading: "权威文档",
+        links: [
+          { label: "Node 兼容性政策", href: "https://github.com/mobazha/mobazha/blob/main/docs/project/COMPATIBILITY.md" },
+          { label: "Unified 运行时组合", href: "https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md" },
+          { label: "English canonical page", href: "/build/runtime-capabilities" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "zh/project/whitepaper",
+    title: "Mobazha 创始白皮书",
+    summary: "关于问题定义、信任模型、人类与 Agent 接口，以及开放商业可持续路径的公开评审版。",
+    status: "Draft",
+    audiences: ["社区", "贡献者", "评估者"],
+    sourceLabel: "Mobazha 白皮书中文维护译本",
+    sourceUrl: "https://github.com/mobazha/mobazha-docs",
+    reviewed: "2026-07-04",
+    language: "zh-CN",
+    translationOf: "project/whitepaper",
+    sections: [
+      {
+        heading: "核心命题",
+        body: [
+          "商业基础设施应同时服务人类与 Agent，而不强迫所有参与者依赖同一个运营者、托管模式或不透明收费表。独立运行必须可行，可选服务也可以为其明确创造的价值收费。",
+          "因此，自行托管、可移植接口、后端权威能力和经济披露是产品要求，而不只是营销口号。",
+        ],
+      },
+      {
+        heading: "要解决的问题",
+        bullets: [
+          "中心化平台把身份、发现、数据、结账、规则和分发绑定到单一运营者。",
+          "很多所谓自行托管仍依赖不公开的升级、搜索、付款或集成服务。",
+          "Agent 商业放大了模糊性的风险，需要机器可读的权威、权限、价格、收款方和状态转换。",
+          "可持续替代方案必须同时支持独立运行和透明的可选服务。",
+        ],
+      },
+      {
+        heading: "长期原则",
+        bullets: [
+          "运营者选择权与真正可行的自行托管。",
+          "可移植、可检查的公开接口。",
+          "Agent 的身份、能力、同意与审计边界。",
+          "收费必须绑定明确服务、收款方、计算依据与确认步骤。",
+          "通过可选服务和生态价值持续发展，而不是隐藏的普遍抽成。",
+        ],
+      },
+      {
+        heading: "系统模型",
+        body: [
+          "客户端连接用户或运营者选择的后端。后端拥有订单状态、能力声明、付款验证、结算门槛和审计权威。共享客户端只展示有效能力。发现、托管、支付、配送等外部服务必须单独说明信任与价格边界。",
+        ],
+      },
+      {
+        heading: "人类与 Agent",
+        bullets: [
+          "人类与 Agent 必须看到相同的价格、能力、政策和状态事实。",
+          "提示词不能绕过身份、权限、报价、订单状态或确认。",
+          "消费、结算、发布和破坏性操作需要明确权限及适用确认。",
+          "有偿推荐或归因关系必须按适用规则披露。",
+        ],
+      },
+      {
+        heading: "可持续经济模式",
+        body: [
+          "独立运营开源 Node 不产生强制的中心化 Mobazha 交易费，但运营者仍需承担服务器、网络、处理商、税务、支持和扩展成本。Mobazha 或其他服务商可以为托管、自动化、分发、交易支持等明确服务收费。",
+          "这不是“所有服务永久免费”的承诺。任何收费都应在确认前说明服务商、付款方、收款方、计算依据、金额、可选性、有效期和退款处理。",
+        ],
+        links: [
+          { label: "收费与经济模式", href: "/zh/project/fees" },
+        ],
+      },
+      {
+        heading: "发布状态",
+        body: [
+          "本页是中文维护译本，英文页面是当前规范来源。它明确排除内部预测、实验百分比、机密运营计划和不受公开发布边界支持的声明。",
+        ],
+        note: "草案方向不是已交付行为、金融产品、收入保证，也不构成独立运营者的义务。",
+        links: [
+          { label: "English canonical page", href: "/project/whitepaper" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "zh/project/fees",
+    title: "收费与可持续经济模式",
+    summary: "Mobazha 不为所有交易定义一个无法避免的统一抽成；实际收费必须说明服务、收款方、依据和确认点。",
+    status: "Current",
+    audiences: ["买家", "卖家", "运营者", "评估者", "Agent"],
+    sourceLabel: "收费与付费服务公开政策",
+    sourceUrl: "https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES_ZH.md",
+    reviewed: "2026-07-04",
+    language: "zh-CN",
+    translationOf: "project/fees",
+    sections: [
+      {
+        heading: "不要把所有资金流都叫作佣金",
+        body: [
+          "商品价格、税费、配送费、链上或处理商费用、运营服务费、托管订阅、推荐奖励和公共资金有不同原因与收款方。把它们合并成一个百分比，会隐藏谁提供价值、谁收款以及费用是否可选。",
+        ],
+      },
+      {
+        heading: "经济边界",
+        bullets: [
+          "自行托管：独立运行不需要购买可选托管订阅，也不会自动产生中心化平台交易费。",
+          "托管与增值服务：可以为可靠性、支持、自动化、分发等明确价值收费，但需提前公开价格与续费条件。",
+          "网络和支付成本：属于所选网络或服务商，必须单独披露。",
+          "运营者或卖家费用：在合法且适用时可配置，但责任方和计算依据必须可见。",
+          "推荐与生态奖励：必须有资金来源、上限、可归因，并在退款或欺诈时按规则冲回。",
+          "协议或公共资金：必须明确、可治理，不能由草案百分比暗示。",
+        ],
+      },
+      {
+        heading: "报价必须说明",
+        bullets: [
+          "每项收费的名称、服务和收款方。",
+          "固定金额、百分比、计算基数、最低值和上限。",
+          "是否必需、可选、可退或依赖条件。",
+          "确认前的最终总额和结算分配。",
+          "报价有效期与适用规则版本。",
+        ],
+        note: "历史讨论中的示例比例不是当前默认值。只有完成公开审阅、实现、测试、披露和发布说明后，比例才能成为政策。",
+      },
+      {
+        heading: "权威来源",
+        links: [
+          { label: "中文公开政策", href: "https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES_ZH.md" },
+          { label: "当前服务价格", href: "https://mobazha.org/pricing" },
+          { label: "English canonical page", href: "/project/fees" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "zh/support",
+    title: "获取帮助与报告问题",
+    summary: "产品问题使用公开支持，缺陷提交到对应仓库，安全问题必须私下报告。",
+    status: "Current",
+    audiences: ["所有人"],
+    sourceLabel: "Mobazha 公开支持入口",
+    sourceUrl: "https://mobazha.org/status",
+    reviewed: "2026-07-04",
+    language: "zh-CN",
+    translationOf: "support",
+    sections: [
+      {
+        heading: "选择渠道",
+        links: [
+          { label: "文档问题", href: "https://github.com/mobazha/mobazha-docs/issues", description: "过期、缺失、不清楚或互相冲突的文档。" },
+          { label: "Node 问题", href: "https://github.com/mobazha/mobazha/issues", description: "后端、部署、API、付款或运营缺陷。" },
+          { label: "Unified 问题", href: "https://github.com/mobazha/mobazha-unified/issues", description: "买家、卖家、浏览器或前端缺陷。" },
+          { label: "Telegram", href: "https://t.me/MobazhaHQ" },
+          { label: "Discord", href: "https://discord.gg/3KCPBYxXgb" },
+        ],
+      },
+      {
+        heading: "写出可处理的问题",
+        bullets: [
+          "说明托管或自行托管、准确版本、操作系统和相关能力状态。",
+          "提供最小复现步骤、预期结果、实际结果和脱敏证据。",
+          "不要提交访问令牌、私钥、助记词、恢复材料、客户数据或私有基础设施信息。",
+        ],
+      },
+      {
+        heading: "安全问题例外",
+        body: [
+          "漏洞、凭证泄露、签名密钥问题和利用方式必须通过受影响 GitHub 仓库的私有漏洞报告渠道提交，不要先发到公开 Issue 或社区聊天。",
+        ],
+        links: [
+          { label: "English canonical page", href: "/support" },
+        ],
+      },
+    ],
+  },
 ];
 
 export const docsBySlug = new Map(docs.map((doc) => [doc.slug, doc]));
+
+export function translationPathFor(doc: DocPage): string | undefined {
+  if (doc.language === "zh-CN") return doc.translationOf ? `/${doc.translationOf}` : undefined;
+  const translation = docs.find((candidate) => candidate.translationOf === doc.slug && candidate.language === "zh-CN");
+  return translation ? `/${translation.slug}` : undefined;
+}

@@ -18,6 +18,7 @@
     "generate:content": "node scripts/generate-publication.mjs",
     "check:routes": "node scripts/check-routes.mjs",
     "check:external-links": "node scripts/check-external-links.mjs",
+    "check:source-contracts": "node scripts/check-source-contracts.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "validate:content": "node scripts/validate-content.mjs",
     "check": "npm run validate:content && npm run lint && npm run build"

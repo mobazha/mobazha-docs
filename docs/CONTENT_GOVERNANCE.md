@@ -80,6 +80,15 @@ Every content change should:
 5. verify affected public links and routes;
 6. commit the page, generated artifacts, and source-policy changes together.
 
+Core translations must point to their English canonical page, match its
+lifecycle status, and carry a translation review date. The English source is
+the policy-authoring authority during the first public phase; a translation
+may clarify language but must not introduce a separate product promise.
+
+When a public source revision is recorded in `sources.json`, run
+`npm run check:source-contracts` before a source-driven review. A changed
+revision is a review trigger, not proof that the published guidance is wrong.
+
 ## Corrections and conflicts
 
 Open an issue in `mobazha/mobazha-docs` for unclear, missing, or stale guidance.

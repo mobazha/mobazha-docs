@@ -6,16 +6,22 @@
     {
       "id": "community-backend",
       "repository": "https://github.com/mobazha/mobazha/tree/main",
+      "revision": "b80586ad34545c6af143296594f9e4f930dcdaf2",
+      "reviewed": "2026-07-04",
       "owns": ["backend", "deployment", "OpenAPI", "MCP", "webhooks", "extensions", "release notes", "public project policy"]
     },
     {
       "id": "public-client",
       "repository": "https://github.com/mobazha/mobazha-unified/tree/main",
+      "revision": "299edd89aca17ab7c8bd24c4221bc8ff27182e4c",
+      "reviewed": "2026-07-04",
       "owns": ["buyer and seller experience", "frontend development", "runtime capability client behavior", "client release notes"]
     },
     {
       "id": "public-website",
       "repository": "https://github.com/mobazha/mobazha.org",
+      "revision": "6ed732955bd9ebfaefaef2d6ef69a1614e836029",
+      "reviewed": "2026-07-04",
       "owns": ["public positioning", "current pricing", "hosted-service status", "legal and privacy policies", "website navigation"]
     },
     {

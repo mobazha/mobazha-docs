@@ -1,14 +1,23 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "name": "Mobazha Documentation",
   "canonical_base_url": "https://docs.mobazha.org",
   "canonical_language": "en",
+  "languages": [
+    "en",
+    "zh-CN"
+  ],
+  "language_starts": {
+    "en": "/start",
+    "zh-CN": "/zh/start"
+  },
   "human_start": "/start",
   "agent_start": "/agents",
   "llms": "/llms.txt",
   "llms_full": "/llms-full.txt",
   "index": "/docs-index.json",
   "sources": "/sources.json",
+  "agent_evals": "/agent-evals.json",
   "openapi": "/openapi.json",
   "sitemap": "/sitemap.xml",
   "status": "beta",

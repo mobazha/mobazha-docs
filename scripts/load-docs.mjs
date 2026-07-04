@@ -26,3 +26,4 @@ const loaded = await import(moduleUrl);
 export const docApplicability = loaded.docApplicability;
 export const docs = loaded.docs;
 export const navGroups = loaded.navGroups;
+export const publicationNavGroups = loaded.publicationNavGroups;
