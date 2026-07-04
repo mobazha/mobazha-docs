@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="420" viewBox="0 0 760 420" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual buyer order lifecycle</title>
+  <desc id="desc">A buyer reviews one seller quote, creates and saves one order, then verifies backend-owned milestones from awaiting payment to completion. Cancellation, refund, and dispute actions depend on current state.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102833"/>
+      <stop offset="1" stop-color="#07131a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#35d7e8"/>
+      <stop offset="1" stop-color="#8cebf4"/>
+    </linearGradient>
+  </defs>
+  <rect width="760" height="420" rx="24" fill="url(#bg)"/>
+  <rect x="1" y="1" width="758" height="418" rx="23" fill="none" stroke="#35d7e8" stroke-opacity=".2"/>
+  <text x="38" y="48" fill="#8cebf4" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="800" letter-spacing="2">CONCEPTUAL BUYER JOURNEY</text>
+  <text x="38" y="82" fill="#eff8fb" font-family="Inter, system-ui, sans-serif" font-size="25" font-weight="750">One quote. One seller-owned order.</text>
+  <text x="38" y="108" fill="#8da2ad" font-family="Inter, system-ui, sans-serif" font-size="13">The backend that owns the order remains authoritative for its state.</text>
+
+  <g font-family="Inter, system-ui, sans-serif">
+    <rect x="38" y="140" width="204" height="82" rx="14" fill="#142630" stroke="#35d7e8" stroke-opacity=".2"/>
+    <circle cx="66" cy="168" r="14" fill="#35d7e8" fill-opacity=".12" stroke="#35d7e8" stroke-opacity=".45"/>
+    <text x="66" y="173" text-anchor="middle" fill="#8cebf4" font-size="11" font-weight="800">1</text>
+    <text x="88" y="170" fill="#eff8fb" font-size="15" font-weight="700">Review the quote</text>
+    <text x="58" y="198" fill="#8da2ad" font-size="12">Seller · item · delivery · total</text>
+
+    <rect x="278" y="140" width="204" height="82" rx="14" fill="#142630" stroke="#35d7e8" stroke-opacity=".2"/>
+    <circle cx="306" cy="168" r="14" fill="#35d7e8" fill-opacity=".12" stroke="#35d7e8" stroke-opacity=".45"/>
+    <text x="306" y="173" text-anchor="middle" fill="#8cebf4" font-size="11" font-weight="800">2</text>
+    <text x="328" y="170" fill="#eff8fb" font-size="15" font-weight="700">Create and save</text>
+    <text x="298" y="198" fill="#8da2ad" font-size="12">Order ID · token · tracking link</text>
+
+    <rect x="518" y="140" width="204" height="82" rx="14" fill="#142630" stroke="#35d7e8" stroke-opacity=".2"/>
+    <circle cx="546" cy="168" r="14" fill="#35d7e8" fill-opacity=".12" stroke="#35d7e8" stroke-opacity=".45"/>
+    <text x="546" y="173" text-anchor="middle" fill="#8cebf4" font-size="11" font-weight="800">3</text>
+    <text x="568" y="170" fill="#eff8fb" font-size="15" font-weight="700">Verify progress</text>
+    <text x="538" y="198" fill="#8da2ad" font-size="12">Backend state + payment records</text>
+
+    <path d="M242 181h30M482 181h30" stroke="url(#accent)" stroke-width="2" stroke-linecap="round"/>
+    <path d="m266 176 7 5-7 5M506 176l7 5-7 5" fill="none" stroke="#8cebf4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <text x="38" y="264" fill="#607984" font-size="10" font-weight="800" letter-spacing="1.6">OBSERVABLE MILESTONES</text>
+    <line x1="84" y1="302" x2="676" y2="302" stroke="#27424d" stroke-width="4" stroke-linecap="round"/>
+    <line x1="84" y1="302" x2="676" y2="302" stroke="#35d7e8" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 145"/>
+    <g fill="#071118" stroke="#35d7e8" stroke-width="2">
+      <circle cx="84" cy="302" r="9"/><circle cx="281" cy="302" r="9"/><circle cx="478" cy="302" r="9"/><circle cx="676" cy="302" r="9"/>
+    </g>
+    <g fill="#b9cbd2" font-size="12" text-anchor="middle">
+      <text x="84" y="330">Awaiting payment</text>
+      <text x="281" y="330">Funded</text>
+      <text x="478" y="330">Shipped</text>
+      <text x="676" y="330">Completed</text>
+    </g>
+    <rect x="38" y="354" width="684" height="38" rx="10" fill="#ff7957" fill-opacity=".06" stroke="#ff7957" stroke-opacity=".22"/>
+    <text x="380" y="378" text-anchor="middle" fill="#d6aaa0" font-size="12">Cancel · refund · dispute only when the active order state and policy allow the action</text>
+  </g>
+</svg>

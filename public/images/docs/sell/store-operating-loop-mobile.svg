@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="560" viewBox="0 0 360 560" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual Mobazha store operating loop for a narrow screen</title>
+  <desc id="desc">A seller prepares identity and policy, publishes listings, verifies payment readiness, completes a test purchase, and operates orders as one continuing loop.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102833"/><stop offset="1" stop-color="#07131a"/></linearGradient></defs>
+  <rect width="360" height="560" rx="20" fill="url(#bg)"/>
+  <rect x="1" y="1" width="358" height="558" rx="19" fill="none" stroke="#35d7e8" stroke-opacity=".2"/>
+  <g font-family="Inter, system-ui, sans-serif">
+    <text x="24" y="36" fill="#8cebf4" font-size="10" font-weight="800" letter-spacing="1.4">CONCEPTUAL STORE READINESS</text>
+    <text x="24" y="66" fill="#eff8fb" font-size="20" font-weight="750">Test the complete journey.</text>
+    <text x="24" y="88" fill="#8da2ad" font-size="11">Publishing a listing is only one step.</text>
+
+    <g fill="#142630" stroke="#35d7e8" stroke-opacity=".24">
+      <rect x="24" y="112" width="312" height="62" rx="12"/><rect x="24" y="186" width="312" height="62" rx="12"/>
+      <rect x="24" y="260" width="312" height="62" rx="12"/><rect x="24" y="334" width="312" height="62" rx="12"/>
+      <rect x="24" y="408" width="312" height="62" rx="12"/>
+    </g>
+    <g fill="#35d7e8" fill-opacity=".12" stroke="#35d7e8" stroke-opacity=".48">
+      <circle cx="52" cy="143" r="13"/><circle cx="52" cy="217" r="13"/><circle cx="52" cy="291" r="13"/><circle cx="52" cy="365" r="13"/><circle cx="52" cy="439" r="13"/>
+    </g>
+    <g fill="#8cebf4" font-size="10" font-weight="800" text-anchor="middle"><text x="52" y="147">1</text><text x="52" y="221">2</text><text x="52" y="295">3</text><text x="52" y="369">4</text><text x="52" y="443">5</text></g>
+    <g fill="#eff8fb" font-size="14" font-weight="700"><text x="78" y="139">Identity and policy</text><text x="78" y="213">Listings and delivery</text><text x="78" y="287">Payment readiness</text><text x="78" y="361">Complete a test purchase</text><text x="78" y="435">Operate and improve</text></g>
+    <g fill="#8da2ad" font-size="10"><text x="78" y="157">Name the operator and buyer terms.</text><text x="78" y="231">Make price, stock, and shipping clear.</text><text x="78" y="305">Support only configured capabilities.</text><text x="78" y="379">Verify checkout through fulfillment.</text><text x="78" y="453">Reconcile, support, recover, repeat.</text></g>
+    <path d="M52 174v12M52 248v12M52 322v12M52 396v12" stroke="#8cebf4" stroke-opacity=".75" stroke-width="2"/>
+    <path d="M52 470c0 43 284 45 284-26V143c0-28-14-37-32-37" fill="none" stroke="#35d7e8" stroke-opacity=".28" stroke-width="2" stroke-dasharray="5 6"/>
+    <path d="m309 101-8 5 8 5" fill="none" stroke="#35d7e8" stroke-opacity=".55" stroke-width="2" stroke-linecap="round"/>
+    <rect x="24" y="500" width="312" height="36" rx="10" fill="#35d7e8" fill-opacity=".06" stroke="#35d7e8" stroke-opacity=".18"/>
+    <text x="180" y="522" text-anchor="middle" fill="#9cc0c8" font-size="10">Readiness is a loop, not a launch checkbox.</text>
+  </g>
+</svg>

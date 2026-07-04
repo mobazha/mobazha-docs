@@ -12,7 +12,7 @@
 | HX-0 | Complete | Baseline audit, contracts, and acceptance criteria are recorded |
 | HX-1 | Implemented locally | Journey-first global navigation, role-scoped sidebars, compact first screen, and `TrustPanel` |
 | HX-2 | Implemented locally | Human-experience metadata, page-type styling, section anchors, local TOC, and copyable code |
-| HX-3 | In progress | `/`, `/start`, `/buy`, `/sell`, `/self-host`, and `/build/quickstart` migrated; governed product visuals remain |
+| HX-3 | Implemented locally | `/`, `/start`, `/buy`, `/sell`, `/self-host`, and `/build/quickstart` migrated; three governed conceptual models and their public evidence catalog are wired into the flagship hubs |
 | HX-4–HX-6 | Planned | Follow-on task/reference migration, localization, and measurement |
 
 Local implementation is not considered delivered until the complete build,
@@ -95,8 +95,8 @@ estimatedTime: 5 minutes
 primaryAction:
   label: Open Guest Checkout
   href: https://app.mobazha.org
-journey: buy
-featuredVisual: /images/buy/guest-checkout-order.png
+journey: use
+featuredVisual: buyer-order-lifecycle
 ```
 
 Required validation after the migration:
@@ -154,6 +154,30 @@ Prefer these forms in order:
 
 Never publish customer information, real delivery data, credentials, wallet
 secrets, production identifiers, or private Hosting surfaces.
+
+The source manifest is [`../visual-evidence.json`](../visual-evidence.json),
+validated by [`../visual-evidence.schema.json`](../visual-evidence.schema.json).
+Pages reference a stable evidence ID rather than an asset path. The manifest
+owns the asset, caption, claim boundary, provenance, applicability, and review
+date, dimensions, responsive variant, and privacy-review result, and is
+published at `/visual-evidence.json` for people and Agents.
+
+### Real screenshot publication gate
+
+The public application was reviewed on 2026-07-04. Its home-page claim of
+“zero commissions” is not precise enough for the canonical fee-category model,
+and the public marketplace has no representative listings. Until those states
+are aligned, they must not be presented as product proof in canonical docs.
+
+A real interface screenshot may replace or supplement a conceptual model only
+after all of the following are true:
+
+1. visible pricing and fee terminology agrees with `/economics/fees`;
+2. the scene contains stable, representative public demo data;
+3. personal, wallet, order, and operator identifiers are synthetic or redacted;
+4. the source build or commit, capture viewport, and capture date are recorded;
+5. the image demonstrates the page's stated claim at readable resolution;
+6. an editor confirms that the screenshot is still current before publication.
 
 ## Editorial correction
 

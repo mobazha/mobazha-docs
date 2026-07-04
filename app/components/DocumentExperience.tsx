@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { docApplicability, type DocPage } from "@/app/lib/docs";
+import { docApplicability, type DocPage, visualsById } from "@/app/lib/docs";
 
 type ExperienceLabels = {
   audience: string;
@@ -54,20 +55,37 @@ export function DocumentHero({
   const language = isChinese ? "zh" : "en";
   const journey = doc.journey ? journeyLabels[language][doc.journey] : undefined;
   const type = pageTypeLabels[language][doc.pageType];
+  const visual = doc.featuredVisual ? visualsById.get(doc.featuredVisual) : undefined;
+  const visualKind = isChinese ? "概念模型" : "Conceptual model";
+  const visualDetails = isChinese ? "查看证据详情" : "Evidence details";
 
   return (
-    <header className={`doc-title-block doc-title-${doc.pageType}`}>
-      <div className="doc-title-context">
-        <span className={`doc-status status-${doc.status.toLowerCase()}`}>{statusLabel}</span>
-        <span>{journey ? `${journey} · ${type}` : type}</span>
-      </div>
-      <h1>{doc.title}</h1>
-      <p>{doc.outcome ?? doc.summary}</p>
-      {(doc.primaryAction || doc.estimatedTime) && (
-        <div className="doc-hero-actions">
-          {doc.primaryAction && <PrimaryAction action={doc.primaryAction} />}
-          {doc.estimatedTime && <span className="doc-time"><b>{labels.estimatedTime}</b>{doc.estimatedTime}</span>}
+    <header className={`doc-title-block doc-title-${doc.pageType}${visual ? " has-featured-visual" : ""}`}>
+      <div className="doc-hero-copy">
+        <div className="doc-title-context">
+          <span className={`doc-status status-${doc.status.toLowerCase()}`}>{statusLabel}</span>
+          <span>{journey ? `${journey} · ${type}` : type}</span>
         </div>
+        <h1>{doc.title}</h1>
+        <p>{doc.outcome ?? doc.summary}</p>
+        {(doc.primaryAction || doc.estimatedTime) && (
+          <div className="doc-hero-actions">
+            {doc.primaryAction && <PrimaryAction action={doc.primaryAction} />}
+            {doc.estimatedTime && <span className="doc-time"><b>{labels.estimatedTime}</b>{doc.estimatedTime}</span>}
+          </div>
+        )}
+      </div>
+      {visual && (
+        <figure className="doc-featured-visual">
+          <Image className="visual-desktop" src={visual.src} width={visual.width} height={visual.height} alt={visual.alt} priority />
+          {visual.mobile_src && visual.mobile_width && visual.mobile_height && (
+            <Image className="visual-mobile" src={visual.mobile_src} width={visual.mobile_width} height={visual.mobile_height} alt={visual.alt} priority />
+          )}
+          <figcaption>
+            <span><b>{visualKind}</b>{visual.caption}</span>
+            <a href="/visual-evidence.json">{visualDetails} ↗</a>
+          </figcaption>
+        </figure>
       )}
     </header>
   );

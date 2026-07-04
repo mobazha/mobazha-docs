@@ -104,6 +104,7 @@ Implementation evidence: the versioned sources linked from each page.
 - [Documentation index](/docs-index.json)
 - [Public source manifest](/sources.json)
 - [Agent evaluation contract](/agent-evals.json)
+- [Visual evidence catalog](/visual-evidence.json)
 - [Discovery manifest](/.well-known/mobazha-docs.json)
 - [Expanded agent context](/llms-full.txt)
 - [Node OpenAPI contract](/openapi.json)

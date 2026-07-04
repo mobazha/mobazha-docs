@@ -1,0 +1,61 @@
+{
+  "$schema": "https://docs.mobazha.org/visual-evidence.schema.json",
+  "schema_version": "1.0",
+  "reviewed": "2026-07-04",
+  "visuals": [
+    {
+      "id": "buyer-order-lifecycle",
+      "src": "/images/docs/buy/order-lifecycle.svg",
+      "mobile_src": "/images/docs/buy/order-lifecycle-mobile.svg",
+      "kind": "conceptual",
+      "width": 760,
+      "height": 420,
+      "mobile_width": 360,
+      "mobile_height": 560,
+      "alt": "Conceptual buyer journey from reviewing one seller quote through payment, fulfillment, and completion, with recovery actions dependent on active order state.",
+      "caption": "One seller-owned order, from reviewed quote to observable completion.",
+      "claim": "Explains the documentation authority and milestone model; it does not assert that every deployment exposes every transition.",
+      "privacy_review": "synthetic-only",
+      "source": "https://github.com/mobazha/mobazha-docs",
+      "source_revision": "docs-model-v1",
+      "applies_to": "Mobazha v0.3 release-candidate guidance",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "seller-operating-loop",
+      "src": "/images/docs/sell/store-operating-loop.svg",
+      "mobile_src": "/images/docs/sell/store-operating-loop-mobile.svg",
+      "kind": "conceptual",
+      "width": 760,
+      "height": 420,
+      "mobile_width": 360,
+      "mobile_height": 560,
+      "alt": "Conceptual seller operating loop covering store identity and policy, listings, payment readiness, a test purchase, and ongoing order operations.",
+      "caption": "A store is ready only when the complete buyer journey has been tested.",
+      "claim": "Explains the operator responsibility sequence; it is not evidence that a specific store has completed these checks.",
+      "privacy_review": "synthetic-only",
+      "source": "https://github.com/mobazha/mobazha-docs",
+      "source_revision": "docs-model-v1",
+      "applies_to": "Mobazha v0.3 release-candidate guidance",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "self-host-trust-boundary",
+      "src": "/images/docs/self-host/operator-trust-boundary.svg",
+      "mobile_src": "/images/docs/self-host/operator-trust-boundary-mobile.svg",
+      "kind": "conceptual",
+      "width": 760,
+      "height": 420,
+      "mobile_width": 360,
+      "mobile_height": 560,
+      "alt": "Conceptual self-hosting boundary showing clients entering through an operator-controlled network boundary to a Mobazha Node and local data, with payment systems and optional hosted services remaining separate dependencies.",
+      "caption": "Self-hosting moves operational control to the Node operator; external dependencies remain explicit.",
+      "claim": "Explains responsibility boundaries and does not prescribe one mandatory network topology.",
+      "privacy_review": "synthetic-only",
+      "source": "https://github.com/mobazha/mobazha-docs",
+      "source_revision": "docs-model-v1",
+      "applies_to": "Mobazha v0.3 release-candidate guidance",
+      "reviewed": "2026-07-04"
+    }
+  ]
+}

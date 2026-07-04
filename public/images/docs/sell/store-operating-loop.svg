@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="420" viewBox="0 0 760 420" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual Mobazha store operating loop</title>
+  <desc id="desc">A seller prepares identity and policy, publishes listings, verifies payment readiness, completes a test purchase, and then operates orders while monitoring the full buyer journey.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102833"/><stop offset="1" stop-color="#07131a"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="760" height="420" rx="24" fill="url(#bg)"/>
+  <rect x="1" y="1" width="758" height="418" rx="23" fill="none" stroke="#35d7e8" stroke-opacity=".2"/>
+  <g font-family="Inter, system-ui, sans-serif">
+    <text x="38" y="48" fill="#8cebf4" font-size="12" font-weight="800" letter-spacing="2">CONCEPTUAL STORE READINESS LOOP</text>
+    <text x="38" y="82" fill="#eff8fb" font-size="25" font-weight="750">Test the journey buyers will actually use.</text>
+    <text x="38" y="108" fill="#8da2ad" font-size="13">A published listing is not enough: payment, fulfillment, recovery, and support must work together.</text>
+
+    <g fill="#142630" stroke="#35d7e8" stroke-opacity=".22">
+      <rect x="38" y="150" width="128" height="86" rx="14"/>
+      <rect x="179" y="150" width="128" height="86" rx="14"/>
+      <rect x="320" y="150" width="128" height="86" rx="14"/>
+      <rect x="461" y="150" width="128" height="86" rx="14"/>
+      <rect x="602" y="150" width="120" height="86" rx="14"/>
+    </g>
+    <g fill="#35d7e8" fill-opacity=".1" stroke="#35d7e8" stroke-opacity=".45">
+      <circle cx="64" cy="176" r="13"/><circle cx="205" cy="176" r="13"/><circle cx="346" cy="176" r="13"/><circle cx="487" cy="176" r="13"/><circle cx="628" cy="176" r="13"/>
+    </g>
+    <g fill="#8cebf4" font-size="10" font-weight="800" text-anchor="middle">
+      <text x="64" y="180">1</text><text x="205" y="180">2</text><text x="346" y="180">3</text><text x="487" y="180">4</text><text x="628" y="180">5</text>
+    </g>
+    <g fill="#eff8fb" font-size="13" font-weight="700">
+      <text x="54" y="207">Identity</text><text x="54" y="222">and policy</text>
+      <text x="195" y="207">Listings</text><text x="195" y="222">and delivery</text>
+      <text x="336" y="207">Payment</text><text x="336" y="222">readiness</text>
+      <text x="477" y="207">Test</text><text x="477" y="222">purchase</text>
+      <text x="618" y="207">Operate</text><text x="618" y="222">orders</text>
+    </g>
+    <g stroke="#8cebf4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M166 193h13m-5-5 5 5-5 5M307 193h13m-5-5 5 5-5 5M448 193h13m-5-5 5 5-5 5M589 193h13m-5-5 5 5-5 5"/>
+    </g>
+
+    <path d="M662 248c-6 58-70 98-142 98H237c-81 0-143-32-143-92" fill="none" stroke="#35d7e8" stroke-opacity=".38" stroke-width="2" stroke-dasharray="6 6"/>
+    <path d="m88 262 6-9 7 9" fill="none" stroke="#8cebf4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="230" y="278" width="300" height="64" rx="14" fill="#0b1c24" stroke="#35d7e8" stroke-opacity=".28"/>
+    <circle cx="268" cy="310" r="16" fill="#35d7e8" fill-opacity=".14" filter="url(#glow)"/>
+    <path d="M260 312h16M264 306h8M266 318h4" stroke="#8cebf4" stroke-width="2" stroke-linecap="round"/>
+    <text x="296" y="305" fill="#eff8fb" font-size="14" font-weight="700">Seller-owned store and order operations</text>
+    <text x="296" y="325" fill="#8da2ad" font-size="11">Monitor · fulfill · support · reconcile · improve</text>
+    <text x="380" y="382" text-anchor="middle" fill="#718991" font-size="11">The loop repeats when policy, capability, inventory, delivery, or software changes.</text>
+  </g>
+</svg>

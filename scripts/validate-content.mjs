@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { docApplicability, docs, publicationNavGroups as navGroups } from "./load-docs.mjs";
 import { renderPublication } from "./publication.mjs";
 import { documentLinks, documentText, loadContentDocuments, renderDocumentRegistry } from "./content-files.mjs";
@@ -27,7 +27,9 @@ const sources = JSON.parse(read("sources.json"));
 const sourceSchema = read("sources.schema.json");
 const agentEvals = JSON.parse(read("agent-evals.json"));
 const agentEvalSchema = read("agent-evals.schema.json");
-const expectedFiles = renderPublication({ docs, navGroups, docApplicability, sources, sourceSchema, agentEvals, agentEvalSchema });
+const visualEvidence = JSON.parse(read("visual-evidence.json"));
+const visualEvidenceSchema = read("visual-evidence.schema.json");
+const expectedFiles = renderPublication({ docs, navGroups, docApplicability, sources, sourceSchema, agentEvals, agentEvalSchema, visualEvidence, visualEvidenceSchema });
 const paths = new Set(docs.map((doc) => `/${doc.slug}`));
 const allowedInternal = new Set([
   "/",
@@ -39,6 +41,8 @@ const allowedInternal = new Set([
   "/sources.schema.json",
   "/agent-evals.json",
   "/agent-evals.schema.json",
+  "/visual-evidence.json",
+  "/visual-evidence.schema.json",
   "/.well-known/mobazha-docs.json",
   "/openapi.json",
   "/sitemap.xml",
@@ -101,6 +105,9 @@ for (const doc of docs) {
       }
     }
   }
+  if (doc.featuredVisual !== undefined && (typeof doc.featuredVisual !== "string" || !doc.featuredVisual.trim())) {
+    fail(`invalid featured visual on /${doc.slug}`);
+  }
   if (!new Set(["Current", "Beta", "Draft", "Deprecated", "Historical"]).has(doc.status)) {
     fail(`unsupported status on /${doc.slug}`);
   }
@@ -143,7 +150,35 @@ for (const doc of docs) {
   }
 }
 
-const serializedPublicInputs = JSON.stringify({ docs, sources, agentEvals });
+if (!visualEvidence || visualEvidence.schema_version !== "1.0" || !/^\d{4}-\d{2}-\d{2}$/.test(visualEvidence.reviewed) || !Array.isArray(visualEvidence.visuals)) {
+  fail("invalid visual evidence catalog");
+} else {
+  const visualIds = new Set();
+  for (const visual of visualEvidence.visuals) {
+    if (!visual.id || visualIds.has(visual.id)) fail(`duplicate or missing visual evidence id ${visual.id ?? "<unknown>"}`);
+    visualIds.add(visual.id);
+    if (!new Set(["product-screenshot", "terminal-output", "conceptual"]).has(visual.kind)) fail(`invalid visual kind on ${visual.id}`);
+    if (!visual.src?.startsWith("/images/docs/") || !existsSync(new URL(`../public${visual.src}`, import.meta.url))) fail(`missing visual asset ${visual.src ?? "<unknown>"}`);
+    if (!Number.isInteger(visual.width) || visual.width < 1 || !Number.isInteger(visual.height) || visual.height < 1) fail(`invalid visual dimensions on ${visual.id}`);
+    if (visual.mobile_src !== undefined) {
+      if (!visual.mobile_src.startsWith("/images/docs/") || !existsSync(new URL(`../public${visual.mobile_src}`, import.meta.url))) fail(`missing mobile visual asset ${visual.mobile_src}`);
+      if (!Number.isInteger(visual.mobile_width) || visual.mobile_width < 1 || !Number.isInteger(visual.mobile_height) || visual.mobile_height < 1) fail(`invalid mobile visual dimensions on ${visual.id}`);
+    } else if (visual.mobile_width !== undefined || visual.mobile_height !== undefined) {
+      fail(`mobile visual dimensions without an asset on ${visual.id}`);
+    }
+    if (!visual.alt?.trim() || !visual.caption?.trim() || !visual.claim?.trim()) fail(`incomplete visual description on ${visual.id}`);
+    if (!new Set(["synthetic-only", "redacted", "public-demo-reviewed"]).has(visual.privacy_review)) fail(`invalid visual privacy review on ${visual.id}`);
+    if (!visual.source?.startsWith("https://") || !visual.source_revision?.trim() || !visual.applies_to?.trim()) fail(`incomplete visual provenance on ${visual.id}`);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(visual.reviewed)) fail(`invalid visual review date on ${visual.id}`);
+  }
+  for (const doc of docs) {
+    if (doc.featuredVisual && !visualIds.has(doc.featuredVisual)) fail(`/${doc.slug} references unknown visual ${doc.featuredVisual}`);
+  }
+  const referencedVisuals = new Set(docs.map((doc) => doc.featuredVisual).filter(Boolean));
+  for (const visual of visualEvidence.visuals) if (!referencedVisuals.has(visual.id)) fail(`unreferenced visual evidence ${visual.id}`);
+}
+
+const serializedPublicInputs = JSON.stringify({ docs, sources, agentEvals, visualEvidence });
 for (const forbidden of [
   "github.com/mobazha/mobazha_hosting",
   "gitlab.mobazha.com",

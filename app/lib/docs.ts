@@ -1,5 +1,6 @@
 import generatedDocuments from "@/app/lib/generated-docs.json";
 import navigation from "@/content/navigation.json";
+import visualEvidence from "@/visual-evidence.json";
 
 export type DocStatus = "Current" | "Beta" | "Draft" | "Deprecated" | "Historical";
 
@@ -45,6 +46,7 @@ export type DocPage = {
     label: string;
     href: string;
   };
+  featuredVisual?: string;
   language: "en" | "zh-CN";
   translationOf?: string;
   sections: DocSection[];
@@ -53,6 +55,25 @@ export type DocPage = {
 export type NavGroup = {
   label: string;
   links: Array<[label: string, href: string]>;
+};
+
+export type VisualEvidence = {
+  id: string;
+  src: string;
+  mobile_src?: string;
+  kind: "product-screenshot" | "terminal-output" | "conceptual";
+  width: number;
+  height: number;
+  mobile_width?: number;
+  mobile_height?: number;
+  alt: string;
+  caption: string;
+  claim: string;
+  privacy_review: "synthetic-only" | "redacted" | "public-demo-reviewed";
+  source: string;
+  source_revision: string;
+  applies_to: string;
+  reviewed: string;
 };
 
 export function docApplicability(doc: DocPage): string {
@@ -86,6 +107,8 @@ export function activeNavGroupForPath(path: string): NavGroup | undefined {
 
 export const docs = generatedDocuments as DocPage[];
 export const docsBySlug = new Map(docs.map((doc) => [doc.slug, doc]));
+export const visuals = visualEvidence.visuals as VisualEvidence[];
+export const visualsById = new Map(visuals.map((visual) => [visual.id, visual]));
 
 export function translationPathFor(doc: DocPage): string | undefined {
   if (doc.language === "zh-CN") return doc.translationOf ? `/${doc.translationOf}` : undefined;

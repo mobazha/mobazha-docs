@@ -14,6 +14,7 @@ journey: use
 primaryAction:
   label: Open the hosted app
   href: https://app.mobazha.org
+featuredVisual: buyer-order-lifecycle
 ---
 
 ## Choose what you need to do

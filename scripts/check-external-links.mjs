@@ -1,11 +1,15 @@
 import { access } from "node:fs/promises";
 import { docs } from "./load-docs.mjs";
 import { documentLinks } from "./content-files.mjs";
+import visualEvidence from "../visual-evidence.json" with { type: "json" };
 
 const links = new Set();
 for (const doc of docs) {
   if (doc.evidenceUrl?.startsWith("https://")) links.add(doc.evidenceUrl);
   for (const link of documentLinks(doc)) if (link.startsWith("https://")) links.add(link);
+}
+for (const visual of visualEvidence.visuals) {
+  if (visual.source?.startsWith("https://")) links.add(visual.source);
 }
 
 const urls = [...links].sort();

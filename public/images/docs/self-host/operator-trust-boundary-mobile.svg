@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="560" viewBox="0 0 360 560" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual self-hosted Mobazha trust boundary for a narrow screen</title>
+  <desc id="desc">People and scoped agents enter an operator-controlled boundary through network and TLS controls. A Mobazha Node and local data are inside; payment systems and optional hosted services remain explicit external dependencies.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102833"/><stop offset="1" stop-color="#07131a"/></linearGradient></defs>
+  <rect width="360" height="560" rx="20" fill="url(#bg)"/>
+  <rect x="1" y="1" width="358" height="558" rx="19" fill="none" stroke="#35d7e8" stroke-opacity=".2"/>
+  <g font-family="Inter, system-ui, sans-serif">
+    <text x="24" y="36" fill="#8cebf4" font-size="10" font-weight="800" letter-spacing="1.3">CONCEPTUAL SELF-HOSTING BOUNDARY</text>
+    <text x="24" y="66" fill="#eff8fb" font-size="20" font-weight="750">Control the Node.</text>
+    <text x="24" y="88" fill="#8da2ad" font-size="11">Keep external dependencies explicit.</text>
+
+    <rect x="24" y="112" width="312" height="54" rx="12" fill="#142630" stroke="#69808a" stroke-opacity=".4"/>
+    <text x="180" y="135" text-anchor="middle" fill="#eff8fb" font-size="13" font-weight="700">People and scoped Agents</text>
+    <text x="180" y="151" text-anchor="middle" fill="#8da2ad" font-size="9">Identity · permission · confirmation</text>
+    <path d="M180 166v20" stroke="#8cebf4" stroke-width="2"/><path d="m175 181 5 5 5-5" fill="none" stroke="#8cebf4" stroke-width="2"/>
+
+    <rect x="24" y="186" width="312" height="244" rx="18" fill="#0a1a22" stroke="#35d7e8" stroke-opacity=".42" stroke-width="2"/>
+    <text x="44" y="211" fill="#8cebf4" font-size="9" font-weight="800" letter-spacing="1.2">OPERATOR-CONTROLLED BOUNDARY</text>
+    <rect x="44" y="230" width="272" height="52" rx="11" fill="#142630" stroke="#35d7e8" stroke-opacity=".25"/>
+    <text x="180" y="252" text-anchor="middle" fill="#eff8fb" font-size="13" font-weight="700">Network and TLS</text>
+    <text x="180" y="269" text-anchor="middle" fill="#8da2ad" font-size="9">Expose only what is needed.</text>
+    <path d="M180 282v18" stroke="#8cebf4" stroke-opacity=".7" stroke-width="2"/>
+    <rect x="44" y="300" width="272" height="52" rx="11" fill="#15303a" stroke="#35d7e8" stroke-opacity=".55"/>
+    <text x="180" y="322" text-anchor="middle" fill="#eff8fb" font-size="13" font-weight="750">Mobazha Node</text>
+    <text x="180" y="339" text-anchor="middle" fill="#8cebf4" font-size="9">Runtime authority</text>
+    <path d="M180 352v18" stroke="#8cebf4" stroke-opacity=".7" stroke-width="2"/>
+    <rect x="44" y="370" width="272" height="40" rx="11" fill="#142630" stroke="#35d7e8" stroke-opacity=".25"/>
+    <text x="180" y="395" text-anchor="middle" fill="#eff8fb" font-size="12" font-weight="700">Local data · backup · restore</text>
+
+    <text x="24" y="462" fill="#68818b" font-size="9" font-weight="800" letter-spacing="1.2">EXPLICIT EXTERNAL DEPENDENCIES</text>
+    <rect x="24" y="478" width="148" height="56" rx="11" fill="#221a18" stroke="#ff7957" stroke-opacity=".25"/>
+    <rect x="188" y="478" width="148" height="56" rx="11" fill="#221a18" stroke="#ff7957" stroke-opacity=".25"/>
+    <text x="98" y="502" text-anchor="middle" fill="#f2c0b2" font-size="11" font-weight="700">Payment systems</text>
+    <text x="262" y="502" text-anchor="middle" fill="#f2c0b2" font-size="11" font-weight="700">Hosted services</text>
+    <text x="98" y="519" text-anchor="middle" fill="#947a73" font-size="9">Separate records</text>
+    <text x="262" y="519" text-anchor="middle" fill="#947a73" font-size="9">Optional dependency</text>
+  </g>
+</svg>

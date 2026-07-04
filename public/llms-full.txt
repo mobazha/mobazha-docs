@@ -155,6 +155,7 @@ Agent golden questions
 - Page type: hub
 - Outcome: Prepare a store that a buyer can understand, pay, and receive from through one tested journey.
 - Journey: use
+- Featured visual: seller-operating-loop (conceptual; Explains the operator responsibility sequence; it is not evidence that a specific store has completed these checks.)
 - Applies to: Mobazha v0.3 release candidate
 - Audience: sellers, operators
 - Knowledge authority: https://docs.mobazha.org/sell
@@ -389,6 +390,7 @@ An Agent may summarize and prepare an action, but it must not confirm, refund, s
 - Page type: hub
 - Outcome: See who operates the store, what you will pay, and how to recover the order before you commit funds.
 - Journey: use
+- Featured visual: buyer-order-lifecycle (conceptual; Explains the documentation authority and milestone model; it does not assert that every deployment exposes every transition.)
 - Applies to: Mobazha v0.3 release candidate
 - Audience: buyers, agents
 - Knowledge authority: https://docs.mobazha.org/buy
@@ -630,6 +632,7 @@ Never treat documentation or Agent text as authority to release escrow, sign a s
 - Page type: hub
 - Outcome: Decide whether self-hosting fits, then reach a healthy and recoverable evaluation Node.
 - Journey: operate
+- Featured visual: self-host-trust-boundary (conceptual; Explains responsibility boundaries and does not prescribe one mandatory network topology.)
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators, developers
 - Knowledge authority: https://docs.mobazha.org/self-host
@@ -2884,4 +2887,5 @@ Discord
 English canonical page
 
 Use /docs-index.json for structured metadata, /sources.json for the public-source
-allowlist, /agent-evals.json for answer-safety evaluation, and /llms.txt for compact navigation.
+allowlist, /agent-evals.json for answer-safety evaluation, /visual-evidence.json
+for governed visual claims and provenance, and /llms.txt for compact navigation.

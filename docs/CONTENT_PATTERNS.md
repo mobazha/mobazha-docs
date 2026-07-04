@@ -99,6 +99,12 @@ or applicability boundary, not as a substitute for a section. Never put a
 credential, customer payload, recovery secret, or production endpoint in an
 example.
 
+For a featured visual, reference an entry in
+[`../visual-evidence.json`](../visual-evidence.json) from frontmatter. Do not
+embed an unreviewed screenshot directly. Conceptual diagrams must be labeled
+as conceptual, and screenshots or terminal output must state exactly what they
+prove and which build they came from.
+
 ## Definition of ready
 
 Before publication, confirm that:
@@ -112,3 +118,5 @@ Before publication, confirm that:
 7. The page does not duplicate policy owned by another page or repository.
 8. Generated human and Agent outputs are refreshed with `npm run generate:content`.
 9. `npm run check` passes and affected routes are inspected in the rendered site.
+10. Every featured visual resolves through the evidence catalog and remains
+    readable at desktop and mobile widths.

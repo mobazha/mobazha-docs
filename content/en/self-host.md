@@ -14,6 +14,7 @@ journey: operate
 primaryAction:
   label: Check the requirements
   href: /self-host/requirements
+featuredVisual: self-host-trust-boundary
 ---
 
 ## Choose the operating path

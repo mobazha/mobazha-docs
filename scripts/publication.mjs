@@ -14,9 +14,10 @@ export function orderedDocuments(docs, navGroups) {
   return [...ordered, ...docs.filter((doc) => !included.has(doc.slug))];
 }
 
-export function renderPublication({ docs, navGroups, docApplicability, sources, sourceSchema, agentEvals, agentEvalSchema }) {
+export function renderPublication({ docs, navGroups, docApplicability, sources, sourceSchema, agentEvals, agentEvalSchema, visualEvidence, visualEvidenceSchema }) {
   const ordered = orderedDocuments(docs, navGroups);
   const reviewed = ordered.map((doc) => doc.reviewed).sort().at(-1);
+  const visualsById = new Map(visualEvidence.visuals.map((visual) => [visual.id, visual]));
   const records = ordered.map((doc) => ({
     id: doc.slug.replaceAll("/", "-"),
     path: `/${doc.slug}`,
@@ -42,13 +43,14 @@ export function renderPublication({ docs, navGroups, docApplicability, sources, 
     estimated_time: doc.estimatedTime,
     journey: doc.journey,
     primary_action: doc.primaryAction,
+    featured_visual: doc.featuredVisual ? visualsById.get(doc.featuredVisual) : undefined,
     version: doc.version,
     language: doc.language ?? "en",
     translation_of: doc.translationOf ? `/${doc.translationOf}` : undefined,
   }));
 
   const index = {
-    schema_version: "1.6",
+    schema_version: "1.7",
     generated_from: "canonical-public-knowledge-and-reviewed-evidence",
     canonical_language: "en",
     languages: ["en", "zh-CN"],
@@ -81,6 +83,7 @@ ${llmsSections}
 - [Documentation index](/docs-index.json)
 - [Public source manifest](/sources.json)
 - [Agent evaluation contract](/agent-evals.json)
+- [Visual evidence catalog](/visual-evidence.json)
 - [Discovery manifest](/.well-known/mobazha-docs.json)
 - [Expanded agent context](/llms-full.txt)
 - [Node OpenAPI contract](/openapi.json)
@@ -93,7 +96,7 @@ ${llmsSections}
 - URL: ${doc.path}
 - Status: ${doc.status}
 - Page type: ${doc.page_type}
-${doc.outcome ? `- Outcome: ${doc.outcome}\n` : ""}${doc.estimated_time ? `- Estimated time: ${doc.estimated_time}\n` : ""}${doc.journey ? `- Journey: ${doc.journey}\n` : ""}- Applies to: ${doc.applies_to}
+${doc.outcome ? `- Outcome: ${doc.outcome}\n` : ""}${doc.estimated_time ? `- Estimated time: ${doc.estimated_time}\n` : ""}${doc.journey ? `- Journey: ${doc.journey}\n` : ""}${doc.featured_visual ? `- Featured visual: ${doc.featured_visual.id} (${doc.featured_visual.kind}; ${doc.featured_visual.claim})\n` : ""}- Applies to: ${doc.applies_to}
 - Audience: ${doc.audiences.join(", ")}
 - Knowledge authority: ${doc.knowledge_authority.url}
 - Evidence: ${doc.evidence.source}
@@ -147,7 +150,8 @@ amount, and confirmation point. Old illustrative percentages are not current def
 ${documentContext}
 
 Use /docs-index.json for structured metadata, /sources.json for the public-source
-allowlist, /agent-evals.json for answer-safety evaluation, and /llms.txt for compact navigation.
+allowlist, /agent-evals.json for answer-safety evaluation, /visual-evidence.json
+for governed visual claims and provenance, and /llms.txt for compact navigation.
 `;
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -158,7 +162,7 @@ ${records.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc><lastmo
 `;
 
   const discovery = {
-    schema_version: "1.6",
+    schema_version: "1.7",
     name: "Mobazha Documentation",
     canonical_base_url: baseUrl,
     canonical_language: "en",
@@ -171,6 +175,7 @@ ${records.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc><lastmo
     index: "/docs-index.json",
     sources: "/sources.json",
     agent_evals: "/agent-evals.json",
+    visual_evidence: "/visual-evidence.json",
     authority_model: {
       public_knowledge: "/docs-index.json",
       runtime: "connected backend version and effective capability response",
@@ -211,5 +216,7 @@ ${records.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc><lastmo
     "public/sources.schema.json": sourceSchema,
     "public/agent-evals.json": `${JSON.stringify(publicAgentEvals, null, 2)}\n`,
     "public/agent-evals.schema.json": agentEvalSchema,
+    "public/visual-evidence.json": `${JSON.stringify({ ...visualEvidence, $schema: `${baseUrl}/visual-evidence.schema.json` }, null, 2)}\n`,
+    "public/visual-evidence.schema.json": visualEvidenceSchema,
   };
 }

@@ -271,6 +271,7 @@ export function loadContentDocuments() {
       ...(metadata.estimatedTime ? { estimatedTime: metadata.estimatedTime } : {}),
       ...(metadata.journey ? { journey: metadata.journey } : {}),
       ...(metadata.primaryAction ? { primaryAction: metadata.primaryAction } : {}),
+      ...(metadata.featuredVisual ? { featuredVisual: metadata.featuredVisual } : {}),
       language,
       ...(metadata.translationOf ? { translationOf: metadata.translationOf } : {}),
       sections: parseSections(body, path),

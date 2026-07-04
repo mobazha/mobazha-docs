@@ -14,6 +14,7 @@ journey: use
 primaryAction:
   label: Prepare your store
   href: /sell/store-setup
+featuredVisual: seller-operating-loop
 ---
 
 ## Start with the store journey

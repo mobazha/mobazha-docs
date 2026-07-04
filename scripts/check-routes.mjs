@@ -1,4 +1,7 @@
+import { readFileSync } from "node:fs";
 import { docs } from "./load-docs.mjs";
+
+const visualEvidence = JSON.parse(readFileSync(new URL("../visual-evidence.json", import.meta.url), "utf8"));
 
 const base = (process.argv[2] ?? process.env.BASE_URL ?? "http://127.0.0.1:3000").replace(/\/$/, "");
 const routes = [
@@ -9,6 +12,8 @@ const routes = [
   "/sources.schema.json",
   "/agent-evals.json",
   "/agent-evals.schema.json",
+  "/visual-evidence.json",
+  "/visual-evidence.schema.json",
   "/llms.txt",
   "/llms-full.txt",
   "/.well-known/mobazha-docs.json",
@@ -16,6 +21,8 @@ const routes = [
   "/robots.txt",
   "/favicon.svg",
   "/openapi.json",
+  ...visualEvidence.visuals.map((visual) => visual.src),
+  ...visualEvidence.visuals.map((visual) => visual.mobile_src).filter(Boolean),
 ];
 
 let failed = 0;

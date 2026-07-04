@@ -1546,6 +1546,7 @@
       "label": "Open the hosted app",
       "href": "https://app.mobazha.org"
     },
+    "featuredVisual": "buyer-order-lifecycle",
     "language": "en",
     "sections": [
       {
@@ -3760,6 +3761,7 @@
       "label": "Check the requirements",
       "href": "/self-host/requirements"
     },
+    "featuredVisual": "self-host-trust-boundary",
     "language": "en",
     "sections": [
       {
@@ -4821,6 +4823,7 @@
       "label": "Prepare your store",
       "href": "/sell/store-setup"
     },
+    "featuredVisual": "seller-operating-loop",
     "language": "en",
     "sections": [
       {

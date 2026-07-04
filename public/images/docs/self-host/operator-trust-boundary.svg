@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="420" viewBox="0 0 760 420" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual self-hosted Mobazha trust boundary</title>
+  <desc id="desc">Clients connect through an operator-controlled network and TLS boundary to a Mobazha Node and local data. Payment systems and optional hosted services remain separate explicit dependencies.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102833"/><stop offset="1" stop-color="#07131a"/></linearGradient></defs>
+  <rect width="760" height="420" rx="24" fill="url(#bg)"/>
+  <rect x="1" y="1" width="758" height="418" rx="23" fill="none" stroke="#35d7e8" stroke-opacity=".2"/>
+  <g font-family="Inter, system-ui, sans-serif">
+    <text x="38" y="48" fill="#8cebf4" font-size="12" font-weight="800" letter-spacing="2">CONCEPTUAL SELF-HOSTING BOUNDARY</text>
+    <text x="38" y="82" fill="#eff8fb" font-size="25" font-weight="750">Control the Node. Keep dependencies explicit.</text>
+    <text x="38" y="108" fill="#8da2ad" font-size="13">This model explains responsibilities, not one mandatory deployment topology.</text>
+
+    <rect x="212" y="136" width="510" height="220" rx="20" fill="#0a1a22" stroke="#35d7e8" stroke-width="2" stroke-opacity=".32"/>
+    <text x="236" y="162" fill="#8cebf4" font-size="10" font-weight="800" letter-spacing="1.5">OPERATOR-CONTROLLED BOUNDARY</text>
+
+    <rect x="38" y="188" width="132" height="72" rx="14" fill="#142630" stroke="#69808a" stroke-opacity=".35"/>
+    <text x="104" y="217" text-anchor="middle" fill="#eff8fb" font-size="14" font-weight="700">People and</text>
+    <text x="104" y="237" text-anchor="middle" fill="#eff8fb" font-size="14" font-weight="700">scoped Agents</text>
+    <text x="104" y="278" text-anchor="middle" fill="#718991" font-size="10">Identity · confirmation</text>
+
+    <rect x="236" y="190" width="132" height="68" rx="14" fill="#142630" stroke="#35d7e8" stroke-opacity=".25"/>
+    <text x="302" y="218" text-anchor="middle" fill="#eff8fb" font-size="14" font-weight="700">Network and TLS</text>
+    <text x="302" y="239" text-anchor="middle" fill="#8da2ad" font-size="11">Expose only what is needed</text>
+
+    <rect x="397" y="190" width="132" height="68" rx="14" fill="#15303a" stroke="#35d7e8" stroke-opacity=".5"/>
+    <text x="463" y="218" text-anchor="middle" fill="#eff8fb" font-size="14" font-weight="750">Mobazha Node</text>
+    <text x="463" y="239" text-anchor="middle" fill="#8cebf4" font-size="11">Runtime authority</text>
+
+    <rect x="558" y="190" width="140" height="68" rx="14" fill="#142630" stroke="#35d7e8" stroke-opacity=".25"/>
+    <text x="628" y="218" text-anchor="middle" fill="#eff8fb" font-size="14" font-weight="700">Local data</text>
+    <text x="628" y="239" text-anchor="middle" fill="#8da2ad" font-size="11">Backup · restore · retention</text>
+
+    <g stroke="#8cebf4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M170 224h66m-6-5 6 5-6 5M368 224h29m-6-5 6 5-6 5M529 224h29m-6-5 6 5-6 5"/>
+    </g>
+
+    <rect x="236" y="286" width="204" height="48" rx="11" fill="#ff7957" fill-opacity=".055" stroke="#ff7957" stroke-opacity=".22"/>
+    <text x="338" y="306" text-anchor="middle" fill="#d6aaa0" font-size="12" font-weight="700">Payment systems</text>
+    <text x="338" y="322" text-anchor="middle" fill="#9f817b" font-size="10">Separate confirmed records</text>
+    <rect x="466" y="286" width="232" height="48" rx="11" fill="#ffffff" fill-opacity=".025" stroke="#69808a" stroke-opacity=".28" stroke-dasharray="5 4"/>
+    <text x="582" y="306" text-anchor="middle" fill="#b9cbd2" font-size="12" font-weight="700">Optional hosted services</text>
+    <text x="582" y="322" text-anchor="middle" fill="#718991" font-size="10">Explicit dependency, not required custody</text>
+    <text x="380" y="388" text-anchor="middle" fill="#718991" font-size="11">The operator owns host security, secrets, observability, backup, upgrade, and recovery.</text>
+  </g>
+</svg>
