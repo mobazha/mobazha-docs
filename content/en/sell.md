@@ -8,6 +8,7 @@ audiences:
 evidenceLabel: Mobazha README and release scope
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main
 reviewed: 2026-07-04
+pageType: hub
 ---
 
 ## Before opening a store
@@ -41,6 +42,11 @@ A seller remains responsible for product legality, tax, fulfillment, customer su
 
 ## Choose how to operate
 
+- [Prepare a store](/sell/store-setup) — Validate identity, policy, fulfillment, and a complete test journey.
+- [Create listings](/sell/listings) — Publish buyer-verifiable item and availability data.
+- [Configure shipping](/sell/shipping) — Match destinations, rates, listings, and evidence.
+- [Prepare payments](/sell/payments) — Advertise only ready backend capabilities.
+- [Operate orders](/sell/orders) — Reconcile payment, fulfill, refund, and complete safely.
 - [Use the hosted application](https://app.mobazha.org)
 - [Choose a deployment](/start/choose-deployment)
 - [Install a self-hosted node](/self-host/install)

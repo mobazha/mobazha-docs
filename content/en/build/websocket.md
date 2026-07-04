@@ -8,6 +8,8 @@ audiences:
 evidenceLabel: Mobazha WebSocket gateway and event registry
 evidenceUrl: https://github.com/mobazha/mobazha/blob/main/internal/api/ws.go
 reviewed: 2026-07-04
+pageType: reference
+lastTested: 2026-07-04
 ---
 
 ## Current connection boundary
@@ -23,6 +25,27 @@ The default Node WebSocket endpoint is /ws. Deployments that route multiple node
 - Deduplicate persistent notifications and tolerate additive unknown event types.
 - Treat an event as a signal to refresh protected state; do not settle, refund, or complete an order solely from an unverified push payload.
 - Keep route capability and authorization checks even when an event announces a feature or action.
+
+```javascript
+function reconnectDelay(attempt) {
+  const capped = Math.min(30_000, 500 * 2 ** attempt);
+  return capped / 2 + Math.random() * capped / 2;
+}
+
+async function onOrderEvent(orderId) {
+  // The event is a refresh signal. Read protected state before acting.
+  return api.get(`/v1/orders/${orderId}`);
+}
+```
+
+## Authentication and connection errors
+
+Use the authentication mechanism supported by the deployed client and gateway. Avoid credentials in WebSocket URLs when a safer session, cookie, header, or subprotocol boundary is available. A failed authentication must not degrade into an anonymous administrative connection.
+
+- Back off with jitter after disconnect and cap retries.
+- Assume events can be lost during a gap and reconcile current state after reconnect.
+- Treat malformed or unknown events as non-authoritative input.
+- Stop automated financial actions when event identity, version, or resource binding is ambiguous.
 
 ## Implementation evidence
 

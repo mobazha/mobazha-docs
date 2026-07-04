@@ -33,5 +33,8 @@ Open Core owns order, payment, refund, dispute, settlement, key-custody, and aud
 - Transaction state: the backend that owns the order.
 - Available runtime features: that backend's advertised capabilities.
 - Payment facts: the selected payment system and confirmed transaction records.
-- Project-wide public policy: reviewed documents in the public project repository.
-- Explanatory guidance: this documentation site, with source and review metadata.
+- Project-wide public policy and public explanation: the canonical page on docs.mobazha.org.
+- Exact interfaces and released behavior: versioned contracts, conformance tests, and tagged release evidence in their owning repositories.
+- Transaction-specific amounts and recipients: the quote accepted for that order within public policy.
+
+Evidence links support a public explanation but do not create a second policy authority. Documentation cannot activate a capability or override runtime and contract facts.

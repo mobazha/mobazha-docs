@@ -5,15 +5,30 @@
   <url><loc>https://docs.mobazha.org/start/choose-deployment</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/agents</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/sell</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/sell/store-setup</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/sell/listings</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/sell/shipping</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/sell/payments</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/sell/orders</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/buy</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/buy/checkout</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/buy/guest-checkout</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/buy/order-status</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/buy/cancel-refund-dispute</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/self-host</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/self-host/requirements</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/self-host/install</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/self-host/configure</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/self-host/network-and-tls</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/self-host/monitoring</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/self-host/backup-and-upgrade</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/self-host/security</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/self-host/troubleshooting</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/self-host/bind-account</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/build</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/build/quickstart</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/build/authentication</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/build/errors-and-idempotency</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/build/runtime-capabilities</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/build/token-identifiers</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/build/api</loc><lastmod>2026-07-04</lastmod></url>

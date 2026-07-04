@@ -25,8 +25,44 @@
           "/sell"
         ],
         [
+          "Store setup",
+          "/sell/store-setup"
+        ],
+        [
+          "Listings",
+          "/sell/listings"
+        ],
+        [
+          "Shipping",
+          "/sell/shipping"
+        ],
+        [
+          "Payments",
+          "/sell/payments"
+        ],
+        [
+          "Orders",
+          "/sell/orders"
+        ],
+        [
           "Buy",
           "/buy"
+        ],
+        [
+          "Checkout",
+          "/buy/checkout"
+        ],
+        [
+          "Guest checkout",
+          "/buy/guest-checkout"
+        ],
+        [
+          "Order status",
+          "/buy/order-status"
+        ],
+        [
+          "Cancel, refund, or dispute",
+          "/buy/cancel-refund-dispute"
         ]
       ]
     },
@@ -38,12 +74,24 @@
           "/self-host"
         ],
         [
+          "Requirements",
+          "/self-host/requirements"
+        ],
+        [
           "Install",
           "/self-host/install"
         ],
         [
           "Configure",
           "/self-host/configure"
+        ],
+        [
+          "Network and TLS",
+          "/self-host/network-and-tls"
+        ],
+        [
+          "Monitoring",
+          "/self-host/monitoring"
         ],
         [
           "Backup and upgrade",
@@ -69,6 +117,18 @@
         [
           "Developer overview",
           "/build"
+        ],
+        [
+          "Quickstart",
+          "/build/quickstart"
+        ],
+        [
+          "Authentication",
+          "/build/authentication"
+        ],
+        [
+          "Errors and idempotency",
+          "/build/errors-and-idempotency"
         ],
         [
           "Runtime capabilities",

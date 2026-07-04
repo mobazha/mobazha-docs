@@ -26,6 +26,8 @@ The public delivery sequence and quality gates are tracked in
 [`docs/PHASE_DOCS_ROADMAP.md`](./docs/PHASE_DOCS_ROADMAP.md). Authority,
 lifecycle, and review rules live in
 [`docs/CONTENT_GOVERNANCE.md`](./docs/CONTENT_GOVERNANCE.md).
+Page-type templates, supported Markdown blocks, and the definition of ready
+live in [`docs/CONTENT_PATTERNS.md`](./docs/CONTENT_PATTERNS.md).
 
 ## Local development
 

@@ -8,7 +8,19 @@ audiences:
 evidenceLabel: Mobazha deployment sources
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main
 reviewed: 2026-07-04
+pageType: hub
 ---
+
+## Choose the operating path
+
+- [Check host and release requirements](/self-host/requirements)
+- [Install an evaluation node](/self-host/install)
+- [Configure the node](/self-host/configure)
+- [Set the network and TLS boundary](/self-host/network-and-tls)
+- [Add monitoring and health checks](/self-host/monitoring)
+- [Back up, upgrade, and recover](/self-host/backup-and-upgrade)
+- [Apply the security model](/self-host/security)
+- [Diagnose a node](/self-host/troubleshooting)
 
 ## Evaluation quick start
 
@@ -34,3 +46,5 @@ go build -tags goolm -o mobazha .
 ## Optional hosted connection
 
 An operator may bind a self-hosted node to an optional Mobazha account for hosted capabilities when offered. Binding does not transfer custody of local recovery material and is not required for independent operation.
+
+- [Connect an optional hosted account](/self-host/bind-account)

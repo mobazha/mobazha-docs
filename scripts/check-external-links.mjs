@@ -1,14 +1,11 @@
 import { access } from "node:fs/promises";
 import { docs } from "./load-docs.mjs";
+import { documentLinks } from "./content-files.mjs";
 
 const links = new Set();
 for (const doc of docs) {
   if (doc.evidenceUrl?.startsWith("https://")) links.add(doc.evidenceUrl);
-  for (const section of doc.sections) {
-    for (const link of section.links ?? []) {
-      if (link.href.startsWith("https://")) links.add(link.href);
-    }
-  }
+  for (const link of documentLinks(doc)) if (link.startsWith("https://")) links.add(link);
 }
 
 const urls = [...links].sort();

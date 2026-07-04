@@ -7,6 +7,8 @@ audiences:
 evidenceLabel: Generated Mobazha Node OpenAPI contract
 evidenceUrl: https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json
 reviewed: 2026-07-04
+pageType: reference
+lastTested: 2026-07-04
 ---
 
 ## Contract and entry points
@@ -42,3 +44,23 @@ curl -sS http://127.0.0.1:5102/v1/runtime-config | jq
 - Use idempotency and reconciliation for operations that may be retried or have financial effects.
 - Pin integrations to a tested Node version and re-run contract tests before upgrades.
 - Never infer support from an endpoint appearing in source or OpenAPI when the effective capability is absent.
+
+## Request and response workflow
+
+```bash
+BASE_URL=http://127.0.0.1:5102
+curl -fsS "$BASE_URL/v1/runtime-config" | jq
+curl -fsS -H "Authorization: Bearer $MBZ_API_TOKEN" "$BASE_URL/v1/webhooks" | jq
+```
+
+Inspect HTTP status before consuming the success envelope. Exact inner response schemas belong to the generated OpenAPI contract. Keep base URL, Node version, credential type, and expected capability explicit in client configuration.
+
+## Errors, retries, and compatibility
+
+- Handle `401`, `403`, `404`, `409`, `429`, and `5xx` as distinct classes.
+- Reconcile authoritative state after a timeout on an order, payment, refund, or settlement operation.
+- Do not retry a financial mutation unless the endpoint contract provides idempotency or reconciliation.
+- Test generated clients and hand-written integrations against the exact release tag before upgrades.
+
+- [Authentication and scopes](/build/authentication)
+- [Errors, retries, and idempotency](/build/errors-and-idempotency)

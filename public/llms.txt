@@ -15,12 +15,24 @@ Implementation evidence: the versioned sources linked from each page.
 
 ## Use Mobazha
 - [Sell](/sell)
+- [Store setup](/sell/store-setup)
+- [Listings](/sell/listings)
+- [Shipping](/sell/shipping)
+- [Payments](/sell/payments)
+- [Orders](/sell/orders)
 - [Buy](/buy)
+- [Checkout](/buy/checkout)
+- [Guest checkout](/buy/guest-checkout)
+- [Order status](/buy/order-status)
+- [Cancel, refund, or dispute](/buy/cancel-refund-dispute)
 
 ## Operate
 - [Self-host](/self-host)
+- [Requirements](/self-host/requirements)
 - [Install](/self-host/install)
 - [Configure](/self-host/configure)
+- [Network and TLS](/self-host/network-and-tls)
+- [Monitoring](/self-host/monitoring)
 - [Backup and upgrade](/self-host/backup-and-upgrade)
 - [Security](/self-host/security)
 - [Troubleshoot](/self-host/troubleshooting)
@@ -28,6 +40,9 @@ Implementation evidence: the versioned sources linked from each page.
 
 ## Build
 - [Developer overview](/build)
+- [Quickstart](/build/quickstart)
+- [Authentication](/build/authentication)
+- [Errors and idempotency](/build/errors-and-idempotency)
 - [Runtime capabilities](/build/runtime-capabilities)
 - [Token identifiers](/build/token-identifiers)
 - [API](/build/api)

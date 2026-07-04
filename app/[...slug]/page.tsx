@@ -1,10 +1,86 @@
+/* eslint-disable @next/next/no-img-element -- documentation images have source-defined dimensions */
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { ReactNode } from "react";
 import { DocsShell } from "@/app/components/DocsShell";
-import { docApplicability, docs, docsBySlug, navGroupsForPath, translationPathFor } from "@/app/lib/docs";
+import { docApplicability, docs, docsBySlug, navGroupsForPath, translationPathFor, type DocBlock } from "@/app/lib/docs";
 
 type PageProps = { params: Promise<{ slug: string[] }> };
+
+function InlineMarkdown({ text }: { text: string }) {
+  const parts: ReactNode[] = [];
+  const pattern = /(\[([^\]]+)\]\(([^)]+)\)|`([^`]+)`|\*\*([^*]+)\*\*)/g;
+  let cursor = 0;
+  let match;
+  while ((match = pattern.exec(text)) !== null) {
+    if (match.index > cursor) parts.push(text.slice(cursor, match.index));
+    if (match[2] && match[3]) {
+      const href = match[3];
+      parts.push(href.startsWith("/")
+        ? <Link href={href} key={`${match.index}-${href}`}>{match[2]}</Link>
+        : <a href={href} key={`${match.index}-${href}`}>{match[2]}</a>);
+    } else if (match[4]) {
+      parts.push(<code key={`${match.index}-code`}>{match[4]}</code>);
+    } else if (match[5]) {
+      parts.push(<strong key={`${match.index}-strong`}>{match[5]}</strong>);
+    }
+    cursor = pattern.lastIndex;
+  }
+  if (cursor < text.length) parts.push(text.slice(cursor));
+  return <>{parts}</>;
+}
+
+const calloutLabels = {
+  en: { important: "Important", warning: "Warning", note: "Note", tip: "Tip" },
+  zh: { important: "重要", warning: "警告", note: "说明", tip: "提示" },
+};
+
+function DocumentBlock({ block, isChinese }: { block: DocBlock; isChinese: boolean }) {
+  if (block.type === "paragraph") return <p><InlineMarkdown text={block.text} /></p>;
+  if (block.type === "heading") return <h3><InlineMarkdown text={block.text} /></h3>;
+  if (block.type === "unordered-list") {
+    return <ul>{block.items.map((item, index) => <li key={`${index}-${item}`}><InlineMarkdown text={item} /></li>)}</ul>;
+  }
+  if (block.type === "ordered-list") {
+    return <ol>{block.items.map((item, index) => <li key={`${index}-${item}`}><InlineMarkdown text={item} /></li>)}</ol>;
+  }
+  if (block.type === "code") {
+    return <div className="doc-code"><div>{block.language}</div><pre><code>{block.code}</code></pre></div>;
+  }
+  if (block.type === "callout") {
+    const label = calloutLabels[isChinese ? "zh" : "en"][block.tone];
+    return <aside className={`doc-callout callout-${block.tone}`}><b>{label}</b><p><InlineMarkdown text={block.text} /></p></aside>;
+  }
+  if (block.type === "table") {
+    return (
+      <div className="doc-table-wrap">
+        <table>
+          <thead><tr>{block.headers.map((header, index) => <th key={`${index}-${header}`}><InlineMarkdown text={header} /></th>)}</tr></thead>
+          <tbody>{block.rows.map((row, rowIndex) => (
+            <tr key={`${rowIndex}-${row.join("-")}`}>{row.map((cell, cellIndex) => <td key={`${cellIndex}-${cell}`}><InlineMarkdown text={cell} /></td>)}</tr>
+          ))}</tbody>
+        </table>
+      </div>
+    );
+  }
+  if (block.type === "image") {
+    return <figure className="doc-figure"><img src={block.src} alt={block.alt} />{block.caption && <figcaption>{block.caption}</figcaption>}</figure>;
+  }
+  if (block.type === "links") {
+    return (
+      <div className="doc-links">
+        {block.items.map((item, index) => (
+          <Link href={item.href} key={`${index}-${item.href}`}>
+            <b>{item.label}<span>→</span></b>
+            {item.description && <small>{item.description}</small>}
+          </Link>
+        ))}
+      </div>
+    );
+  }
+  return <hr />;
+}
 
 export function generateStaticParams() {
   return docs.map((doc) => ({ slug: doc.slug.split("/") }));
@@ -48,6 +124,7 @@ export default async function DocumentationPage({ params }: PageProps) {
     appliesTo: "适用范围",
     reviewed: "最后审阅",
     version: "文档版本",
+    lastTested: "最后验证",
     authority: "公共知识权威",
     evidence: "实现与政策证据",
     important: "重要",
@@ -62,6 +139,7 @@ export default async function DocumentationPage({ params }: PageProps) {
     appliesTo: "Applies to",
     reviewed: "Last reviewed",
     version: "Document version",
+    lastTested: "Last tested",
     authority: "Knowledge authority",
     evidence: "Implementation evidence",
     important: "Important",
@@ -95,6 +173,7 @@ export default async function DocumentationPage({ params }: PageProps) {
         <div><span>{labels.appliesTo}</span><b>{docApplicability(doc)}</b></div>
         <div><span>{labels.reviewed}</span><b>{doc.reviewed}</b></div>
         {doc.version && <div><span>{labels.version}</span><b>{doc.version}</b></div>}
+        {doc.lastTested && <div><span>{labels.lastTested}</span><b>{doc.lastTested}</b></div>}
         <div>
           <span>{labels.authority}</span>
           <a href={doc.authorityUrl}>{doc.authorityLabel} ↗</a>
@@ -106,25 +185,10 @@ export default async function DocumentationPage({ params }: PageProps) {
       </div>
 
       <div className="doc-content">
-        {doc.sections.map((section) => (
-          <section key={section.heading}>
+        {doc.sections.map((section, sectionIndex) => (
+          <section key={`${sectionIndex}-${section.heading}`}>
             <h2>{section.heading}</h2>
-            {section.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-            {section.bullets && (
-              <ul>{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
-            )}
-            {section.code && <pre><code>{section.code}</code></pre>}
-            {section.links && (
-              <div className="doc-links">
-                {section.links.map((link) => (
-                  <Link href={link.href} key={link.href}>
-                    <b>{link.label}<span>→</span></b>
-                    {link.description && <small>{link.description}</small>}
-                  </Link>
-                ))}
-              </div>
-            )}
-            {section.note && <aside className="doc-note"><b>{labels.important}</b>{section.note}</aside>}
+            {section.blocks.map((block, index) => <DocumentBlock block={block} isChinese={isChinese} key={`${section.heading}-${index}`} />)}
           </section>
         ))}
       </div>

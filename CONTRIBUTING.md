@@ -12,11 +12,17 @@ operations, fees, policy, security, or agent behavior.
 5. Run `npm run generate:content` after page or route changes; do not hand-edit generated publication files.
 
 Public pages are Markdown files under `content/en/` or `content/zh-CN/`. Use a
-stable task-oriented path, complete YAML frontmatter, level-two section
-headings, ordinary paragraphs, bullet lists, fenced code blocks, and
-`> **Important:**` notes. Markdown link bullets become the page's related-link
-cards. The constrained syntax is intentional so people, Agents, search, and
-generated indexes receive the same structure.
+stable task-oriented path and complete YAML frontmatter. Declare the page as a
+`hub`, `task`, `reference`, `concept`, or `policy`; task and reference pages
+also record `lastTested`. Ordered and unordered lists, tables, multiple fenced
+code blocks, level-three subheadings, standalone images, separators, and
+Important, Warning, Note, or Tip callouts are supported without losing source
+order. Markdown link-only lists become related-link cards.
+
+Follow [`docs/CONTENT_PATTERNS.md`](./docs/CONTENT_PATTERNS.md) for the page-type
+contract, authoring templates, supported blocks, and definition of ready. The
+renderer and publication pipeline keep the same content available to people,
+Agents, search, and generated indexes.
 
 Use an RFC for an unresolved material protocol, policy, economic, security,
 governance, or cross-repository proposal. Use an ADR to preserve a durable
@@ -32,6 +38,7 @@ private incident details, internal forecasts, or unapproved commercial rates.
 npm ci
 npm run generate:content
 npm run check
+npm run check:routes
 npm audit --audit-level=low
 npm run deploy:dry-run
 ```

@@ -41,6 +41,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 ### Start with the job you need to do
 - URL: /start
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 release candidate
 - Audience: everyone, agents
 - Knowledge authority: https://docs.mobazha.org/start
@@ -49,9 +50,27 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Mobazha is an open commerce stack for running, using, and extending independent marketplaces and stores.
 
+Choose a path
+Sell: create a store, publish products, receive orders, and fulfill them.
+Buy: understand checkout, payment, evidence, refunds, and disputes.
+Operate: run a Mobazha Node under your own control.
+Build: integrate through the interfaces exposed by the backend you connect to.
+Evaluate: inspect architecture, release scope, economics, governance, and security assumptions.
+Read status before instructions
+Mobazha is currently release-candidate software. A page marked Current describes reviewed behavior; Beta may change; Draft communicates direction and is not a promise.
+The connected backend is authoritative for runtime capabilities. A document never grants a capability that the backend does not advertise.
+Current public surfaces
+Use the hosted application
+Explore the current hosted buyer and seller experience.
+Run the open-source node
+Build the release candidate from source and operate it yourself.
+Inspect the shared frontend
+Review the client used by hosted and self-hosted deployments.
+
 ### Choose hosted or self-hosted Mobazha
 - URL: /start/choose-deployment
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 release candidate
 - Audience: sellers, operators, evaluators, agents
 - Knowledge authority: https://docs.mobazha.org/start/choose-deployment
@@ -60,9 +79,31 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Choose the operating model from control, responsibility, integrations, and service needs—not from a false free-versus-paid shortcut.
 
+Hosted service
+Use the hosted application when you want to evaluate Mobazha or operate a store without maintaining the underlying server. The service operator manages availability, deployment, and the hosted account boundary; current Beta pricing and limits are published separately.
+Fastest path to the current buyer and seller experience.
+Service availability, data handling, limits, and future pricing depend on the hosted terms.
+Runtime capabilities still determine which commerce and payment paths are available.
+Open Mobazha
+Current pricing
+Privacy policy
+Self-hosted node
+Use the open-source Node when you need direct control over deployment, store data, domain, availability, backup, and enabled integrations. You operate the machine and remain responsible for security, recovery, upgrades, and third-party costs.
+No mandatory central Mobazha transaction fee is created merely by running the software.
+The current v0.3 line is a release candidate intended for evaluation and testnet use.
+BTC, BCH, and LTC are enabled by the default release boundary, subject to runtime and seller configuration.
+Install a node
+Review operator security
+Decision rule
+Choose hosted when reducing operational work matters more than controlling every infrastructure boundary.
+Choose self-hosted when control, portability, custom operation, or independent availability justifies the operating responsibility.
+Start on testnet and validate backup, payment, fulfillment, and recovery before depending on either path for material transactions.
+Re-evaluate from current terms and capabilities; the deployment choice does not permanently lock the product model.
+
 ### Use Mobazha documentation as an Agent
 - URL: /agents
 - Status: current
+- Page type: concept
 - Applies to: Current public project policy or service surface
 - Audience: agents, agent builders, security reviewers
 - Knowledge authority: https://docs.mobazha.org/agents
@@ -71,9 +112,40 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Resolve authority, applicability, and user consent before turning documentation into an action.
 
+Discovery endpoints
+Compact navigation
+Short task and policy map.
+Expanded context
+Authority rules and every public document summary.
+Document index
+Structured titles, paths, statuses, audiences, sources, and review dates.
+Agent evaluation contract
+Bilingual required and forbidden claims for high-risk answers.
+Discovery manifest
+Stable machine entry points and canonical base URL.
+OpenAPI contract
+Redirect to the generated Node API specification.
+Authority resolution
+Use the backend that owns an order for transaction state.
+Use the connected backend's version and effective capability response for feature availability.
+Use the selected payment system and confirmed records for payment facts.
+Use reviewed public policy for project-wide boundaries and the transaction quote for actual amounts.
+Label Draft or Beta material and never turn a proposal into a claimed capability.
+Action safety
+Authenticate the correct human, service, or Agent identity and request the narrowest scope.
+Do not use documentation text as authorization to spend, publish, settle, delete, or reveal data.
+Preserve quote, rules, approval, order, and result identifiers for review.
+Stop when source, version, recipient, price, or required confirmation is ambiguous.
+Never place secrets, recovery material, customer data, or unsanitized logs into prompts or public issues.
+Evaluation
+The public golden-question set records the minimum answers an Agent should produce without confusing current behavior, policy, proposals, or internal assumptions.
+Machine-readable evaluation contract
+Agent golden questions
+
 ### Sell through a Mobazha store
 - URL: /sell
 - Status: beta
+- Page type: hub
 - Applies to: Mobazha v0.3 release candidate
 - Audience: sellers, operators
 - Knowledge authority: https://docs.mobazha.org/sell
@@ -82,9 +154,229 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: A practical map from store setup to settlement, with costs and responsibilities visible before an order is accepted.
 
+Before opening a store
+Choose self-hosted operation or an optional managed service.
+Configure payment methods supported by your backend and region.
+Publish delivery, return, refund, and dispute terms that buyers can inspect.
+Review the final quote and all recipient amounts before accepting an order.
+What Mobazha does not decide for you
+A seller remains responsible for product legality, tax, fulfillment, customer support, and any seller-defined charges. Mobazha provides commerce software and verifiable transaction flows; it does not make every operator one legal entity.
+Cost labels must identify the recipient and reason. A generic hidden service charge is not an acceptable substitute.
+Store readiness checklist
+Set a recognizable store identity, operator contact path, locale, currency display, and domain where applicable.
+Create complete listings with accurate variants, inventory or availability, media, price, and shipping eligibility.
+Configure shipping profiles, delivery estimates, return conditions, and fulfillment evidence before accepting orders.
+Enable only payment methods that the backend advertises and that the store is operationally ready to monitor and settle.
+Test the full buyer journey on the same deployment, capability set, and device classes customers will use.
+Order operations
+Review the order, quote, payment state, buyer instructions, and fulfillment obligation before confirming.
+Do not infer payment completion from a screenshot, message, or Agent statement; use the backend's verified payment state.
+Record shipment or delivery evidence using the order flow rather than relying on an external chat alone.
+Handle cancellation, refund, dispute, and completion through the allowed state transition for the current order.
+Retain policy, quote, payment, fulfillment, and communication references needed for support or dispute review.
+Choose how to operate
+Prepare a store
+Validate identity, policy, fulfillment, and a complete test journey.
+Create listings
+Publish buyer-verifiable item and availability data.
+Configure shipping
+Match destinations, rates, listings, and evidence.
+Prepare payments
+Advertise only ready backend capabilities.
+Operate orders
+Reconcile payment, fulfill, refund, and complete safely.
+Use the hosted application
+Choose a deployment
+Install a self-hosted node
+Understand fees
+
+### Prepare a store for its first order
+- URL: /sell/store-setup
+- Status: beta
+- Page type: task
+- Applies to: Mobazha v0.3 release candidate
+- Audience: sellers, operators
+- Knowledge authority: https://docs.mobazha.org/sell/store-setup
+- Evidence: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin
+- Reviewed: 2026-07-04
+- Last tested: 2026-07-04
+- Language: en
+- Summary: Configure store identity, policies, fulfillment, payments, and a complete test journey before accepting buyer funds.
+
+Before you start
+Choose hosted or self-hosted operation and confirm the backend is healthy.
+Use an administrator identity for the intended store, not a buyer session from another deployment.
+Prepare public store name, contact path, currency display, fulfillment regions, return terms, and payment methods.
+Keep recovery material outside the browser and create a backup before material configuration changes.
+Store setup steps
+Open **Admin** and review the store identity under profile or general settings.
+Set the public name, description, contact route, locale, currency display, and storefront presentation.
+Publish shipping, return, refund, privacy, and buyer-protection terms appropriate to the operator.
+Configure at least one shipping or delivery path for the products you intend to sell.
+Enable only payment methods that the backend reports as ready and that you can monitor operationally.
+Create one complete test listing with media, availability, price, options, and fulfillment eligibility.
+Open the public storefront in a separate buyer context and complete a testnet checkout through fulfillment.
+Expected result and verification
+The public storefront should show the intended identity, policies, listing, total price components, available delivery, and only ready payment methods. The administrator should receive the test order and inspect payment and fulfillment state without hidden tooling.
+If something fails
+If the public store differs from Admin, confirm the store or storefront context and refresh authoritative settings.
+If checkout has no delivery option, verify the listing is assigned to an eligible shipping profile or digital path.
+If payment is absent, inspect runtime readiness rather than adding a frontend-only identifier.
+If buyer and seller routes share credentials unexpectedly, stop using material funds and report the isolation defect.
+Continue
+Create and validate a listing
+Configure shipping
+Prepare payments
+Operate incoming orders
+
+### Create and validate a listing
+- URL: /sell/listings
+- Status: beta
+- Page type: task
+- Applies to: Mobazha v0.3 release candidate
+- Audience: sellers
+- Knowledge authority: https://docs.mobazha.org/sell/listings
+- Evidence: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/listing
+- Reviewed: 2026-07-04
+- Last tested: 2026-07-04
+- Language: en
+- Summary: Publish an accurate item with explicit options, price, availability, fulfillment, and buyer-visible terms.
+
+Before you start
+Prepare a truthful title, description, media, price, quantity or service capacity, and delivery conditions.
+Decide whether the item is physical, digital, a service, or another supported listing type.
+Configure required shipping or delivery support before publication.
+Do not describe a Token or payment capability as available merely because its identifier parses.
+Listing steps
+Open **Admin → Products** or the supported **New Listing** entry point.
+Choose listing type and enter title, description, category, and buyer-visible media.
+Enter price and currency with correct divisibility; verify the rendered amount before saving.
+Add options or variants and ensure every purchasable combination has meaningful availability.
+Assign shipping, digital delivery, or service fulfillment appropriate to the item.
+Add clear return, refund, warranty, eligibility, or redemption conditions where applicable.
+Save the draft, preview the public page, then publish after buyer-visible validation.
+Expected result and verification
+Open the public product URL in a buyer context. Verify title, media, options, price, fulfillment, availability, seller identity, policies, and checkout eligibility. Add the item to a cart and request a supply quote; publication alone does not prove it can be purchased.
+If something fails
+If the item saves but is not public, inspect publication state, storefront context, indexing, and runtime capabilities.
+If an option cannot be purchased, check variant completeness and availability.
+If price renders incorrectly, stop publication and verify amount units, currency, and divisibility.
+If shipping is unavailable, assign the listing to a compatible profile and retest the buyer destination.
+Change safety
+When editing a listing with active orders, preserve the version and terms accepted by existing buyers. A new listing revision must not silently rewrite an already created order.
+
+### Configure shipping and delivery
+- URL: /sell/shipping
+- Status: beta
+- Page type: task
+- Applies to: Mobazha v0.3 release candidate
+- Audience: sellers, operators
+- Knowledge authority: https://docs.mobazha.org/sell/shipping
+- Evidence: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/settings/shipping
+- Reviewed: 2026-07-04
+- Last tested: 2026-07-04
+- Language: en
+- Summary: Define where an item can be delivered, how the buyer is charged, and what evidence the seller records after fulfillment.
+
+Before you start
+List origin locations, supported destinations, delivery methods, estimated times, and pricing rules.
+Decide which listings use each shipping profile.
+Document exclusions, customs responsibility, tracking availability, and return handling.
+Shipping setup steps
+Open **Admin → Settings → Shipping**.
+Create or select a profile representing one coherent fulfillment policy.
+Add destination zones and keep overlaps intentional and understandable.
+Add rates with buyer-visible names, amounts, currency, conditions, and estimated delivery.
+Assign eligible listings to the profile and remove items requiring another delivery path.
+Save and test addresses inside, outside, and at the edge of every supported zone.
+Complete a test order and record carrier, tracking, or delivery evidence through the order flow.
+Expected result and verification
+Checkout should show only delivery methods valid for the item and destination. The selected shipping amount must appear in the final cost breakdown and remain associated with the created order. Seller order view should preserve selected service and obligation.
+If something fails
+If no option appears, check destination normalization, profile assignment, listing type, and zone coverage.
+If duplicate options appear, inspect overlapping zones and duplicate profile assignment.
+If checkout amount differs from configuration, stop accepting orders and verify currency and calculation basis.
+If tracking cannot be saved, preserve the reference privately and report the transition defect.
+Digital goods and services
+Do not attach physical shipping charges to digital or service flows merely to satisfy checkout. Use the supported delivery contract and explain access, scheduling, redemption, or evidence separately.
+
+### Prepare payment methods for selling
+- URL: /sell/payments
+- Status: beta
+- Page type: task
+- Applies to: Mobazha v0.3 release candidate
+- Audience: sellers, operators
+- Knowledge authority: https://docs.mobazha.org/sell/payments
+- Evidence: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/payments
+- Reviewed: 2026-07-04
+- Last tested: 2026-07-04
+- Language: en
+- Summary: Advertise only payment methods that are allowed, configured, healthy, and operationally monitored by the store backend.
+
+Before you start
+Use testnet and a disposable order while evaluating the release candidate.
+Confirm the method is permitted by the distribution and implemented by the backend.
+Understand key custody, observation, confirmations, refund path, fees, and dependencies.
+Back up recovery material and never enter seeds or private keys into documentation, chat, or an unrelated provider form.
+Payment readiness steps
+Open **Admin → Payments** and inspect methods reported by the backend.
+Select one method and complete only its documented setup requirements.
+Verify configuration and health without relying on a frontend toggle alone.
+Set or review confirmation and payment-expiry behavior appropriate to the method.
+Create a small testnet order and compare displayed address, amount, asset, and expiry with backend state.
+Broadcast the test payment and wait for the backend-owned funded state.
+Exercise cancellation or refund behavior before accepting material orders.
+Expected result and verification
+The method should appear in checkout only when the full effective-capability intersection is ready. Payment observation must bind to intended order, asset, address, amount, expected state, and confirmation policy. A recognized code or installed adapter is not enough.
+If something fails
+If setup is incomplete, keep the method unavailable rather than falling back silently.
+If health becomes unknown, stop advertising new checkout work while preserving existing recovery.
+If payment is observed for the wrong amount or destination, do not settle automatically.
+If a refund path is unavailable, disclose that limitation before accepting the method.
+Current release boundary
+The default open-source release candidate enables BTC, BCH, and LTC subject to effective capabilities and seller configuration. Other identifiers do not create a release commitment. See [release scope](/project/release-scope) and [fees](/project/fees).
+
+### Operate incoming orders
+- URL: /sell/orders
+- Status: beta
+- Page type: task
+- Applies to: Mobazha v0.3 release candidate
+- Audience: sellers, operators, agents
+- Knowledge authority: https://docs.mobazha.org/sell/orders
+- Evidence: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/orders
+- Reviewed: 2026-07-04
+- Last tested: 2026-07-04
+- Language: en
+- Summary: Reconcile payment, confirm the obligation, record fulfillment evidence, and use only state-valid cancellation, refund, dispute, and completion actions.
+
+Before you start
+Publish fulfillment and refund policies before taking orders.
+Monitor backend, payment dependencies, inventory, and buyer communication.
+Separate an order notification from authoritative order and payment state.
+Order handling steps
+Open **Admin → Orders** and select the intended store and order.
+Confirm seller identity, item revision, quantity, options, delivery obligation, total, and buyer instructions.
+Verify payment from backend-owned state; never rely on a screenshot or chat message.
+Accept or confirm only when inventory, policy, and fulfillment capacity remain valid.
+Fulfill the exact order and record carrier, tracking, digital-delivery, service, or other supported evidence.
+Respond to cancellation, refund, or dispute through the action available for current state.
+Complete only after implemented delivery and payment gates are satisfied.
+Retain order, quote, payment, fulfillment, and communication references according to policy.
+Expected result and verification
+Every seller action should produce a new authoritative state or a clear error without losing the previous recoverable state. Reopen the order after each financial or fulfillment transition and verify state, timestamps, evidence, and resulting payment action.
+If something fails
+If duplicate notifications arrive, deduplicate by order and event identity and reload current state.
+If payment and order disagree, stop fulfillment or settlement automation and reconcile payment reference.
+If fulfillment evidence fails to save, preserve it securely and retry through the supported transition.
+If an action reports conflict, reload state before deciding another actor already completed it.
+If an extension is unhealthy, keep Core financial transitions fail closed and follow recovery.
+Agent boundary
+An Agent may summarize and prepare an action, but it must not confirm, refund, settle, or complete without required identity, scope, state, policy, and human confirmation.
+
 ### Buy with inspectable terms
 - URL: /buy
 - Status: beta
+- Page type: hub
 - Applies to: Mobazha v0.3 release candidate
 - Audience: buyers, agents
 - Knowledge authority: https://docs.mobazha.org/buy
@@ -93,9 +385,220 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Confirm the seller, item, delivery terms, payment route, and complete cost breakdown before committing funds.
 
+Before confirmation
+Verify the store identity and the backend or operator serving it.
+Inspect subtotal, shipping, taxes, network costs, service charges, discounts, and the final total.
+Read cancellation, refund, evidence, and dispute rules.
+Treat an agent recommendation as assistance, not as authority to bypass confirmation or spending scopes.
+Keep evidence
+Retain the order identifier, quote, payment reference, messages, fulfillment evidence, and the policy version shown at checkout. These records make support and dispute handling more reliable.
+Checkout and payment
+Confirm the item, quantity, variant, seller, shipping destination, and delivery method before requesting a quote.
+Read the full cost allocation: item subtotal, delivery, taxes, discounts, network or provider costs, optional services, and final total.
+Use only the payment method, asset, address, amount, expiry, and confirmation instructions shown for the active order.
+Do not reuse an expired quote or payment destination from another order, message, screenshot, or Agent response.
+Wait for authoritative payment and order state instead of treating broadcast, a pending transaction, or a receipt image as final settlement.
+Delivery, cancellation, and disputes
+Follow the cancellation and refund actions currently available for the order rather than assuming a universal deadline.
+Inspect seller delivery evidence and preserve buyer evidence in its original form.
+Use the in-product dispute path when offered and describe the requested remedy clearly.
+A payment rail or escrow can enforce only its implemented conditions; it does not guarantee product quality or a preferred dispute result.
+Escalate suspected fraud or security issues without publishing private order, identity, or payment data.
+Continue
+Complete checkout
+Create one order from one reviewed quote.
+Use Guest Checkout
+Preserve anonymous transport and a recoverable tracking link.
+Track order status
+Reconcile wallet evidence with backend-owned state.
+Cancel, refund, or dispute
+Use the transition available for the active order.
+Open the hosted application
+Review fees and economics
+Get help
+
+### Complete a buyer checkout
+- URL: /buy/checkout
+- Status: beta
+- Page type: task
+- Applies to: Mobazha v0.3 release candidate
+- Audience: buyers, agents
+- Knowledge authority: https://docs.mobazha.org/buy/checkout
+- Evidence: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/checkout
+- Reviewed: 2026-07-04
+- Last tested: 2026-07-04
+- Language: en
+- Summary: Review one store, one quote, and one payment instruction set before creating or funding an order.
+
+Before you start
+Confirm the store identity, item, quantity, variant, fulfillment method, and return policy.
+Use a current browser session connected to the intended store and backend.
+Decide whether you are using account checkout or the store's optional Guest Checkout path.
+Have the exact payment asset available, but do not send funds before the order displays an address, amount, and expiry.
+Never reuse an address, QR code, quote, or amount from another order, message, screenshot, or Agent response.
+Checkout steps
+Open the product page, select required options, and add the item to the cart.
+Open **Cart** and confirm every line belongs to the intended seller. A marketplace may curate discovery and record attribution, but the approved seller—not the marketplace projection—must own the checkout handoff and resulting order.
+Continue to **Checkout** and enter only the delivery and contact data required for this order.
+Review subtotal, shipping, discounts, taxes, network or provider costs, optional services, and final total.
+Select an available payment method. Availability comes from the connected backend, not from a static list in this guide.
+Confirm the order only after the seller, recipient, amount, payment asset, expiry, and applicable policies are visible.
+Save the order identifier and tracking link before leaving the confirmation page.
+Expected result and verification
+The application should display a newly created order with an authoritative state and payment instructions. Confirm that the order item, seller, seller-owned backend, total, payment asset, amount, destination, and expiry match the final confirmation you approved. A marketplace page or referral label is not the seller and must not silently become the order owner.
+Do not treat a wallet broadcast, a screenshot, or a pending transaction as completed payment. Wait for the order page to report the required confirmations and funded state.
+If something fails
+If the quote expires, return to checkout and request a new quote; do not send the old amount.
+If an item becomes unavailable, return to the cart and re-evaluate the order rather than repeatedly submitting it.
+If the payment asset or destination changes unexpectedly, stop and verify the store and backend identity.
+If you created an order but lost the page, use the saved order identifier or Guest Order tracking link.
+If funds were sent but state does not advance, preserve the transaction ID and order ID and follow [order-status troubleshooting](/buy/order-status).
+Continue
+Guest Checkout
+Buy without attaching a seller or administrator session.
+Track payment and order state
+Understand what the current state proves.
+Cancellation, refund, and dispute
+Use only transitions available for the active order.
+
+### Use Guest Checkout safely
+- URL: /buy/guest-checkout
+- Status: beta
+- Page type: task
+- Applies to: Mobazha v0.3 release candidate
+- Audience: buyers, sellers, agents
+- Knowledge authority: https://docs.mobazha.org/buy/guest-checkout
+- Evidence: https://github.com/mobazha/mobazha-unified/blob/main/packages/core/services/api/guestCheckout.ts
+- Reviewed: 2026-07-04
+- Last tested: 2026-07-04
+- Language: en
+- Summary: Create an anonymous buyer order while preserving the store routing context and a recoverable tracking link.
+
+Before you start
+The store must advertise Guest Checkout and at least one ready payment method.
+Complete the cart on one store; Guest Checkout does not combine unrelated store contexts.
+Be ready to save the generated order token or tracking link. Losing both may make order recovery difficult.
+Guest Checkout is anonymous transport, not an exemption from store policies, payment confirmation, or lawful delivery information.
+Guest Checkout steps
+Add an eligible item to the cart and continue to checkout.
+Choose **Guest Checkout** when the store presents it.
+Review any delivery fields and the seller's policies before submitting personal information.
+Let the application request a supply quote; this is advisory and does not itself reserve inventory.
+Select one payment method from those currently advertised by the backend.
+Create the order and immediately save the order token or buyer tracking link outside the current tab.
+Pay only the displayed address and amount before the displayed expiry.
+Reopen the tracking link to follow confirmations, shipping evidence, and completion.
+Expected result and verification
+The buyer request should not carry an administrator, seller, or previously stored user credential. It may retain same-origin store routing context so the request reaches the correct store. The tracking page should show the order token, payment asset, payment destination, required confirmations, expiry, and milestone state.
+Milestone
+What it means
+What it does not prove
+Awaiting payment
+Order exists and waits for the displayed payment
+Funds have settled
+Funded
+Required payment evidence was accepted by the backend
+Physical delivery is complete
+Shipped
+Seller recorded shipping or delivery evidence
+Buyer received or accepted the item
+Completed
+The order reached its completion transition
+Every external claim or warranty is guaranteed
+If something fails
+If Guest Checkout is missing, the backend may have disabled it, failed readiness checks, or require account checkout.
+If the tracking link is lost, do not create repeated funded orders; contact the seller with sanitized payment evidence.
+If an existing login appears to affect the guest request, stop and report a reproducible client defect.
+If the payment expires, do not pay without a refreshed order instruction.
+Security and privacy
+Share the tracking link only with parties who need it. Do not post order tokens, delivery details, or transaction evidence publicly. An Agent may help explain the flow but must not create or fund the order without explicit confirmation.
+
+### Track payment and order status
+- URL: /buy/order-status
+- Status: beta
+- Page type: task
+- Applies to: Mobazha v0.3 release candidate
+- Audience: buyers, support, agents
+- Knowledge authority: https://docs.mobazha.org/buy/order-status
+- Evidence: https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/components/orders/guestOrderStages.ts
+- Reviewed: 2026-07-04
+- Last tested: 2026-07-04
+- Language: en
+- Summary: Reconcile wallet evidence with the backend-owned order state before deciding that an order is funded, shipped, refundable, or complete.
+
+Before you start
+Keep the order identifier or Guest Order token and the payment transaction ID.
+Use the same store and backend that created the order.
+Never paste private keys, recovery phrases, authenticated tracking URLs, or full customer details into support chat.
+Tracking steps
+Open **Orders** for an authenticated purchase or the saved Guest Order tracking link.
+Confirm seller, item, amount, payment asset, and creation time before interpreting state.
+Compare the displayed payment destination and transaction ID with your wallet record.
+Read confirmations and required confirmations from the order page.
+Refresh through the product UI or authoritative API when an event announces a change.
+Preserve fulfillment, cancellation, refund, or dispute evidence before taking the next available action.
+Expected result and verification
+The order page should show a monotonic business-state view owned by the backend. A WebSocket event or wallet notification is only a refresh signal. For important decisions, verify the current order through the authenticated HTTP API or tracking endpoint.
+Observation
+Safe conclusion
+Transaction broadcast
+A wallet attempted to publish a transaction
+Transaction detected
+The payment system observed a candidate transaction
+Required confirmations reached
+The configured confirmation gate may be satisfied
+Backend state is funded
+The order backend accepted the payment evidence for this order
+Seller marked shipped
+Fulfillment evidence was recorded; inspect it
+If something fails
+**No transaction detected:** verify asset, network, destination, amount, and expiry without sending a second payment.
+**Confirmations stalled:** inspect the payment network independently and preserve the transaction ID.
+**Wallet confirmed but order awaiting payment:** report exact order and transaction identifiers privately to the operator.
+**State conflicts across screens:** stop automated actions and report a consistency defect.
+**Tracking link does not open:** confirm it belongs to this deployment and was not truncated.
+Recovery and escalation
+Do not attempt database edits or direct settlement calls to repair a buyer order. Use actions offered by the order state, then [get help](/support) with sanitized evidence.
+
+### Cancel, request a refund, or open a dispute
+- URL: /buy/cancel-refund-dispute
+- Status: beta
+- Page type: task
+- Applies to: Mobazha v0.3 release candidate
+- Audience: buyers, sellers, agents
+- Knowledge authority: https://docs.mobazha.org/buy/cancel-refund-dispute
+- Evidence: https://github.com/mobazha/mobazha/tree/main/api-spec
+- Reviewed: 2026-07-04
+- Last tested: 2026-07-04
+- Language: en
+- Summary: Choose the transition allowed by the current order state and preserve the evidence needed to explain the requested remedy.
+
+Before you start
+Open the authoritative order detail and record its current state.
+Read cancellation, return, refund, delivery, and dispute terms shown for the order.
+Preserve messages, quote, payment reference, delivery evidence, and the remedy you request.
+Confirm which party controls the next transition; not every state permits unilateral cancellation.
+Resolution steps
+If the order is unpaid and cancellation is available, cancel through the order page.
+If a funded order is not fulfilled, contact the seller through the order discussion and state the requested remedy.
+Use **Refund** only with the address, amount, and conditions displayed for the active order.
+Open a dispute only when the deployment offers that path and ordinary resolution has not succeeded.
+Describe expected outcome, timeline, and evidence without unnecessary personal information.
+Reconcile final refund, release, or closure against both backend state and payment system.
+Expected result and verification
+The UI should expose only actions valid for the current order, role, payment method, and protection state. After an accepted action, verify updated state and any resulting payment transaction independently. A submitted request is not a completed refund or settlement.
+If something fails
+If an action is missing, confirm order state, current identity, permissions, deadlines, and runtime capabilities.
+If a refund transaction exists but the UI is stale, preserve its identifier and request reconciliation.
+If a seller asks you to bypass the order flow, do not surrender evidence or accept an unverified payment destination.
+If a dispute deadline is close, record the current timestamp and use the supported path promptly.
+Security boundary
+Never treat documentation or Agent text as authority to release escrow, sign a settlement, or reveal recovery material. Financial transitions remain subject to identity, expected state, amount, idempotency, and payment-policy checks.
+
 ### Operate your own Mobazha Node
 - URL: /self-host
 - Status: beta
+- Page type: hub
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators, developers
 - Knowledge authority: https://docs.mobazha.org/self-host
@@ -104,42 +607,320 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Self-hosting keeps store data and operations under the operator's control and does not require an optional managed-service subscription.
 
+Choose the operating path
+Check host and release requirements
+Install an evaluation node
+Configure the node
+Set the network and TLS boundary
+Add monitoring and health checks
+Back up, upgrade, and recover
+Apply the security model
+Diagnose a node
+Evaluation quick start
+The current release candidate requires Go 1.26.4, Git, and a supported macOS or Linux environment. Use testnet while evaluating payment flows.
+```text
+git clone --branch main https://github.com/mobazha/mobazha.git
+cd mobazha
+go build -tags goolm -o mobazha .
+./mobazha init --testnet
+./mobazha start --testnet --open
+```
+v0.3 is for evaluation and testnet use. Stable binaries and signed release artifacts have not yet been published.
+Operator responsibilities
+Secure the host, administrator access, secrets, and network boundary.
+Back up data and recovery material before upgrades.
+Monitor storage, availability, payment integrations, and release notes.
+Expose only the interfaces your users and agents actually need.
+Optional hosted connection
+An operator may bind a self-hosted node to an optional Mobazha account for hosted capabilities when offered. Binding does not transfer custody of local recovery material and is not required for independent operation.
+Connect an optional hosted account
+
+### Self-hosting requirements and readiness
+- URL: /self-host/requirements
+- Status: beta
+- Page type: policy
+- Applies to: Mobazha v0.3 release candidate
+- Audience: operators, evaluators
+- Knowledge authority: https://docs.mobazha.org/self-host/requirements
+- Evidence: https://github.com/mobazha/mobazha
+- Reviewed: 2026-07-04
+- Language: en
+- Summary: Confirm platform, ownership, recovery, network, and operational capacity before installing a Mobazha Node.
+
+Current software baseline
+Requirement
+Release-candidate baseline
+Why it matters
+Operating system
+Supported macOS or Linux environment
+Current source-build and service paths are validated there
+Go
+1.26.4
+Matches the public build workflow
+Git
+Current supported client
+Records exact source revision
+Network
+Testnet during evaluation
+Avoids treating pre-release behavior as production-ready
+Listener
+Loopback by default
+Keeps the administrative boundary private
+Exact CPU, memory, storage, and bandwidth depend on listings, media, order volume, retained data, integrations, and uptime goals. Measure representative load instead of treating a minimum boot configuration as production sizing.
+Operational ownership
+Name who patches the host, controls administrator access, monitors health, and responds to payment or order incidents.
+Define data retention, backup frequency, restore testing, recovery objectives, and off-host storage.
+Identify DNS, TLS, reverse proxy, firewall, RPC, indexer, webhook, and payment-provider owners.
+Maintain a test environment representative of the production deployment.
+Keep recovery material accessible to authorized operators without placing it in source control or routine logs.
+Readiness decision
+Use hosted evaluation when you cannot yet own host security, backup, monitoring, updates, and incident response. Use self-hosting when control and portability justify those responsibilities and the team can prove recovery before accepting material transactions.
+Install a Node
+Configure securely
+Back up and upgrade
+
 ### Install a Mobazha Node
 - URL: /self-host/install
 - Status: beta
+- Page type: task
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators, developers
 - Knowledge authority: https://docs.mobazha.org/self-host/install
 - Evidence: https://github.com/mobazha/mobazha#quick-start
 - Reviewed: 2026-07-04
+- Last tested: 2026-07-04
 - Language: en
 - Summary: Build the release candidate from public source, start it locally, and verify the UI and health boundary before exposing it.
+
+Before you start
+The current public release candidate requires Go 1.26.4, Git, and a supported macOS or Linux environment. Start on testnet and use a dedicated data directory. Confirm available disk space, local firewall policy, backup location, and who controls the administrator session.
+Review detailed requirements
+Read the release scope
+Install steps
+Clone the public Node repository and record the exact commit you intend to evaluate.
+Build with the pure-Go crypto implementation shown below.
+Initialize a testnet data directory owned by the service account.
+Start the Node on the default local-only listener and open the embedded UI.
+Keep the terminal visible until initial startup and health checks succeed.
+```text
+git clone https://github.com/mobazha/mobazha.git
+cd mobazha
+go build -tags goolm -o mobazha .
+./mobazha init --testnet
+./mobazha start --testnet --open
+```
+Review the command before running it. v0.3 is not a stable production release, and signed release artifacts have not yet been published.
+Expected result and verification
+The first start initializes the default data directory when needed.
+The embedded Web UI and HTTP API listen on http://127.0.0.1:5102 by default.
+Versioned HTTP routes live under /v1/, WebSocket under /ws, and MCP Streamable HTTP under /v1/mcp.
+Local-only listening is the safe default; do not expose the API to the internet until authentication, TLS, firewall, and update plans are reviewed.
+Run diagnostics in a second terminal:
+```bash
+./mobazha doctor --json
+curl -fsS http://127.0.0.1:5102/v1/runtime-config | jq
+```
+Verify that diagnostics complete, the embedded UI opens, the runtime snapshot has a supported schema, and optional capabilities remain unavailable until configured and healthy.
+Optional background service
+After validating an interactive start, install and inspect the supported background service.
+```text
+./mobazha service install
+./mobazha service status
+./mobazha doctor --json
+```
+Pre-release packaging
+Docker, standalone, and appliance packaging exists in the public repository, but it remains pre-release. Inspect the image tag, downloaded scripts, configuration, update behavior, and recovery path before using it outside a disposable environment.
+Standalone packaging source
+Node source and release status
+If something fails
+If the build fails, confirm `go version`, the checked-out commit, platform toolchain, and available storage.
+If startup fails, capture sanitized diagnostics and confirm data-directory ownership and port availability.
+If the UI does not open, test the local listener before changing DNS, TLS, or firewall configuration.
+If runtime capabilities are not ready, inspect configuration and dependencies rather than enabling frontend controls manually.
+Remove only a disposable test data directory you deliberately created; never delete the only copy of a store to retry installation.
 
 ### Configure a self-hosted node
 - URL: /self-host/configure
 - Status: beta
+- Page type: task
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators
 - Knowledge authority: https://docs.mobazha.org/self-host/configure
 - Evidence: https://github.com/mobazha/mobazha
 - Reviewed: 2026-07-04
+- Last tested: 2026-07-04
 - Language: en
 - Summary: Make deployment mode, data location, network exposure, payments, and external dependencies explicit and recoverable.
+
+Before you start
+Use a dedicated data directory and testnet while learning the operational model. Record the exact binary commit, flags, configuration, and external dependencies alongside the backup procedure.
+```text
+./mobazha init --testnet --datadir /path/to/mobazha-data
+./mobazha start --testnet --datadir /path/to/mobazha-data --open
+```
+Create a backup before changing a non-disposable profile. Record the binary commit, network, data directory, listener, reverse proxy, DNS, certificates, payment dependencies, and rollback owner.
+Configuration steps
+Select one explicit data directory and restrict it to the service account.
+Keep the administrative listener on loopback or a trusted private network.
+Configure an authenticated TLS reverse proxy only when remote administration is required.
+Enable payment and extension dependencies one at a time and inspect health after each change.
+Configure backup destination, monitoring, log retention, and upgrade ownership.
+Restart through the supported service command and re-run diagnostics.
+Security and dependency checklist
+Bind administrative interfaces to trusted networks unless an authenticated reverse proxy and TLS boundary are intentionally configured.
+Enable only payment methods reported by the effective runtime capability set and configured by the seller.
+Treat RPC, indexer, webhook, plugin, and remote media inputs as untrusted dependencies.
+Keep secrets outside source control and separate recovery material from ordinary service configuration.
+Document DNS, firewall, proxy, certificate, backup, monitoring, and rollback ownership before production use.
+Expected result and verification
+A source file, recognized identifier, frontend component, or configuration field does not prove a capability is active. Effective availability is the intersection of distribution allowlist, contract compatibility, installation or composition, authorization, configuration, and health.
+```bash
+./mobazha service status
+./mobazha doctor --json
+curl -fsS http://127.0.0.1:5102/v1/runtime-config | jq
+```
+Confirm the process uses the intended data directory and network, the local UI is reachable, effective capabilities match configured dependencies, and no administrative interface is unintentionally public.
+Runtime capabilities
+Compatibility policy
+If something fails
+Roll back the last configuration change instead of changing several variables at once.
+If the Node reads another profile, stop it and verify service arguments before writing new data.
+If remote access fails, re-test loopback health before debugging proxy or DNS layers.
+If a capability becomes unhealthy, stop advertising new work and preserve recovery for existing orders.
+Restore from a verified backup only through a release-compatible procedure.
+
+### Design the network and TLS boundary
+- URL: /self-host/network-and-tls
+- Status: beta
+- Page type: concept
+- Applies to: Mobazha v0.3 release candidate
+- Audience: operators, security reviewers
+- Knowledge authority: https://docs.mobazha.org/self-host/network-and-tls
+- Evidence: https://github.com/mobazha/mobazha
+- Reviewed: 2026-07-04
+- Language: en
+- Summary: Keep Node administration private by default and expose only intentionally authenticated, encrypted, and monitored routes.
+
+Recommended boundary
+```text
+public client
+  -> TLS reverse proxy or trusted private network
+  -> authenticated allowed routes
+  -> Node on loopback or a private interface
+```
+Do not expose the default administrative listener directly to the internet. A reverse proxy does not make an unauthenticated route safe; preserve Node authentication, request limits, body limits, timeouts, WebSocket upgrade handling, and security headers.
+Route considerations
+Surface
+Default path
+Boundary
+Embedded UI and HTTP API
+`http://127.0.0.1:5102`, API under `/v1/`
+Administrative and commerce authorization vary by operation
+WebSocket
+`/ws`
+Authenticate connection and preserve reconnect limits
+MCP Streamable HTTP
+`/v1/mcp`
+Requires gateway identity, `ai:use`, and tool scopes
+Webhooks
+outbound from Node
+Validate destination, TLS, signature, timeout, and retry behavior
+Exposure checklist
+Terminate TLS with a maintained configuration and automate certificate renewal safely.
+Bind Node to loopback or a private interface and restrict host firewall ingress.
+Forward the original scheme and host only through trusted proxy headers.
+Apply rate, connection, request-size, and timeout limits without breaking WebSocket or MCP streaming.
+Separate public storefront access from administrator, token-minting, wallet, and system operations.
+Monitor authentication failures and unexpected route exposure.
+Verification
+From outside the trusted boundary, enumerate only the intended public routes and confirm administrative operations reject unauthenticated requests. From inside, verify UI, API, WebSocket, and MCP paths required by the deployment. Re-test after proxy or certificate changes.
+
+### Monitor a self-hosted Node
+- URL: /self-host/monitoring
+- Status: beta
+- Page type: task
+- Applies to: Mobazha v0.3 release candidate
+- Audience: operators
+- Knowledge authority: https://docs.mobazha.org/self-host/monitoring
+- Evidence: https://github.com/mobazha/mobazha
+- Reviewed: 2026-07-04
+- Last tested: 2026-07-04
+- Language: en
+- Summary: Detect process, storage, capability, payment, webhook, and recovery degradation before it becomes an order incident.
+
+Before you start
+Define who receives alerts and who may take corrective action.
+Keep monitoring credentials separate from Node administrator and signing credentials.
+Decide expected availability, backup age, disk headroom, and payment dependency health.
+Monitoring setup steps
+Schedule `mobazha service status` and `mobazha doctor --json` from a trusted local monitor.
+Monitor process restarts, disk space, filesystem errors, system time, and backup age.
+Poll the runtime capability snapshot and alert on unexpected readiness or method changes.
+Monitor RPC, indexer, webhook, and external provider latency and failures separately from Node health.
+Track failed authentication, repeated permission errors, webhook dead letters, and order reconciliation failures.
+Test alert delivery and document the first safe response for every alert class.
+```bash
+./mobazha service status
+./mobazha doctor --json
+curl -fsS http://127.0.0.1:5102/v1/runtime-config | jq
+```
+Expected result and verification
+Monitoring should distinguish unavailable process, degraded dependency, denied capability, and failed business operation. Trigger a controlled non-production failure and confirm the alert identifies the correct boundary without logging secrets or customer payloads.
+If something fails
+If monitoring loses access, do not weaken Node authentication; repair the narrow monitoring credential or local execution path.
+If a capability becomes unhealthy, stop advertising new work while preserving existing-order recovery.
+If disk or backup alerts fire, protect current data before restarting or upgrading.
+If alerts contain secrets or personal data, treat that as an incident and rotate affected credentials.
 
 ### Back up and upgrade safely
 - URL: /self-host/backup-and-upgrade
 - Status: beta
+- Page type: task
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators
 - Knowledge authority: https://docs.mobazha.org/self-host/backup-and-upgrade
 - Evidence: https://github.com/mobazha/mobazha/tree/main/docs/releases
 - Reviewed: 2026-07-04
+- Last tested: 2026-07-04
 - Language: en
 - Summary: Treat upgrade readiness as a recoverability exercise, not only a package update.
+
+Before you start
+Read release notes and identify schema, payment, capability, and configuration changes.
+Create a versioned backup and verify that it can be read.
+Record the running version and configuration; protect secrets separately.
+Plan rollback and a maintenance window before changing production.
+After upgrade, verify health, store access, order flows, and payment callbacks.
+A backup file is not a recovery plan until it has been inspected and restored in an isolated environment using a compatible release process.
+Backup and upgrade steps
+Record the running binary version or commit, service arguments, data directory, configuration, and effective capabilities.
+Read both Node and client release notes and identify migrations, removed flags, payment changes, and compatibility requirements.
+Run diagnostics and resolve existing corruption, storage, or dependency failures before upgrading.
+Stop or quiesce writes according to the release procedure and create a timestamped backup.
+Copy the backup and required recovery material to a separately protected location.
+Test the new release against representative data in an isolated environment.
+Schedule a maintenance window, install the reviewed artifact, and start the service.
+Verify diagnostics, storefront, administration, order reads, payment observation, webhook delivery, and backup creation.
+Built-in commands
+Run diagnostics and create a compressed backup before a release change.
+```text
+./mobazha doctor --json
+./mobazha backup --output mobazha-backup.tar.gz
+```
+Expected result and verification
+The backup command should finish without error and produce a non-empty archive at the requested path. Record its size, creation time, source version, and a cryptographic checksum. Keep secrets and recovery material under a separate access policy even when the archive contains encrypted data.
+After upgrade, compare effective capabilities and complete a small testnet journey. Do not declare success from process health alone.
+Recovery and rollback
+The current release candidate does not publish a universal one-command restore promise for every historical version. Use release-specific migration and restore guidance, preserve the original backup, and practice on a separate data directory first. Roll back only when the older binary supports the resulting data format.
+If startup fails after upgrade, stop repeated writes and preserve logs and the upgraded data copy.
+If a migration is one-way, restore the pre-upgrade backup rather than opening migrated data with an older binary.
+If orders or payments disagree, keep financial automation fail closed while reconciling state.
+Report missing restore instructions as a release blocker, not as an operator detail to improvise in production.
 
 ### Secure a self-hosted node
 - URL: /self-host/security
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators, security reviewers
 - Knowledge authority: https://docs.mobazha.org/self-host/security
@@ -148,20 +929,98 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Protect the host, administrative boundary, signing material, payment integrations, backups, and recovery path as one system.
 
+Minimum operator baseline
+Use a dedicated, patched host and least-privilege service account.
+Keep admin APIs private by default; add TLS, authentication, rate limits, and network policy before remote exposure.
+Protect seed phrases, private keys, API tokens, webhook secrets, and backups independently.
+Review every chain RPC, indexer, plugin, webhook, and delivery integration as a hostile input boundary.
+Monitor health, storage, failed authentication, payment observation, webhook delivery, and unexpected capability changes.
+Test restore and rollback before a release or infrastructure change.
+Financial boundaries
+Only Core policy may change payment, refund, dispute, or settlement state.
+Extensions and external services must not receive raw seed phrases or private keys.
+A payment observation is not permission to settle; expected state, identity, amount, confirmations, and idempotency still apply.
+Disabling an unhealthy capability must fail closed rather than silently select a different financial behavior.
+Report vulnerabilities privately
+Do not open a public issue for a suspected vulnerability, leaked credential, signing-key concern, or exploit. Use GitHub private vulnerability reporting from the affected repository's Security tab.
+Node security policy
+Supply-chain audit baseline
+
 ### Troubleshoot a Mobazha Node
 - URL: /self-host/troubleshooting
 - Status: beta
+- Page type: task
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators, support
 - Knowledge authority: https://docs.mobazha.org/self-host/troubleshooting
 - Evidence: https://github.com/mobazha/mobazha#operations
 - Reviewed: 2026-07-04
+- Last tested: 2026-07-04
 - Language: en
 - Summary: Diagnose version, process, health, capability, configuration, and dependency failures without exposing sensitive data.
+
+Before you start
+Create or locate a current backup before changing data, flags, versions, or payment configuration. Record the exact symptom, first occurrence, recent changes, version, platform, network mode, and intended data directory.
+Diagnostic steps
+Confirm binary version, start flags, data directory, network mode, system time, and available disk space.
+Check service status and diagnostics without exposing secrets.
+Test the local UI and runtime endpoint before external DNS, proxy, or browser layers.
+Compare advertised runtime capabilities with the failing operation.
+Separate Node failure from RPC, indexer, network, payment provider, webhook consumer, or browser failure.
+Reproduce one smallest failing request or UI journey and preserve its sanitized identifiers.
+First checks
+Confirm the binary version, start flags, data directory, network mode, and system clock.
+Check that the local UI and health endpoint respond before testing external DNS or proxies.
+Compare the advertised runtime capabilities with the operation that is failing.
+Separate node failure from RPC, indexer, network, payment provider, webhook consumer, or browser failure.
+```text
+./mobazha service status
+./mobazha doctor
+./mobazha doctor --json
+```
+Symptom
+First boundary to check
+Avoid
+Process will not start
+data-directory ownership, port, disk, prior process
+deleting the profile
+Local UI unavailable
+loopback listener and process health
+changing public DNS first
+Capability missing
+runtime snapshot, configuration, dependency health
+enabling frontend-only flags
+Payment not detected
+order, asset, address, amount, expiry, RPC health
+sending a second payment
+Webhook delayed
+delivery history, endpoint response, signature handling
+treating duplicates as new state
+Safe evidence for support
+Record the exact version or commit, operating system, reproduction steps, expected result, and sanitized error.
+Include request, event, or order identifiers only when they do not expose customer data or secrets.
+Remove tokens, private endpoints, seeds, keys, wallet recovery material, raw customer data, and full production databases.
+For a suspected security issue, stop public discussion and use private vulnerability reporting.
+Recovery before experimentation
+Create and verify a backup before changing data, flags, versions, or payment configuration. Prefer a reproducible rollback over repeated manual mutation of the only copy of a store.
+```text
+./mobazha backup --output mobazha-backup.tar.gz
+```
+Expected result and verification
+A diagnosis should identify the failing boundary and a reproducible test, not merely make the symptom disappear. After a change, rerun diagnostics and the smallest affected journey, then confirm unrelated order and payment paths remain stable.
+If something fails
+Stop after two unexplained retries and preserve the original evidence.
+Revert the last known configuration change when the rollback is understood.
+Do not edit Core order or payment tables to force a state transition.
+Escalate security concerns privately and operational defects through the Node issue tracker.
+Get help
+Public support paths
+Node issues
 
 ### Connect optional hosted capabilities
 - URL: /self-host/bind-account
 - Status: draft
+- Page type: concept
 - Applies to: Design direction; not a shipped guarantee
 - Audience: operators
 - Knowledge authority: https://docs.mobazha.org/self-host/bind-account
@@ -170,9 +1029,24 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Keep local node ownership separate from any optional account or hosted service connection.
 
+What is stable today
+A local standalone store remains usable for administration, listings, data export, and supported UTXO payment flows without a Mobazha Hosting account. Optional services may later add discovery, search, routing, managed updates, or support.
+There is not yet a stable public node-to-account binding contract. Do not treat internal endpoints, old screenshots, or historical design documents as a supported procedure.
+Before connecting any service
+Confirm that you are administering the intended node and account.
+Create a fresh backup and keep recovery material outside the browser session.
+Require a clear explanation of the capability, data exchange, permissions, revocation, and price.
+Do not paste seed phrases, wallet private keys, or database credentials into an account-binding form.
+Publication gate for a supported flow
+The public node and client repositories describe the same versioned contract.
+The UI shows the node identity, requested permissions, exchanged data, and revocation path.
+Authentication does not expose node recovery material or silently widen runtime capabilities.
+Automated tests cover connection, denial, expiry, revocation, and recovery.
+
 ### Build on advertised capabilities
 - URL: /build
 - Status: beta
+- Page type: hub
 - Applies to: Mobazha v0.3 release candidate
 - Audience: developers, agent builders
 - Knowledge authority: https://docs.mobazha.org/build
@@ -181,9 +1055,201 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Integrations should discover what a backend supports instead of assuming every Mobazha deployment exposes the same surface.
 
+Integration rule
+Use the connected backend's capability response and version information as runtime truth. Documentation describes interfaces and intent, but a client must handle unavailable, disabled, or differently versioned features.
+Surfaces
+HTTP and WebSocket interfaces for commerce operations and live updates.
+Webhooks for operator-controlled event delivery.
+MCP and agent-oriented interfaces with explicit identity and authorization boundaries.
+Plugins and contracts only where the connected deployment advertises them.
+The current Node entry points are HTTP under /v1/, WebSocket under /ws, and MCP Streamable HTTP under /v1/mcp. Exact operations remain version- and capability-dependent.
+Start building
+First authenticated API call
+Discover capabilities and call a protected read.
+Authentication and scopes
+Select Basic, hosted JWT, or scoped API token.
+Errors, retries, and idempotency
+Preserve business correctness across unknown outcomes.
+HTTP API and OpenAPI
+Use the generated operation and schema contract.
+Webhooks
+Verify signatures, deduplicate, and reconcile.
+WebSocket
+Treat events as refresh signals.
+MCP and agents
+Initialize a scoped Streamable HTTP client.
+
+### Make a first authenticated API call
+- URL: /build/quickstart
+- Status: beta
+- Page type: task
+- Applies to: Mobazha v0.3 release candidate
+- Audience: developers, agent builders
+- Knowledge authority: https://docs.mobazha.org/build/quickstart
+- Evidence: https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json
+- Reviewed: 2026-07-04
+- Last tested: 2026-07-04
+- Language: en
+- Summary: Discover runtime capabilities, choose the correct authentication boundary, and call one read-only operation against a local Node.
+
+Before you start
+Run a v0.3 release-candidate Node on the default loopback listener.
+Install `curl` and `jq` and keep credentials in environment variables rather than shell history.
+Use a disposable test profile and the narrowest identity appropriate to the operation.
+Read the current OpenAPI security declaration; public runtime discovery does not make administrative routes public.
+First-call steps
+Read the public runtime snapshot and record schema, deployment, readiness, and advertised capabilities.
+Confirm the Node version and operation exist in the generated OpenAPI contract.
+Choose standalone Basic Auth, hosted Bearer JWT, or a scoped `mbz_` API token as declared for that operation.
+Call a read-only endpoint first and inspect both HTTP status and response envelope.
+Remove credentials from terminal output, logs, screenshots, and support evidence.
+```bash
+BASE_URL=http://127.0.0.1:5102
+
+curl -fsS "$BASE_URL/v1/runtime-config" | jq
+
+curl -fsS \
+  -H "Authorization: Bearer $MBZ_API_TOKEN" \
+  "$BASE_URL/v1/webhooks" | jq
+```
+Expected result and verification
+Runtime discovery should return a success envelope without requiring an administrative credential. The protected call should succeed only when the token is valid and has the required scope. Confirm the response belongs to the intended Node before building automation around it.
+If something fails
+`401` indicates missing or invalid authentication; do not retry rapidly with guessed credentials.
+`403` indicates the resolved identity lacks the required permission or scope.
+`404` may mean wrong base URL, version, route, or unavailable composition; check OpenAPI and runtime capabilities.
+`409` usually requires state reconciliation before retry.
+`429` requires bounded backoff and respect for server guidance.
+A transport success with an application error still requires error handling.
+Continue
+Authentication and scopes
+Errors, retries, and idempotency
+HTTP API and OpenAPI
+
+### Authentication, identities, and scopes
+- URL: /build/authentication
+- Status: beta
+- Page type: reference
+- Applies to: Mobazha v0.3 release candidate
+- Audience: developers, operators, agent builders
+- Knowledge authority: https://docs.mobazha.org/build/authentication
+- Evidence: https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json
+- Reviewed: 2026-07-04
+- Last tested: 2026-07-04
+- Language: en
+- Summary: Select the identity and credential model declared by the connected deployment and grant only the scopes required for one integration.
+
+Authentication models
+Credential
+Intended boundary
+Transport
+Standalone administrator
+Local operator administration
+HTTP Basic over a trusted TLS or loopback boundary
+Hosted identity
+Hosted user or service identity
+Bearer JWT issued by the hosted authentication flow
+Scoped standalone token
+Automation against a standalone Node
+Bearer token with `mbz_` prefix and explicit scopes
+The operation's OpenAPI `security` declaration is authoritative for accepted credential types. A token accepted by one route is not permission for every route.
+Scoped API tokens
+Minting and listing local API tokens requires an administrator identity. Use the supported Admin surface or `/v1/auth/tokens`, record purpose and owner, show the secret only through the supported creation response, and store it in a secret manager.
+```bash
+BASE_URL=http://127.0.0.1:5102
+
+curl -fsS \
+  -u "$MBZ_ADMIN_USER:$MBZ_ADMIN_PASSWORD" \
+  "$BASE_URL/v1/auth/tokens" | jq
+
+curl -fsS \
+  -H "Authorization: Bearer $MBZ_API_TOKEN" \
+  "$BASE_URL/v1/webhooks" | jq
+```
+Authorization and scope rules
+Grant read scopes separately from create, manage, spend, settlement, or administrative scopes.
+MCP requires `ai:use` at the transport boundary and each tool's domain scope.
+Keep buyer-anonymous Guest Checkout requests free of seller or administrator credentials.
+Resolve the current role and store context explicitly in multi-store or hosted deployments.
+Rotate and revoke tokens after exposure, role change, integration retirement, or unexplained use.
+Errors and safe handling
+Treat `401` as an authentication failure and `403` as an authorization failure; do not collapse them into retry loops.
+Never put tokens in URL query strings, documentation examples, browser storage outside the product contract, or support reports.
+Redact authorization headers and token-creation responses from logs.
+If a broad token was exposed, revoke it before investigating downstream use.
+Compatibility
+Pin automation to a tested Node version and re-read OpenAPI security and scope requirements during upgrades. A frontend login cookie, old Basic credential, or internal hosted token is not automatically a supported public integration credential.
+
+### Errors, retries, and idempotency
+- URL: /build/errors-and-idempotency
+- Status: beta
+- Page type: reference
+- Applies to: Mobazha v0.3 release candidate
+- Audience: developers, agent builders
+- Knowledge authority: https://docs.mobazha.org/build/errors-and-idempotency
+- Evidence: https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json
+- Reviewed: 2026-07-04
+- Last tested: 2026-07-04
+- Language: en
+- Summary: Preserve business correctness across transport failures, duplicate delivery, conflicts, timeouts, and unknown outcomes.
+
+Error classes
+Status
+Interpretation
+Default response
+`400`
+Request is invalid for the declared contract
+Correct the request; do not blind retry
+`401`
+Authentication is missing or invalid
+Refresh or replace the intended credential
+`403`
+Identity lacks permission or scope
+Stop and request narrower authorized access
+`404`
+Resource, route, or deployment surface is absent
+Verify identity, version, path, and capability
+`409`
+Current state conflicts with the attempted transition
+Reload authoritative state before deciding
+`429`
+Rate boundary was exceeded
+Back off and honor server guidance
+`5xx`
+Server or dependency failed
+Retry only when the operation is safe and reconcilable
+Read the structured error response and stable code where the contract defines one. Do not parse human messages as machine state.
+Retry decision
+```text
+request outcome known success -> record result
+request outcome known rejection -> correct or stop
+request outcome unknown -> reconcile authoritative state
+safe idempotent read -> bounded retry with jitter
+financial or state transition -> retry only with contract-supported idempotency
+```
+Idempotency and reconciliation
+Assign a stable client operation identity when the endpoint supports it.
+Persist request intent before sending a financial or order transition.
+On timeout, read the order, payment, webhook delivery, or action status before resubmitting.
+Deduplicate webhooks by delivery and event identity.
+Treat WebSocket events as refresh signals rather than commands.
+Keep retry budgets finite and surface unknown outcomes for review.
+```javascript
+async function reconcileBeforeRetry(orderId) {
+  const order = await api.get(`/v1/orders/${orderId}`);
+  if (order.state !== 'AWAITING_ACTION') return order;
+  throw new Error('State still requires an explicitly idempotent retry');
+}
+```
+Authentication and information safety
+Error logs may include route, status, stable error code, correlation identifier, and sanitized resource identity. They must not include Bearer tokens, Basic credentials, seeds, private keys, customer payloads, or unredacted webhook secrets.
+Compatibility
+Re-run negative, timeout, duplicate, and conflict tests against every supported Node version. A successful happy path does not establish retry safety.
+
 ### Runtime capabilities and product composition
 - URL: /build/runtime-capabilities
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 release candidate
 - Audience: developers, agent builders, operators
 - Knowledge authority: https://docs.mobazha.org/build/runtime-capabilities
@@ -192,9 +1258,41 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Discover effective behavior from the connected backend and keep deployment, experience, capabilities, permissions, and experiments separate.
 
+Effective availability
+Every gate must pass before a capability is advertised and used. Recognition, source presence, UI code, or a configured name is descriptive only.
+```text
+distribution allowlist
+  ∩ contract compatible
+  ∩ installed or statically composed
+  ∩ authorized
+  ∩ configured
+  ∩ healthy
+```
+Runtime configuration roles
+The bootstrap shell owns deployment mode, product experience, authentication transport, brand, and initial external-resource policy.
+GET /v1/runtime-config supplies backend-owned feature and capability state.
+capabilitiesReady distinguishes an authoritative denial from a placeholder that has not loaded.
+Capabilities control availability, permissions control the current actor, and feature flags control experiments or kill switches.
+Clients may narrow availability for safety or session validity but must never widen the backend response.
+Product composition axes
+Authentication mode selects the authentication transport; it does not enable a product capability.
+Deployment describes hosted, standalone, or sovereign operation.
+Experience selects a platform, store, or marketplace shell.
+Capabilities describe backend-implemented product behavior.
+Permissions describe what the current actor may do.
+Feature flags describe experiments or kill switches and cannot replace authorization.
+Fail-closed client behavior
+Do not render or call an optional feature until an authoritative capability snapshot is ready.
+Tolerate additive unknown fields but reject malformed or incompatible contract versions safely.
+Apply the same capability keys to navigation, route boundaries, action controls, and Agent tools.
+Keep server-side authorization even when the client hides unavailable controls.
+Compatibility policy
+Unified runtime configuration code
+
 ### Token and on-chain asset identifiers
 - URL: /build/token-identifiers
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 release candidate
 - Audience: developers, integrators, agent builders
 - Knowledge authority: https://docs.mobazha.org/build/token-identifiers
@@ -203,53 +1301,231 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Use a versioned, parseable identifier across clients while treating exact parsing behavior and supported standards as release-scoped contracts.
 
+Public identifier shape
+New identifiers encode the uppercase network, lowercase contract address, token standard, and token or slot identifier. Examples include `SEPOLIA_0x1234..._ERC721_42`, `SEPOLIA_0x1234..._ERC1155_1`, and `SEPOLIA_0x1234..._ERC3525_1`.
+The exact parser, normalization, supported standards, legacy forms, and serialized field remain versioned implementation contracts. Do not create an identifier by concatenating unvalidated user input or infer that an asset is enabled merely because its identifier parses.
+Identity semantics
+ERC-721 and ERC-1155 assets use contract address plus token ID as the asset identity.
+ERC-3525 integrations may use a slot identifier for the asset class while individual holdings retain their own token identity.
+Network identity is part of the identifier; the same contract address on another network is a different namespace.
+Contract addresses are normalized before comparison.
+Human symbols are display metadata and are not sufficient unique identifiers.
+Compatibility and safety
+Parse legacy forms only through the maintained parser and preserve the original value for migration evidence.
+Treat unknown standards and malformed identifiers as unsupported rather than guessing.
+Resolve network, contract, and token metadata through trusted configuration or verified chain data.
+Keep identifier recognition separate from runtime capability, authorization, ownership, pricing, and settlement support.
+Agents must not turn a parseable identifier into a purchase or transfer without an effective capability and user confirmation.
+Implementation evidence
+Identifier implementation
+RWA type contracts
+Runtime capability rules
+
 ### HTTP API and OpenAPI
 - URL: /build/api
 - Status: beta
+- Page type: reference
 - Applies to: Mobazha v0.3 release candidate
 - Audience: developers
 - Knowledge authority: https://docs.mobazha.org/build/api
 - Evidence: https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json
 - Reviewed: 2026-07-04
+- Last tested: 2026-07-04
 - Language: en
 - Summary: Use the generated Mobazha Node OpenAPI contract as the operation and schema reference, then verify runtime capabilities before calling optional features.
+
+Contract and entry points
+Mobazha Node exposes versioned HTTP routes under /v1/ and WebSocket connections under /ws. The generated OpenAPI document describes request methods, paths, schemas, response envelopes, and declared authentication mechanisms for the current main branch.
+The specification is a release-candidate contract, not proof that every optional operation is enabled by a particular backend. Read /v1/runtime-config and capability endpoints before exposing optional UI or automation.
+OpenAPI JSON
+Canonical redirect to the generated specification in mobazha/mobazha.
+API source and generator
+Inspect the generated artifact and its owning repository.
+First capability call
+A local Node publishes its frontend runtime snapshot without requiring an authenticated business operation. Use it to verify schema version, deployment composition, readiness, features, and capabilities before constructing optional UI or automation.
+```text
+curl -sS http://127.0.0.1:5102/v1/runtime-config | jq
+```
+The example assumes the default local listener. Do not disable authentication or expose an administrative listener merely to make an example work.
+Authentication choices
+HTTP Basic authentication is available for the standalone administrator boundary.
+Bearer JWTs represent hosted identities where the deployment supports them.
+Scoped mbz_ API tokens are the preferred automation credential for supported standalone integrations.
+Choose the narrowest credential and scope set, store it outside source code, and rotate or revoke it after exposure.
+Client requirements
+Choose the authentication mechanism required by the connected deployment; do not copy credentials into URLs or logs.
+Treat non-success responses and stable error codes as part of the state machine, not only as transport failures.
+Use idempotency and reconciliation for operations that may be retried or have financial effects.
+Pin integrations to a tested Node version and re-run contract tests before upgrades.
+Never infer support from an endpoint appearing in source or OpenAPI when the effective capability is absent.
+Request and response workflow
+```bash
+BASE_URL=http://127.0.0.1:5102
+curl -fsS "$BASE_URL/v1/runtime-config" | jq
+curl -fsS -H "Authorization: Bearer $MBZ_API_TOKEN" "$BASE_URL/v1/webhooks" | jq
+```
+Inspect HTTP status before consuming the success envelope. Exact inner response schemas belong to the generated OpenAPI contract. Keep base URL, Node version, credential type, and expected capability explicit in client configuration.
+Errors, retries, and compatibility
+Handle `401`, `403`, `404`, `409`, `429`, and `5xx` as distinct classes.
+Reconcile authoritative state after a timeout on an order, payment, refund, or settlement operation.
+Do not retry a financial mutation unless the endpoint contract provides idempotency or reconciliation.
+Test generated clients and hand-written integrations against the exact release tag before upgrades.
+Authentication and scopes
+Errors, retries, and idempotency
 
 ### WebSocket events
 - URL: /build/websocket
 - Status: beta
+- Page type: reference
 - Applies to: Mobazha v0.3 release candidate
 - Audience: developers, client maintainers
 - Knowledge authority: https://docs.mobazha.org/build/websocket
 - Evidence: https://github.com/mobazha/mobazha/blob/main/internal/api/ws.go
 - Reviewed: 2026-07-04
+- Last tested: 2026-07-04
 - Language: en
 - Summary: Use authenticated WebSocket events for timely UI updates, then reconcile important state through the authoritative HTTP API.
+
+Current connection boundary
+The default Node WebSocket endpoint is /ws. Deployments that route multiple nodes may also use a node-specific path. The gateway authenticates the connection before it joins the node event hub.
+A complete versioned AsyncAPI-style event contract has not yet been published. Treat current event envelopes as release-candidate behavior and test against the exact Node and client versions you deploy.
+Client behavior
+Use the supported client authentication path and avoid tokens in URLs when a safer protocol or header mechanism is available.
+Reconnect with bounded backoff and assume a connection gap can lose transient events.
+Deduplicate persistent notifications and tolerate additive unknown event types.
+Treat an event as a signal to refresh protected state; do not settle, refund, or complete an order solely from an unverified push payload.
+Keep route capability and authorization checks even when an event announces a feature or action.
+```javascript
+function reconnectDelay(attempt) {
+  const capped = Math.min(30_000, 500 * 2 ** attempt);
+  return capped / 2 + Math.random() * capped / 2;
+}
+
+async function onOrderEvent(orderId) {
+  // The event is a refresh signal. Read protected state before acting.
+  return api.get(`/v1/orders/${orderId}`);
+}
+```
+Authentication and connection errors
+Use the authentication mechanism supported by the deployed client and gateway. Avoid credentials in WebSocket URLs when a safer session, cookie, header, or subprotocol boundary is available. A failed authentication must not degrade into an anonymous administrative connection.
+Back off with jitter after disconnect and cap retries.
+Assume events can be lost during a gap and reconcile current state after reconnect.
+Treat malformed or unknown events as non-authoritative input.
+Stop automated financial actions when event identity, version, or resource binding is ambiguous.
+Implementation evidence
+WebSocket gateway
+Event registry
+Shared client
 
 ### MCP and agent integrations
 - URL: /build/mcp
 - Status: beta
+- Page type: reference
 - Applies to: Mobazha v0.3 release candidate
 - Audience: agent builders, security reviewers
 - Knowledge authority: https://docs.mobazha.org/build/mcp
 - Evidence: https://github.com/mobazha/mobazha/tree/main/pkg/mcp
 - Reviewed: 2026-07-04
+- Last tested: 2026-07-04
 - Language: en
 - Summary: Agents can discover and invoke permitted commerce capabilities, but cannot replace user consent, policy, or backend authorization.
+
+Current transport
+Mobazha Node exposes MCP over Streamable HTTP at /v1/mcp. GET and POST share this endpoint. Treat discovery, authentication, scopes, tool availability, and errors as properties of the connected Node version—not of this prose page.
+Current authentication and scope contract
+Every /v1/mcp request first passes the Node gateway authentication boundary.
+The Streamable HTTP front door resolves the caller identity and requires the ai:use scope.
+Administrator identities receive the applicable administrative scope set; API tokens must be minted with ai:use explicitly.
+Individual tools also require their domain scopes, such as listings:read, orders:manage, wallet:read, or chat:write.
+A tool missing its required scope must remain unavailable or return permission denied; MCP does not bypass the underlying HTTP authorization.
+MCP scope guard
+Tool scope mapping
+Initialize the transport
+Use an MCP SDK that supports Streamable HTTP and preserve the session information returned by the server. The initial request is standard JSON-RPC over the authenticated `/v1/mcp` endpoint.
+```bash
+curl -i -sS http://127.0.0.1:5102/v1/mcp \
+  -H "Authorization: Bearer $MBZ_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  --data '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"example","version":"0.1.0"}}}'
+```
+After initialization, complete the SDK's initialized notification, list available tools, and call only a tool returned for the current identity and scope set.
+Non-bypassable boundaries
+Authenticate the human, service, or agent identity appropriate to the action.
+Request the narrowest scopes and make spend or settlement authority explicit.
+Require confirmation where the backend or policy requires it.
+Do not let prompt text override order state, quote terms, recipient amounts, or authorization checks.
+Keep auditable request, approval, and result identifiers without logging secrets.
+Audit and errors
+The standalone server records structured MCP tool audit events with the tool name, result, duration, transport, resolved identity when available, and redacted arguments. Bridge errors preserve the API error boundary, including authentication, permission, conflict, rate-limit, and server failures.
+Audit visibility supports review; it does not make a broad token safe. Create narrow, revocable tokens and keep secrets out of prompts and logs.
+Failure handling and compatibility
+Authentication and permission errors require credential or scope correction, not prompt retries.
+A tool conflict requires re-reading underlying order or resource state.
+Rate limits and transient server failures require bounded backoff.
+Unknown tool or schema versions require rediscovery; do not call a cached tool definition blindly.
+A successful tool response does not replace user confirmation, payment evidence, or backend-owned state.
 
 ### Webhook integration contract
 - URL: /build/webhooks
 - Status: beta
+- Page type: reference
 - Applies to: Mobazha v0.3 release candidate
 - Audience: developers, operators
 - Knowledge authority: https://docs.mobazha.org/build/webhooks
 - Evidence: https://github.com/mobazha/mobazha/tree/main/pkg/webhook
 - Reviewed: 2026-07-04
+- Last tested: 2026-07-04
 - Language: en
 - Summary: Design consumers for authentication, retries, duplication, reordering, and version change before depending on event delivery.
+
+Consumer checklist
+Verify authenticity before parsing or acting on a payload.
+Use stable event identifiers for idempotency.
+Return success only after durable acceptance.
+Reconcile state through the authoritative API instead of treating delivery order as state order.
+Redact credentials and personal data from logs and dead-letter tooling.
+Current management surface
+The Node OpenAPI contract includes webhook registration, update, deletion, test delivery, and delivery-history operations under /v1/webhooks. Event names and payload schemas remain version-dependent during the release-candidate period.
+Webhook source
+Signing, event, persistence, retry, and delivery contracts.
+OpenAPI JSON
+Find the current /v1/webhooks operations and schemas.
+Delivery envelope and verification
+Current events use a CloudEvents 1.0 structured JSON envelope. Each delivery includes X-Webhook-ID, X-Webhook-Timestamp, and X-Webhook-Signature headers. The signature is HMAC-SHA256 over the delivery ID, Unix timestamp, and exact request body, with the sha256= prefix.
+Verify the signature using the endpoint secret and the unmodified raw body.
+Reject timestamps outside the current five-minute replay window.
+Use the CloudEvent ID and delivery ID as deduplication evidence; do not assume arrival order is business-state order.
+Return a 2xx response only after the event is durably accepted.
+```javascript
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyMobazhaWebhook({ secret, webhookId, timestamp, signature, rawBody }) {
+  if (Math.abs(Date.now() / 1000 - Number(timestamp)) > 300) return false;
+  const message = `${webhookId}.${timestamp}.${rawBody}`;
+  const expected = `sha256=${createHmac('sha256', secret).update(message).digest('hex')}`;
+  return expected.length === signature.length &&
+    timingSafeEqual(Buffer.from(expected), Buffer.from(signature));
+}
+```
+Use the exact raw request bytes. Parsing and re-serializing JSON before verification can change the signed body.
+Signing implementation
+CloudEvent envelope
+Standalone defaults
+The current standalone defaults are five total delivery attempts, exponential backoff beginning at 30 seconds and capped at one hour, a 10-second request timeout, five-second polling, and seven-day completed-delivery retention. Deployments may override these values, so consumers must not infer a guaranteed retry schedule from the defaults.
+Delivery is at least once in practice: duplicates and reordering are expected integration conditions, not exceptional bugs.
+Authentication, errors, and recovery
+Webhook management operations require an accepted administrator, hosted, or scoped API-token identity. The receiver authenticates deliveries with the endpoint secret and signature headers.
+Return `2xx` only after durable acceptance; a transient failure should produce a retryable non-success response.
+Deduplicate before executing business effects.
+Reconcile order or payment state through the API after every important event.
+Inspect delivery history and dead-letter state before manually replaying.
+Rotate an exposed endpoint secret and reject signatures outside the replay window.
 
 ### Extend Mobazha through public contracts
 - URL: /build/extensions
 - Status: draft
+- Page type: concept
 - Applies to: Design direction; not a shipped guarantee
 - Audience: extension developers, architects, security reviewers
 - Knowledge authority: https://docs.mobazha.org/build/extensions
@@ -258,9 +1534,82 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Choose the narrowest typed extension mechanism and preserve Core authority, capability gates, isolation, recovery, and audit.
 
+Choose the mechanism
+Port: replace an implementation that Core requires.
+Module: assemble reviewed capabilities into a distribution.
+Function: customize a bounded deterministic business decision.
+Controller: reconcile an external system or perform external I/O.
+OrderExtension: attach versioned domain data and lifecycle to an order.
+Use the narrowest mechanism that matches one responsibility. A package may implement more than one role, but each public contract has one authority boundary. A callback is not automatically a Port, and a Module is not a service locator.
+Preserve Core authority
+Extensions submit declarations, decisions, observations, or attestations. Core validates identity, authorization, schema and contract versions, resource binding, expected state, idempotency, freshness, and policy before creating a Core-owned command or durable fact.
+```text
+extension input
+  -> Core validation
+  -> Core command or durable fact
+  -> Core state machine
+  -> audit and external execution through a scoped adapter
+```
+Do not add a generic hook when a typed domain contract can express the need.
+Core retains release policy, order state, payment verification, settlement gates, audit, and key custody.
+Third-party code must not import internal packages, receive the Core object, or access raw signing material.
+Extensions never write Core tables or directly invoke an internal state transition.
+Payment, refund, dispute, and settlement changes re-enter a versioned, idempotent Core command and state machine.
+Design rules
+Ports provide replaceability for narrow Core-owned capabilities.
+Modules provide immutable startup composition and declare identity, versions, dependencies, capabilities, configuration, runtime type, and lifecycle.
+Functions are bounded and deterministic; they do not receive network, database, key, clock, or state-transition authority.
+Controllers reconcile external systems from durable Core facts and return observations or attestations.
+Governance is uniform across modules, while business contracts remain small, typed, and domain-specific.
+New extension points are deliberate and domain-scoped, with an owner, schema, authority boundary, failure semantics, idempotency, recovery, tests, and a removal plan.
+There is no global named hook bus, mutable runtime registry, or universal Core service locator.
+Capability and trust gates
+An extension capability remains unavailable until every activation gate passes. Source presence, a known identifier, or linked code is not evidence that the capability is enabled.
+```text
+distribution allowlist
+  ∩ contract compatible
+  ∩ installed or statically composed
+  ∩ authorized
+  ∩ configured
+  ∩ healthy
+```
+Reviewed first-party modules are statically linked by default.
+Independently distributed or third-party infrastructure runs out of process by default.
+Merchant-authored decision rules use a restricted sandbox such as Wasm when that runtime is introduced.
+Moving to a less isolated runtime requires threat analysis and an architecture decision.
+Current implementation boundary
+The static order-extension v1 path currently validates exact contract names, immutable startup composition, dependencies and cycles, capability/interface agreement, and fail-closed invocation. It also provides append-only extension records, durable lifecycle delivery, typed reservation binding, and settlement attestations that re-enter the Core settlement command.
+Distribution allowlists, per-tenant authorization and configuration, structured module health, drain, upgrade, rollback, a third-party process runtime, and a Wasm Function runtime remain governance targets. Do not describe those targets as generally available capabilities.
+Collectibles as the first case
+Signed NFT metadata becomes a versioned OrderExtension declaration produced by the Collectibles module.
+Token or inventory allocation is handled through a module-owned ReservationPort before funding.
+Minting and delivery are Controller work driven by durable extension events.
+Delivery evidence becomes a module-verified SettlementAttestation.
+Seller payout remains an existing Core conditional-settlement command.
+NFT, chain, mint, certificate, and provider vocabulary stays outside generic Core APIs.
+Collectibles proves the architecture without turning NFT concepts into universal Core abstractions. Product-specific hooks, settlement commands, queues, and FiatMetadata mirroring were removed during the direct development-time cutover.
+Review a new extension point
+Identify the domain owner, business purpose, caller, declarer, and authorizer.
+Version the input, output, descriptor, and compatibility behavior independently.
+Define synchronous or durable delivery, ordering, idempotency, timeout, retry, dead-letter, and reconciliation behavior.
+Declare capability gates, permissions, sensitive data, and the Core state-machine re-entry point.
+Provide migration, rollback, removal, observability, negative tests, and conformance evidence.
+If those answers are not stable, keep the mechanism private to its implementation instead of publishing another generic extension point.
+Start with the normative documents
+ADR-018: Open Core extension architecture
+Roles, authority boundaries, trust model, and architectural invariants.
+Extension overview
+Capability and security model
+Module lifecycle
+Order extension contract
+Collectibles order-extension evolution
+Conformance
+Payment plugin architecture
+
 ### Reference and source map
 - URL: /reference
 - Status: current
+- Page type: concept
 - Applies to: Current public project policy or service surface
 - Audience: developers, contributors, agents
 - Knowledge authority: https://docs.mobazha.org/reference
@@ -269,9 +1618,23 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Find the public knowledge authority, runtime authority, contract, and implementation evidence before proposing or automating a change.
 
+Authority ownership
+mobazha/mobazha-docs: canonical public knowledge, project policy, user guidance, cross-repository explanations, RFCs, project ADRs, and history.
+mobazha/mobazha: community backend, generated contracts, deployment, code-near architecture, conformance, and Node release notes.
+mobazha/mobazha-unified: public cross-platform client implementation, package and feature design, runtime-capability handling, and client release notes.
+mobazha/mobazha.org: public website, positioning, and high-level disclosures.
+An evidence link supports a canonical docs page but does not become a second public policy source. The connected backend, transaction records, generated contracts, and tagged releases remain more specific authorities for runtime and versioned facts.
+Internal Hosting plans, credentials, operational playbooks, forecasts, and unapproved commercial experiments are not public documentation sources.
+Public repositories
+Mobazha Node
+Mobazha Unified
+Mobazha website
+Mobazha documentation
+
 ### Understand the Mobazha project
 - URL: /project
 - Status: current
+- Page type: concept
 - Applies to: Current public project policy or service surface
 - Audience: everyone, contributors, evaluators
 - Knowledge authority: https://docs.mobazha.org/project
@@ -280,9 +1643,36 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Separate what ships now from project principles, reviewed policy, historical proposals, and long-term direction.
 
+How to read project documents
+Release scope describes the current product boundary.
+Architecture explains component and trust boundaries.
+Fee policy governs how charges must be disclosed and who may set them.
+The whitepaper expresses durable design principles and direction, not a promise that every described capability exists today.
+Governance explains how public policy and protocol decisions change.
+Compatibility defines shared contracts and safe evolution across distributions.
+The public roadmap describes outcomes without turning implementation plans into commitments.
+Current authorities and records
+Release scope
+Current release boundary and explicit exclusions.
+Founding whitepaper
+Versioned public review of durable principles.
+Fees and economics
+Current disclosure and economic boundaries.
+Compatibility
+Wire, capability, version, migration, and conformance policy.
+Distribution
+OEM, appliance, and VPS packaging boundaries.
+Public roadmap
+Product outcomes separated from implementation plans.
+Public decisions and proposals
+RFC, ADR, and history lifecycle.
+Releases
+Published release maturity and evidence.
+
 ### Architecture and trust boundaries
 - URL: /project/architecture
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators, developers, evaluators
 - Knowledge authority: https://docs.mobazha.org/project/architecture
@@ -291,9 +1681,31 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Mobazha separates user clients, independently operated backends, optional hosted services, and external payment or delivery systems.
 
+Core boundary
+A client connects to a backend chosen by the user or operator. That backend controls its data, enabled capabilities, integrations, and policies. Optional hosted services are separate dependencies and should be disclosed as such.
+Open Core composition boundary
+Open Core owns order, payment, refund, dispute, settlement, key-custody, and audit state machines. Optional products and integrations compose through public typed contracts instead of adding product vocabulary, arbitrary hooks, database access, or a complete Core service locator.
+Ports replace narrow Core-required implementations.
+Modules assemble reviewed capabilities before the Node starts serving traffic.
+Functions customize deterministic decisions without I/O or mutation authority.
+Controllers reconcile external systems and report observations or attestations.
+Every financial change returns through a validated Core command and state machine.
+Effective capabilities remain closed until distribution, compatibility, composition, authorization, configuration, and health gates all pass.
+Open Core extension guide
+Mechanism selection, authority flow, trust levels, current implementation, and Collectibles as the first case.
+Authority order
+Transaction state: the backend that owns the order.
+Available runtime features: that backend's advertised capabilities.
+Payment facts: the selected payment system and confirmed transaction records.
+Project-wide public policy and public explanation: the canonical page on docs.mobazha.org.
+Exact interfaces and released behavior: versioned contracts, conformance tests, and tagged release evidence in their owning repositories.
+Transaction-specific amounts and recipients: the quote accepted for that order within public policy.
+Evidence links support a public explanation but do not create a second policy authority. Documentation cannot activate a capability or override runtime and contract facts.
+
 ### Founding whitepaper
 - URL: /project/whitepaper
 - Status: draft
+- Page type: concept
 - Applies to: Design direction; not a shipped guarantee
 - Audience: community, contributors, evaluators
 - Knowledge authority: https://docs.mobazha.org/project/whitepaper
@@ -302,9 +1714,52 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: A public-review account of Mobazha's problem framing, trust model, human-and-Agent interfaces, and approach to sustainable open commerce.
 
+Thesis
+Commerce infrastructure should be usable by people and agents without forcing every participant through one operator, one custody model, or one opaque fee schedule. Independence must remain practical, while optional services may charge clearly for value they provide.
+The project therefore treats self-hosting, portable interfaces, backend-authoritative capabilities, and explicit economic disclosure as product requirements rather than marketing claims.
+The problem
+Centralized commerce bundles identity, discovery, data, checkout, policy, and distribution into one operator-controlled dependency.
+Self-hosted software often exists in name but remains impractical because upgrades, discovery, payments, or integrations depend on undocumented central services.
+Agent-mediated commerce increases the cost of ambiguity: an Agent needs machine-readable authority, scopes, prices, recipients, and state transitions before it can act safely.
+A durable alternative must support independent operation and sustainable optional services without hiding one inside the other.
+Durable principles
+Operator choice and meaningful self-hosting.
+Portable, inspectable interfaces instead of undocumented platform privilege.
+Explicit identity, capability, consent, and audit boundaries for agents.
+Charges tied to a named service, recipient, calculation basis, and confirmation step.
+Sustainability through optional services and ecosystem value—not a hidden universal commission.
+System model
+A Mobazha client connects to a backend selected by the user or operator. The backend owns order state, capability advertisement, payment verification, settlement gates, and audit. The shared client renders only the effective capabilities it receives. Discovery, hosted operations, payment rails, delivery, and other services are separate dependencies with separately disclosed trust and price boundaries.
+Clients are replaceable views over versioned contracts, not the authority for business state.
+Capabilities are available only when distribution policy, contract compatibility, installation, authorization, configuration, and health all permit them.
+Extensions submit bounded declarations, decisions, observations, or attestations; Core validates them before changing protected state.
+Independent operators choose which external services and network exposure their deployment accepts.
+Humans and Agents
+Mobazha is designed for interfaces used directly by people and through software Agents. Both must observe the same price, capability, policy, and state facts. Machine-readable discovery improves access to those facts but does not grant authority or bypass confirmation.
+Identity and authorization belong to the actor and action, not to persuasive prompt text.
+Spending, settlement, publication, and destructive operations require explicit scopes and applicable confirmation.
+Agent recommendations must disclose paid attribution or referral relationships where applicable.
+Auditable request, approval, quote, order, and result identifiers support review without logging secrets.
+Sustainable economics
+The open-source Node can be operated independently without a mandatory central Mobazha transaction fee. Operators still incur their own infrastructure, network, processor, tax, support, and extension costs. Mobazha or another provider may charge for clearly named hosting, automation, distribution, transaction, support, or other optional services.
+This boundary does not promise that every service is free. It requires the provider, payer, recipient, calculation basis, amount, optionality, expiry, and refund treatment to be visible before a charge is accepted.
+Fees and Paid Services policy
+The current public economic boundary and quote requirements.
+Current public pricing status
+Current service offers and effective pricing disclosures.
+Evolution and governance
+Mobazha is a release candidate. The whitepaper describes durable direction, while release scope, compatibility policy, OpenAPI, runtime capabilities, and transaction evidence describe what can be relied on now. Changes to public contracts, payment models, security boundaries, licensing, or governance require an ADR or equivalent public design review.
+Publication status
+This is version 0.1-review, maintained as a public review draft by the documentation project. It intentionally excludes internal forecasts, experimental percentages, confidential operating plans, and claims not supported by the public release boundary. Version 1.0 requires community, security, legal, economic, architecture, and release-scope review.
+Whitepaper maintenance contract
+RFC-0001 publication contract
+Public decision system
+Draft direction is not shipped behavior, a financial product, a revenue guarantee, or an obligation on independent operators.
+
 ### Fees and sustainable economics
 - URL: /project/fees
 - Status: current
+- Page type: concept
 - Applies to: Current public project policy or service surface
 - Audience: buyers, sellers, operators, evaluators, agents
 - Knowledge authority: https://docs.mobazha.org/project/fees
@@ -313,9 +1768,40 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Mobazha does not define one unavoidable commission for every transaction. Each actual charge must identify its owner, purpose, basis, and point of consent.
 
+Do not collapse every flow into ‘commission’
+A referral reward, delivery charge, payment-network cost, operator service fee, tax, and protocol contribution have different recipients and reasons. Combining them into a headline percentage hides who receives value and whether the charge is optional.
+Economic model
+Self-hosted software: independent operation does not require an optional managed-service subscription or a universal central-platform commission.
+Managed services: may charge for hosting, reliability, support, automation, or other named services; price and renewal terms must be shown before purchase.
+Payment and network costs: belong to the selected rail or provider and should be passed through or disclosed separately.
+Operator or seller charges: may be configured where lawful, but the responsible party and calculation basis must be visible.
+Referral or ecosystem rewards: must be funded, capped, attributable, and distinguishable from the seller's proceeds.
+Protocol/public-good funding: should be explicit, governed, and never implied by a draft percentage.
+Durable commitments
+Running Mobazha on infrastructure you control does not by itself create a fee owed to Mobazha for creating or completing an order.
+Open-source availability does not mean servers, networks, payment processors, plugins, taxes, support, or every optional service are free.
+Mobazha or another provider may charge for an identified optional service, but the provider, payer, value, price, renewal, and exit path must be visible before consent.
+A blockchain, payment-provider, plugin, tax, or exchange cost must not be described as a Mobazha platform fee unless Mobazha is the disclosed recipient.
+Self-hosted operation must not require enrollment in a Mobazha-operated managed transaction service.
+Required quote contract
+Name every charge and recipient.
+Show fixed and percentage components and the amount they apply to.
+State whether it is required, optional, refundable, or condition-dependent.
+Show the final total and settlement allocation before confirmation.
+Record the policy and quote version used by the order.
+Managed transactions, referrals, and agents
+A transaction-related service fee needs an identified service such as execution, automation, evidence handling, dispute operations, or a defined risk commitment.
+Referral or distribution compensation must be seller- or operator-funded, attributable to a settled transaction, capped, time-bounded, and reversible after refunds or fraud.
+An Agent or recommendation must disclose a paid relationship before influencing a paid decision.
+Multi-level recruitment payments, unlimited downstream percentages, and undisclosed paid recommendations are outside current Mobazha policy.
+Changing this boundary
+Requiring a central Mobazha service or mandatory Mobazha fee for ordinary self-hosted orders requires a public RFC or ADR, migration and exit analysis, explicit client and API behavior, updated release scope, and applicable legal review. A provider may change an optional service price on its own pricing surface with an effective date, but that does not change this project-wide boundary.
+Illustrative allocations in old discussions are not defaults. A percentage becomes policy only through public review, implementation, tests, disclosure, and release notes.
+
 ### Compatibility policy
 - URL: /project/compatibility
 - Status: current
+- Page type: concept
 - Applies to: Current public project policy or service surface
 - Audience: developers, operators, distributors, agents
 - Knowledge authority: https://docs.mobazha.org/project/compatibility
@@ -324,9 +1810,34 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Compatibility covers wire contracts, state semantics, capabilities, versioning, extensions, migration, and conformance—not matching names alone.
 
+Compatibility surfaces
+Public HTTP methods, paths, schemas, response envelopes, and stable error codes.
+Public events, webhooks, order and payment states, refunds, disputes, and settlement semantics.
+Runtime capability schema and effective-set negotiation.
+Canonical asset and payment identifiers.
+Persisted public data, migration behavior, and documented configuration required for upgrades.
+Public packages and extension contracts explicitly identified as supported surfaces.
+Matching JSON names is insufficient. State transitions, authorization, idempotency, confirmation, recovery, and financial invariants are part of the contract.
+Source and package boundary
+Code under an internal directory, concrete constructors, database internals, application hooks, and composition-root details are not public contracts merely because another repository can reach them. Extensions use documented Ports, modules, typed functions, controllers, or versioned out-of-process protocols and do not receive raw signing material.
+Effective capability compatibility
+Recognition, source presence, installation, authorization, operator configuration, health, and release policy are separate concerns. Clients render and call only effective capabilities advertised by the backend, fail closed without a valid snapshot, tolerate additive unknown fields, and never infer support from an identifier or dormant adapter.
+Versioning and change process
+Patch releases carry compatible fixes and security updates.
+Minor releases add backward-compatible APIs, capability fields, events, or extension points.
+Major releases may break wire, state-machine, persisted-data, or supported-package contracts.
+Removing a field, changing a state's meaning, weakening an invariant, or requiring a formerly optional capability is breaking even if the transport still parses.
+Breaking proposals require an RFC or ADR, migration and downgrade guidance, updated conformance tests, a support window, release notes, and documentation impact review.
+Conformance evidence
+Compatibility is established through implementation tests, standalone E2E, hosted-distribution E2E, and shared black-box conformance. A distribution records the Mobazha commit or tag and contract version it implements. Undeclared capabilities are skipped by policy; mocks cannot prove production compatibility.
+Runtime capabilities
+HTTP API and OpenAPI
+Open Core extensions
+
 ### OEM, appliance, and VPS distribution policy
 - URL: /project/distribution
 - Status: current
+- Page type: concept
 - Applies to: Current public project policy or service surface
 - Audience: operators, distributors, security reviewers, agents
 - Knowledge authority: https://docs.mobazha.org/project/distribution
@@ -335,9 +1846,27 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Distributors may package Mobazha with services while preserving source obligations, capability boundaries, secure first run, user control, and honest branding.
 
+Permitted distribution
+An operator may package the default standalone deployment in hardware, an appliance, a VPS marketplace image, a container image, or a pre-installed server and may sell installation, hosting, support, or other identified services around it. Packaging does not silently widen the enabled capability set or create a new official Mobazha product.
+Required boundaries
+Do not include unapproved payment capabilities, provider credentials, private control-plane code, hidden support tooling, customer data, or pre-generated secrets.
+Preserve applicable licenses, notices, corresponding-source obligations, and third-party attribution for the exact artifact.
+Record the source commit or tag, capability manifest, SBOM, checksums, provenance, upgrade, backup, restore, reset, and export path.
+Generate seller identity, administrator credentials, and signing material on the user's system during first-run setup.
+Disclose update channels, signing keys, external endpoints, data handling, optional services, and how to disable them.
+Preserve local administration, listing management, data export, and supported standalone payment operation without requiring a Mobazha Hosting account.
+Branding and certification
+Open-source licensing does not grant rights to Mobazha names, logos, or certification claims. Do not describe an image as Official or Mobazha Certified without separate written authorization. A future certification program may verify provenance, release material, capability boundaries, first-run security, updates, and recovery, but certification is not required to run or join the network.
+Operational evidence
+The code repository owns the executable source-tree and artifact checks because they must run against an exact revision and release bundle. This page owns the public distribution policy; the scripts own whether an artifact satisfies their machine-verifiable requirements.
+Self-host installation
+Backup and upgrade
+Legal, privacy, license, and trademark boundaries
+
 ### Public product roadmap
 - URL: /project/roadmap
 - Status: draft
+- Page type: concept
 - Applies to: Design direction; not a shipped guarantee
 - Audience: users, contributors, evaluators, agents
 - Knowledge authority: https://docs.mobazha.org/project/roadmap
@@ -346,9 +1875,27 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Track product outcomes and maturity without converting internal estimates, implementation checklists, or experiments into delivery promises.
 
+Current outcome
+The current priority is a trustworthy release-candidate loop: discover effective capabilities, operate or connect a store, publish listings, complete supported checkout and payment paths, manage orders, preserve evidence, recover data, and understand every cost and responsibility.
+Near-term outcomes
+Harden standalone installation, backup, upgrade, recovery, and release provenance.
+Complete coherent buyer and seller journeys across small and large screens.
+Keep hosted, standalone, marketplace, and sovereign compositions on shared contracts rather than product forks.
+Make API, event, webhook, MCP, extension, and Agent behavior discoverable and fail closed.
+Improve store administration, storefront presentation, shipping, identity, accessibility, and internationalization based on validated user needs.
+Publish compatibility and conformance evidence for capabilities claimed across distributions.
+Exploration areas
+AI-assisted store setup, Agent-mediated workflows, reusable commerce surfaces, richer marketplace operations, additional payment integrations, and new extension runtimes remain subject to capability, security, economic, legal, and release review. Exploration is not a delivery commitment.
+How execution is tracked
+Repository issues, projects, feature designs, audits, and migration checklists own implementation work. This page owns only the public product-outcome view. Dates, staffing estimates, branch names, file-level tasks, and private operating plans are intentionally excluded.
+Release scope and maturity
+Runtime capabilities
+Public decisions and proposals
+
 ### Project security model
 - URL: /project/security
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 release candidate
 - Audience: operators, developers, security reviewers, evaluators
 - Knowledge authority: https://docs.mobazha.org/project/security
@@ -357,9 +1904,24 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Security depends on explicit authority, fail-closed capabilities, protected signing material, hostile-input assumptions, and private disclosure.
 
+Trust boundaries
+The backend that owns an order is authoritative for its state and protected transitions.
+The client is untrusted input and a presentation layer; hiding a control never replaces server authorization.
+Payment rails, RPCs, indexers, plugins, webhooks, media, and delivery systems are external dependencies with their own failure and threat models.
+Extensions receive minimum typed projections and scoped handles, not general database or Core access.
+Sensitive actions remain auditable without placing secrets or unnecessary personal data in logs.
+Release and supply chain
+The current release is a pre-release candidate. Final artifacts require vulnerability scanning, dependency and license review, SBOM generation, checksums, provenance, reproducibility evidence, secret scans, and platform-specific validation.
+Node supply-chain audit
+Unified supply-chain audit
+Operator security
+Security reporting
+Use the affected repository's GitHub private vulnerability reporting. Do not publish exploit details, leaked credentials, signing-key concerns, or customer data in issues, chat, or documentation feedback.
+
 ### Legal, privacy, license, and trademark boundaries
 - URL: /project/legal-and-privacy
 - Status: current
+- Page type: concept
 - Applies to: Current public project policy or service surface
 - Audience: users, operators, contributors, evaluators
 - Knowledge authority: https://docs.mobazha.org/project/legal-and-privacy
@@ -368,9 +1930,26 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Separate software licenses, hosted-service terms, privacy commitments, third-party obligations, and trademark rights.
 
+Which document applies
+Repository LICENSE, NOTICE, attribution, and third-party notices govern source use and redistribution.
+Mobazha.org Terms and Privacy Policy govern the current hosted service as described there.
+An independent operator is responsible for its own terms, privacy disclosures, lawful products, taxes, data handling, and service providers.
+The source-code license does not grant rights to Mobazha names, logos, or visual identity; consult the trademark policy.
+A transaction-specific quote and seller policy may add applicable terms but cannot silently override project-wide public boundaries.
+Canonical public links
+Terms of Service
+Privacy Policy
+Fees and Paid Services
+Node license
+Node attribution
+Trademark policy
+Documentation boundary
+This page is navigation and product explanation, not legal advice. When documents conflict, use the effective policy or license from its owning public source and report the inconsistency.
+
 ### Release scope and maturity
 - URL: /project/release-scope
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 release candidate
 - Audience: everyone
 - Knowledge authority: https://docs.mobazha.org/project/release-scope
@@ -379,9 +1958,29 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: The documentation distinguishes current release-candidate behavior from previews and future design.
 
+Status vocabulary
+Current: reviewed public policy or stable project fact.
+Beta: available or being validated; compatibility and behavior may change.
+Draft: proposal or documentation contract; do not depend on it as shipped behavior.
+Historical: retained for context and explicitly superseded.
+Current v0.3 release-candidate boundary
+Mobazha Node and Mobazha Unified are release candidates for evaluation and testnet use.
+The default open-source Node enables BTC, BCH, and LTC payment methods, subject to effective runtime capabilities and seller configuration.
+Identifiers or adapters present in source do not enable a payment method or create a compatibility commitment.
+Stable signed binaries and reproducibility attestations remain pending final release approval.
+Clients must fail closed when a valid runtime-capability snapshot is unavailable.
+English is the default repository-documentation language unless a maintained translation is explicitly identified.
+Community capability manifest
+Machine-readable release evidence.
+Node v0.3.0-rc.1 notes
+Unified v0.3.0-rc.1 notes
+What remains version-specific
+Exact checksums, artifacts, known issues, migration steps, SBOMs, provenance, and implementation commits belong to each tagged repository release. This page governs shared maturity language and the current public boundary; it does not replace release evidence.
+
 ### Documentation and policy governance
 - URL: /project/governance
 - Status: draft
+- Page type: concept
 - Applies to: Design direction; not a shipped guarantee
 - Audience: contributors, maintainers, agents
 - Knowledge authority: https://docs.mobazha.org/project/governance
@@ -390,9 +1989,28 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Important project claims need an owner, source, review date, status, and visible change path.
 
+Change classes
+Editorial: clarifies wording without changing behavior or policy.
+Operational: changes installation, recovery, compatibility, or integration guidance.
+Policy: changes rights, responsibilities, fees, governance, privacy, or security expectations.
+Protocol: changes interoperable behavior, state transitions, or machine contracts.
+Review expectation
+Project-wide public policy and explanation change in this repository. Operational and protocol implementations change in their owning repositories and must update affected documentation, machine-readable indexes, tests, contracts, and release notes. Neither layer silently overrides runtime state or a versioned interface contract.
+Documentation publication workflow
+Wave 0 inventories authorities, public sources, lifecycle states, and stable URLs.
+Wave 1 keeps the portal, compatibility routes, source mapping, link checks, and deployment healthy.
+Wave 2 turns implementation and public contracts into task-first user, operator, and developer guidance.
+Wave 3 publishes reviewed trust, security, economic, governance, ADR, RFC, and whitepaper material.
+Wave 4 evaluates Agent answers, adds maintained translations, and measures freshness and support outcomes.
+Phase DOCS roadmap
+Public delivery waves, gates, and progress record.
+Content governance
+Authority, source, lifecycle, and review rules.
+
 ### Public decisions and proposals
 - URL: /project/decisions
 - Status: current
+- Page type: concept
 - Applies to: Current public project policy or service surface
 - Audience: contributors, maintainers, agents, evaluators
 - Knowledge authority: https://docs.mobazha.org/project/decisions
@@ -401,9 +2019,32 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Use RFCs for changes still being evaluated, ADRs for decisions already made, and history records for superseded public material.
 
+Choose the right record
+RFC: a substantial public proposal that still needs review, evidence, or a decision.
+ADR: a durable architecture or product decision, including context, alternatives, consequences, and supersession.
+History record: a replaced or withdrawn public statement retained so old links and discussions remain interpretable.
+Task documentation: instructions and explanations derived from current authorities; it is not a substitute for a decision record.
+Lifecycle rules
+A Draft or Review RFC is not shipped behavior.
+An Accepted RFC authorizes implementation work but does not prove implementation or release.
+An ADR records a decision; runtime behavior still requires implementation, tests, capability gates, and release evidence.
+A superseded record remains readable and links to its replacement.
+Security-sensitive details, credentials, private operations, customer data, forecasts, and unapproved commercial assumptions do not enter public records.
+Start or inspect a record
+RFC index
+Proposals, review state, and the RFC template.
+ADR index
+Accepted decisions and the ADR template.
+History and supersession
+Rules for preserving replaced public material.
+Documentation governance
+Change classes, ownership, and publication workflow.
+A record's status must remain explicit. Agents and readers must not infer availability from a proposal, an accepted design, or code presence alone.
+
 ### Requests for Comment
 - URL: /project/rfcs
 - Status: current
+- Page type: concept
 - Applies to: Current public project policy or service surface
 - Audience: contributors, maintainers, evaluators, agents
 - Knowledge authority: https://docs.mobazha.org/project/rfcs
@@ -412,9 +2053,31 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Review substantial protocol, policy, economic, security, governance, and cross-repository proposals before treating them as commitments.
 
+When an RFC is required
+A public protocol or interoperability contract changes.
+Order, payment, settlement, dispute, identity, authorization, or custody boundaries change.
+A fee, recipient, reward, public fund, or economic policy changes.
+A new optional hosted dependency changes independent-operation assumptions.
+Governance, licensing, privacy, security, or cross-repository ownership changes materially.
+Status model
+Draft: authoring is incomplete.
+Review: ready for public technical and product review.
+Accepted or Rejected: the decision is recorded with rationale.
+Withdrawn: the author no longer proposes the change.
+Superseded: another RFC replaces the proposal.
+Implemented: release evidence confirms that the accepted proposal shipped within a stated scope.
+Current registry
+RFC-0001: Founding whitepaper publication contract
+Review; defines the evidence and approvals needed to advance the whitepaper.
+RFC template
+Required metadata and review questions.
+Repository RFC guide
+Accepted and Implemented are different states. Only release evidence and effective runtime capability can establish shipped availability.
+
 ### Architecture Decision Records
 - URL: /project/adrs
 - Status: current
+- Page type: concept
 - Applies to: Current public project policy or service surface
 - Audience: contributors, maintainers, architects, agents
 - Knowledge authority: https://docs.mobazha.org/project/adrs
@@ -423,9 +2086,31 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Preserve why durable technical and product decisions were made, what alternatives were rejected, and what would supersede them.
 
+What belongs in an ADR
+A long-lived architecture, authority, ownership, compatibility, or publication decision.
+A choice whose rationale would otherwise be rediscovered repeatedly.
+A decision that affects more than one module, repository, deployment type, or public contract.
+Editorial changes, routine implementation details, and temporary experiments usually do not need an ADR.
+Current registry
+ADR-0001: Markdown files are the documentation content authority
+Accepted; generated registries and discovery artifacts are derived outputs.
+ADR-0002: Mobazha Docs owns public knowledge
+Accepted; public explanations live here while runtime facts and versioned contracts remain with their owners.
+ADR template
+Repository ADR guide
+Repository-owned architecture decisions
+Cross-repository indexes point to the repository that owns each decision. They do not copy or renumber the decision in this documentation repository.
+Open Core ADR-018: Extension architecture
+Defines Ports, Modules, Functions, Controllers, Core authority, trust-dependent isolation, financial state-machine re-entry, and closed-by-default capabilities.
+Open Core extension guide
+Explains the decision, its current implementation boundary, and the Collectibles case for portal readers.
+Reading an ADR safely
+An accepted ADR explains an intended durable decision. It does not by itself activate a capability, migrate a deployment, or prove that every repository has completed the decision. Check implementation, conformance tests, release notes, and effective runtime capability where applicable.
+
 ### History and supersession
 - URL: /project/history
 - Status: current
+- Page type: concept
 - Applies to: Current public project policy or service surface
 - Audience: community, contributors, evaluators, agents
 - Knowledge authority: https://docs.mobazha.org/project/history
@@ -434,9 +2119,31 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Preserve replaced public proposals and guidance without allowing historical text to masquerade as current behavior or policy.
 
+Preservation rule
+Historical material remains useful when it explains an old link, percentage, protocol idea, or product assumption. It must be moved or copied into a clearly historical location with its original date, former status, reason for replacement, and current authoritative successor.
+What must not happen
+Do not silently delete a widely cited public proposal when a supersession record can preserve context.
+Do not leave an obsolete percentage or capability claim in a current task page.
+Do not present a historical design as a supported API, payment method, fee, or governance rule.
+Do not use history storage to publish previously private material.
+Current registry
+No superseded public artifact has been imported in the initial content registry. Candidates require source review and a safe public provenance check before publication.
+Public source-history invariants
+A publication repository has one reviewed public root and contains only publishable commits, trees, paths, messages, and blobs.
+Private provenance trailers, source-to-public commit maps, Git notes, replace refs, private refs, and private-only commits do not belong in public history.
+Attribution is carried by licenses, notices, and preserved publishable authorship.
+Repository scripts may verify topology and metadata hygiene without exposing private source lineage.
+Content safety, secrets, licenses, architecture boundaries, and tests remain separate gates.
+History registry and template
+Current fees and economics
+Governs interpretation of old illustrative percentages.
+Current runtime capabilities
+Governs interpretation of code and historical feature claims.
+
 ### Releases
 - URL: /releases
 - Status: current
+- Page type: concept
 - Applies to: Current public project policy or service surface
 - Audience: operators, developers
 - Knowledge authority: https://docs.mobazha.org/releases
@@ -445,9 +2152,25 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Use repository releases for exact versions, migration notes, checksums, and known issues.
 
+Current release candidate
+v0.3 is intended for evaluation and testnet use. Stable binaries and signed release artifacts have not been published yet. The first release enables BTC, BCH, and LTC by default, subject to the full effective-capability intersection and seller configuration.
+Before adopting a release
+Confirm the repository, version, publication date, and artifact integrity.
+Read breaking changes, migrations, capability changes, and known issues.
+Test backup and rollback procedures in an environment representative of production.
+Documentation release gate
+Node and Unified tag workflows verify that a versioned release note exists, required public guidance is reachable, and the documentation source manifest reviews the exact commit being tagged. A tag must not create a release while its public instructions still describe a different source revision.
+This gate establishes documentation readiness; it does not replace tests, artifact provenance, signatures, SBOM review, migration validation, or runtime capability checks.
+Release sources
+Mobazha Node release notes
+Mobazha Unified release notes
+Published GitHub releases
+Reviewed public source revisions
+
 ### Contribute to Mobazha
 - URL: /contribute
 - Status: current
+- Page type: concept
 - Applies to: Current public project policy or service surface
 - Audience: contributors, maintainers, agents
 - Knowledge authority: https://docs.mobazha.org/contribute
@@ -456,9 +2179,26 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Choose the owning repository, agree on large changes early, preserve public contracts, add tests, update documentation, and sign off commits.
 
+Choose the repository
+Node business logic, deployment, public APIs, extensions, conformance, and release evidence: mobazha/mobazha.
+Buyer, seller, responsive UI, and runtime-capability client behavior: mobazha/mobazha-unified.
+Brand website, pricing, service terms, and public marketing: mobazha/mobazha.org.
+Project-wide public policy, task guidance, cross-repository explanation, Agent discovery, and documentation quality: mobazha/mobazha-docs.
+Contribution contract
+Open an issue or discussion before a large architecture, protocol, payment, security, or governance change.
+Keep the change focused and update tests, schemas, docs, migration guidance, and release notes together.
+Do not include credentials, private endpoints, customer data, proprietary code, or generated release binaries.
+Use DCO sign-off for source contributions where required by the owning repository.
+Report vulnerabilities privately rather than through a public pull request or issue.
+Repository guides
+Contribute to Mobazha Node
+Contribute to Mobazha Unified
+Improve this documentation
+
 ### Get help and report problems
 - URL: /support
 - Status: current
+- Page type: concept
 - Applies to: Current public project policy or service surface
 - Audience: everyone
 - Knowledge authority: https://docs.mobazha.org/support
@@ -467,9 +2207,30 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: en
 - Summary: Use public support for reproducible product questions, repository issues for defects, and private reporting for security problems.
 
+Choose the channel
+In Mobazha Unified, open Me → Help & Support → Documentation. The same canonical portal is linked from the desktop Footer.
+Documentation issues
+Stale, missing, unclear, or conflicting documentation.
+Node issues
+Reproducible backend, deployment, API, payment, or operator defects.
+Unified issues
+Buyer, seller, browser, responsive, or frontend defects.
+Telegram
+Community help and current service questions.
+Discord
+Community discussion and help.
+Write a useful report
+Identify hosted or self-hosted deployment, exact version or commit, operating system, and relevant capability state.
+Describe the smallest reproducible steps, expected behavior, actual behavior, and sanitized evidence.
+Search existing issues and link related documentation or release notes.
+Do not include access tokens, private keys, seeds, wallet recovery material, customer data, or private infrastructure details.
+Security exception
+Suspected vulnerabilities, leaked credentials, signing-key concerns, and exploits must use private vulnerability reporting in the affected GitHub repository. Do not first disclose them through community chat or a public issue.
+
 ### 从你要完成的任务开始
 - URL: /zh/start
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 候选版本
 - Audience: 所有人, agent
 - Knowledge authority: https://docs.mobazha.org/zh/start
@@ -479,9 +2240,23 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Translation of: /start
 - Summary: Mobazha 是一套开放商业技术栈，可用于自行托管商店、托管服务、市场、结账和 Agent 自动化。
 
+选择你的路径
+卖家：创建店铺、发布商品、接收订单并履约。
+买家：理解结账、付款、证据、退款与争议处理。
+运营者：在自己控制的基础设施上运行 Mobazha Node。
+开发者：通过后端实际公开的 HTTP、WebSocket、Webhook 与 MCP 能力集成。
+评估者：查看架构、发布范围、经济模式、治理和安全边界。
+先看状态，再执行说明
+Mobazha 当前属于候选版本。Current 表示已审阅的公开政策或稳定事实；Beta 表示可用但仍可能变化；Draft 表示方向或提案，不是交付承诺。
+运行时能力以你连接的后端版本和有效能力响应为准。文档不能替后端启用功能，也不能代替授权。
+选择托管方式
+Agent 使用指南
+English canonical page
+
 ### 选择托管服务或自行托管
 - URL: /zh/start/choose-deployment
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 候选版本
 - Audience: 卖家, 运营者, 评估者, agent
 - Knowledge authority: https://docs.mobazha.org/zh/start/choose-deployment
@@ -491,9 +2266,26 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Translation of: /start/choose-deployment
 - Summary: 根据控制权、运维责任、集成需求和服务价值选择，而不是把它简化成“免费或收费”。
 
+托管服务
+如果你希望先体验产品或开店，但不想维护服务器，可以使用托管应用。服务运营方负责部署、可用性和托管账号边界；当前 Beta 价格、限制和条款独立公布。
+打开 Mobazha
+当前价格
+自行托管
+如果你需要控制部署、店铺数据、域名、备份、可用性和集成，可以运行开源 Node。你同时承担主机安全、恢复、升级和第三方成本。
+运行开源软件本身不会自动产生必须支付给 Mobazha 的中心化交易抽成。
+v0.3 当前用于评估和测试网，尚不是稳定生产版本。
+默认发布边界包含 BTC、BCH 和 LTC，但仍受运行时能力和卖家配置约束。
+决策规则
+希望减少运维工作时，优先考虑托管服务。
+控制权、可移植性和独立可用性更重要时，考虑自行托管。
+在投入真实业务前，先用测试网验证备份、付款、履约和恢复流程。
+安装自行托管节点
+English canonical page
+
 ### Agent 如何使用 Mobazha 文档
 - URL: /zh/agents
 - Status: current
+- Page type: concept
 - Applies to: 当前公开项目政策或服务界面
 - Audience: agent, agent 开发者, 安全评审者
 - Knowledge authority: https://docs.mobazha.org/zh/agents
@@ -503,9 +2295,30 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Translation of: /agents
 - Summary: 在把文档转化为操作之前，先确认权威来源、适用版本、身份、权限和用户同意。
 
+权威解析顺序
+订单和交易状态以拥有该订单的后端为准。
+功能是否可用以后端版本和有效能力响应为准。
+付款事实以所选支付系统和确认记录为准。
+项目级边界以审阅后的公开政策为准，实际金额以交易确认前的报价为准。
+Draft 和 Beta 内容必须明确标注，不能被升级成已交付承诺。
+操作安全
+使用与动作相匹配的身份，并请求最小权限。
+文档或提示词不能代替付款、结算、发布、删除等动作的授权与确认。
+保留报价、规则、批准、订单和结果标识，便于审计。
+来源、版本、收款方、价格或确认条件不明确时停止执行。
+不要把密钥、恢复材料、客户数据或未脱敏日志放入提示词或公开 Issue。
+机器可读入口
+文档索引
+完整 Agent 上下文
+公开来源清单
+Agent 评估契约
+OpenAPI
+English canonical page
+
 ### 通过 Mobazha 开店与销售
 - URL: /zh/sell
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 候选版本
 - Audience: 卖家, 运营者
 - Knowledge authority: https://docs.mobazha.org/zh/sell
@@ -515,9 +2328,30 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Translation of: /sell
 - Summary: 从店铺准备、商品发布、报价与付款，到订单履约和售后，保持责任与成本透明。
 
+开店前
+选择托管服务或自行托管。
+配置后端和所在地区实际支持的付款方式。
+公开配送、退货、退款和争议条款。
+在接受订单前检查最终报价和所有收款方金额。
+店铺与商品准备
+设置可识别的店铺身份、联系方式、地区、币种展示和域名。
+为商品提供准确的规格、库存、图片、价格和配送范围。
+先配置配送模板、预计时间、退货条件和履约证据。
+只启用后端公开且店铺有能力监控、结算的付款方式。
+订单运营
+确认订单前检查报价、付款状态、买家要求和履约义务。
+不要用截图、聊天消息或 Agent 陈述代替后端验证后的付款状态。
+通过订单流程记录发货或交付证据。
+取消、退款、争议和完成必须遵循当前订单允许的状态转换。
+继续
+打开托管应用
+收费与经济模式
+English canonical page
+
 ### 在条款与成本透明的前提下购买
 - URL: /zh/buy
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 候选版本
 - Audience: 买家, agent
 - Knowledge authority: https://docs.mobazha.org/zh/buy
@@ -527,9 +2361,30 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Translation of: /buy
 - Summary: 付款前确认卖家、商品、配送、支付路径、完整成本和争议规则。
 
+确认前
+核对店铺身份、商品、数量、规格、配送地址和配送方式。
+查看商品小计、运费、税费、折扣、网络或服务费用和最终总额。
+阅读取消、退款、证据和争议规则。
+Agent 建议是辅助，不是绕过用户确认或消费权限的授权。
+付款
+只使用当前订单显示的付款方式、资产、地址、金额和有效期。
+不要复用过期报价、其他订单地址、截图或聊天中的付款信息。
+交易广播、待确认交易和回执图片都不等于最终结算。
+以拥有订单的后端所记录的验证状态为准。
+履约与争议
+保留订单号、报价、付款引用、消息、履约证据和政策版本。
+根据当前订单允许的操作申请取消或退款。
+支持争议时，通过产品内流程提交证据和期望的解决方式。
+支付或托管机制只能执行已实现的条件，不能保证商品质量或特定裁决结果。
+继续
+获取帮助
+收费与经济模式
+English canonical page
+
 ### 运行自己的 Mobazha Node
 - URL: /zh/self-host
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 候选版本
 - Audience: 运营者, 开发者
 - Knowledge authority: https://docs.mobazha.org/zh/self-host
@@ -539,9 +2394,23 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Translation of: /self-host
 - Summary: 自行托管让店铺数据与运营处于你的控制之下，同时把安全、备份、升级和可用性责任交给你。
 
+当前发布边界
+v0.3 是用于评估和测试网的候选版本。默认开源发布包含 BTC、BCH 和 LTC，实际可用性仍取决于有效能力集和卖家配置。稳定签名制品尚未正式发布。
+运营者责任
+保护主机、管理员入口、密钥和网络边界。
+升级前备份数据与恢复材料，并验证可恢复性。
+监控存储、可用性、付款依赖和回调。
+只公开用户和 Agent 实际需要的接口。
+独立运行边界
+本地独立店铺无需 Mobazha 托管账号，也可进行管理、商品、数据导出和默认支持的 UTXO 付款流程。可选服务可能提供发现、搜索、路由、托管更新或支持，但必须单独说明权限、数据与价格。
+开始安装
+安装节点
+English canonical page
+
 ### 安装 Mobazha Node
 - URL: /zh/self-host/install
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 候选版本
 - Audience: 运营者, 开发者
 - Knowledge authority: https://docs.mobazha.org/zh/self-host/install
@@ -551,9 +2420,35 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Translation of: /self-host/install
 - Summary: 从公开源码构建候选版本，在本地和测试网启动，并在对外暴露前验证 UI 与运行边界。
 
+源码构建路径
+当前候选版本需要 Go 1.26.4、Git，以及受支持的 macOS 或 Linux 环境。使用纯 Go 加密实现构建，并先在测试网评估付款流程。
+```text
+git clone https://github.com/mobazha/mobazha.git
+cd mobazha
+go build -tags goolm -o mobazha .
+./mobazha init --testnet
+./mobazha start --testnet --open
+```
+执行前先审阅命令。v0.3 不是稳定生产版本，签名发布制品仍待正式发布。
+启动后的默认边界
+首次启动会在需要时初始化默认数据目录。
+内嵌 Web UI 与 HTTP API 默认监听 http://127.0.0.1:5102。
+HTTP 位于 /v1/，WebSocket 位于 /ws，MCP Streamable HTTP 位于 /v1/mcp。
+保持本地监听；在远程暴露前配置 TLS、认证、防火墙、更新与恢复方案。
+后台服务与诊断
+```text
+./mobazha service install
+./mobazha service status
+./mobazha doctor --json
+```
+继续
+部署源码
+English canonical page
+
 ### 基于后端实际公开的能力进行开发
 - URL: /zh/build
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 候选版本
 - Audience: 开发者, agent 开发者
 - Knowledge authority: https://docs.mobazha.org/zh/build
@@ -563,9 +2458,22 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Translation of: /build
 - Summary: 集成应发现当前后端支持什么，而不是假设每种 Mobazha 部署都公开相同能力。
 
+集成原则
+把连接后端的版本与有效能力响应作为运行时事实。文档描述接口与意图，但客户端必须处理能力不可用、被关闭或版本不同的情况。
+公开界面
+版本化 HTTP API 与 WebSocket 实时事件。
+面向运营者的 Webhook 事件投递。
+带身份、ai:use 和工具级权限边界的 MCP。
+只有部署实际声明时才可使用的扩展和合约。
+继续
+运行时能力
+OpenAPI
+English canonical page
+
 ### 运行时能力与产品组合
 - URL: /zh/build/runtime-capabilities
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 候选版本
 - Audience: 开发者, agent 开发者, 运营者
 - Knowledge authority: https://docs.mobazha.org/zh/build/runtime-capabilities
@@ -575,9 +2483,37 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Translation of: /build/runtime-capabilities
 - Summary: 从后端发现有效行为，并把部署方式、产品体验、能力、权限和实验开关分开处理。
 
+有效能力交集
+所有门槛都通过后，能力才能对外公开和使用。源码存在、标识符被识别、前端有组件或配置中出现名称，都不代表能力已启用。
+```text
+发布允许列表
+  ∩ 契约兼容
+  ∩ 已安装或静态组合
+  ∩ 已授权
+  ∩ 已配置
+  ∩ 健康
+```
+客户端必须失败关闭
+在权威能力快照就绪前，不渲染或调用可选功能。
+允许未知的新增字段，但对畸形或不兼容版本安全拒绝。
+导航、路由、操作控件和 Agent 工具使用同一能力键。
+客户端隐藏控件不能代替服务端授权。
+产品组合维度
+认证模式只选择认证传输方式，不启用产品能力。
+部署方式描述托管、自托管或自主运行。
+产品体验选择平台、商店或市场外壳。
+能力描述后端实际实现的产品行为。
+权限描述当前主体可以做什么。
+功能开关只用于实验或紧急关闭，不能替代授权。
+实现证据
+兼容性政策
+Unified 运行时配置代码
+English canonical page
+
 ### Token 与链上资产标识
 - URL: /zh/build/token-identifiers
 - Status: beta
+- Page type: concept
 - Applies to: Mobazha v0.3 候选版本
 - Audience: 开发者, 集成方, agent 开发者
 - Knowledge authority: https://docs.mobazha.org/zh/build/token-identifiers
@@ -587,9 +2523,31 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Translation of: /build/token-identifiers
 - Summary: 在客户端之间使用带版本、可解析的标识，同时让精确解析行为和支持标准继续受发布版本契约约束。
 
+公共标识结构
+新标识编码大写网络名、小写合约地址、Token 标准以及 tokenId 或 slotId，例如 `SEPOLIA_0x1234..._ERC721_42`、`SEPOLIA_0x1234..._ERC1155_1` 和 `SEPOLIA_0x1234..._ERC3525_1`。
+精确解析器、标准支持范围、旧格式兼容和序列化字段属于带版本的实现契约。不能直接拼接未经验证的用户输入，也不能因为标识可解析就推断资产能力已经启用。
+身份语义
+ERC-721 与 ERC-1155 使用合约地址和 tokenId 共同确定资产身份。
+ERC-3525 集成可以用 slotId 表示资产类别，但具体持有物仍有自己的 token 身份。
+网络是标识的一部分；不同网络上的相同地址属于不同命名空间。
+比较前必须规范化合约地址。
+人类可读符号只用于展示，不能作为唯一身份。
+兼容与安全
+旧格式只能通过维护中的解析器处理，并在迁移时保留原值作为证据。
+未知标准和畸形标识应判断为不支持，不能猜测。
+网络、合约和 Token 元数据必须来自可信配置或已验证链上数据。
+标识识别必须和运行时能力、授权、所有权、价格及结算支持分开判断。
+Agent 不得仅凭可解析标识执行购买或转移，仍需有效能力和用户确认。
+实现证据
+标识实现
+RWA 类型契约
+运行时能力规则
+English canonical page
+
 ### 通过公共契约扩展 Mobazha
 - URL: /zh/build/extensions
 - Status: draft
+- Page type: concept
 - Applies to: 设计方向，不代表已交付承诺
 - Audience: 扩展开发者, 架构师, 安全审核者
 - Knowledge authority: https://docs.mobazha.org/zh/build/extensions
@@ -599,9 +2557,83 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Translation of: /build/extensions
 - Summary: 选择最窄的类型化扩展机制，并保留 Core 权威、能力门槛、运行隔离、恢复和审计边界。
 
+选择正确的机制
+Port：替换 Core 所需能力的一种实现。
+Module：把经过审核的能力组合进一个发行形态。
+Function：定制有边界且确定性的业务决策。
+Controller：协调外部系统或执行外部 I/O。
+OrderExtension：为订单附加带版本的领域数据和生命周期。
+应选择只承担一个职责的最窄机制。一个包可以实现多个角色，但每个公共契约只能有一个权威边界。回调不会自动成为 Port，Module 也不是服务定位器。
+保留 Core 权威
+扩展只能提交声明、决策、观察或证明。Core 校验身份、授权、模式与契约版本、资源绑定、预期状态、幂等性、新鲜度和策略，然后才创建由 Core 拥有的命令或持久事实。
+```text
+扩展输入
+  -> Core 校验
+  -> Core 命令或持久事实
+  -> Core 状态机
+  -> 审计，并通过受限适配器执行外部动作
+```
+类型化领域契约可以表达需求时，不增加全局通用 Hook。
+Core 保留发布策略、订单状态、支付验证、结算门槛、审计和密钥托管权威。
+第三方代码不得导入 internal 包、接收完整 Core 对象或访问原始签名材料。
+扩展不得写 Core 数据表，也不得直接调用内部状态迁移。
+支付、退款、争议和结算变化必须重新进入带版本和幂等保护的 Core 命令与状态机。
+设计规则
+Ports 为窄小、由 Core 定义的能力提供可替换性。
+Modules 提供不可变的启动期组合，并声明身份、版本、依赖、能力、配置、运行类型和生命周期。
+Functions 有边界且确定性，不获得网络、数据库、密钥、时钟或状态迁移权限。
+Controllers 消费持久 Core 事实来协调外部系统，只返回观察或证明。
+所有模块遵守统一治理，但业务接口保持窄小、类型化和领域化。
+新扩展点必须有所有者、模式、权限边界、失败语义、幂等与恢复模型、测试和移除计划。
+不提供全局命名 Hook 总线、运行时可变注册表或万能 Core 服务定位器。
+能力与信任门槛
+所有激活门槛通过后，扩展能力才可见。源码存在、标识符已知或代码已经链接，都不等于能力已启用。
+```text
+发行允许列表
+  ∩ 契约兼容
+  ∩ 已安装或静态组合
+  ∩ 已授权
+  ∩ 已配置
+  ∩ 健康
+```
+经审核的第一方模块默认静态链接。
+独立分发或第三方基础设施默认在进程外运行。
+商家编写的决策规则在该运行时引入后，应进入 Wasm 等受限沙箱。
+降低隔离等级需要威胁分析和架构决策。
+当前实现边界
+静态 Order Extension v1 当前已经校验精确契约名称、不可变启动期组合、依赖与循环、能力和接口的一致性，并在缺失能力时失败关闭。它也已经提供只追加的扩展记录、持久生命周期投递、类型化预留绑定，以及重新进入 Core 结算命令的结算证明。
+发行允许列表、按租户授权和配置、结构化模块健康、drain、升级、回滚、第三方进程运行时及 Wasm Function 运行时仍是治理目标，不能描述为已经普遍可用。
+Collectibles 首个落地案例
+签名 NFT 元数据成为由 Collectibles 模块生成、带版本的 OrderExtension 声明。
+Token 或库存分配在创建资金目标前通过模块拥有的 ReservationPort 完成。
+铸造和交付是由持久扩展事件驱动的 Controller 工作。
+交付证据成为由模块校验的 SettlementAttestation。
+卖家收款仍由已有 Core 条件结算命令执行。
+NFT、链、铸造、证书和提供方词汇不进入通用 Core API。
+Collectibles 用来证明架构，而不是把 NFT 概念提升为万能 Core 抽象。开发期直接切换已经移除产品专用 Hook、结算命令、队列和 FiatMetadata 镜像。
+评审新的扩展点
+明确领域所有者、业务目的、调用者、声明者和授权者。
+分别对输入、输出、描述符和兼容行为进行版本管理。
+定义同步或持久投递、顺序、幂等、超时、重试、死信和对账行为。
+声明能力门槛、权限、敏感数据以及重新进入 Core 状态机的位置。
+提供迁移、回滚、移除、可观测性、负向测试和一致性证据。
+如果这些答案尚不稳定，应把机制保留为私有实现细节，而不是发布另一个通用扩展点。
+权威文档
+ADR-018：Open Core 扩展架构
+角色、权限边界、信任模型和架构不变量。
+扩展架构入口
+能力与安全模型
+模块生命周期
+Order Extension 契约
+Collectibles Order Extension 演进
+一致性测试
+支付插件架构
+English canonical page
+
 ### Mobazha 创始白皮书
 - URL: /zh/project/whitepaper
 - Status: draft
+- Page type: concept
 - Applies to: 设计方向，不代表已交付承诺
 - Audience: 社区, 贡献者, 评估者
 - Knowledge authority: https://docs.mobazha.org/zh/project/whitepaper
@@ -611,9 +2643,40 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Translation of: /project/whitepaper
 - Summary: 关于问题定义、信任模型、人类与 Agent 接口，以及开放商业可持续路径的公开评审版。
 
+核心命题
+商业基础设施应同时服务人类与 Agent，而不强迫所有参与者依赖同一个运营者、托管模式或不透明收费表。独立运行必须可行，可选服务也可以为其明确创造的价值收费。
+因此，自行托管、可移植接口、后端权威能力和经济披露是产品要求，而不只是营销口号。
+要解决的问题
+中心化平台把身份、发现、数据、结账、规则和分发绑定到单一运营者。
+很多所谓自行托管仍依赖不公开的升级、搜索、付款或集成服务。
+Agent 商业放大了模糊性的风险，需要机器可读的权威、权限、价格、收款方和状态转换。
+可持续替代方案必须同时支持独立运行和透明的可选服务。
+长期原则
+运营者选择权与真正可行的自行托管。
+可移植、可检查的公开接口。
+Agent 的身份、能力、同意与审计边界。
+收费必须绑定明确服务、收款方、计算依据与确认步骤。
+通过可选服务和生态价值持续发展，而不是隐藏的普遍抽成。
+系统模型
+客户端连接用户或运营者选择的后端。后端拥有订单状态、能力声明、付款验证、结算门槛和审计权威。共享客户端只展示有效能力。发现、托管、支付、配送等外部服务必须单独说明信任与价格边界。
+人类与 Agent
+人类与 Agent 必须看到相同的价格、能力、政策和状态事实。
+提示词不能绕过身份、权限、报价、订单状态或确认。
+消费、结算、发布和破坏性操作需要明确权限及适用确认。
+有偿推荐或归因关系必须按适用规则披露。
+可持续经济模式
+独立运营开源 Node 不产生强制的中心化 Mobazha 交易费，但运营者仍需承担服务器、网络、处理商、税务、支持和扩展成本。Mobazha 或其他服务商可以为托管、自动化、分发、交易支持等明确服务收费。
+这不是“所有服务永久免费”的承诺。任何收费都应在确认前说明服务商、付款方、收款方、计算依据、金额、可选性、有效期和退款处理。
+收费与经济模式
+发布状态
+本页是中文维护译本，英文页面是当前规范来源。它明确排除内部预测、实验百分比、机密运营计划和不受公开发布边界支持的声明。
+English canonical page
+草案方向不是已交付行为、金融产品、收入保证，也不构成独立运营者的义务。
+
 ### 收费与可持续经济模式
 - URL: /zh/project/fees
 - Status: current
+- Page type: concept
 - Applies to: 当前公开项目政策或服务界面
 - Audience: 买家, 卖家, 运营者, 评估者, agent
 - Knowledge authority: https://docs.mobazha.org/zh/project/fees
@@ -623,9 +2686,43 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Translation of: /project/fees
 - Summary: Mobazha 不为所有交易定义一个无法避免的统一抽成；实际收费必须说明服务、收款方、依据和确认点。
 
+不要把所有资金流都叫作佣金
+商品价格、税费、配送费、链上或处理商费用、运营服务费、托管订阅、推荐奖励和公共资金有不同原因与收款方。把它们合并成一个百分比，会隐藏谁提供价值、谁收款以及费用是否可选。
+经济边界
+自行托管：独立运行不需要购买可选托管订阅，也不会自动产生中心化平台交易费。
+托管与增值服务：可以为可靠性、支持、自动化、分发等明确价值收费，但需提前公开价格与续费条件。
+网络和支付成本：属于所选网络或服务商，必须单独披露。
+运营者或卖家费用：在合法且适用时可配置，但责任方和计算依据必须可见。
+推荐与生态奖励：必须有资金来源、上限、可归因，并在退款或欺诈时按规则冲回。
+协议或公共资金：必须明确、可治理，不能由草案百分比暗示。
+稳定承诺
+在自己控制的基础设施上运行 Mobazha，本身不会产生应付给 Mobazha 的订单费。
+开源不等于服务器、网络、支付处理、插件、税费、支持和所有可选服务都免费。
+Mobazha 或其他提供者可以对明确的可选服务收费，但必须在同意前披露提供者、付费者、价值、价格、续费和退出方式。
+区块链、支付商、插件、税费或换汇成本，除非 Mobazha 是明确收款方，否则不能表述成 Mobazha 平台费。
+自行托管不得强制加入 Mobazha 运营的成交服务。
+报价必须说明
+每项收费的名称、服务和收款方。
+固定金额、百分比、计算基数、最低值和上限。
+是否必需、可选、可退或依赖条件。
+确认前的最终总额和结算分配。
+报价有效期与适用规则版本。
+受运营成交、推荐与 Agent
+与交易相关的服务费必须对应支付执行、自动交付、证据处理、争议运营或明确风险责任等具体服务。
+推荐或分发报酬必须由卖家或运营者提供预算、与已结算交易可归因、设置总额与时间上限，并在退款或欺诈后冲回。
+Agent 或推荐存在付费关系时，必须在影响付费决定前披露。
+多层招募收益、无限下级比例和未披露付费推荐不属于当前 Mobazha 政策。
+修改此边界
+普通自托管订单如果要强制使用中心 Mobazha 服务或支付 Mobazha 费用，必须经过公开 RFC 或 ADR、迁移和退出分析、明确的客户端与 API 行为、发布范围更新以及适用的法律审查。可选服务提供者可以在自己的价格页面标明生效日期后调整价格，但这不会改变项目级边界。
+历史讨论中的示例比例不是当前默认值。只有完成公开审阅、实现、测试、披露和发布说明后，比例才能成为政策。
+相关页面
+当前服务价格
+English canonical page
+
 ### 获取帮助与报告问题
 - URL: /zh/support
 - Status: current
+- Page type: concept
 - Applies to: 当前公开项目政策或服务界面
 - Audience: 所有人
 - Knowledge authority: https://docs.mobazha.org/zh/support
@@ -634,6 +2731,23 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Language: zh-CN
 - Translation of: /support
 - Summary: 产品问题使用公开支持，缺陷提交到对应仓库，安全问题必须私下报告。
+
+选择渠道
+文档问题
+过期、缺失、不清楚或互相冲突的文档。
+Node 问题
+后端、部署、API、付款或运营缺陷。
+Unified 问题
+买家、卖家、浏览器或前端缺陷。
+Telegram
+Discord
+写出可处理的问题
+说明托管或自行托管、准确版本、操作系统和相关能力状态。
+提供最小复现步骤、预期结果、实际结果和脱敏证据。
+不要提交访问令牌、私钥、助记词、恢复材料、客户数据或私有基础设施信息。
+安全问题例外
+漏洞、凭证泄露、签名密钥问题和利用方式必须通过受影响 GitHub 仓库的私有漏洞报告渠道提交，不要先发到公开 Issue 或社区聊天。
+English canonical page
 
 Use /docs-index.json for structured metadata, /sources.json for the public-source
 allowlist, /agent-evals.json for answer-safety evaluation, and /llms.txt for compact navigation.

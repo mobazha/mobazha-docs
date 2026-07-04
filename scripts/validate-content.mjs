@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { docApplicability, docs, publicationNavGroups as navGroups } from "./load-docs.mjs";
 import { renderPublication } from "./publication.mjs";
-import { loadContentDocuments, renderDocumentRegistry } from "./content-files.mjs";
+import { documentLinks, documentText, loadContentDocuments, renderDocumentRegistry } from "./content-files.mjs";
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
 const failures = [];
@@ -73,6 +73,12 @@ for (const doc of docs) {
   if (doc.version !== undefined && (typeof doc.version !== "string" || !doc.version.trim())) {
     fail(`invalid document version on /${doc.slug}`);
   }
+  if (!new Set(["concept", "hub", "task", "reference", "policy"]).has(doc.pageType)) {
+    fail(`unsupported page type on /${doc.slug}`);
+  }
+  if (doc.lastTested !== undefined && !/^\d{4}-\d{2}-\d{2}$/.test(doc.lastTested)) {
+    fail(`invalid last-tested date on /${doc.slug}`);
+  }
   if (!new Set(["Current", "Beta", "Draft", "Deprecated", "Historical"]).has(doc.status)) {
     fail(`unsupported status on /${doc.slug}`);
   }
@@ -85,20 +91,32 @@ for (const doc of docs) {
     if (canonical && canonical.status !== doc.status) fail(`translation status mismatch on /${doc.slug}`);
     if (canonical && canonical.version !== doc.version) fail(`translation version mismatch on /${doc.slug}`);
     const canonicalPath = `/${doc.translationOf}`;
-    const linksCanonical = doc.sections.some((section) =>
-      section.links?.some((link) => link.href === canonicalPath),
-    );
+    const linksCanonical = documentLinks(doc).includes(canonicalPath);
     if (!linksCanonical) fail(`Chinese document /${doc.slug} does not link to ${canonicalPath}`);
   }
 
-  for (const section of doc.sections) {
-    for (const link of section.links ?? []) {
-      if (link.href.startsWith("/") && !allowedInternal.has(link.href)) {
-        fail(`/${doc.slug} links to unknown internal path ${link.href}`);
-      }
-      if (!link.href.startsWith("/") && !link.href.startsWith("https://")) {
-        fail(`/${doc.slug} has a non-HTTPS external link ${link.href}`);
-      }
+  const headings = doc.sections.map((section) => section.heading).join("\n");
+  const blocks = doc.sections.flatMap((section) => section.blocks ?? []);
+  if (doc.pageType === "task") {
+    if (!doc.lastTested) fail(`task page /${doc.slug} is missing lastTested`);
+    if (!/Before you start|Prerequisites|Requirements/i.test(headings)) fail(`task page /${doc.slug} is missing prerequisites`);
+    if (!blocks.some((block) => block.type === "ordered-list")) fail(`task page /${doc.slug} is missing ordered steps`);
+    if (!/Verify|Expected result|Success criteria/i.test(headings)) fail(`task page /${doc.slug} is missing verification`);
+    if (!/Troubleshoot|Recovery|Rollback|If something fails/i.test(headings)) fail(`task page /${doc.slug} is missing failure or recovery guidance`);
+  }
+  if (doc.pageType === "reference") {
+    const text = documentText(doc);
+    if (!blocks.some((block) => block.type === "code")) fail(`reference page /${doc.slug} is missing a code example`);
+    if (!/Authentication|Authorization|Scope/i.test(text)) fail(`reference page /${doc.slug} is missing authentication guidance`);
+    if (!/Error|Failure|Retry/i.test(text)) fail(`reference page /${doc.slug} is missing error guidance`);
+  }
+
+  for (const link of documentLinks(doc)) {
+    if (link.startsWith("/") && !allowedInternal.has(link)) {
+      fail(`/${doc.slug} links to unknown internal path ${link}`);
+    }
+    if (!link.startsWith("/") && !link.startsWith("https://")) {
+      fail(`/${doc.slug} has a non-HTTPS external link ${link}`);
     }
   }
 }

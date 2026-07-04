@@ -13,10 +13,10 @@ reviewed: 2026-07-04
 
 ## Choose the repository
 
-- Node business logic, deployment, public APIs, extensions, and project policy: mobazha/mobazha.
+- Node business logic, deployment, public APIs, extensions, conformance, and release evidence: mobazha/mobazha.
 - Buyer, seller, responsive UI, and runtime-capability client behavior: mobazha/mobazha-unified.
 - Brand website, pricing, service terms, and public marketing: mobazha/mobazha.org.
-- Task guidance, knowledge navigation, Agent discovery, and documentation quality: mobazha/mobazha-docs.
+- Project-wide public policy, task guidance, cross-repository explanation, Agent discovery, and documentation quality: mobazha/mobazha-docs.
 
 ## Contribution contract
 

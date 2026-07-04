@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.4",
+  "schema_version": "1.5",
   "generated_from": "canonical-public-knowledge-and-reviewed-evidence",
   "canonical_language": "en",
   "languages": [
@@ -34,6 +34,7 @@
         "label": "Mobazha public repositories"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -60,6 +61,7 @@
         "label": "Mobazha public product and release boundaries"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -85,6 +87,7 @@
         "label": "Mobazha documentation knowledge contract"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -109,6 +112,137 @@
         "label": "Mobazha README and release scope"
       },
       "reviewed": "2026-07-04",
+      "page_type": "hub",
+      "language": "en"
+    },
+    {
+      "id": "sell-store-setup",
+      "path": "/sell/store-setup",
+      "canonical_url": "https://docs.mobazha.org/sell/store-setup",
+      "title": "Prepare a store for its first order",
+      "summary": "Configure store identity, policies, fulfillment, payments, and a complete test journey before accepting buyer funds.",
+      "status": "beta",
+      "audiences": [
+        "sellers",
+        "operators"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/sell/store-setup",
+        "label": "Prepare a store for its first order"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin",
+        "label": "Unified seller administration routes"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "sell-listings",
+      "path": "/sell/listings",
+      "canonical_url": "https://docs.mobazha.org/sell/listings",
+      "title": "Create and validate a listing",
+      "summary": "Publish an accurate item with explicit options, price, availability, fulfillment, and buyer-visible terms.",
+      "status": "beta",
+      "audiences": [
+        "sellers"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/sell/listings",
+        "label": "Create and validate a listing"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/listing",
+        "label": "Unified listing editor and Node listing API"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "sell-shipping",
+      "path": "/sell/shipping",
+      "canonical_url": "https://docs.mobazha.org/sell/shipping",
+      "title": "Configure shipping and delivery",
+      "summary": "Define where an item can be delivered, how the buyer is charged, and what evidence the seller records after fulfillment.",
+      "status": "beta",
+      "audiences": [
+        "sellers",
+        "operators"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/sell/shipping",
+        "label": "Configure shipping and delivery"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/settings/shipping",
+        "label": "Unified shipping profiles and Node listing contracts"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "sell-payments",
+      "path": "/sell/payments",
+      "canonical_url": "https://docs.mobazha.org/sell/payments",
+      "title": "Prepare payment methods for selling",
+      "summary": "Advertise only payment methods that are allowed, configured, healthy, and operationally monitored by the store backend.",
+      "status": "beta",
+      "audiences": [
+        "sellers",
+        "operators"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/sell/payments",
+        "label": "Prepare payment methods for selling"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/payments",
+        "label": "Node payment capabilities and Unified payment administration"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "sell-orders",
+      "path": "/sell/orders",
+      "canonical_url": "https://docs.mobazha.org/sell/orders",
+      "title": "Operate incoming orders",
+      "summary": "Reconcile payment, confirm the obligation, record fulfillment evidence, and use only state-valid cancellation, refund, dispute, and completion actions.",
+      "status": "beta",
+      "audiences": [
+        "sellers",
+        "operators",
+        "agents"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/sell/orders",
+        "label": "Operate incoming orders"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/orders",
+        "label": "Unified order administration and Node order state contracts"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
       "language": "en"
     },
     {
@@ -133,6 +267,114 @@
         "label": "Mobazha Unified public client"
       },
       "reviewed": "2026-07-04",
+      "page_type": "hub",
+      "language": "en"
+    },
+    {
+      "id": "buy-checkout",
+      "path": "/buy/checkout",
+      "canonical_url": "https://docs.mobazha.org/buy/checkout",
+      "title": "Complete a buyer checkout",
+      "summary": "Review one store, one quote, and one payment instruction set before creating or funding an order.",
+      "status": "beta",
+      "audiences": [
+        "buyers",
+        "agents"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/buy/checkout",
+        "label": "Complete a buyer checkout"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/checkout",
+        "label": "Unified checkout routes and Node order contracts"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "buy-guest-checkout",
+      "path": "/buy/guest-checkout",
+      "canonical_url": "https://docs.mobazha.org/buy/guest-checkout",
+      "title": "Use Guest Checkout safely",
+      "summary": "Create an anonymous buyer order while preserving the store routing context and a recoverable tracking link.",
+      "status": "beta",
+      "audiences": [
+        "buyers",
+        "sellers",
+        "agents"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/buy/guest-checkout",
+        "label": "Use Guest Checkout safely"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/blob/main/packages/core/services/api/guestCheckout.ts",
+        "label": "Unified Guest Checkout implementation and Node public guest APIs"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "buy-order-status",
+      "path": "/buy/order-status",
+      "canonical_url": "https://docs.mobazha.org/buy/order-status",
+      "title": "Track payment and order status",
+      "summary": "Reconcile wallet evidence with the backend-owned order state before deciding that an order is funded, shipped, refundable, or complete.",
+      "status": "beta",
+      "audiences": [
+        "buyers",
+        "support",
+        "agents"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/buy/order-status",
+        "label": "Track payment and order status"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/components/orders/guestOrderStages.ts",
+        "label": "Unified order milestones and Node order API"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "buy-cancel-refund-dispute",
+      "path": "/buy/cancel-refund-dispute",
+      "canonical_url": "https://docs.mobazha.org/buy/cancel-refund-dispute",
+      "title": "Cancel, request a refund, or open a dispute",
+      "summary": "Choose the transition allowed by the current order state and preserve the evidence needed to explain the requested remedy.",
+      "status": "beta",
+      "audiences": [
+        "buyers",
+        "sellers",
+        "agents"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/buy/cancel-refund-dispute",
+        "label": "Cancel, request a refund, or open a dispute"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/tree/main/api-spec",
+        "label": "Node order and dispute contracts"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
       "language": "en"
     },
     {
@@ -157,6 +399,32 @@
         "label": "Mobazha deployment sources"
       },
       "reviewed": "2026-07-04",
+      "page_type": "hub",
+      "language": "en"
+    },
+    {
+      "id": "self-host-requirements",
+      "path": "/self-host/requirements",
+      "canonical_url": "https://docs.mobazha.org/self-host/requirements",
+      "title": "Self-hosting requirements and readiness",
+      "summary": "Confirm platform, ownership, recovery, network, and operational capacity before installing a Mobazha Node.",
+      "status": "beta",
+      "audiences": [
+        "operators",
+        "evaluators"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/self-host/requirements",
+        "label": "Self-hosting requirements and readiness"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha",
+        "label": "Node build and standalone deployment sources"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "policy",
       "language": "en"
     },
     {
@@ -181,6 +449,8 @@
         "label": "Mobazha Node quick start"
       },
       "reviewed": "2026-07-04",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
       "language": "en"
     },
     {
@@ -204,6 +474,58 @@
         "label": "Mobazha Node command and deployment sources"
       },
       "reviewed": "2026-07-04",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "self-host-network-and-tls",
+      "path": "/self-host/network-and-tls",
+      "canonical_url": "https://docs.mobazha.org/self-host/network-and-tls",
+      "title": "Design the network and TLS boundary",
+      "summary": "Keep Node administration private by default and expose only intentionally authenticated, encrypted, and monitored routes.",
+      "status": "beta",
+      "audiences": [
+        "operators",
+        "security reviewers"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/self-host/network-and-tls",
+        "label": "Design the network and TLS boundary"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha",
+        "label": "Node listener and API surfaces"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "concept",
+      "language": "en"
+    },
+    {
+      "id": "self-host-monitoring",
+      "path": "/self-host/monitoring",
+      "canonical_url": "https://docs.mobazha.org/self-host/monitoring",
+      "title": "Monitor a self-hosted Node",
+      "summary": "Detect process, storage, capability, payment, webhook, and recovery degradation before it becomes an order incident.",
+      "status": "beta",
+      "audiences": [
+        "operators"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/self-host/monitoring",
+        "label": "Monitor a self-hosted Node"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha",
+        "label": "Node diagnostics and operational sources"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
       "language": "en"
     },
     {
@@ -227,6 +549,8 @@
         "label": "Mobazha operations guidance"
       },
       "reviewed": "2026-07-04",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
       "language": "en"
     },
     {
@@ -251,6 +575,7 @@
         "label": "Mobazha security policy and extension security model"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -275,6 +600,8 @@
         "label": "Mobazha Node operations commands"
       },
       "reviewed": "2026-07-04",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
       "language": "en"
     },
     {
@@ -298,6 +625,7 @@
         "label": "Mobazha public release boundary"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -322,6 +650,86 @@
         "label": "Mobazha public source organization"
       },
       "reviewed": "2026-07-04",
+      "page_type": "hub",
+      "language": "en"
+    },
+    {
+      "id": "build-quickstart",
+      "path": "/build/quickstart",
+      "canonical_url": "https://docs.mobazha.org/build/quickstart",
+      "title": "Make a first authenticated API call",
+      "summary": "Discover runtime capabilities, choose the correct authentication boundary, and call one read-only operation against a local Node.",
+      "status": "beta",
+      "audiences": [
+        "developers",
+        "agent builders"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/build/quickstart",
+        "label": "Make a first authenticated API call"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json",
+        "label": "Generated Node OpenAPI and runtime contract"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "build-authentication",
+      "path": "/build/authentication",
+      "canonical_url": "https://docs.mobazha.org/build/authentication",
+      "title": "Authentication, identities, and scopes",
+      "summary": "Select the identity and credential model declared by the connected deployment and grant only the scopes required for one integration.",
+      "status": "beta",
+      "audiences": [
+        "developers",
+        "operators",
+        "agent builders"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/build/authentication",
+        "label": "Authentication, identities, and scopes"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json",
+        "label": "OpenAPI security schemes and Node auth token API"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "reference",
+      "last_tested": "2026-07-04",
+      "language": "en"
+    },
+    {
+      "id": "build-errors-and-idempotency",
+      "path": "/build/errors-and-idempotency",
+      "canonical_url": "https://docs.mobazha.org/build/errors-and-idempotency",
+      "title": "Errors, retries, and idempotency",
+      "summary": "Preserve business correctness across transport failures, duplicate delivery, conflicts, timeouts, and unknown outcomes.",
+      "status": "beta",
+      "audiences": [
+        "developers",
+        "agent builders"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/build/errors-and-idempotency",
+        "label": "Errors, retries, and idempotency"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json",
+        "label": "Node API error contracts and state-machine implementation"
+      },
+      "reviewed": "2026-07-04",
+      "page_type": "reference",
+      "last_tested": "2026-07-04",
       "language": "en"
     },
     {
@@ -347,6 +755,7 @@
         "label": "Unified runtime configuration implementation"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -372,6 +781,7 @@
         "label": "Unified token identifier implementation and tests"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -395,6 +805,8 @@
         "label": "Generated Mobazha Node OpenAPI contract"
       },
       "reviewed": "2026-07-04",
+      "page_type": "reference",
+      "last_tested": "2026-07-04",
       "language": "en"
     },
     {
@@ -419,6 +831,8 @@
         "label": "Mobazha WebSocket gateway and event registry"
       },
       "reviewed": "2026-07-04",
+      "page_type": "reference",
+      "last_tested": "2026-07-04",
       "language": "en"
     },
     {
@@ -443,6 +857,8 @@
         "label": "Mobazha agent-capability sources"
       },
       "reviewed": "2026-07-04",
+      "page_type": "reference",
+      "last_tested": "2026-07-04",
       "language": "en"
     },
     {
@@ -467,6 +883,8 @@
         "label": "Mobazha webhook engine and OpenAPI contract"
       },
       "reviewed": "2026-07-04",
+      "page_type": "reference",
+      "last_tested": "2026-07-04",
       "language": "en"
     },
     {
@@ -492,6 +910,7 @@
         "label": "Mobazha Open Core extension contracts"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -517,6 +936,7 @@
         "label": "Mobazha GitHub organization"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -542,6 +962,7 @@
         "label": "Mobazha public repositories and project records"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -567,6 +988,7 @@
         "label": "Mobazha public repositories"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -592,6 +1014,7 @@
         "label": "Public-review edition prepared for the Mobazha project"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "version": "0.1-review",
       "language": "en"
     },
@@ -620,6 +1043,7 @@
         "label": "Mobazha public implementation and release evidence"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -646,6 +1070,7 @@
         "label": "Node public contracts and conformance sources"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -672,6 +1097,7 @@
         "label": "Standalone packaging and distribution checks"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -698,6 +1124,7 @@
         "label": "Public repository milestones and implementation roadmaps"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -724,6 +1151,7 @@
         "label": "Mobazha public security sources"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -750,6 +1178,7 @@
         "label": "Mobazha public policies and repository notices"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -773,6 +1202,7 @@
         "label": "Mobazha releases and repository documentation"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -798,6 +1228,7 @@
         "label": "Mobazha public governance and documentation policy"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -824,6 +1255,7 @@
         "label": "Mobazha documentation decision process"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -850,6 +1282,7 @@
         "label": "Public Mobazha RFC registry"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -876,6 +1309,7 @@
         "label": "Public Mobazha ADR registry"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -902,6 +1336,7 @@
         "label": "Mobazha public history registry"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -926,6 +1361,7 @@
         "label": "Mobazha GitHub releases"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -951,6 +1387,7 @@
         "label": "Mobazha contribution and governance policies"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -974,6 +1411,7 @@
         "label": "Mobazha public support surfaces"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "en"
     },
     {
@@ -998,6 +1436,7 @@
         "label": "Mobazha 公开仓库"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "zh-CN",
       "translation_of": "/start"
     },
@@ -1025,6 +1464,7 @@
         "label": "Mobazha 公开产品与发布边界"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "zh-CN",
       "translation_of": "/start/choose-deployment"
     },
@@ -1051,6 +1491,7 @@
         "label": "Mobazha 文档知识契约"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "zh-CN",
       "translation_of": "/agents"
     },
@@ -1076,6 +1517,7 @@
         "label": "Mobazha Node 与 Unified 公开实现"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "zh-CN",
       "translation_of": "/sell"
     },
@@ -1101,6 +1543,7 @@
         "label": "Mobazha Unified 公开客户端"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "zh-CN",
       "translation_of": "/buy"
     },
@@ -1126,6 +1569,7 @@
         "label": "Mobazha Node 公开部署源码"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "zh-CN",
       "translation_of": "/self-host"
     },
@@ -1151,6 +1595,7 @@
         "label": "Mobazha Node 快速开始"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "zh-CN",
       "translation_of": "/self-host/install"
     },
@@ -1176,6 +1621,7 @@
         "label": "Mobazha 公开源码组织"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "zh-CN",
       "translation_of": "/build"
     },
@@ -1202,6 +1648,7 @@
         "label": "Unified 运行时配置实现"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "zh-CN",
       "translation_of": "/build/runtime-capabilities"
     },
@@ -1228,6 +1675,7 @@
         "label": "Unified 代币标识实现与测试"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "zh-CN",
       "translation_of": "/build/token-identifiers"
     },
@@ -1254,6 +1702,7 @@
         "label": "Mobazha Open Core 扩展契约"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "zh-CN",
       "translation_of": "/build/extensions"
     },
@@ -1280,6 +1729,7 @@
         "label": "Mobazha 白皮书中文维护译本"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "version": "0.1-review",
       "language": "zh-CN",
       "translation_of": "/project/whitepaper"
@@ -1309,6 +1759,7 @@
         "label": "Mobazha 公开实现与发布证据"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "zh-CN",
       "translation_of": "/project/fees"
     },
@@ -1333,6 +1784,7 @@
         "label": "Mobazha 公开支持入口"
       },
       "reviewed": "2026-07-04",
+      "page_type": "concept",
       "language": "zh-CN",
       "translation_of": "/support"
     }

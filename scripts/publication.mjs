@@ -1,3 +1,5 @@
+import { documentText } from "./content-files.mjs";
+
 const baseUrl = "https://docs.mobazha.org";
 
 const cleanLine = (value) => value.replace(/\s+/g, " ").trim();
@@ -34,13 +36,15 @@ export function renderPublication({ docs, navGroups, docApplicability, sources, 
       label: doc.evidenceLabel,
     },
     reviewed: doc.reviewed,
+    page_type: doc.pageType,
+    last_tested: doc.lastTested,
     version: doc.version,
     language: doc.language ?? "en",
     translation_of: doc.translationOf ? `/${doc.translationOf}` : undefined,
   }));
 
   const index = {
-    schema_version: "1.4",
+    schema_version: "1.5",
     generated_from: "canonical-public-knowledge-and-reviewed-evidence",
     canonical_language: "en",
     languages: ["en", "zh-CN"],
@@ -78,16 +82,23 @@ ${llmsSections}
 - [Node OpenAPI contract](/openapi.json)
 `;
 
-  const documentContext = records.map((doc) => `### ${doc.title}
+  const recordsByPath = new Map(records.map((record) => [record.path, record]));
+  const documentContext = ordered.map((source) => {
+    const doc = recordsByPath.get(`/${source.slug}`);
+    return `### ${doc.title}
 - URL: ${doc.path}
 - Status: ${doc.status}
+- Page type: ${doc.page_type}
 - Applies to: ${doc.applies_to}
 - Audience: ${doc.audiences.join(", ")}
 - Knowledge authority: ${doc.knowledge_authority.url}
 - Evidence: ${doc.evidence.source}
 - Reviewed: ${doc.reviewed}
-- Language: ${doc.language}
-${doc.translation_of ? `- Translation of: ${doc.translation_of}\n` : ""}- Summary: ${doc.summary}`).join("\n\n");
+${doc.last_tested ? `- Last tested: ${doc.last_tested}\n` : ""}- Language: ${doc.language}
+${doc.translation_of ? `- Translation of: ${doc.translation_of}\n` : ""}- Summary: ${doc.summary}
+
+${documentText(source)}`;
+  }).join("\n\n");
 
   const llmsFull = `# Mobazha agent context
 
@@ -143,7 +154,7 @@ ${records.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc><lastmo
 `;
 
   const discovery = {
-    schema_version: "1.4",
+    schema_version: "1.5",
     name: "Mobazha Documentation",
     canonical_base_url: baseUrl,
     canonical_language: "en",

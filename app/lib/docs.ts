@@ -3,17 +3,23 @@ import navigation from "@/content/navigation.json";
 
 export type DocStatus = "Current" | "Beta" | "Draft" | "Deprecated" | "Historical";
 
+export type DocBlock =
+  | { type: "paragraph"; text: string }
+  | { type: "heading"; level: 3; text: string }
+  | { type: "unordered-list" | "ordered-list"; items: string[] }
+  | { type: "code"; language: string; code: string }
+  | { type: "callout"; tone: "important" | "warning" | "note" | "tip"; text: string }
+  | { type: "table"; headers: string[]; rows: string[][] }
+  | { type: "image"; alt: string; src: string; caption?: string }
+  | {
+      type: "links";
+      items: Array<{ label: string; href: string; description?: string }>;
+    }
+  | { type: "separator" };
+
 export type DocSection = {
   heading: string;
-  body?: string[];
-  bullets?: string[];
-  code?: string;
-  note?: string;
-  links?: Array<{
-    label: string;
-    href: string;
-    description?: string;
-  }>;
+  blocks: DocBlock[];
 };
 
 export type DocPage = {
@@ -30,6 +36,8 @@ export type DocPage = {
   reviewed: string;
   version?: string;
   appliesTo?: string;
+  pageType: "concept" | "hub" | "task" | "reference" | "policy";
+  lastTested?: string;
   language: "en" | "zh-CN";
   translationOf?: string;
   sections: DocSection[];

@@ -8,6 +8,8 @@ audiences:
 evidenceLabel: Mobazha agent-capability sources
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main/pkg/mcp
 reviewed: 2026-07-04
+pageType: reference
+lastTested: 2026-07-04
 ---
 
 ## Current transport
@@ -25,6 +27,20 @@ Mobazha Node exposes MCP over Streamable HTTP at /v1/mcp. GET and POST share thi
 - [MCP scope guard](https://github.com/mobazha/mobazha/blob/main/pkg/mcp/scope_guard.go)
 - [Tool scope mapping](https://github.com/mobazha/mobazha/blob/main/pkg/mcp/auth.go)
 
+## Initialize the transport
+
+Use an MCP SDK that supports Streamable HTTP and preserve the session information returned by the server. The initial request is standard JSON-RPC over the authenticated `/v1/mcp` endpoint.
+
+```bash
+curl -i -sS http://127.0.0.1:5102/v1/mcp \
+  -H "Authorization: Bearer $MBZ_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json, text/event-stream" \
+  --data '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"example","version":"0.1.0"}}}'
+```
+
+After initialization, complete the SDK's initialized notification, list available tools, and call only a tool returned for the current identity and scope set.
+
 ## Non-bypassable boundaries
 
 - Authenticate the human, service, or agent identity appropriate to the action.
@@ -38,3 +54,11 @@ Mobazha Node exposes MCP over Streamable HTTP at /v1/mcp. GET and POST share thi
 The standalone server records structured MCP tool audit events with the tool name, result, duration, transport, resolved identity when available, and redacted arguments. Bridge errors preserve the API error boundary, including authentication, permission, conflict, rate-limit, and server failures.
 
 > **Important:** Audit visibility supports review; it does not make a broad token safe. Create narrow, revocable tokens and keep secrets out of prompts and logs.
+
+## Failure handling and compatibility
+
+- Authentication and permission errors require credential or scope correction, not prompt retries.
+- A tool conflict requires re-reading underlying order or resource state.
+- Rate limits and transient server failures require bounded backoff.
+- Unknown tool or schema versions require rediscovery; do not call a cached tool definition blindly.
+- A successful tool response does not replace user confirmation, payment evidence, or backend-owned state.

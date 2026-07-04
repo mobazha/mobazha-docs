@@ -19,10 +19,11 @@
     "check:routes": "node scripts/check-routes.mjs",
     "check:external-links": "node scripts/check-external-links.mjs",
     "check:source-contracts": "node scripts/check-source-contracts.mjs",
+    "test:content": "node --test scripts/content-files.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "validate:content": "node scripts/validate-content.mjs",
     "validate:records": "node scripts/validate-records.mjs",
-    "check": "npm run validate:content && npm run validate:records && npm run lint && npm run build"
+    "check": "npm run test:content && npm run validate:content && npm run validate:records && npm run lint && npm run build"
   },
   "dependencies": {
     "next": "16.2.10",

@@ -71,6 +71,10 @@ Every public page declares or deterministically emits:
 - implementation, release, policy, or service evidence;
 - last-reviewed date.
 
+Pages also declare a `hub`, `task`, `reference`, `concept`, or `policy` type.
+Task and reference pages carry a `lastTested` date and follow the executable
+quality patterns in [`CONTENT_PATTERNS.md`](./CONTENT_PATTERNS.md).
+
 Current describes reviewed policy or a stable fact. Beta describes available or
 actively validated behavior that may change. Draft describes direction or a
 publication contract and is not a shipped guarantee. Deprecated and Historical

@@ -8,6 +8,8 @@ audiences:
 evidenceLabel: Mobazha webhook engine and OpenAPI contract
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main/pkg/webhook
 reviewed: 2026-07-04
+pageType: reference
+lastTested: 2026-07-04
 ---
 
 ## Consumer checklist
@@ -34,6 +36,20 @@ Current events use a CloudEvents 1.0 structured JSON envelope. Each delivery inc
 - Use the CloudEvent ID and delivery ID as deduplication evidence; do not assume arrival order is business-state order.
 - Return a 2xx response only after the event is durably accepted.
 
+```javascript
+import { createHmac, timingSafeEqual } from 'node:crypto';
+
+export function verifyMobazhaWebhook({ secret, webhookId, timestamp, signature, rawBody }) {
+  if (Math.abs(Date.now() / 1000 - Number(timestamp)) > 300) return false;
+  const message = `${webhookId}.${timestamp}.${rawBody}`;
+  const expected = `sha256=${createHmac('sha256', secret).update(message).digest('hex')}`;
+  return expected.length === signature.length &&
+    timingSafeEqual(Buffer.from(expected), Buffer.from(signature));
+}
+```
+
+Use the exact raw request bytes. Parsing and re-serializing JSON before verification can change the signed body.
+
 - [Signing implementation](https://github.com/mobazha/mobazha/blob/main/pkg/webhook/signer.go)
 - [CloudEvent envelope](https://github.com/mobazha/mobazha/blob/main/pkg/webhook/events.go)
 
@@ -42,3 +58,13 @@ Current events use a CloudEvents 1.0 structured JSON envelope. Each delivery inc
 The current standalone defaults are five total delivery attempts, exponential backoff beginning at 30 seconds and capped at one hour, a 10-second request timeout, five-second polling, and seven-day completed-delivery retention. Deployments may override these values, so consumers must not infer a guaranteed retry schedule from the defaults.
 
 > **Important:** Delivery is at least once in practice: duplicates and reordering are expected integration conditions, not exceptional bugs.
+
+## Authentication, errors, and recovery
+
+Webhook management operations require an accepted administrator, hosted, or scoped API-token identity. The receiver authenticates deliveries with the endpoint secret and signature headers.
+
+- Return `2xx` only after durable acceptance; a transient failure should produce a retryable non-success response.
+- Deduplicate before executing business effects.
+- Reconcile order or payment state through the API after every important event.
+- Inspect delivery history and dead-letter state before manually replaying.
+- Rotate an exposed endpoint secret and reject signatures outside the replay window.

@@ -56,16 +56,24 @@ count.
 
 ### Wave 2 — User, operator, and developer depth: in progress
 
-- Expand hosted-versus-self-hosted selection, seller, buyer, and support journeys.
-- Maintain executable installation, configuration, backup, security, and troubleshooting guidance.
-- Curate runtime capabilities, OpenAPI, WebSocket, MCP, webhook, and extension guidance from public contracts and code.
+- Published task-level buyer journeys for checkout, anonymous order recovery,
+  order status, cancellation, refunds, and disputes.
+- Published task-level seller journeys for store setup, listings, shipping,
+  payment readiness, and order handling.
+- Expanded operator guidance across requirements, install, configuration,
+  network and TLS boundaries, monitoring, backup, upgrade, and troubleshooting.
+- Expanded the developer path from first API call through authentication,
+  errors, retries, idempotency, WebSocket, MCP, and webhook verification.
+- Added typed content blocks and page-specific quality gates so guides can use
+  ordered steps, tables, repeated code examples, callouts, and verification
+  without losing structure in Agent publications.
 - Maintain a bilingual Open Core extension guide covering mechanism selection,
   Core authority, trust levels, capability gates, and proposal review.
 - Publish an explicit current-versus-target matrix so static v1 behavior is not
   confused with planned allowlist, health, upgrade, third-party, or Wasm runtimes.
 - Use Collectibles as the first worked Order Extension case without promoting
   NFT vocabulary into generic Core contracts.
-- Add tested first-call examples and link the generated API specification without forking it.
+- Maintain tested first-call examples and link the generated API specification without forking it.
 - Connect repository READMEs and in-product Help entry points back to the portal.
 - Unified Footer and Help & Support now route to canonical task pages; release
   notes in Node and Unified link the corresponding public guidance.

@@ -166,6 +166,54 @@
       "sources": ["/build/webhooks"]
     },
     {
+      "id": "guest-checkout-recovery",
+      "question": {
+        "en": "What should a guest buyer save after creating an order?",
+        "zh-CN": "访客买家创建订单后应保存什么？"
+      },
+      "required_claims": [
+        "Save the generated order token or buyer tracking link immediately.",
+        "Treat the tracking link as private and use it to reconcile payment and order milestones."
+      ],
+      "forbidden_claims": [
+        "A guest order can always be recovered from an account later.",
+        "A created order proves payment or delivery."
+      ],
+      "sources": ["/buy/guest-checkout", "/buy/order-status"]
+    },
+    {
+      "id": "unknown-write-outcome",
+      "question": {
+        "en": "Should a client repeat an order or payment action after a timeout?",
+        "zh-CN": "订单或支付操作超时后，客户端是否应直接重试？"
+      },
+      "required_claims": [
+        "Treat a timeout as an unknown outcome and reconcile authoritative state before resubmitting.",
+        "Retry a state-changing operation only when the contract provides safe idempotency and the caller preserves the operation identity."
+      ],
+      "forbidden_claims": [
+        "Every 5xx or timeout is safe to retry blindly.",
+        "A new request identity prevents duplicate business effects."
+      ],
+      "sources": ["/build/errors-and-idempotency"]
+    },
+    {
+      "id": "order-status-authority",
+      "question": {
+        "en": "Does a WebSocket event or tracking label prove the final order state?",
+        "zh-CN": "WebSocket 事件或跟踪标签能否证明订单最终状态？"
+      },
+      "required_claims": [
+        "Events and labels are refresh signals or interpretations, not independent transaction authority.",
+        "Read the order from the backend that owns it and separately verify payment facts with the selected payment system."
+      ],
+      "forbidden_claims": [
+        "Receiving one event proves final settlement or delivery.",
+        "The documentation can override backend order state."
+      ],
+      "sources": ["/buy/order-status", "/build/websocket"]
+    },
+    {
       "id": "vulnerability-reporting",
       "question": {
         "en": "Where should a vulnerability be reported?",

@@ -8,6 +8,7 @@ audiences:
 evidenceLabel: Mobazha Unified public client
 evidenceUrl: https://github.com/mobazha/mobazha-unified
 reviewed: 2026-07-04
+pageType: hub
 ---
 
 ## Before confirmation
@@ -39,6 +40,10 @@ Retain the order identifier, quote, payment reference, messages, fulfillment evi
 
 ## Continue
 
+- [Complete checkout](/buy/checkout) — Create one order from one reviewed quote.
+- [Use Guest Checkout](/buy/guest-checkout) — Preserve anonymous transport and a recoverable tracking link.
+- [Track order status](/buy/order-status) — Reconcile wallet evidence with backend-owned state.
+- [Cancel, refund, or dispute](/buy/cancel-refund-dispute) — Use the transition available for the active order.
 - [Open the hosted application](https://app.mobazha.org)
 - [Review fees and economics](/project/fees)
 - [Get help](/support)
