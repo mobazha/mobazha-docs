@@ -6,7 +6,7 @@
     {
       "id": "community-backend",
       "repository": "https://github.com/mobazha/mobazha/tree/main",
-      "revision": "499b780b2b431d659b24591a6cc0d78c3dba7d8a",
+      "revision": "21bd6a5968991430bacfbd4a7449446a338fab0d",
       "reviewed": "2026-07-04",
       "owns": [
         "backend",
@@ -22,7 +22,7 @@
     {
       "id": "public-client",
       "repository": "https://github.com/mobazha/mobazha-unified/tree/main",
-      "revision": "c793ae89999cf8e545e84085f3a1a95bac3bed44",
+      "revision": "b1015e73409ebc617bd773e5de92fdd4a6deb151",
       "reviewed": "2026-07-04",
       "owns": [
         "buyer and seller experience",
