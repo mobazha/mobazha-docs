@@ -2,36 +2,57 @@
 
 > Canonical task-oriented documentation for people and agents using, operating, integrating, or evaluating Mobazha.
 
-Status: Beta knowledge surface. Pages marked Draft are not shipped guarantees.
-Runtime authority: the connected backend's version and advertised capabilities.
+Status: Beta knowledge surface. Draft pages are not shipped guarantees.
+Reviewed: 2026-07-04
+Runtime authority: the connected backend's version and advertised effective capabilities.
 Policy authority: the reviewed public source linked from each page.
 
 ## Start
 - [Overview](/start)
+- [Choose a deployment](/start/choose-deployment)
+- [For agents](/agents)
+
+## Use Mobazha
 - [Sell](/sell)
 - [Buy](/buy)
 
 ## Operate
 - [Self-host](/self-host)
-- [Bind an account](/self-host/bind-account)
+- [Install](/self-host/install)
+- [Configure](/self-host/configure)
 - [Backup and upgrade](/self-host/backup-and-upgrade)
+- [Security](/self-host/security)
+- [Troubleshoot](/self-host/troubleshooting)
+- [Optional hosted connection](/self-host/bind-account)
 
 ## Build
 - [Developer overview](/build)
-- [API policy](/build/api)
+- [Runtime capabilities](/build/runtime-capabilities)
+- [API](/build/api)
+- [WebSocket events](/build/websocket)
 - [MCP and agents](/build/mcp)
 - [Webhooks](/build/webhooks)
-- [Source reference](/reference)
+- [Extensions](/build/extensions)
+- [Reference](/reference)
 
-## Project and trust
+## Project
+- [Project overview](/project)
 - [Architecture](/project/architecture)
-- [Whitepaper summary](/project/whitepaper)
+- [Whitepaper](/project/whitepaper)
 - [Fees and economics](/project/fees)
+- [Security model](/project/security)
+- [Legal and privacy](/project/legal-and-privacy)
 - [Release scope](/project/release-scope)
 - [Governance](/project/governance)
 - [Releases](/releases)
 
+## Community
+- [Contribute](/contribute)
+- [Get help](/support)
+
 ## Machine-readable
 - [Documentation index](/docs-index.json)
+- [Public source manifest](/sources.json)
 - [Discovery manifest](/.well-known/mobazha-docs.json)
 - [Expanded agent context](/llms-full.txt)
+- [Node OpenAPI contract](/openapi.json)

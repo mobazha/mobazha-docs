@@ -15,6 +15,9 @@
     "deploy:preview": "npm run build && npm run deploy:preview:built",
     "deploy:preview:built": "wrangler versions upload --config dist/server/wrangler.json",
     "deploy:dry-run": "npm run build && wrangler deploy --dry-run --config dist/server/wrangler.json",
+    "generate:content": "node scripts/generate-publication.mjs",
+    "check:routes": "node scripts/check-routes.mjs",
+    "check:external-links": "node scripts/check-external-links.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "validate:content": "node scripts/validate-content.mjs",
     "check": "npm run validate:content && npm run lint && npm run build"

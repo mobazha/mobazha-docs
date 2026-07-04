@@ -19,6 +19,11 @@ See [`sources.json`](./sources.json) for the public-source allowlist and
 [`public/docs-index.json`](./public/docs-index.json) for the machine-readable
 publication index.
 
+The public delivery sequence and quality gates are tracked in
+[`docs/PHASE_DOCS_ROADMAP.md`](./docs/PHASE_DOCS_ROADMAP.md). Authority,
+lifecycle, and review rules live in
+[`docs/CONTENT_GOVERNANCE.md`](./docs/CONTENT_GOVERNANCE.md).
+
 ## Local development
 
 ```bash
@@ -29,15 +34,21 @@ npm run dev
 Production validation:
 
 ```bash
+npm run generate:content
 npm run lint
 npm run build
 ```
 
+`app/lib/docs.ts` currently owns page content and metadata. Generated discovery
+artifacts must not be edited by hand; `npm run generate:content` refreshes the
+document index, sitemap, Agent context, source manifest, and well-known
+discovery file. `npm run check` fails when those artifacts are stale.
+
 ## Publishing contract
 
 The English pages are canonical in the first public phase. Translations must
-identify their canonical source and review date. Public changes should update
-the human page and machine-readable index in the same pull request.
+identify their canonical source and review date. Public changes update human
+pages and generated machine-readable indexes in the same commit.
 
 ## Cloudflare deployment
 
@@ -69,6 +80,8 @@ Local authenticated deployment is also available with `npm run deploy`. Use
 `npm run deploy:dry-run` to validate packaging without publishing.
 
 Cloudflare deploys only after the build command succeeds. A push to `main`
-updates production; a non-production branch uses the preview upload command.
-For normal collaboration, open a pull request and let the merge commit trigger
-production rather than pushing unreviewed content directly to `main`.
+updates production. Maintainers may currently commit and push reviewed changes
+directly to `main`; pull requests remain available for community contributions
+or changes that benefit from wider review, but are not a deployment requirement.
+Non-production branch previews are currently disabled and can be enabled later
+without changing the production contract.

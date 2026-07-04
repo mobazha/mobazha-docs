@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { navGroups } from "@/app/lib/docs";
+import { DocsSearch } from "@/app/components/DocsSearch";
 
 export function SiteHeader() {
   return (
@@ -15,8 +16,8 @@ export function SiteHeader() {
         <Link href="/reference">Reference</Link>
         <Link href="/project">Project</Link>
       </nav>
-      <a className="github-link" href="https://github.com/mobazha">
-        GitHub ↗
+      <a className="github-link" href="https://github.com/mobazha/mobazha-docs">
+        Docs repo ↗
       </a>
     </header>
   );
@@ -28,19 +29,24 @@ export function DocsShell({ activePath, children }: { activePath: string; childr
       <SiteHeader />
       <div className="docs-layout">
         <aside className="docs-sidebar" aria-label="Documentation navigation">
-          {navGroups.map((group) => (
-            <div className="nav-group" key={group.label}>
-              <p>{group.label}</p>
-              {group.links.map(([label, href]) => (
-                <Link className={activePath === href ? "active" : ""} href={href} key={href}>
-                  {label}
-                </Link>
-              ))}
-            </div>
-          ))}
+          <DocsSearch />
+          {navGroups.map((group) => {
+            const isActiveGroup = group.links.some(([, href]) => href === activePath);
+            return (
+              <div className={`nav-group${isActiveGroup ? " active-group" : ""}`} key={group.label}>
+                <p>{group.label}</p>
+                {group.links.map(([label, href]) => (
+                  <Link className={activePath === href ? "active" : ""} href={href} key={href}>
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            );
+          })}
           <div className="agent-links">
             <p>For agents</p>
             <a href="/llms.txt">llms.txt ↗</a>
+            <a href="/llms-full.txt">llms-full.txt ↗</a>
             <a href="/docs-index.json">docs-index.json ↗</a>
           </div>
         </aside>

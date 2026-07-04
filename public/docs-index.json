@@ -1,27 +1,519 @@
 {
-  "schema_version": "1.0",
-  "generated_from": "curated-public-sources",
+  "schema_version": "1.1",
+  "generated_from": "reviewed-public-sources",
   "canonical_language": "en",
+  "canonical_base_url": "https://docs.mobazha.org",
   "reviewed": "2026-07-04",
-  "runtime_authority": "connected backend version and advertised capabilities",
+  "runtime_authority": "connected backend version and advertised effective capabilities",
+  "policy_authority": "reviewed public source linked from each document",
   "documents": [
-    { "id": "start", "path": "/start", "status": "beta", "audiences": ["everyone", "agents"], "source": "https://github.com/mobazha" },
-    { "id": "sell", "path": "/sell", "status": "beta", "audiences": ["sellers", "operators"], "source": "https://github.com/mobazha/mobazha/tree/main" },
-    { "id": "buy", "path": "/buy", "status": "beta", "audiences": ["buyers", "agents"], "source": "docs-curation", "source_note": "anonymous public client source pending" },
-    { "id": "self-host", "path": "/self-host", "status": "beta", "audiences": ["operators", "developers"], "source": "https://github.com/mobazha/mobazha/tree/main" },
-    { "id": "bind-account", "path": "/self-host/bind-account", "status": "beta", "audiences": ["operators"], "source": "docs-curation", "source_note": "anonymous public client source pending" },
-    { "id": "backup-upgrade", "path": "/self-host/backup-and-upgrade", "status": "beta", "audiences": ["operators"], "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases" },
-    { "id": "build", "path": "/build", "status": "beta", "audiences": ["developers", "agent-builders"], "source": "https://github.com/mobazha" },
-    { "id": "api", "path": "/build/api", "status": "draft", "audiences": ["developers"], "source": "https://github.com/mobazha/mobazha/tree/main" },
-    { "id": "mcp", "path": "/build/mcp", "status": "beta", "audiences": ["agent-builders", "security-reviewers"], "source": "https://github.com/mobazha" },
-    { "id": "webhooks", "path": "/build/webhooks", "status": "draft", "audiences": ["developers", "operators"], "source": "https://github.com/mobazha/mobazha/tree/main" },
-    { "id": "reference", "path": "/reference", "status": "current", "audiences": ["developers", "contributors", "agents"], "source": "https://github.com/mobazha" },
-    { "id": "project", "path": "/project", "status": "current", "audiences": ["everyone", "contributors", "evaluators"], "source": "https://github.com/mobazha/mobazha/tree/main/docs/project" },
-    { "id": "architecture", "path": "/project/architecture", "status": "beta", "audiences": ["operators", "developers", "evaluators"], "source": "https://github.com/mobazha" },
-    { "id": "whitepaper", "path": "/project/whitepaper", "status": "draft", "audiences": ["community", "contributors", "evaluators"], "source": "docs-curation" },
-    { "id": "fees", "path": "/project/fees", "status": "current", "audiences": ["buyers", "sellers", "operators", "evaluators", "agents"], "source": "https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES.md" },
-    { "id": "release-scope", "path": "/project/release-scope", "status": "beta", "audiences": ["everyone"], "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases" },
-    { "id": "governance", "path": "/project/governance", "status": "draft", "audiences": ["contributors", "maintainers", "agents"], "source": "docs-curation" },
-    { "id": "releases", "path": "/releases", "status": "current", "audiences": ["operators", "developers"], "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases" }
+    {
+      "id": "start",
+      "path": "/start",
+      "canonical_url": "https://docs.mobazha.org/start",
+      "title": "Start with the job you need to do",
+      "summary": "Mobazha is an open commerce stack for running, using, and extending independent marketplaces and stores.",
+      "status": "beta",
+      "audiences": [
+        "everyone",
+        "agents"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha",
+      "source_label": "Mobazha public repositories",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "start-choose-deployment",
+      "path": "/start/choose-deployment",
+      "canonical_url": "https://docs.mobazha.org/start/choose-deployment",
+      "title": "Choose hosted or self-hosted Mobazha",
+      "summary": "Choose the operating model from control, responsibility, integrations, and service needs—not from a false free-versus-paid shortcut.",
+      "status": "beta",
+      "audiences": [
+        "sellers",
+        "operators",
+        "evaluators",
+        "agents"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha/mobazha/blob/main/README.md",
+      "source_label": "Mobazha public product and release boundaries",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "agents",
+      "path": "/agents",
+      "canonical_url": "https://docs.mobazha.org/agents",
+      "title": "Use Mobazha documentation as an Agent",
+      "summary": "Resolve authority, applicability, and user consent before turning documentation into an action.",
+      "status": "current",
+      "audiences": [
+        "agents",
+        "agent builders",
+        "security reviewers"
+      ],
+      "applies_to": "Current public project policy or service surface",
+      "source": "https://github.com/mobazha/mobazha-docs",
+      "source_label": "Mobazha documentation knowledge contract",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "sell",
+      "path": "/sell",
+      "canonical_url": "https://docs.mobazha.org/sell",
+      "title": "Sell through a Mobazha store",
+      "summary": "A practical map from store setup to settlement, with costs and responsibilities visible before an order is accepted.",
+      "status": "beta",
+      "audiences": [
+        "sellers",
+        "operators"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha/mobazha/tree/main",
+      "source_label": "Mobazha README and release scope",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "buy",
+      "path": "/buy",
+      "canonical_url": "https://docs.mobazha.org/buy",
+      "title": "Buy with inspectable terms",
+      "summary": "Confirm the seller, item, delivery terms, payment route, and complete cost breakdown before committing funds.",
+      "status": "beta",
+      "audiences": [
+        "buyers",
+        "agents"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha/mobazha-unified",
+      "source_label": "Mobazha Unified public client",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "self-host",
+      "path": "/self-host",
+      "canonical_url": "https://docs.mobazha.org/self-host",
+      "title": "Operate your own Mobazha Node",
+      "summary": "Self-hosting keeps store data and operations under the operator's control and does not require an optional managed-service subscription.",
+      "status": "beta",
+      "audiences": [
+        "operators",
+        "developers"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha/mobazha/tree/main",
+      "source_label": "Mobazha deployment sources",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "self-host-install",
+      "path": "/self-host/install",
+      "canonical_url": "https://docs.mobazha.org/self-host/install",
+      "title": "Install a Mobazha Node",
+      "summary": "Build the release candidate from public source, start it locally, and verify the UI and health boundary before exposing it.",
+      "status": "beta",
+      "audiences": [
+        "operators",
+        "developers"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha/mobazha#quick-start",
+      "source_label": "Mobazha Node quick start",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "self-host-configure",
+      "path": "/self-host/configure",
+      "canonical_url": "https://docs.mobazha.org/self-host/configure",
+      "title": "Configure a self-hosted node",
+      "summary": "Make deployment mode, data location, network exposure, payments, and external dependencies explicit and recoverable.",
+      "status": "beta",
+      "audiences": [
+        "operators"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha/mobazha",
+      "source_label": "Mobazha Node command and deployment sources",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "self-host-backup-and-upgrade",
+      "path": "/self-host/backup-and-upgrade",
+      "canonical_url": "https://docs.mobazha.org/self-host/backup-and-upgrade",
+      "title": "Back up and upgrade safely",
+      "summary": "Treat upgrade readiness as a recoverability exercise, not only a package update.",
+      "status": "beta",
+      "audiences": [
+        "operators"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
+      "source_label": "Mobazha operations guidance",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "self-host-security",
+      "path": "/self-host/security",
+      "canonical_url": "https://docs.mobazha.org/self-host/security",
+      "title": "Secure a self-hosted node",
+      "summary": "Protect the host, administrative boundary, signing material, payment integrations, backups, and recovery path as one system.",
+      "status": "beta",
+      "audiences": [
+        "operators",
+        "security reviewers"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha/mobazha/blob/main/SECURITY.md",
+      "source_label": "Mobazha security policy and extension security model",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "self-host-troubleshooting",
+      "path": "/self-host/troubleshooting",
+      "canonical_url": "https://docs.mobazha.org/self-host/troubleshooting",
+      "title": "Troubleshoot a Mobazha Node",
+      "summary": "Diagnose version, process, health, capability, configuration, and dependency failures without exposing sensitive data.",
+      "status": "beta",
+      "audiences": [
+        "operators",
+        "support"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha/mobazha#operations",
+      "source_label": "Mobazha Node operations commands",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "self-host-bind-account",
+      "path": "/self-host/bind-account",
+      "canonical_url": "https://docs.mobazha.org/self-host/bind-account",
+      "title": "Connect optional hosted capabilities",
+      "summary": "Keep local node ownership separate from any optional account or hosted service connection.",
+      "status": "draft",
+      "audiences": [
+        "operators"
+      ],
+      "applies_to": "Design direction; not a shipped guarantee",
+      "source": "https://github.com/mobazha/mobazha/blob/main/README.md",
+      "source_label": "Mobazha public release boundary",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "build",
+      "path": "/build",
+      "canonical_url": "https://docs.mobazha.org/build",
+      "title": "Build on advertised capabilities",
+      "summary": "Integrations should discover what a backend supports instead of assuming every Mobazha deployment exposes the same surface.",
+      "status": "beta",
+      "audiences": [
+        "developers",
+        "agent builders"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha",
+      "source_label": "Mobazha public source organization",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "build-runtime-capabilities",
+      "path": "/build/runtime-capabilities",
+      "canonical_url": "https://docs.mobazha.org/build/runtime-capabilities",
+      "title": "Runtime capabilities and product composition",
+      "summary": "Discover effective behavior from the connected backend and keep deployment, experience, capabilities, permissions, and experiments separate.",
+      "status": "beta",
+      "audiences": [
+        "developers",
+        "agent builders",
+        "operators"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md",
+      "source_label": "Mobazha compatibility and Unified runtime contracts",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "build-api",
+      "path": "/build/api",
+      "canonical_url": "https://docs.mobazha.org/build/api",
+      "title": "HTTP API and OpenAPI",
+      "summary": "Use the generated Mobazha Node OpenAPI contract as the operation and schema reference, then verify runtime capabilities before calling optional features.",
+      "status": "beta",
+      "audiences": [
+        "developers"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json",
+      "source_label": "Generated Mobazha Node OpenAPI contract",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "build-websocket",
+      "path": "/build/websocket",
+      "canonical_url": "https://docs.mobazha.org/build/websocket",
+      "title": "WebSocket events",
+      "summary": "Use authenticated WebSocket events for timely UI updates, then reconcile important state through the authoritative HTTP API.",
+      "status": "beta",
+      "audiences": [
+        "developers",
+        "client maintainers"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha/mobazha/blob/main/internal/api/ws.go",
+      "source_label": "Mobazha WebSocket gateway and event registry",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "build-mcp",
+      "path": "/build/mcp",
+      "canonical_url": "https://docs.mobazha.org/build/mcp",
+      "title": "MCP and agent integrations",
+      "summary": "Agents can discover and invoke permitted commerce capabilities, but cannot replace user consent, policy, or backend authorization.",
+      "status": "beta",
+      "audiences": [
+        "agent builders",
+        "security reviewers"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha/mobazha/tree/main/pkg/mcp",
+      "source_label": "Mobazha agent-capability sources",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "build-webhooks",
+      "path": "/build/webhooks",
+      "canonical_url": "https://docs.mobazha.org/build/webhooks",
+      "title": "Webhook integration contract",
+      "summary": "Design consumers for authentication, retries, duplication, reordering, and version change before depending on event delivery.",
+      "status": "beta",
+      "audiences": [
+        "developers",
+        "operators"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha/mobazha/tree/main/pkg/webhook",
+      "source_label": "Mobazha webhook engine and OpenAPI contract",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "build-extensions",
+      "path": "/build/extensions",
+      "canonical_url": "https://docs.mobazha.org/build/extensions",
+      "title": "Extend Mobazha through public contracts",
+      "summary": "Choose the narrowest typed extension mechanism and preserve Core authority, capability gates, isolation, recovery, and audit.",
+      "status": "draft",
+      "audiences": [
+        "extension developers",
+        "architects",
+        "security reviewers"
+      ],
+      "applies_to": "Design direction; not a shipped guarantee",
+      "source": "https://github.com/mobazha/mobazha/tree/main/docs/extensions",
+      "source_label": "Mobazha Open Core extension contracts",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "reference",
+      "path": "/reference",
+      "canonical_url": "https://docs.mobazha.org/reference",
+      "title": "Reference and source map",
+      "summary": "Find the repository that owns a fact before proposing or automating a change.",
+      "status": "current",
+      "audiences": [
+        "developers",
+        "contributors",
+        "agents"
+      ],
+      "applies_to": "Current public project policy or service surface",
+      "source": "https://github.com/mobazha",
+      "source_label": "Mobazha GitHub organization",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "project",
+      "path": "/project",
+      "canonical_url": "https://docs.mobazha.org/project",
+      "title": "Understand the Mobazha project",
+      "summary": "Separate what ships now from project principles, reviewed policy, historical proposals, and long-term direction.",
+      "status": "current",
+      "audiences": [
+        "everyone",
+        "contributors",
+        "evaluators"
+      ],
+      "applies_to": "Current public project policy or service surface",
+      "source": "https://github.com/mobazha/mobazha/tree/main/docs/project",
+      "source_label": "Mobazha public project documents",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "project-architecture",
+      "path": "/project/architecture",
+      "canonical_url": "https://docs.mobazha.org/project/architecture",
+      "title": "Architecture and trust boundaries",
+      "summary": "Mobazha separates user clients, independently operated backends, optional hosted services, and external payment or delivery systems.",
+      "status": "beta",
+      "audiences": [
+        "operators",
+        "developers",
+        "evaluators"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha",
+      "source_label": "Mobazha public repositories",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "project-whitepaper",
+      "path": "/project/whitepaper",
+      "canonical_url": "https://docs.mobazha.org/project/whitepaper",
+      "title": "Founding whitepaper",
+      "summary": "A public-review account of Mobazha's problem framing, trust model, human-and-Agent interfaces, and approach to sustainable open commerce.",
+      "status": "draft",
+      "audiences": [
+        "community",
+        "contributors",
+        "evaluators"
+      ],
+      "applies_to": "Design direction; not a shipped guarantee",
+      "source": "docs-curation",
+      "source_label": "Public-review edition prepared for the Mobazha project",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "project-fees",
+      "path": "/project/fees",
+      "canonical_url": "https://docs.mobazha.org/project/fees",
+      "title": "Fees and sustainable economics",
+      "summary": "Mobazha does not define one unavoidable commission for every transaction. Each actual charge must identify its owner, purpose, basis, and point of consent.",
+      "status": "current",
+      "audiences": [
+        "buyers",
+        "sellers",
+        "operators",
+        "evaluators",
+        "agents"
+      ],
+      "applies_to": "Current public project policy or service surface",
+      "source": "https://github.com/mobazha/mobazha/blob/main/docs/project/FEES_AND_PAID_SERVICES.md",
+      "source_label": "Fees and Paid Services policy",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "project-security",
+      "path": "/project/security",
+      "canonical_url": "https://docs.mobazha.org/project/security",
+      "title": "Project security model",
+      "summary": "Security depends on explicit authority, fail-closed capabilities, protected signing material, hostile-input assumptions, and private disclosure.",
+      "status": "beta",
+      "audiences": [
+        "operators",
+        "developers",
+        "security reviewers",
+        "evaluators"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha/mobazha/blob/main/SECURITY.md",
+      "source_label": "Mobazha public security sources",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "project-legal-and-privacy",
+      "path": "/project/legal-and-privacy",
+      "canonical_url": "https://docs.mobazha.org/project/legal-and-privacy",
+      "title": "Legal, privacy, license, and trademark boundaries",
+      "summary": "Separate software licenses, hosted-service terms, privacy commitments, third-party obligations, and trademark rights.",
+      "status": "current",
+      "audiences": [
+        "users",
+        "operators",
+        "contributors",
+        "evaluators"
+      ],
+      "applies_to": "Current public project policy or service surface",
+      "source": "https://mobazha.org/terms",
+      "source_label": "Mobazha public policies and repository notices",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "project-release-scope",
+      "path": "/project/release-scope",
+      "canonical_url": "https://docs.mobazha.org/project/release-scope",
+      "title": "Release scope and maturity",
+      "summary": "The documentation distinguishes current release-candidate behavior from previews and future design.",
+      "status": "beta",
+      "audiences": [
+        "everyone"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
+      "source_label": "Mobazha releases and repository documentation",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "project-governance",
+      "path": "/project/governance",
+      "canonical_url": "https://docs.mobazha.org/project/governance",
+      "title": "Documentation and policy governance",
+      "summary": "Important project claims need an owner, source, review date, status, and visible change path.",
+      "status": "draft",
+      "audiences": [
+        "contributors",
+        "maintainers",
+        "agents"
+      ],
+      "applies_to": "Design direction; not a shipped guarantee",
+      "source": "https://github.com/mobazha/mobazha/blob/main/GOVERNANCE.md",
+      "source_label": "Mobazha public governance and documentation policy",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "releases",
+      "path": "/releases",
+      "canonical_url": "https://docs.mobazha.org/releases",
+      "title": "Releases",
+      "summary": "Use repository releases for exact versions, migration notes, checksums, and known issues.",
+      "status": "current",
+      "audiences": [
+        "operators",
+        "developers"
+      ],
+      "applies_to": "Current public project policy or service surface",
+      "source": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
+      "source_label": "Mobazha GitHub releases",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "contribute",
+      "path": "/contribute",
+      "canonical_url": "https://docs.mobazha.org/contribute",
+      "title": "Contribute to Mobazha",
+      "summary": "Choose the owning repository, agree on large changes early, preserve public contracts, add tests, update documentation, and sign off commits.",
+      "status": "current",
+      "audiences": [
+        "contributors",
+        "maintainers",
+        "agents"
+      ],
+      "applies_to": "Current public project policy or service surface",
+      "source": "https://github.com/mobazha/mobazha/blob/main/CONTRIBUTING.md",
+      "source_label": "Mobazha contribution and governance policies",
+      "reviewed": "2026-07-04"
+    },
+    {
+      "id": "support",
+      "path": "/support",
+      "canonical_url": "https://docs.mobazha.org/support",
+      "title": "Get help and report problems",
+      "summary": "Use public support for reproducible product questions, repository issues for defects, and private reporting for security problems.",
+      "status": "current",
+      "audiences": [
+        "everyone"
+      ],
+      "applies_to": "Current public project policy or service surface",
+      "source": "https://mobazha.org/status",
+      "source_label": "Mobazha public support surfaces",
+      "reviewed": "2026-07-04"
+    }
   ]
 }

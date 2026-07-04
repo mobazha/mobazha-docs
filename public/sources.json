@@ -1,27 +1,51 @@
 {
-  "$schema": "./sources.schema.json",
+  "$schema": "https://docs.mobazha.org/sources.schema.json",
   "reviewed": "2026-07-04",
   "policy": "Only reviewed public material from these owners may be curated into the public site.",
   "sources": [
     {
       "id": "community-backend",
       "repository": "https://github.com/mobazha/mobazha/tree/main",
-      "owns": ["backend", "deployment", "OpenAPI", "MCP", "webhooks", "extensions", "release notes", "public project policy"]
+      "owns": [
+        "backend",
+        "deployment",
+        "OpenAPI",
+        "MCP",
+        "webhooks",
+        "extensions",
+        "release notes",
+        "public project policy"
+      ]
     },
     {
       "id": "public-client",
       "repository": "https://github.com/mobazha/mobazha-unified/tree/main",
-      "owns": ["buyer and seller experience", "frontend development", "runtime capability client behavior", "client release notes"]
+      "owns": [
+        "buyer and seller experience",
+        "frontend development",
+        "runtime capability client behavior",
+        "client release notes"
+      ]
     },
     {
       "id": "public-website",
       "repository": "https://github.com/mobazha/mobazha.org",
-      "owns": ["public positioning", "current pricing", "hosted-service status", "legal and privacy policies", "website navigation"]
+      "owns": [
+        "public positioning",
+        "current pricing",
+        "hosted-service status",
+        "legal and privacy policies",
+        "website navigation"
+      ]
     },
     {
       "id": "docs-curation",
       "repository": "this repository",
-      "owns": ["information architecture", "derived guidance", "machine-readable discovery"]
+      "owns": [
+        "information architecture",
+        "derived guidance",
+        "machine-readable discovery"
+      ]
     }
   ],
   "denied": [

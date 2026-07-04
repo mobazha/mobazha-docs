@@ -1,11 +1,16 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "name": "Mobazha Documentation",
   "canonical_base_url": "https://docs.mobazha.org",
+  "canonical_language": "en",
   "human_start": "/start",
+  "agent_start": "/agents",
   "llms": "/llms.txt",
   "llms_full": "/llms-full.txt",
   "index": "/docs-index.json",
-  "source_policy": "https://github.com/mobazha",
-  "status": "beta"
+  "sources": "/sources.json",
+  "openapi": "/openapi.json",
+  "sitemap": "/sitemap.xml",
+  "status": "beta",
+  "reviewed": "2026-07-04"
 }
