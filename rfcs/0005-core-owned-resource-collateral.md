@@ -395,8 +395,12 @@ the durable Messenger. Seller Core derives the audience from the authenticated
 remote peer, persists the signed response before ACKing the request, and the
 buyer imports before ACKing the response. Existing local delivery, libp2p,
 store-and-forward retry, ACK, and duplicate-message records carry the exchange.
-Operational refresh scheduling and Docker E2E remain required before runtime
-activation.
+Buyer Core persists a per-order/extension refresh cursor, throttles repeated
+requests for two minutes, and asks for a replacement when the current
+credential enters its final five minutes. The shared typed scheduler drives
+the worker in standalone and Hosting modes without per-tenant tickers; a new
+credential advances the cursor atomically with import. Docker E2E remains
+required before runtime activation.
 
 The existing Solana Anchor and EVM Safe implementations were reviewed for C2.
 Both are order-scoped settlement adapters: they require persisted order escrow
