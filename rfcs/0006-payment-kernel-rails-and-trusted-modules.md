@@ -113,7 +113,7 @@ describes tenant- or store-scoped configuration. A distribution profile
 describes composition policy. These are different roles and must remain
 different types.
 
-This separation aligns with [RFC-0004](./0004-core-owned-resource-collateral.md):
+This separation aligns with [RFC-0005](./0005-core-owned-resource-collateral.md):
 the collateral aggregate may request supported external funding, release, or
 slash execution, but the payment kernel never absorbs collateral state and an
 order settlement record never stands in for collateral.

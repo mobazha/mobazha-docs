@@ -3595,8 +3595,8 @@
                 "description": "Draft; separates deployment, experience, channel, code inclusion, and effective capability so public and private distributions can assemble coherent products without product-name branching."
               },
               {
-                "label": "RFC-0004: Core-owned Resource Collateral Lifecycle",
-                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0004-core-owned-resource-collateral.md",
+                "label": "RFC-0005: Core-owned Resource Collateral Lifecycle",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0005-core-owned-resource-collateral.md",
                 "description": "Draft; proposes a separate Core-owned collateral aggregate without merging collateral into Order Extension or order settlement state."
               },
               {

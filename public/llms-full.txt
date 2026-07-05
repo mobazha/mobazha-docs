@@ -2348,7 +2348,7 @@ RFC-0002: Composable Extension Platform Model
 Draft; separates domain, contract role, runtime, trust, lifecycle, and packaging while defining the target multi-runtime platform.
 RFC-0003: Composable Frontend Product Model
 Draft; separates deployment, experience, channel, code inclusion, and effective capability so public and private distributions can assemble coherent products without product-name branching.
-RFC-0004: Core-owned Resource Collateral Lifecycle
+RFC-0005: Core-owned Resource Collateral Lifecycle
 Draft; proposes a separate Core-owned collateral aggregate without merging collateral into Order Extension or order settlement state.
 RFC-0006: Payment Kernel, Rails, and Trusted Distribution Modules
 Draft; proposes typed payment rails, reviewed module composition, contribution-level routing, and durable payment recovery boundaries.

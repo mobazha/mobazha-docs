@@ -371,6 +371,27 @@ atomic allocation/binding, idempotent retry, policy mismatch denial, remaining
 available coverage, and immediate re-admission. This command does not solve
 buyer/seller transport and is not exposed as a public runtime capability.
 
+The Core credential substrate for cross-tenant transport is implemented but no
+network carrier is activated. Seller Core can issue an Ed25519-signed,
+buyer-audience-bound allocation credential only after reloading the vendor
+order copy, deriving the buyer from the signed `OrderOpen`, and re-admitting the
+live local allocation and account. The credential binds allocation and account
+revisions, the extension revision and deterministic content digest, provider,
+resource, principal, asset, amount, policy, policy version, issuer PeerID/public
+key, buyer PeerID, account expiry, and a maximum 15-minute validity window. Signing occurs outside database
+transactions; Core rechecks the allocation before append-only persistence.
+
+Buyer Core verifies that the public key derives the claimed seller PeerID,
+checks signature, audience, freshness, account expiry, exact extension and
+requirement bindings, and stores the credential as imported evidence rather
+than copying a seller allocation into the buyer tenant. Payment provisioning
+can admit this external credential when no buyer-local allocation exists and
+revalidates it on every new funding-target attempt. Tests cover signed issue,
+refresh, idempotent import, wrong audience, expiry, tampering, buyer-side
+payment admission, and policy/account binding. A co-tenant or P2P request and
+response carrier, delivery retry/acknowledgement, operational refresh, and
+Docker E2E remain required before runtime activation.
+
 The existing Solana Anchor and EVM Safe implementations were reviewed for C2.
 Both are order-scoped settlement adapters: they require persisted order escrow
 data and define confirm/cancel/dispute outputs as seller payout, buyer refund,
