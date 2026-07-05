@@ -275,7 +275,7 @@ transactional compare-and-swap writes, tenant/resource/principal bindings,
 attestation and execution replay fingerprints, and an expected Core
 order-state version.
 
-The provider-neutral C2 execution substrate is also implemented. Core persists
+The provider-neutral C2 execution substrate is implemented. Core persists
 immutable funding-target and release/slash intents before external I/O, binds
 them to a rail identity and version, repeats submission only through the
 rail's create-or-retrieve idempotency contract, keeps ambiguous results
@@ -283,13 +283,30 @@ pending, and atomically applies receipt-verified reconciliation results to the
 collateral aggregate. Conformance tests cover confirmed funding, ambiguous
 release recovery, confirmed slash, terminal replay, persistence before
 external calls, and process-restart recovery for incomplete target creation
-and execution submission.
+and execution submission. Reconciliation receives the complete persisted
+request rather than an action identifier alone; funding targets retain the
+Core-resolved principal destination, tenant, and idempotency identity for
+binding checks and remain observable after their funding deadline.
 
-This evidence does not activate collateral. No concrete payment adapter or
-vault currently satisfies and registers the complete collateral rail
-descriptor, no Order Extension v2 allocation reference is admitted, and no
-Hosting or client API may present a declared guarantee as funded protection.
-The concrete C2 rail deployment and C3 through C5 remain open.
+The first concrete C2 source slice is also implemented but is not activated.
+`bsc-smart-contracts/contracts/collateral/CollateralVault.sol` defines a
+dedicated, single-ERC-20 vault with principal-funded obligations, role-gated
+release and slash, replay-safe action digests, pause control, strict token
+balance-delta checks, and surplus-only recovery. Open Core's
+`internal/collateral/evmvault` package binds version `1.0.0`, chain, token,
+vault, operator, deployment start block, confirmations, calldata, canonical
+receipt logs, and the complete Core request identity. Contract tests cover
+obligation conflicts, funding, expiry, release, partial slash, pause, surplus,
+replay, and unsupported fee-on-transfer behavior; Node tests cover immutable
+target and execution bindings, expiry reconciliation, digest compatibility,
+receipt-log integrity, and residual collateral invariants.
+
+This source and test evidence still does not activate collateral. There is no
+approved network/token choice, deployed vault address and deployment record,
+operator key runbook, effective capability registration, tagged release, or
+runtime evidence. No Order Extension v2 allocation reference is admitted, and
+no Hosting or client API may present a declared guarantee as funded
+protection. C2 deployment/operations evidence and C3 through C5 remain open.
 
 The existing Solana Anchor and EVM Safe implementations were reviewed for C2.
 Both are order-scoped settlement adapters: they require persisted order escrow
@@ -298,8 +315,10 @@ or order dispute release. They cannot be reused as collateral rails. Open Core
 now defines a separate `collateral.Rail` capability whose v1 descriptor fails
 closed unless funding target creation, receipt-verified funding observation,
 principal release, claim slash, status reconciliation, and receipt
-verification are all supported. No provider currently satisfies that
-descriptor; the first vault implementation and asset remain an open C2 choice.
+verification are all supported. The dedicated EVM vault adapter implements
+that source contract, but it is deliberately absent from runtime registration
+until a reviewed deployment and asset configuration can satisfy the same
+descriptor in the effective backend capability set.
 
 Rollback blocks new accounts and allocations while continuing to reconcile and
 service persisted obligations. No rollback may rewrite funded history or drop
@@ -324,7 +343,8 @@ pending release, slash, or claim work.
 
 ## Open questions
 
-- Which initial rail and asset provide the smallest auditable C2 slice?
+- Which EVM network and ERC-20 asset provide the smallest auditable first C2
+  deployment, and which operator/custodian owns its keys and accounting?
 - Which Core dispute decisions can authorize a claim, and which require an
   external adjudication attestation?
 - Does one source deposit need multiple collateral accounts for policy or
