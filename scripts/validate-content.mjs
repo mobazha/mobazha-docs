@@ -150,7 +150,10 @@ for (const doc of docs) {
     if (canonical && canonical.journey !== doc.journey) fail(`translation journey mismatch on /${doc.slug}`);
     if (canonical && canonical.featuredVisual !== doc.featuredVisual) fail(`translation featured visual mismatch on /${doc.slug}`);
     const canonicalPath = `/${doc.translationOf}`;
-    const linksCanonical = documentLinks(doc).includes(canonicalPath);
+    const canonicalLinkPaths = new Set([canonicalPath]);
+    if (canonicalPath === "/start") canonicalLinkPaths.add("/");
+    if (canonicalPath === "/zh/start") canonicalLinkPaths.add("/zh");
+    const linksCanonical = documentLinks(doc).some((link) => canonicalLinkPaths.has(link));
     if (!linksCanonical) fail(`Chinese document /${doc.slug} does not link to ${canonicalPath}`);
   }
 

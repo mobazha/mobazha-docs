@@ -9,6 +9,7 @@ type SearchDocument = {
   path: string;
   title: string;
   summary: string;
+  search_text?: string;
   status: string;
   audiences: string[];
   language: "en" | "zh-CN";
@@ -64,7 +65,7 @@ export function DocsSearch({
       .map((doc) => {
         const title = doc.title.toLowerCase();
         const path = doc.path.toLowerCase();
-        const haystack = `${title} ${doc.summary} ${doc.audiences.join(" ")}`.toLowerCase();
+        const haystack = `${title} ${doc.summary} ${doc.search_text ?? ""} ${doc.audiences.join(" ")}`.toLowerCase();
         const score = title.startsWith(normalized) ? 3 : path.includes(normalized) ? 2 : haystack.includes(normalized) ? 1 : 0;
         return { doc, score };
       })

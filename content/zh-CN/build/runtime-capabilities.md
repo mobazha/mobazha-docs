@@ -50,7 +50,7 @@ primaryAction:
 
 ## 当前前端组合切片
 
-Unified 当前主分支已经实现纯函数式前端特性解析器。解析器同时读取经过校验的 Runtime Config、就绪状态、展示渠道、店铺请求上下文、受支持产品档案矩阵，以及构建产物中实际包含的特性，返回 `pending`、`ready` 或 `invalid`、启用和排除的特性 ID，以及结构化诊断。
+无框架依赖的解析内核通过 `@mobazha/commerce-kit/composition` 发布。它接收宿主拥有的产品档案、就绪状态、受支持档案矩阵、构建内特性目录，以及 capability 和 policy 判断函数。Unified 只负责把经过校验的 Runtime Config、展示渠道和店铺请求上下文适配到该内核。内核返回 `pending`、`ready` 或 `invalid`、启用和排除的特性 ID，以及结构化诊断；路由、Provider、授权和最终物化仍由各应用拥有。
 
 首批接入统一解析结果的特性是：
 
@@ -64,7 +64,7 @@ Unified 当前主分支已经实现纯函数式前端特性解析器。解析器
 
 购物车摘要是下一个实际验证切片。共享摘要内容统一商品数量、总额、结账禁用状态、结账操作和可选宿主渲染。Unified 在抽屉、桌面卖家分组底栏、多卖家总额和移动固定栏中使用它；卖家分组、登录或注册路由、币种显示、渠道专用操作、购物车存储和结账导航仍由宿主负责。
 
-解析器目前仍只投影路由与导航的特性资格。单个商品或购物车的政策不是全局能力；产品操作和购物车摘要 API 在第二个独立应用验证相同边界前仍属于临时 `0.x` 契约。通用 Provider、工作流与操作贡献、浏览器扩展外壳接入、动态插件、远程 UI 和万能产品清单都不是当前公开契约。
+当前应用仍只把解析后的特性资格投影到路由与导航。单个商品或购物车的政策不是全局能力；产品操作和购物车摘要 API 在第二个独立应用验证相同边界前仍属于临时 `0.x` 契约。通用 Provider、工作流与操作贡献、浏览器扩展外壳接入、动态插件、远程 UI 和万能产品清单都不是当前公开契约。
 
 一个下游自主发行也已经使用完整 runtime profile 与后端能力快照校验其构建内 catalog。本地 UI policy 可以隐藏已编入构建的特性，但后端能力缺失时不能暴露对应路由或导航。发行本地源码和产品词汇继续留在公共前端之外。
 
@@ -72,5 +72,6 @@ Unified 当前主分支已经实现纯函数式前端特性解析器。解析器
 
 - [兼容性政策](/project/compatibility)
 - [Unified 运行时配置代码](https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config)
+- [Commerce Kit 组合解析内核](https://github.com/mobazha/mobazha-unified/blob/main/packages/commerce-kit/src/composition.ts)
 - [前端产品组合实现说明](https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/FRONTEND_PRODUCT_COMPOSITION.md)
 - [English canonical page](/build/runtime-capabilities)

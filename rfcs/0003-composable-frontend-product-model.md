@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha architecture and documentation maintainers
 - Created: 2026-07-04
-- Updated: 2026-07-04
+- Updated: 2026-07-05
 - Decision owners: Mobazha Unified, distribution, and documentation maintainers
 - Affected surfaces: Unified, frontend distributions, Commerce Kit, embedded clients, docs
 - Supersedes: None
@@ -64,11 +64,21 @@ the capabilities that a backend and distribution make available.
 
 ## Implementation status
 
-Unified now contains the first implementation slice proposed by this RFC. A
-pure resolver accepts validated Runtime Config, readiness, presentation
-channel, storefront context, supported profiles, and the build-included
-feature catalog. It returns `pending`, `ready`, or `invalid`, enabled and
-excluded feature IDs, and structured diagnostics.
+The first implementation slice now uses one public, framework-neutral resolver
+kernel from `@mobazha/commerce-kit/composition`. The kernel accepts a product
+profile, supported-profile list, build-included feature catalog, capability and
+host-policy predicates, and runtime readiness. It returns `pending`, `ready`,
+or `invalid`, enabled and excluded feature IDs, and structured diagnostics. It
+does not import React, a router, application state, browser APIs, Runtime Config,
+or a private product vocabulary.
+
+Unified adapts validated Runtime Config and storefront context to this kernel.
+A downstream sovereign distribution adapts its own runtime configuration and
+build-local catalog to the same kernel. Each application still owns its product
+profiles, catalog construction, router and navigation materialization, provider
+graph, authorization rendering, and action execution. This avoids both a second
+resolver implementation and a new `@mobazha/frontend-composition` package whose
+scope would overlap the host application kernel.
 
 Guest Checkout, marketplace-operator, and marketplace-seller-review route and
 navigation boundaries consume this resolved result. The implementation proves
@@ -221,10 +231,12 @@ Public feature packages may contribute typed descriptors, workflows, ports,
 policies, and surfaces. They do not own the complete application shell or read
 application globals to infer product identity.
 
-`@mobazha/commerce-kit` is one public feature-catalog provider. It is not the
-product composer, router, provider graph, design system, or complete frontend.
-Generic visual foundations remain in `@mobazha/ui`; Unified-specific API,
-state, and provider implementation remain internal to Unified.
+`@mobazha/commerce-kit` is a public feature-catalog provider and exposes the
+small pure resolver kernel through its `composition` subpath. It is not the
+application-level product composer, router, provider graph, design system, or
+complete frontend. Generic visual foundations remain in `@mobazha/ui`;
+Unified-specific API, state, adapters, and provider implementation remain
+internal to Unified.
 
 ### 6. Resolve one coherent frontend product
 
@@ -249,9 +261,12 @@ resolved routes, navigation, providers, workflows, and actions
 structured diagnostics for every excluded or conflicting feature
 ```
 
-The exact TypeScript API is not frozen by this RFC. It should be extracted
-from current Runtime Config and Commerce Kit behavior, then validated by real
-product slices before becoming a public contract.
+The current TypeScript kernel is intentionally smaller than the conceptual
+output above: it resolves feature IDs and structured diagnostics, after which
+each host projects the enabled catalog entries into routes, navigation, and
+other application structures. Provider, workflow, and action contribution
+contracts are not implied by this initial API. Compatibility should be frozen
+only after additional product slices validate those boundaries.
 
 ### 7. Fail closed and make invalid composition observable
 
@@ -382,6 +397,8 @@ turning source presence into a release commitment.
    changing current runtime behavior.
 3. Introduce a pure composition resolver around existing Runtime Config and
    feature descriptors, returning structured pending/ready/invalid diagnostics.
+   Keep it as the `@mobazha/commerce-kit/composition` subpath unless evidence
+   shows that it must be released independently from Commerce Kit.
 4. Move route, navigation, provider, and action projection onto the same
    resolved result one vertical slice at a time.
 5. Validate Guest Checkout, marketplace handoff, and a private sovereign
@@ -416,6 +433,8 @@ capability absent from the authoritative backend snapshot.
 - Which small administration primitive should become the next shared slice?
 - Which additional deployment, experience, and channel combinations have
   enough product evidence to join the current supported profile matrix?
+- What concrete independent release or consumer requirement, if any, would
+  justify extracting the pure kernel from Commerce Kit into its own package?
 - Which second provider implementation would justify replacing the current
   static host-owned provider graph with a contribution contract?
 - When should the implementation diagnostic fields receive a public schema and

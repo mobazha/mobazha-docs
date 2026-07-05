@@ -50,11 +50,14 @@ distribution allowlist
 
 ## Current frontend composition slice
 
-The current Unified main branch implements a pure frontend feature resolver
-over the validated Runtime Config, its readiness state, the presentation
-channel, storefront request context, a supported-profile matrix, and the
-features physically included in the build. It returns `pending`, `ready`, or
-`invalid`, enabled and excluded feature IDs, and structured diagnostics.
+The framework-neutral resolver kernel is published through
+`@mobazha/commerce-kit/composition`. It accepts a host-owned product profile,
+readiness, supported-profile matrix, build-included feature catalog, and
+capability and policy predicates. Unified adapts validated Runtime Config,
+presentation channel, and storefront request context to that kernel. The
+kernel returns `pending`, `ready`, or `invalid`, enabled and excluded feature
+IDs, and structured diagnostics; applications still own routing, providers,
+authorization, and final materialization.
 
 The first resolved feature slices are:
 
@@ -83,8 +86,8 @@ multi-seller total, and mobile fixed bar while seller grouping, authentication
 and registration routing, currency display, channel-native calls to action,
 cart storage, and checkout navigation remain host-owned.
 
-The resolver still projects feature eligibility only for routes and
-navigation. Entity-scoped product policy is not a global capability, and the
+The current application projections still use resolved feature eligibility
+only for routes and navigation. Entity-scoped product policy is not a global capability, and the
 product-action and cart-summary APIs remain provisional until a second
 independent application proves the same boundaries. Generic provider,
 workflow, and action contribution,
@@ -106,4 +109,5 @@ outside the public frontend.
 
 - [Compatibility policy](/project/compatibility)
 - [Unified runtime configuration code](https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config)
+- [Commerce Kit composition kernel](https://github.com/mobazha/mobazha-unified/blob/main/packages/commerce-kit/src/composition.ts)
 - [Frontend product composition implementation](https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/FRONTEND_PRODUCT_COMPOSITION.md)

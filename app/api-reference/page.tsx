@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ApiReference } from "@/app/components/ApiReference";
 import { SiteHeader } from "@/app/components/DocsShell";
-import metadata from "@/app/lib/generated-openapi-metadata.json";
+import openapiMetadata from "@/app/lib/generated-openapi-metadata.json";
 
 export const metadata: Metadata = {
   title: "Mobazha Node API Reference",
@@ -24,10 +24,10 @@ export default function ApiReferencePage() {
           </p>
         </div>
         <dl aria-label="API contract metadata">
-          <div><dt>API contract</dt><dd>{metadata.apiVersion}</dd></div>
-          <div><dt>OpenAPI</dt><dd>{metadata.openapiVersion}</dd></div>
-          <div><dt>Reviewed source</dt><dd><a href={metadata.sourceUrl}>{metadata.shortRevision} ↗</a></dd></div>
-          <div><dt>Coverage</dt><dd>{metadata.operationCount} operations</dd></div>
+          <div><dt>API contract</dt><dd>{openapiMetadata.apiVersion}</dd></div>
+          <div><dt>OpenAPI</dt><dd>{openapiMetadata.openapiVersion}</dd></div>
+          <div><dt>Reviewed source</dt><dd><a href={openapiMetadata.sourceUrl}>{openapiMetadata.shortRevision} ↗</a></dd></div>
+          <div><dt>Coverage</dt><dd>{openapiMetadata.operationCount} operations</dd></div>
         </dl>
         <aside>
           <b>Read-only reference</b>
@@ -36,7 +36,7 @@ export default function ApiReferencePage() {
         </aside>
       </header>
       <section id="api-reference" className="api-reference-surface" aria-label="OpenAPI reference">
-        <ApiReference specificationUrl={metadata.publicPath} />
+        <ApiReference key={openapiMetadata.publicPath} specificationUrl={openapiMetadata.publicPath} />
       </section>
     </main>
   );

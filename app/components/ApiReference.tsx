@@ -1,7 +1,17 @@
 "use client";
 
-import { lazy, Suspense, useMemo, useSyncExternalStore } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import type { AnyApiReferenceConfiguration } from "@scalar/api-reference-react";
+
+type OpenApiDocument = Record<string, unknown> & {
+  info?: { title?: string; version?: string };
+};
+
+type OpenApiLoadState = {
+  url: string;
+  specification: OpenApiDocument | null;
+  error: string | null;
+};
 
 const ScalarApiReference = lazy(() => import("@scalar/api-reference-react")
   .then((module) => ({ default: module.ApiReferenceReact })));
@@ -29,11 +39,12 @@ const customCss = `
 .t-doc__header { display: none; }
 `;
 
-export function ApiReference({ specificationUrl }: { specificationUrl: string }) {
-  const configuration = useMemo<AnyApiReferenceConfiguration>(() => ({
-    url: specificationUrl,
-    title: "Mobazha Node API",
+function buildConfiguration(specification: OpenApiDocument): AnyApiReferenceConfiguration {
+  return {
+    content: specification,
+    title: specification.info?.title ?? "Mobazha Node API",
     slug: "mobazha-node-api",
+    default: true,
     layout: "modern",
     theme: "default",
     customCss,
@@ -56,7 +67,42 @@ export function ApiReference({ specificationUrl }: { specificationUrl: string })
     orderRequiredPropertiesFirst: true,
     withDefaultFonts: false,
     servers: [{ url: "http://127.0.0.1:5102", description: "Local Node — replace with the Node you operate or trust" }],
-  }), [specificationUrl]);
+  };
+}
+
+export function ApiReference({ specificationUrl }: { specificationUrl: string }) {
+  const [loadState, setLoadState] = useState<OpenApiLoadState | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetch(specificationUrl, { signal: controller.signal })
+      .then((response) => (response.ok ? response.json() : Promise.reject(new Error("OpenAPI contract unavailable"))))
+      .then((document: OpenApiDocument) => {
+        setLoadState({ url: specificationUrl, specification: document, error: null });
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        setLoadState({
+          url: specificationUrl,
+          specification: null,
+          error: error instanceof Error ? error.message : "OpenAPI contract unavailable",
+        });
+      });
+
+    return () => {
+      controller.abort();
+    };
+  }, [specificationUrl]);
+
+  const currentLoad = loadState?.url === specificationUrl ? loadState : null;
+  const specification = currentLoad?.specification ?? null;
+  const loadError = currentLoad?.error ?? null;
+
+  const configuration = useMemo(
+    () => (specification ? buildConfiguration(specification) : null),
+    [specification],
+  );
 
   const mounted = useSyncExternalStore(
     () => () => {},
@@ -64,8 +110,12 @@ export function ApiReference({ specificationUrl }: { specificationUrl: string })
     () => false,
   );
 
-  if (!mounted) {
-    return <div className="api-reference-loading" role="status">Loading the reviewed API contract…</div>;
+  if (!mounted || !configuration) {
+    return (
+      <div className="api-reference-loading" role="status">
+        {loadError ?? "Loading the reviewed API contract…"}
+      </div>
+    );
   }
 
   return (

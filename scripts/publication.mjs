@@ -4,6 +4,15 @@ const baseUrl = "https://docs.mobazha.org";
 
 const cleanLine = (value) => value.replace(/\s+/g, " ").trim();
 const xmlEscape = (value) => value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+const redirectOnlyPaths = new Set(["/start", "/zh/start"]);
+
+function searchTextFromDocument(source) {
+  return cleanLine(documentText(source)
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[`#>*_~-]/g, " ")
+    .slice(0, 4000));
+}
 
 export function orderedDocuments(docs, navGroups) {
   const byPath = new Map(docs.map((doc) => [`/${doc.slug}`, doc]));
@@ -47,6 +56,7 @@ export function renderPublication({ docs, navGroups, docApplicability, sources, 
     version: doc.version,
     language: doc.language ?? "en",
     translation_of: doc.translationOf ? `/${doc.translationOf}` : undefined,
+    search_text: searchTextFromDocument(doc),
   }));
 
   const index = {
@@ -155,10 +165,12 @@ allowlist, /agent-evals.json for answer-safety evaluation, /visual-evidence.json
 for governed visual claims and provenance, and /llms.txt for compact navigation.
 `;
 
+  const sitemapRecords = records.filter((doc) => !redirectOnlyPaths.has(doc.path));
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>${baseUrl}/</loc><lastmod>${reviewed}</lastmod></url>
-${records.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc><lastmod>${doc.reviewed}</lastmod></url>`).join("\n")}
+  <url><loc>${baseUrl}/zh</loc><lastmod>${reviewed}</lastmod></url>
+${sitemapRecords.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc><lastmod>${doc.reviewed}</lastmod></url>`).join("\n")}
   <url><loc>${baseUrl}/api-reference</loc><lastmod>${reviewed}</lastmod></url>
 </urlset>
 `;
