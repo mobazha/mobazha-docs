@@ -128,6 +128,12 @@ same route and credential generation; a repeated key with a different intent
 fails closed. This execution record is adapter infrastructure, not a new
 extension authority or a universal lifecycle for every payment rail.
 
+Every synchronous caller and background reconciler must acquire the same
+tenant-scoped compare-and-swap execution lease before provider I/O. Completion
+and retry writes are accepted only from the current lease owner; expired work
+may be reclaimed with the original idempotency key. Operational metrics use
+bounded labels and never expose order, action, account, or credential IDs.
+
 Order resource extensions bind a provider-owned resource or multi-stage domain
 process to an order through versioned declarations and, only when needed,
 reservation, durable delivery, observation, or attestation contracts. They do
