@@ -145,10 +145,11 @@ An extension may not:
 
 Core derives the beneficiary from the affected order, dispute, and accepted
 policy. Every claim binds tenant, collateral, allocation, order, extension,
-issuer, condition version, evidence digest, expected revisions, freshness, and
-idempotency. Evidence is untrusted until Core and the relevant verifier accept
-it. Acceptance authorizes a Core command; it is not itself proof that the
-payment rail completed the slash.
+issuer, condition version, evidence digest, expected collateral and allocation
+revisions, the expected Core order-state version, freshness, and idempotency.
+Evidence is untrusted until Core and the relevant verifier accept it.
+Acceptance authorizes a Core command; it is not itself proof that the payment
+rail completed the slash.
 
 ### 5. Use payment rails without merging state machines
 
@@ -207,6 +208,33 @@ client disclosure, and legal gate are all complete.
 | C3 Order Extension v2 | Core-issued allocation reference and admission gates | Missing/stale/wrong-tenant/wrong-resource negative tests |
 | C4 Collectibles adapter | M2 requirement, allocation, claim evidence, and operator projection | Hosting/Node integration and Docker E2E |
 | C5 product gate | Accurate client language, accounting, runbooks, monitoring, and legal approval | No declaration presented as funded protection; rollback drill |
+
+### Implementation evidence as of 2026-07-05
+
+C0 and the Core-local C1 state-machine slice are implemented. Core now stores
+tenant-scoped accounts, funding-reference claims, allocations, claim evidence,
+execution-reference claims, and append-only actions. The tested transitions
+cover open, confirmed funding, allocation, allocation release, account release
+request/confirmation, claim acceptance, and partial or full slash
+confirmation. They use canonical base-unit amounts, expected revisions,
+transactional compare-and-swap writes, tenant/resource/principal bindings,
+attestation and execution replay fingerprints, and an expected Core
+order-state version.
+
+This evidence does not activate collateral. No payment adapter currently
+submits or reconciles collateral funding/release/slash actions, no Order
+Extension v2 allocation reference is admitted, and no Hosting or client API may
+present a declared guarantee as funded protection. C2 through C5 remain open.
+
+The existing Solana Anchor and EVM Safe implementations were reviewed for C2.
+Both are order-scoped settlement adapters: they require persisted order escrow
+data and define confirm/cancel/dispute outputs as seller payout, buyer refund,
+or order dispute release. They cannot be reused as collateral rails. Open Core
+now defines a separate `collateral.Rail` capability whose v1 descriptor fails
+closed unless funding target creation, receipt-verified funding observation,
+principal release, claim slash, status reconciliation, and receipt
+verification are all supported. No provider currently satisfies that
+descriptor; the first vault implementation and asset remain an open C2 choice.
 
 Rollback blocks new accounts and allocations while continuing to reconcile and
 service persisted obligations. No rollback may rewrite funded history or drop
