@@ -371,15 +371,16 @@ atomic allocation/binding, idempotent retry, policy mismatch denial, remaining
 available coverage, and immediate re-admission. This command does not solve
 buyer/seller transport and is not exposed as a public runtime capability.
 
-The Core credential substrate for cross-tenant transport is implemented but no
-network carrier is activated. Seller Core can issue an Ed25519-signed,
+The Core credential substrate and request/response carrier are implemented.
+Seller Core can issue an Ed25519-signed,
 buyer-audience-bound allocation credential only after reloading the vendor
 order copy, deriving the buyer from the signed `OrderOpen`, and re-admitting the
 live local allocation and account. The credential binds allocation and account
 revisions, the extension revision and deterministic content digest, provider,
 resource, principal, asset, amount, policy, policy version, issuer PeerID/public
-key, buyer PeerID, account expiry, and a maximum 15-minute validity window. Signing occurs outside database
-transactions; Core rechecks the allocation before append-only persistence.
+key, buyer PeerID, account expiry, and a maximum 15-minute validity window.
+Signing occurs outside database transactions; Core rechecks the allocation
+before append-only persistence.
 
 Buyer Core verifies that the public key derives the claimed seller PeerID,
 checks signature, audience, freshness, account expiry, exact extension and
@@ -388,9 +389,14 @@ than copying a seller allocation into the buyer tenant. Payment provisioning
 can admit this external credential when no buyer-local allocation exists and
 revalidates it on every new funding-target attempt. Tests cover signed issue,
 refresh, idempotent import, wrong audience, expiry, tampering, buyer-side
-payment admission, and policy/account binding. A co-tenant or P2P request and
-response carrier, delivery retry/acknowledgement, operational refresh, and
-Docker E2E remain required before runtime activation.
+payment admission, and policy/account binding. Buyer Core now derives the
+seller from its persisted buyer order and sends a typed protobuf request via
+the durable Messenger. Seller Core derives the audience from the authenticated
+remote peer, persists the signed response before ACKing the request, and the
+buyer imports before ACKing the response. Existing local delivery, libp2p,
+store-and-forward retry, ACK, and duplicate-message records carry the exchange.
+Operational refresh scheduling and Docker E2E remain required before runtime
+activation.
 
 The existing Solana Anchor and EVM Safe implementations were reviewed for C2.
 Both are order-scoped settlement adapters: they require persisted order escrow
