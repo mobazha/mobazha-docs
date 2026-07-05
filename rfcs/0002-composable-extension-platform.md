@@ -111,6 +111,14 @@ execution authority, confirmation semantics, runtime, and trust. Adding a
 payment method never grants settlement authority or bypasses the payment state
 machine.
 
+Every rail contribution declares a narrow operation set validated against its
+rail contract. Escrow, direct-observed, and provider-session rails all require
+setup, observation, verification, and reconciliation. Escrow may additionally
+declare settlement and dispute operations; provider-session may declare
+capture/confirm, cancellation, and refund; direct-observed may not claim
+escrow-only settlement authority. Distribution repositories consume Core's
+descriptor and contribution validators rather than copying these rules.
+
 Provider-session payment also separates a statically composed driver from an
 immutable tenant-scoped provider binding. The binding contains only an
 external account reference and a credential-generation reference. Credential
@@ -203,6 +211,14 @@ Manifests are declarations, not proof. Effective capabilities are computed by
 the control plane and exposed only after all applicable gates pass. Source
 presence, a registered identifier, or static linkage alone does not establish
 availability.
+
+For reviewed in-process modules, each distribution snapshots a versioned
+composition profile before Node construction. The profile selects stable module
+IDs from the statically available set, preserves declaration order, distinguishes
+required from optional modules, and fails closed on missing required modules,
+duplicates, or invalid descriptors. A factory or linked package makes a module
+available; it never enables the module implicitly. Unselected modules do not
+enter registration, binding, startup, health publication, or shutdown.
 
 ### 7. Match runtime isolation to trust and behavior
 
@@ -297,6 +313,13 @@ Implementation proceeds stage by stage behind explicit composition and
 capability gates. Each stage requires contract fixtures, authority-negative
 tests, failure and recovery tests, observability, migration notes, and a
 rollback or drain plan.
+
+Implemented first-party slices must be merge-gated at their ownership
+boundary: Core validates shared contracts and durable recovery against the
+real persistence engine, distribution repositories validate their concrete
+module vectors and profiles against Core, and cross-repository E2E validates
+the assembled product. A test that is not part of a default CI or release gate
+does not count as completing a stage.
 
 Existing in-flight operations retain their persisted provider, contract
 version, resource binding, and state version. A provider removal first blocks
