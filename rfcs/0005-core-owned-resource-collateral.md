@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha architecture and Collectibles maintainers
 - Created: 2026-07-05
-- Updated: 2026-07-05
+- Updated: 2026-07-06
 - Decision owners: Mobazha Open Core and payment maintainers
 - Affected surfaces: Node, payment rails, Order Extension, Collectibles Hosting, clients, docs
 - Supersedes: None
@@ -273,7 +273,12 @@ request/confirmation, claim acceptance, and partial or full slash
 confirmation. They use canonical base-unit amounts, expected revisions,
 transactional compare-and-swap writes, tenant/resource/principal bindings,
 attestation and execution replay fingerprints, and an expected Core
-order-state version.
+order-state version. A partial slash that leaves funding below the account's
+required amount moves the account to the non-admitting `slashed` state rather
+than restoring `active`. Core can still service claims and releases for
+already-active allocations and can return the residual balance after all
+exposures become terminal, so an irreversible rail confirmation cannot strand
+the remaining funds.
 
 The provider-neutral C2 execution substrate is implemented. Core persists
 immutable funding-target and release/slash intents before external I/O, binds
@@ -416,7 +421,10 @@ Buyer Core persists a per-order/extension refresh cursor, throttles repeated
 requests for two minutes, and asks for a replacement when the current
 credential enters its final five minutes. The shared typed scheduler drives
 the worker in standalone and Hosting modes without per-tenant tickers; a new
-credential advances the cursor atomically with import. Docker E2E now covers
+credential advances the cursor atomically with import. Request throttling uses
+the previously observed request timestamp as a database compare-and-swap
+token, so separate Hosting processes cannot both claim the same refresh
+interval. Docker E2E now covers
 the unfunded denial, automatic seller allocation, issued/imported persistence,
 and scheduled refresh. The funded branch opens the account through the
 administrator API, obtains an immutable funding target, executes ERC-20
