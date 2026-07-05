@@ -304,10 +304,11 @@ receipt-log integrity, and residual collateral invariants.
 This source and test evidence still does not activate collateral. There is no
 approved network/token choice, deployed vault address and deployment record,
 operator key runbook, effective capability registration, tagged release, or
-runtime evidence. No Collectibles runtime currently creates an Order Extension
-v2 allocation binding, and no Hosting or client API may present a declared
-guarantee as funded protection. C2 deployment/operations evidence and C4
-through C5 remain open.
+production runtime evidence. The local Collectibles integration now creates
+and transports Order Extension v2 allocation bindings as described below, but
+no Hosting or client API may present a declared guarantee as funded protection.
+C2 deployment/operations evidence, the remaining C4 claim-evidence path, and
+C5 remain open.
 
 The first C3 contract and admission-gate slice is implemented in Open Core.
 Order Extension v1 remains unchanged. A separate `OrderExtensionV2` projection
@@ -333,11 +334,11 @@ conflict and no payment adapter is called. Repository migration, multi-order
 account-revision, immutable-binding, revision-refresh, API conflict, direct
 payment, and policy ordering tests provide the C3 exit evidence.
 
-C3 does not itself decide that a Collectibles order requires collateral. No
-Collectibles module currently derives an M2 requirement, requests the Core
-allocation, or persists the admitted v2 binding. That provider-specific
-orchestration is C4 and remains required before any runtime capability is
-advertised.
+C3 does not itself decide that a Collectibles order requires collateral. That
+provider-specific decision and orchestration belong to C4. The local
+integration branches now implement the fail-closed requirement, allocation,
+binding, and credential exchange described below, but they do not activate a
+production runtime capability.
 
 The first fail-closed C4 contract slice is implemented on the local integration
 branches but is not activated. Open Core now defines a narrow
@@ -462,6 +463,7 @@ pending release, slash, or claim work.
 
 ## Decision
 
-Pending maintainer review. C0 types may be implemented for contract validation,
-but no runtime may advertise or infer funded collateral until this RFC is
-accepted and stages C1 through C5 provide the required evidence.
+Pending maintainer review. Implementation and contract-validation evidence may
+continue to accumulate, but no runtime may advertise or infer funded collateral
+until this RFC is accepted and stages C1 through C5 provide the required
+evidence.
