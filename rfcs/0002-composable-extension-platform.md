@@ -149,10 +149,20 @@ the implementation admitted for new work from implementations retained only
 for historical recovery. If the captured implementation is unavailable,
 recovery fails closed instead of falling back to the current default.
 
-Every synchronous caller and background reconciler must acquire the same
-tenant-scoped compare-and-swap execution lease before provider I/O. Completion
-and retry writes are accepted only from the current lease owner; expired work
-may be reclaimed with the original idempotency key. Operational metrics use
+Address allocation itself follows the same persistence-first rule. Core owns
+a typed attempt and immutable route binding committed before runtime I/O, and
+the runtime must implement create-or-retrieve using Core's stable idempotency
+key. Core persists the returned address, opaque index, and confirmation target
+before linking the result to an order. Scheduled recovery reuses the captured
+route and key; an expired unfinished claim cannot allocate new external work.
+This closes the crash window without moving provider-specific wallet state
+into Core or introducing a second payment state machine.
+
+Every synchronous caller and background reconciler for a leased value-moving
+execution record must acquire the same tenant-scoped compare-and-swap lease
+before provider I/O. Completion and retry writes are accepted only from the
+current lease owner; expired work may be reclaimed with the original
+idempotency key. Operational metrics use
 bounded labels and never expose order, action, account, or credential IDs.
 An authenticated tenant operations surface may expose only a redacted action
 projection. Manual retry can override scheduled backoff but cannot preempt a
