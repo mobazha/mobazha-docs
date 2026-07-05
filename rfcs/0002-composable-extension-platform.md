@@ -133,6 +133,13 @@ tenant-scoped compare-and-swap execution lease before provider I/O. Completion
 and retry writes are accepted only from the current lease owner; expired work
 may be reclaimed with the original idempotency key. Operational metrics use
 bounded labels and never expose order, action, account, or credential IDs.
+An authenticated tenant operations surface may expose only a redacted action
+projection. Manual retry can override scheduled backoff but cannot preempt a
+live lease or replace the original route, binding, credential generation, or
+idempotency key. Authenticated operator interventions are appended to a
+tenant-scoped audit log before execution and fail closed if audit persistence
+fails. Independent-database-connection tests must cover contention and process
+loss after the external effect but before local completion.
 
 Order resource extensions bind a provider-owned resource or multi-stage domain
 process to an order through versioned declarations and, only when needed,
