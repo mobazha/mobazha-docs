@@ -136,6 +136,13 @@ same route and credential generation; a repeated key with a different intent
 fails closed. This execution record is adapter infrastructure, not a new
 extension authority or a universal lifecycle for every payment rail.
 
+Every durable external action also captures an immutable route identity:
+contribution, module, implementation generation, rail, network, concrete
+asset, protocol version, and state-schema version. Incremental status writes
+may omit that identity, but they cannot replace it. Restart recovery and
+historical dispatch select from the captured identity rather than whichever
+implementation is currently the default.
+
 Every synchronous caller and background reconciler must acquire the same
 tenant-scoped compare-and-swap execution lease before provider I/O. Completion
 and retry writes are accepted only from the current lease owner; expired work
