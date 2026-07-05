@@ -153,10 +153,16 @@ Address allocation itself follows the same persistence-first rule. Core owns
 a typed attempt and immutable route binding committed before runtime I/O, and
 the runtime must implement create-or-retrieve using Core's stable idempotency
 key. Core persists the returned address, opaque index, and confirmation target
-before linking the result to an order. Scheduled recovery reuses the captured
-route and key; an expired unfinished claim cannot allocate new external work.
-This closes the crash window without moving provider-specific wallet state
-into Core or introducing a second payment state machine.
+before linking the result to an order. The order write and attempt transition
+to `linked` are one Core transaction. If that transaction fails, the durable
+attempt remains `external_created`; after its deadline, reconciliation moves it
+through replayable `abandoning` cleanup to terminal `abandoned`. Runtime cleanup
+must be idempotent because a process can stop after cleanup but before the final
+state write. Scheduled recovery reuses the captured route and key for both
+allocation and cleanup; an expired unfinished claim cannot allocate new
+external work. This closes both external-I/O crash windows without moving
+provider-specific wallet state into Core or introducing a second payment state
+machine.
 
 Every synchronous caller and background reconciler for a leased value-moving
 execution record must acquire the same tenant-scoped compare-and-swap lease
@@ -344,11 +350,26 @@ module vectors and profiles against Core, and cross-repository E2E validates
 the assembled product. A test that is not part of a default CI or release gate
 does not count as completing a stage.
 
+Remote cross-repository release gates pin every behavior-bearing repository to
+an immutable audited revision, including protocol and chain-program sources.
+Moving default branches or mutable tool downloads cannot silently change the
+composition under test. A new audited composition updates the pins explicitly
+after its local full-stack gate passes.
+
 Existing in-flight operations retain their persisted provider, contract
 version, resource binding, and state version. A provider removal first blocks
 new declarations, then drains or reconciles existing work. If a new runtime or
 control-plane gate fails, operators disable new admission and return to the
 last compatible implementation without rewriting Core financial history.
+
+## Compatibility and migration
+
+Pre-release implementations do not preserve compatibility with earlier
+development-only attempt states or internal contracts. Existing
+`external_created` rows are classified deterministically: a matching durable
+order transitions them to `linked`; an expired row without an order completes
+idempotent cleanup and transitions to `abandoned`. No provider-specific state
+is inferred or copied into Core during migration.
 
 ## Documentation impact
 
