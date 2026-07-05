@@ -304,10 +304,10 @@ receipt-log integrity, and residual collateral invariants.
 This source and test evidence still does not activate collateral. There is no
 approved network/token choice, deployed vault address and deployment record,
 operator key runbook, effective capability registration, tagged release, or
-runtime evidence. No runtime Order Extension v2 allocation reference is
-admitted, and no Hosting or client API may present a declared guarantee as
-funded protection. C2 deployment/operations evidence and C3 through C5 remain
-open.
+runtime evidence. No Collectibles runtime currently creates an Order Extension
+v2 allocation binding, and no Hosting or client API may present a declared
+guarantee as funded protection. C2 deployment/operations evidence and C4
+through C5 remain open.
 
 The first C3 contract and admission-gate slice is implemented in Open Core.
 Order Extension v1 remains unchanged. A separate `OrderExtensionV2` projection
@@ -317,14 +317,27 @@ extension, asset, amount, state, and revisions. The read-only Core admission
 gate reloads both the allocation and collateral account and rejects an absent
 reference, a stale projection, a wrong tenant/order/provider/resource/
 principal, a wrong asset or amount, a non-active allocation, or an inactive,
-expired, or revision-stale account. Tests cover these negative bindings and
-also prove that the original v1 envelope remains independently valid.
+expired account or an account revision that precedes the allocation. A later
+unrelated allocation may advance the account revision without invalidating an
+existing active allocation. Tests cover these negative bindings and also prove
+that the original v1 envelope remains independently valid.
 
-This C3 slice is not yet an order-flow capability. The v2 projection is not
-persisted or admitted by purchase/payment provisioning, and no Collectibles
-module currently requests a Core allocation through it. Those persistence and
-orchestration steps, followed by the C3 integration tests in the rollout
-table, remain open before C3 can be called complete.
+The remaining generic C3 persistence and payment gate are implemented. Core
+stores admitted v2 bindings as append-only records keyed by the exact Order
+Extension revision, preserves earlier revisions for audit, and requires a new
+admission before a changed extension revision becomes current. Both the
+Payment Session service and the underlying Payment App service reload and
+revalidate persisted v2 bindings before creating a fiat provider session or a
+crypto funding target. A stale or invalid binding returns a stable policy
+conflict and no payment adapter is called. Repository migration, multi-order
+account-revision, immutable-binding, revision-refresh, API conflict, direct
+payment, and policy ordering tests provide the C3 exit evidence.
+
+C3 does not itself decide that a Collectibles order requires collateral. No
+Collectibles module currently derives an M2 requirement, requests the Core
+allocation, or persists the admitted v2 binding. That provider-specific
+orchestration is C4 and remains required before any runtime capability is
+advertised.
 
 The existing Solana Anchor and EVM Safe implementations were reviewed for C2.
 Both are order-scoped settlement adapters: they require persisted order escrow
