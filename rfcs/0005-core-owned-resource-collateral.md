@@ -417,6 +417,20 @@ and scheduled refresh. Runtime activation remains gated on publishing and
 pinning the Commercial module dependency plus production collateral funding
 and operator onboarding.
 
+The local Open Core integration branch now also exposes a narrow,
+administrator-authenticated onboarding API for opening an idempotent account,
+preparing a funding target, reading a redacted operational projection, and
+explicitly reconciling funding. Core derives tenant and principal from the
+selected local node; the request cannot choose either binding. API tokens are
+not accepted, and status omits principal destination, idempotency identity,
+raw rail payload, credentials, and private evidence. The rail remains an
+explicit Node composition option and is absent by default, so funding returns
+an unavailable result until a reviewed rail is injected. No endpoint exposes
+release, claim, slash, or evidence authority. This closes the generic operator
+API contract, not production onboarding: Hosting workflow, approved asset and
+deployment configuration, key operations, monitoring, accounting, and runtime
+evidence remain required.
+
 The existing Solana Anchor and EVM Safe implementations were reviewed for C2.
 Both are order-scoped settlement adapters: they require persisted order escrow
 data and define confirm/cancel/dispute outputs as seller payout, buyer refund,
