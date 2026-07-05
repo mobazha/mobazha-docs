@@ -357,9 +357,11 @@ than the Hub slot. Hosting accepts a guarantee declaration only when amount and
 asset are canonical, projects it explicitly as `unfunded-requirement`, emits
 the signed-order optional features needed for that declaration, and compares a
 source-custody declaration with the operator-owned source-deposit record. A
-missing or altered requirement therefore fails closed. The commercial module
-dependency publication, cross-tenant verifiable transport, claim evidence, and
-Docker E2E remain open; this slice does not advertise funded protection.
+configured guarantee with a missing or altered requirement therefore fails
+closed. A legacy source deposit with no configured guarantee remains an
+unsecured order and does not opt into the collateral contract merely by having
+a source-deposit identity. Commercial module dependency publication and claim
+evidence remain open; no declaration alone advertises funded protection.
 
 The seller-Core allocation command is also implemented behind an optional,
 narrow service-provider interface rather than the universal Node service
@@ -368,8 +370,11 @@ extension revision, verifies the active account's tenant, provider, resource,
 principal, asset, policy, policy version, and expected revision, allocates the
 declared amount idempotently, and persists the admitted v2 binding. Tests prove
 atomic allocation/binding, idempotent retry, policy mismatch denial, remaining
-available coverage, and immediate re-admission. This command does not solve
-buyer/seller transport and is not exposed as a public runtime capability.
+available coverage, and immediate re-admission. The command is not exposed as
+a public runtime capability. Seller Core now invokes it internally while
+handling an authenticated credential request: it resolves a matching active,
+unexpired account by tenant, provider, resource, principal, asset, policy, and
+available amount, then atomically allocates and binds before signing.
 
 The Core credential substrate and request/response carrier are implemented.
 Seller Core can issue an Ed25519-signed,
@@ -395,12 +400,21 @@ the durable Messenger. Seller Core derives the audience from the authenticated
 remote peer, persists the signed response before ACKing the request, and the
 buyer imports before ACKing the response. Existing local delivery, libp2p,
 store-and-forward retry, ACK, and duplicate-message records carry the exchange.
+When payment provisioning first finds no imported credential, Buyer Core
+durably queues this request in a separate transaction and still returns the
+fail-closed collateral conflict; no funding target is created. After the
+seller response is imported, the client's idempotent payment-session retry can
+pass admission. A missing or underfunded seller account leaves the request
+unacknowledged and the payment gate closed.
 Buyer Core persists a per-order/extension refresh cursor, throttles repeated
 requests for two minutes, and asks for a replacement when the current
 credential enters its final five minutes. The shared typed scheduler drives
 the worker in standalone and Hosting modes without per-tenant tickers; a new
-credential advances the cursor atomically with import. Docker E2E remains
-required before runtime activation.
+credential advances the cursor atomically with import. Docker E2E now covers
+the unfunded denial, automatic seller allocation, issued/imported persistence,
+and scheduled refresh. Runtime activation remains gated on publishing and
+pinning the Commercial module dependency plus production collateral funding
+and operator onboarding.
 
 The existing Solana Anchor and EVM Safe implementations were reviewed for C2.
 Both are order-scoped settlement adapters: they require persisted order escrow
