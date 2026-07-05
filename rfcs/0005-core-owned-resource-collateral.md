@@ -275,10 +275,21 @@ transactional compare-and-swap writes, tenant/resource/principal bindings,
 attestation and execution replay fingerprints, and an expected Core
 order-state version.
 
-This evidence does not activate collateral. No payment adapter currently
-submits or reconciles collateral funding/release/slash actions, no Order
-Extension v2 allocation reference is admitted, and no Hosting or client API may
-present a declared guarantee as funded protection. C2 through C5 remain open.
+The provider-neutral C2 execution substrate is also implemented. Core persists
+immutable funding-target and release/slash intents before external I/O, binds
+them to a rail identity and version, repeats submission only through the
+rail's create-or-retrieve idempotency contract, keeps ambiguous results
+pending, and atomically applies receipt-verified reconciliation results to the
+collateral aggregate. Conformance tests cover confirmed funding, ambiguous
+release recovery, confirmed slash, terminal replay, persistence before
+external calls, and process-restart recovery for incomplete target creation
+and execution submission.
+
+This evidence does not activate collateral. No concrete payment adapter or
+vault currently satisfies and registers the complete collateral rail
+descriptor, no Order Extension v2 allocation reference is admitted, and no
+Hosting or client API may present a declared guarantee as funded protection.
+The concrete C2 rail deployment and C3 through C5 remain open.
 
 The existing Solana Anchor and EVM Safe implementations were reviewed for C2.
 Both are order-scoped settlement adapters: they require persisted order escrow
