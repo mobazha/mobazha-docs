@@ -11,6 +11,7 @@ record; it does not activate behavior.
 | [0001](./0001-whitepaper-publication-contract.md) | Founding whitepaper publication contract | Review | 2026-07-04 |
 | [0002](./0002-composable-extension-platform.md) | Composable Extension Platform Model | Draft | 2026-07-05 |
 | [0003](./0003-composable-frontend-product-model.md) | Composable Frontend Product Model | Draft | 2026-07-04 |
+| [0004](./0004-deal-link-single-level-attribution.md) | Deal Link Single-Level Attribution | Draft | 2026-07-05 |
 
 Start from [`0000-template.md`](./0000-template.md). Allocate the next number,
 keep the filename stable, and update this table in the same change.
