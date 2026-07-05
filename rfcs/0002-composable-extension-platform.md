@@ -143,6 +143,12 @@ may omit that identity, but they cannot replace it. Restart recovery and
 historical dispatch select from the captured identity rather than whichever
 implementation is currently the default.
 
+Address-based direct-observed orders capture the same route identity together
+with their immutable observation grace policy. The runtime catalog separates
+the implementation admitted for new work from implementations retained only
+for historical recovery. If the captured implementation is unavailable,
+recovery fails closed instead of falling back to the current default.
+
 Every synchronous caller and background reconciler must acquire the same
 tenant-scoped compare-and-swap execution lease before provider I/O. Completion
 and retry writes are accepted only from the current lease owner; expired work
