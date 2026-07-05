@@ -358,9 +358,18 @@ asset are canonical, projects it explicitly as `unfunded-requirement`, emits
 the signed-order optional features needed for that declaration, and compares a
 source-custody declaration with the operator-owned source-deposit record. A
 missing or altered requirement therefore fails closed. The commercial module
-dependency publication, seller-Core account selection/allocation command,
-cross-tenant verifiable transport, claim evidence, and Docker E2E remain open;
-this slice does not advertise funded protection.
+dependency publication, cross-tenant verifiable transport, claim evidence, and
+Docker E2E remain open; this slice does not advertise funded protection.
+
+The seller-Core allocation command is also implemented behind an optional,
+narrow service-provider interface rather than the universal Node service
+locator. In one tenant-scoped transaction it reloads the exact persisted
+extension revision, verifies the active account's tenant, provider, resource,
+principal, asset, policy, policy version, and expected revision, allocates the
+declared amount idempotently, and persists the admitted v2 binding. Tests prove
+atomic allocation/binding, idempotent retry, policy mismatch denial, remaining
+available coverage, and immediate re-admission. This command does not solve
+buyer/seller transport and is not exposed as a public runtime capability.
 
 The existing Solana Anchor and EVM Safe implementations were reviewed for C2.
 Both are order-scoped settlement adapters: they require persisted order escrow
