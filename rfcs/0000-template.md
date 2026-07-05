@@ -9,6 +9,11 @@
 - Supersedes: None
 - Superseded by: None
 
+Keep every standard section below. If a section has no material impact, write
+“Not applicable” and give a concrete rationale; do not omit the heading. An
+explicit rationale records that the review occurred and lets repository
+validation distinguish a considered non-impact from a missing analysis.
+
 ## Summary
 
 State the proposed change and why it matters.
@@ -29,7 +34,7 @@ Identify authority, permissions, sensitive data, failure modes, and misuse.
 ## Economic and legal analysis
 
 Identify providers, payers, recipients, calculation bases, optionality,
-refunds, and applicable legal review. Use “not applicable” with rationale when
+refunds, and applicable legal review. Use “Not applicable” with rationale when
 appropriate.
 
 ## Alternatives

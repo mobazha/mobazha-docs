@@ -35,7 +35,8 @@ human review view.
 | Which Open Core extension mechanism should be used? | Use a Port for replaceability, a Module for composition, a Function for a bounded deterministic decision, a Controller for external reconciliation or I/O, and OrderExtension for a versioned order-associated resource or multi-stage domain process. | `/build/extensions` |
 | May an extension directly release settlement funds? | No. It may submit a typed, authorized attestation; Core validates it and executes the versioned conditional-settlement command through its state machine. | `/build/extensions` |
 | Is OrderExtension an NFT-specific contract? | No. It is a generic contract for durable order-associated resource bindings and multi-stage processes. Collectibles is the first provider; other resource providers keep their own namespaced types and payloads. | `/build/extensions` |
-| Does static Order Extension v1 mean the full module platform is shipped? | No. Static contract and composition gates are implemented, while distribution allowlists, tenant authorization/configuration, structured health, drain, upgrade, rollback, third-party process runtime, and Wasm Functions remain targets. | `/build/extensions` |
+| Does static Order Extension v1 mean one universal module platform is shipped? | No. Trusted payment modules and static Order Extension v1 are separate family-specific slices. They share governance invariants, not one descriptor, lifecycle, or manager; contextual tenant/resource admission, third-party process runtimes, and Wasm Functions remain targets. | `/build/extensions` |
+| Should disabling a capability abandon work that already bound its provider? | No. A domain manager may stop advertising or admitting new work, but persisted provider and contract bindings still govern service, compensation, settlement, or reconciliation obligations. | `/build/extensions` |
 
 ## Evaluation rules
 

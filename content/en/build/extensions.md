@@ -52,7 +52,7 @@ extension input
 - Modules provide immutable startup composition and declare identity, versions, dependencies, capabilities, configuration, runtime type, and lifecycle.
 - Functions are bounded and deterministic; they do not receive network, database, key, clock, or state-transition authority.
 - Controllers reconcile external systems from durable Core facts and return observations or attestations.
-- Governance is uniform across modules, while business contracts remain small, typed, and domain-specific.
+- Shared governance invariants apply across families, while domain managers, business contracts, and lifecycle semantics remain small, typed, and domain-specific.
 - New extension points are deliberate and domain-scoped, with an owner, schema, authority boundary, failure semantics, idempotency, recovery, tests, and a removal plan.
 - There is no global named hook bus, mutable runtime registry, or universal Core service locator.
 
@@ -61,13 +61,16 @@ extension input
 The Draft [Composable Extension Platform RFC](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0002-composable-extension-platform.md) organizes the long-term target as:
 
 ```text
-Module Control Plane
-  -> Trust-tiered Runtime Fabric
+Shared governance invariants
+  -> Domain capability managers
   -> Typed Domain Contracts and Core Command Gate
   -> Core-owned Commerce Kernel
+
+Runtime choice remains orthogonal:
+  static in-process | isolated process or remote | restricted Wasm
 ```
 
-The control plane governs identity, compatibility, dependencies, authorization, configuration, health, and lifecycle. Runtime drivers govern where code executes. Typed contracts govern what it may exchange. Core alone decides whether an input may change Core-owned state.
+Shared invariants cover identity, contract version, scope, provider binding, stable reasons, and audit. Payment, order-resource, and future domain managers apply those invariants through their own admission, runtime, recovery, and business semantics. Core alone decides whether an input may change Core-owned state. This is not one central control-plane service or universal `ModuleManager`.
 
 Do not collapse these independent dimensions into one plugin taxonomy:
 
@@ -80,10 +83,13 @@ Do not collapse these independent dimensions into one plugin taxonomy:
 | Interaction | Synchronous call, durable event, reconciliation |
 | Runtime | Static in-process, isolated process or remote, Wasm |
 | Trust | First-party, reviewed partner, untrusted |
-| Lifecycle | Desired, verified, ready, degraded, draining, failed |
+| Artifact lifecycle | Discovered, verified, rejected |
+| Provider runtime lifecycle | Starting, ready, degraded, draining, stopped |
+| Capability exposure | Allowed, configured, advertised, blocked |
+| Work lifecycle | Reserved, funded, delivering, reconciling, completed |
 | Data ownership | Core, module, or external system |
 
-This model is a Draft direction, not evidence that every control-plane gate or runtime is currently available.
+This model is a Draft direction, not evidence that every domain-manager gate or runtime is currently available.
 
 ## Keep capability families domain-specific
 
@@ -92,21 +98,21 @@ This model is a Draft direction, not evidence that every control-plane gate or r
 - Inventory, fulfillment, tax, notification, and other provider families retain narrow typed contracts and explicit owners.
 - Content, messaging, keys, storage, and similar Core-required infrastructure remain Ports when their purpose is implementation replacement. They do not become arbitrary business Modules.
 
-Uniform module governance does not imply one universal business interface.
+Shared governance invariants do not imply one universal descriptor, manager, lifecycle, or business interface.
 
 ## Capability and trust gates
 
-An extension capability remains unavailable until every activation gate passes. Source presence, a known identifier, or linked code is not evidence that the capability is enabled.
+Capability availability is a contextual decision, not one global boolean. Source presence, a known identifier, or linked code is not evidence that new work may be admitted.
 
 ```text
-distribution allowlist
-  ∩ contract compatible
-  ∩ installed or statically composed
-  ∩ authorized
-  ∩ configured
-  ∩ healthy
+decide(distribution, tenant and resource, operation,
+       contract and provider binding, configuration, provider state)
+  -> allowed or denied with a stable reason
 ```
 
+- New work requires the applicable distribution, compatibility, composition, authorization, configuration, and readiness checks.
+- Existing work retains its persisted provider and contract binding. Disabling advertisement or new admission must not abandon settlement, delivery, compensation, or reconciliation.
+- A domain manager may therefore decide differently for `admit-new`, `service-existing`, and `reconcile`.
 - Reviewed first-party modules are statically linked by default.
 - Independently distributed or third-party infrastructure runs out of process by default.
 - Merchant-authored decision rules use a restricted sandbox such as Wasm when that runtime is introduced.
@@ -114,9 +120,9 @@ distribution allowlist
 
 ## Current implementation boundary
 
-The static order-extension v1 path currently validates exact contract names, immutable startup composition, dependencies and cycles, capability/interface agreement, and fail-closed invocation. It also provides append-only extension records, durable lifecycle delivery, typed reservation binding, and settlement attestations that re-enter the Core settlement command.
+Trusted payment modules currently have family-specific descriptors, dependency ordering, scoped runtime grants, readiness and health, setup-gated activation, reverse shutdown, and rollback. Static order-extension v1 separately validates exact contracts, immutable startup composition, dependencies and cycles, capability/interface agreement, and fail-closed invocation. It also provides append-only extension records, durable delivery, typed reservation binding, and settlement attestations that re-enter the Core settlement command.
 
-Distribution allowlists, per-tenant authorization and configuration, structured module health, drain, upgrade, rollback, a third-party process runtime, and a Wasm Function runtime remain governance targets. Do not describe those targets as generally available capabilities.
+These implemented slices do not form a universal module manager. Cross-family governance records, contextual tenant and resource admission, third-party process runtimes, and a Wasm Function runtime remain targets. Health, drain, and rollback apply only where a provider's runtime semantics require them.
 
 ## OrderExtension scope and the first provider
 

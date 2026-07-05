@@ -12,15 +12,16 @@
 ## Summary
 
 Define Mobazha's target extension platform as a Core-owned commerce kernel,
-typed domain contracts, a module control plane, and a trust-tiered runtime
-fabric. The model supports multiple payment rails, service providers, and
-multi-stage resource integrations without mixing packaging, business domain,
-contract role, runtime, trust, or lifecycle into one plugin taxonomy.
+typed domain contracts, domain capability managers, shared governance
+invariants, and trust-appropriate runtime choices. The model supports multiple
+payment rails, service providers, and multi-stage resource integrations
+without mixing packaging, business domain, contract role, runtime, trust, or
+lifecycle into one plugin taxonomy or one universal module manager.
 
 This RFC consolidates the long-term direction. It does not claim that every
-control-plane gate or runtime described here is implemented. The current
-static Order Extension v1 path and the Collectibles provider remain the first
-implemented slice.
+governance invariant, domain-manager gate, or runtime described here is
+implemented. The current family-specific payment module lifecycle and static
+Order Extension v1 path are implemented slices.
 
 ## Problem and evidence
 
@@ -53,27 +54,35 @@ one platform and how the target should mature.
 Adopt this target model:
 
 ```text
-Module Control Plane
-  manifest · dependency · compatibility · authorization · configuration
-  effective capability · health · lifecycle · provenance
+Shared governance invariants
+  identity · contract version · scope · provider binding · reason · audit
                          |
                          v
-Trust-tiered Runtime Fabric
-  static in-process · isolated process/remote · restricted Wasm
+Domain capability managers
+  payment manager · order-resource manager · future domain managers
                          |
                          v
-Typed Domain Contracts and Core Command Gate
+Typed domain contracts and Core command gate
   payment · order resource · inventory · fulfillment · tax · notification
                          |
                          v
-Core-owned Commerce Kernel
+Core-owned commerce kernel
   order · payment · refund · dispute · settlement · durable facts · audit
+
+Runtime choice is orthogonal:
+  reviewed static module · isolated process/remote · restricted Wasm
 ```
 
-The control plane decides what may run. Runtime drivers decide where and how
-it runs. Typed contracts decide what may be exchanged. The Core command gate
-decides whether extension input may affect Core-owned state. None of these
-layers grants another layer's authority implicitly.
+Shared invariants define what every family must prove, but each domain manager
+owns its capability semantics, runtime lifecycle, admission rules, and
+recovery behavior. Typed contracts decide what may be exchanged. Runtime
+drivers decide where and how an implementation executes. The Core command
+gate alone decides whether extension input may affect Core-owned state.
+
+This is deliberately not a proposal for one central control-plane service, one
+universal descriptor, or one `ModuleManager`. Payment providers and
+order-resource bindings live at different lifecycle levels and must not be
+forced through the same runtime interface.
 
 ### 2. Keep classification axes independent
 
@@ -89,7 +98,10 @@ placed in one overloaded plugin hierarchy:
 | Interaction | Synchronous call, durable event, reconciliation |
 | Runtime | Static in-process, isolated process or remote, Wasm |
 | Trust | First-party, reviewed partner, untrusted |
-| Lifecycle | Desired, verified, ready, degraded, draining, failed |
+| Artifact lifecycle | Discovered, verified, rejected |
+| Provider runtime lifecycle | Starting, ready, degraded, draining, stopped |
+| Capability exposure | Allowed, configured, advertised, blocked |
+| Work lifecycle | Reserved, funded, delivering, reconciling, completed |
 | Data ownership | Core-owned, module-owned, external-system-owned |
 | Tenant scope | Distribution, tenant, store, order, or resource |
 
@@ -99,9 +111,31 @@ attestation contracts and currently runs in the static runtime. “Module,”
 “Controller,” “static,” and “Collectibles” are therefore answers on different
 axes, not competing types.
 
-### 3. Preserve domain-specific capability families
+### 3. Keep lifecycle and state ownership separate
 
-Uniform governance must not produce one universal business interface.
+The platform does not have one lifecycle state machine. At least four
+different state owners exist:
+
+1. **Artifact lifecycle** verifies source, signature, provenance, and
+   compatibility before an implementation may be considered.
+2. **Provider runtime lifecycle** starts, reports readiness, degrades, drains,
+   stops, or rolls back a long-lived provider when that runtime has those
+   concepts.
+3. **Capability exposure** decides whether a specific operation may be
+   advertised or admitted for a distribution, tenant, resource, and time.
+4. **Work lifecycle** records and recovers an order, payment, reservation,
+   delivery, or reconciliation obligation already accepted by Core.
+
+A provider can be closed to new work while remaining required to service or
+reconcile existing bindings. A pure statically composed declaration codec may
+need composition validation but no `Start` or `Stop`. A payment observer
+may require readiness and continuous health. Domain managers map shared
+governance invariants onto these different lifecycle needs.
+
+### 4. Preserve domain-specific capability families
+
+Shared governance invariants must not produce one universal business
+interface.
 
 Payment is a Core-owned bounded context with rail-specific adapters and a
 normalized Core lifecycle. At minimum, its model distinguishes escrow,
@@ -188,7 +222,7 @@ retain separate typed contracts and owners. Shared infrastructure adapters
 that Core requires remain Ports; they are not promoted into arbitrary business
 Modules merely to fit a plugin model.
 
-### 4. Define Order Extension by lifecycle need, not product name
+### 5. Define Order Extension by lifecycle need, not product name
 
 `OrderExtension` is appropriate when an order-associated binding must survive
 restart and provider absence, scarce capacity must be reserved before funding,
@@ -207,7 +241,7 @@ future ticket, quota, lot, or production provider does not inherit that
 vocabulary. Cross-product taxonomies should be introduced only after another
 implementation proves a stable shared concept.
 
-### 5. Admit only typed, authority-limited interactions
+### 6. Admit only typed, authority-limited interactions
 
 Extensions may submit four kinds of input:
 
@@ -223,23 +257,25 @@ financial effect re-enters a versioned Core command and state machine. An
 extension cannot write Core tables, mutate an order directly, choose a payout
 destination, or obtain a complete Core service locator.
 
-### 6. Make capability exposure computed and fail closed
+### 7. Make admission contextual and preserve existing obligations
 
-The target effective capability is the intersection of:
+Capability availability is a decision over context rather than one global
+boolean:
 
 ```text
-distribution allowlist
-  ∩ contract compatible
-  ∩ installed or statically composed
-  ∩ authorized for the tenant and scope
-  ∩ configured
-  ∩ healthy and lifecycle-ready
+decide(
+  distribution,
+  tenant and resource scope,
+  requested operation,
+  contract and provider binding,
+  configuration and current provider state
+) -> allowed or denied with a stable reason
 ```
 
-Manifests are declarations, not proof. Effective capabilities are computed by
-the control plane and exposed only after all applicable gates pass. Source
-presence, a registered identifier, or static linkage alone does not establish
-availability.
+For new work, the applicable domain manager requires distribution permission,
+contract compatibility, composition or installation, authorization,
+configuration, and sufficient readiness. Source presence, a registered
+identifier, or static linkage alone does not establish availability.
 
 For reviewed in-process modules, each distribution snapshots a versioned
 composition profile before Node construction. The profile selects stable module
@@ -249,7 +285,13 @@ duplicates, or invalid descriptors. A factory or linked package makes a module
 available; it never enables the module implicitly. Unselected modules do not
 enter registration, binding, startup, health publication, or shutdown.
 
-### 7. Match runtime isolation to trust and behavior
+For existing work, the persisted provider, contract version, resource binding,
+and Core state determine the continuing obligation. Disabling advertisement or
+new admission must not silently abandon settlement, delivery, compensation, or
+reconciliation. Domain managers may therefore return different decisions for
+`admit-new`, `service-existing`, and `reconcile`.
+
+### 8. Match runtime isolation to trust and behavior
 
 - Reviewed first-party capabilities use static in-process composition by
   default when low latency and transactional coordination justify it.
@@ -265,12 +307,13 @@ sharing lifecycle transport or trust assumptions. Financial modules are not
 hot-swapped mid-operation; draining and recovery preserve the provider and
 contract binding of existing work.
 
-### 8. Evolve by proven slices
+### 9. Evolve by proven slices
 
 | Stage | Outcome | Exit evidence |
 |---|---|---|
-| Current static slice | Typed composition and Order Extension v1 | Existing conformance and Collectibles cutover tests |
-| Static hardening | Distribution/tenant gates, health, drain, upgrade, rollback | Negative tests, upgrade and recovery drills |
+| Current static slices | Family-specific payment module lifecycle plus typed Order Extension v1 | Existing payment-module, conformance, and Collectibles cutover tests |
+| Governance hardening | Shared identity, scope, binding, reason, and audit invariants applied by domain managers | Negative tests and cross-family decision fixtures |
+| Domain lifecycle hardening | Family-specific admission, readiness, drain, recovery, and rollback where applicable | Upgrade, obligation-preservation, and recovery drills |
 | Second resource provider | Validate Order Extension generality | No NFT vocabulary in Core; only evidence-backed shared concepts |
 | Process runtime | Isolated partner or third-party Controller/provider | Protocol compatibility, credential isolation, retry and reconciliation tests |
 | Wasm runtime | Untrusted deterministic Functions | Sandbox limits, deterministic fixtures, security review |
@@ -282,11 +325,13 @@ domain evidence.
 
 ## Security, privacy, and abuse analysis
 
-The control plane fails closed on unknown contracts, unhealthy providers,
-missing authorization, and incompatible versions. Runtime credentials are
-least-privilege, tenant-scoped, rotatable, and unavailable to pure Functions.
-Secrets and raw signing material are never placed in module manifests or
-generic extension payloads.
+Domain managers fail closed on unknown contracts, missing authorization, and
+incompatible versions, and reject new work when the required provider state is
+insufficient. They do not erase persisted obligations merely because a
+provider becomes degraded. Runtime credentials are least-privilege,
+tenant-scoped, rotatable, and unavailable to pure Functions. Secrets and raw
+signing material are never placed in module manifests or generic extension
+payloads.
 
 Credential rotation creates a new immutable generation. Removing a provider
 blocks new admission but retains the minimum historical credential generations
@@ -359,8 +404,9 @@ after its local full-stack gate passes.
 Existing in-flight operations retain their persisted provider, contract
 version, resource binding, and state version. A provider removal first blocks
 new declarations, then drains or reconciles existing work. If a new runtime or
-control-plane gate fails, operators disable new admission and return to the
-last compatible implementation without rewriting Core financial history.
+domain-manager gate fails, operators disable new admission and return to the
+last compatible implementation without rewriting Core financial history or
+abandoning existing obligations.
 
 ## Compatibility and migration
 
@@ -377,8 +423,8 @@ is inferred or copied into Core during migration.
   implementation boundaries.
 - State explicitly that Order Extension is generic and Collectibles is its
   first provider.
-- Add the independent classification axes and platform layers to the public
-  extension guide.
+- Add the independent classification axes, separate lifecycle owners, and
+  domain-manager model to the public extension guide.
 - Keep current-versus-target capability language in human and Agent surfaces.
 - Add domain-specific specifications only when their contracts and owners are
   stable; do not turn this RFC into one universal API specification.
@@ -389,12 +435,16 @@ is inferred or copied into Core during migration.
   or revise the generic Order Extension contract?
 - Which authenticated protocol and compatibility window should the first
   process runtime standardize?
-- Which lifecycle states and health signals are mandatory for the first
-  control-plane release?
+- Which identity, scope, provider-binding, reason, and audit fields are stable
+  enough to share across domain managers without creating a universal module
+  interface?
+- Which lifecycle states and health signals belong specifically to the next
+  payment, order-resource, or other domain manager?
 - What review and provenance requirements distinguish reviewed partners from
   untrusted third parties?
-- Which tenant and operator surfaces expose desired versus effective
-  capabilities without leaking sensitive configuration?
+- Which tenant and operator surfaces distinguish new-work admission,
+  existing-work service, and reconciliation without leaking sensitive
+  configuration?
 
 ## Decision
 

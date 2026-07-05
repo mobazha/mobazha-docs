@@ -164,7 +164,7 @@ cannot provide durable funding identity, confirmation depth, release/slash
 execution, and reconciliation. Manual operator text fields are not a funding
 rail.
 
-### 6. Audit and privacy
+### 6. Define auditable records and minimize evidence
 
 Core stores an append-only action history for open, funding observation,
 activation, allocation, allocation release, claim, slash, account release, and
@@ -198,7 +198,61 @@ M2 remains invitation-only and must not advertise funded buyer protection until
 the Core state machine, payment rail, v2 allocation binding, reconciliation,
 client disclosure, and legal gate are all complete.
 
-## Rollout
+## Security, privacy, and abuse analysis
+
+Collateral introduces financial authority that cannot be inferred from a
+provider declaration or product label. The design therefore fails closed
+unless Core can bind the tenant, provider, resource, principal, asset, amount,
+policy, revisions, rail, beneficiary, and idempotency key for every command.
+Extensions can submit declarations, observations, and attestations, but they
+cannot mark collateral funded, choose a beneficiary, approve a claim, or
+execute release or slash transitions.
+
+The primary abuse cases are false funded-protection claims, replayed funding or
+claim evidence, cross-tenant or cross-resource allocation, over-allocation,
+beneficiary substitution, duplicate release or slash execution, and disclosure
+of private custody evidence. Core counters them with canonical base-unit
+amounts, expected revisions, immutable bindings, replay fingerprints,
+append-only actions, receipt verification, least-privilege rail capabilities,
+and reconciliation of ambiguous external effects.
+
+Raw evidence remains provider-owned. Core stores only the canonical fields and
+digests required for authorization, replay protection, dispute handling,
+accounting, retention, and audit. Secrets, keys, shipping details, private item
+evidence, and unrestricted provider payloads are excluded from the generic
+collateral records and client projections.
+
+## Economic and legal analysis
+
+This section is applicable. Collateral changes who funds an obligation, who
+may receive compensation, how long funds remain restricted, and which entity
+may hold or execute them. This RFC defines state ownership and authority only;
+it does not approve a custody model, fee, yield, guarantee, insurance claim,
+exchange-rate policy, or legal characterization.
+
+Before any deployment advertises funded protection, its concrete proposal must
+identify the funder, custodian or signing entity, covered beneficiary, asset,
+required amount, funding and release conditions, claim authority, dispute and
+appeal path, partial-slash behavior, fees, accounting treatment, retention,
+jurisdiction, sanctions or licensing review, and customer disclosures. Product
+copy must distinguish a declared requirement, observed funding, active
+coverage, pending claim, and completed compensation. Until those reviews and
+runtime evidence exist, the capability remains unavailable.
+
+## Alternatives
+
+- Reuse Order Extension reservation: rejected because it is provider-owned
+  capacity, not Core-owned money.
+- Reuse seller order escrow: rejected because collateral has a different
+  funder, lifetime, beneficiary, and state machine.
+- Let Hosting mark collateral locked: rejected because it bypasses Core
+  financial authority and rail reconciliation.
+- Put guarantee status only in NFT metadata: rejected because metadata is not
+  custody or payment evidence and can become stale.
+- Implement dynamic cross-currency margin immediately: rejected until the
+  single-asset lifecycle is proven and a versioned valuation policy exists.
+
+## Rollout and rollback
 
 | Stage | Outcome | Exit evidence |
 |---|---|---|
@@ -240,18 +294,22 @@ Rollback blocks new accounts and allocations while continuing to reconcile and
 service persisted obligations. No rollback may rewrite funded history or drop
 pending release, slash, or claim work.
 
-## Alternatives
+## Documentation impact
 
-- Reuse Order Extension reservation: rejected because it is provider-owned
-  capacity, not Core-owned money.
-- Reuse seller order escrow: rejected because collateral has a different
-  funder, lifetime, beneficiary, and state machine.
-- Let Hosting mark collateral locked: rejected because it bypasses Core
-  financial authority and rail reconciliation.
-- Put guarantee status only in NFT metadata: rejected because metadata is not
-  custody or payment evidence and can become stale.
-- Implement dynamic cross-currency margin immediately: rejected until the
-  single-asset lifecycle is proven and a versioned valuation policy exists.
+- Keep this RFC and the public RFC registry labeled Draft until decision owners
+  accept the proposal; implementation evidence alone does not activate it.
+- After acceptance, add public buyer and seller guidance that distinguishes a
+  collateral requirement from funded and active protection.
+- Document the Core collateral commands, rail capability contract, stable
+  denial reasons, audit fields, and Order Extension v2 allocation reference
+  before exposing an API or Agent action.
+- Update the owning implementation repository's operator runbook, monitoring,
+  accounting, claim handling, and evidence-retention guidance without copying
+  private evidence or credentials into public documentation.
+- Add translated task guidance, release notes, and tested recovery procedures
+  only for a release whose capability gate and runtime evidence are identified.
+- Preserve historical records and pending-obligation recovery instructions if
+  a rail, provider, policy, or product surface is withdrawn.
 
 ## Open questions
 

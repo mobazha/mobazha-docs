@@ -375,22 +375,41 @@
       ]
     },
     {
-      "id": "extension-current-versus-target",
+      "id": "extension-family-governance",
       "question": {
-        "en": "Does static Order Extension v1 mean the full module platform is shipped?",
-        "zh-CN": "静态 Order Extension v1 是否表示完整模块平台已经交付？"
+        "en": "Does static Order Extension v1 mean one universal module platform is shipped?",
+        "zh-CN": "静态 Order Extension v1 是否表示一个万能模块平台已经交付？"
       },
       "required_claims": [
-        "Static v1 contract compatibility, startup composition, dependency validation, interface agreement, and fail-closed invocation are implemented.",
-        "Distribution allowlists, tenant authorization and configuration, structured health, drain, upgrade, rollback, third-party process runtime, and Wasm Functions remain governance targets."
+        "Trusted payment modules and static Order Extension v1 are separate family-specific implementation slices.",
+        "They share identity, scope, provider-binding, reason, and audit invariants but do not require one descriptor, lifecycle, or manager.",
+        "Contextual tenant and resource admission, third-party process runtimes, and Wasm Functions remain targets."
       ],
       "forbidden_claims": [
-        "Every lifecycle, isolation, and runtime gate in the target architecture is generally available today.",
-        "Source presence or static linkage alone enables an extension capability."
+        "Every extension must use the payment module lifecycle manager.",
+        "Static linkage proves that every target runtime and governance gate is generally available."
       ],
       "sources": [
         "/build/extensions",
         "/build/runtime-capabilities"
+      ]
+    },
+    {
+      "id": "extension-existing-obligation",
+      "question": {
+        "en": "May disabling an extension capability abandon work already bound to its provider?",
+        "zh-CN": "停用扩展能力后，能否放弃已经绑定该提供方的工作？"
+      },
+      "required_claims": [
+        "No. Disabling advertisement or new admission does not erase persisted provider and contract bindings.",
+        "The applicable domain manager must still decide how existing settlement, delivery, compensation, or reconciliation obligations are serviced."
+      ],
+      "forbidden_claims": [
+        "A provider health failure permits Core to silently discard in-flight financial or delivery obligations.",
+        "New-work admission and existing-work service are always the same boolean decision."
+      ],
+      "sources": [
+        "/build/extensions"
       ]
     }
   ]

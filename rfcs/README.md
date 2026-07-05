@@ -13,6 +13,7 @@ record; it does not activate behavior.
 | [0003](./0003-composable-frontend-product-model.md) | Composable Frontend Product Model | Draft | 2026-07-04 |
 | [0004](./0004-deal-link-single-level-attribution.md) | Deal Link Single-Level Attribution | Draft | 2026-07-05 |
 | [0005](./0005-core-owned-resource-collateral.md) | Core-owned Resource Collateral Lifecycle | Draft | 2026-07-05 |
+| [0006](./0006-payment-kernel-rails-and-trusted-modules.md) | Payment Kernel, Rails, and Trusted Distribution Modules | Draft | 2026-07-05 |
 
 Start from [`0000-template.md`](./0000-template.md). Allocate the next number,
 keep the filename stable, and update this table in the same change.
@@ -24,3 +25,8 @@ keep the filename stable, and update this table in the same change.
 Accepted means the proposal was approved. Implemented additionally requires
 identified release evidence. Draft, Review, and Accepted RFCs must not be
 described as shipped capability.
+
+Every RFC keeps the standard template headings. When a topic has no material
+impact, the section states “Not applicable” with a concrete rationale instead
+of being omitted; this records that maintainers reviewed the concern and keeps
+automated record validation meaningful.

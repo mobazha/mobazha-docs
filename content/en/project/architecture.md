@@ -31,10 +31,10 @@ Open Core owns order, payment, refund, dispute, settlement, key-custody, and aud
 - Functions customize deterministic decisions without I/O or mutation authority.
 - Controllers reconcile external systems and report observations or attestations.
 - Every financial change returns through a validated Core command and state machine.
-- Effective capabilities remain closed until distribution, compatibility, composition, authorization, configuration, and health gates all pass.
+- New capability advertisement and admission remain closed until the applicable distribution, compatibility, composition, authorization, configuration, and readiness gates pass; persisted provider bindings still govern existing obligations.
 
 - [Open Core extension guide](/build/extensions) — Mechanism selection, authority flow, trust levels, current implementation, and Collectibles as the first Order Extension provider.
-- [Draft Composable Extension Platform RFC](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0002-composable-extension-platform.md) — Target control-plane and multi-runtime model; it does not expand current runtime capability.
+- [Draft Composable Extension Platform RFC](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0002-composable-extension-platform.md) — Target shared-governance, domain-manager, and runtime-choice model; it does not expand current runtime capability.
 
 ## Frontend product composition boundary
 

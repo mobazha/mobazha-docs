@@ -9,7 +9,7 @@ audiences:
   - Agents
 evidenceLabel: Public Mobazha RFC registry
 evidenceUrl: https://github.com/mobazha/mobazha-docs/tree/main/rfcs
-reviewed: 2026-07-04
+reviewed: 2026-07-05
 pageType: hub
 outcome: Find or start a public proposal without presenting Draft design direction as accepted or shipped behavior.
 estimatedTime: 5 minutes
@@ -41,6 +41,8 @@ primaryAction:
 - [RFC-0001: Founding whitepaper publication contract](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0001-whitepaper-publication-contract.md) — Review; defines the evidence and approvals needed to advance the whitepaper.
 - [RFC-0002: Composable Extension Platform Model](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0002-composable-extension-platform.md) — Draft; separates domain, contract role, runtime, trust, lifecycle, and packaging while defining the target multi-runtime platform.
 - [RFC-0003: Composable Frontend Product Model](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0003-composable-frontend-product-model.md) — Draft; separates deployment, experience, channel, code inclusion, and effective capability so public and private distributions can assemble coherent products without product-name branching.
+- [RFC-0004: Core-owned Resource Collateral Lifecycle](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0004-core-owned-resource-collateral.md) — Draft; proposes a separate Core-owned collateral aggregate without merging collateral into Order Extension or order settlement state.
+- [RFC-0006: Payment Kernel, Rails, and Trusted Distribution Modules](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0006-payment-kernel-rails-and-trusted-modules.md) — Draft; proposes typed payment rails, reviewed module composition, contribution-level routing, and durable payment recovery boundaries.
 - [RFC template](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0000-template.md) — Required metadata and review questions.
 - [Repository RFC guide](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/README.md)
 

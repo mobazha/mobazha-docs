@@ -15,12 +15,12 @@ estimatedTime: 8 minutes
 journey: build
 primaryAction:
   label: Review effective availability
-  href: /build/runtime-capabilities#effective-availability
+  href: /build/runtime-capabilities#new-work-availability
 ---
 
-## Effective availability
+## New-work availability
 
-Every gate must pass before a capability is advertised and used. Recognition, source presence, UI code, or a configured name is descriptive only.
+Every applicable gate must pass before a capability is advertised or accepts a new operation. Recognition, source presence, UI code, or a configured name is descriptive only.
 
 ```text
 distribution allowlist
@@ -31,12 +31,15 @@ distribution allowlist
   ∩ healthy
 ```
 
+This projection answers whether the connected backend may admit new work for the current context. It does not erase a persisted provider binding or authorize the backend to abandon an existing payment, settlement, delivery, compensation, or reconciliation obligation. Those decisions remain with the owning domain manager and Core state.
+
 ## Runtime configuration roles
 
 - The bootstrap shell owns deployment mode, product experience, authentication transport, brand, and initial external-resource policy.
 - GET /v1/runtime-config supplies backend-owned feature and capability state.
 - capabilitiesReady distinguishes an authoritative denial from a placeholder that has not loaded.
 - Capabilities control availability, permissions control the current actor, and feature flags control experiments or kill switches.
+- A capability snapshot may hide or block new actions while existing bound work remains serviceable or reconcilable.
 - Clients may narrow availability for safety or session validity but must never widen the backend response.
 
 ## Product composition axes
