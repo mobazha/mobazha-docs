@@ -339,6 +339,29 @@ allocation, or persists the admitted v2 binding. That provider-specific
 orchestration is C4 and remains required before any runtime capability is
 advertised.
 
+The first fail-closed C4 contract slice is implemented on the local integration
+branches but is not activated. Open Core now defines a narrow
+`order-extension.collateral-requirement/v1` module contract. A provider may
+derive one canonical requirement from a detached signed order and persisted
+extension, but receives no database, key, funding, allocation, release, or
+slash authority. Payment provisioning passes the exact persisted extension
+revision to that contract and rejects a required extension unless the current
+Core tenant can reload and admit an exact v2 allocation binding. Existing v2
+bindings remain revalidated even if a provider later stops admitting new
+requirements.
+
+The Collectibles payload contract now reserves source-deposit identity,
+canonical collateral AssetID and base-unit amount, and policy identity/version
+fields. For M2, the extension resource is the source-deposit identity rather
+than the Hub slot. Hosting accepts a guarantee declaration only when amount and
+asset are canonical, projects it explicitly as `unfunded-requirement`, emits
+the signed-order optional features needed for that declaration, and compares a
+source-custody declaration with the operator-owned source-deposit record. A
+missing or altered requirement therefore fails closed. The commercial module
+dependency publication, seller-Core account selection/allocation command,
+cross-tenant verifiable transport, claim evidence, and Docker E2E remain open;
+this slice does not advertise funded protection.
+
 The existing Solana Anchor and EVM Safe implementations were reviewed for C2.
 Both are order-scoped settlement adapters: they require persisted order escrow
 data and define confirm/cancel/dispute outputs as seller payout, buyer refund,
