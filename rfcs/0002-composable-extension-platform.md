@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha architecture and documentation maintainers
 - Created: 2026-07-04
-- Updated: 2026-07-04
+- Updated: 2026-07-05
 - Decision owners: Mobazha Open Core and distribution maintainers
 - Affected surfaces: Node, distributions, extension SDKs, hosted service, docs
 - Supersedes: None
@@ -111,6 +111,15 @@ execution authority, confirmation semantics, runtime, and trust. Adding a
 payment method never grants settlement authority or bypasses the payment state
 machine.
 
+Provider-session payment also separates a statically composed driver from an
+immutable tenant-scoped provider binding. The binding contains only an
+external account reference and a credential-generation reference. Credential
+material belongs in an append-only encrypted store behind a versioned key
+provider contract; it never belongs in a manifest, binding, route, attempt, or
+generic extension payload. Recovery resolves the exact credential generation
+captured by the original attempt instead of silently using the tenant's current
+configuration.
+
 Order resource extensions bind a provider-owned resource or multi-stage domain
 process to an order through versioned declarations and, only when needed,
 reservation, durable delivery, observation, or attestation contracts. They do
@@ -212,6 +221,13 @@ missing authorization, and incompatible versions. Runtime credentials are
 least-privilege, tenant-scoped, rotatable, and unavailable to pure Functions.
 Secrets and raw signing material are never placed in module manifests or
 generic extension payloads.
+
+Credential rotation creates a new immutable generation. Removing a provider
+blocks new admission but retains the minimum historical credential generations
+required to reconcile in-flight work. Stored credential payloads are encrypted
+with a domain-separated, versioned key source; bindings expose only opaque
+references and keyed fingerprints. Missing or undecryptable historical
+material denies recovery rather than falling back to current credentials.
 
 Core remains the sole authority for order, payment, refund, dispute, and
 settlement state. Durable events are at-least-once, replay-safe, tenant-bound,
