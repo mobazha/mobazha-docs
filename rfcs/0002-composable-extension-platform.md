@@ -120,6 +120,14 @@ generic extension payload. Recovery resolves the exact credential generation
 captured by the original attempt instead of silently using the tenant's current
 configuration.
 
+Provider-side commands that may move or release value use a durable,
+Core-owned execution record separate from the normalized settlement model.
+Core persists the immutable intent, original attempt and binding, and a stable
+idempotency key before external I/O. Retries and reconciliation reuse that
+same route and credential generation; a repeated key with a different intent
+fails closed. This execution record is adapter infrastructure, not a new
+extension authority or a universal lifecycle for every payment rail.
+
 Order resource extensions bind a provider-owned resource or multi-stage domain
 process to an order through versioned declarations and, only when needed,
 reservation, durable delivery, observation, or attestation contracts. They do
