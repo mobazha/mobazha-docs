@@ -304,9 +304,27 @@ receipt-log integrity, and residual collateral invariants.
 This source and test evidence still does not activate collateral. There is no
 approved network/token choice, deployed vault address and deployment record,
 operator key runbook, effective capability registration, tagged release, or
-runtime evidence. No Order Extension v2 allocation reference is admitted, and
-no Hosting or client API may present a declared guarantee as funded
-protection. C2 deployment/operations evidence and C3 through C5 remain open.
+runtime evidence. No runtime Order Extension v2 allocation reference is
+admitted, and no Hosting or client API may present a declared guarantee as
+funded protection. C2 deployment/operations evidence and C3 through C5 remain
+open.
+
+The first C3 contract and admission-gate slice is implemented in Open Core.
+Order Extension v1 remains unchanged. A separate `OrderExtensionV2` projection
+may carry a Core-issued `AllocationReference`; that reference now includes the
+provider, resource, and principal scope in addition to tenant, order,
+extension, asset, amount, state, and revisions. The read-only Core admission
+gate reloads both the allocation and collateral account and rejects an absent
+reference, a stale projection, a wrong tenant/order/provider/resource/
+principal, a wrong asset or amount, a non-active allocation, or an inactive,
+expired, or revision-stale account. Tests cover these negative bindings and
+also prove that the original v1 envelope remains independently valid.
+
+This C3 slice is not yet an order-flow capability. The v2 projection is not
+persisted or admitted by purchase/payment provisioning, and no Collectibles
+module currently requests a Core allocation through it. Those persistence and
+orchestration steps, followed by the C3 integration tests in the rollout
+table, remain open before C3 can be called complete.
 
 The existing Solana Anchor and EVM Safe implementations were reviewed for C2.
 Both are order-scoped settlement adapters: they require persisted order escrow
