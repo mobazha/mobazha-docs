@@ -288,7 +288,8 @@ request rather than an action identifier alone; funding targets retain the
 Core-resolved principal destination, tenant, and idempotency identity for
 binding checks and remain observable after their funding deadline.
 
-The first concrete C2 source slice is also implemented but is not activated.
+The first concrete C2 source slice is implemented and activated only in the
+local Docker E2E composition.
 `bsc-smart-contracts/contracts/collateral/CollateralVault.sol` defines a
 dedicated, single-ERC-20 vault with principal-funded obligations, role-gated
 release and slash, replay-safe action digests, pause control, strict token
@@ -301,8 +302,12 @@ replay, and unsupported fee-on-transfer behavior; Node tests cover immutable
 target and execution bindings, expiry reconciliation, digest compatibility,
 receipt-log integrity, and residual collateral invariants.
 
-This source and test evidence still does not activate collateral. There is no
-approved network/token choice, deployed vault address and deployment record,
+This source and test evidence still does not activate production collateral.
+The explicit test-only Hosting composition can now inject the reviewed EVM
+vault rail when `is_test_env=true`; its Anvil fixture deploys the vault against
+the mock ERC-20 and supplies chain, token, vault, operator, start-block, and
+confirmation coordinates. There is no approved network/token choice, deployed
+vault address and deployment record,
 operator key runbook, effective capability registration, tagged release, or
 production runtime evidence. The local Collectibles integration now creates
 and transports Order Extension v2 allocation bindings as described below, but
@@ -413,9 +418,14 @@ credential enters its final five minutes. The shared typed scheduler drives
 the worker in standalone and Hosting modes without per-tenant tickers; a new
 credential advances the cursor atomically with import. Docker E2E now covers
 the unfunded denial, automatic seller allocation, issued/imported persistence,
-and scheduled refresh. Runtime activation remains gated on publishing and
-pinning the Commercial module dependency plus production collateral funding
-and operator onboarding.
+and scheduled refresh. The funded branch opens the account through the
+administrator API, obtains an immutable funding target, executes ERC-20
+approval and vault funding on Anvil, reconciles receipt-confirmed funding to an
+active account, and only then exercises allocation credential issue, import,
+and refresh; it no longer inserts an active collateral account directly into
+PostgreSQL. Production runtime activation remains gated on publishing and
+pinning the Commercial module dependency plus approved deployment, key
+operations, monitoring, accounting, and operator onboarding.
 
 The local Open Core integration branch now also exposes a narrow,
 administrator-authenticated onboarding API for opening an idempotent account,
@@ -427,9 +437,9 @@ raw rail payload, credentials, and private evidence. The rail remains an
 explicit Node composition option and is absent by default, so funding returns
 an unavailable result until a reviewed rail is injected. No endpoint exposes
 release, claim, slash, or evidence authority. This closes the generic operator
-API contract, not production onboarding: Hosting workflow, approved asset and
-deployment configuration, key operations, monitoring, accounting, and runtime
-evidence remain required.
+API contract and proves its local Docker E2E workflow, not production
+onboarding: approved asset and deployment configuration, key operations,
+monitoring, accounting, and production runtime evidence remain required.
 
 The existing Solana Anchor and EVM Safe implementations were reviewed for C2.
 Both are order-scoped settlement adapters: they require persisted order escrow
