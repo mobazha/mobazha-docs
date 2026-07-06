@@ -34,6 +34,8 @@ The human-facing experience baseline is recorded in
 information architecture, page contracts, rollout order, and acceptance tests
 live in
 [`docs/HUMAN_EXPERIENCE_IMPLEMENTATION_PLAN.md`](./docs/HUMAN_EXPERIENCE_IMPLEMENTATION_PLAN.md).
+The active persona-by-question review and next editorial correction batches live
+in [`docs/USER_TASK_CONTENT_AUDIT.md`](./docs/USER_TASK_CONTENT_AUDIT.md).
 Rendered accessibility, responsive behavior, visual evidence, freshness, and
 privacy-safe measurement are governed by
 [`docs/QUALITY_AND_MEASUREMENT.md`](./docs/QUALITY_AND_MEASUREMENT.md).

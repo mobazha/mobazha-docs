@@ -1,6 +1,6 @@
 ---
 title: Choose hosted or self-hosted Mobazha
-summary: Choose the operating model from control, responsibility, integrations, and service needs—not from a false free-versus-paid shortcut.
+summary: Choose the backend operator from control and responsibility, then decide whether bounded hosted or third-party services should complement that backend.
 status: Beta
 audiences:
   - Sellers
@@ -11,7 +11,7 @@ evidenceLabel: Mobazha public product and release boundaries
 evidenceUrl: https://github.com/mobazha/mobazha/blob/main/README.md
 reviewed: 2026-07-06
 pageType: concept
-outcome: Choose hosted or self-hosted operation from the control and operational responsibility you actually need.
+outcome: Choose hosted or self-hosted operation from the control you need, and understand when a hybrid composition adds services without changing order authority.
 estimatedTime: 5 minutes
 journey: start
 primaryAction:
@@ -55,10 +55,27 @@ Use the open-source Node when you need direct control over deployment, store dat
 
 Neither model makes every payment rail, extension, or marketplace capability available. The connected backend's runtime response, the seller's configuration, and the current release contract remain authoritative.
 
+## Hybrid use is composition, not a third owner
+
+Hybrid use means an independently or commercially operated store backend participates in the wider store network or calls selected external capabilities. It is not a third deployment type and it does not split one order across several authoritative databases.
+
+Examples include:
+
+- a self-hosted store appearing in a community or hosted discovery surface;
+- an independently operated Node using a named payment, delivery, messaging, index, AI, or support service;
+- hosted and self-hosted stores exchanging permitted discovery, signed-content, messaging, or commerce protocol requests;
+- a hosted storefront or direct link resolving a buyer to the seller backend that actually owns the order.
+
+For every connection, record the provider, exchanged data, price, capability, outage behavior, exit path, and the backend that remains responsible for store and order state. A convenient channel or gateway must not silently become a second transaction authority.
+
+- [Compare direct P2P and Hybrid topologies](/project/architecture)
+- [Review costs by recipient and operating path](/project/fees)
+
 ## Decision rule
 
 - Choose hosted when reducing operational work matters more than controlling every infrastructure boundary.
 - Choose self-hosted when control, portability, custom operation, or independent availability justifies the operating responsibility.
+- Add a hybrid service only when its bounded value, exchanged data, cost, failure behavior, and exit path are clearer than operating the capability yourself.
 - Start on testnet and validate backup, payment, fulfillment, and recovery before depending on either path for material transactions.
 - Re-evaluate from current terms and capabilities; the deployment choice does not permanently lock the product model.
 

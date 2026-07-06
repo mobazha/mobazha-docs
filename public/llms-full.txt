@@ -42,7 +42,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - URL: /start/choose-deployment
 - Status: beta
 - Page type: concept
-- Outcome: Choose hosted or self-hosted operation from the control and operational responsibility you actually need.
+- Outcome: Choose hosted or self-hosted operation from the control you need, and understand when a hybrid composition adds services without changing order authority.
 - Estimated time: 5 minutes
 - Journey: start
 - Applies to: Mobazha v0.3 release candidate
@@ -51,7 +51,7 @@ amount, and confirmation point. Old illustrative percentages are not current def
 - Evidence: https://github.com/mobazha/mobazha/blob/main/README.md
 - Reviewed: 2026-07-06
 - Language: en
-- Summary: Choose the operating model from control, responsibility, integrations, and service needs—not from a false free-versus-paid shortcut.
+- Summary: Choose the backend operator from control and responsibility, then decide whether bounded hosted or third-party services should complement that backend.
 
 Hosted service
 Use the hosted application when you want to evaluate Mobazha or operate a store without maintaining the underlying server. The service operator manages availability, deployment, and the hosted account boundary; current Beta pricing and limits are published separately.
@@ -91,9 +91,20 @@ Best first proof
 Complete a disposable buyer-and-seller journey and inspect service terms
 Start locally on testnet, then prove diagnostics, backup, restore, and one complete commerce journey
 Neither model makes every payment rail, extension, or marketplace capability available. The connected backend's runtime response, the seller's configuration, and the current release contract remain authoritative.
+Hybrid use is composition, not a third owner
+Hybrid use means an independently or commercially operated store backend participates in the wider store network or calls selected external capabilities. It is not a third deployment type and it does not split one order across several authoritative databases.
+Examples include:
+a self-hosted store appearing in a community or hosted discovery surface;
+an independently operated Node using a named payment, delivery, messaging, index, AI, or support service;
+hosted and self-hosted stores exchanging permitted discovery, signed-content, messaging, or commerce protocol requests;
+a hosted storefront or direct link resolving a buyer to the seller backend that actually owns the order.
+For every connection, record the provider, exchanged data, price, capability, outage behavior, exit path, and the backend that remains responsible for store and order state. A convenient channel or gateway must not silently become a second transaction authority.
+Compare direct P2P and Hybrid topologies
+Review costs by recipient and operating path
 Decision rule
 Choose hosted when reducing operational work matters more than controlling every infrastructure boundary.
 Choose self-hosted when control, portability, custom operation, or independent availability justifies the operating responsibility.
+Add a hybrid service only when its bounded value, exchanged data, cost, failure behavior, and exit path are clearer than operating the capability yourself.
 Start on testnet and validate backup, payment, fulfillment, and recovery before depending on either path for material transactions.
 Re-evaluate from current terms and capabilities; the deployment choice does not permanently lock the product model.
 Validate the choice before committing
@@ -2982,22 +2993,68 @@ RFC, ADR, and history lifecycle.
 Releases
 Published release maturity and evidence.
 
-### How Mobazha systems fit together
+### How Mobazha systems and store networks fit together
 - URL: /project/architecture
 - Status: beta
 - Page type: concept
-- Outcome: Identify the systems involved in a Mobazha action, which one owns each decision, and where to look when surfaces disagree or a dependency fails.
+- Outcome: Distinguish direct peer-to-peer and hybrid store networks, identify which backend owns each decision, and know where to look when systems disagree.
 - Estimated time: 10 minutes
 - Journey: understand
-- Featured visual: mobazha-product-atlas (conceptual; Explains the product and authority model; it does not assert that every pictured channel, integration, or external service is available in every distribution.)
+- Featured visual: store-network-topologies (conceptual; Explains durable network and authority boundaries. It does not assert direct transport for every request, order replication between peers, or availability of every optional service in every distribution.)
 - Applies to: Mobazha v0.3 release candidate
 - Audience: buyers, sellers, operators, developers, evaluators, agents
 - Knowledge authority: https://docs.mobazha.org/project/architecture
 - Evidence: https://github.com/mobazha
 - Reviewed: 2026-07-06
 - Language: en
-- Summary: Follow a buyer, seller, or Agent request from a presentation surface to the backend that owns store and transaction state, then to optional services and external providers.
+- Summary: Compare direct peer-to-peer and hybrid store networks, then follow a request to the backend that owns store and transaction state.
 
+Read the topologies
+Mobazha is peer-to-peer because independently operated store backends can participate in shared discovery, signed-content, messaging, and commerce protocols without moving every store or order into one central platform database. It does **not** mean every buyer must run a Node, every request connects directly at the transport layer, or every peer receives a copy of every order.
+The selected seller backend is the stable authority boundary in both topologies:
+Question
+Direct P2P store network
+Hybrid store network
+Where does the store run?
+On a Node operated for that independent store
+On either an independently operated Node or a hosted Commercial Node
+How does a buyer reach it?
+A storefront, app, direct link, or Agent resolves the seller Node and requests the action
+The entry surface resolves seller context; a Hosting gateway routes hosted context, while independent context continues to its own Node
+What may cross the network?
+Published profiles and offers, discovery signals, messages, and explicit protocol requests
+The same public protocol relationships plus separately enabled hosted, index, payment, delivery, messaging, or automation services
+What does not spread by implication?
+Private store data, recovery material, credentials, and the authoritative order record
+Independent Node data and orders do not move into Hosting merely because the store uses a hosted channel or optional service
+Who decides whether an order changes state?
+The selected seller backend that created and owns that order
+The selected seller backend—independent or hosted—not the entry channel, gateway, index, or another peer
+**Direct P2P** describes independent Nodes as peers, not one shared database. **Hybrid** describes coexistence and bounded service composition, not a third kind of order owner. A store still has one active backend context for a given order.
+Choose hosted or self-hosted operation
+Understand community markets and distributed discovery
+Check what the connected backend can do
+Use the right architecture view
+The topology deliberately does not place every actor, client, chain, contract, and Node component on one canvas. Those are different architectural dimensions. Combining them can make a possible integration look mandatory or make a shared service look authoritative.
+View
+Question it should answer
+Use this source
+Store network topology
+How do independent and hosted stores coexist, and which backend owns an order?
+The topology above and this page
+Transaction and protection flow
+How do buyer, seller, payment evidence, fulfillment, refund, dispute, and arbitration responsibilities interact?
+[Orders, payments, and recovery](/project/transaction-spine) and [cancel, refund, or dispute](/buy/cancel-refund-dispute)
+Experience and channel topology
+How do Web, desktop, mobile, community, embedded, messaging, and Agent entry points reach the same commerce context?
+[Channels and integrations](/project/surfaces-and-integrations)
+Node composition
+How do Core services, local data, content storage, messaging, wallet, and provider adapters fit inside one backend?
+The six-part model below, [self-hosting](/self-host), and public implementation contracts
+Payment and settlement topology
+Which rail, wallet, provider, chain, escrow, or settlement controller applies to one order?
+[Seller payments](/sell/payments), the order-bound Payment Session, runtime capabilities, and the applicable provider contract
+A named blockchain, smart contract, social client, hosted service, or arbitration mechanism belongs in a more specific view only when current capability and policy evidence supports it. Its appearance in a concept diagram must never imply universal availability.
 Where this page fits
 Mobazha can appear as a storefront, hosted application, self-hosted Node, community market, direct link, API, or Agent workflow. Those are not separate explanations of the product. They are surfaces and operating paths around one commerce model.
 Use each overview for a different question:
@@ -3158,6 +3215,7 @@ Understand long-term economic principles
 Direct answers
 **Does every Mobazha order pay a central commission?** No. Running the Community software on infrastructure you control does not by itself create a mandatory Mobazha transaction fee.
 **Does open source mean everything is free?** No. Servers, storage, payment networks, providers, delivery, plugins, AI, support, taxes, and optional managed services have real costs.
+**Does Hybrid use mean paying both a platform commission and self-hosting costs?** No. Hybrid names a composition, not a fee category. The operator pays its own infrastructure plus only the separately accepted services and external costs it actually uses.
 **Is every deduction a Mobazha fee?** No. The recipient may be the seller, carrier, blockchain network, payment provider, tax authority, operator, referrer, or another named service.
 **When should the buyer know the total?** Before final confirmation and before funds are committed. A later screen should not silently add a new required charge.
 **When should the seller know net proceeds?** Before accepting the applicable service or order terms, including seller-paid charges and refund treatment.
@@ -3242,6 +3300,11 @@ Hosted service
 Hosted plans may charge for operation, reliability, storage, domain, updates, automation, AI, analytics, or support.
 Free Beta access or a free tier is a current service policy, not a permanent right.
 The applicable pricing page and service terms must state the plan, effective date, limits, renewal, cancellation, and export path.
+Hybrid composition
+A self-hosted or hosted store may add discovery, messaging, payment, delivery, AI, support, or another managed capability without transferring order authority.
+Each added service must identify its provider, payer, recipient, meter or rate, exchanged data, outage behavior, renewal, and exit path.
+Using a hosted channel to reach an independent store does not by itself create a universal transaction commission. Any attributable distribution or transaction service charge still needs explicit funding and quote disclosure.
+Compare the complete operating cost and responsibility, not only a headline subscription, commission, or server bill.
 Deal Link or managed transaction
 A transaction-related fee is justified only by a named service or responsibility such as execution, delivery coordination, evidence, dispute operations, or risk handling.
 Low-touch automated delivery and high-touch human operations do not have to use the same pricing model.
@@ -3367,6 +3430,9 @@ A provider is disabled while old orders still exist
 New-work admission may close while persisted orders retain their provider binding and still require observation, refund, settlement, or reconciliation. Compatibility includes the ability to service those historical obligations; silently selecting a new provider is not safe fallback.
 Hosted and self-hosted distributions share an API
 The operation shape may match while authentication, multi-store routing, limits, managed dependencies, and available capabilities differ. An integration must discover context and capability rather than branch only on a product name.
+Hosted and self-hosted stores share a network
+Shared discovery, signed-content, messaging, or commerce protocols do not create a shared order database. Resolve the selected store and backend before acting, then reconcile state with that backend. A Hosting gateway may route hosted store context, but it does not become a compatibility proxy or recovery authority for an independent Node by implication.
+Hybrid compatibility therefore requires evidence at both boundaries: the peer or service protocol must interoperate, and the selected backend must still admit the requested business capability, identity, and state transition.
 Version and change rules
 Patch releases should preserve supported contracts while fixing defects and security issues.
 Minor releases may add backward-compatible operations, fields, events, capabilities, or extension points.

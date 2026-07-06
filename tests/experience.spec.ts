@@ -300,7 +300,9 @@ test("article lists keep their markers without changing task step counters", asy
 
 test("architecture and fee pages establish their role in the knowledge system", async ({ page }) => {
   await page.goto("/project/architecture");
-  await expect(page.locator("h1")).toHaveText("How Mobazha systems fit together");
+  await expect(page.locator("h1")).toHaveText("How Mobazha systems and store networks fit together");
+  await expect(page.getByRole("heading", { name: "Read the topologies" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Use the right architecture view" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Where this page fits" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "One request through the system" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "When systems disagree or fail" })).toBeVisible();
@@ -318,6 +320,8 @@ test("journey and boundary diagrams use the light documentation visual system", 
     "/images/docs/buy/order-lifecycle.svg",
     "/images/docs/sell/store-operating-loop.svg",
     "/images/docs/self-host/operator-trust-boundary.svg",
+    "/images/docs/project/store-network-topologies.svg",
+    "/images/docs/project/store-network-topologies-mobile.svg",
   ]) {
     const response = await request.get(path);
     expect(response.ok()).toBeTruthy();

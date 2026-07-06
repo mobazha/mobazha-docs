@@ -87,6 +87,12 @@ New-work admission may close while persisted orders retain their provider bindin
 
 The operation shape may match while authentication, multi-store routing, limits, managed dependencies, and available capabilities differ. An integration must discover context and capability rather than branch only on a product name.
 
+### Hosted and self-hosted stores share a network
+
+Shared discovery, signed-content, messaging, or commerce protocols do not create a shared order database. Resolve the selected store and backend before acting, then reconcile state with that backend. A Hosting gateway may route hosted store context, but it does not become a compatibility proxy or recovery authority for an independent Node by implication.
+
+Hybrid compatibility therefore requires evidence at both boundaries: the peer or service protocol must interoperate, and the selected backend must still admit the requested business capability, identity, and state transition.
+
 ## Version and change rules
 
 - Patch releases should preserve supported contracts while fixing defects and security issues.

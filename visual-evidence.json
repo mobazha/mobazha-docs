@@ -24,6 +24,26 @@
       "reviewed": "2026-07-06"
     },
     {
+      "id": "store-network-topologies",
+      "src": "/images/docs/project/store-network-topologies.svg",
+      "sha256": "5e26e8371ceff4a149019affbf4a2b3a2af3d6cc87465fd85001912ba19d5cb5",
+      "mobile_src": "/images/docs/project/store-network-topologies-mobile.svg",
+      "mobile_sha256": "9ec0813528f18df943a0ab0ef0efbac3143c8e6cf94cbad6a61b6be7cc5d63da",
+      "kind": "conceptual",
+      "width": 760,
+      "height": 640,
+      "mobile_width": 360,
+      "mobile_height": 1040,
+      "alt": "Two Mobazha store network topologies. Direct peer-to-peer shows a buyer resolving one self-hosted seller Node while another store remains a separate peer. Hybrid shows independent and hosted stores coexisting, with Hosting routing only hosted context and optional providers remaining separate.",
+      "caption": "Direct P2P and Hybrid change how a store is reached and operated; the selected seller backend still owns its store and orders.",
+      "claim": "Explains durable network and authority boundaries. It does not assert direct transport for every request, order replication between peers, or availability of every optional service in every distribution.",
+      "privacy_review": "synthetic-only",
+      "source": "https://github.com/mobazha/mobazha-docs",
+      "source_revision": "store-network-topologies-v1",
+      "applies_to": "Mobazha v0.3 release-candidate product and architecture model",
+      "reviewed": "2026-07-06"
+    },
+    {
       "id": "identity-storefront-model",
       "src": "/images/docs/project/identity-storefront-model.svg",
       "sha256": "ba28eef9f58d55f80205f6f697b6f116a8f292be60aa87edfa7624124653f9dd",

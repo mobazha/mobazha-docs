@@ -36,6 +36,7 @@ This page defines how Mobazha fees and costs must be explained. It is not a pric
 
 - **Does every Mobazha order pay a central commission?** No. Running the Community software on infrastructure you control does not by itself create a mandatory Mobazha transaction fee.
 - **Does open source mean everything is free?** No. Servers, storage, payment networks, providers, delivery, plugins, AI, support, taxes, and optional managed services have real costs.
+- **Does Hybrid use mean paying both a platform commission and self-hosting costs?** No. Hybrid names a composition, not a fee category. The operator pays its own infrastructure plus only the separately accepted services and external costs it actually uses.
 - **Is every deduction a Mobazha fee?** No. The recipient may be the seller, carrier, blockchain network, payment provider, tax authority, operator, referrer, or another named service.
 - **When should the buyer know the total?** Before final confirmation and before funds are committed. A later screen should not silently add a new required charge.
 - **When should the seller know net proceeds?** Before accepting the applicable service or order terms, including seller-paid charges and refund treatment.
@@ -93,6 +94,13 @@ If the product cannot produce this information, it should not silently deduct a 
 - Hosted plans may charge for operation, reliability, storage, domain, updates, automation, AI, analytics, or support.
 - Free Beta access or a free tier is a current service policy, not a permanent right.
 - The applicable pricing page and service terms must state the plan, effective date, limits, renewal, cancellation, and export path.
+
+### Hybrid composition
+
+- A self-hosted or hosted store may add discovery, messaging, payment, delivery, AI, support, or another managed capability without transferring order authority.
+- Each added service must identify its provider, payer, recipient, meter or rate, exchanged data, outage behavior, renewal, and exit path.
+- Using a hosted channel to reach an independent store does not by itself create a universal transaction commission. Any attributable distribution or transaction service charge still needs explicit funding and quote disclosure.
+- Compare the complete operating cost and responsibility, not only a headline subscription, commission, or server bill.
 
 ### Deal Link or managed transaction
 

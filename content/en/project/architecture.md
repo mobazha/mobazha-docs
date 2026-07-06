@@ -1,6 +1,6 @@
 ---
-title: How Mobazha systems fit together
-summary: Follow a buyer, seller, or Agent request from a presentation surface to the backend that owns store and transaction state, then to optional services and external providers.
+title: How Mobazha systems and store networks fit together
+summary: Compare direct peer-to-peer and hybrid store networks, then follow a request to the backend that owns store and transaction state.
 status: Beta
 audiences:
   - Buyers
@@ -13,14 +13,48 @@ evidenceLabel: Mobazha public product, Node, runtime, and distribution contracts
 evidenceUrl: https://github.com/mobazha
 reviewed: 2026-07-06
 pageType: concept
-outcome: Identify the systems involved in a Mobazha action, which one owns each decision, and where to look when surfaces disagree or a dependency fails.
+outcome: Distinguish direct peer-to-peer and hybrid store networks, identify which backend owns each decision, and know where to look when systems disagree.
 estimatedTime: 10 minutes
 journey: understand
 primaryAction:
-  label: Follow one request
-  href: /project/architecture#one-request-through-the-system
-featuredVisual: mobazha-product-atlas
+  label: Compare the two topologies
+  href: /project/architecture#read-the-topologies
+featuredVisual: store-network-topologies
 ---
+
+## Read the topologies
+
+Mobazha is peer-to-peer because independently operated store backends can participate in shared discovery, signed-content, messaging, and commerce protocols without moving every store or order into one central platform database. It does **not** mean every buyer must run a Node, every request connects directly at the transport layer, or every peer receives a copy of every order.
+
+The selected seller backend is the stable authority boundary in both topologies:
+
+| Question | Direct P2P store network | Hybrid store network |
+|---|---|---|
+| Where does the store run? | On a Node operated for that independent store | On either an independently operated Node or a hosted Commercial Node |
+| How does a buyer reach it? | A storefront, app, direct link, or Agent resolves the seller Node and requests the action | The entry surface resolves seller context; a Hosting gateway routes hosted context, while independent context continues to its own Node |
+| What may cross the network? | Published profiles and offers, discovery signals, messages, and explicit protocol requests | The same public protocol relationships plus separately enabled hosted, index, payment, delivery, messaging, or automation services |
+| What does not spread by implication? | Private store data, recovery material, credentials, and the authoritative order record | Independent Node data and orders do not move into Hosting merely because the store uses a hosted channel or optional service |
+| Who decides whether an order changes state? | The selected seller backend that created and owns that order | The selected seller backend—independent or hosted—not the entry channel, gateway, index, or another peer |
+
+**Direct P2P** describes independent Nodes as peers, not one shared database. **Hybrid** describes coexistence and bounded service composition, not a third kind of order owner. A store still has one active backend context for a given order.
+
+- [Choose hosted or self-hosted operation](/start/choose-deployment)
+- [Understand community markets and distributed discovery](/project/community-commerce)
+- [Check what the connected backend can do](/build/runtime-capabilities)
+
+## Use the right architecture view
+
+The topology deliberately does not place every actor, client, chain, contract, and Node component on one canvas. Those are different architectural dimensions. Combining them can make a possible integration look mandatory or make a shared service look authoritative.
+
+| View | Question it should answer | Use this source |
+|---|---|---|
+| Store network topology | How do independent and hosted stores coexist, and which backend owns an order? | The topology above and this page |
+| Transaction and protection flow | How do buyer, seller, payment evidence, fulfillment, refund, dispute, and arbitration responsibilities interact? | [Orders, payments, and recovery](/project/transaction-spine) and [cancel, refund, or dispute](/buy/cancel-refund-dispute) |
+| Experience and channel topology | How do Web, desktop, mobile, community, embedded, messaging, and Agent entry points reach the same commerce context? | [Channels and integrations](/project/surfaces-and-integrations) |
+| Node composition | How do Core services, local data, content storage, messaging, wallet, and provider adapters fit inside one backend? | The six-part model below, [self-hosting](/self-host), and public implementation contracts |
+| Payment and settlement topology | Which rail, wallet, provider, chain, escrow, or settlement controller applies to one order? | [Seller payments](/sell/payments), the order-bound Payment Session, runtime capabilities, and the applicable provider contract |
+
+A named blockchain, smart contract, social client, hosted service, or arbitration mechanism belongs in a more specific view only when current capability and policy evidence supports it. Its appearance in a concept diagram must never imply universal availability.
 
 ## Where this page fits
 
