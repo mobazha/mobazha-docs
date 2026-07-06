@@ -494,7 +494,7 @@
         "source": "https://github.com/mobazha/mobazha/tree/main",
         "label": "Mobazha README and release scope"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-06",
       "page_type": "hub",
       "outcome": "Prepare a store that a buyer can understand, pay, and receive from through one tested journey.",
       "estimated_time": "6 minutes",
@@ -506,9 +506,9 @@
       "featured_visual": {
         "id": "seller-operating-loop",
         "src": "/images/docs/sell/store-operating-loop.svg",
-        "sha256": "e05ce5ef770dc832404864ef24750f8f0ca54a449f48575d5b3f00cc569a5db3",
+        "sha256": "821c17af3a6aab26ef274d08e5de9f32e0feb08e13c4f38fda195f2f2b55f2b8",
         "mobile_src": "/images/docs/sell/store-operating-loop-mobile.svg",
-        "mobile_sha256": "090e99fdddfc5e62737676c84f484ffd71b1262a5b1b025d1fb7ec900a9306d8",
+        "mobile_sha256": "26f1cf6ab939bfcc90e4bb61b9b4126a40dbeaa37a8401a781813f463c138777",
         "kind": "conceptual",
         "width": 760,
         "height": 420,
@@ -519,12 +519,12 @@
         "claim": "Explains the operator responsibility sequence; it is not evidence that a specific store has completed these checks.",
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
-        "source_revision": "docs-model-v1",
+        "source_revision": "store-readiness-loop-light-v2",
         "applies_to": "Mobazha v0.3 release-candidate guidance",
-        "reviewed": "2026-07-04"
+        "reviewed": "2026-07-06"
       },
       "language": "en",
-      "search_text": "Start with the store journey Understand the offer to fulfillment model Separate product shape, merchandising, supply facts, accepted terms, and delivery evidence. Prepare the store Validate identity, policy, fulfillment, and a complete test purchase. Publish listings Show buyer verifiable product, variant, price, and availability data. Configure shipping Match destinations, rates, listings, estimates, and evidence. Prepare payments Advertise only capabilities the backend and operator are ready to support. Operate orders Reconcile payment, fulfill, refund, dispute, and complete safely. Before opening a store Choose self hosted operation or an optional managed service. Configure payment methods supported by your backend and region. Publish delivery, return, refund, and dispute terms that buyers can inspect. Review the final quote and all recipient amounts before accepting an order. What Mobazha does not decide for you A seller remains responsible for product legality, tax, fulfillment, customer support, and any seller defined charges. Mobazha provides commerce software and verifiable transaction flows; it does not make every operator one legal entity. Cost labels must identify the recipient and reason. A generic hidden service charge is not an acceptable substitute. Store readiness checklist Set a recognizable store identity, operator contact path, locale, currency display, and domain where applicable. Create complete listings with accurate variants, inventory or availability, media, price, and shipping eligibility. Configure shipping profiles, delivery estimates, return conditions, and fulfillment evidence before accepting orders. Enable only payment methods that the backend advertises and that the store is operationally ready to monitor and settle. Test the full buyer journey on the same deployment, capability set, and device classes customers will use. Order operations Review the order, quote, payment state, buyer instructions, and fulfillment obligation before confirming. Do not infer payment completion from a screenshot, message, or Agent statement; use the backend's verified payment state. Record shipment or delivery evidence using the order flow rather than relying on an external chat alone. Handle cancellation, refund, dispute, and completion through the allowed state transition for the current order. Retain policy, quote, payment, fulfillment, and communication references needed for support or dispute review. Choose how to operate Use the hosted application Choose a deployment Install a self hosted node Understand fees"
+      "search_text": "Start with the store journey Understand the offer to fulfillment model Separate product shape, merchandising, supply facts, accepted terms, and delivery evidence. Prepare the store Validate identity, policy, fulfillment, and a complete test purchase. Publish listings Show buyer verifiable product, variant, price, and availability data. Configure shipping Match destinations, rates, listings, estimates, and evidence. Prepare payments Advertise only capabilities the backend and operator are ready to support. Operate orders Reconcile payment, fulfill, refund, dispute, and complete safely. The objects a Mobazha seller operates Object Seller responsibility Product boundary Store / Node Identity, policy, capabilities, orders, and business state authority This is not merely a visual storefront or a channel account. Storefront Brand, navigation, presentation, domain, and audience view Several storefront or channel views may reuse store owned commerce state where supported. Listing revision Buyer visible promise: product shape, options, price, media, terms, and fulfillment eligibility A later revision must not silently change an accepted quote or order. Supply and availability Whether a purchasable combination can actually be fulfilled Inventory, provider supply, service capacity, and option labels are separate facts. Collection and discount Merchandising and price adjustment rules They organize or transform an offer; they do not own order state. Shipping profile Destination eligibility, service, rate, estimate, and evidence requirements A listing is not purchasable for a destination until a valid fulfillment path exists. Payment capability A backend advertised and operator ready payment path A parsed Token or provider name alone is not readiness. Order Accepted terms, payment state, fulfillment obligation, recovery, and completion The backend remains authoritative even when the order is presented in another channel. Before opening a store Choose self hosted operation or an optional managed service. Configure payment methods supported by your backend and region. Publish delivery, return, refund, and dispute terms that buyers can inspect. Review the final quote and all recipient amounts before accepting an order. What Mobazha does not decide for you A seller remains responsible for product legality, tax, fulfillment, customer support, and any seller defined charges. Mobazha provides commerce software and verifiable transaction flows; it does not make every operator one legal entity. Cost labels must identify the recipient and reason. A generic hidden service charge is not an acceptable substitute. Store readiness checklist Set a recognizable store identity, operator contact path, locale, currency display, and domain where applicable. Create complete listings with accurate variants, inventory or availability, media, price, and shipping eligibility. Configure shipping profiles, delivery estimates, return conditions, and fulfillment evidence before accepting orders. Enable only payment methods that the backend advertises and that the store is operationally ready to monitor and settle. Test the full buyer journey on the same deployment, capability set, and device classes customers will use. Order operations Review the order, quote, payment state, buyer instructions, and fulfillment obligation before confirming. Do not infer payment completion from a screenshot, message, or Agent statement; use the backend's verified payment state. Record shipment or delivery evidence using the order flow rather than relying on an external chat alone. Handle cancellation, refund, dispute, and completion through the allowed state transition for the current order. Retain policy, quote, payment, fulfillment, and communication references needed for support or dispute review. Choose how to operate Use the hosted application Choose a deployment Install a self hosted node Understand fees"
     },
     {
       "id": "sell-store-setup",
@@ -547,7 +547,7 @@
         "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin",
         "label": "Unified seller administration routes"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-06",
       "page_type": "task",
       "last_tested": "2026-07-04",
       "outcome": "Publish a store that can complete one representative buyer journey without hidden operator steps.",
@@ -558,7 +558,7 @@
         "href": "/sell/store-setup#before-you-start"
       },
       "language": "en",
-      "search_text": "Before you start Choose hosted or self hosted operation and confirm the backend is healthy. Use an administrator identity for the intended store, not a buyer session from another deployment. Prepare public store name, contact path, currency display, fulfillment regions, return terms, and payment methods. Keep recovery material outside the browser and create a backup before material configuration changes. Store setup steps Open Admin and review the store identity under profile or general settings. Set the public name, description, contact route, locale, currency display, and storefront presentation. Publish shipping, return, refund, privacy, and buyer protection terms appropriate to the operator. Configure at least one shipping or delivery path for the products you intend to sell. Enable only payment methods that the backend reports as ready and that you can monitor operationally. Create one complete test listing with media, availability, price, options, and fulfillment eligibility. Open the public storefront in a separate buyer context and complete a testnet checkout through fulfillment. Expected result and verification The public storefront should show the intended identity, policies, listing, total price components, available delivery, and only ready payment methods. The administrator should receive the test order and inspect payment and fulfillment state without hidden tooling. If something fails If the public store differs from Admin, confirm the store or storefront context and refresh authoritative settings. If checkout has no delivery option, verify the listing is assigned to an eligible shipping profile or digital path. If payment is absent, inspect runtime readiness rather than adding a frontend only identifier. If buyer and seller routes share credentials unexpectedly, stop using material funds and report the isolation defect. Continue Create and validate a listing Configure shipping Prepare payments Operate incoming orders"
+      "search_text": "Before you start Choose hosted or self hosted operation and confirm the backend is healthy. Use an administrator identity for the intended store, not a buyer session from another deployment. Prepare public store name, contact path, currency display, fulfillment regions, return terms, and payment methods. Keep recovery material outside the browser and create a backup before material configuration changes. Know which surface you are changing Admin surface Current route What it controls Store profile /admin/settings/profile Public operator identity and profile information. Storefront editor /admin/storefront Brand, presentation, sections, and public storefront experience. Store policies /admin/settings/policies Buyer visible fulfillment, return, refund, privacy, and protection terms. Shipping profiles /admin/settings/shipping Destination eligibility, rates, estimates, and listing coverage. Payments /admin/payments Crypto receiving accounts, available providers, guest checkout behavior, and payment policy where supported. Products /admin/products and /listing/new Listing revisions, options, availability, price, and fulfillment assignment. The store / Node owns identity, policy, capabilities, and orders. A storefront is a presentation surface over that commerce state. Confirm the active store context before editing either one, especially when one account can reach more than one store. Store setup steps Open Admin → Settings → Profile and verify the active store identity, public operator name, contact route, locale, and currency display. Open Admin → Storefront and publish only the brand and sections intended for this store; preview the public view before continuing. Open Admin → Settings → Policies and publish shipping, return, refund, privacy, and buyer protection terms appropriate to this operator and payment model. Open Admin → Settings → Shipping and create a profile that covers at least one real destination and the listing type you intend to sell. Open Admin → Payments and enable only receiving accounts or providers that report ready and that the operator can monitor, reconcile, and refund when applicable. Open Admin → Products or /listing/new , create one complete listing, and attach valid availability and fulfillment. Open /store/{peerId} in a separate buyer context. Verify store identity, policies, listing, quote, delivery, and payment choices. Complete a testnet order through seller acceptance, payment verification, fulfillment evidence, and buyer completion or the intended terminal state. Expected result and verification The public storefront should show the intended store identity, storefront presentation, policies, listing revision, total price components, valid destination specific delivery, and only ready payment methods. The administrator should receive the test order under the same store context and inspect payment and fulfillment state without hidden tooling. If something fails If the public store differs from Admin, confirm the store or storefront context and refresh authoritative settings. If checkout has no delivery option, verify the listing is assigned to an eligible shipping profile or digital path. If payment is absent, inspect runtime readiness rather than adding a frontend only identifier. If buyer and seller routes share credentials unexpectedly, stop using material funds and report the isolation defect. If the wrong store changed, stop and verify account, store / Node, storefront, and peerId context before making another edit. Continue Create and validate a listing Configure shipping Prepare payments Operate incoming orders"
     },
     {
       "id": "sell-listings",
@@ -580,7 +580,7 @@
         "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/listing",
         "label": "Unified listing editor and Node listing API"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-06",
       "page_type": "task",
       "last_tested": "2026-07-04",
       "outcome": "Publish one listing that a buyer can understand, quote, and purchase through its intended fulfillment path.",
@@ -591,7 +591,7 @@
         "href": "/sell/listings#before-you-start"
       },
       "language": "en",
-      "search_text": "Before you start Prepare a truthful title, description, media, price, quantity or service capacity, and delivery conditions. Decide whether the item is physical, digital, a service, or another supported listing type. Configure required shipping or delivery support before publication. Do not describe a Token or payment capability as available merely because its identifier parses. Listing steps Open Admin → Products or the supported New Listing entry point. Choose listing type and enter title, description, category, and buyer visible media. Enter price and currency with correct divisibility; verify the rendered amount before saving. Add options or variants and ensure every purchasable combination has meaningful availability. Assign shipping, digital delivery, or service fulfillment appropriate to the item. Add clear return, refund, warranty, eligibility, or redemption conditions where applicable. Save the draft, preview the public page, then publish after buyer visible validation. Expected result and verification Open the public product URL in a buyer context. Verify title, media, options, price, fulfillment, availability, seller identity, policies, and checkout eligibility. Add the item to a cart and request a supply quote; publication alone does not prove it can be purchased. If something fails If the item saves but is not public, inspect publication state, storefront context, indexing, and runtime capabilities. If an option cannot be purchased, check variant completeness and availability. If price renders incorrectly, stop publication and verify amount units, currency, and divisibility. If shipping is unavailable, assign the listing to a compatible profile and retest the buyer destination. Change safety When editing a listing with active orders, preserve the version and terms accepted by existing buyers. A new listing revision must not silently rewrite an already created order."
+      "search_text": "Before you start Prepare a truthful title, description, media, price, quantity or service capacity, and delivery conditions. Decide whether the item is physical, digital, a service, or another supported listing type. Configure required shipping or delivery support before publication. Do not describe a Token or payment capability as available merely because its identifier parses. Choose the correct creation path Path Use it for Availability note /admin/products Review publication state, availability, price, and existing listings. Primary administration surface. /listing/new Build a complete listing with product type fields, media, options, pricing, and fulfillment. Preferred path for a first representative listing. /listing/quick Create from a smaller field set, then complete the listing before relying on it. Use only when this entry point is present in the active distribution. /listing/import or Admin import Normalize external catalog data into Mobazha listing and supply facts. Imported data still requires seller review and publication. /admin/collections Curate published listings into buyer visible groups. Merchandising; does not change order authority. /admin/discounts Define eligible price adjustments and codes. The accepted quote must show the applied result. Keep product shape, option, and supply separate Fact Example Why it is separate Product type Physical good, digital good, service, collectible, or another supported type Determines required fulfillment and buyer visible fields. Option Color, size, license tier, session length A buyer selected property of the offer. Variant / SKU Blue + large, or Pro + annual Identifies a purchasable combination; it is not a supplier identity. Availability Inventory, provider supply, service capacity, or eligibility Answers whether the combination can be fulfilled now. Fulfillment Shipping profile, digital delivery, booking, redemption, or provider path Answers how the accepted promise will be completed. Listing steps Open Admin → Products , confirm the active store, and choose the complete /listing/new path for the first representative offer. Select the product type first; then enter the title, description, category, buyer visible media, and type specific facts. Enter price and currency with correct divisibility. Verify the rendered amount rather than trusting stored integer units. Add option dimensions and variants. Give each purchasable combination a meaningful SKU or identity only where supported and useful. Attach availability separately from the option labels: local inventory, service capacity, provider supply, or another supported source. Assign shipping, digital delivery, service fulfillment, redemption, or another valid path appropriate to the type and destination. Add return, refund, warranty, eligibility, or redemption conditions that the seller can actually honor. Save the draft, preview /product/{slug} in a buyer context, then publish. If applicable, place the listing in a Collection or attach a Discount, then request a fresh quote and verify the result rather than assuming merchandising changed the order correctly. Expected result and verification Open the public product URL in a buyer context. Verify title, media, product type, options, variant availability, displayed price, seller identity, policies, and destination appropriate fulfillment. Add the item to a cart and request a fresh quote. Continue until checkout presents a valid delivery and payment path; publication alone does not prove the offer can become an order. If something fails If the item saves but is not public, inspect publication state, storefront context, indexing, and runtime capabilities. If an option cannot be purchased, check variant completeness and availability. If price renders incorrectly, stop publication and verify amount units, currency, and divisibility. If shipping is unavailable, assign the listing to a compatible profile and retest the buyer destination. If an imported or"
     },
     {
       "id": "sell-shipping",
@@ -717,7 +717,7 @@
         "source": "https://github.com/mobazha/mobazha-unified",
         "label": "Mobazha Unified public client"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-06",
       "page_type": "hub",
       "outcome": "See who operates the store, what you will pay, and how to recover the order before you commit funds.",
       "estimated_time": "5 minutes",
@@ -729,9 +729,9 @@
       "featured_visual": {
         "id": "buyer-order-lifecycle",
         "src": "/images/docs/buy/order-lifecycle.svg",
-        "sha256": "aa9b5fa9b8a3fc8d051eb6be36b1754148146d93e46712920dce3b6b0e3f54a7",
+        "sha256": "ae6227f538038f4be74d93a3402810cb7220802eb98850c6ae610c7ebcdc3e93",
         "mobile_src": "/images/docs/buy/order-lifecycle-mobile.svg",
-        "mobile_sha256": "e9da65c01633deb565734d262a92cd4400dc83ffe3fefad3f7977f3247905233",
+        "mobile_sha256": "712799d325a9e67bcec89e5021cb25777bde7e960f886c01d64a95dd0f7f6567",
         "kind": "conceptual",
         "width": 760,
         "height": 420,
@@ -742,12 +742,12 @@
         "claim": "Explains the documentation authority and milestone model; it does not assert that every deployment exposes every transition.",
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
-        "source_revision": "docs-model-v1",
+        "source_revision": "buyer-order-path-light-v2",
         "applies_to": "Mobazha v0.3 release-candidate guidance",
-        "reviewed": "2026-07-04"
+        "reviewed": "2026-07-06"
       },
       "language": "en",
-      "search_text": "Choose what you need to do Complete checkout Create one order from one reviewed quote. Use Guest Checkout Buy without attaching an account and keep a recoverable tracking link. Track an order Reconcile payment evidence with backend owned order state. Cancel, refund, or dispute Use the transition available for the active order. What should be visible before payment Decision What the buyer should see Governing source Who receives the order Seller identity and the backend or operator serving that store Store and order owner What the order costs Item, delivery, tax, discounts, provider or network costs, optional services, final total Active quote How to pay Asset, destination, amount, expiry, and required confirmations Active order and payment system What happens next Cancellation, refund, fulfillment evidence, and dispute path available for the order Current order state and published policy Before you confirm Verify the store identity and the backend or operator serving it. Inspect subtotal, shipping, taxes, network costs, service charges, discounts, and the final total. Read cancellation, refund, evidence, and dispute rules. Treat an agent recommendation as assistance, not as authority to bypass confirmation or spending scopes. Keep evidence Retain the order identifier, quote, payment reference, messages, fulfillment evidence, and the policy version shown at checkout. These records make support and dispute handling more reliable. Checkout and payment Confirm the item, quantity, variant, seller, shipping destination, and delivery method before requesting a quote. Read the full cost allocation: item subtotal, delivery, taxes, discounts, network or provider costs, optional services, and final total. Use only the payment method, asset, address, amount, expiry, and confirmation instructions shown for the active order. Do not reuse an expired quote or payment destination from another order, message, screenshot, or Agent response. Wait for authoritative payment and order state instead of treating broadcast, a pending transaction, or a receipt image as final settlement. Delivery, cancellation, and disputes Follow the cancellation and refund actions currently available for the order rather than assuming a universal deadline. Inspect seller delivery evidence and preserve buyer evidence in its original form. Use the in product dispute path when offered and describe the requested remedy clearly. A payment rail or escrow can enforce only its implemented conditions; it does not guarantee product quality or a preferred dispute result. Escalate suspected fraud or security issues without publishing private order, identity, or payment data. Continue Open the hosted application Review fees and economics Get help"
+      "search_text": "Choose what you need to do Complete checkout Create one order from one reviewed quote. Use Guest Checkout Buy without attaching an account and keep a recoverable tracking link. Track an order Reconcile payment evidence with backend owned order state. Cancel, refund, or dispute Use the transition available for the active order. The Mobazha purchase model Mobazha does not treat a product page, wallet transfer, and order as the same record. The buyer journey crosses several explicit objects: Object What it answers What not to assume Store and backend Who publishes the offer and owns the resulting order state? A discovery site, community, or Agent does not automatically own the transaction. Quote Which item revision, option combination, destination, delivery path, discount, and total are being offered now? A catalog price or old screenshot is not an accepted total. Order Which quoted terms were accepted, and which state transition is currently valid? Editing the listing later must not rewrite the accepted order. Payment session Which asset or provider, destination, amount, expiry, and verification rule apply to this order? Broadcast, authorization, observation, verification, and settlement are not interchangeable. Recovery path Which cancellation, refund, buyer protection, or dispute action is currently available? Mobazha does not promise one universal recovery action for every payment rail and policy. What should be visible before payment Decision What the buyer should see Governing source Who receives the order Seller identity and the backend or operator serving that store Store and order owner What the order costs Item, delivery, tax, discounts, provider or network costs, optional services, final total Active quote How to pay Asset, destination, amount, expiry, and required confirmations Active order and payment system What happens next Cancellation, refund, fulfillment evidence, and dispute path available for the order Current order state and published policy Before you confirm Verify the store identity and the backend or operator serving it. Inspect subtotal, shipping, taxes, network costs, service charges, discounts, and the final total. Read cancellation, refund, evidence, and dispute rules. Treat an agent recommendation as assistance, not as authority to bypass confirmation or spending scopes. If a cart contains items from multiple stores, verify the store boundary and quote for each resulting seller owned order. Keep evidence Retain the order identifier, quote, payment reference, messages, fulfillment evidence, and the policy version shown at checkout. These records make support and dispute handling more reliable. Checkout and payment Confirm the item, quantity, variant, seller, shipping destination, and delivery method before requesting a quote. Read the full cost allocation: item subtotal, delivery, taxes, discounts, network or provider costs, optional services, and final total. Use only the payment method, asset, address, amount, expiry, and confirmation instructions shown for the active order. Do not reuse an expired quote or payment destination from another order, message, screenshot, or Agent response. Wait for authoritative payment and order state instead of treating broadcast, a pending transaction, or a receipt image as final settlement. Delivery, cancellation, and disputes Follow the cancellation and refund actions currently available for the order rather than assuming a universal deadline. Inspect seller delivery evidence and preserve buyer evidence in its original form. Use the in product dispute path when offered and describe the requested remedy clearly. A payment rail or escrow can enforce only its implemented conditions; it does not guarantee product quality or a preferred dispute result. Escalate suspected fraud or security issues without publishing private order, identity, or payment data. Continue Open the hosted application Review fees and economics Get help"
     },
     {
       "id": "buy-checkout",
@@ -921,9 +921,9 @@
       "featured_visual": {
         "id": "self-host-trust-boundary",
         "src": "/images/docs/self-host/operator-trust-boundary.svg",
-        "sha256": "ec2bd699563cc7cd8f16e7552b57629fb5cd387281d1dd027f9296c941bc6c2e",
+        "sha256": "9d5d1114d2d192696b77f458663d56d3e4af3f3ba7afac0d81678ed63952451b",
         "mobile_src": "/images/docs/self-host/operator-trust-boundary-mobile.svg",
-        "mobile_sha256": "30f9938ccbebc1fd4f30461c6cab49321bcdd1887b19a2d78d3177ac7d897b62",
+        "mobile_sha256": "72cc8ec3ce49620736bf7dfd223c389f7cd318fdf578d1ad358ea8e1e924437d",
         "kind": "conceptual",
         "width": 760,
         "height": 420,
@@ -934,9 +934,9 @@
         "claim": "Explains responsibility boundaries and does not prescribe one mandatory network topology.",
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
-        "source_revision": "docs-model-v1",
+        "source_revision": "self-host-boundary-light-v2",
         "applies_to": "Mobazha v0.3 release-candidate guidance",
-        "reviewed": "2026-07-04"
+        "reviewed": "2026-07-06"
       },
       "language": "en",
       "search_text": "Choose the operating path Check host and release requirements Install an evaluation node Configure the node Set the network and TLS boundary Add monitoring and health checks Back up, upgrade, and recover Apply the security model Diagnose a node Evaluation quick start The current release candidate requires Go 1.26.4, Git, and a supported macOS or Linux environment. Use testnet while evaluating payment flows. v0.3 is for evaluation and testnet use. Stable binaries and signed release artifacts have not yet been published. Operator responsibilities Secure the host, administrator access, secrets, and network boundary. Back up data and recovery material before upgrades. Monitor storage, availability, payment integrations, and release notes. Expose only the interfaces your users and agents actually need. Optional hosted connection An operator may bind a self hosted node to an optional Mobazha account for hosted capabilities when offered. Binding does not transfer custody of local recovery material and is not required for independent operation. Connect an optional hosted account"
@@ -1718,8 +1718,8 @@
       "id": "project-whitepaper",
       "path": "/project/whitepaper",
       "canonical_url": "https://docs.mobazha.org/project/whitepaper",
-      "title": "Founding whitepaper",
-      "summary": "A public-review account of Mobazha's problem framing, trust model, human-and-Agent interfaces, and approach to sustainable open commerce.",
+      "title": "Mobazha Founding Whitepaper",
+      "summary": "The v0.2 public discussion draft for an open commercial network in the AI era, independent operating units, accountable participation, and sustainable shared capability.",
       "status": "draft",
       "audiences": [
         "community",
@@ -1730,24 +1730,24 @@
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/project/whitepaper",
-        "label": "Founding whitepaper"
+        "label": "Mobazha Founding Whitepaper"
       },
       "evidence": {
-        "source": "docs-curation",
-        "label": "Public-review edition prepared for the Mobazha project"
+        "source": "https://github.com/mobazha/mobazha-docs/blob/main/content/en/project/whitepaper.md",
+        "label": "Versioned Mobazha v0.2 public discussion edition"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-06",
       "page_type": "concept",
-      "outcome": "Understand Mobazha's durable direction while separating it from current release guarantees and service promises.",
-      "estimated_time": "12 minutes",
+      "outcome": "Understand Mobazha's proposed open commercial network, operating-unit model, economic loops, participation principles, and current validation sequence.",
+      "estimated_time": "22 minutes",
       "journey": "understand",
       "primary_action": {
-        "label": "Read the thesis",
-        "href": "/project/whitepaper#thesis"
+        "label": "Read the executive summary",
+        "href": "/project/whitepaper#0-executive-summary"
       },
-      "version": "0.1-review",
+      "version": "0.2-discussion",
       "language": "en",
-      "search_text": "Thesis Commerce infrastructure should be usable by people and agents without forcing every participant through one operator, one custody model, or one opaque fee schedule. Independence must remain practical, while optional services may charge clearly for value they provide. The project therefore treats self hosting, portable interfaces, backend authoritative capabilities, and explicit economic disclosure as product requirements rather than marketing claims. The problem Centralized commerce bundles identity, discovery, data, checkout, policy, and distribution into one operator controlled dependency. Self hosted software often exists in name but remains impractical because upgrades, discovery, payments, or integrations depend on undocumented central services. Agent mediated commerce increases the cost of ambiguity: an Agent needs machine readable authority, scopes, prices, recipients, and state transitions before it can act safely. A durable alternative must support independent operation and sustainable optional services without hiding one inside the other. Durable principles Operator choice and meaningful self hosting. Portable, inspectable interfaces instead of undocumented platform privilege. Explicit identity, capability, consent, and audit boundaries for agents. Charges tied to a named service, recipient, calculation basis, and confirmation step. Sustainability through optional services and ecosystem value—not a hidden universal commission. System model A Mobazha client connects to a backend selected by the user or operator. The backend owns order state, capability advertisement, payment verification, settlement gates, and audit. The shared client renders only the effective capabilities it receives. Discovery, hosted operations, payment rails, delivery, and other services are separate dependencies with separately disclosed trust and price boundaries. Clients are replaceable views over versioned contracts, not the authority for business state. Capabilities are available only when distribution policy, contract compatibility, installation, authorization, configuration, and health all permit them. Extensions submit bounded declarations, decisions, observations, or attestations; Core validates them before changing protected state. Independent operators choose which external services and network exposure their deployment accepts. Humans and Agents Mobazha is designed for interfaces used directly by people and through software Agents. Both must observe the same price, capability, policy, and state facts. Machine readable discovery improves access to those facts but does not grant authority or bypass confirmation. Identity and authorization belong to the actor and action, not to persuasive prompt text. Spending, settlement, publication, and destructive operations require explicit scopes and applicable confirmation. Agent recommendations must disclose paid attribution or referral relationships where applicable. Auditable request, approval, quote, order, and result identifiers support review without logging secrets. Sustainable economics The open source Node can be operated independently without a mandatory central Mobazha transaction fee. Operators still incur their own infrastructure, network, processor, tax, support, and extension costs. Mobazha or another provider may charge for clearly named hosting, automation, distribution, transaction, support, or other optional services. This boundary does not promise that every service is free. It requires the provider, payer, recipient, calculation basis, amount, optionality, expiry, and refund treatment to be visible before a charge is accepted. Fees and Paid Services policy The current public economic boundary and quote requirements. Current public pricing status Current service offers and effective pricing disclosures. Evolution and governance Mobazha is a release candidate. The whitepaper describes durable direction, while release scope, compatibility policy, OpenAPI, runtime capabilit"
+      "search_text": "Publication status Version 0.2 is a public discussion draft. It states principles and direction; it is not a fundraising, Token, return, ownership, or shipped feature commitment. 0. Executive Summary AI is distributing software, content, analysis, and execution capabilities that were once available only to large organizations. Yet widely available productive capacity does not automatically create access to markets, trust, payments, distribution, or durable business opportunity. A person may use an agent to accomplish more work and still be unable to find demand, earn trust, complete a cross border sale, manage a dispute, or retain the commercial relationships they have built. Mobazha aims to build an open commercial network that independent participants use and progressively help build. Individuals, creators, small teams, and agents can transact under shared rules, create stores, operate markets, build tools, and develop verifiable records of fulfillment and participation. Building together begins with independent operation. Participants may run their own stores, markets, services, or tools, and may also create capabilities that other operating units reuse. Shared infrastructure connects these units; it does not replace their brands, customer relationships, responsibility boundaries, or freedom to exit. Mobazha seeks to lower the cost of this combination of independence and cooperation. Not every form of participation automatically creates economic value. Only actions that improve real transactions, operating outcomes, risk management, or public capabilities may be rewarded, and only under clear rules with a real source of funds. Mobazha will not manufacture prosperity through registration counts, relationship position, token prices, or promises about the future. It will test itself through real demand, real fulfillment, and sustainable revenue. 1. Productive Capacity Is Opening Up, While Commercial Opportunity Remains Concentrated Large companies in the industrial and internet eras concentrated capital, talent, software, distribution, payments, data, and organizational capacity within a single boundary. Scale lowered coordination costs, but also made many commercial opportunities available only through a corporate role or a platform's permission. AI is lowering execution costs and the minimum effective team size. Individuals and small teams can design, develop, translate, review, market, and serve customers more quickly. This does not mean large platforms will naturally decline. They still possess user networks, brands, data, payments, logistics, capital, and compliance capacity, and can use AI to strengthen those advantages. The core problem is not whether individuals can produce. It is whether: productive capacity can connect to real demand; unfamiliar participants can establish trust with accountable responsibility; small operators can use commercial infrastructure once affordable only to large companies; people who build markets, bring demand, maintain tools, and manage risk can receive intelligible rewards; and participants can accumulate long term commercial capability without depending on one company or platform. Mobazha's opportunity does not rest on an assumption that any company must decline. It rests on a different structural possibility: as general purpose productive capacity becomes more widely available, an open network can allow more commercial surplus to remain with the people who actually create demand, supply, trust, and capability. 2. Value Hidden by the Platform Economy A market is never created by a platform alone. It also relies on: sellers' goods, services, fulfillment, and after sales support; buyers' real demand, acceptance, and useful feedback; operators who maintain categories, regions, rules, and order; curators and distributors who filter and connect supply with demand; developers and agent authors who build tools; and verifiers, arbitrators, and infrastructure operators who accept responsibility."
     },
     {
       "id": "project-fees",
@@ -2756,7 +2756,7 @@
         "source": "https://github.com/mobazha/mobazha-unified",
         "label": "Mobazha Node 与 Unified 公开实现"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-06",
       "page_type": "hub",
       "outcome": "准备一个买家能理解、付款并完成收货验证的店铺旅程。",
       "estimated_time": "6 分钟",
@@ -2768,9 +2768,9 @@
       "featured_visual": {
         "id": "seller-operating-loop",
         "src": "/images/docs/sell/store-operating-loop.svg",
-        "sha256": "e05ce5ef770dc832404864ef24750f8f0ca54a449f48575d5b3f00cc569a5db3",
+        "sha256": "821c17af3a6aab26ef274d08e5de9f32e0feb08e13c4f38fda195f2f2b55f2b8",
         "mobile_src": "/images/docs/sell/store-operating-loop-mobile.svg",
-        "mobile_sha256": "090e99fdddfc5e62737676c84f484ffd71b1262a5b1b025d1fb7ec900a9306d8",
+        "mobile_sha256": "26f1cf6ab939bfcc90e4bb61b9b4126a40dbeaa37a8401a781813f463c138777",
         "kind": "conceptual",
         "width": 760,
         "height": 420,
@@ -2781,13 +2781,13 @@
         "claim": "Explains the operator responsibility sequence; it is not evidence that a specific store has completed these checks.",
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
-        "source_revision": "docs-model-v1",
+        "source_revision": "store-readiness-loop-light-v2",
         "applies_to": "Mobazha v0.3 release-candidate guidance",
-        "reviewed": "2026-07-04"
+        "reviewed": "2026-07-06"
       },
       "language": "zh-CN",
       "translation_of": "/sell",
-      "search_text": "开店前 选择托管服务或自行托管。 配置后端和所在地区实际支持的付款方式。 公开配送、退货、退款和争议条款。 在接受订单前检查最终报价和所有收款方金额。 理解从 Offer 到 Fulfillment 的经营模型 店铺与商品准备 设置可识别的店铺身份、联系方式、地区、币种展示和域名。 为商品提供准确的规格、库存、图片、价格和配送范围。 先配置配送模板、预计时间、退货条件和履约证据。 只启用后端公开且店铺有能力监控、结算的付款方式。 订单运营 确认订单前检查报价、付款状态、买家要求和履约义务。 不要用截图、聊天消息或 Agent 陈述代替后端验证后的付款状态。 通过订单流程记录发货或交付证据。 取消、退款、争议和完成必须遵循当前订单允许的状态转换。 继续 打开托管应用 收费与经济模式 English canonical page"
+      "search_text": "开店前 选择托管服务或自行托管。 配置后端和所在地区实际支持的付款方式。 公开配送、退货、退款和争议条款。 在接受订单前检查最终报价和所有收款方金额。 理解从 Offer 到 Fulfillment 的经营模型 卖家实际经营的对象 对象 负责什么 边界 Store / Node 身份、政策、能力、订单和业务状态权威 不只是一个视觉店面或渠道账号。 Storefront 品牌、导航、页面、域名和受众视图 可以复用店铺商业状态，但不拥有订单。 Listing revision 商品形态、规格、价格、媒体、条款和履约资格 新版本不能静默修改已接受的 Quote 或订单。 Supply / availability 某个可购买组合能否真实履约 库存、供应商供给、服务容量和规格名称是不同事实。 Collection / Discount 组织商品和调整价格 影响展示或 Quote，不拥有订单状态。 Shipping profile 目的地、服务、费率、时效和证据要求 没有有效履约路径，商品不能对该目的地成交。 Payment capability 后端声明且运营者准备好的收款路径 仅能解析 Token 或服务商名称不等于可用。 店铺与商品准备 设置可识别的店铺身份、联系方式、地区、币种展示和域名。 为商品提供准确的规格、库存、图片、价格和配送范围。 先配置配送模板、预计时间、退货条件和履约证据。 只启用后端公开且店铺有能力监控、结算的付款方式。 订单运营 确认订单前检查报价、付款状态、买家要求和履约义务。 不要用截图、聊天消息或 Agent 陈述代替后端验证后的付款状态。 通过订单流程记录发货或交付证据。 取消、退款、争议和完成必须遵循当前订单允许的状态转换。 继续 打开托管应用 收费与经济模式 English canonical page"
     },
     {
       "id": "zh-buy",
@@ -2810,7 +2810,7 @@
         "source": "https://github.com/mobazha/mobazha-unified",
         "label": "Mobazha Unified 公开客户端"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-06",
       "page_type": "hub",
       "outcome": "在付款前看清店铺运营者、完整成本和订单恢复路径。",
       "estimated_time": "5 分钟",
@@ -2822,9 +2822,9 @@
       "featured_visual": {
         "id": "buyer-order-lifecycle",
         "src": "/images/docs/buy/order-lifecycle.svg",
-        "sha256": "aa9b5fa9b8a3fc8d051eb6be36b1754148146d93e46712920dce3b6b0e3f54a7",
+        "sha256": "ae6227f538038f4be74d93a3402810cb7220802eb98850c6ae610c7ebcdc3e93",
         "mobile_src": "/images/docs/buy/order-lifecycle-mobile.svg",
-        "mobile_sha256": "e9da65c01633deb565734d262a92cd4400dc83ffe3fefad3f7977f3247905233",
+        "mobile_sha256": "712799d325a9e67bcec89e5021cb25777bde7e960f886c01d64a95dd0f7f6567",
         "kind": "conceptual",
         "width": 760,
         "height": 420,
@@ -2835,13 +2835,13 @@
         "claim": "Explains the documentation authority and milestone model; it does not assert that every deployment exposes every transition.",
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
-        "source_revision": "docs-model-v1",
+        "source_revision": "buyer-order-path-light-v2",
         "applies_to": "Mobazha v0.3 release-candidate guidance",
-        "reviewed": "2026-07-04"
+        "reviewed": "2026-07-06"
       },
       "language": "zh-CN",
       "translation_of": "/buy",
-      "search_text": "确认前 核对店铺身份、商品、数量、规格、配送地址和配送方式。 查看商品小计、运费、税费、折扣、网络或服务费用和最终总额。 阅读取消、退款、证据和争议规则。 Agent 建议是辅助，不是绕过用户确认或消费权限的授权。 付款 只使用当前订单显示的付款方式、资产、地址、金额和有效期。 不要复用过期报价、其他订单地址、截图或聊天中的付款信息。 交易广播、待确认交易和回执图片都不等于最终结算。 以拥有订单的后端所记录的验证状态为准。 履约与争议 保留订单号、报价、付款引用、消息、履约证据和政策版本。 根据当前订单允许的操作申请取消或退款。 支持争议时，通过产品内流程提交证据和期望的解决方式。 支付或托管机制只能执行已实现的条件，不能保证商品质量或特定裁决结果。 继续 获取帮助 收费与经济模式 English canonical page"
+      "search_text": "Mobazha 的购买对象 对象 回答的问题 不应做的假设 店铺与后端 谁发布 Offer、谁拥有订单状态？ 发现站点、社群或 Agent 不会因此自动拥有交易。 Quote 当前商品版本、规格、目的地、配送、折扣和总额是什么？ 商品页价格或旧截图不是已接受总额。 订单 哪些条款已被接受、当前允许什么状态转换？ 后续编辑商品不能重写已有订单。 支付会话 当前订单使用哪个资产或服务商、地址、金额、有效期和验证规则？ 广播、观察、验证和最终结算不是同一状态。 恢复路径 当前可用取消、退款、保障或争议中的哪一项？ 不同支付方式和政策没有统一保证的恢复动作。 确认前 核对店铺身份、商品、数量、规格、配送地址和配送方式。 查看商品小计、运费、税费、折扣、网络或服务费用和最终总额。 阅读取消、退款、证据和争议规则。 Agent 建议是辅助，不是绕过用户确认或消费权限的授权。 付款 只使用当前订单显示的付款方式、资产、地址、金额和有效期。 不要复用过期报价、其他订单地址、截图或聊天中的付款信息。 交易广播、待确认交易和回执图片都不等于最终结算。 以拥有订单的后端所记录的验证状态为准。 履约与争议 保留订单号、报价、付款引用、消息、履约证据和政策版本。 根据当前订单允许的操作申请取消或退款。 支持争议时，通过产品内流程提交证据和期望的解决方式。 支付或托管机制只能执行已实现的条件，不能保证商品质量或特定裁决结果。 继续 获取帮助 收费与经济模式 English canonical page"
     },
     {
       "id": "zh-self-host",
@@ -2876,9 +2876,9 @@
       "featured_visual": {
         "id": "self-host-trust-boundary",
         "src": "/images/docs/self-host/operator-trust-boundary.svg",
-        "sha256": "ec2bd699563cc7cd8f16e7552b57629fb5cd387281d1dd027f9296c941bc6c2e",
+        "sha256": "9d5d1114d2d192696b77f458663d56d3e4af3f3ba7afac0d81678ed63952451b",
         "mobile_src": "/images/docs/self-host/operator-trust-boundary-mobile.svg",
-        "mobile_sha256": "30f9938ccbebc1fd4f30461c6cab49321bcdd1887b19a2d78d3177ac7d897b62",
+        "mobile_sha256": "72cc8ec3ce49620736bf7dfd223c389f7cd318fdf578d1ad358ea8e1e924437d",
         "kind": "conceptual",
         "width": 760,
         "height": 420,
@@ -2889,9 +2889,9 @@
         "claim": "Explains responsibility boundaries and does not prescribe one mandatory network topology.",
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
-        "source_revision": "docs-model-v1",
+        "source_revision": "self-host-boundary-light-v2",
         "applies_to": "Mobazha v0.3 release-candidate guidance",
-        "reviewed": "2026-07-04"
+        "reviewed": "2026-07-06"
       },
       "language": "zh-CN",
       "translation_of": "/self-host",
@@ -3076,7 +3076,7 @@
       "path": "/zh/project/whitepaper",
       "canonical_url": "https://docs.mobazha.org/zh/project/whitepaper",
       "title": "Mobazha 创始白皮书",
-      "summary": "关于问题定义、信任模型、人类与 Agent 接口，以及开放商业可持续路径的公开评审版。",
+      "summary": "v0.2 公开讨论稿：面向 AI 时代的开放商业网络、独立经营单元、可问责参与和可持续公共能力。",
       "status": "draft",
       "audiences": [
         "社区",
@@ -3090,22 +3090,22 @@
         "label": "Mobazha 创始白皮书"
       },
       "evidence": {
-        "source": "https://github.com/mobazha/mobazha-docs",
-        "label": "Mobazha 白皮书中文维护译本"
+        "source": "https://github.com/mobazha/mobazha-docs/blob/main/content/zh-CN/project/whitepaper.md",
+        "label": "版本化的 Mobazha v0.2 中文公开讨论版"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-06",
       "page_type": "concept",
-      "outcome": "理解 Mobazha 的长期方向，同时把它与当前发布保证和服务承诺区分开。",
-      "estimated_time": "12 分钟",
+      "outcome": "理解 Mobazha 的开放商业网络、独立经营单元、双经济循环、参与原则和当前验证顺序。",
+      "estimated_time": "22 分钟",
       "journey": "understand",
       "primary_action": {
-        "label": "阅读核心命题",
-        "href": "/zh/project/whitepaper#核心命题"
+        "label": "阅读摘要",
+        "href": "/zh/project/whitepaper#0-摘要"
       },
-      "version": "0.1-review",
+      "version": "0.2-discussion",
       "language": "zh-CN",
       "translation_of": "/project/whitepaper",
-      "search_text": "核心命题 商业基础设施应同时服务人类与 Agent，而不强迫所有参与者依赖同一个运营者、托管模式或不透明收费表。独立运行必须可行，可选服务也可以为其明确创造的价值收费。 因此，自行托管、可移植接口、后端权威能力和经济披露是产品要求，而不只是营销口号。 要解决的问题 中心化平台把身份、发现、数据、结账、规则和分发绑定到单一运营者。 很多所谓自行托管仍依赖不公开的升级、搜索、付款或集成服务。 Agent 商业放大了模糊性的风险，需要机器可读的权威、权限、价格、收款方和状态转换。 可持续替代方案必须同时支持独立运行和透明的可选服务。 长期原则 运营者选择权与真正可行的自行托管。 可移植、可检查的公开接口。 Agent 的身份、能力、同意与审计边界。 收费必须绑定明确服务、收款方、计算依据与确认步骤。 通过可选服务和生态价值持续发展，而不是隐藏的普遍抽成。 系统模型 客户端连接用户或运营者选择的后端。后端拥有订单状态、能力声明、付款验证、结算门槛和审计权威。共享客户端只展示有效能力。发现、托管、支付、配送等外部服务必须单独说明信任与价格边界。 人类与 Agent 人类与 Agent 必须看到相同的价格、能力、政策和状态事实。 提示词不能绕过身份、权限、报价、订单状态或确认。 消费、结算、发布和破坏性操作需要明确权限及适用确认。 有偿推荐或归因关系必须按适用规则披露。 可持续经济模式 独立运营开源 Node 不产生强制的中心化 Mobazha 交易费，但运营者仍需承担服务器、网络、处理商、税务、支持和扩展成本。Mobazha 或其他服务商可以为托管、自动化、分发、交易支持等明确服务收费。 这不是“所有服务永久免费”的承诺。任何收费都应在确认前说明服务商、付款方、收款方、计算依据、金额、可选性、有效期和退款处理。 收费与经济模式 发布状态 本页是中文维护译本，英文页面是当前规范来源。它明确排除内部预测、实验百分比、机密运营计划和不受公开发布边界支持的声明。 English canonical page 草案方向不是已交付行为、金融产品、收入保证，也不构成独立运营者的义务。"
+      "search_text": "发布状态 v0.2 是公开讨论稿，只表达原则和方向，不构成融资、Token、收益、所有权或已交付功能承诺。 0. 摘要 AI 正在把过去只有大型组织才能拥有的软件、内容、分析和执行能力分发给个人。但生产能力的普及并没有自动带来市场、信用、支付、分发和经营机会。一个人可以借助 Agent 完成更多工作，仍可能无法找到需求、取得信任、完成跨境交易、承担争议，或保留自己积累的商业关系。 Mobazha 希望建设一个由独立参与者共同使用并逐步参与建设的开放商业网络。个人、创作者、小型团队和 Agent 可以在共同规则上完成交易、建立店铺、经营市场、建设工具，并形成可核验的履约与参与记录。 这里所说的共同建设，建立在独立经营之上。参与者既可以经营自己的店铺、市场、服务或工具，也可以建设被其他经营单元复用的能力。共同基础设施连接这些单元，但不取代它们的品牌、客户关系、责任边界和退出自由。Mobazha 试图降低这种独立经营与相互协作的成本。 不是每一次参与都会自动产生经济价值。只有改善真实交易、经营结果、风险或公共能力的行为，才可能在明确规则和资金来源下获得回报。Mobazha 不以注册人数、关系位置、Token 价格或未来承诺制造繁荣，而以真实需求、真实履约和可持续收入检验自身。 1. 生产能力正在开放，商业机会仍然集中 工业时代和互联网时代的大型公司，把资本、人才、软件、分发、支付、数据和组织能力集中在同一边界内。规模降低了协作成本，也让大量商业机会只能通过公司职位或平台许可获得。 AI 正在降低执行成本和最小有效团队规模。个人与小团队可以更快地设计、开发、翻译、审核、营销和服务客户。但这不意味着大型平台会自然衰落。它们仍然拥有用户网络、品牌、数据、支付、物流、资本和合规能力，并且同样可以使用 AI 加强这些优势。 真正需要解决的不是“个人能否生产”，而是： 生产能力如何连接真实需求； 陌生参与者如何建立可承担责任的信任； 小型经营者如何使用过去只有大公司才能负担的商业基础设施； 建设市场、带来需求、维护工具和处理风险的人如何获得可解释的回报； 参与者如何在不依附单一公司或平台的情况下积累长期商业能力。 Mobazha 的机会不建立在某家公司必然向下的假设上，而建立在另一种结构性可能上：当通用生产能力越来越普及，开放网络可以让更多商业剩余保留在实际创造需求、供给、信任和能力的人手中。 2. 平台经济隐藏了哪些价值 一个市场从来不只由平台创造。它还依赖： 卖家的商品、服务、履约和售后； 买家的真实需求、验收和有效反馈； 运营者对品类、地区、规则和秩序的维护； 策展人和分发者对供需的筛选与连接； 开发者和 Agent 作者建设的工具； 验证者、仲裁者和基础设施运营者承担的责任。 在典型平台中，这些参与共同形成的数据、信用和网络效应，往往主要沉淀为平台资产。卖家难以带走声誉和客户关系，运营者难以证明自己带来的增量，贡献者的长期价值容易消失在公司职位、项目记录和封闭算法中，规则和分配也可以被单方面改变。 Mobazha 试图把其中可核验的部分重新表达为商业事实：谁完成了交易，谁承担了履约，谁带来了需求，谁维护了市场，什么工具被真实使用，什么风险被降低。事实可以被检查和申诉，并在有收入、预算和合规路径时进入经济分配。 3. Mobazha 是什么 Mobazha 是开放商业网络及其执行基础设施。它让独立经营者能够在共同规则上建立和连接交易、店铺、市场、工具与 Agent，同时保留各自的责任边界和经营自主性。 共同能力可以包括： 商品、服务和机器可读的交易条件； 支付、交付、退款、争议和证据； 店铺、市场、搜索、策展和分发； 可核验的履约、声誉和参与记录； Agent 的授权、执行、追踪和人工责任； SaaS、自托管和开放接口等不同使用方式。 Mobazha 不要求所有交易先进入一个中心商城。买卖双方可以在网站、社交网络、聊天、社群、线下关系或 Agent 中相遇，再使用 Mobazha 完成交易。不同市场也可以拥有自己的品牌、用户关系、经营规则和损益，而不必成为同一个中心市场的栏目。 开放不等于没有运营主体，也不等于没有收费。Hosting、支付执行、AI、搜索、争议处理、安全和支持都有真实成本。Mobazha 的商业主体应当通过透明服务获得收入，而不是隐藏费用、出售用户控制权或依赖投机性补贴。 4. 独立经营单元 Mobazha 的基本组织单元不是部门、职位或全平台积分，而是一个能够明确责任并单独核算的经营单元。 一个经营单元可能是： 一家独立店铺或一个商品系列； 一个垂直品类、地区或跨境市场； 一项支付、履约、验证或争议服务； 一个被真实交易使用的软件模块或 Agent 能力； 一个连接供给与需求的策展和分发网络。 无论形态如何，一个可持续经营单元都需要回答： 服务谁的真实需求； 谁提供商品、服务或能力； 谁负责日常经营和结果； 收入来自哪里； 直接成本、风险和损失由谁承担； 参与者按照什么规则获得回报； 如果经营失败，如何停止而不拖累整个网络。 这种结构允许不同的人做不同的事。有人拥有商品，有人理解一个地区，有人擅长连接社群，有人建设工具，有人负责验证和风险。参与者不需要先成为 Mobazha 的员工，也不需要所有人共同决定所有问题；他们可以在明确边界内承担一部分责任，并从这一部分的真实经营结果中获益。 经营自主性不等于法律意义上的股权或所有权。品牌、数据、收入、知识产权、决策权和退出权必须由实际产品能力、协议规则和明确合同分别界定，不能用“共同拥有”一句话代替。 5. 从一笔交易到开放网络 Mobazha 不假设必须先拥有巨大流量。更现实的演进顺序是： 5.1 成交 买卖双方已经在其他地方建立联系。Mobazha 帮助他们明确交易条件、接受可用支付、记录交付、处理退款或争议，并留下已结算结果。 5.2 店铺 重复交易的经营者形成商品、客户、履约和声誉账户，并选择适合自己的托管或自托管方式。 5.3 市场 多个卖家和经营者在自愿条件下被搜索、策展和连接，形成垂直市场、地区市场、合作伙伴渠道或其他独立发现入口。 5.4 网络 多个市场复用共同的支付、订单、身份、信用、Agent 和基础设施能力，又保留各自的品牌、责任、预算和规则。 5.5 协议共同体 当多个相互独立的经营者持续依赖并共同投入公共能力时，协议、安全、兼容性和公共预算才具备逐步共同治理的现实基础。 Agent 不是最后才添加的一层。它可以贯穿成交、店铺、市场和网络，帮助人发现机会、组织信息、执行任务和降低经营成本，但不能替代承担最终责任的人或组织。 6. 参与如何形成组织能力 开放网络不能只依赖创始团队寻找所有用户、运营所有市场和建设所有能力。它需要让机会、能力、责任和结果逐步可见，使合适的人能够在合适的边界内合作。 参与者可以从不同位置进入： 卖家和创作者提供合法商品、服务和持续履约； 买家提供真实需求、验收和有效反馈； 市场发起者和运营者选择方向、组织供给、维护规则并承担增长责任； 发现者、策展人和分发者降低寻找与筛选成本，带来可归因的需求； 建设者和 Agent 作者提供被实际经营持续使用的能力； 验证者、仲裁者和基础设施运营者处理证据、风险和可用性。 网络可以逐步形成公开的市场机会、能力需求和责任说明，由人和 Agent 辅助发现潜在合作，但是否适合、是否准入、如何分配收入和谁承担责任，必须由明确规则和可追责主体决定。 参与的路径不应停留在完成一次任务。能够持续创造结果的人，应有机会承担更完整的经营责任，发起新的经营单元，维护一个领域，或参与与其专业和风险相匹配的治理。 但参与记录不等于未来收入。推荐、策展和协作只有在降低成本、改善结果或带来已结算交易时，才可能获得有限、透明且可撤销的经济归因。网络不按人头、下线层级、早期位置或永久关系树分配收益。 7. 两个相互连接的经济循环 7.1 经营循环 这一循环首先属于具体经营单元。不同品类和地区拥有不同成本、风险和利润，不能用一套全局公式替代真实核算。 7.2 公共能力循环 只有扣除支付、基础设施、退款、坏账、争议、客服和必要风险准备后的余额，才可能成为可分配盈余。公共建设预算必须来自真实收入、明确拨款或已到账资助，不能依赖未来 Token 价格。 Mobazha 的商业价值来自两个结果：帮助独立经营单元更低成本地完成交易和增长，以及让多个经营单元共享原本难以单独负担的商业能力。只有参与者和基础设施双方都能形成可持续收入，这个网络才可能长期运转。 8. 价值记录与分配原则 8.1 真实结果优先 注册、浏览、持币、占位和制造活动数量不等于商业价值。完成交易、持续履约、带来真实需求、降低风险和建设被实际使用的能力，才可能进入经济估值。 8.2 事实、估值与兑现分离 系统先记录发生了什么，再由某个明确市场或预算决定如何估值，最后在具备资金、资格、地区和税务条件时兑现。贡献事实不能自动冒充收益权。 8.3 结算状态必须诚实 订单、分成和贡献应区分已观察、待确认、已结算、已撤销和争议中。退款期、验收期或责任未结束前，不能把可能发生的收入展示为最终收入。 8.4 回报与责任相匹配 经济回报来自商品销售、服务收入、订阅、使用费、明确营销预算或可分配盈余。治理影响来自持续责任、领域能力和可核验行为，而不是持币量、身份头衔或一次性贡献。 8.5 本地市场先于全球公式 每个经营单元先证明自己的收入、成本、风险和参与机制，再讨论跨市场公共预算。局部失败应能够停止，成功经验应能够被其他参与者复用。 9. 人与 Agent Mobazha 是 Agent 原生的，"
     },
     {
       "id": "zh-project-fees",

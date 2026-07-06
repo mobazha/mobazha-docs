@@ -11,13 +11,13 @@
   <url><loc>https://docs.mobazha.org/project/community-commerce</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/surfaces-and-integrations</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/agent-commerce</loc><lastmod>2026-07-06</lastmod></url>
-  <url><loc>https://docs.mobazha.org/sell</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/sell/store-setup</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/sell/listings</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/sell</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/sell/store-setup</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/sell/listings</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/sell/shipping</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/sell/payments</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/sell/orders</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/buy</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/buy</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/buy/checkout</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/buy/guest-checkout</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/buy/order-status</loc><lastmod>2026-07-04</lastmod></url>
@@ -46,7 +46,7 @@
   <url><loc>https://docs.mobazha.org/reference</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/project</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/architecture</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/project/whitepaper</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/project/whitepaper</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/fees</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/compatibility</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/distribution</loc><lastmod>2026-07-04</lastmod></url>
@@ -71,15 +71,15 @@
   <url><loc>https://docs.mobazha.org/zh/project/community-commerce</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/project/surfaces-and-integrations</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/project/agent-commerce</loc><lastmod>2026-07-06</lastmod></url>
-  <url><loc>https://docs.mobazha.org/zh/sell</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/zh/buy</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/sell</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/buy</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/self-host</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/self-host/install</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/build</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/build/runtime-capabilities</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/build/token-identifiers</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/build/extensions</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/zh/project/whitepaper</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/project/whitepaper</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/project/fees</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/support</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/api-reference</loc><lastmod>2026-07-06</lastmod></url>

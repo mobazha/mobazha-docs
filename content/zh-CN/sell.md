@@ -7,7 +7,7 @@ audiences:
   - 运营者
 evidenceLabel: Mobazha Node 与 Unified 公开实现
 evidenceUrl: https://github.com/mobazha/mobazha-unified
-reviewed: 2026-07-04
+reviewed: 2026-07-06
 translationOf: sell
 pageType: hub
 outcome: 准备一个买家能理解、付款并完成收货验证的店铺旅程。
@@ -27,6 +27,18 @@ featuredVisual: seller-operating-loop
 - 在接受订单前检查最终报价和所有收款方金额。
 
 - [理解从 Offer 到 Fulfillment 的经营模型](/zh/project/offer-to-fulfillment)
+
+## 卖家实际经营的对象
+
+| 对象 | 负责什么 | 边界 |
+|---|---|---|
+| Store / Node | 身份、政策、能力、订单和业务状态权威 | 不只是一个视觉店面或渠道账号。 |
+| Storefront | 品牌、导航、页面、域名和受众视图 | 可以复用店铺商业状态，但不拥有订单。 |
+| Listing revision | 商品形态、规格、价格、媒体、条款和履约资格 | 新版本不能静默修改已接受的 Quote 或订单。 |
+| Supply / availability | 某个可购买组合能否真实履约 | 库存、供应商供给、服务容量和规格名称是不同事实。 |
+| Collection / Discount | 组织商品和调整价格 | 影响展示或 Quote，不拥有订单状态。 |
+| Shipping profile | 目的地、服务、费率、时效和证据要求 | 没有有效履约路径，商品不能对该目的地成交。 |
+| Payment capability | 后端声明且运营者准备好的收款路径 | 仅能解析 Token 或服务商名称不等于可用。 |
 
 ## 店铺与商品准备
 

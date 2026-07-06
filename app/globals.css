@@ -115,7 +115,7 @@ a { color: inherit; text-decoration: none; }
 
 .site-header nav {
   display: flex;
-  gap: 18px;
+  gap: 15px;
   justify-content: center;
 }
 
@@ -474,6 +474,8 @@ a { color: inherit; text-decoration: none; }
 .doc-toc-sidebar {
   align-self: start;
   border-left: 1px solid var(--portal-line);
+  max-height: calc(100vh - var(--portal-header-height) - 48px);
+  overflow-y: auto;
   padding-left: 18px;
   position: sticky;
   top: calc(var(--portal-header-height) + 24px);

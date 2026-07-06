@@ -7,7 +7,7 @@ audiences:
   - Agent
 evidenceLabel: Mobazha Unified 公开客户端
 evidenceUrl: https://github.com/mobazha/mobazha-unified
-reviewed: 2026-07-04
+reviewed: 2026-07-06
 translationOf: buy
 pageType: hub
 outcome: 在付款前看清店铺运营者、完整成本和订单恢复路径。
@@ -18,6 +18,16 @@ primaryAction:
   href: https://app.mobazha.org
 featuredVisual: buyer-order-lifecycle
 ---
+
+## Mobazha 的购买对象
+
+| 对象 | 回答的问题 | 不应做的假设 |
+|---|---|---|
+| 店铺与后端 | 谁发布 Offer、谁拥有订单状态？ | 发现站点、社群或 Agent 不会因此自动拥有交易。 |
+| Quote | 当前商品版本、规格、目的地、配送、折扣和总额是什么？ | 商品页价格或旧截图不是已接受总额。 |
+| 订单 | 哪些条款已被接受、当前允许什么状态转换？ | 后续编辑商品不能重写已有订单。 |
+| 支付会话 | 当前订单使用哪个资产或服务商、地址、金额、有效期和验证规则？ | 广播、观察、验证和最终结算不是同一状态。 |
+| 恢复路径 | 当前可用取消、退款、保障或争议中的哪一项？ | 不同支付方式和政策没有统一保证的恢复动作。 |
 
 ## 确认前
 

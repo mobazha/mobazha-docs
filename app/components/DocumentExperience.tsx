@@ -79,7 +79,11 @@ export function FeaturedVisual({ doc, isChinese }: { doc: DocPage; isChinese: bo
   const visual = doc.featuredVisual ? visualsById.get(doc.featuredVisual) : undefined;
   if (!visual) return null;
 
-  const visualKind = isChinese ? "概念模型" : "Conceptual model";
+  const visualKind = visual.id === "buyer-order-lifecycle" || visual.id === "seller-operating-loop"
+    ? (isChinese ? "旅程图" : "Journey map")
+    : visual.id === "self-host-trust-boundary"
+      ? (isChinese ? "边界图" : "Boundary map")
+      : (isChinese ? "系统图" : "System diagram");
   const visualDetails = isChinese ? "查看证据详情" : "Evidence details";
 
   return (

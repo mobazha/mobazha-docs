@@ -32,7 +32,7 @@ const portalContent: Record<"en" | "zh-CN", PortalContent> = {
     summary:
       "Mobazha brings independent stores, operator-selected Nodes, community distribution, verifiable transaction state, and bounded Agent automation into one open commerce system.",
     primaryAction: { label: "See how Mobazha works", href: "/project/product-map" },
-    secondaryAction: { label: "Choose an operating path", href: "/start/choose-deployment" },
+    secondaryAction: { label: "Read the v0.2 whitepaper", href: "/project/whitepaper" },
     principlesTitle: "One system, four product promises",
     principles: [
       { label: "01", title: "Own", description: "Keep store identity, policy, data, and operating choices explicit.", href: "/project/identity-and-stores" },
@@ -74,7 +74,7 @@ const portalContent: Record<"en" | "zh-CN", PortalContent> = {
         description: "Trace the product model, architecture, economics, and current maturity.",
         links: [
           { label: "Product map", href: "/project/product-map", description: "How stores, Nodes, channels, and services fit" },
-          { label: "Whitepaper", href: "/project/whitepaper", description: "Long-term principles" },
+          { label: "Whitepaper v0.2", href: "/project/whitepaper", description: "Open commercial network discussion draft" },
           { label: "Fees and economics", href: "/project/fees", description: "Cost categories and policy" },
         ],
       },
@@ -93,7 +93,7 @@ const portalContent: Record<"en" | "zh-CN", PortalContent> = {
     summary:
       "Mobazha 把独立店铺、运营者选择的 Node、社群分发、可核验的交易状态和受控的 Agent 自动化连接成一套开放商业系统。",
     primaryAction: { label: "了解 Mobazha 如何运作", href: "/zh/project/product-map" },
-    secondaryAction: { label: "选择运行方式", href: "/zh/start/choose-deployment" },
+    secondaryAction: { label: "阅读 v0.2 白皮书", href: "/zh/project/whitepaper" },
     principlesTitle: "一个系统，四项产品承诺",
     principles: [
       { label: "01", title: "自主", description: "明确掌握店铺身份、政策、数据和运行方式。", href: "/zh/project/identity-and-stores" },
@@ -134,7 +134,7 @@ const portalContent: Record<"en" | "zh-CN", PortalContent> = {
         description: "理解产品模型、架构、经济边界和当前成熟度。",
         links: [
           { label: "产品地图", href: "/zh/project/product-map", description: "店铺、Node、渠道与服务如何组合" },
-          { label: "白皮书", href: "/zh/project/whitepaper", description: "长期原则" },
+          { label: "白皮书 v0.2", href: "/zh/project/whitepaper", description: "开放商业网络公开讨论稿" },
           { label: "收费与经济模式", href: "/zh/project/fees", description: "费用类别与政策" },
         ],
       },

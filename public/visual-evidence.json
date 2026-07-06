@@ -146,9 +146,9 @@
     {
       "id": "buyer-order-lifecycle",
       "src": "/images/docs/buy/order-lifecycle.svg",
-      "sha256": "aa9b5fa9b8a3fc8d051eb6be36b1754148146d93e46712920dce3b6b0e3f54a7",
+      "sha256": "ae6227f538038f4be74d93a3402810cb7220802eb98850c6ae610c7ebcdc3e93",
       "mobile_src": "/images/docs/buy/order-lifecycle-mobile.svg",
-      "mobile_sha256": "e9da65c01633deb565734d262a92cd4400dc83ffe3fefad3f7977f3247905233",
+      "mobile_sha256": "712799d325a9e67bcec89e5021cb25777bde7e960f886c01d64a95dd0f7f6567",
       "kind": "conceptual",
       "width": 760,
       "height": 420,
@@ -159,16 +159,16 @@
       "claim": "Explains the documentation authority and milestone model; it does not assert that every deployment exposes every transition.",
       "privacy_review": "synthetic-only",
       "source": "https://github.com/mobazha/mobazha-docs",
-      "source_revision": "docs-model-v1",
+      "source_revision": "buyer-order-path-light-v2",
       "applies_to": "Mobazha v0.3 release-candidate guidance",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-06"
     },
     {
       "id": "seller-operating-loop",
       "src": "/images/docs/sell/store-operating-loop.svg",
-      "sha256": "e05ce5ef770dc832404864ef24750f8f0ca54a449f48575d5b3f00cc569a5db3",
+      "sha256": "821c17af3a6aab26ef274d08e5de9f32e0feb08e13c4f38fda195f2f2b55f2b8",
       "mobile_src": "/images/docs/sell/store-operating-loop-mobile.svg",
-      "mobile_sha256": "090e99fdddfc5e62737676c84f484ffd71b1262a5b1b025d1fb7ec900a9306d8",
+      "mobile_sha256": "26f1cf6ab939bfcc90e4bb61b9b4126a40dbeaa37a8401a781813f463c138777",
       "kind": "conceptual",
       "width": 760,
       "height": 420,
@@ -179,16 +179,16 @@
       "claim": "Explains the operator responsibility sequence; it is not evidence that a specific store has completed these checks.",
       "privacy_review": "synthetic-only",
       "source": "https://github.com/mobazha/mobazha-docs",
-      "source_revision": "docs-model-v1",
+      "source_revision": "store-readiness-loop-light-v2",
       "applies_to": "Mobazha v0.3 release-candidate guidance",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-06"
     },
     {
       "id": "self-host-trust-boundary",
       "src": "/images/docs/self-host/operator-trust-boundary.svg",
-      "sha256": "ec2bd699563cc7cd8f16e7552b57629fb5cd387281d1dd027f9296c941bc6c2e",
+      "sha256": "9d5d1114d2d192696b77f458663d56d3e4af3f3ba7afac0d81678ed63952451b",
       "mobile_src": "/images/docs/self-host/operator-trust-boundary-mobile.svg",
-      "mobile_sha256": "30f9938ccbebc1fd4f30461c6cab49321bcdd1887b19a2d78d3177ac7d897b62",
+      "mobile_sha256": "72cc8ec3ce49620736bf7dfd223c389f7cd318fdf578d1ad358ea8e1e924437d",
       "kind": "conceptual",
       "width": 760,
       "height": 420,
@@ -199,9 +199,9 @@
       "claim": "Explains responsibility boundaries and does not prescribe one mandatory network topology.",
       "privacy_review": "synthetic-only",
       "source": "https://github.com/mobazha/mobazha-docs",
-      "source_revision": "docs-model-v1",
+      "source_revision": "self-host-boundary-light-v2",
       "applies_to": "Mobazha v0.3 release-candidate guidance",
-      "reviewed": "2026-07-04"
+      "reviewed": "2026-07-06"
     }
   ]
 }

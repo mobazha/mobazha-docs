@@ -64,7 +64,7 @@ Implementation evidence: the versioned sources linked from each page.
 ## Understand
 - [Project overview](/project)
 - [Architecture](/project/architecture)
-- [Whitepaper](/project/whitepaper)
+- [Whitepaper v0.2](/project/whitepaper)
 - [Fees and economics](/project/fees)
 - [Compatibility](/project/compatibility)
 - [Distribution](/project/distribution)
@@ -114,7 +114,7 @@ Implementation evidence: the versioned sources linked from each page.
 - [扩展架构](/zh/build/extensions)
 
 ## 项目信任
-- [白皮书](/zh/project/whitepaper)
+- [白皮书 v0.2](/zh/project/whitepaper)
 - [收费与经济模式](/zh/project/fees)
 - [获取帮助](/zh/support)
 

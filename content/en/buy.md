@@ -7,7 +7,7 @@ audiences:
   - Agents
 evidenceLabel: Mobazha Unified public client
 evidenceUrl: https://github.com/mobazha/mobazha-unified
-reviewed: 2026-07-04
+reviewed: 2026-07-06
 pageType: hub
 outcome: See who operates the store, what you will pay, and how to recover the order before you commit funds.
 estimatedTime: 5 minutes
@@ -25,6 +25,18 @@ featuredVisual: buyer-order-lifecycle
 - [Track an order](/buy/order-status) — Reconcile payment evidence with backend-owned order state.
 - [Cancel, refund, or dispute](/buy/cancel-refund-dispute) — Use the transition available for the active order.
 
+## The Mobazha purchase model
+
+Mobazha does not treat a product page, wallet transfer, and order as the same record. The buyer journey crosses several explicit objects:
+
+| Object | What it answers | What not to assume |
+|---|---|---|
+| Store and backend | Who publishes the offer and owns the resulting order state? | A discovery site, community, or Agent does not automatically own the transaction. |
+| Quote | Which item revision, option combination, destination, delivery path, discount, and total are being offered now? | A catalog price or old screenshot is not an accepted total. |
+| Order | Which quoted terms were accepted, and which state transition is currently valid? | Editing the listing later must not rewrite the accepted order. |
+| Payment session | Which asset or provider, destination, amount, expiry, and verification rule apply to this order? | Broadcast, authorization, observation, verification, and settlement are not interchangeable. |
+| Recovery path | Which cancellation, refund, buyer-protection, or dispute action is currently available? | Mobazha does not promise one universal recovery action for every payment rail and policy. |
+
 ## What should be visible before payment
 
 | Decision | What the buyer should see | Governing source |
@@ -40,6 +52,7 @@ featuredVisual: buyer-order-lifecycle
 - Inspect subtotal, shipping, taxes, network costs, service charges, discounts, and the final total.
 - Read cancellation, refund, evidence, and dispute rules.
 - Treat an agent recommendation as assistance, not as authority to bypass confirmation or spending scopes.
+- If a cart contains items from multiple stores, verify the store boundary and quote for each resulting seller-owned order.
 
 ## Keep evidence
 

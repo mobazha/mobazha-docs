@@ -7,7 +7,7 @@ audiences:
   - Operators
 evidenceLabel: Mobazha README and release scope
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main
-reviewed: 2026-07-04
+reviewed: 2026-07-06
 pageType: hub
 outcome: Prepare a store that a buyer can understand, pay, and receive from through one tested journey.
 estimatedTime: 6 minutes
@@ -26,6 +26,19 @@ featuredVisual: seller-operating-loop
 - [Configure shipping](/sell/shipping) — Match destinations, rates, listings, estimates, and evidence.
 - [Prepare payments](/sell/payments) — Advertise only capabilities the backend and operator are ready to support.
 - [Operate orders](/sell/orders) — Reconcile payment, fulfill, refund, dispute, and complete safely.
+
+## The objects a Mobazha seller operates
+
+| Object | Seller responsibility | Product boundary |
+|---|---|---|
+| Store / Node | Identity, policy, capabilities, orders, and business-state authority | This is not merely a visual storefront or a channel account. |
+| Storefront | Brand, navigation, presentation, domain, and audience view | Several storefront or channel views may reuse store-owned commerce state where supported. |
+| Listing revision | Buyer-visible promise: product shape, options, price, media, terms, and fulfillment eligibility | A later revision must not silently change an accepted quote or order. |
+| Supply and availability | Whether a purchasable combination can actually be fulfilled | Inventory, provider supply, service capacity, and option labels are separate facts. |
+| Collection and discount | Merchandising and price adjustment rules | They organize or transform an offer; they do not own order state. |
+| Shipping profile | Destination eligibility, service, rate, estimate, and evidence requirements | A listing is not purchasable for a destination until a valid fulfillment path exists. |
+| Payment capability | A backend-advertised and operator-ready payment path | A parsed Token or provider name alone is not readiness. |
+| Order | Accepted terms, payment state, fulfillment obligation, recovery, and completion | The backend remains authoritative even when the order is presented in another channel. |
 
 ## Before opening a store
 

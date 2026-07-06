@@ -1,44 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="360" height="560" viewBox="0 0 360 560" role="img" aria-labelledby="title desc">
-  <title id="title">Conceptual buyer order lifecycle for a narrow screen</title>
-  <desc id="desc">A buyer reviews one quote, creates and saves one order, and verifies backend-owned progress. Recovery actions depend on active order state.</desc>
-  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102833"/><stop offset="1" stop-color="#07131a"/></linearGradient></defs>
-  <rect width="360" height="560" rx="20" fill="url(#bg)"/>
-  <rect x="1" y="1" width="358" height="558" rx="19" fill="none" stroke="#35d7e8" stroke-opacity=".2"/>
-  <g font-family="Inter, system-ui, sans-serif">
-    <text x="24" y="36" fill="#8cebf4" font-size="11" font-weight="800" letter-spacing="1.3">CONCEPTUAL BUYER JOURNEY</text>
-    <text x="24" y="66" fill="#eff8fb" font-size="21" font-weight="750">One quote. One order.</text>
-    <text x="24" y="88" fill="#8da2ad" font-size="12">The order-owning backend is authoritative.</text>
+  <title id="title">Buyer order lifecycle</title>
+  <desc id="desc">A vertical buyer path from quote review through order creation and state verification, followed by payment and fulfillment milestones and policy-gated recovery.</desc>
+  <rect width="360" height="560" rx="18" fill="#fbfdff"/>
+  <rect x="1" y="1" width="358" height="558" rx="17" fill="none" stroke="#dbe5f1"/>
+  <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+    <text x="22" y="34" fill="#004eeb" font-size="10" font-weight="700" letter-spacing="1.3">BUYER ORDER PATH</text>
+    <text x="22" y="62" fill="#1b2a4e" font-size="20" font-weight="750">One seller-owned order</text>
+    <text x="22" y="84" fill="#64748b" font-size="11">Backend state authorizes the next action.</text>
 
-    <g fill="#142630" stroke="#35d7e8" stroke-opacity=".24">
-      <rect x="24" y="112" width="312" height="78" rx="13"/>
-      <rect x="24" y="204" width="312" height="78" rx="13"/>
-      <rect x="24" y="296" width="312" height="78" rx="13"/>
+    <line x1="47" y1="122" x2="47" y2="242" stroke="#9bb8e8" stroke-width="2"/>
+    <g fill="#ffffff" stroke="#6f9ff1" stroke-width="1.4">
+      <circle cx="47" cy="122" r="18"/><circle cx="47" cy="182" r="18"/><circle cx="47" cy="242" r="18"/>
     </g>
-    <g fill="#35d7e8" fill-opacity=".12" stroke="#35d7e8" stroke-opacity=".48">
-      <circle cx="52" cy="140" r="14"/><circle cx="52" cy="232" r="14"/><circle cx="52" cy="324" r="14"/>
+    <g fill="#004eeb" font-size="10" font-weight="750" text-anchor="middle">
+      <text x="47" y="126">1</text><text x="47" y="186">2</text><text x="47" y="246">3</text>
     </g>
-    <g fill="#8cebf4" font-size="12" font-weight="800" text-anchor="middle">
-      <text x="52" y="144">1</text><text x="52" y="236">2</text><text x="52" y="328">3</text>
+    <g fill="#1b2a4e" font-size="12" font-weight="700">
+      <text x="78" y="118">Review quote</text><text x="78" y="178">Create + save order</text><text x="78" y="238">Verify current state</text>
     </g>
-    <g fill="#eff8fb" font-size="15" font-weight="700">
-      <text x="78" y="143">Review the quote</text>
-      <text x="78" y="235">Create and save</text>
-      <text x="78" y="327">Verify progress</text>
+    <g fill="#64748b" font-size="10">
+      <text x="78" y="134">seller · delivery · total</text><text x="78" y="194">ID · token · tracking link</text><text x="78" y="254">order + payment evidence</text>
     </g>
-    <g fill="#8da2ad" font-size="12">
-      <text x="78" y="164">Seller · item · delivery · total</text>
-      <text x="78" y="256">Order ID · token · tracking link</text>
-      <text x="78" y="348">Backend state + payment records</text>
-    </g>
-    <path d="M52 190v14M52 282v14" stroke="#8cebf4" stroke-width="2" stroke-linecap="round"/>
-    <path d="m48 200 4 4 4-4M48 292l4 4 4-4" fill="none" stroke="#8cebf4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 
-    <text x="24" y="412" fill="#78919a" font-size="11" font-weight="800" letter-spacing="1.1">OBSERVABLE MILESTONES</text>
-    <line x1="38" y1="444" x2="322" y2="444" stroke="#35d7e8" stroke-opacity=".35" stroke-width="2"/>
-    <g fill="#07131a" stroke="#8cebf4"><circle cx="38" cy="444" r="5"/><circle cx="133" cy="444" r="5"/><circle cx="227" cy="444" r="5"/><circle cx="322" cy="444" r="5"/></g>
-    <g fill="#a9bac1" font-size="12" text-anchor="middle"><text x="38" y="466">Awaiting</text><text x="133" y="466">Paid</text><text x="227" y="466">Shipped</text><text x="322" y="466">Complete</text></g>
-    <rect x="24" y="492" width="312" height="44" rx="10" fill="#ff7957" fill-opacity=".07" stroke="#ff7957" stroke-opacity=".2"/>
-    <text x="180" y="511" text-anchor="middle" fill="#f2b39f" font-size="12" font-weight="700">Cancel · refund · dispute</text>
-    <text x="180" y="527" text-anchor="middle" fill="#ad8d84" font-size="12">Available actions depend on the active state.</text>
+    <text x="22" y="301" fill="#64748b" font-size="9" font-weight="700" letter-spacing="1.1">OBSERVABLE MILESTONES</text>
+    <line x1="48" y1="332" x2="312" y2="332" stroke="#9bb8e8" stroke-width="2"/>
+    <g fill="#ffffff" stroke="#004eeb" stroke-width="1.5"><circle cx="48" cy="332" r="7"/><circle cx="136" cy="332" r="7"/><circle cx="224" cy="332" r="7"/><circle cx="312" cy="332" r="7"/></g>
+    <g fill="#1b2a4e" font-size="9" font-weight="650" text-anchor="middle"><text x="48" y="355">Awaiting</text><text x="136" y="355">Funded</text><text x="224" y="355">Fulfilled</text><text x="312" y="355">Complete</text></g>
+
+    <rect x="22" y="392" width="316" height="105" rx="10" fill="#fff9ed" stroke="#e6bd69"/>
+    <text x="39" y="416" fill="#8a5a00" font-size="9" font-weight="750" letter-spacing="1">POLICY-GATED RECOVERY</text>
+    <text x="39" y="443" fill="#6d4b0c" font-size="11" font-weight="650">Cancel · refund · dispute</text>
+    <text x="39" y="465" fill="#6d4b0c" font-size="10">Only when order state, payment path,</text>
+    <text x="39" y="481" fill="#6d4b0c" font-size="10">and published policy allow the action.</text>
+    <text x="180" y="530" text-anchor="middle" fill="#475569" font-size="10" font-weight="650">Do not infer settlement from a screenshot or message.</text>
   </g>
 </svg>

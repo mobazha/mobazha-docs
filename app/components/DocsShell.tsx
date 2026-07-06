@@ -24,15 +24,16 @@ export function SiteHeader({ activePath }: { activePath?: string }) {
     : activePath === "/api-reference" ? "/zh/build/api"
     : isChinese ? "/" : "/zh";
   const primaryLinks = isChinese
-    ? [["使用", "/zh/buy"], ["自行托管", "/zh/self-host"], ["开发", "/zh/build"], ["产品", "/zh/project/product-map"], ["社区", "/zh/support"]]
-    : [["Buy & sell", "/buy"], ["Operate", "/self-host"], ["Build", "/build"], ["Product", "/project/product-map"], ["Community", "/support"]];
+    ? [["使用", "/zh/buy"], ["自行托管", "/zh/self-host"], ["开发", "/zh/build"], ["产品", "/zh/project/product-map"], ["白皮书", "/zh/project/whitepaper"], ["社区", "/zh/support"]]
+    : [["Buy & sell", "/buy"], ["Operate", "/self-host"], ["Build", "/build"], ["Product", "/project/product-map"], ["Whitepaper", "/project/whitepaper"], ["Community", "/support"]];
   const isPrimaryActive = (href: string) => {
     if (!activePath) return false;
     if (href.endsWith("/buy") || href === "/buy") return /\/(buy|sell)(\/|$)/.test(activePath);
     if (href.endsWith("/self-host")) return activePath.includes("/self-host");
     if (href.endsWith("/build")) return activePath.includes("/build") || activePath === "/reference" || activePath === "/api-reference";
+    if (href.endsWith("/project/whitepaper")) return activePath === href;
     if (href.endsWith("/project/product-map")) {
-      return activePath.includes("/project") || activePath === "/releases";
+      return (activePath.includes("/project") && !activePath.endsWith("/project/whitepaper")) || activePath === "/releases";
     }
     if (href.endsWith("/support")) return activePath.includes("/support") || activePath.includes("/contribute");
     return activePath === href;

@@ -1,48 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="760" height="420" viewBox="0 0 760 420" role="img" aria-labelledby="title desc">
-  <title id="title">Conceptual Mobazha store operating loop</title>
-  <desc id="desc">A seller prepares identity and policy, publishes listings, verifies payment readiness, completes a test purchase, and then operates orders while monitoring the full buyer journey.</desc>
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102833"/><stop offset="1" stop-color="#07131a"/></linearGradient>
-    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-  </defs>
-  <rect width="760" height="420" rx="24" fill="url(#bg)"/>
-  <rect x="1" y="1" width="758" height="418" rx="23" fill="none" stroke="#35d7e8" stroke-opacity=".2"/>
-  <g font-family="Inter, system-ui, sans-serif">
-    <text x="38" y="48" fill="#8cebf4" font-size="12" font-weight="800" letter-spacing="2">CONCEPTUAL STORE READINESS LOOP</text>
-    <text x="38" y="82" fill="#eff8fb" font-size="25" font-weight="750">Test the journey buyers will actually use.</text>
-    <text x="38" y="108" fill="#8da2ad" font-size="13">A published listing is not enough: payment, fulfillment, recovery, and support must work together.</text>
+  <title id="title">Mobazha store readiness loop</title>
+  <desc id="desc">A seller connects store identity and policy, listings, payment readiness, a test purchase, and order operations around a store and Node authority boundary.</desc>
+  <rect width="760" height="420" rx="18" fill="#fbfdff"/>
+  <rect x="1" y="1" width="758" height="418" rx="17" fill="none" stroke="#dbe5f1"/>
+  <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+    <text x="30" y="36" fill="#004eeb" font-size="11" font-weight="700" letter-spacing="1.5">STORE READINESS LOOP</text>
+    <text x="30" y="67" fill="#1b2a4e" font-size="24" font-weight="750">Test the path buyers will actually use</text>
+    <text x="30" y="91" fill="#64748b" font-size="13">Publishing a listing is one checkpoint; payment, delivery, recovery, and support complete the loop.</text>
 
-    <g fill="#142630" stroke="#35d7e8" stroke-opacity=".22">
-      <rect x="38" y="150" width="128" height="86" rx="14"/>
-      <rect x="179" y="150" width="128" height="86" rx="14"/>
-      <rect x="320" y="150" width="128" height="86" rx="14"/>
-      <rect x="461" y="150" width="128" height="86" rx="14"/>
-      <rect x="602" y="150" width="120" height="86" rx="14"/>
+    <path d="M154 179C211 119 549 119 606 179M606 262C549 324 211 324 154 262" fill="none" stroke="#9bb8e8" stroke-width="2" stroke-dasharray="5 5"/>
+    <g fill="#ffffff" stroke="#6f9ff1" stroke-width="1.5">
+      <circle cx="154" cy="179" r="31"/><circle cx="295" cy="143" r="31"/><circle cx="465" cy="143" r="31"/><circle cx="606" cy="179" r="31"/>
+      <circle cx="521" cy="297" r="31"/><circle cx="239" cy="297" r="31"/>
     </g>
-    <g fill="#35d7e8" fill-opacity=".1" stroke="#35d7e8" stroke-opacity=".45">
-      <circle cx="64" cy="176" r="13"/><circle cx="205" cy="176" r="13"/><circle cx="346" cy="176" r="13"/><circle cx="487" cy="176" r="13"/><circle cx="628" cy="176" r="13"/>
+    <g fill="#004eeb" font-size="11" font-weight="750" text-anchor="middle">
+      <text x="154" y="183">1</text><text x="295" y="147">2</text><text x="465" y="147">3</text><text x="606" y="183">4</text><text x="521" y="301">5</text><text x="239" y="301">6</text>
     </g>
-    <g fill="#8cebf4" font-size="10" font-weight="800" text-anchor="middle">
-      <text x="64" y="180">1</text><text x="205" y="180">2</text><text x="346" y="180">3</text><text x="487" y="180">4</text><text x="628" y="180">5</text>
-    </g>
-    <g fill="#eff8fb" font-size="13" font-weight="700">
-      <text x="54" y="207">Identity</text><text x="54" y="222">and policy</text>
-      <text x="195" y="207">Listings</text><text x="195" y="222">and delivery</text>
-      <text x="336" y="207">Payment</text><text x="336" y="222">readiness</text>
-      <text x="477" y="207">Test</text><text x="477" y="222">purchase</text>
-      <text x="618" y="207">Operate</text><text x="618" y="222">orders</text>
-    </g>
-    <g stroke="#8cebf4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M166 193h13m-5-5 5 5-5 5M307 193h13m-5-5 5 5-5 5M448 193h13m-5-5 5 5-5 5M589 193h13m-5-5 5 5-5 5"/>
+    <g fill="#1b2a4e" font-size="11" font-weight="700" text-anchor="middle">
+      <text x="154" y="224">Identity + policy</text><text x="295" y="104">Listing + supply</text><text x="465" y="104">Shipping + payment</text><text x="606" y="224">Test purchase</text><text x="521" y="343">Fulfill + support</text><text x="239" y="343">Review + improve</text>
     </g>
 
-    <path d="M662 248c-6 58-70 98-142 98H237c-81 0-143-32-143-92" fill="none" stroke="#35d7e8" stroke-opacity=".38" stroke-width="2" stroke-dasharray="6 6"/>
-    <path d="m88 262 6-9 7 9" fill="none" stroke="#8cebf4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="230" y="278" width="300" height="64" rx="14" fill="#0b1c24" stroke="#35d7e8" stroke-opacity=".28"/>
-    <circle cx="268" cy="310" r="16" fill="#35d7e8" fill-opacity=".14" filter="url(#glow)"/>
-    <path d="M260 312h16M264 306h8M266 318h4" stroke="#8cebf4" stroke-width="2" stroke-linecap="round"/>
-    <text x="296" y="305" fill="#eff8fb" font-size="14" font-weight="700">Seller-owned store and order operations</text>
-    <text x="296" y="325" fill="#8da2ad" font-size="11">Monitor · fulfill · support · reconcile · improve</text>
-    <text x="380" y="382" text-anchor="middle" fill="#718991" font-size="11">The loop repeats when policy, capability, inventory, delivery, or software changes.</text>
+    <rect x="276" y="188" width="208" height="82" rx="12" fill="#eef4ff" stroke="#8aafea"/>
+    <text x="380" y="216" text-anchor="middle" fill="#004eeb" font-size="10" font-weight="750" letter-spacing="1">STORE / NODE AUTHORITY</text>
+    <text x="380" y="239" text-anchor="middle" fill="#1b2a4e" font-size="14" font-weight="700">Orders · capability · policy</text>
+    <text x="380" y="258" text-anchor="middle" fill="#64748b" font-size="11">Monitor · reconcile · retain evidence</text>
+
+    <line x1="30" y1="374" x2="730" y2="374" stroke="#dbe5f1"/>
+    <text x="380" y="398" text-anchor="middle" fill="#475569" font-size="11" font-weight="650">Repeat when policy, inventory, delivery, payment readiness, or software changes.</text>
   </g>
 </svg>

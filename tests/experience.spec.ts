@@ -139,6 +139,39 @@ test("homepage promises lead to canonical product models", async ({ page }) => {
   ]);
 });
 
+test("the current whitepaper is prominent, versioned, and complete", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator('.portal-home-actions a[href="/project/whitepaper"]')).toHaveText("Read the v0.2 whitepaper");
+  await expect(page.locator('.site-header nav a[href="/project/whitepaper"]')).toHaveText("Whitepaper");
+
+  await page.goto("/project/whitepaper");
+  await expect(page.locator("h1")).toHaveText("Mobazha Founding Whitepaper");
+  await expect(page.locator(".doc-metadata")).toContainText("0.2-discussion");
+  await expect(page.getByRole("heading", { name: "0. Executive Summary" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "5. From One Transaction to an Open Network" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "7. Two Connected Economic Loops" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "15. Conclusion" })).toBeVisible();
+
+  await page.goto("/zh");
+  await expect(page.locator('.portal-home-actions a[href="/zh/project/whitepaper"]')).toHaveText("阅读 v0.2 白皮书");
+  await expect(page.locator('.site-header nav a[href="/zh/project/whitepaper"]')).toHaveText("白皮书");
+});
+
+test("journey and boundary diagrams use the light documentation visual system", async ({ request }) => {
+  for (const path of [
+    "/images/docs/buy/order-lifecycle.svg",
+    "/images/docs/sell/store-operating-loop.svg",
+    "/images/docs/self-host/operator-trust-boundary.svg",
+  ]) {
+    const response = await request.get(path);
+    expect(response.ok()).toBeTruthy();
+    const svg = await response.text();
+    expect(svg).toContain('fill="#fbfdff"');
+    expect(svg).not.toContain("#07131a");
+    expect(svg).not.toContain("#102833");
+  }
+});
+
 test("flagship concepts share one product-model navigation group", async ({ page }) => {
   await page.goto("/project/transaction-spine");
   const englishGroup = page.locator(".nav-group.active-group");
