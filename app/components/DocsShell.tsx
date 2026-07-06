@@ -12,13 +12,6 @@ function isChinesePath(activePath?: string): boolean {
   return activePath === "/zh" || (activePath?.startsWith("/zh/") ?? false);
 }
 
-function isNavLinkActive(activePath: string, href: string): boolean {
-  return activePath === href
-    || activePath.startsWith(`${href}/`)
-    || (href === "/" && activePath === "/")
-    || (href === "/zh" && activePath === "/zh");
-}
-
 export function SiteHeader({ activePath }: { activePath?: string }) {
   const isChinese = isChinesePath(activePath);
   const activeGroupLabel = activePath ? activeNavGroupForPath(activePath)?.label : undefined;
@@ -80,8 +73,13 @@ export function DocsShell({ activePath, children }: { activePath: string; childr
   const activeGroup = activeNavGroupForPath(activePath);
   const sidebarGroups = sidebarNavGroupsForPath(activePath);
   const hasProductKnowledgeGroups = !isChinese && sidebarGroups.length > 1;
-  const activeLabel = activeGroup?.links.find(([, href]) => href === activePath)?.[0]
-    ?? activeGroup?.links.find(([, href]) => activePath.startsWith(`${href}/`))?.[0];
+  const activeLink = activeGroup?.links.find(([, href]) => href === activePath)
+    ?? activeGroup?.links
+      .filter(([, href]) => activePath.startsWith(`${href}/`))
+      .sort(([, leftHref], [, rightHref]) => rightHref.length - leftHref.length)[0];
+  const activeLabel = activeLink?.[0];
+  const activeHref = activeLink?.[1];
+  const isSidebarLinkActive = (href: string) => href === activeHref;
 
   return (
     <main id="main-content" lang={isChinese ? "zh-CN" : "en"} tabIndex={-1}>
@@ -98,8 +96,8 @@ export function DocsShell({ activePath, children }: { activePath: string; childr
                     {hasProductKnowledgeGroups && <p>{group.label}</p>}
                     {group.links.map(([label, href]) => (
                       <Link
-                        aria-current={isNavLinkActive(activePath, href) ? "page" : undefined}
-                        className={isNavLinkActive(activePath, href) ? "active" : ""}
+                        aria-current={isSidebarLinkActive(href) ? "page" : undefined}
+                        className={isSidebarLinkActive(href) ? "active" : ""}
                         href={href}
                         key={href}
                       >
@@ -111,22 +109,43 @@ export function DocsShell({ activePath, children }: { activePath: string; childr
               </nav>
             </details>
           )}
-          {sidebarGroups.map((group) => {
-            const isActiveGroup = group.label === activeGroup?.label;
-            const links = hasProductKnowledgeGroups && !isActiveGroup && group.label !== "Vision & direction"
-              ? group.links.slice(0, 1)
-              : group.links;
-            return (
+          {hasProductKnowledgeGroups
+            ? sidebarGroups.map((group) => {
+              const isActiveGroup = group.label === activeGroup?.label;
+              const isOpenByDefault = isActiveGroup || group.label === "Vision & direction";
+              return (
+                <details
+                  className={`nav-group product-nav-group${isActiveGroup ? " active-group" : ""}`}
+                  key={group.label}
+                  open={isOpenByDefault}
+                >
+                  <summary><span>{group.label}</span></summary>
+                  <nav aria-label={group.label}>
+                    {group.links.map(([label, href]) => (
+                      <Link
+                        aria-current={isSidebarLinkActive(href) ? "page" : undefined}
+                        className={isSidebarLinkActive(href) ? "active" : ""}
+                        href={href}
+                        key={href}
+                      >
+                        {label}
+                      </Link>
+                    ))}
+                  </nav>
+                </details>
+              );
+            })
+            : sidebarGroups.map((group) => (
               <nav
-                className={`nav-group${isActiveGroup ? " active-group" : ""}`}
+                className={`nav-group${group.label === activeGroup?.label ? " active-group" : ""}`}
                 aria-label={group.label}
                 key={group.label}
               >
                 <p>{group.label}</p>
-                {links.map(([label, href]) => (
+                {group.links.map(([label, href]) => (
                   <Link
-                    aria-current={isNavLinkActive(activePath, href) ? "page" : undefined}
-                    className={isNavLinkActive(activePath, href) ? "active" : ""}
+                    aria-current={isSidebarLinkActive(href) ? "page" : undefined}
+                    className={isSidebarLinkActive(href) ? "active" : ""}
                     href={href}
                     key={href}
                   >
@@ -134,8 +153,7 @@ export function DocsShell({ activePath, children }: { activePath: string; childr
                   </Link>
                 ))}
               </nav>
-            );
-          })}
+            ))}
         </aside>
         <div className="doc-article">{children}</div>
       </div>

@@ -145,7 +145,7 @@ test("the current whitepaper is prominent, versioned, and complete", async ({ pa
 
   await page.goto("/project/whitepaper");
   await expect(page.locator('.site-header nav a[href="/project/product-map"]')).toHaveAttribute("aria-current", "page");
-  await expect(page.locator(".nav-group.active-group > p")).toHaveText("Vision & direction");
+  await expect(page.locator(".product-nav-group.active-group > summary span")).toHaveText("Vision & direction");
   await expect(page.locator("h1")).toHaveText("Mobazha Founding Whitepaper");
   await expect(page.locator(".doc-metadata")).toContainText("0.2-discussion");
   await expect(page.getByRole("heading", { name: "0. Executive Summary" })).toBeVisible();
@@ -169,27 +169,38 @@ test("primary tabs and project knowledge groups use one taxonomy", async ({ page
     "Community",
   ]);
   await expect(page.locator('.site-header nav a[href="/project/product-map"]')).toHaveAttribute("aria-current", "page");
-  await expect(page.locator(".nav-group.active-group > p")).toHaveText("Product model");
-  await expect(page.locator(".nav-group > p")).toHaveText([
+  await expect(page.locator(".product-nav-group.active-group > summary span")).toHaveText("Product model");
+  await expect(page.locator(".product-nav-group > summary span")).toHaveText([
     "Product model",
     "Product foundations",
     "Vision & direction",
   ]);
+  await expect(page.locator('.product-nav-group[open] > summary span')).toHaveText([
+    "Product model",
+    "Vision & direction",
+  ]);
+  await expect(page.locator('.nav-group a.active')).toHaveCount(1);
+  await expect(page.locator('.nav-group a.active')).toHaveAttribute("href", "/project/product-map");
+  await expect(page.locator('.nav-group a[href="/project"]')).not.toHaveClass(/active/);
   await expect(page.locator('.docs-sidebar a[href="/project/whitepaper"]')).toHaveCount(2);
   await expect(page.locator('.nav-group a[href="/project/whitepaper"]')).toHaveText("Whitepaper v0.2");
 
   await page.goto("/project/compatibility");
   await expect(page.locator('.site-header nav a[href="/project/product-map"]')).toHaveAttribute("aria-current", "page");
-  await expect(page.locator(".nav-group.active-group > p")).toHaveText("Product foundations");
-  await expect(page.locator(".nav-group > p")).toHaveText([
+  await expect(page.locator(".product-nav-group.active-group > summary span")).toHaveText("Product foundations");
+  await expect(page.locator(".product-nav-group > summary span")).toHaveText([
     "Product model",
     "Product foundations",
     "Vision & direction",
   ]);
+  await expect(page.locator('.nav-group a.active')).toHaveCount(1);
+  await expect(page.locator('.nav-group a.active')).toHaveAttribute("href", "/project/compatibility");
+  await expect(page.locator('.nav-group a[href="/project"]')).not.toHaveClass(/active/);
 
   await page.goto("/project/whitepaper");
   await expect(page.locator('.site-header nav a[href="/project/product-map"]')).toHaveAttribute("aria-current", "page");
-  await expect(page.locator(".nav-group.active-group > p")).toHaveText("Vision & direction");
+  await expect(page.locator(".product-nav-group.active-group > summary span")).toHaveText("Vision & direction");
+  await expect(page.locator('.nav-group a.active')).toHaveCount(1);
   await expect(page.locator('.nav-group a[href="/project/whitepaper"]')).toHaveAttribute("aria-current", "page");
 
   await page.goto("/project/security");
@@ -259,7 +270,7 @@ test("journey and boundary diagrams use the light documentation visual system", 
 test("flagship concepts share one product-model navigation group", async ({ page }) => {
   await page.goto("/project/transaction-spine");
   const englishGroup = page.locator(".nav-group.active-group");
-  await expect(englishGroup.locator("p")).toHaveText("Product model");
+  await expect(englishGroup.locator("summary span")).toHaveText("Product model");
   await expect(englishGroup.locator("a")).toHaveCount(7);
 
   await page.goto("/zh/project/agent-commerce");
