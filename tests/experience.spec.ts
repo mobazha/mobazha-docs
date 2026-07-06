@@ -177,6 +177,7 @@ test("primary tabs and project knowledge groups use one taxonomy", async ({ page
   ]);
   await expect(page.locator('.product-nav-group[open] > summary span')).toHaveText([
     "Product model",
+    "Product foundations",
     "Vision & direction",
   ]);
   await expect(page.locator('.nav-group a.active')).toHaveCount(1);
@@ -189,6 +190,11 @@ test("primary tabs and project knowledge groups use one taxonomy", async ({ page
   await expect(page.locator('.site-header nav a[href="/project/product-map"]')).toHaveAttribute("aria-current", "page");
   await expect(page.locator(".product-nav-group.active-group > summary span")).toHaveText("Product foundations");
   await expect(page.locator(".product-nav-group > summary span")).toHaveText([
+    "Product model",
+    "Product foundations",
+    "Vision & direction",
+  ]);
+  await expect(page.locator('.product-nav-group[open] > summary span')).toHaveText([
     "Product model",
     "Product foundations",
     "Vision & direction",

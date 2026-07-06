@@ -112,12 +112,11 @@ export function DocsShell({ activePath, children }: { activePath: string; childr
           {hasProductKnowledgeGroups
             ? sidebarGroups.map((group) => {
               const isActiveGroup = group.label === activeGroup?.label;
-              const isOpenByDefault = isActiveGroup || group.label === "Vision & direction";
               return (
                 <details
                   className={`nav-group product-nav-group${isActiveGroup ? " active-group" : ""}`}
                   key={group.label}
-                  open={isOpenByDefault}
+                  open
                 >
                   <summary><span>{group.label}</span></summary>
                   <nav aria-label={group.label}>

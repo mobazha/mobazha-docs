@@ -97,10 +97,10 @@ direction groups; Project activates Trust & governance. Whitepaper is a
 versioned document inside Vision & direction, not a standalone product area.
 All three Product groups remain visible in the left navigation on every Product
 page. Each group has an explicit disclosure control instead of silently hiding
-links. The active group is expanded and is the only group whose exact current
-page is highlighted; Vision & direction also stays expanded so the whitepaper
-and roadmap are never hidden behind the current page's local topic list. Mobile
-combines the same groups in one Product menu.
+links. All three groups are expanded by default on desktop so navigation does
+not rearrange itself when a reader crosses from one knowledge group to another;
+readers may still collapse a group deliberately. Only the exact current page is
+highlighted. Mobile combines the same groups in one compact Product menu.
 
 The homepage product promises link directly into the Product model group. A
 new concept joins that group only when it passes the topic-selection rule; a
