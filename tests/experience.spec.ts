@@ -315,6 +315,8 @@ test("architecture and fee pages establish their role in the knowledge system", 
   await expect(page.getByRole("heading", { name: "Read a Fee Quote" })).toBeVisible();
   await expect(page.locator(".doc-content")).toContainText("pilot-zero-fee-v1");
   await expect(page.locator(".doc-content")).not.toContainText("$116.00");
+  await expect(page.locator(".doc-content")).toContainText("Buyer total: $113.00");
+  await expect(page.locator(".doc-content")).toContainText("Estimated seller net: $97.00");
   await expect(page.getByRole("heading", { name: "How Mobazha can be sustainable" })).toBeVisible();
 });
 

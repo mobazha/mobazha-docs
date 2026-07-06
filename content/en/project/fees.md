@@ -45,27 +45,22 @@ This page defines how Mobazha fees and costs must be explained. It is not a pric
 
 ## Read a Fee Quote
 
-The Fee Quote keeps the buyer payment and seller proceeds separate. The current public Deal Link pilot uses policy `pilot-zero-fee-v1`; it does not add an unapproved managed-service, payment, tax, or distribution charge.
+The Fee Quote keeps the buyer payment and seller proceeds separate. The current public Deal Link pilot uses policy `pilot-zero-fee-v1`: with a $100.00 offer and no separately quoted delivery or external cost, its platform-authored buyer total and estimated seller net are both $100.00. That is a current implementation fact, not a permanent zero-fee promise.
 
-For a Deal Link priced at $100.00, the current platform-authored quote is:
+The following hypothetical quote is deliberately non-zero so the funding direction is visible. It is **not a current Mobazha rate, tax determination, or offer**. In this scenario the buyer funds delivery and an applicable tax, while the seller funds the managed transaction service and payment cost:
 
-| Buyer view | Current pilot amount | Effect on payment |
-|---|---:|---|
-| Item or service | $100.00 | Amount paid for the seller's offer |
-| Buyer service charge | $0.00 | A future buyer-funded service charge would increase the buyer total only after an applicable policy and quote disclose it |
-| Payment or network cost in this Fee Quote | $0.00 | A wallet, network, or provider may disclose a separate external cost before payment; it is not silently added here |
-| Tax or external cost in this Fee Quote | $0.00 | No tax amount is asserted by the current pilot quote |
-| **Buyer total** | **$100.00** | Amount authorized by this Fee Quote before payment |
+| Line | Buyer-total effect | Seller-proceeds effect | Recipient or treatment |
+|---|---:|---:|---|
+| Item or service | +$100.00 | +$100.00 gross | Seller |
+| Delivery | +$8.00 | — | Named carrier or seller as the disclosed fulfillment recipient |
+| Applicable tax | +$5.00 | — | Named collector or tax authority under the applicable arrangement |
+| Managed transaction service | — | −$2.00 | Named operator providing the disclosed service |
+| Payment or settlement cost | — | −$1.00 | Named payment provider or network |
+| **Illustrative result** | **Buyer total: $113.00** | **Estimated seller net: $97.00** | Delivery and tax are treated as pass-through amounts in this example |
 
-| Seller view | Current pilot amount | Effect on proceeds |
-|---|---:|---|
-| Gross order amount | $100.00 | Starting amount for the seller-side calculation |
-| Seller service charge | $0.00 | A future seller-funded transaction service would be deducted here, not added to the buyer total |
-| Seller payment cost | $0.00 | A seller-absorbed processor or settlement cost would be disclosed here |
-| Seller distribution budget | $0.00 | A seller-funded referral or distribution amount would be disclosed here when enabled |
-| **Estimated seller net** | **$100.00** | Expected seller proceeds under the current pilot quote |
+The arithmetic demonstrates two different directions: buyer-funded lines increase the amount approved at checkout, while seller-funded lines reduce proceeds from the $100.00 gross order amount. A real quote may allocate them differently, but it must not add the same cost to the buyer and also deduct it from the seller unless they are separate, named charges.
 
-This is current implementation behavior, not a permanent zero-fee promise. It also does not claim that a wallet, blockchain network, payment provider, carrier, or tax authority can never charge an applicable external amount. Any such amount must be attributed to its actual payer and recipient and disclosed at the applicable selection or checkout step before funds are committed.
+A wallet, blockchain network, payment provider, carrier, or tax authority may still charge an applicable external amount outside a platform-authored Fee Quote. Any such amount must be attributed to its actual payer and recipient and disclosed at the applicable selection or checkout step before funds are committed.
 
 ### Who funds a future non-zero charge?
 
