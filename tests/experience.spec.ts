@@ -305,7 +305,8 @@ test("architecture and fee pages establish their role in the knowledge system", 
   await expect(page.getByRole("heading", { name: "Use the right architecture view" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Where this page fits" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "One request through the system" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "When systems disagree or fail" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Authority and recovery boundaries" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "track payment and order status" })).toHaveAttribute("href", "/buy/order-status");
 
   await page.goto("/project/fees");
   await expect(page.locator("h1")).toHaveText("What you pay and who receives it");

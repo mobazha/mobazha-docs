@@ -1707,7 +1707,7 @@
       },
       "reviewed": "2026-07-06",
       "page_type": "concept",
-      "outcome": "Distinguish direct peer-to-peer and hybrid store networks, identify which backend owns each decision, and know where to look when systems disagree.",
+      "outcome": "Distinguish direct peer-to-peer and hybrid store networks, identify which backend owns each decision, and trace authority across surfaces and services.",
       "estimated_time": "10 minutes",
       "journey": "understand",
       "primary_action": {

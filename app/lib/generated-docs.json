@@ -3129,7 +3129,7 @@
     "evidenceUrl": "https://github.com/mobazha",
     "reviewed": "2026-07-06",
     "pageType": "concept",
-    "outcome": "Distinguish direct peer-to-peer and hybrid store networks, identify which backend owns each decision, and know where to look when systems disagree.",
+    "outcome": "Distinguish direct peer-to-peer and hybrid store networks, identify which backend owns each decision, and trace authority across surfaces and services.",
     "estimatedTime": "10 minutes",
     "journey": "understand",
     "primaryAction": {
@@ -3482,46 +3482,31 @@
         ]
       },
       {
-        "heading": "When systems disagree or fail",
+        "heading": "Authority and recovery boundaries",
         "blocks": [
           {
-            "type": "table",
-            "headers": [
-              "Symptom",
-              "What it usually means",
-              "Safe next action"
-            ],
-            "rows": [
-              [
-                "A button is visible but the backend denies the action",
-                "Presentation, identity, capability, permission, or current state is stale or inconsistent",
-                "Reload runtime and business state; do not bypass backend authorization"
-              ],
-              [
-                "A wallet or provider says paid but the order has not advanced",
-                "Payment observation and Core verification are not the same state",
-                "Inspect the Payment Session, expected amount and asset, confirmations, expiry, and dependency health"
-              ],
-              [
-                "A webhook or message arrives twice",
-                "Delivery is at-least-once or was retried",
-                "Deduplicate by stable event or delivery identity and reconcile the referenced resource"
-              ],
-              [
-                "An optional service is unavailable",
-                "One dependency is degraded; the owning backend may still be healthy",
-                "Stop advertising new work that requires it and preserve recovery for existing bound work"
-              ],
-              [
-                "The backend is unavailable",
-                "The authority for store or order state cannot currently answer",
-                "Do not infer protected transitions from cached UI; follow the operator's availability and recovery process"
-              ],
-              [
-                "Documentation and runtime behavior differ",
-                "The page may be stale, or the connected release or composition differs",
-                "Record version and capabilities, check release evidence, and report the smallest reproducible conflict"
-              ]
+            "type": "paragraph",
+            "text": "Mobazha avoids competing sources of truth by keeping authority with the system responsible for each kind of state. A presentation surface may request an action and an external provider may report evidence, but neither silently replaces the backend that owns the store or order."
+          },
+          {
+            "type": "unordered-list",
+            "items": [
+              "**Store and order state remains backend-owned.** A cached page, notification, community channel, gateway, or Agent does not independently advance a protected transaction.",
+              "**Provider evidence is reconciled, not copied into Core by assumption.** Payment, delivery, messaging, and other observations are checked against the intended order, policy, and current state.",
+              "**Optional services remain bounded dependencies.** Their availability can narrow a workflow without transferring order authority or changing recovery ownership.",
+              "**Protected actions require current proof.** A client presents payment, shipment, refund, dispute, or settlement as complete only after the owning backend confirms the applicable capability, permission, and state transition."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "This design prevents a delayed channel or dependency response from becoming an unverified business-state change. Task-level guidance remains with the person performing the task:"
+          },
+          {
+            "type": "unordered-list",
+            "items": [
+              "Buyers can [track payment and order status](/buy/order-status) or [choose a cancellation, refund, or dispute path](/buy/cancel-refund-dispute).",
+              "Sellers can [verify payment readiness and recovery](/sell/payments).",
+              "Operators and integrators can [check effective runtime capabilities](/build/runtime-capabilities), review [channels and integrations](/project/surfaces-and-integrations), or [route a reproducible problem](/support)."
             ]
           }
         ]
