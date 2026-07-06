@@ -95,6 +95,11 @@ Operate, Build, Product, Project, Community**. The logo returns to Start.
 Product activates the Product model, Product foundations, and Vision &
 direction groups; Project activates Trust & governance. Whitepaper is a
 versioned document inside Vision & direction, not a standalone product area.
+All three Product groups remain visible in the left navigation on every Product
+page. The active group is expanded, while Vision & direction keeps its
+whitepaper and roadmap links visible so the project thesis is never hidden
+behind the current page's local topic list. Mobile combines the same groups in
+one Product menu.
 
 The homepage product promises link directly into the Product model group. A
 new concept joins that group only when it passes the topic-selection rule; a

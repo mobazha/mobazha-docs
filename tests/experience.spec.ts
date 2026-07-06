@@ -170,18 +170,32 @@ test("primary tabs and project knowledge groups use one taxonomy", async ({ page
   ]);
   await expect(page.locator('.site-header nav a[href="/project/product-map"]')).toHaveAttribute("aria-current", "page");
   await expect(page.locator(".nav-group.active-group > p")).toHaveText("Product model");
+  await expect(page.locator(".nav-group > p")).toHaveText([
+    "Product model",
+    "Product foundations",
+    "Vision & direction",
+  ]);
+  await expect(page.locator('.docs-sidebar a[href="/project/whitepaper"]')).toHaveCount(2);
+  await expect(page.locator('.nav-group a[href="/project/whitepaper"]')).toHaveText("Whitepaper v0.2");
 
   await page.goto("/project/compatibility");
   await expect(page.locator('.site-header nav a[href="/project/product-map"]')).toHaveAttribute("aria-current", "page");
   await expect(page.locator(".nav-group.active-group > p")).toHaveText("Product foundations");
+  await expect(page.locator(".nav-group > p")).toHaveText([
+    "Product model",
+    "Product foundations",
+    "Vision & direction",
+  ]);
 
   await page.goto("/project/whitepaper");
   await expect(page.locator('.site-header nav a[href="/project/product-map"]')).toHaveAttribute("aria-current", "page");
   await expect(page.locator(".nav-group.active-group > p")).toHaveText("Vision & direction");
+  await expect(page.locator('.nav-group a[href="/project/whitepaper"]')).toHaveAttribute("aria-current", "page");
 
   await page.goto("/project/security");
   await expect(page.locator('.site-header nav a[href="/project/release-scope"]')).toHaveAttribute("aria-current", "page");
   await expect(page.locator(".nav-group.active-group > p")).toHaveText("Trust & governance");
+  await expect(page.locator(".nav-group")).toHaveCount(1);
 });
 
 test("article lists keep their markers without changing task step counters", async ({ page }) => {

@@ -1,6 +1,11 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { activeNavGroupForPath, docsBySlug, translationPathFor } from "@/app/lib/docs";
+import {
+  activeNavGroupForPath,
+  docsBySlug,
+  sidebarNavGroupsForPath,
+  translationPathFor,
+} from "@/app/lib/docs";
 import { DocsSearch } from "@/app/components/DocsSearch";
 
 function isChinesePath(activePath?: string): boolean {
@@ -73,6 +78,8 @@ export function SiteHeader({ activePath }: { activePath?: string }) {
 export function DocsShell({ activePath, children }: { activePath: string; children: ReactNode }) {
   const isChinese = isChinesePath(activePath);
   const activeGroup = activeNavGroupForPath(activePath);
+  const sidebarGroups = sidebarNavGroupsForPath(activePath);
+  const hasProductKnowledgeGroups = !isChinese && sidebarGroups.length > 1;
   const activeLabel = activeGroup?.links.find(([, href]) => href === activePath)?.[0]
     ?? activeGroup?.links.find(([, href]) => activePath.startsWith(`${href}/`))?.[0];
 
@@ -82,11 +89,41 @@ export function DocsShell({ activePath, children }: { activePath: string; childr
       <SiteHeader activePath={activePath} />
       <div className="docs-layout">
         <aside className="docs-sidebar" aria-label={isChinese ? "文档导航" : "Documentation navigation"}>
-          {activeGroup && (
+          {activeGroup && sidebarGroups.length > 0 && (
             <details className="mobile-journey-menu">
-              <summary><span>{activeGroup.label}</span><b>{activeLabel}</b></summary>
-              <nav aria-label={activeGroup.label}>
-                {activeGroup.links.map(([label, href]) => (
+              <summary><span>{hasProductKnowledgeGroups ? "Product" : activeGroup.label}</span><b>{activeLabel}</b></summary>
+              <nav aria-label={hasProductKnowledgeGroups ? "Product knowledge" : activeGroup.label}>
+                {sidebarGroups.map((group) => (
+                  <div className="mobile-nav-group" key={group.label}>
+                    {hasProductKnowledgeGroups && <p>{group.label}</p>}
+                    {group.links.map(([label, href]) => (
+                      <Link
+                        aria-current={isNavLinkActive(activePath, href) ? "page" : undefined}
+                        className={isNavLinkActive(activePath, href) ? "active" : ""}
+                        href={href}
+                        key={href}
+                      >
+                        {label}
+                      </Link>
+                    ))}
+                  </div>
+                ))}
+              </nav>
+            </details>
+          )}
+          {sidebarGroups.map((group) => {
+            const isActiveGroup = group.label === activeGroup?.label;
+            const links = hasProductKnowledgeGroups && !isActiveGroup && group.label !== "Vision & direction"
+              ? group.links.slice(0, 1)
+              : group.links;
+            return (
+              <nav
+                className={`nav-group${isActiveGroup ? " active-group" : ""}`}
+                aria-label={group.label}
+                key={group.label}
+              >
+                <p>{group.label}</p>
+                {links.map(([label, href]) => (
                   <Link
                     aria-current={isNavLinkActive(activePath, href) ? "page" : undefined}
                     className={isNavLinkActive(activePath, href) ? "active" : ""}
@@ -97,23 +134,8 @@ export function DocsShell({ activePath, children }: { activePath: string; childr
                   </Link>
                 ))}
               </nav>
-            </details>
-          )}
-          {activeGroup && (
-            <nav className="nav-group active-group" aria-label={activeGroup.label}>
-              <p>{activeGroup.label}</p>
-              {activeGroup.links.map(([label, href]) => (
-                <Link
-                  aria-current={isNavLinkActive(activePath, href) ? "page" : undefined}
-                  className={isNavLinkActive(activePath, href) ? "active" : ""}
-                  href={href}
-                  key={href}
-                >
-                  {label}
-                </Link>
-              ))}
-            </nav>
-          )}
+            );
+          })}
         </aside>
         <div className="doc-article">{children}</div>
       </div>

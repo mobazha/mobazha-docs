@@ -127,6 +127,30 @@ export function activeNavGroupForPath(path: string): NavGroup | undefined {
   return best;
 }
 
+const englishProductNavGroupLabels = [
+  "Product model",
+  "Product foundations",
+  "Vision & direction",
+] as const;
+
+export function sidebarNavGroupsForPath(path: string): NavGroup[] {
+  const activeGroup = activeNavGroupForPath(path);
+  if (!activeGroup) return [];
+
+  if (
+    !path.startsWith("/zh/")
+    && path !== "/zh"
+    && englishProductNavGroupLabels.some((label) => label === activeGroup.label)
+  ) {
+    return englishProductNavGroupLabels.flatMap((label) => {
+      const group = englishNavGroups.find((candidate) => candidate.label === label);
+      return group ? [group] : [];
+    });
+  }
+
+  return [activeGroup];
+}
+
 export const docs = generatedDocuments as DocPage[];
 export const docsBySlug = new Map(docs.map((doc) => [doc.slug, doc]));
 export const visuals = visualEvidence.visuals as VisualEvidence[];
