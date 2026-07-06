@@ -7,7 +7,7 @@ audiences:
   - Agents
 evidenceLabel: Mobazha public repositories
 evidenceUrl: https://github.com/mobazha
-reviewed: 2026-07-04
+reviewed: 2026-07-06
 pageType: hub
 outcome: Reach the shortest trustworthy path for the job you want to complete.
 estimatedTime: 3 minutes
@@ -24,6 +24,16 @@ primaryAction:
 - [Run your own Node](/self-host) — Evaluate, install, secure, monitor, and recover a self-hosted deployment.
 - [Build an integration](/build) — Use the API, events, MCP, webhooks, and extension contracts.
 - [Understand the project](/project) — Inspect architecture, release scope, economics, governance, and security.
+
+If the first decision is who should operate the backend, [compare hosted and self-hosted responsibilities](/start/choose-deployment) before creating a store or moving data.
+
+## What you should know before committing
+
+- **Buyer:** identify the store operator, final total, payment instruction, order owner, and recovery route before sending funds.
+- **Seller:** verify one complete listing-to-fulfillment journey, including payment observation and a failed-order recovery path.
+- **Operator:** prove health, backup, restore, updates, network protection, and incident ownership before accepting material transactions.
+- **Developer or Agent builder:** discover runtime capabilities, authenticate with the narrowest scope, and reconcile unknown outcomes before retrying mutations.
+- **Evaluator:** separate current release-candidate behavior from Draft direction, and distinguish software fees from hosted, provider, network, delivery, and tax charges.
 
 ## Know the current maturity
 

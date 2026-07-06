@@ -85,10 +85,6 @@ export function FeaturedVisual({ doc, isChinese }: { doc: DocPage; isChinese: bo
       ? (isChinese ? "边界图" : "Boundary map")
       : (isChinese ? "系统图" : "System diagram");
   const visualDetails = isChinese ? "查看证据详情" : "Evidence details";
-  const transcript = isChinese ? visual.transcript_zh : visual.transcript;
-  const transcriptLabels = isChinese
-    ? { summary: "可复制的图示文字" }
-    : { summary: "Copyable diagram text" };
 
   return (
     <figure className="doc-featured-visual">
@@ -100,12 +96,6 @@ export function FeaturedVisual({ doc, isChinese }: { doc: DocPage; isChinese: bo
         <span><b>{visualKind}</b>{visual.caption}</span>
         <a href="/visual-evidence.json">{visualDetails} ↗</a>
       </figcaption>
-      <details className="visual-transcript">
-        <summary>{transcriptLabels.summary}</summary>
-        <div>
-          <ol>{transcript.map((line) => <li key={line}>{line}</li>)}</ol>
-        </div>
-      </details>
     </figure>
   );
 }

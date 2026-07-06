@@ -7,14 +7,14 @@
   "required": ["$schema", "schema_version", "reviewed", "visuals"],
   "properties": {
     "$schema": { "type": "string" },
-    "schema_version": { "type": "string", "const": "1.2" },
+    "schema_version": { "type": "string", "const": "1.1" },
     "reviewed": { "type": "string", "format": "date" },
     "visuals": {
       "type": "array",
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "src", "sha256", "kind", "width", "height", "alt", "caption", "claim", "transcript", "transcript_zh", "privacy_review", "source", "source_revision", "applies_to", "reviewed"],
+        "required": ["id", "src", "sha256", "kind", "width", "height", "alt", "caption", "claim", "privacy_review", "source", "source_revision", "applies_to", "reviewed"],
         "properties": {
           "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
           "src": { "type": "string", "pattern": "^/images/docs/" },
@@ -29,8 +29,6 @@
           "alt": { "type": "string", "minLength": 20 },
           "caption": { "type": "string", "minLength": 10 },
           "claim": { "type": "string", "minLength": 20 },
-          "transcript": { "type": "array", "minItems": 2, "items": { "type": "string", "minLength": 3 } },
-          "transcript_zh": { "type": "array", "minItems": 2, "items": { "type": "string", "minLength": 2 } },
           "privacy_review": { "type": "string", "enum": ["synthetic-only", "redacted", "public-demo-reviewed"] },
           "source": { "type": "string", "format": "uri", "pattern": "^https://" },
           "source_revision": { "type": "string", "minLength": 1 },

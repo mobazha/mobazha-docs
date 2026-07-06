@@ -9,7 +9,7 @@ audiences:
   - Agents
 evidenceLabel: Mobazha public product and release boundaries
 evidenceUrl: https://github.com/mobazha/mobazha/blob/main/README.md
-reviewed: 2026-07-04
+reviewed: 2026-07-06
 pageType: concept
 outcome: Choose hosted or self-hosted operation from the control and operational responsibility you actually need.
 estimatedTime: 5 minutes
@@ -42,9 +42,32 @@ Use the open-source Node when you need direct control over deployment, store dat
 - [Install a node](/self-host/install)
 - [Review operator security](/self-host/security)
 
+## Responsibility comparison
+
+| Decision area | Hosted service | Self-hosted Node |
+|---|---|---|
+| Server availability and updates | Managed by the hosted service operator under its published terms | Owned by your operator, including maintenance windows and rollback |
+| Domain and network boundary | Use the service's supported public entry points | You own DNS, TLS, reverse proxy, firewall, and exposure decisions |
+| Store data and recovery | Governed by the hosted service's export, retention, privacy, and recovery terms | You own backup frequency, off-host copies, restore tests, and recovery access |
+| Integrations | Limited to capabilities exposed by the hosted deployment | Configurable within the Node's released contracts and effective capabilities |
+| Service cost | Use the current hosted pricing and applicable provider charges | No mandatory Mobazha transaction fee merely for running the software; infrastructure and third-party costs remain yours |
+| Best first proof | Complete a disposable buyer-and-seller journey and inspect service terms | Start locally on testnet, then prove diagnostics, backup, restore, and one complete commerce journey |
+
+Neither model makes every payment rail, extension, or marketplace capability available. The connected backend's runtime response, the seller's configuration, and the current release contract remain authoritative.
+
 ## Decision rule
 
 - Choose hosted when reducing operational work matters more than controlling every infrastructure boundary.
 - Choose self-hosted when control, portability, custom operation, or independent availability justifies the operating responsibility.
 - Start on testnet and validate backup, payment, fulfillment, and recovery before depending on either path for material transactions.
 - Re-evaluate from current terms and capabilities; the deployment choice does not permanently lock the product model.
+
+## Validate the choice before committing
+
+1. Name the person or provider responsible for availability, updates, security, backups, and incident response.
+2. Confirm where the store's data lives, how it can be exported, and how service is recovered after a failed update or unavailable provider.
+3. Inspect the actual payment, shipping, Agent, API, and marketplace capabilities on the deployment you will use.
+4. Complete one test order from listing and quote through payment observation, fulfillment, refund or dispute routing, and evidence review.
+5. Record recurring costs and transaction-specific charges by recipient; do not compare only a headline subscription or commission.
+
+If any owner, recovery path, capability, or charge is still unknown, remain in evaluation rather than treating the deployment as ready.

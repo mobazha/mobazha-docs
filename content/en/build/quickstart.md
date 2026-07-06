@@ -7,7 +7,7 @@ audiences:
   - Agent builders
 evidenceLabel: Generated Node OpenAPI and runtime contract
 evidenceUrl: https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json
-reviewed: 2026-07-04
+reviewed: 2026-07-06
 pageType: task
 lastTested: 2026-07-04
 outcome: Confirm the Node you reached and complete one scoped, read-only API request.
@@ -21,6 +21,8 @@ primaryAction:
 ## First call
 
 With a local evaluation Node running and a scoped `MBZ_API_TOKEN` set in the environment, discover the runtime before calling a protected read-only endpoint.
+
+The token is not a public signup key. A standalone administrator creates it through the supported Admin surface or token API, assigns only the scopes required by the integration, and stores the one-time secret outside source code. [Review token creation and revocation](/build/authentication) before running the protected call.
 
 ```bash
 BASE_URL=http://127.0.0.1:5102
@@ -50,6 +52,8 @@ curl -fsS \
 ## Expected result and verification
 
 Runtime discovery should return a success envelope without requiring an administrative credential. The protected call should succeed only when the token is valid and has the required scope. Confirm the response belongs to the intended Node before building automation around it.
+
+Also test one route outside the token's scope in a disposable environment. It should return `403`; if it succeeds, the credential is broader than the quickstart requires and should be replaced before automation is deployed.
 
 ## If something fails
 

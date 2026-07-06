@@ -6,7 +6,7 @@ audiences:
   - Everyone
 evidenceLabel: Mobazha releases and repository documentation
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main/docs/releases
-reviewed: 2026-07-04
+reviewed: 2026-07-06
 pageType: policy
 outcome: Separate current v0.3 release-candidate behavior from stable guarantees, optional composition, proposals, and future targets.
 estimatedTime: 8 minutes
@@ -35,6 +35,19 @@ primaryAction:
 - [Community capability manifest](https://github.com/mobazha/mobazha/blob/main/config/editions/community.json) — Machine-readable release evidence.
 - [Node v0.3.0-rc.1 notes](https://github.com/mobazha/mobazha/blob/main/docs/releases/v0.3.0-rc.1.md)
 - [Unified v0.3.0-rc.1 notes](https://github.com/mobazha/mobazha-unified/blob/main/docs/releases/v0.3.0-rc.1.md)
+
+## Reliance guide
+
+| Question | Current answer | What to verify |
+|---|---|---|
+| Can I evaluate the open-source Node? | Yes, from reviewed public source on a supported environment | Exact commit, build prerequisites, testnet profile, diagnostics, and backup |
+| Can I use the hosted application? | Yes, as a Beta service | Current terms, privacy, pricing, service status, and deployment capabilities |
+| Are BTC, BCH, and LTC always available? | No. They are in the default release boundary, but effective availability remains conditional | Runtime capability, seller configuration, dependency health, quote, and payment instruction |
+| Is every API or UI element a supported feature? | No | Generated contract, runtime capability, authorization, configuration, and release notes |
+| Are stable installers and unattended updates a current guarantee? | No | Signed artifact, checksum, provenance, platform validation, rollback, and final release notice |
+| Is optional Node-to-account binding stable? | No; its public contract remains Draft | Published permissions, exchanged data, revocation, tests, and version compatibility |
+
+For material use, require a tagged release and its evidence rather than inferring readiness from a `main` branch, screenshot, design document, or feature name.
 
 ## What remains version-specific
 
