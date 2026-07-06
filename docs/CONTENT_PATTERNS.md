@@ -103,9 +103,10 @@ For a featured visual, reference an entry in
 [`../visual-evidence.json`](../visual-evidence.json) from frontmatter. Do not
 embed an unreviewed screenshot directly. Conceptual diagrams must be labeled
 as conceptual, and screenshots or terminal output must state exactly what they
-prove and which build they came from. Schema 1.1 records reviewed dimensions
-and SHA-256 digests for SVG or PNG assets so a replacement requires an explicit
-evidence review rather than silently inheriting the old claim.
+prove and which build they came from. Schema 1.2 records reviewed dimensions,
+SHA-256 digests, and English and Chinese copyable transcripts for SVG or PNG
+assets. A replacement therefore requires explicit evidence and text-equivalent
+review rather than silently inheriting the old claim.
 
 ## Readability baseline
 
@@ -131,4 +132,4 @@ Before publication, confirm that:
 8. Generated human and Agent outputs are refreshed with `npm run generate:content`.
 9. `npm run check` passes and affected routes are inspected in the rendered site.
 10. Every featured visual resolves through the evidence catalog and remains
-    readable at desktop and mobile widths.
+    readable at desktop and mobile widths, with a bilingual copyable transcript.

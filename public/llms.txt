@@ -101,7 +101,13 @@ Implementation evidence: the versioned sources linked from each page.
 
 ## 使用 Mobazha
 - [卖家指南](/zh/sell)
+- [配置配送](/zh/sell/shipping)
+- [准备收款](/zh/sell/payments)
+- [运营订单](/zh/sell/orders)
 - [买家指南](/zh/buy)
+- [完成结账](/zh/buy/checkout)
+- [跟踪订单](/zh/buy/order-status)
+- [取消、退款与争议](/zh/buy/cancel-refund-dispute)
 
 ## 自行托管
 - [节点概览](/zh/self-host)

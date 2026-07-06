@@ -344,8 +344,32 @@
           "/zh/sell"
         ],
         [
+          "配置配送",
+          "/zh/sell/shipping"
+        ],
+        [
+          "准备收款",
+          "/zh/sell/payments"
+        ],
+        [
+          "运营订单",
+          "/zh/sell/orders"
+        ],
+        [
           "买家指南",
           "/zh/buy"
+        ],
+        [
+          "完成结账",
+          "/zh/buy/checkout"
+        ],
+        [
+          "跟踪订单",
+          "/zh/buy/order-status"
+        ],
+        [
+          "取消、退款与争议",
+          "/zh/buy/cancel-refund-dispute"
         ]
       ]
     },

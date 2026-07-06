@@ -71,6 +71,8 @@ export type VisualEvidence = {
   alt: string;
   caption: string;
   claim: string;
+  transcript: string[];
+  transcript_zh: string[];
   privacy_review: "synthetic-only" | "redacted" | "public-demo-reviewed";
   source: string;
   source_revision: string;

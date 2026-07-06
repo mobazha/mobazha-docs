@@ -7,7 +7,7 @@ audiences:
   - Agents
 evidenceLabel: Unified checkout routes and Node order contracts
 evidenceUrl: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/checkout
-reviewed: 2026-07-04
+reviewed: 2026-07-06
 pageType: task
 lastTested: 2026-07-04
 outcome: Create one order from a reviewed seller quote and keep the identifiers needed to recover it.
@@ -29,17 +29,18 @@ primaryAction:
 
 ## Checkout steps
 
-1. Open the product page, select required options, and add the item to the cart.
+1. Open `/product/{slug}`, confirm the seller and store context, select required options, and add the item to the cart.
 2. Open **Cart** and confirm every line belongs to the intended seller. A marketplace may curate discovery and record attribution, but the approved seller—not the marketplace projection—must own the checkout handoff and resulting order.
-3. Continue to **Checkout** and enter only the delivery and contact data required for this order.
+3. Continue through `/checkout`; enter only the delivery and contact data required for this order, then choose a destination-valid shipping method where required.
 4. Review subtotal, shipping, discounts, taxes, network or provider costs, optional services, and final total.
-5. Select an available payment method. Availability comes from the connected backend, not from a static list in this guide.
-6. Confirm the order only after the seller, recipient, amount, payment asset, expiry, and applicable policies are visible.
-7. Save the order identifier and tracking link before leaving the confirmation page.
+5. Select an available payment method at the payment-method step. Availability comes from the connected backend and store policy, not from a static list in this guide.
+6. If the order mode requires a moderator or other protection choice, review its scope and cost before confirmation.
+7. Confirm the order only after seller, recipient, final total, payment asset or provider, applicable policy, and any protection choice are visible.
+8. On confirmation, save the order identifier and tracking link, then use the order-bound Payment Session for address, provider payload, amount, expiry, and progress.
 
 ## Expected result and verification
 
-The application should display a newly created order with an authoritative state and payment instructions. Confirm that the order item, seller, seller-owned backend, total, payment asset, amount, destination, and expiry match the final confirmation you approved. A marketplace page or referral label is not the seller and must not silently become the order owner.
+The application should display a newly created order with an authoritative state and order-bound Payment Session. Confirm that the item revision, seller, seller-owned backend, total, canonical payment asset or provider, funding target, amount, settlement mode, and expiry match the final confirmation you approved. A marketplace page or referral label is not the seller and must not silently become the order owner.
 
 Do not treat a wallet broadcast, a screenshot, or a pending transaction as completed payment. Wait for the order page to report the required confirmations and funded state.
 

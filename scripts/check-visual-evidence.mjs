@@ -47,6 +47,8 @@ const assetDetails = (path, kind) => {
 };
 
 for (const visual of evidence.visuals) {
+  if (!Array.isArray(visual.transcript) || visual.transcript.length < 2) failures.push(`${visual.id} is missing an English copyable transcript`);
+  if (!Array.isArray(visual.transcript_zh) || visual.transcript_zh.length < 2) failures.push(`${visual.id} is missing a Chinese copyable transcript`);
   const desktop = assetDetails(visual.src, visual.kind);
   if (desktop && (desktop.width !== visual.width || desktop.height !== visual.height)) {
     failures.push(`${visual.id} desktop dimensions do not match the manifest`);

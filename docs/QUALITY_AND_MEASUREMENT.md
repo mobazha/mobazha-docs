@@ -26,9 +26,10 @@ test:experience` starts the public surface in Chromium and covers rendered
 behavior. The scheduled workflow additionally checks external links and exact
 upstream source revisions.
 
-Visual evidence schema 1.1 accepts reviewed SVG models and PNG product or
+Visual evidence schema 1.2 accepts reviewed SVG models and PNG product or
 terminal captures. Dimensions and SHA-256 digests must match the manifest;
-conceptual SVGs additionally require an internal title and description.
+conceptual SVGs additionally require an internal title and description, and
+every record requires English and Chinese copyable transcripts.
 
 ## Freshness budgets
 

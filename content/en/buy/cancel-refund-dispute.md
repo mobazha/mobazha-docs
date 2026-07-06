@@ -8,7 +8,7 @@ audiences:
   - Agents
 evidenceLabel: Node order and dispute contracts
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main/api-spec
-reviewed: 2026-07-04
+reviewed: 2026-07-06
 pageType: task
 lastTested: 2026-07-04
 outcome: Choose a valid resolution path for the active order without losing the evidence behind it.
@@ -26,14 +26,26 @@ primaryAction:
 - Preserve messages, quote, payment reference, delivery evidence, and the remedy you request.
 - Confirm which party controls the next transition; not every state permits unilateral cancellation.
 
+## Choose the path by order mode and current capability
+
+| Path | Typical purpose | What must be verified |
+|---|---|---|
+| Cancel | Stop an eligible order before its current commitment or payment path closes cancellation | Current order state, actor, Payment Session capability, expiry, and refund destination if funds may already exist. |
+| Refund | Return an eligible amount through the supported payment path | Recipient or refund address, amount, asset, prior observations, idempotency, and resulting transaction or provider reference. |
+| Dispute | Ask the supported protection or moderation path to examine evidence and a requested remedy | Order mode, deadline, dispute capability, roles, policy version, evidence, and settlement consequences. |
+| Complete or release | Accept fulfillment or release protected funds where the model supports it | Delivery evidence, actor authority, expected state, amount, and irreversibility. |
+
+The order detail may expose Summary, Discussion, Dispute, and Evidence views. Discussion coordinates; Evidence supports a claim; only an admitted Core action changes protected order or payment state.
+
 ## Resolution steps
 
 1. If the order is unpaid and cancellation is available, cancel through the order page.
-2. If a funded order is not fulfilled, contact the seller through the order discussion and state the requested remedy.
+2. If a funded order is not fulfilled, use the order Discussion view and state the requested remedy without exposing unnecessary private data.
 3. Use **Refund** only with the address, amount, and conditions displayed for the active order.
-4. Open a dispute only when the deployment offers that path and ordinary resolution has not succeeded.
+4. Open the order Dispute view only when the deployment, order mode, deadline, and current capabilities offer that path and ordinary resolution has not succeeded.
 5. Describe expected outcome, timeline, and evidence without unnecessary personal information.
-6. Reconcile final refund, release, or closure against both backend state and payment system.
+6. Add or reference original material in the Evidence view where supported; do not replace evidence with a summary that loses timestamps or provenance.
+7. Reconcile final refund, release, or closure against both backend state and the payment system or provider.
 
 ## Expected result and verification
 

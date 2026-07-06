@@ -14,14 +14,14 @@
   <url><loc>https://docs.mobazha.org/sell</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/sell/store-setup</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/sell/listings</loc><lastmod>2026-07-06</lastmod></url>
-  <url><loc>https://docs.mobazha.org/sell/shipping</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/sell/payments</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/sell/orders</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/sell/shipping</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/sell/payments</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/sell/orders</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/buy</loc><lastmod>2026-07-06</lastmod></url>
-  <url><loc>https://docs.mobazha.org/buy/checkout</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/buy/checkout</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/buy/guest-checkout</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/buy/order-status</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/buy/cancel-refund-dispute</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/buy/order-status</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/buy/cancel-refund-dispute</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/self-host</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/self-host/requirements</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/self-host/install</loc><lastmod>2026-07-04</lastmod></url>
@@ -72,7 +72,13 @@
   <url><loc>https://docs.mobazha.org/zh/project/surfaces-and-integrations</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/project/agent-commerce</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/sell</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/sell/shipping</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/sell/payments</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/sell/orders</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/buy</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/buy/checkout</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/buy/order-status</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/buy/cancel-refund-dispute</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/self-host</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/self-host/install</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/build</loc><lastmod>2026-07-04</lastmod></url>

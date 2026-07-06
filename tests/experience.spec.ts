@@ -16,6 +16,12 @@ const routes = [
   "/project/surfaces-and-integrations",
   "/project/fees",
   "/zh/buy",
+  "/zh/buy/checkout",
+  "/zh/buy/order-status",
+  "/zh/buy/cancel-refund-dispute",
+  "/zh/sell/shipping",
+  "/zh/sell/payments",
+  "/zh/sell/orders",
   "/zh/project/product-map",
   "/zh/project/identity-and-stores",
   "/zh/project/transaction-spine",
@@ -172,6 +178,28 @@ test("journey and boundary diagrams use the light documentation visual system", 
   }
 });
 
+test("featured visuals provide bilingual copyable text equivalents", async ({ page }) => {
+  await page.goto("/buy");
+  await page.waitForLoadState("networkidle");
+  const englishTranscript = page.locator(".visual-transcript");
+  await expect(englishTranscript.locator("summary")).toHaveText("Copyable diagram text");
+  await englishTranscript.locator("summary").click();
+  await expect(englishTranscript.locator("li")).toHaveCount(5);
+  const englishLines = await englishTranscript.locator("li").evaluateAll((items) => items.map((item) => item.textContent));
+  expect(englishLines[0]).toContain("Review one quote");
+  expect(englishLines[1]).toContain("Create and save one seller-owned order");
+
+  await page.goto("/zh/project/product-map");
+  await page.waitForLoadState("networkidle");
+  const chineseTranscript = page.locator(".visual-transcript");
+  await expect(chineseTranscript.locator("summary")).toHaveText("可复制的图示文字");
+  await chineseTranscript.locator("summary").click();
+  await expect(chineseTranscript.locator("li")).toHaveCount(4);
+  const chineseLines = await chineseTranscript.locator("li").evaluateAll((items) => items.map((item) => item.textContent));
+  expect(chineseLines[0]).toContain("Storefront");
+  expect(chineseLines[1]).toContain("Store 与 Node");
+});
+
 test("flagship concepts share one product-model navigation group", async ({ page }) => {
   await page.goto("/project/transaction-spine");
   const englishGroup = page.locator(".nav-group.active-group");
@@ -182,6 +210,14 @@ test("flagship concepts share one product-model navigation group", async ({ page
   const chineseGroup = page.locator(".nav-group.active-group");
   await expect(chineseGroup.locator("p")).toHaveText("产品模型");
   await expect(chineseGroup.locator("a")).toHaveCount(7);
+});
+
+test("Chinese transaction tasks share one complete use journey", async ({ page }) => {
+  await page.goto("/zh/sell/payments");
+  const group = page.locator(".nav-group.active-group");
+  await expect(group.locator("p")).toHaveText("使用 Mobazha");
+  await expect(group.locator("a")).toHaveCount(8);
+  await expect(group.locator('a[href="/zh/buy/cancel-refund-dispute"]')).toHaveText("取消、退款与争议");
 });
 
 test("/start resolves to the portal home", async ({ page }) => {

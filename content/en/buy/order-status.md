@@ -8,7 +8,7 @@ audiences:
   - Agents
 evidenceLabel: Unified order milestones and Node order API
 evidenceUrl: https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/components/orders/guestOrderStages.ts
-reviewed: 2026-07-04
+reviewed: 2026-07-06
 pageType: task
 lastTested: 2026-07-04
 outcome: Decide what the current order state proves and which recovery action is safe to take next.
@@ -29,9 +29,9 @@ primaryAction:
 
 1. Open **Orders** for an authenticated purchase or the saved Guest Order tracking link.
 2. Confirm seller, item, amount, payment asset, and creation time before interpreting state.
-3. Compare the displayed payment destination and transaction ID with your wallet record.
-4. Read confirmations and required confirmations from the order page.
-5. Refresh through the product UI or authoritative API when an event announces a change.
+3. Open the order-bound Payment Session and compare its session ID, canonical asset, funding target, expected amount, settlement mode, and expiry with your wallet or provider record.
+4. Read observed amount, remaining amount, observations, confirmations where applicable, and the backend funding state separately.
+5. Refresh through the product UI or `GET /v1/orders/{orderID}/payment-session` when an event announces a change.
 6. Preserve fulfillment, cancellation, refund, or dispute evidence before taking the next available action.
 
 ## Expected result and verification
@@ -40,11 +40,14 @@ The order page should show a monotonic business-state view owned by the backend.
 
 | Observation | Safe conclusion |
 |---|---|
+| Payment target ready | The order has an address or provider session the buyer may use before expiry |
 | Transaction broadcast | A wallet attempted to publish a transaction |
 | Transaction detected | The payment system observed a candidate transaction |
 | Required confirmations reached | The configured confirmation gate may be satisfied |
 | Backend state is funded | The order backend accepted the payment evidence for this order |
 | Seller marked shipped | Fulfillment evidence was recorded; inspect it |
+
+The Payment Session capability set—not a static button list—indicates whether refresh, cancel, confirm, refund, or completion is currently available.
 
 ## If something fails
 

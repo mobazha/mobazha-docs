@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.mobazha.org/visual-evidence.schema.json",
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "reviewed": "2026-07-06",
   "visuals": [
     {
@@ -17,6 +17,18 @@
       "alt": "Conceptual Mobazha product map showing storefronts, community channels, and Agent integrations connected to an operator-selected backend, with payment, delivery, discovery, and hosted services as explicit dependencies.",
       "caption": "One commerce core can support several operating and distribution paths without moving business-state authority into the presentation channel.",
       "claim": "Explains the product and authority model; it does not assert that every pictured channel, integration, or external service is available in every distribution.",
+      "transcript": [
+        "Storefronts, direct links, community channels, and Agent integrations are presentation and distribution surfaces.",
+        "Each surface resolves an operator-selected Store and Node context before it requests commerce state.",
+        "The Store and Node remain authoritative for listings, quotes, orders, policy, and capabilities.",
+        "Payment, delivery, discovery, and hosted services remain explicit dependencies with their own trust and cost boundaries."
+      ],
+      "transcript_zh": [
+        "Storefront、直达链接、社群渠道和 Agent 集成属于展示与分发界面。",
+        "每个界面先解析运营者选择的 Store 与 Node 上下文，再请求商业状态。",
+        "Store 与 Node 仍然拥有商品、Quote、订单、政策和能力的权威。",
+        "支付、配送、发现和托管服务是具有独立信任与成本边界的显式依赖。"
+      ],
       "privacy_review": "synthetic-only",
       "source": "https://github.com/mobazha/mobazha-docs",
       "source_revision": "product-atlas-v1",
@@ -37,6 +49,18 @@
       "alt": "Conceptual model separating an access account or credential, the store and Node business-state boundary, storefront views that share store state, and the channels that present those views.",
       "caption": "Accounts authorize access, stores own business state, storefronts shape presentation, and channels provide entry context.",
       "claim": "Explains product and authority boundaries; it does not assert that every distribution enables multiple stores, named storefronts, every channel, or future identity models.",
+      "transcript": [
+        "An account or credential authorizes a person to act; it is not itself the store.",
+        "A Store and Node own business state, policy, capabilities, and orders.",
+        "Storefronts are brand and audience views that can reuse store-owned commerce state where supported.",
+        "Web, community, embedded, and Agent channels present those views without becoming business-state authority."
+      ],
+      "transcript_zh": [
+        "账户或凭据授权一个人执行操作，但账户本身不是店铺。",
+        "Store 与 Node 拥有业务状态、政策、能力和订单。",
+        "Storefront 是品牌和受众视图，在支持时可复用店铺拥有的商业状态。",
+        "Web、社群、嵌入式和 Agent 渠道负责呈现这些视图，但不成为业务状态权威。"
+      ],
       "privacy_review": "synthetic-only",
       "source": "https://github.com/mobazha/mobazha-docs",
       "source_revision": "identity-storefront-model-v1",
@@ -57,6 +81,20 @@
       "alt": "Conceptual transaction spine showing a normal path from reviewed terms through order creation, payment verification, fulfillment, and completion, with separate bands for order authority, payment evidence, and policy-gated recovery.",
       "caption": "One trade connects order, payment, and protection state without collapsing them into one misleading status.",
       "claim": "Explains durable authority and recovery boundaries; it does not assert that every distribution, order, payment rail, or protection model exposes every pictured action.",
+      "transcript": [
+        "Normal path: review terms, create the order, fund and verify payment, accept and fulfill, then complete.",
+        "Order state is Core authority: accepted snapshot, current state, admitted action, and terminal business outcome.",
+        "Payment session is evidence: order binding, funding target, observation, verification, and settlement semantics.",
+        "Cancel, decline, refund, and dispute are policy-gated recovery actions rather than universal promises.",
+        "Events prompt a refresh; the backend authorizes the next valid action."
+      ],
+      "transcript_zh": [
+        "正常路径：审阅条款、创建订单、付款并验证、接受并履约、最后完成。",
+        "订单状态属于 Core 权威：已接受快照、当前状态、允许动作和最终业务结果。",
+        "Payment Session 记录证据：订单绑定、资金目标、观察、验证和结算语义。",
+        "取消、拒绝、退款和争议是受政策约束的恢复动作，不是通用承诺。",
+        "事件只触发刷新；后端决定下一个有效动作。"
+      ],
       "privacy_review": "synthetic-only",
       "source": "https://github.com/mobazha/mobazha-docs",
       "source_revision": "transaction-spine-v1",
@@ -77,6 +115,18 @@
       "alt": "Conceptual distributed discovery model showing community, Web, direct-link, and Agent channels entering an operator-owned market projection, with participating stores remaining separate transaction authorities.",
       "caption": "Markets organize audience, consent, access, and curation; a selected offer still hands off to one seller-owned transaction.",
       "claim": "Explains durable discovery and transaction boundaries; it does not assert that every market shape, channel, access mode, domain flow, or curation feature is available in every distribution.",
+      "transcript": [
+        "Communities, Web entry points, direct links, and Agents can lead buyers into a market projection.",
+        "A market organizes audience, consent, access, curation, categories, and discovery.",
+        "Participating stores remain separate operators and separate transaction authorities.",
+        "Selecting an offer hands the buyer to one seller-owned quote and order path."
+      ],
+      "transcript_zh": [
+        "社群、Web 入口、直达链接和 Agent 可以把买家带入市场投影。",
+        "市场负责组织受众、同意、访问、策展、分类和发现。",
+        "参与店铺仍是彼此独立的运营者与交易权威。",
+        "选择 Offer 后，交易转入一个卖家拥有的 Quote 与订单路径。"
+      ],
       "privacy_review": "synthetic-only",
       "source": "https://github.com/mobazha/mobazha-docs",
       "source_revision": "community-commerce-network-v1",
@@ -97,6 +147,20 @@
       "alt": "Conceptual Agent-commerce execution path from a user goal through persona and scope, a Skill, current Tool discovery, request-bound approval, Core validation, and an audited result.",
       "caption": "Reasoning proposes an action; typed identity, scope, capability, approval, and Core state gates decide whether it executes.",
       "claim": "Explains current authority primitives and a safe composition model; it does not assert that every Skill, Tool, workflow, approval policy, model, or autonomous mode is available.",
+      "transcript": [
+        "A user goal enters an Agent workflow with a typed persona, identity, and scope.",
+        "A Skill supplies bounded procedure; current Tool discovery supplies callable contracts.",
+        "A request-bound approval names the exact consequential action being authorized.",
+        "Core validates identity, scope, capability, expected state, amount, policy, and idempotency before execution.",
+        "The result is returned with auditable request, approval, order, and outcome identifiers."
+      ],
+      "transcript_zh": [
+        "用户目标以明确 Persona、身份和权限范围进入 Agent 工作流。",
+        "Skill 提供受限流程，当前 Tool 发现提供可调用契约。",
+        "与请求绑定的审批明确授权哪一个有后果的动作。",
+        "Core 在执行前验证身份、权限、能力、预期状态、金额、政策和幂等性。",
+        "结果携带可审计的请求、审批、订单和结果标识。"
+      ],
       "privacy_review": "synthetic-only",
       "source": "https://github.com/mobazha/mobazha-docs",
       "source_revision": "agent-commerce-boundary-v1",
@@ -117,6 +181,20 @@
       "alt": "Conceptual commerce flow from supply facts through a seller-owned listing revision, merchandising projection, accepted quote and order, and fulfillment evidence, with external providers and Core authority kept separate.",
       "caption": "One seller-owned promise can use several merchandising, supply, and fulfillment models without allowing later changes to rewrite an accepted order.",
       "claim": "Explains durable offer and fulfillment boundaries; it does not assert that every product shape, discount, collection rule, supply provider, or delivery path is available in every distribution.",
+      "transcript": [
+        "Supply facts describe inventory, provider availability, or service capacity.",
+        "A seller-owned listing revision turns those facts into a buyer-visible promise with type, options, price, media, and terms.",
+        "Collections, discounts, storefronts, and channels merchandise the promise without owning it.",
+        "A fresh quote selects the listing revision, option combination, destination, delivery path, adjustments, and total.",
+        "The accepted order freezes the promise; fulfillment evidence proves how it was completed."
+      ],
+      "transcript_zh": [
+        "Supply 事实描述库存、供应商可用性或服务容量。",
+        "卖家拥有的 Listing revision 把这些事实变成包含类型、规格、价格、媒体和条款的买家可见承诺。",
+        "Collection、Discount、Storefront 和渠道负责组织与展示承诺，但不拥有承诺。",
+        "新 Quote 选择商品版本、规格组合、目的地、配送路径、价格调整和总额。",
+        "已接受订单冻结承诺，履约证据说明它如何完成。"
+      ],
       "privacy_review": "synthetic-only",
       "source": "https://github.com/mobazha/mobazha-docs",
       "source_revision": "offer-to-fulfillment-v1",
@@ -137,6 +215,20 @@
       "alt": "Conceptual model showing Web, mobile, desktop, community, embedded, browser, and Agent shells resolving server context before using HTTP, WebSocket, webhook, MCP, or chat contracts to reach capability-gated Core commerce state.",
       "caption": "Many experience shells and interaction contracts can share one server-resolved context and one Core-owned commerce authority.",
       "claim": "Explains durable surface and transport boundaries; it does not assert that every client shell, domain route, channel, event, chat service, Tool, or integration is available in every distribution.",
+      "transcript": [
+        "Web, mobile, desktop, community, embedded, browser-extension, and Agent shells are experience surfaces.",
+        "Each surface resolves server, store, storefront, identity, and capability context before acting.",
+        "HTTP, WebSocket, webhook, MCP, and chat are interaction contracts with different delivery guarantees.",
+        "Extensions and services submit declarations, observations, decisions, or attestations through bounded interfaces.",
+        "Core remains authoritative for protected commerce state and validates every consequential transition."
+      ],
+      "transcript_zh": [
+        "Web、移动端、桌面端、社群、嵌入式、浏览器扩展和 Agent 是体验界面。",
+        "每个界面在操作前解析服务器、店铺、Storefront、身份和能力上下文。",
+        "HTTP、WebSocket、Webhook、MCP 和 Chat 是具有不同交付保证的交互契约。",
+        "扩展与服务通过受限接口提交声明、观察、决定或证明。",
+        "Core 仍然拥有受保护商业状态，并验证每个有后果的状态转换。"
+      ],
       "privacy_review": "synthetic-only",
       "source": "https://github.com/mobazha/mobazha-docs",
       "source_revision": "surfaces-and-integrations-v1",
@@ -157,6 +249,20 @@
       "alt": "Conceptual buyer journey from reviewing one seller quote through payment, fulfillment, and completion, with recovery actions dependent on active order state.",
       "caption": "One seller-owned order, from reviewed quote to observable completion.",
       "claim": "Explains the documentation authority and milestone model; it does not assert that every deployment exposes every transition.",
+      "transcript": [
+        "Review one quote: seller, item revision, option, destination, delivery, adjustments, and total.",
+        "Create and save one seller-owned order with its order ID, recovery token where applicable, and tracking path.",
+        "Verify progress from backend order state and payment evidence rather than a screenshot, chat message, or client cache.",
+        "Observable milestones are awaiting payment, funded, fulfilled, and completed.",
+        "Cancel, refund, and dispute appear only when order state, payment path, and policy allow them."
+      ],
+      "transcript_zh": [
+        "审阅一份 Quote：卖家、商品版本、规格、目的地、配送、价格调整和总额。",
+        "创建并保存一个卖家拥有的订单，包括订单 ID、适用时的恢复 Token 和跟踪路径。",
+        "根据后端订单状态与支付证据验证进度，而不是依赖截图、聊天消息或客户端缓存。",
+        "可观察里程碑包括等待付款、已入资、已履约和已完成。",
+        "取消、退款和争议只在订单状态、支付路径和政策允许时出现。"
+      ],
       "privacy_review": "synthetic-only",
       "source": "https://github.com/mobazha/mobazha-docs",
       "source_revision": "buyer-order-path-light-v2",
@@ -177,6 +283,22 @@
       "alt": "Conceptual seller operating loop covering store identity and policy, listings, payment readiness, a test purchase, and ongoing order operations.",
       "caption": "A store is ready only when the complete buyer journey has been tested.",
       "claim": "Explains the operator responsibility sequence; it is not evidence that a specific store has completed these checks.",
+      "transcript": [
+        "Establish store identity and buyer-visible policy.",
+        "Publish a listing revision backed by real supply or service capacity.",
+        "Configure destination-valid shipping and operationally ready payment methods.",
+        "Complete a representative test purchase in a separate buyer context.",
+        "Fulfill, support, reconcile, and retain order evidence.",
+        "Review and repeat the loop after material policy, inventory, delivery, payment, or software changes."
+      ],
+      "transcript_zh": [
+        "建立店铺身份和买家可见政策。",
+        "发布由真实供给或服务容量支持的 Listing revision。",
+        "配置对目的地有效的配送方式和运营上已准备好的支付方式。",
+        "在独立买家上下文中完成一笔有代表性的测试购买。",
+        "履约、支持、对账并保留订单证据。",
+        "政策、库存、配送、支付或软件发生重大变化后，重新检查整个循环。"
+      ],
       "privacy_review": "synthetic-only",
       "source": "https://github.com/mobazha/mobazha-docs",
       "source_revision": "store-readiness-loop-light-v2",
@@ -197,6 +319,22 @@
       "alt": "Conceptual self-hosting boundary showing clients entering through an operator-controlled network boundary to a Mobazha Node and local data, with payment systems and optional hosted services remaining separate dependencies.",
       "caption": "Self-hosting moves operational control to the Node operator; external dependencies remain explicit.",
       "claim": "Explains responsibility boundaries and does not prescribe one mandatory network topology.",
+      "transcript": [
+        "People and scoped Agents enter through explicit identity, authorization, and approval.",
+        "The operator exposes only necessary network and TLS surfaces.",
+        "The Mobazha Node owns business-state authority; local data remains under operator backup and retention policy.",
+        "Payment systems provide separately verified records.",
+        "Optional hosted services remain explicit dependencies rather than hidden custody.",
+        "The operator owns host security, secrets, observability, backup, upgrade, recovery, and external-service selection."
+      ],
+      "transcript_zh": [
+        "人和受限 Agent 通过明确身份、授权和审批进入系统。",
+        "运营者只暴露必要的网络与 TLS 界面。",
+        "Mobazha Node 拥有业务状态权威，本地数据遵循运营者的备份与保留政策。",
+        "支付系统提供独立验证的记录。",
+        "可选托管服务保持为显式依赖，而不是隐藏托管。",
+        "运营者负责主机安全、密钥、可观测性、备份、升级、恢复和外部服务选择。"
+      ],
       "privacy_review": "synthetic-only",
       "source": "https://github.com/mobazha/mobazha-docs",
       "source_revision": "self-host-boundary-light-v2",

@@ -128,6 +128,18 @@
         "alt": "Conceptual Mobazha product map showing storefronts, community channels, and Agent integrations connected to an operator-selected backend, with payment, delivery, discovery, and hosted services as explicit dependencies.",
         "caption": "One commerce core can support several operating and distribution paths without moving business-state authority into the presentation channel.",
         "claim": "Explains the product and authority model; it does not assert that every pictured channel, integration, or external service is available in every distribution.",
+        "transcript": [
+          "Storefronts, direct links, community channels, and Agent integrations are presentation and distribution surfaces.",
+          "Each surface resolves an operator-selected Store and Node context before it requests commerce state.",
+          "The Store and Node remain authoritative for listings, quotes, orders, policy, and capabilities.",
+          "Payment, delivery, discovery, and hosted services remain explicit dependencies with their own trust and cost boundaries."
+        ],
+        "transcript_zh": [
+          "Storefront、直达链接、社群渠道和 Agent 集成属于展示与分发界面。",
+          "每个界面先解析运营者选择的 Store 与 Node 上下文，再请求商业状态。",
+          "Store 与 Node 仍然拥有商品、Quote、订单、政策和能力的权威。",
+          "支付、配送、发现和托管服务是具有独立信任与成本边界的显式依赖。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "product-atlas-v1",
@@ -184,6 +196,18 @@
         "alt": "Conceptual model separating an access account or credential, the store and Node business-state boundary, storefront views that share store state, and the channels that present those views.",
         "caption": "Accounts authorize access, stores own business state, storefronts shape presentation, and channels provide entry context.",
         "claim": "Explains product and authority boundaries; it does not assert that every distribution enables multiple stores, named storefronts, every channel, or future identity models.",
+        "transcript": [
+          "An account or credential authorizes a person to act; it is not itself the store.",
+          "A Store and Node own business state, policy, capabilities, and orders.",
+          "Storefronts are brand and audience views that can reuse store-owned commerce state where supported.",
+          "Web, community, embedded, and Agent channels present those views without becoming business-state authority."
+        ],
+        "transcript_zh": [
+          "账户或凭据授权一个人执行操作，但账户本身不是店铺。",
+          "Store 与 Node 拥有业务状态、政策、能力和订单。",
+          "Storefront 是品牌和受众视图，在支持时可复用店铺拥有的商业状态。",
+          "Web、社群、嵌入式和 Agent 渠道负责呈现这些视图，但不成为业务状态权威。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "identity-storefront-model-v1",
@@ -240,6 +264,20 @@
         "alt": "Conceptual commerce flow from supply facts through a seller-owned listing revision, merchandising projection, accepted quote and order, and fulfillment evidence, with external providers and Core authority kept separate.",
         "caption": "One seller-owned promise can use several merchandising, supply, and fulfillment models without allowing later changes to rewrite an accepted order.",
         "claim": "Explains durable offer and fulfillment boundaries; it does not assert that every product shape, discount, collection rule, supply provider, or delivery path is available in every distribution.",
+        "transcript": [
+          "Supply facts describe inventory, provider availability, or service capacity.",
+          "A seller-owned listing revision turns those facts into a buyer-visible promise with type, options, price, media, and terms.",
+          "Collections, discounts, storefronts, and channels merchandise the promise without owning it.",
+          "A fresh quote selects the listing revision, option combination, destination, delivery path, adjustments, and total.",
+          "The accepted order freezes the promise; fulfillment evidence proves how it was completed."
+        ],
+        "transcript_zh": [
+          "Supply 事实描述库存、供应商可用性或服务容量。",
+          "卖家拥有的 Listing revision 把这些事实变成包含类型、规格、价格、媒体和条款的买家可见承诺。",
+          "Collection、Discount、Storefront 和渠道负责组织与展示承诺，但不拥有承诺。",
+          "新 Quote 选择商品版本、规格组合、目的地、配送路径、价格调整和总额。",
+          "已接受订单冻结承诺，履约证据说明它如何完成。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "offer-to-fulfillment-v1",
@@ -296,6 +334,20 @@
         "alt": "Conceptual transaction spine showing a normal path from reviewed terms through order creation, payment verification, fulfillment, and completion, with separate bands for order authority, payment evidence, and policy-gated recovery.",
         "caption": "One trade connects order, payment, and protection state without collapsing them into one misleading status.",
         "claim": "Explains durable authority and recovery boundaries; it does not assert that every distribution, order, payment rail, or protection model exposes every pictured action.",
+        "transcript": [
+          "Normal path: review terms, create the order, fund and verify payment, accept and fulfill, then complete.",
+          "Order state is Core authority: accepted snapshot, current state, admitted action, and terminal business outcome.",
+          "Payment session is evidence: order binding, funding target, observation, verification, and settlement semantics.",
+          "Cancel, decline, refund, and dispute are policy-gated recovery actions rather than universal promises.",
+          "Events prompt a refresh; the backend authorizes the next valid action."
+        ],
+        "transcript_zh": [
+          "正常路径：审阅条款、创建订单、付款并验证、接受并履约、最后完成。",
+          "订单状态属于 Core 权威：已接受快照、当前状态、允许动作和最终业务结果。",
+          "Payment Session 记录证据：订单绑定、资金目标、观察、验证和结算语义。",
+          "取消、拒绝、退款和争议是受政策约束的恢复动作，不是通用承诺。",
+          "事件只触发刷新；后端决定下一个有效动作。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "transaction-spine-v1",
@@ -352,6 +404,18 @@
         "alt": "Conceptual distributed discovery model showing community, Web, direct-link, and Agent channels entering an operator-owned market projection, with participating stores remaining separate transaction authorities.",
         "caption": "Markets organize audience, consent, access, and curation; a selected offer still hands off to one seller-owned transaction.",
         "claim": "Explains durable discovery and transaction boundaries; it does not assert that every market shape, channel, access mode, domain flow, or curation feature is available in every distribution.",
+        "transcript": [
+          "Communities, Web entry points, direct links, and Agents can lead buyers into a market projection.",
+          "A market organizes audience, consent, access, curation, categories, and discovery.",
+          "Participating stores remain separate operators and separate transaction authorities.",
+          "Selecting an offer hands the buyer to one seller-owned quote and order path."
+        ],
+        "transcript_zh": [
+          "社群、Web 入口、直达链接和 Agent 可以把买家带入市场投影。",
+          "市场负责组织受众、同意、访问、策展、分类和发现。",
+          "参与店铺仍是彼此独立的运营者与交易权威。",
+          "选择 Offer 后，交易转入一个卖家拥有的 Quote 与订单路径。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "community-commerce-network-v1",
@@ -408,6 +472,20 @@
         "alt": "Conceptual model showing Web, mobile, desktop, community, embedded, browser, and Agent shells resolving server context before using HTTP, WebSocket, webhook, MCP, or chat contracts to reach capability-gated Core commerce state.",
         "caption": "Many experience shells and interaction contracts can share one server-resolved context and one Core-owned commerce authority.",
         "claim": "Explains durable surface and transport boundaries; it does not assert that every client shell, domain route, channel, event, chat service, Tool, or integration is available in every distribution.",
+        "transcript": [
+          "Web, mobile, desktop, community, embedded, browser-extension, and Agent shells are experience surfaces.",
+          "Each surface resolves server, store, storefront, identity, and capability context before acting.",
+          "HTTP, WebSocket, webhook, MCP, and chat are interaction contracts with different delivery guarantees.",
+          "Extensions and services submit declarations, observations, decisions, or attestations through bounded interfaces.",
+          "Core remains authoritative for protected commerce state and validates every consequential transition."
+        ],
+        "transcript_zh": [
+          "Web、移动端、桌面端、社群、嵌入式、浏览器扩展和 Agent 是体验界面。",
+          "每个界面在操作前解析服务器、店铺、Storefront、身份和能力上下文。",
+          "HTTP、WebSocket、Webhook、MCP 和 Chat 是具有不同交付保证的交互契约。",
+          "扩展与服务通过受限接口提交声明、观察、决定或证明。",
+          "Core 仍然拥有受保护商业状态，并验证每个有后果的状态转换。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "surfaces-and-integrations-v1",
@@ -464,6 +542,20 @@
         "alt": "Conceptual Agent-commerce execution path from a user goal through persona and scope, a Skill, current Tool discovery, request-bound approval, Core validation, and an audited result.",
         "caption": "Reasoning proposes an action; typed identity, scope, capability, approval, and Core state gates decide whether it executes.",
         "claim": "Explains current authority primitives and a safe composition model; it does not assert that every Skill, Tool, workflow, approval policy, model, or autonomous mode is available.",
+        "transcript": [
+          "A user goal enters an Agent workflow with a typed persona, identity, and scope.",
+          "A Skill supplies bounded procedure; current Tool discovery supplies callable contracts.",
+          "A request-bound approval names the exact consequential action being authorized.",
+          "Core validates identity, scope, capability, expected state, amount, policy, and idempotency before execution.",
+          "The result is returned with auditable request, approval, order, and outcome identifiers."
+        ],
+        "transcript_zh": [
+          "用户目标以明确 Persona、身份和权限范围进入 Agent 工作流。",
+          "Skill 提供受限流程，当前 Tool 发现提供可调用契约。",
+          "与请求绑定的审批明确授权哪一个有后果的动作。",
+          "Core 在执行前验证身份、权限、能力、预期状态、金额、政策和幂等性。",
+          "结果携带可审计的请求、审批、订单和结果标识。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "agent-commerce-boundary-v1",
@@ -517,6 +609,22 @@
         "alt": "Conceptual seller operating loop covering store identity and policy, listings, payment readiness, a test purchase, and ongoing order operations.",
         "caption": "A store is ready only when the complete buyer journey has been tested.",
         "claim": "Explains the operator responsibility sequence; it is not evidence that a specific store has completed these checks.",
+        "transcript": [
+          "Establish store identity and buyer-visible policy.",
+          "Publish a listing revision backed by real supply or service capacity.",
+          "Configure destination-valid shipping and operationally ready payment methods.",
+          "Complete a representative test purchase in a separate buyer context.",
+          "Fulfill, support, reconcile, and retain order evidence.",
+          "Review and repeat the loop after material policy, inventory, delivery, payment, or software changes."
+        ],
+        "transcript_zh": [
+          "建立店铺身份和买家可见政策。",
+          "发布由真实供给或服务容量支持的 Listing revision。",
+          "配置对目的地有效的配送方式和运营上已准备好的支付方式。",
+          "在独立买家上下文中完成一笔有代表性的测试购买。",
+          "履约、支持、对账并保留订单证据。",
+          "政策、库存、配送、支付或软件发生重大变化后，重新检查整个循环。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "store-readiness-loop-light-v2",
@@ -614,7 +722,7 @@
         "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/settings/shipping",
         "label": "Unified shipping profiles and Node listing contracts"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-06",
       "page_type": "task",
       "last_tested": "2026-07-04",
       "outcome": "Offer only delivery methods that apply to the buyer destination and remain attached to the created order.",
@@ -625,7 +733,7 @@
         "href": "/sell/shipping#before-you-start"
       },
       "language": "en",
-      "search_text": "Before you start List origin locations, supported destinations, delivery methods, estimated times, and pricing rules. Decide which listings use each shipping profile. Document exclusions, customs responsibility, tracking availability, and return handling. Shipping setup steps Open Admin → Settings → Shipping . Create or select a profile representing one coherent fulfillment policy. Add destination zones and keep overlaps intentional and understandable. Add rates with buyer visible names, amounts, currency, conditions, and estimated delivery. Assign eligible listings to the profile and remove items requiring another delivery path. Save and test addresses inside, outside, and at the edge of every supported zone. Complete a test order and record carrier, tracking, or delivery evidence through the order flow. Expected result and verification Checkout should show only delivery methods valid for the item and destination. The selected shipping amount must appear in the final cost breakdown and remain associated with the created order. Seller order view should preserve selected service and obligation. If something fails If no option appears, check destination normalization, profile assignment, listing type, and zone coverage. If duplicate options appear, inspect overlapping zones and duplicate profile assignment. If checkout amount differs from configuration, stop accepting orders and verify currency and calculation basis. If tracking cannot be saved, preserve the reference privately and report the transition defect. Digital goods and services Do not attach physical shipping charges to digital or service flows merely to satisfy checkout. Use the supported delivery contract and explain access, scheduling, redemption, or evidence separately."
+      "search_text": "Before you start List origin locations, supported destinations, delivery methods, estimated times, and pricing rules. Decide which listings use each shipping profile. Document exclusions, customs responsibility, tracking availability, and return handling. How shipping enters a Mobazha order Stage Authoritative fact Failure to avoid Shipping profile Zones, services, rates, estimates, and conditions configured under /admin/settings/shipping Treating one global rate as valid for every listing and destination. Listing assignment The physical listing revision is attached to an eligible profile in the listing Shipping section Publishing a product that has no route to the buyer destination. Quote Destination and selected service produce the buyer visible shipping amount and estimate Reusing a catalog estimate after address, quantity, or profile changes. Order snapshot The accepted delivery service, amount, destination obligation, and seller promise remain with the order Letting a later profile edit silently change an existing order. Fulfillment evidence Carrier, tracking, handoff, digital proof, service completion, or another supported record Marking an order fulfilled with no evidence appropriate to its product type. Shipping setup steps Open Admin → Settings → Shipping ( /admin/settings/shipping ). Create or select a profile representing one coherent fulfillment policy. Add destination zones and keep overlaps intentional and understandable. Add rates with buyer visible names, amounts, currency, conditions, and estimated delivery. Open each physical listing's Shipping section and assign the appropriate profile; remove digital goods, services, or items requiring another delivery path. Save and test addresses inside, outside, and at the edge of every supported zone. Complete a test order and record carrier, tracking, or delivery evidence through the order flow. Expected result and verification Checkout should show only delivery methods valid for the item and destination. The selected shipping amount must appear in the final cost breakdown and remain associated with the created order. Seller order view should preserve selected service and obligation. After changing a profile, test a new quote and confirm that an already accepted order still shows its original delivery commitment. If something fails If no option appears, check destination normalization, profile assignment, listing type, and zone coverage. If duplicate options appear, inspect overlapping zones and duplicate profile assignment. If checkout amount differs from configuration, stop accepting orders and verify currency and calculation basis. If tracking cannot be saved, preserve the reference privately and report the transition defect. Digital goods and services Do not attach physical shipping charges to digital or service flows merely to satisfy checkout. Use the supported delivery contract and explain access, scheduling, redemption, or evidence separately."
     },
     {
       "id": "sell-payments",
@@ -648,7 +756,7 @@
         "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/payments",
         "label": "Node payment capabilities and Unified payment administration"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-06",
       "page_type": "task",
       "last_tested": "2026-07-04",
       "outcome": "Enable one payment method only after its configuration, health, observation, and recovery path are proven.",
@@ -659,7 +767,7 @@
         "href": "/sell/payments#before-you-start"
       },
       "language": "en",
-      "search_text": "Before you start Use testnet and a disposable order while evaluating the release candidate. Confirm the method is permitted by the distribution and implemented by the backend. Understand key custody, observation, confirmations, refund path, fees, and dependencies. Back up recovery material and never enter seeds or private keys into documentation, chat, or an unrelated provider form. Payment readiness steps Open Admin → Payments and inspect methods reported by the backend. Select one method and complete only its documented setup requirements. Verify configuration and health without relying on a frontend toggle alone. Set or review confirmation and payment expiry behavior appropriate to the method. Create a small testnet order and compare displayed address, amount, asset, and expiry with backend state. Broadcast the test payment and wait for the backend owned funded state. Exercise cancellation or refund behavior before accepting material orders. Expected result and verification The method should appear in checkout only when the full effective capability intersection is ready. Payment observation must bind to intended order, asset, address, amount, expected state, and confirmation policy. A recognized code or installed adapter is not enough. If something fails If setup is incomplete, keep the method unavailable rather than falling back silently. If health becomes unknown, stop advertising new checkout work while preserving existing recovery. If payment is observed for the wrong amount or destination, do not settle automatically. If a refund path is unavailable, disclose that limitation before accepting the method. Current release boundary The default open source release candidate enables BTC, BCH, and LTC subject to effective capabilities and seller configuration. Other identifiers do not create a release commitment. See release scope and fees."
+      "search_text": "Before you start Use testnet and a disposable order while evaluating the release candidate. Confirm the method is permitted by the distribution and implemented by the backend. Understand key custody, observation, confirmations, refund path, fees, and dependencies. Back up recovery material and never enter seeds or private keys into documentation, chat, or an unrelated provider form. Read payment readiness as a session, not a logo The order detail resolves a Payment Session from /v1/orders/{orderID}/payment session . A payment method logo or enabled Admin switch does not replace these order bound facts: Payment Session field Question it answers paymentCoin Which canonical crypto asset or fiat provider/currency is expected? settlementMode Is this address monitoring, provider checkout, escrow, or another supported settlement path? productMode Is the order direct, cancelable, or moderated? fundingTarget Which exact address or provider session, amount, asset, memo, and QR payload apply? paymentProgress What has been observed, what remains, how many observations exist, and what funding state is current? expiresAt When must the buyer request refreshed instructions instead of reusing this target? capabilities Which refresh, cancel, confirm, refund, or completion action is currently admitted? userActionRequest Which explicit wallet or provider action still requires the user? Do not collapse payment readiness , funding observation , verification , and settlement into one status. They answer different operational questions. Payment readiness steps Open Admin → Payments ( /admin/payments ) and inspect receiving accounts, providers, guest checkout policy, and methods reported ready by the backend. Select one method and complete only its documented setup requirements. Verify configuration and health without relying on a frontend toggle alone. Set or review confirmation and payment expiry behavior appropriate to the method. Create a small testnet order and compare the displayed Payment Session ID, order ID, canonical asset, settlement mode, funding target, expected amount, and expiry with backend state. Broadcast or authorize the test payment, then distinguish observed progress from the backend owned funded state. Reopen the order detail and confirm that capabilities expose only state valid actions. Exercise the applicable cancellation or refund path before accepting material orders. Expected result and verification The method should appear in checkout only when the full effective capability intersection is ready. Payment observation must bind to intended order, asset, address, amount, expected state, and confirmation policy. A recognized code or installed adapter is not enough. If something fails If setup is incomplete, keep the method unavailable rather than falling back silently. If health becomes unknown, stop advertising new checkout work while preserving existing recovery. If payment is observed for the wrong amount or destination, do not settle automatically. If a session says awaiting seller receipt , do not present it as buyer payment delay; the seller side funding target is not ready yet. If a provider checkout or wallet action fails, keep the order and Payment Session identifiers before retrying. If a refund path is unavailable, disclose that limitation before accepting the method. Current release boundary The public client and backend contain several payment adapters and compatibility paths, but availability is decided at runtime by distribution policy, backend implementation, store configuration, health, order mode, and Payment Session capabilities. A Token identifier or source module does not create a release commitment. See release scope and fees."
     },
     {
       "id": "sell-orders",
@@ -683,7 +791,7 @@
         "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/orders",
         "label": "Unified order administration and Node order state contracts"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-06",
       "page_type": "task",
       "last_tested": "2026-07-04",
       "outcome": "Move one paid order through fulfillment using only actions valid for its current state.",
@@ -694,7 +802,7 @@
         "href": "/sell/orders#before-you-start"
       },
       "language": "en",
-      "search_text": "Before you start Publish fulfillment and refund policies before taking orders. Monitor backend, payment dependencies, inventory, and buyer communication. Separate an order notification from authoritative order and payment state. Order handling steps Open Admin → Orders and select the intended store and order. Confirm seller identity, item revision, quantity, options, delivery obligation, total, and buyer instructions. Verify payment from backend owned state; never rely on a screenshot or chat message. Accept or confirm only when inventory, policy, and fulfillment capacity remain valid. Fulfill the exact order and record carrier, tracking, digital delivery, service, or other supported evidence. Respond to cancellation, refund, or dispute through the action available for current state. Complete only after implemented delivery and payment gates are satisfied. Retain order, quote, payment, fulfillment, and communication references according to policy. Expected result and verification Every seller action should produce a new authoritative state or a clear error without losing the previous recoverable state. Reopen the order after each financial or fulfillment transition and verify state, timestamps, evidence, and resulting payment action. If something fails If duplicate notifications arrive, deduplicate by order and event identity and reload current state. If payment and order disagree, stop fulfillment or settlement automation and reconcile payment reference. If fulfillment evidence fails to save, preserve it securely and retry through the supported transition. If an action reports conflict, reload state before deciding another actor already completed it. If an extension is unhealthy, keep Core financial transitions fail closed and follow recovery. Agent boundary An Agent may summarize and prepare an action, but it must not confirm, refund, settle, or complete without required identity, scope, state, policy, and human confirmation."
+      "search_text": "Before you start Publish fulfillment and refund policies before taking orders. Monitor backend, payment dependencies, inventory, and buyer communication. Separate an order notification from authoritative order and payment state. Use the order workspace as four connected records The current client exposes seller work at /admin/orders and the order detail at /orders/{orderId} . The detail can present separate Summary, Discussion, Dispute, and Evidence views; none of these should be treated as a substitute for the others. Record Use it for Authority rule Order summary Accepted listing snapshot, parties, amount, delivery obligation, current state, and valid actions Reload after each consequential transition. Payment Session Funding target, observation, verification, expiry, settlement mode, and current capabilities A receipt or chat claim is not payment authority. Discussion Buyer/seller coordination tied to the order Preserve useful context, but do not execute protected state from message text alone. Dispute and evidence Requested remedy, submissions, fulfillment records, and applicable decision path Keep original evidence and follow role , policy , and state valid actions. Order handling steps Open Admin → Orders ( /admin/orders ) and select the intended store and order. Confirm seller identity, item revision, quantity, options, delivery obligation, total, and buyer instructions. Review the order bound Payment Session and verify funding from backend owned state; never rely on a screenshot or chat message. Accept or confirm only when inventory, policy, and fulfillment capacity remain valid. Fulfill the exact order and record carrier, tracking, digital delivery, service, or other supported evidence. Use the Discussion, Dispute, and Evidence views for their separate purposes; respond to cancellation, refund, or dispute only through the action admitted for the current state and role. Complete only after implemented delivery and payment gates are satisfied. Retain order, quote, payment, fulfillment, and communication references according to policy. Expected result and verification Every seller action should produce a new authoritative state or a clear error without losing the previous recoverable state. Reopen the order after each financial or fulfillment transition and verify state, timestamps, evidence, and resulting payment action. If something fails If duplicate notifications arrive, deduplicate by order and event identity and reload current state. If payment and order disagree, stop fulfillment or settlement automation and reconcile payment reference. If fulfillment evidence fails to save, preserve it securely and retry through the supported transition. If an action reports conflict, reload state before deciding another actor already completed it. If an extension is unhealthy, keep Core financial transitions fail closed and follow recovery. If Discussion, Payment Session, and order summary disagree, preserve identifiers and reload the authoritative order before acting. Agent boundary An Agent may summarize and prepare an action, but it must not confirm, refund, settle, or complete without required identity, scope, state, policy, and human confirmation."
     },
     {
       "id": "buy",
@@ -740,6 +848,20 @@
         "alt": "Conceptual buyer journey from reviewing one seller quote through payment, fulfillment, and completion, with recovery actions dependent on active order state.",
         "caption": "One seller-owned order, from reviewed quote to observable completion.",
         "claim": "Explains the documentation authority and milestone model; it does not assert that every deployment exposes every transition.",
+        "transcript": [
+          "Review one quote: seller, item revision, option, destination, delivery, adjustments, and total.",
+          "Create and save one seller-owned order with its order ID, recovery token where applicable, and tracking path.",
+          "Verify progress from backend order state and payment evidence rather than a screenshot, chat message, or client cache.",
+          "Observable milestones are awaiting payment, funded, fulfilled, and completed.",
+          "Cancel, refund, and dispute appear only when order state, payment path, and policy allow them."
+        ],
+        "transcript_zh": [
+          "审阅一份 Quote：卖家、商品版本、规格、目的地、配送、价格调整和总额。",
+          "创建并保存一个卖家拥有的订单，包括订单 ID、适用时的恢复 Token 和跟踪路径。",
+          "根据后端订单状态与支付证据验证进度，而不是依赖截图、聊天消息或客户端缓存。",
+          "可观察里程碑包括等待付款、已入资、已履约和已完成。",
+          "取消、退款和争议只在订单状态、支付路径和政策允许时出现。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "buyer-order-path-light-v2",
@@ -770,7 +892,7 @@
         "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/checkout",
         "label": "Unified checkout routes and Node order contracts"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-06",
       "page_type": "task",
       "last_tested": "2026-07-04",
       "outcome": "Create one order from a reviewed seller quote and keep the identifiers needed to recover it.",
@@ -781,7 +903,7 @@
         "href": "/buy/checkout#before-you-start"
       },
       "language": "en",
-      "search_text": "Before you start Confirm the store identity, item, quantity, variant, fulfillment method, and return policy. Use a current browser session connected to the intended store and backend. Decide whether you are using account checkout or the store's optional Guest Checkout path. Have the exact payment asset available, but do not send funds before the order displays an address, amount, and expiry. Never reuse an address, QR code, quote, or amount from another order, message, screenshot, or Agent response. Checkout steps Open the product page, select required options, and add the item to the cart. Open Cart and confirm every line belongs to the intended seller. A marketplace may curate discovery and record attribution, but the approved seller—not the marketplace projection—must own the checkout handoff and resulting order. Continue to Checkout and enter only the delivery and contact data required for this order. Review subtotal, shipping, discounts, taxes, network or provider costs, optional services, and final total. Select an available payment method. Availability comes from the connected backend, not from a static list in this guide. Confirm the order only after the seller, recipient, amount, payment asset, expiry, and applicable policies are visible. Save the order identifier and tracking link before leaving the confirmation page. Expected result and verification The application should display a newly created order with an authoritative state and payment instructions. Confirm that the order item, seller, seller owned backend, total, payment asset, amount, destination, and expiry match the final confirmation you approved. A marketplace page or referral label is not the seller and must not silently become the order owner. Do not treat a wallet broadcast, a screenshot, or a pending transaction as completed payment. Wait for the order page to report the required confirmations and funded state. If something fails If the quote expires, return to checkout and request a new quote; do not send the old amount. If an item becomes unavailable, return to the cart and re evaluate the order rather than repeatedly submitting it. If the payment asset or destination changes unexpectedly, stop and verify the store and backend identity. If you created an order but lost the page, use the saved order identifier or Guest Order tracking link. If funds were sent but state does not advance, preserve the transaction ID and order ID and follow order status troubleshooting. Continue Guest Checkout Buy without attaching a seller or administrator session. Track payment and order state Understand what the current state proves. Cancellation, refund, and dispute Use only transitions available for the active order."
+      "search_text": "Before you start Confirm the store identity, item, quantity, variant, fulfillment method, and return policy. Use a current browser session connected to the intended store and backend. Decide whether you are using account checkout or the store's optional Guest Checkout path. Have the exact payment asset available, but do not send funds before the order displays an address, amount, and expiry. Never reuse an address, QR code, quote, or amount from another order, message, screenshot, or Agent response. Checkout steps Open /product/{slug} , confirm the seller and store context, select required options, and add the item to the cart. Open Cart and confirm every line belongs to the intended seller. A marketplace may curate discovery and record attribution, but the approved seller—not the marketplace projection—must own the checkout handoff and resulting order. Continue through /checkout ; enter only the delivery and contact data required for this order, then choose a destination valid shipping method where required. Review subtotal, shipping, discounts, taxes, network or provider costs, optional services, and final total. Select an available payment method at the payment method step. Availability comes from the connected backend and store policy, not from a static list in this guide. If the order mode requires a moderator or other protection choice, review its scope and cost before confirmation. Confirm the order only after seller, recipient, final total, payment asset or provider, applicable policy, and any protection choice are visible. On confirmation, save the order identifier and tracking link, then use the order bound Payment Session for address, provider payload, amount, expiry, and progress. Expected result and verification The application should display a newly created order with an authoritative state and order bound Payment Session. Confirm that the item revision, seller, seller owned backend, total, canonical payment asset or provider, funding target, amount, settlement mode, and expiry match the final confirmation you approved. A marketplace page or referral label is not the seller and must not silently become the order owner. Do not treat a wallet broadcast, a screenshot, or a pending transaction as completed payment. Wait for the order page to report the required confirmations and funded state. If something fails If the quote expires, return to checkout and request a new quote; do not send the old amount. If an item becomes unavailable, return to the cart and re evaluate the order rather than repeatedly submitting it. If the payment asset or destination changes unexpectedly, stop and verify the store and backend identity. If you created an order but lost the page, use the saved order identifier or Guest Order tracking link. If funds were sent but state does not advance, preserve the transaction ID and order ID and follow order status troubleshooting. Continue Guest Checkout Buy without attaching a seller or administrator session. Track payment and order state Understand what the current state proves. Cancellation, refund, and dispute Use only transitions available for the active order."
     },
     {
       "id": "buy-guest-checkout",
@@ -840,7 +962,7 @@
         "source": "https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/components/orders/guestOrderStages.ts",
         "label": "Unified order milestones and Node order API"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-06",
       "page_type": "task",
       "last_tested": "2026-07-04",
       "outcome": "Decide what the current order state proves and which recovery action is safe to take next.",
@@ -851,7 +973,7 @@
         "href": "/buy/order-status#before-you-start"
       },
       "language": "en",
-      "search_text": "Before you start Keep the order identifier or Guest Order token and the payment transaction ID. Use the same store and backend that created the order. Never paste private keys, recovery phrases, authenticated tracking URLs, or full customer details into support chat. Tracking steps Open Orders for an authenticated purchase or the saved Guest Order tracking link. Confirm seller, item, amount, payment asset, and creation time before interpreting state. Compare the displayed payment destination and transaction ID with your wallet record. Read confirmations and required confirmations from the order page. Refresh through the product UI or authoritative API when an event announces a change. Preserve fulfillment, cancellation, refund, or dispute evidence before taking the next available action. Expected result and verification The order page should show a monotonic business state view owned by the backend. A WebSocket event or wallet notification is only a refresh signal. For important decisions, verify the current order through the authenticated HTTP API or tracking endpoint. Observation Safe conclusion Transaction broadcast A wallet attempted to publish a transaction Transaction detected The payment system observed a candidate transaction Required confirmations reached The configured confirmation gate may be satisfied Backend state is funded The order backend accepted the payment evidence for this order Seller marked shipped Fulfillment evidence was recorded; inspect it If something fails No transaction detected: verify asset, network, destination, amount, and expiry without sending a second payment. Confirmations stalled: inspect the payment network independently and preserve the transaction ID. Wallet confirmed but order awaiting payment: report exact order and transaction identifiers privately to the operator. State conflicts across screens: stop automated actions and report a consistency defect. Tracking link does not open: confirm it belongs to this deployment and was not truncated. Recovery and escalation Do not attempt database edits or direct settlement calls to repair a buyer order. Use actions offered by the order state, then get help with sanitized evidence."
+      "search_text": "Before you start Keep the order identifier or Guest Order token and the payment transaction ID. Use the same store and backend that created the order. Never paste private keys, recovery phrases, authenticated tracking URLs, or full customer details into support chat. Tracking steps Open Orders for an authenticated purchase or the saved Guest Order tracking link. Confirm seller, item, amount, payment asset, and creation time before interpreting state. Open the order bound Payment Session and compare its session ID, canonical asset, funding target, expected amount, settlement mode, and expiry with your wallet or provider record. Read observed amount, remaining amount, observations, confirmations where applicable, and the backend funding state separately. Refresh through the product UI or GET /v1/orders/{orderID}/payment session when an event announces a change. Preserve fulfillment, cancellation, refund, or dispute evidence before taking the next available action. Expected result and verification The order page should show a monotonic business state view owned by the backend. A WebSocket event or wallet notification is only a refresh signal. For important decisions, verify the current order through the authenticated HTTP API or tracking endpoint. Observation Safe conclusion Payment target ready The order has an address or provider session the buyer may use before expiry Transaction broadcast A wallet attempted to publish a transaction Transaction detected The payment system observed a candidate transaction Required confirmations reached The configured confirmation gate may be satisfied Backend state is funded The order backend accepted the payment evidence for this order Seller marked shipped Fulfillment evidence was recorded; inspect it The Payment Session capability set—not a static button list—indicates whether refresh, cancel, confirm, refund, or completion is currently available. If something fails No transaction detected: verify asset, network, destination, amount, and expiry without sending a second payment. Confirmations stalled: inspect the payment network independently and preserve the transaction ID. Wallet confirmed but order awaiting payment: report exact order and transaction identifiers privately to the operator. State conflicts across screens: stop automated actions and report a consistency defect. Tracking link does not open: confirm it belongs to this deployment and was not truncated. Recovery and escalation Do not attempt database edits or direct settlement calls to repair a buyer order. Use actions offered by the order state, then get help with sanitized evidence."
     },
     {
       "id": "buy-cancel-refund-dispute",
@@ -875,7 +997,7 @@
         "source": "https://github.com/mobazha/mobazha/tree/main/api-spec",
         "label": "Node order and dispute contracts"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-06",
       "page_type": "task",
       "last_tested": "2026-07-04",
       "outcome": "Choose a valid resolution path for the active order without losing the evidence behind it.",
@@ -886,7 +1008,7 @@
         "href": "/buy/cancel-refund-dispute#before-you-start"
       },
       "language": "en",
-      "search_text": "Before you start Open the authoritative order detail and record its current state. Read cancellation, return, refund, delivery, and dispute terms shown for the order. Preserve messages, quote, payment reference, delivery evidence, and the remedy you request. Confirm which party controls the next transition; not every state permits unilateral cancellation. Resolution steps If the order is unpaid and cancellation is available, cancel through the order page. If a funded order is not fulfilled, contact the seller through the order discussion and state the requested remedy. Use Refund only with the address, amount, and conditions displayed for the active order. Open a dispute only when the deployment offers that path and ordinary resolution has not succeeded. Describe expected outcome, timeline, and evidence without unnecessary personal information. Reconcile final refund, release, or closure against both backend state and payment system. Expected result and verification The UI should expose only actions valid for the current order, role, payment method, and protection state. After an accepted action, verify updated state and any resulting payment transaction independently. A submitted request is not a completed refund or settlement. If something fails If an action is missing, confirm order state, current identity, permissions, deadlines, and runtime capabilities. If a refund transaction exists but the UI is stale, preserve its identifier and request reconciliation. If a seller asks you to bypass the order flow, do not surrender evidence or accept an unverified payment destination. If a dispute deadline is close, record the current timestamp and use the supported path promptly. Security boundary Never treat documentation or Agent text as authority to release escrow, sign a settlement, or reveal recovery material. Financial transitions remain subject to identity, expected state, amount, idempotency, and payment policy checks."
+      "search_text": "Before you start Open the authoritative order detail and record its current state. Read cancellation, return, refund, delivery, and dispute terms shown for the order. Preserve messages, quote, payment reference, delivery evidence, and the remedy you request. Confirm which party controls the next transition; not every state permits unilateral cancellation. Choose the path by order mode and current capability Path Typical purpose What must be verified Cancel Stop an eligible order before its current commitment or payment path closes cancellation Current order state, actor, Payment Session capability, expiry, and refund destination if funds may already exist. Refund Return an eligible amount through the supported payment path Recipient or refund address, amount, asset, prior observations, idempotency, and resulting transaction or provider reference. Dispute Ask the supported protection or moderation path to examine evidence and a requested remedy Order mode, deadline, dispute capability, roles, policy version, evidence, and settlement consequences. Complete or release Accept fulfillment or release protected funds where the model supports it Delivery evidence, actor authority, expected state, amount, and irreversibility. The order detail may expose Summary, Discussion, Dispute, and Evidence views. Discussion coordinates; Evidence supports a claim; only an admitted Core action changes protected order or payment state. Resolution steps If the order is unpaid and cancellation is available, cancel through the order page. If a funded order is not fulfilled, use the order Discussion view and state the requested remedy without exposing unnecessary private data. Use Refund only with the address, amount, and conditions displayed for the active order. Open the order Dispute view only when the deployment, order mode, deadline, and current capabilities offer that path and ordinary resolution has not succeeded. Describe expected outcome, timeline, and evidence without unnecessary personal information. Add or reference original material in the Evidence view where supported; do not replace evidence with a summary that loses timestamps or provenance. Reconcile final refund, release, or closure against both backend state and the payment system or provider. Expected result and verification The UI should expose only actions valid for the current order, role, payment method, and protection state. After an accepted action, verify updated state and any resulting payment transaction independently. A submitted request is not a completed refund or settlement. If something fails If an action is missing, confirm order state, current identity, permissions, deadlines, and runtime capabilities. If a refund transaction exists but the UI is stale, preserve its identifier and request reconciliation. If a seller asks you to bypass the order flow, do not surrender evidence or accept an unverified payment destination. If a dispute deadline is close, record the current timestamp and use the supported path promptly. Security boundary Never treat documentation or Agent text as authority to release escrow, sign a settlement, or reveal recovery material. Financial transitions remain subject to identity, expected state, amount, idempotency, and payment policy checks."
     },
     {
       "id": "self-host",
@@ -932,6 +1054,22 @@
         "alt": "Conceptual self-hosting boundary showing clients entering through an operator-controlled network boundary to a Mobazha Node and local data, with payment systems and optional hosted services remaining separate dependencies.",
         "caption": "Self-hosting moves operational control to the Node operator; external dependencies remain explicit.",
         "claim": "Explains responsibility boundaries and does not prescribe one mandatory network topology.",
+        "transcript": [
+          "People and scoped Agents enter through explicit identity, authorization, and approval.",
+          "The operator exposes only necessary network and TLS surfaces.",
+          "The Mobazha Node owns business-state authority; local data remains under operator backup and retention policy.",
+          "Payment systems provide separately verified records.",
+          "Optional hosted services remain explicit dependencies rather than hidden custody.",
+          "The operator owns host security, secrets, observability, backup, upgrade, recovery, and external-service selection."
+        ],
+        "transcript_zh": [
+          "人和受限 Agent 通过明确身份、授权和审批进入系统。",
+          "运营者只暴露必要的网络与 TLS 界面。",
+          "Mobazha Node 拥有业务状态权威，本地数据遵循运营者的备份与保留政策。",
+          "支付系统提供独立验证的记录。",
+          "可选托管服务保持为显式依赖，而不是隐藏托管。",
+          "运营者负责主机安全、密钥、可观测性、备份、升级、恢复和外部服务选择。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "self-host-boundary-light-v2",
@@ -2383,6 +2521,18 @@
         "alt": "Conceptual Mobazha product map showing storefronts, community channels, and Agent integrations connected to an operator-selected backend, with payment, delivery, discovery, and hosted services as explicit dependencies.",
         "caption": "One commerce core can support several operating and distribution paths without moving business-state authority into the presentation channel.",
         "claim": "Explains the product and authority model; it does not assert that every pictured channel, integration, or external service is available in every distribution.",
+        "transcript": [
+          "Storefronts, direct links, community channels, and Agent integrations are presentation and distribution surfaces.",
+          "Each surface resolves an operator-selected Store and Node context before it requests commerce state.",
+          "The Store and Node remain authoritative for listings, quotes, orders, policy, and capabilities.",
+          "Payment, delivery, discovery, and hosted services remain explicit dependencies with their own trust and cost boundaries."
+        ],
+        "transcript_zh": [
+          "Storefront、直达链接、社群渠道和 Agent 集成属于展示与分发界面。",
+          "每个界面先解析运营者选择的 Store 与 Node 上下文，再请求商业状态。",
+          "Store 与 Node 仍然拥有商品、Quote、订单、政策和能力的权威。",
+          "支付、配送、发现和托管服务是具有独立信任与成本边界的显式依赖。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "product-atlas-v1",
@@ -2440,6 +2590,18 @@
         "alt": "Conceptual model separating an access account or credential, the store and Node business-state boundary, storefront views that share store state, and the channels that present those views.",
         "caption": "Accounts authorize access, stores own business state, storefronts shape presentation, and channels provide entry context.",
         "claim": "Explains product and authority boundaries; it does not assert that every distribution enables multiple stores, named storefronts, every channel, or future identity models.",
+        "transcript": [
+          "An account or credential authorizes a person to act; it is not itself the store.",
+          "A Store and Node own business state, policy, capabilities, and orders.",
+          "Storefronts are brand and audience views that can reuse store-owned commerce state where supported.",
+          "Web, community, embedded, and Agent channels present those views without becoming business-state authority."
+        ],
+        "transcript_zh": [
+          "账户或凭据授权一个人执行操作，但账户本身不是店铺。",
+          "Store 与 Node 拥有业务状态、政策、能力和订单。",
+          "Storefront 是品牌和受众视图，在支持时可复用店铺拥有的商业状态。",
+          "Web、社群、嵌入式和 Agent 渠道负责呈现这些视图，但不成为业务状态权威。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "identity-storefront-model-v1",
@@ -2497,6 +2659,20 @@
         "alt": "Conceptual commerce flow from supply facts through a seller-owned listing revision, merchandising projection, accepted quote and order, and fulfillment evidence, with external providers and Core authority kept separate.",
         "caption": "One seller-owned promise can use several merchandising, supply, and fulfillment models without allowing later changes to rewrite an accepted order.",
         "claim": "Explains durable offer and fulfillment boundaries; it does not assert that every product shape, discount, collection rule, supply provider, or delivery path is available in every distribution.",
+        "transcript": [
+          "Supply facts describe inventory, provider availability, or service capacity.",
+          "A seller-owned listing revision turns those facts into a buyer-visible promise with type, options, price, media, and terms.",
+          "Collections, discounts, storefronts, and channels merchandise the promise without owning it.",
+          "A fresh quote selects the listing revision, option combination, destination, delivery path, adjustments, and total.",
+          "The accepted order freezes the promise; fulfillment evidence proves how it was completed."
+        ],
+        "transcript_zh": [
+          "Supply 事实描述库存、供应商可用性或服务容量。",
+          "卖家拥有的 Listing revision 把这些事实变成包含类型、规格、价格、媒体和条款的买家可见承诺。",
+          "Collection、Discount、Storefront 和渠道负责组织与展示承诺，但不拥有承诺。",
+          "新 Quote 选择商品版本、规格组合、目的地、配送路径、价格调整和总额。",
+          "已接受订单冻结承诺，履约证据说明它如何完成。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "offer-to-fulfillment-v1",
@@ -2554,6 +2730,20 @@
         "alt": "Conceptual transaction spine showing a normal path from reviewed terms through order creation, payment verification, fulfillment, and completion, with separate bands for order authority, payment evidence, and policy-gated recovery.",
         "caption": "One trade connects order, payment, and protection state without collapsing them into one misleading status.",
         "claim": "Explains durable authority and recovery boundaries; it does not assert that every distribution, order, payment rail, or protection model exposes every pictured action.",
+        "transcript": [
+          "Normal path: review terms, create the order, fund and verify payment, accept and fulfill, then complete.",
+          "Order state is Core authority: accepted snapshot, current state, admitted action, and terminal business outcome.",
+          "Payment session is evidence: order binding, funding target, observation, verification, and settlement semantics.",
+          "Cancel, decline, refund, and dispute are policy-gated recovery actions rather than universal promises.",
+          "Events prompt a refresh; the backend authorizes the next valid action."
+        ],
+        "transcript_zh": [
+          "正常路径：审阅条款、创建订单、付款并验证、接受并履约、最后完成。",
+          "订单状态属于 Core 权威：已接受快照、当前状态、允许动作和最终业务结果。",
+          "Payment Session 记录证据：订单绑定、资金目标、观察、验证和结算语义。",
+          "取消、拒绝、退款和争议是受政策约束的恢复动作，不是通用承诺。",
+          "事件只触发刷新；后端决定下一个有效动作。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "transaction-spine-v1",
@@ -2611,6 +2801,18 @@
         "alt": "Conceptual distributed discovery model showing community, Web, direct-link, and Agent channels entering an operator-owned market projection, with participating stores remaining separate transaction authorities.",
         "caption": "Markets organize audience, consent, access, and curation; a selected offer still hands off to one seller-owned transaction.",
         "claim": "Explains durable discovery and transaction boundaries; it does not assert that every market shape, channel, access mode, domain flow, or curation feature is available in every distribution.",
+        "transcript": [
+          "Communities, Web entry points, direct links, and Agents can lead buyers into a market projection.",
+          "A market organizes audience, consent, access, curation, categories, and discovery.",
+          "Participating stores remain separate operators and separate transaction authorities.",
+          "Selecting an offer hands the buyer to one seller-owned quote and order path."
+        ],
+        "transcript_zh": [
+          "社群、Web 入口、直达链接和 Agent 可以把买家带入市场投影。",
+          "市场负责组织受众、同意、访问、策展、分类和发现。",
+          "参与店铺仍是彼此独立的运营者与交易权威。",
+          "选择 Offer 后，交易转入一个卖家拥有的 Quote 与订单路径。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "community-commerce-network-v1",
@@ -2668,6 +2870,20 @@
         "alt": "Conceptual model showing Web, mobile, desktop, community, embedded, browser, and Agent shells resolving server context before using HTTP, WebSocket, webhook, MCP, or chat contracts to reach capability-gated Core commerce state.",
         "caption": "Many experience shells and interaction contracts can share one server-resolved context and one Core-owned commerce authority.",
         "claim": "Explains durable surface and transport boundaries; it does not assert that every client shell, domain route, channel, event, chat service, Tool, or integration is available in every distribution.",
+        "transcript": [
+          "Web, mobile, desktop, community, embedded, browser-extension, and Agent shells are experience surfaces.",
+          "Each surface resolves server, store, storefront, identity, and capability context before acting.",
+          "HTTP, WebSocket, webhook, MCP, and chat are interaction contracts with different delivery guarantees.",
+          "Extensions and services submit declarations, observations, decisions, or attestations through bounded interfaces.",
+          "Core remains authoritative for protected commerce state and validates every consequential transition."
+        ],
+        "transcript_zh": [
+          "Web、移动端、桌面端、社群、嵌入式、浏览器扩展和 Agent 是体验界面。",
+          "每个界面在操作前解析服务器、店铺、Storefront、身份和能力上下文。",
+          "HTTP、WebSocket、Webhook、MCP 和 Chat 是具有不同交付保证的交互契约。",
+          "扩展与服务通过受限接口提交声明、观察、决定或证明。",
+          "Core 仍然拥有受保护商业状态，并验证每个有后果的状态转换。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "surfaces-and-integrations-v1",
@@ -2725,6 +2941,20 @@
         "alt": "Conceptual Agent-commerce execution path from a user goal through persona and scope, a Skill, current Tool discovery, request-bound approval, Core validation, and an audited result.",
         "caption": "Reasoning proposes an action; typed identity, scope, capability, approval, and Core state gates decide whether it executes.",
         "claim": "Explains current authority primitives and a safe composition model; it does not assert that every Skill, Tool, workflow, approval policy, model, or autonomous mode is available.",
+        "transcript": [
+          "A user goal enters an Agent workflow with a typed persona, identity, and scope.",
+          "A Skill supplies bounded procedure; current Tool discovery supplies callable contracts.",
+          "A request-bound approval names the exact consequential action being authorized.",
+          "Core validates identity, scope, capability, expected state, amount, policy, and idempotency before execution.",
+          "The result is returned with auditable request, approval, order, and outcome identifiers."
+        ],
+        "transcript_zh": [
+          "用户目标以明确 Persona、身份和权限范围进入 Agent 工作流。",
+          "Skill 提供受限流程，当前 Tool 发现提供可调用契约。",
+          "与请求绑定的审批明确授权哪一个有后果的动作。",
+          "Core 在执行前验证身份、权限、能力、预期状态、金额、政策和幂等性。",
+          "结果携带可审计的请求、审批、订单和结果标识。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "agent-commerce-boundary-v1",
@@ -2779,6 +3009,22 @@
         "alt": "Conceptual seller operating loop covering store identity and policy, listings, payment readiness, a test purchase, and ongoing order operations.",
         "caption": "A store is ready only when the complete buyer journey has been tested.",
         "claim": "Explains the operator responsibility sequence; it is not evidence that a specific store has completed these checks.",
+        "transcript": [
+          "Establish store identity and buyer-visible policy.",
+          "Publish a listing revision backed by real supply or service capacity.",
+          "Configure destination-valid shipping and operationally ready payment methods.",
+          "Complete a representative test purchase in a separate buyer context.",
+          "Fulfill, support, reconcile, and retain order evidence.",
+          "Review and repeat the loop after material policy, inventory, delivery, payment, or software changes."
+        ],
+        "transcript_zh": [
+          "建立店铺身份和买家可见政策。",
+          "发布由真实供给或服务容量支持的 Listing revision。",
+          "配置对目的地有效的配送方式和运营上已准备好的支付方式。",
+          "在独立买家上下文中完成一笔有代表性的测试购买。",
+          "履约、支持、对账并保留订单证据。",
+          "政策、库存、配送、支付或软件发生重大变化后，重新检查整个循环。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "store-readiness-loop-light-v2",
@@ -2788,6 +3034,112 @@
       "language": "zh-CN",
       "translation_of": "/sell",
       "search_text": "开店前 选择托管服务或自行托管。 配置后端和所在地区实际支持的付款方式。 公开配送、退货、退款和争议条款。 在接受订单前检查最终报价和所有收款方金额。 理解从 Offer 到 Fulfillment 的经营模型 卖家实际经营的对象 对象 负责什么 边界 Store / Node 身份、政策、能力、订单和业务状态权威 不只是一个视觉店面或渠道账号。 Storefront 品牌、导航、页面、域名和受众视图 可以复用店铺商业状态，但不拥有订单。 Listing revision 商品形态、规格、价格、媒体、条款和履约资格 新版本不能静默修改已接受的 Quote 或订单。 Supply / availability 某个可购买组合能否真实履约 库存、供应商供给、服务容量和规格名称是不同事实。 Collection / Discount 组织商品和调整价格 影响展示或 Quote，不拥有订单状态。 Shipping profile 目的地、服务、费率、时效和证据要求 没有有效履约路径，商品不能对该目的地成交。 Payment capability 后端声明且运营者准备好的收款路径 仅能解析 Token 或服务商名称不等于可用。 店铺与商品准备 设置可识别的店铺身份、联系方式、地区、币种展示和域名。 为商品提供准确的规格、库存、图片、价格和配送范围。 先配置配送模板、预计时间、退货条件和履约证据。 只启用后端公开且店铺有能力监控、结算的付款方式。 订单运营 确认订单前检查报价、付款状态、买家要求和履约义务。 不要用截图、聊天消息或 Agent 陈述代替后端验证后的付款状态。 通过订单流程记录发货或交付证据。 取消、退款、争议和完成必须遵循当前订单允许的状态转换。 继续 打开托管应用 收费与经济模式 English canonical page"
+    },
+    {
+      "id": "zh-sell-shipping",
+      "path": "/zh/sell/shipping",
+      "canonical_url": "https://docs.mobazha.org/zh/sell/shipping",
+      "title": "配置配送与交付",
+      "summary": "明确商品能送到哪里、买家支付多少配送费用，以及卖家在履约后记录什么证据。",
+      "status": "beta",
+      "audiences": [
+        "卖家",
+        "运营者"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/sell/shipping",
+        "label": "配置配送与交付"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/settings/shipping",
+        "label": "Unified Shipping Profile 与 Node Listing 契约"
+      },
+      "reviewed": "2026-07-06",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
+      "outcome": "只向买家展示对商品和目的地有效的配送方式，并把已选择的交付承诺保留在订单中。",
+      "estimated_time": "15–30 分钟",
+      "journey": "use",
+      "primary_action": {
+        "label": "检查配送要求",
+        "href": "/zh/sell/shipping#开始前"
+      },
+      "language": "zh-CN",
+      "translation_of": "/sell/shipping",
+      "search_text": "开始前 列出发货地、支持目的地、配送服务、预计时间与计价规则。 明确哪些 Listing revision 使用哪个 Shipping Profile。 公开不支持区域、海关责任、追踪能力、退货与异常处理。 配送如何进入订单 阶段 权威事实 必须避免 Shipping Profile /admin/settings/shipping 中的区域、服务、费率、时效和条件 假设一个全局费率适用于所有商品和目的地。 Listing 绑定 实物商品版本绑定了有效 Profile 商品已经发布，但买家目的地没有任何履约路径。 Quote 目的地和所选服务产生买家可见运费与时效 地址、数量或 Profile 变化后仍复用旧估算。 订单快照 已接受的服务、金额、目的地义务和卖家承诺保留在订单中 后续修改 Profile 时重写已有订单。 履约证据 承运商、追踪号、交接证明或适合商品类型的其他记录 没有适当证据就标记已履约。 配置步骤 打开 Admin → Settings → Shipping （ /admin/settings/shipping ）。 创建或选择代表一组一致履约政策的 Shipping Profile。 添加目的地区域，确保区域重叠是有意且可以解释的。 添加买家可见的服务名称、金额、币种、条件和预计时间。 在实物 Listing 的 Shipping 区域绑定 Profile；不要为了通过结账给数字商品或服务添加虚假运费。 使用区域内、区域外和边界地址分别请求新 Quote。 完成测试订单，并通过订单流程记录追踪或交付证据。 预期结果与验证 Checkout 只应显示对当前商品和目的地有效的配送方式。所选运费进入最终金额，并与创建后的订单和交付义务一起保留。修改 Profile 后，新 Quote 应反映新规则，已有订单仍保留原始承诺。 失败与恢复 没有配送方式：检查地址标准化、Profile 绑定、Listing 类型和区域覆盖。 出现重复方式：检查重叠区域与重复 Profile 绑定。 Checkout 金额不同：停止接受订单并核对币种、计价基础和 Quote。 无法保存追踪：先安全保留证据，再通过支持的状态转换重试并报告缺陷。 继续 准备收款方式 运营订单 English canonical page"
+    },
+    {
+      "id": "zh-sell-payments",
+      "path": "/zh/sell/payments",
+      "canonical_url": "https://docs.mobazha.org/zh/sell/payments",
+      "title": "准备店铺收款方式",
+      "summary": "只展示由后端允许、正确配置、健康且运营者能够监控和恢复的支付路径。",
+      "status": "beta",
+      "audiences": [
+        "卖家",
+        "运营者"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/sell/payments",
+        "label": "准备店铺收款方式"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/payments",
+        "label": "Node PaymentSession 与 Unified 支付管理"
+      },
+      "reviewed": "2026-07-06",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
+      "outcome": "只有在配置、资金目标、观察、验证和恢复路径均已证明后，才启用一种支付方式。",
+      "estimated_time": "20–40 分钟",
+      "journey": "use",
+      "primary_action": {
+        "label": "开始支付就绪检查",
+        "href": "/zh/sell/payments#开始前"
+      },
+      "language": "zh-CN",
+      "translation_of": "/sell/payments",
+      "search_text": "开始前 候选版本评估应使用测试网、小额和可丢弃订单。 确认发行版本允许该方式，后端实现它，店铺也完成配置。 理解密钥托管、观察、确认、退款、费用和外部依赖。 不要把助记词或私钥输入文档、聊天或无关服务商表单。 把支付理解为订单绑定的 Payment Session 订单详情通过 /v1/orders/{orderID}/payment session 读取 Payment Session。Admin 开关或支付 Logo 不能代替以下事实： 字段 回答的问题 paymentCoin 当前要求哪个 canonical 加密资产或法币服务商与币种？ settlementMode 使用地址监控、服务商 Checkout、Escrow 还是其他支持路径？ productMode 订单是 direct、cancelable 还是 moderated？ fundingTarget 当前地址或 Provider Session、资产、金额、Memo 与二维码是什么？ paymentProgress 已观察多少、还差多少、当前 Funding State 是什么？ expiresAt 何时必须刷新，而不能继续复用原资金目标？ capabilities 当前允许刷新、取消、确认、退款或完成中的哪些动作？ userActionRequest 哪个钱包或服务商动作仍需用户明确执行？ 不要把支付就绪、资金观察、验证和最终结算压成一个状态。 支付就绪步骤 打开 Admin → Payments （ /admin/payments ），查看收款账户、Provider、Guest Checkout 政策和后端就绪状态。 选择一种方式，只完成其明确要求的设置。 验证配置和健康状态，不依赖前端开关做推断。 检查确认策略、过期策略、退款地址或 Provider 恢复路径。 创建小额测试订单，对照 Session ID、Order ID、canonical 资产、Settlement Mode、Funding Target、金额和有效期。 广播或授权测试付款，区分“已观察”与“后端已接受为 funded”。 重新打开订单，确认 Capabilities 只展示当前状态允许的动作。 在接受真实订单前测试适用的取消或退款路径。 预期结果与验证 支付方式只有在有效能力交集就绪时才出现在 Checkout。观察必须绑定正确订单、资产、地址或 Provider Session、金额、状态与确认策略。源码里存在适配器或能解析 Token 标识都不等于可用。 失败与恢复 配置不完整或健康未知：停止展示新支付路径，但保留已有订单恢复能力。 观察到错误金额或目的地：不要自动结算。 awaiting seller receipt ：不要显示成“买家付款慢”，此时卖家资金目标尚未准备完成。 Provider 或钱包动作失败：保留 Order ID 与 Payment Session ID 后再重试。 没有退款路径：在接受该方式前向买家披露限制。 继续 运营订单 跟踪付款与订单 English canonical page"
+    },
+    {
+      "id": "zh-sell-orders",
+      "path": "/zh/sell/orders",
+      "canonical_url": "https://docs.mobazha.org/zh/sell/orders",
+      "title": "运营进入店铺的订单",
+      "summary": "对账付款、确认义务、记录履约证据，并只执行当前状态允许的取消、退款、争议和完成动作。",
+      "status": "beta",
+      "audiences": [
+        "卖家",
+        "运营者",
+        "agent"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/sell/orders",
+        "label": "运营进入店铺的订单"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/orders",
+        "label": "Unified 订单管理与 Node 订单状态契约"
+      },
+      "reviewed": "2026-07-06",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
+      "outcome": "使用当前状态允许的动作，把一笔已付款订单安全推进到履约结果。",
+      "estimated_time": "每次检查约 5 分钟",
+      "journey": "use",
+      "primary_action": {
+        "label": "检查进入店铺的订单",
+        "href": "/zh/sell/orders#开始前"
+      },
+      "language": "zh-CN",
+      "translation_of": "/sell/orders",
+      "search_text": "开始前 在接受订单前公开履约、退款和争议政策。 监控后端、支付依赖、库存和买家沟通。 把通知、聊天声明、Payment Session 与订单权威状态分开理解。 订单工作区包含四类相互连接的记录 卖家从 /admin/orders 进入订单，详情位于 /orders/{orderId} ，并可分别呈现 Summary、Discussion、Dispute 和 Evidence。 记录 用途 权威规则 Summary 已接受商品快照、双方、金额、配送义务、当前状态和可用动作 每个有后果的转换后重新加载。 Payment Session 资金目标、观察、验证、有效期、结算模式与能力 回执或聊天声明不是支付权威。 Discussion 与订单绑定的买卖双方协调 保留上下文，但不能让消息文字直接改变受保护状态。 Dispute / Evidence 请求的补救、材料、履约记录和适用决定路径 保留原始证据并遵循角色、政策和状态允许的动作。 订单处理步骤 打开 Admin → Orders （ /admin/orders ），选择正确店铺与订单。 核对卖家身份、Listing revision、数量、规格、配送义务、总额和买家要求。 检查订单绑定的 Payment Session，只根据后端状态确认资金。 库存、政策和履约能力仍有效时才接受订单。 履约准确的订单，并记录承运商、追踪、数字交付、服务或其他支持证据。 分别使用 Discussion、Dispute 与 Evidence；只执行当前角色和状态允许的取消、退款或争议动作。 只有实现的交付与支付门槛满足后才完成订单。 根据政策保留订单、Quote、支付、履约和沟通引用。 预期结果与验证 每个卖家动作都应产生新的权威状态，或返回清晰错误并保留之前的可恢复状态。每次财务或履约转换后重新打开订单，核对状态、时间、证据、Payment Session 与后续动作。 失败与恢复 重复通知：按订单与事件标识去重，然后重新加载当前状态。 付款与订单不一致：停止履约或结算自动化并对账支付引用。 履约证据保存失败：安全保存原始材料并通过支持的转换重试。 动作冲突：先刷新，确认是否已有其他角色完成转换。 Summary、Discussion 与 Payment Session 不一致：保留标识并以权威订单重新核对。 Agent 边界与继续 Agent 可以总结和准备动作，但不能绕过身份、权限、状态、政策和所需确认去接受、退款、结算或完成订单。 取消、退款或争议 English canonical page"
     },
     {
       "id": "zh-buy",
@@ -2833,6 +3185,20 @@
         "alt": "Conceptual buyer journey from reviewing one seller quote through payment, fulfillment, and completion, with recovery actions dependent on active order state.",
         "caption": "One seller-owned order, from reviewed quote to observable completion.",
         "claim": "Explains the documentation authority and milestone model; it does not assert that every deployment exposes every transition.",
+        "transcript": [
+          "Review one quote: seller, item revision, option, destination, delivery, adjustments, and total.",
+          "Create and save one seller-owned order with its order ID, recovery token where applicable, and tracking path.",
+          "Verify progress from backend order state and payment evidence rather than a screenshot, chat message, or client cache.",
+          "Observable milestones are awaiting payment, funded, fulfilled, and completed.",
+          "Cancel, refund, and dispute appear only when order state, payment path, and policy allow them."
+        ],
+        "transcript_zh": [
+          "审阅一份 Quote：卖家、商品版本、规格、目的地、配送、价格调整和总额。",
+          "创建并保存一个卖家拥有的订单，包括订单 ID、适用时的恢复 Token 和跟踪路径。",
+          "根据后端订单状态与支付证据验证进度，而不是依赖截图、聊天消息或客户端缓存。",
+          "可观察里程碑包括等待付款、已入资、已履约和已完成。",
+          "取消、退款和争议只在订单状态、支付路径和政策允许时出现。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "buyer-order-path-light-v2",
@@ -2842,6 +3208,113 @@
       "language": "zh-CN",
       "translation_of": "/buy",
       "search_text": "Mobazha 的购买对象 对象 回答的问题 不应做的假设 店铺与后端 谁发布 Offer、谁拥有订单状态？ 发现站点、社群或 Agent 不会因此自动拥有交易。 Quote 当前商品版本、规格、目的地、配送、折扣和总额是什么？ 商品页价格或旧截图不是已接受总额。 订单 哪些条款已被接受、当前允许什么状态转换？ 后续编辑商品不能重写已有订单。 支付会话 当前订单使用哪个资产或服务商、地址、金额、有效期和验证规则？ 广播、观察、验证和最终结算不是同一状态。 恢复路径 当前可用取消、退款、保障或争议中的哪一项？ 不同支付方式和政策没有统一保证的恢复动作。 确认前 核对店铺身份、商品、数量、规格、配送地址和配送方式。 查看商品小计、运费、税费、折扣、网络或服务费用和最终总额。 阅读取消、退款、证据和争议规则。 Agent 建议是辅助，不是绕过用户确认或消费权限的授权。 付款 只使用当前订单显示的付款方式、资产、地址、金额和有效期。 不要复用过期报价、其他订单地址、截图或聊天中的付款信息。 交易广播、待确认交易和回执图片都不等于最终结算。 以拥有订单的后端所记录的验证状态为准。 履约与争议 保留订单号、报价、付款引用、消息、履约证据和政策版本。 根据当前订单允许的操作申请取消或退款。 支持争议时，通过产品内流程提交证据和期望的解决方式。 支付或托管机制只能执行已实现的条件，不能保证商品质量或特定裁决结果。 继续 获取帮助 收费与经济模式 English canonical page"
+    },
+    {
+      "id": "zh-buy-checkout",
+      "path": "/zh/buy/checkout",
+      "canonical_url": "https://docs.mobazha.org/zh/buy/checkout",
+      "title": "完成一次买家结账",
+      "summary": "创建或付款前，检查一个店铺、一份 Quote 和一组订单绑定的支付事实。",
+      "status": "beta",
+      "audiences": [
+        "买家",
+        "agent"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/buy/checkout",
+        "label": "完成一次买家结账"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/checkout",
+        "label": "Unified Checkout 路由与 Node 订单契约"
+      },
+      "reviewed": "2026-07-06",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
+      "outcome": "从已审阅的卖家 Quote 创建一笔订单，并保留恢复订单所需标识。",
+      "estimated_time": "5–10 分钟",
+      "journey": "use",
+      "primary_action": {
+        "label": "开始结账检查",
+        "href": "/zh/buy/checkout#开始前"
+      },
+      "language": "zh-CN",
+      "translation_of": "/buy/checkout",
+      "search_text": "开始前 核对店铺身份、商品、数量、规格、履约方式和退货政策。 使用连接到目标店铺与后端的当前浏览器上下文。 确认使用账户结账还是店铺可选的 Guest Checkout。 在订单显示资金目标、金额和有效期前不要发送资金。 不要复用其他订单、消息、截图或 Agent 回复中的地址、二维码、Quote 或金额。 结账步骤 打开 /product/{slug} ，核对卖家与店铺上下文，选择规格并加入购物车。 在 Cart 中确认每一行属于目标卖家；发现市场或推荐关系不能静默成为订单所有者。 进入 /checkout ，只输入订单所需联系与配送数据，并在需要时选择对目的地有效的 Shipping 方式。 核对商品小计、配送、折扣、税费、网络或 Provider 成本、可选服务与最终总额。 在 Payment Method 步骤选择后端与店铺政策当前允许的方式。 如果 Product Mode 要求 Moderator 或其他保障选择，确认其范围与费用。 只有在卖家、收款方、总额、支付资产或 Provider、政策与保障选择均可见时才确认订单。 保存 Order ID 与跟踪链接，并只使用订单绑定的 Payment Session 付款。 预期结果与验证 应用创建一笔具有权威状态和 Payment Session 的订单。核对 Listing revision、卖家、后端、总额、canonical 支付资产或 Provider、Funding Target、Settlement Mode、金额和有效期与最终确认一致。 失败与恢复 Quote 过期：重新请求，不要发送旧金额。 商品不可用：返回购物车重新评估，不要重复提交订单。 资产或资金目标意外变化：停止并核对店铺与后端身份。 创建订单后丢失页面：使用保存的 Order ID 或跟踪链接。 已付款但状态不前进：保留 Transaction ID、Order ID 与 Payment Session ID，并查看订单状态排障。 继续 跟踪付款与订单状态 取消、退款或争议 English canonical page"
+    },
+    {
+      "id": "zh-buy-order-status",
+      "path": "/zh/buy/order-status",
+      "canonical_url": "https://docs.mobazha.org/zh/buy/order-status",
+      "title": "跟踪付款与订单状态",
+      "summary": "在判断订单已入资、已履约、可退款或已完成前，对账 Payment Session 证据与后端订单状态。",
+      "status": "beta",
+      "audiences": [
+        "买家",
+        "支持人员",
+        "agent"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/buy/order-status",
+        "label": "跟踪付款与订单状态"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha-unified/blob/main/packages/core/hooks/useOrderDetail.ts",
+        "label": "Unified 订单里程碑、PaymentSession 与 Node Order API"
+      },
+      "reviewed": "2026-07-06",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
+      "outcome": "理解当前状态证明了什么，以及下一步可以安全执行哪个恢复动作。",
+      "estimated_time": "3 分钟",
+      "journey": "use",
+      "primary_action": {
+        "label": "对账一笔订单",
+        "href": "/zh/buy/order-status#开始前"
+      },
+      "language": "zh-CN",
+      "translation_of": "/buy/order-status",
+      "search_text": "开始前 准备 Order ID 或 Guest Order Token，以及支付交易或 Provider 引用。 使用创建订单的同一店铺和后端。 不要在支持聊天中粘贴私钥、助记词、完整客户资料或带鉴权的跟踪链接。 跟踪步骤 打开账户 Orders，或保存的 Guest Order 跟踪链接。 先核对卖家、商品、金额、支付资产和创建时间。 打开订单绑定的 Payment Session，对照 Session ID、canonical 资产、Funding Target、金额、Settlement Mode 和有效期。 分别查看已观察金额、剩余金额、Observation、确认数和后端 Funding State。 事件通知变化时，通过产品界面或 GET /v1/orders/{orderID}/payment session 刷新权威状态。 执行下一动作前保存履约、取消、退款或争议证据。 预期结果与验证 订单页显示由后端拥有的业务状态。WebSocket、钱包或 Provider 通知只是刷新信号。Payment Session 的 Capabilities 而不是静态按钮列表，决定当前能否刷新、取消、确认、退款或完成。 观察 可以安全得出的结论 Funding Target ready 订单存在有效期内可使用的地址或 Provider Session Transaction broadcast 钱包尝试广播交易 Transaction observed 支付系统观察到候选交易 达到所需确认数 配置的确认门槛可能已满足 Backend funded 订单后端已接受这笔订单的支付证据 Seller fulfilled 卖家记录了履约证据，仍应检查证据内容 失败与恢复 没有观察到交易：核对资产、网络、目的地、金额和有效期，不要立即重复付款。 钱包确认但订单仍待付款：私下向运营者提供最小化 Order ID 与 Transaction ID。 多个界面状态冲突：停止自动动作并报告一致性缺陷。 跟踪链接打不开：确认它属于当前部署且没有被截断。 继续 取消、退款或争议 English canonical page"
+    },
+    {
+      "id": "zh-buy-cancel-refund-dispute",
+      "path": "/zh/buy/cancel-refund-dispute",
+      "canonical_url": "https://docs.mobazha.org/zh/buy/cancel-refund-dispute",
+      "title": "取消订单、申请退款或发起争议",
+      "summary": "根据当前订单模式、状态与能力选择恢复路径，并保留说明期望补救所需证据。",
+      "status": "beta",
+      "audiences": [
+        "买家",
+        "卖家",
+        "agent"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/buy/cancel-refund-dispute",
+        "label": "取消订单、申请退款或发起争议"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha/mobazha/tree/main/api-spec",
+        "label": "Node 订单、PaymentSession 与争议契约"
+      },
+      "reviewed": "2026-07-06",
+      "page_type": "task",
+      "last_tested": "2026-07-04",
+      "outcome": "在不丢失证据的前提下，为当前订单选择一个有效解决路径。",
+      "estimated_time": "评估约 5 分钟",
+      "journey": "use",
+      "primary_action": {
+        "label": "评估当前订单",
+        "href": "/zh/buy/cancel-refund-dispute#开始前"
+      },
+      "language": "zh-CN",
+      "translation_of": "/buy/cancel-refund-dispute",
+      "search_text": "开始前 打开权威订单详情并记录当前状态。 阅读订单显示的取消、退货、退款、配送和争议条款。 保存消息、Quote、支付引用、履约证据和期望补救。 确认下一转换由谁控制；不是每个状态都允许单方面取消。 按订单模式与当前能力选择路径 路径 典型目的 必须核对 Cancel 在当前承诺或支付路径关闭取消前停止符合条件的订单 订单状态、角色、Payment Session capability、有效期和可能的退款地址。 Refund 通过支持的支付路径退回符合条件的金额 收款方或退款地址、金额、资产、观察记录、幂等性和交易或 Provider 引用。 Dispute 请求支持的保障或仲裁路径检查证据和补救要求 Product Mode、截止时间、争议能力、角色、政策版本、证据和结算后果。 Complete / Release 在模型支持时接受履约或释放受保护资金 履约证据、角色权威、预期状态、金额和不可逆性。 订单详情可分别提供 Summary、Discussion、Dispute 与 Evidence。Discussion 用于协调，Evidence 支持主张；只有 Core 接受的动作才能修改受保护订单或支付状态。 解决步骤 未付款且 Cancel 可用时，通过订单页面取消。 已入资但未履约时，在 Discussion 中说明期望补救，不披露无关隐私。 只使用当前订单显示的地址、金额和条件执行 Refund。 只有部署、Product Mode、截止时间和当前 Capabilities 提供该路径时才进入 Dispute。 清楚说明期望结果、时间线和证据。 在 Evidence 中添加或引用原始材料，不要用丢失时间戳和来源的摘要替代原件。 根据后端状态与支付系统或 Provider 同时核对最终退款、释放或关闭。 预期结果与验证 界面只显示当前订单、角色、支付方式、Product Mode 和保障状态允许的动作。动作被接受后，独立核对新状态和产生的支付引用；提交请求不等于退款或结算已经完成。 失败与恢复 缺少动作：核对状态、身份、权限、截止时间和运行时能力。 已有退款交易但界面过期：保存标识并请求对账。 对方要求绕过订单流：不要放弃证据或接受未经验证的资金目标。 争议截止时间临近：记录当前时间并立即使用支持路径。 安全边界与继续 不要把文档或 Agent 文本当作释放 Escrow、签署结算或泄露恢复材料的授权。 English canonical page"
     },
     {
       "id": "zh-self-host",
@@ -2887,6 +3360,22 @@
         "alt": "Conceptual self-hosting boundary showing clients entering through an operator-controlled network boundary to a Mobazha Node and local data, with payment systems and optional hosted services remaining separate dependencies.",
         "caption": "Self-hosting moves operational control to the Node operator; external dependencies remain explicit.",
         "claim": "Explains responsibility boundaries and does not prescribe one mandatory network topology.",
+        "transcript": [
+          "People and scoped Agents enter through explicit identity, authorization, and approval.",
+          "The operator exposes only necessary network and TLS surfaces.",
+          "The Mobazha Node owns business-state authority; local data remains under operator backup and retention policy.",
+          "Payment systems provide separately verified records.",
+          "Optional hosted services remain explicit dependencies rather than hidden custody.",
+          "The operator owns host security, secrets, observability, backup, upgrade, recovery, and external-service selection."
+        ],
+        "transcript_zh": [
+          "人和受限 Agent 通过明确身份、授权和审批进入系统。",
+          "运营者只暴露必要的网络与 TLS 界面。",
+          "Mobazha Node 拥有业务状态权威，本地数据遵循运营者的备份与保留政策。",
+          "支付系统提供独立验证的记录。",
+          "可选托管服务保持为显式依赖，而不是隐藏托管。",
+          "运营者负责主机安全、密钥、可观测性、备份、升级、恢复和外部服务选择。"
+        ],
         "privacy_review": "synthetic-only",
         "source": "https://github.com/mobazha/mobazha-docs",
         "source_revision": "self-host-boundary-light-v2",

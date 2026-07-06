@@ -185,7 +185,7 @@ for (const doc of docs) {
   }
 }
 
-if (!visualEvidence || visualEvidence.schema_version !== "1.1" || !/^\d{4}-\d{2}-\d{2}$/.test(visualEvidence.reviewed) || !Array.isArray(visualEvidence.visuals)) {
+if (!visualEvidence || visualEvidence.schema_version !== "1.2" || !/^\d{4}-\d{2}-\d{2}$/.test(visualEvidence.reviewed) || !Array.isArray(visualEvidence.visuals)) {
   fail("invalid visual evidence catalog");
 } else {
   const visualIds = new Set();
@@ -204,6 +204,8 @@ if (!visualEvidence || visualEvidence.schema_version !== "1.1" || !/^\d{4}-\d{2}
       fail(`mobile visual metadata without an asset on ${visual.id}`);
     }
     if (!visual.alt?.trim() || !visual.caption?.trim() || !visual.claim?.trim()) fail(`incomplete visual description on ${visual.id}`);
+    if (!Array.isArray(visual.transcript) || visual.transcript.length < 2 || visual.transcript.some((line) => !line?.trim())) fail(`incomplete English visual transcript on ${visual.id}`);
+    if (!Array.isArray(visual.transcript_zh) || visual.transcript_zh.length < 2 || visual.transcript_zh.some((line) => !line?.trim())) fail(`incomplete Chinese visual transcript on ${visual.id}`);
     if (!new Set(["synthetic-only", "redacted", "public-demo-reviewed"]).has(visual.privacy_review)) fail(`invalid visual privacy review on ${visual.id}`);
     if (!visual.source?.startsWith("https://") || !visual.source_revision?.trim() || !visual.applies_to?.trim()) fail(`incomplete visual provenance on ${visual.id}`);
     if (!/^\d{4}-\d{2}-\d{2}$/.test(visual.reviewed)) fail(`invalid visual review date on ${visual.id}`);

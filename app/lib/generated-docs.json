@@ -1980,7 +1980,7 @@
     "authorityUrl": "https://docs.mobazha.org/buy/cancel-refund-dispute",
     "evidenceLabel": "Node order and dispute contracts",
     "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/api-spec",
-    "reviewed": "2026-07-04",
+    "reviewed": "2026-07-06",
     "pageType": "task",
     "lastTested": "2026-07-04",
     "outcome": "Choose a valid resolution path for the active order without losing the evidence behind it.",
@@ -2007,17 +2007,57 @@
         ]
       },
       {
+        "heading": "Choose the path by order mode and current capability",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "Path",
+              "Typical purpose",
+              "What must be verified"
+            ],
+            "rows": [
+              [
+                "Cancel",
+                "Stop an eligible order before its current commitment or payment path closes cancellation",
+                "Current order state, actor, Payment Session capability, expiry, and refund destination if funds may already exist."
+              ],
+              [
+                "Refund",
+                "Return an eligible amount through the supported payment path",
+                "Recipient or refund address, amount, asset, prior observations, idempotency, and resulting transaction or provider reference."
+              ],
+              [
+                "Dispute",
+                "Ask the supported protection or moderation path to examine evidence and a requested remedy",
+                "Order mode, deadline, dispute capability, roles, policy version, evidence, and settlement consequences."
+              ],
+              [
+                "Complete or release",
+                "Accept fulfillment or release protected funds where the model supports it",
+                "Delivery evidence, actor authority, expected state, amount, and irreversibility."
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "The order detail may expose Summary, Discussion, Dispute, and Evidence views. Discussion coordinates; Evidence supports a claim; only an admitted Core action changes protected order or payment state."
+          }
+        ]
+      },
+      {
         "heading": "Resolution steps",
         "blocks": [
           {
             "type": "ordered-list",
             "items": [
               "If the order is unpaid and cancellation is available, cancel through the order page.",
-              "If a funded order is not fulfilled, contact the seller through the order discussion and state the requested remedy.",
+              "If a funded order is not fulfilled, use the order Discussion view and state the requested remedy without exposing unnecessary private data.",
               "Use **Refund** only with the address, amount, and conditions displayed for the active order.",
-              "Open a dispute only when the deployment offers that path and ordinary resolution has not succeeded.",
+              "Open the order Dispute view only when the deployment, order mode, deadline, and current capabilities offer that path and ordinary resolution has not succeeded.",
               "Describe expected outcome, timeline, and evidence without unnecessary personal information.",
-              "Reconcile final refund, release, or closure against both backend state and payment system."
+              "Add or reference original material in the Evidence view where supported; do not replace evidence with a summary that loses timestamps or provenance.",
+              "Reconcile final refund, release, or closure against both backend state and the payment system or provider."
             ]
           }
         ]
@@ -2070,7 +2110,7 @@
     "authorityUrl": "https://docs.mobazha.org/buy/checkout",
     "evidenceLabel": "Unified checkout routes and Node order contracts",
     "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/checkout",
-    "reviewed": "2026-07-04",
+    "reviewed": "2026-07-06",
     "pageType": "task",
     "lastTested": "2026-07-04",
     "outcome": "Create one order from a reviewed seller quote and keep the identifiers needed to recover it.",
@@ -2107,13 +2147,14 @@
           {
             "type": "ordered-list",
             "items": [
-              "Open the product page, select required options, and add the item to the cart.",
+              "Open `/product/{slug}`, confirm the seller and store context, select required options, and add the item to the cart.",
               "Open **Cart** and confirm every line belongs to the intended seller. A marketplace may curate discovery and record attribution, but the approved seller—not the marketplace projection—must own the checkout handoff and resulting order.",
-              "Continue to **Checkout** and enter only the delivery and contact data required for this order.",
+              "Continue through `/checkout`; enter only the delivery and contact data required for this order, then choose a destination-valid shipping method where required.",
               "Review subtotal, shipping, discounts, taxes, network or provider costs, optional services, and final total.",
-              "Select an available payment method. Availability comes from the connected backend, not from a static list in this guide.",
-              "Confirm the order only after the seller, recipient, amount, payment asset, expiry, and applicable policies are visible.",
-              "Save the order identifier and tracking link before leaving the confirmation page."
+              "Select an available payment method at the payment-method step. Availability comes from the connected backend and store policy, not from a static list in this guide.",
+              "If the order mode requires a moderator or other protection choice, review its scope and cost before confirmation.",
+              "Confirm the order only after seller, recipient, final total, payment asset or provider, applicable policy, and any protection choice are visible.",
+              "On confirmation, save the order identifier and tracking link, then use the order-bound Payment Session for address, provider payload, amount, expiry, and progress."
             ]
           }
         ]
@@ -2123,7 +2164,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "The application should display a newly created order with an authoritative state and payment instructions. Confirm that the order item, seller, seller-owned backend, total, payment asset, amount, destination, and expiry match the final confirmation you approved. A marketplace page or referral label is not the seller and must not silently become the order owner."
+            "text": "The application should display a newly created order with an authoritative state and order-bound Payment Session. Confirm that the item revision, seller, seller-owned backend, total, canonical payment asset or provider, funding target, amount, settlement mode, and expiry match the final confirmation you approved. A marketplace page or referral label is not the seller and must not silently become the order owner."
           },
           {
             "type": "paragraph",
@@ -2311,7 +2352,7 @@
     "authorityUrl": "https://docs.mobazha.org/buy/order-status",
     "evidenceLabel": "Unified order milestones and Node order API",
     "evidenceUrl": "https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/components/orders/guestOrderStages.ts",
-    "reviewed": "2026-07-04",
+    "reviewed": "2026-07-06",
     "pageType": "task",
     "lastTested": "2026-07-04",
     "outcome": "Decide what the current order state proves and which recovery action is safe to take next.",
@@ -2344,9 +2385,9 @@
             "items": [
               "Open **Orders** for an authenticated purchase or the saved Guest Order tracking link.",
               "Confirm seller, item, amount, payment asset, and creation time before interpreting state.",
-              "Compare the displayed payment destination and transaction ID with your wallet record.",
-              "Read confirmations and required confirmations from the order page.",
-              "Refresh through the product UI or authoritative API when an event announces a change.",
+              "Open the order-bound Payment Session and compare its session ID, canonical asset, funding target, expected amount, settlement mode, and expiry with your wallet or provider record.",
+              "Read observed amount, remaining amount, observations, confirmations where applicable, and the backend funding state separately.",
+              "Refresh through the product UI or `GET /v1/orders/{orderID}/payment-session` when an event announces a change.",
               "Preserve fulfillment, cancellation, refund, or dispute evidence before taking the next available action."
             ]
           }
@@ -2366,6 +2407,10 @@
               "Safe conclusion"
             ],
             "rows": [
+              [
+                "Payment target ready",
+                "The order has an address or provider session the buyer may use before expiry"
+              ],
               [
                 "Transaction broadcast",
                 "A wallet attempted to publish a transaction"
@@ -2387,6 +2432,10 @@
                 "Fulfillment evidence was recorded; inspect it"
               ]
             ]
+          },
+          {
+            "type": "paragraph",
+            "text": "The Payment Session capability set—not a static button list—indicates whether refresh, cancel, confirm, refund, or completion is currently available."
           }
         ]
       },
@@ -8245,7 +8294,7 @@
     "authorityUrl": "https://docs.mobazha.org/sell/orders",
     "evidenceLabel": "Unified order administration and Node order state contracts",
     "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/orders",
-    "reviewed": "2026-07-04",
+    "reviewed": "2026-07-06",
     "pageType": "task",
     "lastTested": "2026-07-04",
     "outcome": "Move one paid order through fulfillment using only actions valid for its current state.",
@@ -8271,17 +8320,56 @@
         ]
       },
       {
+        "heading": "Use the order workspace as four connected records",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The current client exposes seller work at `/admin/orders` and the order detail at `/orders/{orderId}`. The detail can present separate Summary, Discussion, Dispute, and Evidence views; none of these should be treated as a substitute for the others."
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Record",
+              "Use it for",
+              "Authority rule"
+            ],
+            "rows": [
+              [
+                "Order summary",
+                "Accepted listing snapshot, parties, amount, delivery obligation, current state, and valid actions",
+                "Reload after each consequential transition."
+              ],
+              [
+                "Payment Session",
+                "Funding target, observation, verification, expiry, settlement mode, and current capabilities",
+                "A receipt or chat claim is not payment authority."
+              ],
+              [
+                "Discussion",
+                "Buyer/seller coordination tied to the order",
+                "Preserve useful context, but do not execute protected state from message text alone."
+              ],
+              [
+                "Dispute and evidence",
+                "Requested remedy, submissions, fulfillment records, and applicable decision path",
+                "Keep original evidence and follow role-, policy-, and state-valid actions."
+              ]
+            ]
+          }
+        ]
+      },
+      {
         "heading": "Order handling steps",
         "blocks": [
           {
             "type": "ordered-list",
             "items": [
-              "Open **Admin → Orders** and select the intended store and order.",
+              "Open **Admin → Orders** (`/admin/orders`) and select the intended store and order.",
               "Confirm seller identity, item revision, quantity, options, delivery obligation, total, and buyer instructions.",
-              "Verify payment from backend-owned state; never rely on a screenshot or chat message.",
+              "Review the order-bound Payment Session and verify funding from backend-owned state; never rely on a screenshot or chat message.",
               "Accept or confirm only when inventory, policy, and fulfillment capacity remain valid.",
               "Fulfill the exact order and record carrier, tracking, digital-delivery, service, or other supported evidence.",
-              "Respond to cancellation, refund, or dispute through the action available for current state.",
+              "Use the Discussion, Dispute, and Evidence views for their separate purposes; respond to cancellation, refund, or dispute only through the action admitted for the current state and role.",
               "Complete only after implemented delivery and payment gates are satisfied.",
               "Retain order, quote, payment, fulfillment, and communication references according to policy."
             ]
@@ -8307,7 +8395,8 @@
               "If payment and order disagree, stop fulfillment or settlement automation and reconcile payment reference.",
               "If fulfillment evidence fails to save, preserve it securely and retry through the supported transition.",
               "If an action reports conflict, reload state before deciding another actor already completed it.",
-              "If an extension is unhealthy, keep Core financial transitions fail closed and follow recovery."
+              "If an extension is unhealthy, keep Core financial transitions fail closed and follow recovery.",
+              "If Discussion, Payment Session, and order summary disagree, preserve identifiers and reload the authoritative order before acting."
             ]
           }
         ]
@@ -8337,7 +8426,7 @@
     "authorityUrl": "https://docs.mobazha.org/sell/payments",
     "evidenceLabel": "Node payment capabilities and Unified payment administration",
     "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/payments",
-    "reviewed": "2026-07-04",
+    "reviewed": "2026-07-06",
     "pageType": "task",
     "lastTested": "2026-07-04",
     "outcome": "Enable one payment method only after its configuration, health, observation, and recovery path are proven.",
@@ -8364,18 +8453,73 @@
         ]
       },
       {
+        "heading": "Read payment readiness as a session, not a logo",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The order detail resolves a Payment Session from `/v1/orders/{orderID}/payment-session`. A payment-method logo or enabled Admin switch does not replace these order-bound facts:"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Payment Session field",
+              "Question it answers"
+            ],
+            "rows": [
+              [
+                "`paymentCoin`",
+                "Which canonical crypto asset or fiat provider/currency is expected?"
+              ],
+              [
+                "`settlementMode`",
+                "Is this address monitoring, provider checkout, escrow, or another supported settlement path?"
+              ],
+              [
+                "`productMode`",
+                "Is the order direct, cancelable, or moderated?"
+              ],
+              [
+                "`fundingTarget`",
+                "Which exact address or provider session, amount, asset, memo, and QR payload apply?"
+              ],
+              [
+                "`paymentProgress`",
+                "What has been observed, what remains, how many observations exist, and what funding state is current?"
+              ],
+              [
+                "`expiresAt`",
+                "When must the buyer request refreshed instructions instead of reusing this target?"
+              ],
+              [
+                "`capabilities`",
+                "Which refresh, cancel, confirm, refund, or completion action is currently admitted?"
+              ],
+              [
+                "`userActionRequest`",
+                "Which explicit wallet or provider action still requires the user?"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Do not collapse **payment readiness**, **funding observation**, **verification**, and **settlement** into one status. They answer different operational questions."
+          }
+        ]
+      },
+      {
         "heading": "Payment readiness steps",
         "blocks": [
           {
             "type": "ordered-list",
             "items": [
-              "Open **Admin → Payments** and inspect methods reported by the backend.",
+              "Open **Admin → Payments** (`/admin/payments`) and inspect receiving accounts, providers, guest-checkout policy, and methods reported ready by the backend.",
               "Select one method and complete only its documented setup requirements.",
               "Verify configuration and health without relying on a frontend toggle alone.",
               "Set or review confirmation and payment-expiry behavior appropriate to the method.",
-              "Create a small testnet order and compare displayed address, amount, asset, and expiry with backend state.",
-              "Broadcast the test payment and wait for the backend-owned funded state.",
-              "Exercise cancellation or refund behavior before accepting material orders."
+              "Create a small testnet order and compare the displayed Payment Session ID, order ID, canonical asset, settlement mode, funding target, expected amount, and expiry with backend state.",
+              "Broadcast or authorize the test payment, then distinguish observed progress from the backend-owned funded state.",
+              "Reopen the order detail and confirm that capabilities expose only state-valid actions.",
+              "Exercise the applicable cancellation or refund path before accepting material orders."
             ]
           }
         ]
@@ -8398,6 +8542,8 @@
               "If setup is incomplete, keep the method unavailable rather than falling back silently.",
               "If health becomes unknown, stop advertising new checkout work while preserving existing recovery.",
               "If payment is observed for the wrong amount or destination, do not settle automatically.",
+              "If a session says `awaiting_seller_receipt`, do not present it as buyer payment delay; the seller-side funding target is not ready yet.",
+              "If a provider checkout or wallet action fails, keep the order and Payment Session identifiers before retrying.",
               "If a refund path is unavailable, disclose that limitation before accepting the method."
             ]
           }
@@ -8408,7 +8554,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "The default open-source release candidate enables BTC, BCH, and LTC subject to effective capabilities and seller configuration. Other identifiers do not create a release commitment. See [release scope](/project/release-scope) and [fees](/project/fees)."
+            "text": "The public client and backend contain several payment adapters and compatibility paths, but availability is decided at runtime by distribution policy, backend implementation, store configuration, health, order mode, and Payment Session capabilities. A Token identifier or source module does not create a release commitment. See [release scope](/project/release-scope) and [fees](/project/fees)."
           }
         ]
       }
@@ -8428,7 +8574,7 @@
     "authorityUrl": "https://docs.mobazha.org/sell/shipping",
     "evidenceLabel": "Unified shipping profiles and Node listing contracts",
     "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/settings/shipping",
-    "reviewed": "2026-07-04",
+    "reviewed": "2026-07-06",
     "pageType": "task",
     "lastTested": "2026-07-04",
     "outcome": "Offer only delivery methods that apply to the buyer destination and remain attached to the created order.",
@@ -8454,16 +8600,56 @@
         ]
       },
       {
+        "heading": "How shipping enters a Mobazha order",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "Stage",
+              "Authoritative fact",
+              "Failure to avoid"
+            ],
+            "rows": [
+              [
+                "Shipping profile",
+                "Zones, services, rates, estimates, and conditions configured under `/admin/settings/shipping`",
+                "Treating one global rate as valid for every listing and destination."
+              ],
+              [
+                "Listing assignment",
+                "The physical listing revision is attached to an eligible profile in the listing Shipping section",
+                "Publishing a product that has no route to the buyer destination."
+              ],
+              [
+                "Quote",
+                "Destination and selected service produce the buyer-visible shipping amount and estimate",
+                "Reusing a catalog estimate after address, quantity, or profile changes."
+              ],
+              [
+                "Order snapshot",
+                "The accepted delivery service, amount, destination obligation, and seller promise remain with the order",
+                "Letting a later profile edit silently change an existing order."
+              ],
+              [
+                "Fulfillment evidence",
+                "Carrier, tracking, handoff, digital proof, service completion, or another supported record",
+                "Marking an order fulfilled with no evidence appropriate to its product type."
+              ]
+            ]
+          }
+        ]
+      },
+      {
         "heading": "Shipping setup steps",
         "blocks": [
           {
             "type": "ordered-list",
             "items": [
-              "Open **Admin → Settings → Shipping**.",
+              "Open **Admin → Settings → Shipping** (`/admin/settings/shipping`).",
               "Create or select a profile representing one coherent fulfillment policy.",
               "Add destination zones and keep overlaps intentional and understandable.",
               "Add rates with buyer-visible names, amounts, currency, conditions, and estimated delivery.",
-              "Assign eligible listings to the profile and remove items requiring another delivery path.",
+              "Open each physical listing's **Shipping** section and assign the appropriate profile; remove digital goods, services, or items requiring another delivery path.",
               "Save and test addresses inside, outside, and at the edge of every supported zone.",
               "Complete a test order and record carrier, tracking, or delivery evidence through the order flow."
             ]
@@ -8476,6 +8662,10 @@
           {
             "type": "paragraph",
             "text": "Checkout should show only delivery methods valid for the item and destination. The selected shipping amount must appear in the final cost breakdown and remain associated with the created order. Seller order view should preserve selected service and obligation."
+          },
+          {
+            "type": "paragraph",
+            "text": "After changing a profile, test a new quote and confirm that an already accepted order still shows its original delivery commitment."
           }
         ]
       },
@@ -9835,6 +10025,392 @@
               {
                 "label": "English canonical page",
                 "href": "/buy"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/buy/cancel-refund-dispute",
+    "title": "取消订单、申请退款或发起争议",
+    "summary": "根据当前订单模式、状态与能力选择恢复路径，并保留说明期望补救所需证据。",
+    "status": "Beta",
+    "audiences": [
+      "买家",
+      "卖家",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "取消订单、申请退款或发起争议",
+    "authorityUrl": "https://docs.mobazha.org/zh/buy/cancel-refund-dispute",
+    "evidenceLabel": "Node 订单、PaymentSession 与争议契约",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/api-spec",
+    "reviewed": "2026-07-06",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "在不丢失证据的前提下，为当前订单选择一个有效解决路径。",
+    "estimatedTime": "评估约 5 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "评估当前订单",
+      "href": "/zh/buy/cancel-refund-dispute#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "buy/cancel-refund-dispute",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "打开权威订单详情并记录当前状态。",
+              "阅读订单显示的取消、退货、退款、配送和争议条款。",
+              "保存消息、Quote、支付引用、履约证据和期望补救。",
+              "确认下一转换由谁控制；不是每个状态都允许单方面取消。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "按订单模式与当前能力选择路径",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "路径",
+              "典型目的",
+              "必须核对"
+            ],
+            "rows": [
+              [
+                "Cancel",
+                "在当前承诺或支付路径关闭取消前停止符合条件的订单",
+                "订单状态、角色、Payment Session capability、有效期和可能的退款地址。"
+              ],
+              [
+                "Refund",
+                "通过支持的支付路径退回符合条件的金额",
+                "收款方或退款地址、金额、资产、观察记录、幂等性和交易或 Provider 引用。"
+              ],
+              [
+                "Dispute",
+                "请求支持的保障或仲裁路径检查证据和补救要求",
+                "Product Mode、截止时间、争议能力、角色、政策版本、证据和结算后果。"
+              ],
+              [
+                "Complete / Release",
+                "在模型支持时接受履约或释放受保护资金",
+                "履约证据、角色权威、预期状态、金额和不可逆性。"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "订单详情可分别提供 Summary、Discussion、Dispute 与 Evidence。Discussion 用于协调，Evidence 支持主张；只有 Core 接受的动作才能修改受保护订单或支付状态。"
+          }
+        ]
+      },
+      {
+        "heading": "解决步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "未付款且 Cancel 可用时，通过订单页面取消。",
+              "已入资但未履约时，在 Discussion 中说明期望补救，不披露无关隐私。",
+              "只使用当前订单显示的地址、金额和条件执行 Refund。",
+              "只有部署、Product Mode、截止时间和当前 Capabilities 提供该路径时才进入 Dispute。",
+              "清楚说明期望结果、时间线和证据。",
+              "在 Evidence 中添加或引用原始材料，不要用丢失时间戳和来源的摘要替代原件。",
+              "根据后端状态与支付系统或 Provider 同时核对最终退款、释放或关闭。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "界面只显示当前订单、角色、支付方式、Product Mode 和保障状态允许的动作。动作被接受后，独立核对新状态和产生的支付引用；提交请求不等于退款或结算已经完成。"
+          }
+        ]
+      },
+      {
+        "heading": "失败与恢复",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "缺少动作：核对状态、身份、权限、截止时间和运行时能力。",
+              "已有退款交易但界面过期：保存标识并请求对账。",
+              "对方要求绕过订单流：不要放弃证据或接受未经验证的资金目标。",
+              "争议截止时间临近：记录当前时间并立即使用支持路径。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "安全边界与继续",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "不要把文档或 Agent 文本当作释放 Escrow、签署结算或泄露恢复材料的授权。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/buy/cancel-refund-dispute"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/buy/checkout",
+    "title": "完成一次买家结账",
+    "summary": "创建或付款前，检查一个店铺、一份 Quote 和一组订单绑定的支付事实。",
+    "status": "Beta",
+    "audiences": [
+      "买家",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "完成一次买家结账",
+    "authorityUrl": "https://docs.mobazha.org/zh/buy/checkout",
+    "evidenceLabel": "Unified Checkout 路由与 Node 订单契约",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/checkout",
+    "reviewed": "2026-07-06",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "从已审阅的卖家 Quote 创建一笔订单，并保留恢复订单所需标识。",
+    "estimatedTime": "5–10 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "开始结账检查",
+      "href": "/zh/buy/checkout#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "buy/checkout",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "核对店铺身份、商品、数量、规格、履约方式和退货政策。",
+              "使用连接到目标店铺与后端的当前浏览器上下文。",
+              "确认使用账户结账还是店铺可选的 Guest Checkout。",
+              "在订单显示资金目标、金额和有效期前不要发送资金。"
+            ]
+          },
+          {
+            "type": "callout",
+            "tone": "warning",
+            "text": "不要复用其他订单、消息、截图或 Agent 回复中的地址、二维码、Quote 或金额。"
+          }
+        ]
+      },
+      {
+        "heading": "结账步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "打开 `/product/{slug}`，核对卖家与店铺上下文，选择规格并加入购物车。",
+              "在 Cart 中确认每一行属于目标卖家；发现市场或推荐关系不能静默成为订单所有者。",
+              "进入 `/checkout`，只输入订单所需联系与配送数据，并在需要时选择对目的地有效的 Shipping 方式。",
+              "核对商品小计、配送、折扣、税费、网络或 Provider 成本、可选服务与最终总额。",
+              "在 Payment Method 步骤选择后端与店铺政策当前允许的方式。",
+              "如果 Product Mode 要求 Moderator 或其他保障选择，确认其范围与费用。",
+              "只有在卖家、收款方、总额、支付资产或 Provider、政策与保障选择均可见时才确认订单。",
+              "保存 Order ID 与跟踪链接，并只使用订单绑定的 Payment Session 付款。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "应用创建一笔具有权威状态和 Payment Session 的订单。核对 Listing revision、卖家、后端、总额、canonical 支付资产或 Provider、Funding Target、Settlement Mode、金额和有效期与最终确认一致。"
+          }
+        ]
+      },
+      {
+        "heading": "失败与恢复",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Quote 过期：重新请求，不要发送旧金额。",
+              "商品不可用：返回购物车重新评估，不要重复提交订单。",
+              "资产或资金目标意外变化：停止并核对店铺与后端身份。",
+              "创建订单后丢失页面：使用保存的 Order ID 或跟踪链接。",
+              "已付款但状态不前进：保留 Transaction ID、Order ID 与 Payment Session ID，并查看订单状态排障。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "继续",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "跟踪付款与订单状态",
+                "href": "/zh/buy/order-status"
+              },
+              {
+                "label": "取消、退款或争议",
+                "href": "/zh/buy/cancel-refund-dispute"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/buy/checkout"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/buy/order-status",
+    "title": "跟踪付款与订单状态",
+    "summary": "在判断订单已入资、已履约、可退款或已完成前，对账 Payment Session 证据与后端订单状态。",
+    "status": "Beta",
+    "audiences": [
+      "买家",
+      "支持人员",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "跟踪付款与订单状态",
+    "authorityUrl": "https://docs.mobazha.org/zh/buy/order-status",
+    "evidenceLabel": "Unified 订单里程碑、PaymentSession 与 Node Order API",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/blob/main/packages/core/hooks/useOrderDetail.ts",
+    "reviewed": "2026-07-06",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "理解当前状态证明了什么，以及下一步可以安全执行哪个恢复动作。",
+    "estimatedTime": "3 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "对账一笔订单",
+      "href": "/zh/buy/order-status#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "buy/order-status",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "准备 Order ID 或 Guest Order Token，以及支付交易或 Provider 引用。",
+              "使用创建订单的同一店铺和后端。",
+              "不要在支持聊天中粘贴私钥、助记词、完整客户资料或带鉴权的跟踪链接。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "跟踪步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "打开账户 Orders，或保存的 Guest Order 跟踪链接。",
+              "先核对卖家、商品、金额、支付资产和创建时间。",
+              "打开订单绑定的 Payment Session，对照 Session ID、canonical 资产、Funding Target、金额、Settlement Mode 和有效期。",
+              "分别查看已观察金额、剩余金额、Observation、确认数和后端 Funding State。",
+              "事件通知变化时，通过产品界面或 `GET /v1/orders/{orderID}/payment-session` 刷新权威状态。",
+              "执行下一动作前保存履约、取消、退款或争议证据。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "订单页显示由后端拥有的业务状态。WebSocket、钱包或 Provider 通知只是刷新信号。Payment Session 的 Capabilities 而不是静态按钮列表，决定当前能否刷新、取消、确认、退款或完成。"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "观察",
+              "可以安全得出的结论"
+            ],
+            "rows": [
+              [
+                "Funding Target ready",
+                "订单存在有效期内可使用的地址或 Provider Session"
+              ],
+              [
+                "Transaction broadcast",
+                "钱包尝试广播交易"
+              ],
+              [
+                "Transaction observed",
+                "支付系统观察到候选交易"
+              ],
+              [
+                "达到所需确认数",
+                "配置的确认门槛可能已满足"
+              ],
+              [
+                "Backend funded",
+                "订单后端已接受这笔订单的支付证据"
+              ],
+              [
+                "Seller fulfilled",
+                "卖家记录了履约证据，仍应检查证据内容"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "失败与恢复",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "没有观察到交易：核对资产、网络、目的地、金额和有效期，不要立即重复付款。",
+              "钱包确认但订单仍待付款：私下向运营者提供最小化 Order ID 与 Transaction ID。",
+              "多个界面状态冲突：停止自动动作并报告一致性缺陷。",
+              "跟踪链接打不开：确认它属于当前部署且没有被截断。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "继续",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "取消、退款或争议",
+                "href": "/zh/buy/cancel-refund-dispute"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/buy/order-status"
               }
             ]
           }
@@ -13104,6 +13680,457 @@
               {
                 "label": "English canonical page",
                 "href": "/sell"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/sell/orders",
+    "title": "运营进入店铺的订单",
+    "summary": "对账付款、确认义务、记录履约证据，并只执行当前状态允许的取消、退款、争议和完成动作。",
+    "status": "Beta",
+    "audiences": [
+      "卖家",
+      "运营者",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "运营进入店铺的订单",
+    "authorityUrl": "https://docs.mobazha.org/zh/sell/orders",
+    "evidenceLabel": "Unified 订单管理与 Node 订单状态契约",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/orders",
+    "reviewed": "2026-07-06",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "使用当前状态允许的动作，把一笔已付款订单安全推进到履约结果。",
+    "estimatedTime": "每次检查约 5 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "检查进入店铺的订单",
+      "href": "/zh/sell/orders#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "sell/orders",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "在接受订单前公开履约、退款和争议政策。",
+              "监控后端、支付依赖、库存和买家沟通。",
+              "把通知、聊天声明、Payment Session 与订单权威状态分开理解。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "订单工作区包含四类相互连接的记录",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "卖家从 `/admin/orders` 进入订单，详情位于 `/orders/{orderId}`，并可分别呈现 Summary、Discussion、Dispute 和 Evidence。"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "记录",
+              "用途",
+              "权威规则"
+            ],
+            "rows": [
+              [
+                "Summary",
+                "已接受商品快照、双方、金额、配送义务、当前状态和可用动作",
+                "每个有后果的转换后重新加载。"
+              ],
+              [
+                "Payment Session",
+                "资金目标、观察、验证、有效期、结算模式与能力",
+                "回执或聊天声明不是支付权威。"
+              ],
+              [
+                "Discussion",
+                "与订单绑定的买卖双方协调",
+                "保留上下文，但不能让消息文字直接改变受保护状态。"
+              ],
+              [
+                "Dispute / Evidence",
+                "请求的补救、材料、履约记录和适用决定路径",
+                "保留原始证据并遵循角色、政策和状态允许的动作。"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "订单处理步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "打开 **Admin → Orders**（`/admin/orders`），选择正确店铺与订单。",
+              "核对卖家身份、Listing revision、数量、规格、配送义务、总额和买家要求。",
+              "检查订单绑定的 Payment Session，只根据后端状态确认资金。",
+              "库存、政策和履约能力仍有效时才接受订单。",
+              "履约准确的订单，并记录承运商、追踪、数字交付、服务或其他支持证据。",
+              "分别使用 Discussion、Dispute 与 Evidence；只执行当前角色和状态允许的取消、退款或争议动作。",
+              "只有实现的交付与支付门槛满足后才完成订单。",
+              "根据政策保留订单、Quote、支付、履约和沟通引用。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "每个卖家动作都应产生新的权威状态，或返回清晰错误并保留之前的可恢复状态。每次财务或履约转换后重新打开订单，核对状态、时间、证据、Payment Session 与后续动作。"
+          }
+        ]
+      },
+      {
+        "heading": "失败与恢复",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "重复通知：按订单与事件标识去重，然后重新加载当前状态。",
+              "付款与订单不一致：停止履约或结算自动化并对账支付引用。",
+              "履约证据保存失败：安全保存原始材料并通过支持的转换重试。",
+              "动作冲突：先刷新，确认是否已有其他角色完成转换。",
+              "Summary、Discussion 与 Payment Session 不一致：保留标识并以权威订单重新核对。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Agent 边界与继续",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Agent 可以总结和准备动作，但不能绕过身份、权限、状态、政策和所需确认去接受、退款、结算或完成订单。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "取消、退款或争议",
+                "href": "/zh/buy/cancel-refund-dispute"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/sell/orders"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/sell/payments",
+    "title": "准备店铺收款方式",
+    "summary": "只展示由后端允许、正确配置、健康且运营者能够监控和恢复的支付路径。",
+    "status": "Beta",
+    "audiences": [
+      "卖家",
+      "运营者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "准备店铺收款方式",
+    "authorityUrl": "https://docs.mobazha.org/zh/sell/payments",
+    "evidenceLabel": "Node PaymentSession 与 Unified 支付管理",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/payments",
+    "reviewed": "2026-07-06",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "只有在配置、资金目标、观察、验证和恢复路径均已证明后，才启用一种支付方式。",
+    "estimatedTime": "20–40 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "开始支付就绪检查",
+      "href": "/zh/sell/payments#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "sell/payments",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "候选版本评估应使用测试网、小额和可丢弃订单。",
+              "确认发行版本允许该方式，后端实现它，店铺也完成配置。",
+              "理解密钥托管、观察、确认、退款、费用和外部依赖。",
+              "不要把助记词或私钥输入文档、聊天或无关服务商表单。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "把支付理解为订单绑定的 Payment Session",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "订单详情通过 `/v1/orders/{orderID}/payment-session` 读取 Payment Session。Admin 开关或支付 Logo 不能代替以下事实："
+          },
+          {
+            "type": "table",
+            "headers": [
+              "字段",
+              "回答的问题"
+            ],
+            "rows": [
+              [
+                "`paymentCoin`",
+                "当前要求哪个 canonical 加密资产或法币服务商与币种？"
+              ],
+              [
+                "`settlementMode`",
+                "使用地址监控、服务商 Checkout、Escrow 还是其他支持路径？"
+              ],
+              [
+                "`productMode`",
+                "订单是 direct、cancelable 还是 moderated？"
+              ],
+              [
+                "`fundingTarget`",
+                "当前地址或 Provider Session、资产、金额、Memo 与二维码是什么？"
+              ],
+              [
+                "`paymentProgress`",
+                "已观察多少、还差多少、当前 Funding State 是什么？"
+              ],
+              [
+                "`expiresAt`",
+                "何时必须刷新，而不能继续复用原资金目标？"
+              ],
+              [
+                "`capabilities`",
+                "当前允许刷新、取消、确认、退款或完成中的哪些动作？"
+              ],
+              [
+                "`userActionRequest`",
+                "哪个钱包或服务商动作仍需用户明确执行？"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "不要把支付就绪、资金观察、验证和最终结算压成一个状态。"
+          }
+        ]
+      },
+      {
+        "heading": "支付就绪步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "打开 **Admin → Payments**（`/admin/payments`），查看收款账户、Provider、Guest Checkout 政策和后端就绪状态。",
+              "选择一种方式，只完成其明确要求的设置。",
+              "验证配置和健康状态，不依赖前端开关做推断。",
+              "检查确认策略、过期策略、退款地址或 Provider 恢复路径。",
+              "创建小额测试订单，对照 Session ID、Order ID、canonical 资产、Settlement Mode、Funding Target、金额和有效期。",
+              "广播或授权测试付款，区分“已观察”与“后端已接受为 funded”。",
+              "重新打开订单，确认 Capabilities 只展示当前状态允许的动作。",
+              "在接受真实订单前测试适用的取消或退款路径。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "支付方式只有在有效能力交集就绪时才出现在 Checkout。观察必须绑定正确订单、资产、地址或 Provider Session、金额、状态与确认策略。源码里存在适配器或能解析 Token 标识都不等于可用。"
+          }
+        ]
+      },
+      {
+        "heading": "失败与恢复",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "配置不完整或健康未知：停止展示新支付路径，但保留已有订单恢复能力。",
+              "观察到错误金额或目的地：不要自动结算。",
+              "`awaiting_seller_receipt`：不要显示成“买家付款慢”，此时卖家资金目标尚未准备完成。",
+              "Provider 或钱包动作失败：保留 Order ID 与 Payment Session ID 后再重试。",
+              "没有退款路径：在接受该方式前向买家披露限制。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "继续",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "运营订单",
+                "href": "/zh/sell/orders"
+              },
+              {
+                "label": "跟踪付款与订单",
+                "href": "/zh/buy/order-status"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/sell/payments"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/sell/shipping",
+    "title": "配置配送与交付",
+    "summary": "明确商品能送到哪里、买家支付多少配送费用，以及卖家在履约后记录什么证据。",
+    "status": "Beta",
+    "audiences": [
+      "卖家",
+      "运营者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "配置配送与交付",
+    "authorityUrl": "https://docs.mobazha.org/zh/sell/shipping",
+    "evidenceLabel": "Unified Shipping Profile 与 Node Listing 契约",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/settings/shipping",
+    "reviewed": "2026-07-06",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "只向买家展示对商品和目的地有效的配送方式，并把已选择的交付承诺保留在订单中。",
+    "estimatedTime": "15–30 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "检查配送要求",
+      "href": "/zh/sell/shipping#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "sell/shipping",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "列出发货地、支持目的地、配送服务、预计时间与计价规则。",
+              "明确哪些 Listing revision 使用哪个 Shipping Profile。",
+              "公开不支持区域、海关责任、追踪能力、退货与异常处理。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "配送如何进入订单",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "阶段",
+              "权威事实",
+              "必须避免"
+            ],
+            "rows": [
+              [
+                "Shipping Profile",
+                "`/admin/settings/shipping` 中的区域、服务、费率、时效和条件",
+                "假设一个全局费率适用于所有商品和目的地。"
+              ],
+              [
+                "Listing 绑定",
+                "实物商品版本绑定了有效 Profile",
+                "商品已经发布，但买家目的地没有任何履约路径。"
+              ],
+              [
+                "Quote",
+                "目的地和所选服务产生买家可见运费与时效",
+                "地址、数量或 Profile 变化后仍复用旧估算。"
+              ],
+              [
+                "订单快照",
+                "已接受的服务、金额、目的地义务和卖家承诺保留在订单中",
+                "后续修改 Profile 时重写已有订单。"
+              ],
+              [
+                "履约证据",
+                "承运商、追踪号、交接证明或适合商品类型的其他记录",
+                "没有适当证据就标记已履约。"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "配置步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "打开 **Admin → Settings → Shipping**（`/admin/settings/shipping`）。",
+              "创建或选择代表一组一致履约政策的 Shipping Profile。",
+              "添加目的地区域，确保区域重叠是有意且可以解释的。",
+              "添加买家可见的服务名称、金额、币种、条件和预计时间。",
+              "在实物 Listing 的 **Shipping** 区域绑定 Profile；不要为了通过结账给数字商品或服务添加虚假运费。",
+              "使用区域内、区域外和边界地址分别请求新 Quote。",
+              "完成测试订单，并通过订单流程记录追踪或交付证据。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Checkout 只应显示对当前商品和目的地有效的配送方式。所选运费进入最终金额，并与创建后的订单和交付义务一起保留。修改 Profile 后，新 Quote 应反映新规则，已有订单仍保留原始承诺。"
+          }
+        ]
+      },
+      {
+        "heading": "失败与恢复",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "没有配送方式：检查地址标准化、Profile 绑定、Listing 类型和区域覆盖。",
+              "出现重复方式：检查重叠区域与重复 Profile 绑定。",
+              "Checkout 金额不同：停止接受订单并核对币种、计价基础和 Quote。",
+              "无法保存追踪：先安全保留证据，再通过支持的状态转换重试并报告缺陷。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "继续",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "准备收款方式",
+                "href": "/zh/sell/payments"
+              },
+              {
+                "label": "运营订单",
+                "href": "/zh/sell/orders"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/sell/shipping"
               }
             ]
           }
