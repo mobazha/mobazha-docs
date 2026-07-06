@@ -133,17 +133,25 @@ const englishProductNavGroupLabels = [
   "Vision & direction",
 ] as const;
 
+const chineseProductNavGroupLabels = [
+  "产品模型",
+  "产品基础",
+  "愿景与方向",
+] as const;
+
 export function sidebarNavGroupsForPath(path: string): NavGroup[] {
   const activeGroup = activeNavGroupForPath(path);
   if (!activeGroup) return [];
 
-  if (
-    !path.startsWith("/zh/")
-    && path !== "/zh"
-    && englishProductNavGroupLabels.some((label) => label === activeGroup.label)
-  ) {
-    return englishProductNavGroupLabels.flatMap((label) => {
-      const group = englishNavGroups.find((candidate) => candidate.label === label);
+  const isChinese = path === "/zh" || path.startsWith("/zh/");
+  const productGroupLabels: readonly string[] = isChinese
+    ? chineseProductNavGroupLabels
+    : englishProductNavGroupLabels;
+  const availableGroups = isChinese ? chineseNavGroups : englishNavGroups;
+
+  if (productGroupLabels.some((label) => label === activeGroup.label)) {
+    return productGroupLabels.flatMap((label) => {
+      const group = availableGroups.find((candidate) => candidate.label === label);
       return group ? [group] : [];
     });
   }

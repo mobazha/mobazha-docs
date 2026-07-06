@@ -16,6 +16,7 @@ const routes = [
   "/project/surfaces-and-integrations",
   "/project/fees",
   "/zh/buy",
+  "/zh/project",
   "/zh/project/product-map",
   "/zh/project/identity-and-stores",
   "/zh/project/transaction-spine",
@@ -155,7 +156,11 @@ test("the current whitepaper is prominent, versioned, and complete", async ({ pa
 
   await page.goto("/zh");
   await expect(page.locator('.portal-home-actions a[href="/zh/project/whitepaper"]')).toHaveText("阅读 v0.2 白皮书");
-  await expect(page.locator('.site-header nav a[href="/zh/project/whitepaper"]')).toHaveText("白皮书");
+  await expect(page.locator('.site-header nav a[href="/zh/project/whitepaper"]')).toHaveCount(0);
+
+  await page.goto("/zh/project/whitepaper");
+  await expect(page.locator('.site-header nav a[href="/zh/project/product-map"]')).toHaveAttribute("aria-current", "page");
+  await expect(page.locator(".product-nav-group.active-group > summary span")).toHaveText("愿景与方向");
 });
 
 test("primary tabs and project knowledge groups use one taxonomy", async ({ page }) => {
@@ -213,6 +218,33 @@ test("primary tabs and project knowledge groups use one taxonomy", async ({ page
   await expect(page.locator('.site-header nav a[href="/project/release-scope"]')).toHaveAttribute("aria-current", "page");
   await expect(page.locator(".nav-group.active-group > p")).toHaveText("Trust & governance");
   await expect(page.locator(".nav-group")).toHaveCount(1);
+
+  await page.goto("/zh/project/product-map");
+  expect(await page.locator(".site-header nav a").evaluateAll((links) => links.map((link) => link.textContent))).toEqual([
+    "买卖",
+    "运营",
+    "开发",
+    "产品",
+    "项目",
+    "社区",
+  ]);
+  await expect(page.locator('.site-header nav a[href="/zh/project/product-map"]')).toHaveAttribute("aria-current", "page");
+  await expect(page.locator(".product-nav-group > summary span")).toHaveText([
+    "产品模型",
+    "产品基础",
+    "愿景与方向",
+  ]);
+  await expect(page.locator('.product-nav-group[open] > summary span')).toHaveText([
+    "产品模型",
+    "产品基础",
+    "愿景与方向",
+  ]);
+  await expect(page.locator('.nav-group a[href="/zh/project/fees"]')).toHaveText("收费与经济模式");
+  await expect(page.locator('.nav-group a[href="/zh/project/whitepaper"]')).toHaveText("白皮书 v0.2");
+
+  await page.goto("/zh/project");
+  await expect(page.locator('.site-header nav a[href="/zh/project"]')).toHaveAttribute("aria-current", "page");
+  await expect(page.locator(".nav-group.active-group > p")).toHaveText("信任与治理");
 });
 
 test("article lists keep their markers without changing task step counters", async ({ page }) => {
@@ -281,7 +313,7 @@ test("flagship concepts share one product-model navigation group", async ({ page
 
   await page.goto("/zh/project/agent-commerce");
   const chineseGroup = page.locator(".nav-group.active-group");
-  await expect(chineseGroup.locator("p")).toHaveText("产品模型");
+  await expect(chineseGroup.locator("summary span")).toHaveText("产品模型");
   await expect(chineseGroup.locator("a")).toHaveCount(7);
 });
 

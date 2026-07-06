@@ -102,6 +102,12 @@ not rearrange itself when a reader crosses from one knowledge group to another;
 readers may still collapse a group deliberately. Only the exact current page is
 highlighted. Mobile combines the same groups in one compact Product menu.
 
+The Chinese surface uses the same taxonomy with the content currently
+available in Chinese: 产品模型, 产品基础, 愿景与方向, and 信任与治理. Missing
+translations do not appear as pretend Chinese pages; the Chinese project hub
+states the coverage boundary and points to canonical English evidence when a
+Chinese authority page does not yet exist.
+
 The homepage product promises link directly into the Product model group. A
 new concept joins that group only when it passes the topic-selection rule; a
 new task remains in its role journey instead of becoming another top-level

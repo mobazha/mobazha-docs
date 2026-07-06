@@ -23,22 +23,21 @@ export function SiteHeader({ activePath }: { activePath?: string }) {
     : activePath === "/api-reference" ? "/zh/build/api"
     : isChinese ? "/" : "/zh";
   const primaryLinks = isChinese
-    ? [["使用", "/zh/buy"], ["自行托管", "/zh/self-host"], ["开发", "/zh/build"], ["产品", "/zh/project/product-map"], ["白皮书", "/zh/project/whitepaper"], ["社区", "/zh/support"]]
+    ? [["买卖", "/zh/buy"], ["运营", "/zh/self-host"], ["开发", "/zh/build"], ["产品", "/zh/project/product-map"], ["项目", "/zh/project"], ["社区", "/zh/support"]]
     : [["Buy & sell", "/buy"], ["Operate", "/self-host"], ["Build", "/build"], ["Product", "/project/product-map"], ["Project", "/project/release-scope"], ["Community", "/support"]];
   const isPrimaryActive = (href: string) => {
     if (!activePath) return false;
     if (href.endsWith("/buy") || href === "/buy") return /\/(buy|sell)(\/|$)/.test(activePath);
     if (href.endsWith("/self-host")) return activePath.includes("/self-host");
     if (href.endsWith("/build")) return activePath.includes("/build") || activePath === "/reference" || activePath === "/api-reference";
-    if (!isChinese && href === "/project/product-map") {
-      return ["Product model", "Product foundations", "Vision & direction"].includes(activeGroupLabel ?? "");
+    if (href.endsWith("/project/product-map")) {
+      const productGroups = isChinese
+        ? ["产品模型", "产品基础", "愿景与方向"]
+        : ["Product model", "Product foundations", "Vision & direction"];
+      return productGroups.includes(activeGroupLabel ?? "");
     }
-    if (!isChinese && href === "/project/release-scope") {
-      return activeGroupLabel === "Trust & governance";
-    }
-    if (isChinese && href.endsWith("/project/whitepaper")) return activePath === href;
-    if (isChinese && href.endsWith("/project/product-map")) {
-      return activePath.includes("/project") && !activePath.endsWith("/project/whitepaper");
+    if (href === "/project/release-scope" || href === "/zh/project") {
+      return activeGroupLabel === (isChinese ? "信任与治理" : "Trust & governance");
     }
     if (href.endsWith("/support")) return activePath.includes("/support") || activePath.includes("/contribute");
     return activePath === href;
@@ -72,7 +71,7 @@ export function DocsShell({ activePath, children }: { activePath: string; childr
   const isChinese = isChinesePath(activePath);
   const activeGroup = activeNavGroupForPath(activePath);
   const sidebarGroups = sidebarNavGroupsForPath(activePath);
-  const hasProductKnowledgeGroups = !isChinese && sidebarGroups.length > 1;
+  const hasProductKnowledgeGroups = sidebarGroups.length > 1;
   const activeLink = activeGroup?.links.find(([, href]) => href === activePath)
     ?? activeGroup?.links
       .filter(([, href]) => activePath.startsWith(`${href}/`))
@@ -89,8 +88,8 @@ export function DocsShell({ activePath, children }: { activePath: string; childr
         <aside className="docs-sidebar" aria-label={isChinese ? "文档导航" : "Documentation navigation"}>
           {activeGroup && sidebarGroups.length > 0 && (
             <details className="mobile-journey-menu">
-              <summary><span>{hasProductKnowledgeGroups ? "Product" : activeGroup.label}</span><b>{activeLabel}</b></summary>
-              <nav aria-label={hasProductKnowledgeGroups ? "Product knowledge" : activeGroup.label}>
+              <summary><span>{hasProductKnowledgeGroups ? (isChinese ? "产品" : "Product") : activeGroup.label}</span><b>{activeLabel}</b></summary>
+              <nav aria-label={hasProductKnowledgeGroups ? (isChinese ? "产品知识" : "Product knowledge") : activeGroup.label}>
                 {sidebarGroups.map((group) => (
                   <div className="mobile-nav-group" key={group.label}>
                     {hasProductKnowledgeGroups && <p>{group.label}</p>}

@@ -355,7 +355,7 @@
       ]
     },
     {
-      "label": "自行托管",
+      "label": "运营",
       "links": [
         [
           "节点概览",
@@ -389,16 +389,35 @@
       ]
     },
     {
-      "label": "项目信任",
+      "label": "产品基础",
+      "links": [
+        [
+          "收费与经济模式",
+          "/zh/project/fees"
+        ]
+      ]
+    },
+    {
+      "label": "愿景与方向",
       "links": [
         [
           "白皮书 v0.2",
           "/zh/project/whitepaper"
-        ],
+        ]
+      ]
+    },
+    {
+      "label": "信任与治理",
+      "links": [
         [
-          "收费与经济模式",
-          "/zh/project/fees"
-        ],
+          "项目概览",
+          "/zh/project"
+        ]
+      ]
+    },
+    {
+      "label": "社区",
+      "links": [
         [
           "获取帮助",
           "/zh/support"

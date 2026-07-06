@@ -105,7 +105,7 @@ Implementation evidence: the versioned sources linked from each page.
 - [卖家指南](/zh/sell)
 - [买家指南](/zh/buy)
 
-## 自行托管
+## 运营
 - [节点概览](/zh/self-host)
 - [安装](/zh/self-host/install)
 
@@ -115,9 +115,16 @@ Implementation evidence: the versioned sources linked from each page.
 - [Token 标识](/zh/build/token-identifiers)
 - [扩展架构](/zh/build/extensions)
 
-## 项目信任
-- [白皮书 v0.2](/zh/project/whitepaper)
+## 产品基础
 - [收费与经济模式](/zh/project/fees)
+
+## 愿景与方向
+- [白皮书 v0.2](/zh/project/whitepaper)
+
+## 信任与治理
+- [项目概览](/zh/project)
+
+## 社区
 - [获取帮助](/zh/support)
 
 ## Machine-readable
