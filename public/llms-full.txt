@@ -3210,7 +3210,7 @@ Direct answers
 **Can a seller, market, operator, or Agent earn a fee?** Yes, where lawful and explicitly funded, attributable, capped, disclosed, and handled correctly after refunds or fraud.
 **Where are current rates?** On the applicable provider or service pricing surface and in the transaction quote—not in an old screenshot, discussion, or illustrative percentage.
 Read a Fee Quote
-The Fee Quote keeps the buyer payment and seller proceeds separate. The current public Deal Link pilot uses policy `pilot-zero-fee-v1`: with a $100.00 offer and no separately quoted delivery or external cost, its platform-authored buyer total and estimated seller net are both $100.00. That is a current implementation fact, not a permanent zero-fee promise.
+The Fee Quote keeps the buyer payment and seller proceeds separate. The current Deal Link code path uses a bootstrap policy named `pilot-zero-fee-v1`: with a $100.00 offer, its platform-authored buyer total and estimated seller net are both $100.00, and acceptance rejects shipping, tax, discount, or other non-zero components that are absent from that quote. The policy name describes a current implementation constraint while pricing is undecided; it is **not an approved Deal Link rate, zero-fee promise, or permanent commercial policy**.
 The following hypothetical quote is deliberately non-zero so the funding direction is visible. It is **not a current Mobazha rate, tax determination, or offer**. In this scenario the buyer funds delivery and an applicable tax, while the seller funds the managed transaction service and payment cost:
 Line
 Buyer-total effect
@@ -3222,12 +3222,12 @@ Item or service
 Seller
 Delivery
 +$8.00
-—
-Named carrier or seller as the disclosed fulfillment recipient
++$8.00 collected, −$8.00 fulfillment obligation
+Seller or merchant collects it with the order and pays the applicable fulfillment cost
 Applicable tax
 +$5.00
-—
-Named collector or tax authority under the applicable arrangement
++$5.00 collected, −$5.00 tax obligation
+Seller or merchant collects it with the order; current settlement does not automatically remit it to a tax authority
 Managed transaction service
 —
 −$2.00
@@ -3238,14 +3238,21 @@ Payment or settlement cost
 Named payment provider or network
 **Illustrative result**
 **Buyer total: $113.00**
-**Estimated seller net: $97.00**
-Delivery and tax are treated as pass-through amounts in this example
+**Estimated seller economic proceeds: $97.00**
+Delivery and tax are treated as collected obligations rather than seller income in this example
 The arithmetic demonstrates two different directions: buyer-funded lines increase the amount approved at checkout, while seller-funded lines reduce proceeds from the $100.00 gross order amount. A real quote may allocate them differently, but it must not add the same cost to the buyer and also deduct it from the seller unless they are separate, named charges.
 A wallet, blockchain network, payment provider, carrier, or tax authority may still charge an applicable external amount outside a platform-authored Fee Quote. Any such amount must be attributed to its actual payer and recipient and disclosed at the applicable selection or checkout step before funds are committed.
+How tax works in the current standard checkout
+The current standard store checkout treats a listing's displayed item price as tax-exclusive when the seller has configured a matching tax rule:
+The seller defines a percentage and the buyer regions to which it applies.
+The backend matches the buyer's shipping country and calculates tax on the item amount.
+That tax appears separately in the order totals and is added to the amount the buyer pays.
+The tax amount is collected within the order's payment path; the current system does not split or remit it directly to a tax authority. The seller or merchant remains responsible for the applicable tax treatment.
+Current calculation applies the configured percentage to the item amount, not to shipping. Deal Link acceptance currently rejects a Node order containing non-zero tax, shipping, or discount amounts that are absent from its bootstrap Fee Quote. Deal Link therefore does not yet support adding this standard-checkout tax as a separate component; that is a capability limitation, not a decision that Deal Link must remain zero-fee.
 Who funds a future non-zero charge?
 **Managed transaction service:** it is not inherently buyer-paid or seller-paid. A buyer-funded charge increases the buyer total; a seller-funded charge reduces seller proceeds. The quote must name the provider, payer, recipient, service, amount or rate, and refund treatment.
 **Payment or network cost:** it may be paid directly by the buyer, absorbed by the seller, or included in a provider price. The quote or Payment Session must show which applies without counting the same cost twice.
-**Tax:** Mobazha documentation cannot assign one universal payer or collector. Applicable law, the seller or merchant-of-record arrangement, product and location determine the obligation. A real quote must name the amount and collecting or receiving party; a seller obligation must not be relabeled as a buyer surcharge without an applicable basis.
+**Tax:** current standard checkout can add a seller-configured regional tax above the displayed item price and collect it from the buyer as part of the order total. Whether that is legally correct for a particular sale still depends on applicable law, the seller or merchant-of-record arrangement, product, and location. A real quote must name the amount and collecting party; collection by the software does not mean Mobazha remits or assumes the tax obligation.
 **Delivery:** the selected fulfillment terms determine whether it is included in the item price, added to the buyer total, collected for a carrier, or absorbed by the seller.
 An offer may show an item price before a buyer selects delivery or supplies information needed for an applicable tax calculation. It must not present that item price as the final payable total when a required additional charge is already known, and checkout must not silently introduce a charge after confirmation.
 Before accepting a future non-zero quote, it would still need to state:
