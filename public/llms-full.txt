@@ -2892,27 +2892,41 @@ Mobazha documentation
 - Audience: everyone, contributors, evaluators
 - Knowledge authority: https://docs.mobazha.org/project
 - Evidence: https://github.com/mobazha
-- Reviewed: 2026-07-04
+- Reviewed: 2026-07-06
 - Language: en
 - Summary: Separate what ships now from project principles, reviewed policy, historical proposals, and long-term direction.
 
-How to read project documents
-Release scope describes the current product boundary.
-Architecture explains component and trust boundaries.
-Fee policy governs how charges must be disclosed and who may set them.
-The whitepaper expresses durable design principles and direction, not a promise that every described capability exists today.
-Governance explains how public policy and protocol decisions change.
-Compatibility defines shared contracts and safe evolution across distributions.
-The public roadmap describes outcomes without turning implementation plans into commitments.
+Start with the question you need answered
+Question
+Start here
+What is Mobazha and how do stores, markets, channels, and Agents relate?
+[Product map](/project/product-map)
+Which systems handle a request, where does state live, and which one is authoritative?
+[System architecture](/project/architecture)
+How does an order move through payment, fulfillment, and recovery?
+[Transaction spine](/project/transaction-spine)
+What will I pay, who receives it, and how do refunds affect charges?
+[Fees and pricing](/project/fees)
+What is actually available in the current release?
+[Release scope](/project/release-scope)
+Why is Mobazha being built and what principles guide it?
+[Founding whitepaper](/project/whitepaper)
+How can policy or architecture change?
+[Governance](/project/governance), [RFCs](/project/rfcs), and [ADRs](/project/adrs)
+The first four pages form the main explanatory spine: product model, system model, transaction model, and money model. Release scope then separates current evidence from future direction.
 Current authorities and records
 Product map
 Independent commerce units, transaction authority, product surfaces, and optional dependencies.
+System architecture
+Request flow, deployment topology, authority, dependencies, and failure boundaries.
+Transaction spine
+Order, payment, fulfillment, completion, and recovery as one inspectable journey.
+Fees and pricing
+Buyer total, seller proceeds, service charges, external costs, and economic boundaries.
 Release scope
 Current release boundary and explicit exclusions.
 Founding whitepaper
 Versioned public review of durable principles.
-Fees and economics
-Current disclosure and economic boundaries.
 Compatibility
 Wire, capability, version, migration, and conformance policy.
 Distribution
@@ -2924,52 +2938,149 @@ RFC, ADR, and history lifecycle.
 Releases
 Published release maturity and evidence.
 
-### Architecture and trust boundaries
+### How Mobazha systems fit together
 - URL: /project/architecture
 - Status: beta
 - Page type: concept
-- Outcome: Identify which system owns client presentation, runtime capability, transaction state, extension authority, and public policy.
+- Outcome: Identify the systems involved in a Mobazha action, which one owns each decision, and where to look when surfaces disagree or a dependency fails.
 - Estimated time: 10 minutes
 - Journey: understand
+- Featured visual: mobazha-product-atlas (conceptual; Explains the product and authority model; it does not assert that every pictured channel, integration, or external service is available in every distribution.)
 - Applies to: Mobazha v0.3 release candidate
-- Audience: operators, developers, evaluators
+- Audience: buyers, sellers, operators, developers, evaluators, agents
 - Knowledge authority: https://docs.mobazha.org/project/architecture
 - Evidence: https://github.com/mobazha
-- Reviewed: 2026-07-04
+- Reviewed: 2026-07-06
 - Language: en
-- Summary: Mobazha separates user clients, independently operated backends, optional hosted services, and external payment or delivery systems.
+- Summary: Follow a buyer, seller, or Agent request from a presentation surface to the backend that owns store and transaction state, then to optional services and external providers.
 
-Core boundary
-A client connects to a backend chosen by the user or operator. That backend controls its data, enabled capabilities, integrations, and policies. Optional hosted services are separate dependencies and should be disclosed as such.
-Open Core composition boundary
-Open Core owns order, payment, refund, dispute, settlement, key-custody, and audit state machines. Optional products and integrations compose through public typed contracts instead of adding product vocabulary, arbitrary hooks, database access, or a complete Core service locator.
-Ports replace narrow Core-required implementations.
-Modules assemble reviewed capabilities before the Node starts serving traffic.
-Functions customize deterministic decisions without I/O or mutation authority.
-Controllers reconcile external systems and report observations or attestations.
-Every financial change returns through a validated Core command and state machine.
-New capability advertisement and admission remain closed until the applicable distribution, compatibility, composition, authorization, configuration, and readiness gates pass; persisted provider bindings still govern existing obligations.
-Open Core extension guide
-Mechanism selection, authority flow, trust levels, current implementation, and Collectibles as the first Order Extension provider.
-Draft Composable Extension Platform RFC
-Target shared-governance, domain-manager, and runtime-choice model; it does not expand current runtime capability.
-Frontend product composition boundary
-Frontend products are compositions rather than values in one product-type enum. Deployment, root experience, authentication, presentation channel, network policy, branding, build-time code inclusion, and backend capability remain independent dimensions.
-Public frontend packages define product-neutral contracts and reusable commerce behavior.
-Distribution owners select the shell, build-time feature set, product profile, brand, and any distribution-local code.
-Private feature code can participate through compatible composition contracts while remaining physically absent from public artifacts.
-At runtime, routes, navigation, providers, workflows, and actions resolve from the same composition and can only narrow authoritative backend capabilities.
-Hosted, standalone, marketplace, embedded, extension, and sovereign concerns must not be collapsed into scattered product-name checks.
-The first Unified implementation slice now resolves Guest Checkout, marketplace-operator, and marketplace-seller-review route and navigation eligibility from one fail-closed result. A second dogfood slice shares stable add-to-cart and buy-now action identity and host-rendering contracts across Unified product views, while inventory, payment, asset policy, layout, and localization remain host-owned. A cart-summary slice similarly normalizes item count, total, disabled state, and checkout action while leaving seller grouping, authentication, currency display, channel policy, storage, and navigation with the host. The resolver does not yet project generic providers, workflows, or actions, and it does not turn the browser-extension shell or private distributions into public runtime plugins.
-[Draft RFC-0003](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0003-composable-frontend-product-model.md) defines the target model and explicitly excludes dynamic plugins, remote React code, Agent surfaces, and a plugin marketplace.
-Authority order
-Transaction state: the backend that owns the order.
-Available runtime features: that backend's advertised capabilities.
-Payment facts: the selected payment system and confirmed transaction records.
-Project-wide public policy and public explanation: the canonical page on docs.mobazha.org.
-Exact interfaces and released behavior: versioned contracts, conformance tests, and tagged release evidence in their owning repositories.
-Transaction-specific amounts and recipients: the quote accepted for that order within public policy.
-Evidence links support a public explanation but do not create a second policy authority. Documentation cannot activate a capability or override runtime and contract facts.
+Where this page fits
+Mobazha can appear as a storefront, hosted application, self-hosted Node, community market, direct link, API, or Agent workflow. Those are not separate explanations of the product. They are surfaces and operating paths around one commerce model.
+Use each overview for a different question:
+Page
+Question it answers
+[Product map](/project/product-map)
+What are Mobazha's main product concepts and ways to use them?
+**This architecture page**
+Which systems handle a request, where does state live, and which system is authoritative?
+[Transaction spine](/project/transaction-spine)
+How does one order move through payment, fulfillment, completion, and recovery?
+[Runtime capabilities](/build/runtime-capabilities)
+What can the backend I am connected to do right now?
+[Release scope](/project/release-scope)
+Which capabilities are current release evidence, conditional, or still Draft?
+If you only need to buy or sell, follow the task guides. Use this page when you need to understand why two screens disagree, choose an operating model, integrate a service, or determine who is responsible for a failure.
+The system in six parts
+Part
+What users see or depend on
+What it may decide
+Presentation surfaces
+Storefront, Admin, hosted app, web or desktop client, direct link, community entry, Agent, API client
+How information is presented and which supported action is requested
+Selected backend
+The hosted or self-hosted Node serving the active store and order context
+Store data, identity context, effective capabilities, authorization, and admitted business operations
+Open Core
+Order, payment-verification, refund, dispute, settlement, protection, and audit state machines inside the backend
+Whether a protected transition is valid and what the next authoritative state is
+Adapters and controllers
+Payment, delivery, messaging, search, webhook, and other bounded integrations
+Translate requests, observations, and provider results; they do not directly invent Core state
+External systems
+Blockchain, wallet, payment provider, carrier, messaging network, indexer, AI provider, or another named service
+Facts and actions within that provider's own boundary
+Public knowledge and release evidence
+Canonical docs, generated contracts, capability responses, conformance tests, and tagged releases
+What a public policy means and what a particular release can claim
+The durable rule is simple: a surface may request an action, and an external provider may report a fact, but the backend that owns the order decides whether that input creates a valid business-state change.
+One request through the system
+Consider a buyer opening an offer and paying for an order:
+**The surface resolves context.** A storefront, application, or Agent identifies the store and backend it is acting against.
+**The client discovers availability.** It reads runtime configuration and effective capabilities instead of assuming every Mobazha deployment is identical.
+**The backend creates the business record.** It validates identity, store policy, listing revision, quote, authorization, and current state before creating the order.
+**Core binds the transaction.** The order receives durable identity and a snapshot of accepted terms. A Payment Session binds the intended rail, amount, funding target or provider state, expiry, and verification rules.
+**An external system reports evidence.** A chain observer, wallet, payment provider, webhook, or operator reports what it observed. That report is evidence, not permission to skip the state machine.
+**Core admits or rejects the transition.** It checks the expected order, amount, asset, confirmations, identity, policy, and idempotency before advancing payment or order state.
+**Surfaces refresh authoritative state.** Buyer, seller, webhook consumer, and Agent render or act from the latest backend state rather than from a notification alone.
+The same structure applies to shipping, pickup, cancellation, refund, dispute, and settlement: an integration supplies bounded input; the owning backend validates the protected change.
+Hosted, self-hosted, and optional services
+Operating path
+Who runs the backend?
+Who owns operations?
+What remains separate?
+Hosted
+A hosted service operates the applicable commercial distribution and routes the active account or store context
+The service operator manages deployment and availability under its terms; the store operator still owns its catalog, policies, and order responsibilities
+Payment rails, delivery, AI, messaging, and other providers remain named dependencies
+Self-hosted
+The seller or independent operator runs a released Node distribution
+That operator owns host security, data, backup, network exposure, updates, monitoring, and recovery
+Optional Mobazha or third-party services are enabled separately and must disclose exchanged data and price
+Hybrid use
+A self-hosted or hosted backend calls selected external capabilities
+Responsibility remains split by the published service and transaction contracts
+Connecting a service does not transfer order authority or local recovery material by implication
+Hosted and self-hosted deployments can share public contracts and Core behavior without being the same distribution or operational boundary. The buyer should not need to understand repository topology, but the operator must know which backend owns the store and who is accountable for each dependency.
+Choose hosted or self-hosted operation
+Run and recover a self-hosted Node
+Review distribution and packaging policy
+Where to find the authoritative answer
+User question
+Authority to inspect first
+What is the current order state?
+The backend that owns the order
+Where should this order be paid, and what has been verified?
+The order-bound Payment Session and backend payment records
+Is this feature available here?
+The connected backend's ready runtime-capability response
+May this person or Agent perform the action?
+Backend authorization, role, scope, store context, and current state
+Did a payment, delivery, or provider event occur?
+The applicable provider evidence plus the backend record that reconciles it
+What exact request and response shape is supported?
+The generated contract and tagged release evidence
+What is the public fee, security, or compatibility rule?
+The canonical policy page on docs.mobazha.org
+What amount and recipient apply to this order?
+The accepted quote and transaction record, within public policy
+Documentation explains these authorities; it cannot activate a capability, change an order, or replace transaction evidence.
+When systems disagree or fail
+Symptom
+What it usually means
+Safe next action
+A button is visible but the backend denies the action
+Presentation, identity, capability, permission, or current state is stale or inconsistent
+Reload runtime and business state; do not bypass backend authorization
+A wallet or provider says paid but the order has not advanced
+Payment observation and Core verification are not the same state
+Inspect the Payment Session, expected amount and asset, confirmations, expiry, and dependency health
+A webhook or message arrives twice
+Delivery is at-least-once or was retried
+Deduplicate by stable event or delivery identity and reconcile the referenced resource
+An optional service is unavailable
+One dependency is degraded; the owning backend may still be healthy
+Stop advertising new work that requires it and preserve recovery for existing bound work
+The backend is unavailable
+The authority for store or order state cannot currently answer
+Do not infer protected transitions from cached UI; follow the operator's availability and recovery process
+Documentation and runtime behavior differ
+The page may be stale, or the connected release or composition differs
+Record version and capabilities, check release evidence, and report the smallest reproducible conflict
+Extensions cannot bypass Core
+Mobazha uses typed ports, modules, deterministic policy functions, and controllers to compose integrations. The mechanism depends on the job, but the authority limit is consistent:
+an extension receives the minimum data and capability it needs;
+source presence or a recognized identifier does not make it active;
+a controller may observe or request work but cannot write protected order or payment state directly;
+every financial or order change returns through an authorized Core command;
+clients and distributions may narrow advertised behavior but cannot widen backend capability.
+Build against public extension contracts
+Use API, WebSocket, webhooks, and MCP surfaces
+Current boundary and evolution
+Current public behavior is established by the connected backend, generated contracts, effective capabilities, and release evidence. The v0.3 line remains release-candidate software, so exact compositions and enabled integrations are conditional.
+Draft RFCs explore more reusable Core services and frontend composition. Generic dynamic plugins, remote UI code, a universal product manifest, and unrestricted runtime extension are not current public contracts. Architecture direction must remain labeled separately from the software a user can operate today.
+Review current release maturity
+Read compatibility and conformance policy
+Inspect public RFCs and ADRs
 
 ### Mobazha Founding Whitepaper
 - URL: /project/whitepaper
@@ -3166,54 +3277,167 @@ Related documents
 Mobazha product model
 Community commerce
 Agents and Skills
-Fees and economics
+Fees and pricing
 Product roadmap
 Public decision system
 
-### Fees and sustainable economics
+### What you pay and who receives it
 - URL: /project/fees
 - Status: current
 - Page type: policy
-- Outcome: Distinguish platform, provider, network, operator, referral, tax, and optional-service charges before consent.
-- Estimated time: 7 minutes
+- Outcome: Determine what an order or service costs, who pays and receives each amount, when the amount becomes binding, and how cancellation or refund changes it.
+- Estimated time: 9 minutes
 - Journey: understand
 - Applies to: Current public project policy or service surface
 - Audience: buyers, sellers, operators, evaluators, agents
 - Knowledge authority: https://docs.mobazha.org/project/fees
 - Evidence: https://github.com/mobazha/mobazha
-- Reviewed: 2026-07-04
+- Reviewed: 2026-07-06
 - Language: en
-- Summary: Mobazha does not define one unavoidable commission for every transaction. Each actual charge must identify its owner, purpose, basis, and point of consent.
+- Summary: Read the buyer total, seller proceeds, service charges, external costs, and refund rules without hiding them inside one vague commission number.
 
-Do not collapse every flow into ‘commission’
-A referral reward, delivery charge, payment-network cost, operator service fee, tax, and protocol contribution have different recipients and reasons. Combining them into a headline percentage hides who receives value and whether the charge is optional.
-Economic model
-Self-hosted software: independent operation does not require an optional managed-service subscription or a universal central-platform commission.
-Managed services: may charge for hosting, reliability, support, automation, or other named services; price and renewal terms must be shown before purchase.
-Payment and network costs: belong to the selected rail or provider and should be passed through or disclosed separately.
-Operator or seller charges: may be configured where lawful, but the responsible party and calculation basis must be visible.
-Referral or ecosystem rewards: must be funded, capped, attributable, and distinguishable from the seller's proceeds.
-Protocol/public-good funding: should be explicit, governed, and never implied by a draft percentage.
-Durable commitments
-Running Mobazha on infrastructure you control does not by itself create a fee owed to Mobazha for creating or completing an order.
-Open-source availability does not mean servers, networks, payment processors, plugins, taxes, support, or every optional service are free.
-Mobazha or another provider may charge for an identified optional service, but the provider, payer, value, price, renewal, and exit path must be visible before consent.
-A blockchain, payment-provider, plugin, tax, or exchange cost must not be described as a Mobazha platform fee unless Mobazha is the disclosed recipient.
-Self-hosted operation must not require enrollment in a Mobazha-operated managed transaction service.
-Required quote contract
-Name every charge and recipient.
-Show fixed and percentage components and the amount they apply to.
-State whether it is required, optional, refundable, or condition-dependent.
-Show the final total and settlement allocation before confirmation.
-Record the policy and quote version used by the order.
-Managed transactions, referrals, and agents
-A transaction-related service fee needs an identified service such as execution, automation, evidence handling, dispute operations, or a defined risk commitment.
-Referral or distribution compensation must be seller- or operator-funded, attributable to a settled transaction, capped, time-bounded, and reversible after refunds or fraud.
-An Agent or recommendation must disclose a paid relationship before influencing a paid decision.
-Multi-level recruitment payments, unlimited downstream percentages, and undisclosed paid recommendations are outside current Mobazha policy.
-Changing this boundary
-Requiring a central Mobazha service or mandatory Mobazha fee for ordinary self-hosted orders requires a public RFC or ADR, migration and exit analysis, explicit client and API behavior, updated release scope, and applicable legal review. A provider may change an optional service price on its own pricing surface with an effective date, but that does not change this project-wide boundary.
-Illustrative allocations in old discussions are not defaults. A percentage becomes policy only through public review, implementation, tests, disclosure, and release notes.
+Where this page fits
+This page defines how Mobazha fees and costs must be explained. It is not a price list and does not invent a rate for a particular hosted plan, payment rail, seller, or transaction.
+Need
+Source to use
+Understand the durable fee and disclosure rules
+This page
+See currently published hosted plans or service prices
+[Mobazha pricing](https://mobazha.org/pricing) and [fees](https://mobazha.org/fees)
+Know the exact total and recipients for one order
+The final Fee Quote or equivalent checkout quote accepted before payment
+Understand item, delivery, payment, and order state
+[Checkout guide](/buy/checkout) and [transaction spine](/project/transaction-spine)
+Understand long-term economic principles
+[Founding whitepaper](/project/whitepaper)
+Direct answers
+**Does every Mobazha order pay a central commission?** No. Running the Community software on infrastructure you control does not by itself create a mandatory Mobazha transaction fee.
+**Does open source mean everything is free?** No. Servers, storage, payment networks, providers, delivery, plugins, AI, support, taxes, and optional managed services have real costs.
+**Is every deduction a Mobazha fee?** No. The recipient may be the seller, carrier, blockchain network, payment provider, tax authority, operator, referrer, or another named service.
+**When should the buyer know the total?** Before final confirmation and before funds are committed. A later screen should not silently add a new required charge.
+**When should the seller know net proceeds?** Before accepting the applicable service or order terms, including seller-paid charges and refund treatment.
+**Can a seller, market, operator, or Agent earn a fee?** Yes, where lawful and explicitly funded, attributable, capped, disclosed, and handled correctly after refunds or fraud.
+**Where are current rates?** On the applicable provider or service pricing surface and in the transaction quote—not in an old screenshot, discussion, or illustrative percentage.
+Read a Fee Quote
+The following is an illustration of structure, not a Mobazha rate or current offer:
+Line
+Illustrative amount
+Payer
+Recipient
+Why it exists
+Item
+$100.00
+Buyer
+Seller
+The product or service being purchased
+Delivery
+$8.00
+Buyer
+Seller or carrier
+The selected fulfillment method
+Managed transaction service
+$2.00
+Buyer
+Named operator
+A disclosed checkout, evidence, dispute, or operating service
+Payment or network cost
+$1.00 estimated
+Buyer
+Payment provider or network
+Cost of the selected rail; finality and variability must be stated
+Tax
+$5.00
+Buyer
+Seller, merchant, or tax authority as applicable
+A disclosed tax obligation
+**Buyer total**
+**$116.00**
+The amount approved before payment
+The quote must also show seller proceeds separately. Buyer total and seller net are not interchangeable: delivery may be passed to a carrier, a service may be seller-paid instead, a network estimate may change within stated rules, and taxes may be collected by a different party.
+Before accepting the example, a real quote would still need to state:
+currency or asset, exchange-rate source and time, and quote expiry;
+fixed and percentage components, minimums, caps, and the amount each percentage applies to;
+whether each line is required, optional, estimated, refundable, or condition-dependent;
+who controls funds and when each recipient is paid;
+what happens after cancellation, partial refund, full refund, dispute, expiry, or failed payment;
+the policy and quote version stored with the order.
+If the product cannot produce this information, it should not silently deduct a newly introduced charge.
+Five different kinds of amount
+Category
+Value being paid for
+Typical recipient
+Required disclosure
+Hosting subscription
+Availability, management, quotas, updates, backup, domain, or support
+Hosted-service operator
+Billing period, included capacity, renewal, cancellation, export, and overage terms
+Transaction service
+Payment execution, order operations, delivery coordination, evidence, dispute handling, or a defined risk responsibility
+The operator actually providing the service
+Payer, amount or rate, cap, covered service, settlement, and refund treatment
+Usage or professional service
+AI, storage, CDN, notifications, API use, migration, implementation, training, or SLA
+The named service provider
+Meter, included quantity, overage price, term, and exit path
+Distribution or referral compensation
+Attributable incremental demand, curation, or sales assistance
+Referrer, market operator, Agent publisher, or another disclosed participant
+Funding source, beneficiary, attribution window, cap, conflict disclosure, and reversal rule
+External cost
+Network gas, processor charge, exchange cost, tax, carrier fee, or third-party plugin
+Network, provider, authority, carrier, or plugin operator
+Original cost or estimation rule, recipient, variability, and any disclosed markup
+“The seller received less than the order total” does not prove a platform commission. The settlement record must preserve the separate reason and recipient for each difference.
+Costs depend on the operating path
+Self-hosted Community software
+Independent operation does not require a managed subscription or universal central Mobazha transaction commission.
+The operator pays its own infrastructure, administration, backup, network, payment, and selected third-party costs.
+Optional Mobazha or third-party services may charge separately after the provider, price, exchanged data, renewal, and exit path are disclosed.
+Hosted service
+Hosted plans may charge for operation, reliability, storage, domain, updates, automation, AI, analytics, or support.
+Free Beta access or a free tier is a current service policy, not a permanent right.
+The applicable pricing page and service terms must state the plan, effective date, limits, renewal, cancellation, and export path.
+Deal Link or managed transaction
+A transaction-related fee is justified only by a named service or responsibility such as execution, delivery coordination, evidence, dispute operations, or risk handling.
+Low-touch automated delivery and high-touch human operations do not have to use the same pricing model.
+The transaction quote—not this policy page—owns the actual rate and amount.
+Distribution, referrals, and Agents
+Compensation is optional and must have a real funding source, normally chosen by the seller or responsible operator.
+It applies only to attributable, settled value under the disclosed window and cap.
+Refunds, fraud, and attribution corrections must reverse or adjust compensation under the accepted rule.
+Paid recommendations and Agent conflicts must be disclosed before they influence a paid decision.
+Registration counts, recruitment layers, and unlimited downstream percentages are outside current Mobazha policy.
+How money moves through an order
+**Policy is configured.** The seller, operator, and providers publish eligible item, delivery, service, referral, tax, and external-cost rules.
+**A quote is calculated.** The backend binds the current item revision, payer, recipients, amounts, currency or asset, expiry, and applicable rules.
+**The buyer confirms.** The final total and material conditions are visible before payment instruction or provider authorization.
+**The order preserves the snapshot.** A later policy or price change does not silently rewrite the accepted transaction.
+**Payment and settlement are reconciled.** The system records what was instructed, observed, verified, paid to each recipient, and still pending.
+**Recovery adjusts explicit lines.** Cancellation, refund, dispute, failure, or fraud changes only the amounts authorized by the accepted policy and current state, with an auditable record.
+An Agent can compare or explain a quote, but it cannot replace the user's required confirmation, invent a recipient, or treat an estimate as final.
+What each user should check
+Buyer
+Confirm item, delivery, tax, service, and external costs add up to the displayed total.
+Identify the seller, order-owning backend, payment recipient or funding target, and refund route.
+Do not pay a second instruction merely because the first status is delayed; reconcile the existing order first.
+Seller
+Confirm which charges the buyer pays, which are deducted from proceeds, and which remain the seller's external operating costs.
+Review settlement timing, refund and dispute exposure, provider costs, attribution compensation, and tax responsibility.
+Test a complete quote, payment, settlement, refund, and accounting journey before enabling a new paid service.
+Operator or evaluator
+Separate revenue from pass-through external costs and from amounts held for other recipients.
+Measure whether the service fee corresponds to delivered value, support load, risk, and sustainable unit economics.
+Reject pricing that depends on hidden spread, forced enrollment, unclear custody, or irreversible exit costs.
+How Mobazha can be sustainable
+Mobazha commercial entities may earn revenue from services that users can identify and evaluate: managed hosting, transaction operations, metered AI or infrastructure, professional implementation and support, and optional distribution tools. The project should test willingness to pay against real transaction outcomes and operating costs rather than subsidize activity to manufacture registration or volume.
+The durable economic boundary is:
+Community Core remains independently operable without a mandatory central Mobazha fee on ordinary self-hosted orders;
+commercial revenue corresponds to a named service, provider, payer, and responsibility;
+network and third-party costs remain separately visible;
+transaction and referral compensation is funded, attributable, capped, and reversible where required;
+no Token price, recruitment position, or speculative future value substitutes for product revenue.
+Introducing a mandatory central service or fee for ordinary self-hosted orders requires a public decision, migration and exit analysis, explicit product and API behavior, updated release scope, and applicable legal review.
+Old percentages, internal pilots, and illustrative allocations are not current rates. A price becomes effective only through the applicable public service surface and transaction quote with scope and effective date.
 
 ### Compatibility policy
 - URL: /project/compatibility

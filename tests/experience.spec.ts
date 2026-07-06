@@ -185,6 +185,21 @@ test("article lists keep their markers without changing task step counters", asy
   });
 });
 
+test("architecture and fee pages establish their role in the knowledge system", async ({ page }) => {
+  await page.goto("/project/architecture");
+  await expect(page.locator("h1")).toHaveText("How Mobazha systems fit together");
+  await expect(page.getByRole("heading", { name: "Where this page fits" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "One request through the system" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "When systems disagree or fail" })).toBeVisible();
+
+  await page.goto("/project/fees");
+  await expect(page.locator("h1")).toHaveText("What you pay and who receives it");
+  await expect(page.locator(".trust-panel")).not.toHaveAttribute("open", "");
+  await expect(page.getByRole("heading", { name: "Direct answers" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Read a Fee Quote" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "How Mobazha can be sustainable" })).toBeVisible();
+});
+
 test("journey and boundary diagrams use the light documentation visual system", async ({ request }) => {
   for (const path of [
     "/images/docs/buy/order-lifecycle.svg",

@@ -306,6 +306,6 @@ Mobazha's value will not ultimately be proven by this white paper. It will be pr
 - [Mobazha product model](/project/product-map)
 - [Community commerce](/project/community-commerce)
 - [Agents and Skills](/project/agent-commerce)
-- [Fees and economics](/project/fees)
+- [Fees and pricing](/project/fees)
 - [Product roadmap](/project/roadmap)
 - [Public decision system](/project/decisions)

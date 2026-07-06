@@ -74,8 +74,8 @@ const portalContent: Record<"en" | "zh-CN", PortalContent> = {
         description: "Trace the product model, architecture, economics, and current maturity.",
         links: [
           { label: "Product map", href: "/project/product-map", description: "How stores, Nodes, channels, and services fit" },
-          { label: "Whitepaper v0.2", href: "/project/whitepaper", description: "Open commercial network discussion draft" },
-          { label: "Fees and economics", href: "/project/fees", description: "Cost categories and policy" },
+          { label: "System architecture", href: "/project/architecture", description: "Request flow, authority, dependencies, and failure boundaries" },
+          { label: "Fees and pricing", href: "/project/fees", description: "Buyer totals, recipients, proceeds, and sustainable services" },
         ],
       },
     ],

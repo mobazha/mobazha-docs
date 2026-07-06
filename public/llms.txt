@@ -63,9 +63,9 @@ Implementation evidence: the versioned sources linked from each page.
 
 ## Understand
 - [Project overview](/project)
-- [Architecture](/project/architecture)
+- [System architecture](/project/architecture)
 - [Whitepaper v0.2](/project/whitepaper)
-- [Fees and economics](/project/fees)
+- [Fees and pricing](/project/fees)
 - [Compatibility](/project/compatibility)
 - [Distribution](/project/distribution)
 - [Product roadmap](/project/roadmap)

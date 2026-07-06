@@ -182,7 +182,7 @@ export default async function DocumentationPage({ params }: PageProps) {
             <div className="doc-breadcrumb"><Link href="/">{labels.docs}</Link><span>/</span><span>{key}</span></div>
             <PageToolbar doc={doc} isChinese={isChinese} />
             <DocumentHero doc={doc} isChinese={isChinese} labels={labels} statusLabel={statusLabel} />
-            <TrustPanel doc={doc} labels={labels} open={doc.pageType === "policy"} />
+            <TrustPanel doc={doc} labels={labels} />
             <FeaturedVisual doc={doc} isChinese={isChinese} />
 
             <div className="doc-content">

@@ -8,32 +8,38 @@ audiences:
   - Evaluators
 evidenceLabel: Mobazha public repositories and project records
 evidenceUrl: https://github.com/mobazha
-reviewed: 2026-07-04
+reviewed: 2026-07-06
 pageType: hub
 outcome: Distinguish current policy, release evidence, proposals, decisions, and history before relying on a project claim.
 estimatedTime: 5 minutes
 journey: understand
 primaryAction:
-  label: Learn how to read project records
-  href: /project#how-to-read-project-documents
+  label: Find the right explanation
+  href: /project#start-with-the-question-you-need-answered
 ---
 
-## How to read project documents
+## Start with the question you need answered
 
-- Release scope describes the current product boundary.
-- Architecture explains component and trust boundaries.
-- Fee policy governs how charges must be disclosed and who may set them.
-- The whitepaper expresses durable design principles and direction, not a promise that every described capability exists today.
-- Governance explains how public policy and protocol decisions change.
-- Compatibility defines shared contracts and safe evolution across distributions.
-- The public roadmap describes outcomes without turning implementation plans into commitments.
+| Question | Start here |
+|---|---|
+| What is Mobazha and how do stores, markets, channels, and Agents relate? | [Product map](/project/product-map) |
+| Which systems handle a request, where does state live, and which one is authoritative? | [System architecture](/project/architecture) |
+| How does an order move through payment, fulfillment, and recovery? | [Transaction spine](/project/transaction-spine) |
+| What will I pay, who receives it, and how do refunds affect charges? | [Fees and pricing](/project/fees) |
+| What is actually available in the current release? | [Release scope](/project/release-scope) |
+| Why is Mobazha being built and what principles guide it? | [Founding whitepaper](/project/whitepaper) |
+| How can policy or architecture change? | [Governance](/project/governance), [RFCs](/project/rfcs), and [ADRs](/project/adrs) |
+
+The first four pages form the main explanatory spine: product model, system model, transaction model, and money model. Release scope then separates current evidence from future direction.
 
 ## Current authorities and records
 
 - [Product map](/project/product-map) — Independent commerce units, transaction authority, product surfaces, and optional dependencies.
+- [System architecture](/project/architecture) — Request flow, deployment topology, authority, dependencies, and failure boundaries.
+- [Transaction spine](/project/transaction-spine) — Order, payment, fulfillment, completion, and recovery as one inspectable journey.
+- [Fees and pricing](/project/fees) — Buyer total, seller proceeds, service charges, external costs, and economic boundaries.
 - [Release scope](/project/release-scope) — Current release boundary and explicit exclusions.
 - [Founding whitepaper](/project/whitepaper) — Versioned public review of durable principles.
-- [Fees and economics](/project/fees) — Current disclosure and economic boundaries.
 - [Compatibility](/project/compatibility) — Wire, capability, version, migration, and conformance policy.
 - [Distribution](/project/distribution) — OEM, appliance, and VPS packaging boundaries.
 - [Public roadmap](/project/roadmap) — Product outcomes separated from implementation plans.
