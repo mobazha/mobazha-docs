@@ -7,8 +7,10 @@ const routes = [
   "/self-host/install",
   "/build/api",
   "/api-reference",
+  "/project/product-map",
   "/project/fees",
   "/zh/buy",
+  "/zh/project/product-map",
   "/zh/self-host/install",
 ];
 
@@ -106,17 +108,17 @@ test("reduced-motion preference removes meaningful transitions", async ({ page }
 test("/start resolves to the portal home", async ({ page }) => {
   await page.goto("/start");
   await expect(page).toHaveURL(/\/$/);
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Trusted guides");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Own your store");
 });
 
 test("/zh/start resolves to the Chinese portal home", async ({ page }) => {
   await page.goto("/zh/start");
   await expect(page).toHaveURL(/\/zh$/);
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("可信指南");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("经营自己的店");
 });
 
 test("/zh keeps the Chinese portal home contract", async ({ page }) => {
   await page.goto("/zh");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("可信指南");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("经营自己的店");
   await expect(page.getByRole("combobox", { name: "搜索文档" })).toBeVisible();
 });

@@ -18,6 +18,8 @@ type PortalContent = {
   summary: string;
   primaryAction: { label: string; href: string };
   secondaryAction: { label: string; href: string };
+  principlesTitle: string;
+  principles: Array<{ label: string; title: string; description: string }>;
   quickLinksTitle: string;
   journeys: PortalJourney[];
   quickLinks: Array<{ label: string; href: string; external?: boolean }>;
@@ -25,17 +27,24 @@ type PortalContent = {
 
 const portalContent: Record<"en" | "zh-CN", PortalContent> = {
   en: {
-    eyebrow: "Mobazha documentation",
-    title: "Trusted guides for buyers, sellers, operators, and developers.",
+    eyebrow: "Independent commerce, connected",
+    title: "Own your store. Connect your community. Trade on inspectable terms.",
     summary:
-      "Choose a journey below. Task pages expose outcomes, primary actions, and source-backed guidance without hiding lifecycle or applicability details.",
-    primaryAction: { label: "Start buying", href: "/buy" },
-    secondaryAction: { label: "Open hosted app", href: "https://app.mobazha.org" },
+      "Mobazha brings independent stores, operator-selected Nodes, community distribution, verifiable transaction state, and bounded Agent automation into one open commerce system.",
+    primaryAction: { label: "See how Mobazha works", href: "/project/product-map" },
+    secondaryAction: { label: "Choose an operating path", href: "/start/choose-deployment" },
+    principlesTitle: "One system, four product promises",
+    principles: [
+      { label: "01", title: "Own", description: "Keep store identity, policy, data, and operating choices explicit." },
+      { label: "02", title: "Connect", description: "Reach buyers through independent storefronts, communities, and integrations." },
+      { label: "03", title: "Trade", description: "Use backend-owned order state and payment paths with visible terms." },
+      { label: "04", title: "Extend", description: "Add services and Agent workflows without handing them Core authority." },
+    ],
     quickLinksTitle: "Quick links",
     journeys: [
       {
-        title: "Use Mobazha",
-        description: "Buy from independent stores or run a seller workflow.",
+        title: "Buy or sell",
+        description: "Complete a transaction with the store and backend that own it.",
         links: [
           { label: "Buy", href: "/buy", description: "Checkout, tracking, refunds" },
           { label: "Sell", href: "/sell", description: "Store setup, listings, orders" },
@@ -43,8 +52,8 @@ const portalContent: Record<"en" | "zh-CN", PortalContent> = {
         ],
       },
       {
-        title: "Operate",
-        description: "Install, configure, and maintain a Node you control.",
+        title: "Run your own Node",
+        description: "Choose an independent or hosted operating path without changing commerce semantics.",
         links: [
           { label: "Self-host overview", href: "/self-host", description: "Choose an operating path" },
           { label: "Install", href: "/self-host/install", description: "Evaluation quick start" },
@@ -52,8 +61,8 @@ const portalContent: Record<"en" | "zh-CN", PortalContent> = {
         ],
       },
       {
-        title: "Build",
-        description: "Integrate through HTTP, events, MCP, and webhooks.",
+        title: "Build and automate",
+        description: "Integrate through public contracts and keep authority at the Core boundary.",
         links: [
           { label: "Developer overview", href: "/build", description: "Public integration surfaces" },
           { label: "Quickstart", href: "/build/quickstart", description: "First authenticated API call" },
@@ -61,10 +70,10 @@ const portalContent: Record<"en" | "zh-CN", PortalContent> = {
         ],
       },
       {
-        title: "Understand",
-        description: "Architecture, economics, security, and release scope.",
+        title: "Understand the system",
+        description: "Trace the product model, architecture, economics, and current maturity.",
         links: [
-          { label: "Project overview", href: "/project", description: "How the stack fits together" },
+          { label: "Product map", href: "/project/product-map", description: "How stores, Nodes, channels, and services fit" },
           { label: "Whitepaper", href: "/project/whitepaper", description: "Long-term principles" },
           { label: "Fees and economics", href: "/project/fees", description: "Cost categories and policy" },
         ],
@@ -79,17 +88,24 @@ const portalContent: Record<"en" | "zh-CN", PortalContent> = {
     ],
   },
   "zh-CN": {
-    eyebrow: "Mobazha 文档",
-    title: "面向买家、卖家、运营者和开发者的可信指南。",
+    eyebrow: "自主经营，开放连接",
+    title: "经营自己的店，连接自己的社群，在可核验的规则下完成交易。",
     summary:
-      "从下面的路径进入。任务页会给出结果、主要操作和来源依据，同时保留生命周期与适用范围信息。",
-    primaryAction: { label: "开始购买", href: "/zh/buy" },
-    secondaryAction: { label: "打开托管应用", href: "https://app.mobazha.org" },
+      "Mobazha 把独立店铺、运营者选择的 Node、社群分发、可核验的交易状态和受控的 Agent 自动化连接成一套开放商业系统。",
+    primaryAction: { label: "了解 Mobazha 如何运作", href: "/zh/project/product-map" },
+    secondaryAction: { label: "选择运行方式", href: "/zh/start/choose-deployment" },
+    principlesTitle: "一个系统，四项产品承诺",
+    principles: [
+      { label: "01", title: "自主", description: "明确掌握店铺身份、政策、数据和运行方式。" },
+      { label: "02", title: "连接", description: "通过独立店面、社群和集成触达买家。" },
+      { label: "03", title: "交易", description: "依据后端权威订单状态和条款透明的支付路径完成交易。" },
+      { label: "04", title: "扩展", description: "接入服务和 Agent 工作流，但不把 Core 权限交给扩展。" },
+    ],
     quickLinksTitle: "快速链接",
     journeys: [
       {
-        title: "使用 Mobazha",
-        description: "从独立商店购买，或运行卖家工作流。",
+        title: "购买或销售",
+        description: "围绕真正拥有订单的店铺和后端完成交易。",
         links: [
           { label: "买家指南", href: "/zh/buy", description: "结账、跟踪、退款与争议" },
           { label: "卖家指南", href: "/zh/sell", description: "开店、上架、订单处理" },
@@ -97,16 +113,16 @@ const portalContent: Record<"en" | "zh-CN", PortalContent> = {
         ],
       },
       {
-        title: "自行托管",
-        description: "安装、配置并维护你控制的 Node。",
+        title: "运行自己的 Node",
+        description: "选择独立或托管路径，同时保持一致的商业语义。",
         links: [
           { label: "节点概览", href: "/zh/self-host", description: "选择运营路径" },
           { label: "安装", href: "/zh/self-host/install", description: "评估环境快速开始" },
         ],
       },
       {
-        title: "开发",
-        description: "通过 HTTP、事件、MCP 与 Webhook 集成。",
+        title: "开发与自动化",
+        description: "通过公开契约集成，并把业务权威留在 Core 边界。",
         links: [
           { label: "开发者概览", href: "/zh/build", description: "公开集成面" },
           { label: "运行时能力", href: "/zh/build/runtime-capabilities", description: "按后端能力 fail-closed" },
@@ -114,12 +130,12 @@ const portalContent: Record<"en" | "zh-CN", PortalContent> = {
         ],
       },
       {
-        title: "项目与信任",
-        description: "架构、经济模式、安全与发布范围。",
+        title: "理解整个系统",
+        description: "理解产品模型、架构、经济边界和当前成熟度。",
         links: [
+          { label: "产品地图", href: "/zh/project/product-map", description: "店铺、Node、渠道与服务如何组合" },
           { label: "白皮书", href: "/zh/project/whitepaper", description: "长期原则" },
           { label: "收费与经济模式", href: "/zh/project/fees", description: "费用类别与政策" },
-          { label: "获取帮助", href: "/zh/support", description: "问题反馈与支持路径" },
         ],
       },
     ],
@@ -151,6 +167,22 @@ export function PortalHome({ language = "en" }: { language?: "en" | "zh-CN" }) {
           </a>
         </div>
       </header>
+
+      <section className="portal-principles" aria-labelledby="portal-principles-title">
+        <div className="portal-section-heading">
+          <p>{content.eyebrow}</p>
+          <h2 id="portal-principles-title">{content.principlesTitle}</h2>
+        </div>
+        <ol>
+          {content.principles.map((principle) => (
+            <li key={principle.label}>
+              <span>{principle.label}</span>
+              <h3>{principle.title}</h3>
+              <p>{principle.description}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
 
       <div className="portal-journey-grid">
         {content.journeys.map((journey) => (

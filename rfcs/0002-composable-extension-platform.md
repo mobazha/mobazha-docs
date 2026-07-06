@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha architecture and documentation maintainers
 - Created: 2026-07-04
-- Updated: 2026-07-05
+- Updated: 2026-07-06
 - Decision owners: Mobazha Open Core and distribution maintainers
 - Affected surfaces: Node, distributions, extension SDKs, hosted service, docs
 - Supersedes: None
@@ -309,15 +309,25 @@ contract binding of existing work.
 
 ### 9. Evolve by proven slices
 
-| Stage | Outcome | Exit evidence |
-|---|---|---|
-| Current static slices | Family-specific payment module lifecycle plus typed Order Extension v1 | Existing payment-module, conformance, and Collectibles cutover tests |
-| Governance hardening | Shared identity, scope, binding, reason, and audit invariants applied by domain managers | Negative tests and cross-family decision fixtures |
-| Domain lifecycle hardening | Family-specific admission, readiness, drain, recovery, and rollback where applicable | Upgrade, obligation-preservation, and recovery drills |
-| Second resource provider | Validate Order Extension generality | No NFT vocabulary in Core; only evidence-backed shared concepts |
-| Process runtime | Isolated partner or third-party Controller/provider | Protocol compatibility, credential isolation, retry and reconciliation tests |
-| Wasm runtime | Untrusted deterministic Functions | Sandbox limits, deterministic fixtures, security review |
-| Ecosystem readiness | Stable SDK, compatibility kit, provenance and operator tooling | Version policy, conformance suite, support and removal policy |
+The stages below separate the already implemented static baselines from target
+governance. “Implemented” is deliberately scoped to the named slice; it does
+not imply that the complete control plane or every domain family is shipped.
+
+| Stage | Scope and outcome | Current state | Exit evidence |
+|---|---|---|---|
+| Current static slices | Family-specific payment module lifecycle plus typed Order Extension v1 | Implemented for the named slices | Existing payment-module, authority-negative, recovery, conformance, and Collectibles cutover tests |
+| Governance hardening | Shared identity, scope, binding, reason, and audit invariants applied by domain managers | In progress | Negative tests and cross-family decision fixtures |
+| Domain lifecycle hardening | Family-specific admission, readiness, drain, recovery, and rollback where applicable | Partial | Upgrade, obligation-preservation, process-loss, and recovery drills |
+| Second resource provider | Validate Order Extension generality | Planned | No NFT vocabulary in Core; only evidence-backed shared concepts |
+| Process runtime | Isolated reviewed-partner or third-party Controller/provider | Deferred | Protocol compatibility, credential isolation, retry, reconciliation, and termination tests |
+| Wasm runtime | Untrusted deterministic Functions | Deferred | Sandbox limits, deterministic fixtures, and security review |
+| Ecosystem readiness | Stable SDK, compatibility kit, provenance, operator tooling, and support policy | Deferred | Version policy, default conformance gate, provenance report, and support/removal policy |
+
+Payment-specific current/target gaps and rollout stages are maintained in
+[RFC-0006](./0006-payment-kernel-rails-and-trusted-modules.md). That RFC
+specializes this model without turning its trusted payment manager into a
+universal extension manager. Process and Wasm runtimes remain architectural
+reservations rather than prerequisites for current first-party hardening.
 
 No stage requires building a universal workflow engine, public marketplace, or
 dynamic hot-reload system. New abstractions are extracted only after repeated

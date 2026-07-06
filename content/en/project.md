@@ -30,6 +30,7 @@ primaryAction:
 
 ## Current authorities and records
 
+- [Product map](/project/product-map) — Independent commerce units, transaction authority, product surfaces, and optional dependencies.
 - [Release scope](/project/release-scope) — Current release boundary and explicit exclusions.
 - [Founding whitepaper](/project/whitepaper) — Versioned public review of durable principles.
 - [Fees and economics](/project/fees) — Current disclosure and economic boundaries.

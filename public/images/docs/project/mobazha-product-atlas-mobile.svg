@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="720" viewBox="0 0 360 720" role="img" aria-labelledby="title desc">
+  <title id="title">Mobazha product map for a narrow screen</title>
+  <desc id="desc">Storefronts, community channels, and agent integrations connect to an operator-selected backend. The backend owns commerce state while payment, delivery, discovery, and hosted services remain explicit dependencies.</desc>
+  <rect width="360" height="720" rx="16" fill="#fbfdff"/>
+  <rect x="1" y="1" width="358" height="718" rx="15" fill="none" stroke="#dbe5f1"/>
+  <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+    <text x="22" y="32" fill="#004eeb" font-size="10" font-weight="700" letter-spacing="1.2">MOBAZHA PRODUCT MAP</text>
+    <text x="22" y="59" fill="#1b2a4e" font-size="20" font-weight="750">One core. Many paths.</text>
+    <text x="22" y="80" fill="#64748b" font-size="11">Channels assist; the backend owns business state.</text>
+
+    <text x="22" y="112" fill="#64748b" font-size="9" font-weight="700" letter-spacing="1">EXPERIENCES AND CHANNELS</text>
+    <g fill="#ffffff" stroke="#b9c9dc">
+      <rect x="22" y="124" width="316" height="46" rx="9"/>
+      <rect x="22" y="180" width="316" height="46" rx="9"/>
+      <rect x="22" y="236" width="316" height="46" rx="9"/>
+    </g>
+    <g fill="#1b2a4e" font-size="13" font-weight="700">
+      <text x="38" y="144">Independent storefronts</text>
+      <text x="38" y="200">Community and social</text>
+      <text x="38" y="256">Agents and integrations</text>
+    </g>
+    <g fill="#64748b" font-size="10" text-anchor="end">
+      <text x="322" y="156">Web · desktop · mobile</text>
+      <text x="322" y="212">Markets · links · embedded</text>
+      <text x="322" y="268">API · MCP · webhooks</text>
+    </g>
+    <path d="M180 282v22m-5-5 5 5 5-5" fill="none" stroke="#7ea7ef" stroke-width="1.6"/>
+
+    <rect x="22" y="304" width="316" height="252" rx="13" fill="#eef4ff" stroke="#6f9ff1" stroke-width="1.5"/>
+    <text x="38" y="328" fill="#004eeb" font-size="9" font-weight="750" letter-spacing="1">OPERATOR-SELECTED BACKEND</text>
+    <text x="322" y="328" text-anchor="end" fill="#315b9f" font-size="9" font-weight="700">CORE AUTHORITY</text>
+    <g fill="#ffffff" stroke="#c4d6f5">
+      <rect x="38" y="344" width="284" height="52" rx="8"/>
+      <rect x="38" y="406" width="284" height="52" rx="8"/>
+      <rect x="38" y="468" width="284" height="52" rx="8"/>
+    </g>
+    <g fill="#1b2a4e" font-size="13" font-weight="700">
+      <text x="52" y="366">Identity and stores</text>
+      <text x="52" y="428">Catalog and policy</text>
+      <text x="52" y="490">Orders and protection</text>
+    </g>
+    <g fill="#64748b" font-size="10">
+      <text x="52" y="383">Ownership · roles · storefronts</text>
+      <text x="52" y="445">Listings · terms · availability</text>
+      <text x="52" y="507">Payment facts · disputes · audit</text>
+    </g>
+    <text x="180" y="540" text-anchor="middle" fill="#315b9f" font-size="10" font-weight="650">Admits capability · validates protected changes</text>
+    <path d="M180 556v22m-5-5 5 5 5-5" fill="none" stroke="#7ea7ef" stroke-width="1.6"/>
+
+    <text x="22" y="598" fill="#64748b" font-size="9" font-weight="700" letter-spacing="1">EXPLICIT OPTIONAL DEPENDENCIES</text>
+    <g fill="#ffffff" stroke="#9badc3" stroke-dasharray="4 3">
+      <rect x="22" y="610" width="316" height="28" rx="7"/>
+      <rect x="22" y="646" width="316" height="28" rx="7"/>
+      <rect x="22" y="682" width="316" height="28" rx="7"/>
+    </g>
+    <g fill="#475569" font-size="11" font-weight="650">
+      <text x="36" y="629">Payment rails and providers</text>
+      <text x="36" y="665">Delivery and supply services</text>
+      <text x="36" y="701">Discovery and hosted services</text>
+    </g>
+  </g>
+</svg>

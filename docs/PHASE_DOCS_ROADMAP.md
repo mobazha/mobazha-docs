@@ -2,7 +2,7 @@
 
 - Status: Waves 2–4 in progress
 - Public surface: <https://docs.mobazha.org>
-- Last reviewed: 2026-07-04
+- Last reviewed: 2026-07-06
 
 ## Mission
 
@@ -105,10 +105,19 @@ count.
   self-host journeys; real product screenshots remain behind the pricing,
   representative-data, privacy, provenance, and editorial publication gate.
 - Govern real product screenshots, expected outputs, and conceptual diagrams as evidence.
+- Established a product narrative around independently operated commerce units
+  and four connected promises—Own, Connect, Trade, and Extend—so feature terms
+  are curated by durable user and authority boundaries rather than promoted
+  mechanically into navigation.
+- Published a bilingual product map and a light, responsive system diagram as
+  the first flagship concept under the active
+  [`PRODUCT_KNOWLEDGE_ARCHITECTURE_PLAN.md`](./PRODUCT_KNOWLEDGE_ARCHITECTURE_PLAN.md).
 
 The baseline and execution contract are maintained in
 [`HUMAN_EXPERIENCE_AUDIT.md`](./HUMAN_EXPERIENCE_AUDIT.md) and
 [`HUMAN_EXPERIENCE_IMPLEMENTATION_PLAN.md`](./HUMAN_EXPERIENCE_IMPLEMENTATION_PLAN.md).
+Product narrative, topic selection, and flagship sequencing are maintained in
+[`PRODUCT_KNOWLEDGE_ARCHITECTURE_PLAN.md`](./PRODUCT_KNOWLEDGE_ARCHITECTURE_PLAN.md).
 
 ### Wave 3 — Trust and project knowledge: in progress
 

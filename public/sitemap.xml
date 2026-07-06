@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://docs.mobazha.org/</loc><lastmod>2026-07-05</lastmod></url>
-  <url><loc>https://docs.mobazha.org/zh</loc><lastmod>2026-07-05</lastmod></url>
+  <url><loc>https://docs.mobazha.org/</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/project/product-map</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/start/choose-deployment</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/agents</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/sell</loc><lastmod>2026-07-04</lastmod></url>
@@ -55,6 +56,7 @@
   <url><loc>https://docs.mobazha.org/releases</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/contribute</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/support</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/project/product-map</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/start/choose-deployment</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/agents</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/sell</loc><lastmod>2026-07-04</lastmod></url>
@@ -68,5 +70,5 @@
   <url><loc>https://docs.mobazha.org/zh/project/whitepaper</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/project/fees</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/support</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/api-reference</loc><lastmod>2026-07-05</lastmod></url>
+  <url><loc>https://docs.mobazha.org/api-reference</loc><lastmod>2026-07-06</lastmod></url>
 </urlset>

@@ -8,6 +8,10 @@
           "/"
         ],
         [
+          "Product map",
+          "/project/product-map"
+        ],
+        [
           "Choose a deployment",
           "/start/choose-deployment"
         ],
@@ -259,6 +263,10 @@
         [
           "概览",
           "/zh"
+        ],
+        [
+          "产品地图",
+          "/zh/project/product-map"
         ],
         [
           "选择托管方式",

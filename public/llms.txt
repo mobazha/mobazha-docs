@@ -3,13 +3,14 @@
 > Canonical task-oriented documentation for people and agents using, operating, integrating, or evaluating Mobazha.
 
 Status: Beta knowledge surface. Draft pages are not shipped guarantees.
-Reviewed: 2026-07-05
+Reviewed: 2026-07-06
 Runtime authority: the connected backend's version and advertised effective capabilities.
 Public knowledge authority: the canonical page on docs.mobazha.org.
 Implementation evidence: the versioned sources linked from each page.
 
 ## Start
 - [Overview](/)
+- [Product map](/project/product-map)
 - [Choose a deployment](/start/choose-deployment)
 - [For agents](/agents)
 
@@ -78,6 +79,7 @@ Implementation evidence: the versioned sources linked from each page.
 
 ## 开始
 - [概览](/zh)
+- [产品地图](/zh/project/product-map)
 - [选择托管方式](/zh/start/choose-deployment)
 - [Agent 使用指南](/zh/agents)
 
