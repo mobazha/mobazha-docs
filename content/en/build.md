@@ -32,6 +32,7 @@ Use the connected backend's capability response and version information as runti
 
 ## Start building
 
+- [Choose a surface and integration contract](/project/surfaces-and-integrations) — Separate client shells, context routing, transports, events, and state authority.
 - [First authenticated API call](/build/quickstart) — Discover capabilities and call a protected read.
 - [Authentication and scopes](/build/authentication) — Select Basic, hosted JWT, or scoped API token.
 - [Errors, retries, and idempotency](/build/errors-and-idempotency) — Preserve business correctness across unknown outcomes.

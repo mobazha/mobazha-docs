@@ -179,6 +179,11 @@
             "type": "links",
             "items": [
               {
+                "label": "Choose a surface and integration contract",
+                "href": "/project/surfaces-and-integrations",
+                "description": "Separate client shells, context routing, transports, events, and state authority."
+              },
+              {
                 "label": "First authenticated API call",
                 "href": "/build/quickstart",
                 "description": "Discover capabilities and call a protected read."
@@ -4826,6 +4831,10 @@
                 "href": "/build"
               },
               {
+                "label": "Separate product surfaces, channels, and integration contracts",
+                "href": "/project/surfaces-and-integrations"
+              },
+              {
                 "label": "Understand community markets and distributed discovery",
                 "href": "/project/community-commerce"
               },
@@ -5262,6 +5271,354 @@
           {
             "type": "paragraph",
             "text": "Use the affected repository's GitHub private vulnerability reporting. Do not publish exploit details, leaked credentials, signing-key concerns, or customer data in issues, chat, or documentation feedback."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "project/surfaces-and-integrations",
+    "title": "Surfaces, channels, and integration contracts",
+    "summary": "Place Web, mobile, desktop, community, Agent, domain, chat, API, WebSocket, webhook, and MCP concerns at the right layer while keeping one commerce authority.",
+    "status": "Beta",
+    "audiences": [
+      "Operators",
+      "Developers",
+      "Client maintainers",
+      "Agent builders",
+      "Evaluators"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Surfaces, channels, and integration contracts",
+    "authorityUrl": "https://docs.mobazha.org/project/surfaces-and-integrations",
+    "evidenceLabel": "Mobazha public frontend-composition, routing, HTTP, WebSocket, webhook, MCP, chat, and capability contracts",
+    "evidenceUrl": "https://github.com/mobazha",
+    "reviewed": "2026-07-06",
+    "pageType": "concept",
+    "outcome": "Choose a product surface and integration contract without turning a channel, notification, domain, or client shell into a second state authority.",
+    "estimatedTime": "10 minutes",
+    "journey": "build",
+    "primaryAction": {
+      "label": "Build an integration",
+      "href": "/build"
+    },
+    "featuredVisual": "surfaces-and-integrations",
+    "language": "en",
+    "sections": [
+      {
+        "heading": "Many surfaces, one commerce authority",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Mobazha can be used through a hosted Web application, a self-hosted storefront, a mobile or desktop client, a community entrance, an embedded view, a direct link, or an Agent. These surfaces can look and behave differently while consuming the same store, catalog, quote, order, payment, fulfillment, and policy contracts."
+          },
+          {
+            "type": "paragraph",
+            "text": "The durable product rule is simple: a surface presents and requests; the backend with the active store or order context validates and owns admitted business state."
+          }
+        ]
+      },
+      {
+        "heading": "Five layers that should not be collapsed",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "Layer",
+              "Examples",
+              "Responsibility"
+            ],
+            "rows": [
+              [
+                "Experience shell",
+                "Web, mobile, desktop, embedded, community, browser, Agent workspace",
+                "Navigation, layout, local interaction, device integration, and user explanation"
+              ],
+              [
+                "Entry and context",
+                "Domain, Storefront slug, marketplace, direct link, tenant, store, role, persona",
+                "Resolve which business and policy boundary the request is about"
+              ],
+              [
+                "Interaction contract",
+                "HTTP, WebSocket, webhook, MCP, chat",
+                "Carry commands, reads, notifications, tools, or conversation with defined delivery semantics"
+              ],
+              [
+                "Capability and authorization",
+                "Backend version, effective capabilities, identity, scopes, resource state",
+                "Decide whether the operation exists and whether this actor may request it now"
+              ],
+              [
+                "Commerce authority",
+                "Core-owned quote, order, payment verification, fulfillment, recovery, and audit",
+                "Admit durable facts and protected state transitions"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "A new client does not require a new order model. A new transport does not activate a product capability. A new domain does not grant authorization. A new notification does not become transaction state."
+          }
+        ]
+      },
+      {
+        "heading": "Resolve context before rendering an action",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Every surface needs enough server-validated context to answer:"
+          },
+          {
+            "type": "ordered-list",
+            "items": [
+              "Which deployment and backend is connected?",
+              "Which tenant, store, Storefront, or marketplace is active?",
+              "Which identity is authenticated, and which role or persona is acting?",
+              "Which capability snapshot is authoritative and ready?",
+              "Which resource state and policy control the requested action?"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Domains, subdomains, slugs, direct links, social start parameters, and embedded configuration can help locate this context. They are routing input, not proof of ownership. Server-side resolution must reject unknown context and prevent client-supplied routing hints from forging another store or Storefront."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Understand identity, stores, storefronts, and channels",
+                "href": "/project/identity-and-stores"
+              },
+              {
+                "label": "Understand community and operator markets",
+                "href": "/project/community-commerce"
+              },
+              {
+                "label": "Build on effective runtime capabilities",
+                "href": "/build/runtime-capabilities"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Choose the contract by delivery semantics",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "Need",
+              "Prefer",
+              "Required behavior"
+            ],
+            "rows": [
+              [
+                "Read current state or request a protected change",
+                "Versioned HTTP API",
+                "Authenticate, validate schema and state, use idempotency where required, return the authoritative result"
+              ],
+              [
+                "Refresh an interactive client quickly",
+                "Authenticated WebSocket",
+                "Treat events as hints, tolerate gaps and unknown additions, then reload protected state"
+              ],
+              [
+                "Deliver events to an operator-controlled service",
+                "Signed webhook",
+                "Durably accept, verify signature, deduplicate, tolerate retry and reordering, reconcile through the API"
+              ],
+              [
+                "Let an Agent discover and invoke permitted Tools",
+                "MCP Streamable HTTP",
+                "Require `ai:use`, Tool domain scopes, current discovery, approval policy, and underlying command validation"
+              ],
+              [
+                "Exchange human or Agent conversation",
+                "Chat contract, currently backed by enabled messaging services such as Matrix",
+                "Preserve room and message identity, membership and privacy; do not treat a message as order or payment authority"
+              ],
+              [
+                "Reconcile an external business system",
+                "Typed extension or controller contract",
+                "Consume durable Core facts and return bounded observations or attestations"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "These contracts can cooperate. A Web client may issue an HTTP command and receive a WebSocket refresh hint. A webhook consumer may respond to an event by reading the referenced order. An Agent may discover a Tool over MCP that calls the same protected HTTP business operation."
+          }
+        ]
+      },
+      {
+        "heading": "HTTP is the authoritative read-and-command surface",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The current Node exposes versioned business routes under `/v1/`. OpenAPI describes reviewed methods, paths, schemas, response envelopes, and authentication mechanisms. Exact route availability still depends on the connected distribution, version, capability, and identity."
+          },
+          {
+            "type": "paragraph",
+            "text": "Use HTTP to confirm important state after a reconnect, notification, chat message, provider callback, or uncertain timeout. A successful client-side animation, push event, or external callback is not a substitute for the latest authoritative resource."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Use the HTTP API and OpenAPI contract",
+                "href": "/build/api"
+              },
+              {
+                "label": "Handle errors, retries, and idempotency",
+                "href": "/build/errors-and-idempotency"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "WebSocket and webhooks are different event products",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The current WebSocket surface under `/ws` supports timely authenticated client updates. Connections can break and transient events can be missed. After reconnecting, reload the resources needed to make a business decision."
+          },
+          {
+            "type": "paragraph",
+            "text": "Webhooks are outbound, signed deliveries to operator-controlled endpoints. They are designed for durable acceptance, retry, delivery history, and integration workflows. Duplicates and reordering are expected. The receiver must verify the exact signed body, deduplicate identifiers, and reconcile referenced state through HTTP."
+          },
+          {
+            "type": "paragraph",
+            "text": "Neither event surface defines business-state order by arrival time."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Consume WebSocket events",
+                "href": "/build/websocket"
+              },
+              {
+                "label": "Implement a webhook consumer",
+                "href": "/build/webhooks"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Chat communicates; it does not settle",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Chat can carry buyer and seller questions, negotiation context, fulfillment coordination, media, typing state, and read receipts. An enabled Matrix-backed service can preserve room, membership, message, and event identities behind the public chat contract."
+          },
+          {
+            "type": "paragraph",
+            "text": "Chat evidence may help explain a dispute, but a message saying “paid,” “shipped,” “refund approved,” or “complete” does not perform that transition. Protected actions still use the order, payment, refund, dispute, or fulfillment contract."
+          },
+          {
+            "type": "paragraph",
+            "text": "Keep credentials, recovery material, full payment secrets, and unnecessary customer data out of messages. A community support room is not a private transaction channel unless its membership and data policy say so."
+          }
+        ]
+      },
+      {
+        "heading": "MCP is a machine surface over the same boundaries",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "MCP at `/v1/mcp` provides authenticated Tool discovery and invocation. It does not replace the HTTP business contracts, capability response, scope checks, request-bound approval, or Core command gate beneath a Tool."
+          },
+          {
+            "type": "paragraph",
+            "text": "An MCP client is not necessarily an autonomous Agent, and an Agent experience does not have to use MCP for every read. Select the narrowest interface that preserves identity, schema, risk, confirmation, and audit."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Understand Agent, Skill, Tool, and approval boundaries",
+                "href": "/project/agent-commerce"
+              },
+              {
+                "label": "Initialize the current MCP transport",
+                "href": "/build/mcp"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Client shells and update channels do not define capability",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Web, mobile, desktop, an installed launcher, a browser-oriented shell, or a community mini application can package the same product contracts for different devices and distribution contexts. Each shell still owns its local navigation, storage, rendering, permissions, deep-link handling, update policy, and release compatibility."
+          },
+          {
+            "type": "paragraph",
+            "text": "An update channel can deliver a newer client; it cannot make an older backend support a missing operation. A browser extension or launcher source tree does not become a public plugin runtime merely because it can render Mobazha data. Named shells and auto-update behavior require their own signed release, compatibility, rollback, privacy, and support evidence."
+          },
+          {
+            "type": "callout",
+            "tone": "important",
+            "text": "Browser-extension shell adoption, a universal launcher contract, remote UI plugins, and every social or embedded channel are not current universal public capabilities. Treat them as distribution-specific or future direction until the applicable release says otherwise."
+          }
+        ]
+      },
+      {
+        "heading": "Current contract and evolution direction",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "Area",
+              "Public meaning now",
+              "Direction that must remain labeled"
+            ],
+            "rows": [
+              [
+                "Experience composition",
+                "Hosted, standalone, store, marketplace, and embedded concerns compose from explicit profiles and effective capabilities",
+                "More independently proven mobile, desktop, browser, community, and sovereign shells"
+              ],
+              [
+                "Context routing",
+                "Server-resolved store, Storefront, marketplace, identity, and capability context controls the experience",
+                "More portable domains, deep links, and channel bindings"
+              ],
+              [
+                "HTTP",
+                "Versioned `/v1/` API and reviewed OpenAPI are the authoritative integration surface",
+                "Broader contract coverage and conformance evidence"
+              ],
+              [
+                "WebSocket",
+                "Authenticated `/ws` events support live refresh with reconnect reconciliation",
+                "A more complete versioned event contract"
+              ],
+              [
+                "Webhooks",
+                "Signed CloudEvents-style deliveries support retryable operator integrations",
+                "More event coverage, tooling, and managed consumers"
+              ],
+              [
+                "Chat",
+                "Capability-gated chat and Matrix-backed messaging contracts can carry rooms, messages, media, and live events",
+                "Richer cross-client conversation, moderation, and commerce context"
+              ],
+              [
+                "MCP",
+                "Authenticated `/v1/mcp` exposes only permitted Tool operations",
+                "More clients and Tool coverage without weakening command gates"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "The connected backend's routes, effective capabilities, authentication result, applicable release, and current resource state remain authoritative. Documentation and client packaging explain the surface; they do not activate it."
           }
         ]
       }
@@ -8089,6 +8446,10 @@
             "type": "links",
             "items": [
               {
+                "label": "选择交互表面与集成契约",
+                "href": "/zh/project/surfaces-and-integrations"
+              },
+              {
                 "label": "运行时能力",
                 "href": "/zh/build/runtime-capabilities"
               },
@@ -10336,6 +10697,10 @@
                 "href": "/zh/build"
               },
               {
+                "label": "区分产品表面、渠道与集成契约",
+                "href": "/zh/project/surfaces-and-integrations"
+              },
+              {
                 "label": "理解社群市场与分布式发现",
                 "href": "/zh/project/community-commerce"
               },
@@ -10421,6 +10786,364 @@
             "type": "callout",
             "tone": "important",
             "text": "图、路线图、RFC、已链接的软件包或文档页面都不能激活一项能力。涉及可用性时，应以连接后端和适用发布的证据为准。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/project/surfaces-and-integrations",
+    "title": "交互表面、渠道与集成契约",
+    "summary": "把 Web、移动、桌面、社群、Agent、域名、Chat、API、WebSocket、Webhook 与 MCP 放在正确层级，同时保持唯一商业权威。",
+    "status": "Beta",
+    "audiences": [
+      "Operators",
+      "Developers",
+      "Client maintainers",
+      "Agent builders",
+      "Evaluators"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "交互表面、渠道与集成契约",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/surfaces-and-integrations",
+    "evidenceLabel": "Mobazha 公开前端组合、路由、HTTP、WebSocket、Webhook、MCP、Chat 与 Capability 契约",
+    "evidenceUrl": "https://github.com/mobazha",
+    "reviewed": "2026-07-06",
+    "pageType": "concept",
+    "outcome": "选择产品表面和集成契约，同时不把渠道、通知、域名或客户端 Shell 变成第二个状态权威。",
+    "estimatedTime": "10 分钟",
+    "journey": "build",
+    "primaryAction": {
+      "label": "查看开发者入口",
+      "href": "/zh/build"
+    },
+    "featuredVisual": "surfaces-and-integrations",
+    "language": "zh-CN",
+    "translationOf": "project/surfaces-and-integrations",
+    "sections": [
+      {
+        "heading": "多种表面，一个商业权威",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Mobazha 可以通过托管 Web 应用、自托管 Storefront、移动或桌面客户端、社群入口、嵌入式视图、Direct Link 或 Agent 使用。这些表面可以拥有不同外观与交互，同时消费相同的 Store、Catalog、Quote、Order、Payment、Fulfillment 与 Policy 契约。"
+          },
+          {
+            "type": "paragraph",
+            "text": "稳定产品规则很简单：Surface 负责展示和请求；拥有当前 Store 或 Order 上下文的后端负责校验，并持有获准业务状态。"
+          }
+        ]
+      },
+      {
+        "heading": "不能混在一起的五个层级",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "层级",
+              "示例",
+              "责任"
+            ],
+            "rows": [
+              [
+                "Experience Shell",
+                "Web、Mobile、Desktop、Embedded、Community、Browser、Agent Workspace",
+                "Navigation、Layout、本地交互、设备集成与用户解释"
+              ],
+              [
+                "Entry 与 Context",
+                "Domain、Storefront Slug、Marketplace、Direct Link、Tenant、Store、Role、Persona",
+                "解析请求属于哪个商业与政策边界"
+              ],
+              [
+                "Interaction Contract",
+                "HTTP、WebSocket、Webhook、MCP、Chat",
+                "用明确投递语义承载命令、读取、通知、Tool 或会话"
+              ],
+              [
+                "Capability 与 Authorization",
+                "Backend Version、Effective Capability、Identity、Scope、Resource State",
+                "决定操作是否存在，以及当前 Actor 现在能否请求"
+              ],
+              [
+                "Commerce Authority",
+                "Core 拥有的 Quote、Order、Payment Verification、Fulfillment、Recovery 与 Audit",
+                "接纳持久事实和受保护状态迁移"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "新客户端不需要新的订单模型；新 Transport 不会激活产品能力；新 Domain 不会授予权限；新 Notification 也不会成为交易状态。"
+          }
+        ]
+      },
+      {
+        "heading": "渲染动作前先解析 Context",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "每个表面都需要足够的服务端校验上下文来回答："
+          },
+          {
+            "type": "ordered-list",
+            "items": [
+              "当前连接哪个 Deployment 和 Backend？",
+              "当前 Tenant、Store、Storefront 或 Marketplace 是哪个？",
+              "认证了哪个 Identity，正在以哪个 Role 或 Persona 行动？",
+              "哪一份 Capability Snapshot 已就绪并具有权威？",
+              "哪个 Resource State 与 Policy 控制请求动作？"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Domain、Subdomain、Slug、Direct Link、社交 Start Parameter 和 Embedded Configuration 可以帮助定位 Context，但它们只是 Routing Input，不是所有权证明。服务端解析必须拒绝未知上下文，并阻止客户端提供的路由提示伪造另一个 Store 或 Storefront。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "理解 Identity、Store、Storefront 与 Channel",
+                "href": "/zh/project/identity-and-stores"
+              },
+              {
+                "label": "理解社群与运营者市场",
+                "href": "/zh/project/community-commerce"
+              },
+              {
+                "label": "基于有效 Capability 构建",
+                "href": "/zh/build/runtime-capabilities"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "根据投递语义选择契约",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "需求",
+              "优先选择",
+              "必须具备的行为"
+            ],
+            "rows": [
+              [
+                "读取当前状态或请求受保护变更",
+                "Versioned HTTP API",
+                "认证、校验 Schema 与 State、必要时使用 Idempotency，并返回权威结果"
+              ],
+              [
+                "快速刷新交互客户端",
+                "Authenticated WebSocket",
+                "把 Event 当作提示，容忍丢失与未知新增类型，然后重新加载受保护状态"
+              ],
+              [
+                "把事件投递给运营者控制的服务",
+                "Signed Webhook",
+                "持久接收、验签、去重、容忍重试与乱序，并通过 API 对账"
+              ],
+              [
+                "让 Agent 发现和调用获准 Tool",
+                "MCP Streamable HTTP",
+                "要求 `ai:use`、Tool Domain Scope、当前 Discovery、Approval Policy 与底层命令校验"
+              ],
+              [
+                "交换人类或 Agent 会话",
+                "Chat Contract，当前可由 Matrix 等已启用消息服务支撑",
+                "保留 Room、Message、Membership 与 Privacy；不把消息当作 Order 或 Payment 权威"
+              ],
+              [
+                "协调外部商业系统",
+                "类型化 Extension 或 Controller Contract",
+                "消费持久 Core Fact，并返回有边界 Observation 或 Attestation"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "这些契约可以协作。Web Client 可以发送 HTTP Command 并收到 WebSocket 刷新提示；Webhook Consumer 可以响应事件后读取相关 Order；Agent 可以通过 MCP 发现 Tool，而该 Tool 调用同一个受保护 HTTP Business Operation。"
+          }
+        ]
+      },
+      {
+        "heading": "HTTP 是权威读取与命令表面",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "当前 Node 在 `/v1/` 下暴露带版本业务路由。OpenAPI 描述经过评审的方法、路径、Schema、Response Envelope 与认证机制。精确 Route Availability 仍取决于连接发行版、版本、Capability 与 Identity。"
+          },
+          {
+            "type": "paragraph",
+            "text": "在 Reconnect、Notification、Chat Message、Provider Callback 或不确定 Timeout 后，应使用 HTTP 确认重要状态。客户端动画成功、Push Event 或外部 Callback 都不能替代最新权威资源。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "查看英文 HTTP API 与 OpenAPI 指南",
+                "href": "/build/api"
+              },
+              {
+                "label": "查看英文错误、重试与幂等指南",
+                "href": "/build/errors-and-idempotency"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "WebSocket 与 Webhook 是不同事件产品",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "当前 `/ws` WebSocket 表面用于及时的认证客户端更新。连接可能中断，瞬时事件也可能丢失；重连后，应重新加载做出业务决定所需的资源。"
+          },
+          {
+            "type": "paragraph",
+            "text": "Webhook 是发往运营者控制 Endpoint 的出站签名投递，面向持久接收、Retry、Delivery History 与集成工作流设计。Duplicate 和 Reordering 是预期情况。Receiver 必须校验精确签名 Body、去重 Identifier，并通过 HTTP 对账相关状态。"
+          },
+          {
+            "type": "paragraph",
+            "text": "两个事件表面都不能按 Arrival Time 定义业务状态顺序。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "查看英文 WebSocket 指南",
+                "href": "/build/websocket"
+              },
+              {
+                "label": "查看英文 Webhook Consumer 指南",
+                "href": "/build/webhooks"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Chat 用于沟通，不用于结算",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Chat 可以承载买卖双方问题、协商上下文、履约协调、Media、Typing State 和 Read Receipt。启用的 Matrix-backed Service 可以在公开 Chat Contract 后保存 Room、Membership、Message 与 Event Identity。"
+          },
+          {
+            "type": "paragraph",
+            "text": "Chat Evidence 可以帮助解释争议，但消息写着“已付款”“已发货”“同意退款”或“已完成”不会执行状态迁移。受保护动作仍需通过 Order、Payment、Refund、Dispute 或 Fulfillment Contract。"
+          },
+          {
+            "type": "paragraph",
+            "text": "不要在消息中放入 Credential、Recovery Material、完整 Payment Secret 或不必要的 Customer Data。Community Support Room 并不自动是私有交易渠道，除非其 Membership 与 Data Policy 明确如此。"
+          }
+        ]
+      },
+      {
+        "heading": "MCP 是同一边界上的机器表面",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "`/v1/mcp` 的 MCP 提供经过认证的 Tool Discovery 与 Invocation。它不会替代 Tool 下方的 HTTP Business Contract、Capability Response、Scope Check、Request-bound Approval 或 Core Command Gate。"
+          },
+          {
+            "type": "paragraph",
+            "text": "MCP Client 不一定是自治 Agent；Agent Experience 也不必对每次读取都使用 MCP。应选择能保留 Identity、Schema、Risk、Confirmation 与 Audit 的最窄接口。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "理解 Agent、Skill、Tool 与批准边界",
+                "href": "/zh/project/agent-commerce"
+              },
+              {
+                "label": "查看英文 MCP 传输指南",
+                "href": "/build/mcp"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Client Shell 与更新渠道不定义 Capability",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Web、Mobile、Desktop、已安装 Launcher、面向浏览器的 Shell 或 Community Mini App 可以为不同设备与发行上下文包装同一套产品契约。每个 Shell 仍负责自己的 Navigation、Storage、Rendering、Permission、Deep Link Handling、Update Policy 与 Release Compatibility。"
+          },
+          {
+            "type": "paragraph",
+            "text": "更新渠道可以交付较新 Client，但不能让旧 Backend 支持缺失操作。Browser Extension 或 Launcher 源码存在，也不会因为能渲染 Mobazha 数据就成为公共 Plugin Runtime。具名 Shell 与自动更新行为需要自己的签名发布、兼容性、回滚、隐私与支持证据。"
+          },
+          {
+            "type": "callout",
+            "tone": "important",
+            "text": "Browser-extension Shell adoption、Universal Launcher Contract、Remote UI Plugin，以及每一种社交或 Embedded Channel 都不是当前通用公共能力。在适用 Release 明确之前，应把它们视为发行版特定能力或未来方向。"
+          }
+        ]
+      },
+      {
+        "heading": "当前契约与演进方向",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "范围",
+              "当前公开含义",
+              "必须标注为方向的内容"
+            ],
+            "rows": [
+              [
+                "Experience Composition",
+                "Hosted、Standalone、Store、Marketplace 与 Embedded Concern 通过显式 Profile 和 Effective Capability 组合",
+                "更多经过独立验证的 Mobile、Desktop、Browser、Community 与 Sovereign Shell"
+              ],
+              [
+                "Context Routing",
+                "服务端解析的 Store、Storefront、Marketplace、Identity 与 Capability Context 控制体验",
+                "更可移植的 Domain、Deep Link 与 Channel Binding"
+              ],
+              [
+                "HTTP",
+                "Versioned `/v1/` API 与经过评审的 OpenAPI 是权威集成表面",
+                "更广契约覆盖与 Conformance Evidence"
+              ],
+              [
+                "WebSocket",
+                "Authenticated `/ws` Event 支持实时刷新与重连对账",
+                "更完整的 Versioned Event Contract"
+              ],
+              [
+                "Webhooks",
+                "Signed CloudEvents-style Delivery 支持可重试运营集成",
+                "更多 Event Coverage、Tooling 与 Managed Consumer"
+              ],
+              [
+                "Chat",
+                "Capability-gated Chat 与 Matrix-backed Messaging Contract 可以承载 Room、Message、Media 与 Live Event",
+                "更丰富的跨客户端会话、Moderation 与 Commerce Context"
+              ],
+              [
+                "MCP",
+                "Authenticated `/v1/mcp` 只暴露获准 Tool Operation",
+                "在不削弱 Command Gate 的前提下扩展 Client 与 Tool Coverage"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "连接后端的 Route、Effective Capability、Authentication Result、适用 Release 与当前 Resource State 仍是权威。文档和客户端包装只能解释 Surface，不能激活它。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical surfaces-and-integrations page",
+                "href": "/project/surfaces-and-integrations"
+              }
+            ]
           }
         ]
       }

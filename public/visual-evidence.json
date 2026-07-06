@@ -124,6 +124,26 @@
       "reviewed": "2026-07-06"
     },
     {
+      "id": "surfaces-and-integrations",
+      "src": "/images/docs/project/surfaces-and-integrations.svg",
+      "sha256": "aa8b65bf62d385f4c06382c37dbf8cec07d44cb886c975ab8ca88e591840dd94",
+      "mobile_src": "/images/docs/project/surfaces-and-integrations-mobile.svg",
+      "mobile_sha256": "3d61795f1ef455f36eed00ae8376160138c9f4a60809abf592670140bb86df98",
+      "kind": "conceptual",
+      "width": 760,
+      "height": 540,
+      "mobile_width": 360,
+      "mobile_height": 800,
+      "alt": "Conceptual model showing Web, mobile, desktop, community, embedded, browser, and Agent shells resolving server context before using HTTP, WebSocket, webhook, MCP, or chat contracts to reach capability-gated Core commerce state.",
+      "caption": "Many experience shells and interaction contracts can share one server-resolved context and one Core-owned commerce authority.",
+      "claim": "Explains durable surface and transport boundaries; it does not assert that every client shell, domain route, channel, event, chat service, Tool, or integration is available in every distribution.",
+      "privacy_review": "synthetic-only",
+      "source": "https://github.com/mobazha/mobazha-docs",
+      "source_revision": "surfaces-and-integrations-v1",
+      "applies_to": "Mobazha v0.3 release-candidate product model",
+      "reviewed": "2026-07-06"
+    },
+    {
       "id": "buyer-order-lifecycle",
       "src": "/images/docs/buy/order-lifecycle.svg",
       "sha256": "aa9b5fa9b8a3fc8d051eb6be36b1754148146d93e46712920dce3b6b0e3f54a7",

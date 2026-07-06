@@ -84,7 +84,7 @@ The first editorial sequence is deliberately smaller than the source inventory:
 | P1 | Explain offer, merchandising, supply, and fulfillment separation | `/project/offer-to-fulfillment` plus seller task guides |
 | P1 | Explain community distribution and marketplace operation | `/project/community-commerce` plus evidence-gated operator journeys |
 | P1 | Explain Agent, Skill, Tool, and approval boundaries | `/project/agent-commerce` plus MCP and extension references |
-| P2 | Explain messaging, browser, launcher, and integration surfaces | Publish only as current capability or clearly labeled direction |
+| P1 | Explain experience, context, transport, event, and state-authority layers | `/project/surfaces-and-integrations` plus contract references |
 
 ## Visual language
 

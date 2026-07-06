@@ -31,6 +31,7 @@ primaryAction:
 
 ## 继续
 
+- [选择交互表面与集成契约](/zh/project/surfaces-and-integrations)
 - [运行时能力](/zh/build/runtime-capabilities)
 - [OpenAPI](/openapi.json)
 - [English canonical page](/build)

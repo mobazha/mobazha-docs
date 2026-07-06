@@ -82,6 +82,7 @@ They still obey three limits:
 - an Agent may prepare, compare, or request an action, but identity, scope, state, quote, and confirmation still govern execution.
 
 - [Build on advertised capabilities](/build)
+- [Separate product surfaces, channels, and integration contracts](/project/surfaces-and-integrations)
 - [Understand community markets and distributed discovery](/project/community-commerce)
 - [Understand Agents, Skills, Tools, and approvals](/project/agent-commerce)
 - [Use MCP and Agent integrations](/build/mcp)

@@ -143,6 +143,10 @@
           "/build"
         ],
         [
+          "Surfaces and integrations",
+          "/project/surfaces-and-integrations"
+        ],
+        [
           "Quickstart",
           "/build/quickstart"
         ],
@@ -350,6 +354,10 @@
         [
           "开发者概览",
           "/zh/build"
+        ],
+        [
+          "交互表面与集成",
+          "/zh/project/surfaces-and-integrations"
         ],
         [
           "运行时能力",

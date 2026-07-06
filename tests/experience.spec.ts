@@ -13,6 +13,7 @@ const routes = [
   "/project/offer-to-fulfillment",
   "/project/community-commerce",
   "/project/agent-commerce",
+  "/project/surfaces-and-integrations",
   "/project/fees",
   "/zh/buy",
   "/zh/project/product-map",
@@ -21,6 +22,7 @@ const routes = [
   "/zh/project/offer-to-fulfillment",
   "/zh/project/community-commerce",
   "/zh/project/agent-commerce",
+  "/zh/project/surfaces-and-integrations",
   "/zh/self-host/install",
 ];
 

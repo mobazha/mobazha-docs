@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="800" viewBox="0 0 360 800" role="img" aria-labelledby="title desc">
+  <title id="title">Surfaces and integration contracts</title>
+  <desc id="desc">Experience shells resolve server context, choose an interaction contract, pass capability and authorization gates, and then reach Core-owned commerce state.</desc>
+  <rect width="360" height="800" rx="18" fill="#fbfdff"/>
+  <rect x="1" y="1" width="358" height="798" rx="17" fill="none" stroke="#dbe5f1"/>
+  <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+    <text x="22" y="34" fill="#004eeb" font-size="10" font-weight="700" letter-spacing="1.3">SURFACES AND INTEGRATIONS</text>
+    <text x="22" y="62" fill="#1b2a4e" font-size="21" font-weight="750">Many surfaces</text>
+    <text x="22" y="86" fill="#1b2a4e" font-size="21" font-weight="750">one commerce authority</text>
+    <text x="22" y="108" fill="#64748b" font-size="11">Five layers stay separate and reviewable.</text>
+
+    <text x="22" y="141" fill="#64748b" font-size="9" font-weight="700" letter-spacing="1.1">1 · EXPERIENCE SHELL</text>
+    <rect x="22" y="154" width="316" height="61" rx="9" fill="#ffffff" stroke="#b9c9dc"/>
+    <text x="39" y="179" fill="#1b2a4e" font-size="11" font-weight="700">Web · mobile · desktop · community</text>
+    <text x="39" y="198" fill="#64748b" font-size="9.5">embedded / browser · Agent workspace</text>
+    <path d="M180 215v20" stroke="#9bb8e8" stroke-width="1.4"/>
+
+    <text x="22" y="252" fill="#64748b" font-size="9" font-weight="700" letter-spacing="1.1">2 · SERVER-RESOLVED CONTEXT</text>
+    <rect x="22" y="265" width="316" height="82" rx="9" fill="#eef4ff" stroke="#6f9ff1" stroke-width="1.4"/>
+    <text x="39" y="290" fill="#1b2a4e" font-size="10" font-weight="700">deployment · tenant · store</text>
+    <text x="39" y="308" fill="#1b2a4e" font-size="10" font-weight="700">storefront / market · identity · role / persona</text>
+    <text x="39" y="328" fill="#64748b" font-size="9.5">effective capabilities must be ready</text>
+    <path d="M180 347v20" stroke="#7ea7ef" stroke-width="1.5"/>
+
+    <text x="22" y="384" fill="#64748b" font-size="9" font-weight="700" letter-spacing="1.1">3 · INTERACTION CONTRACT</text>
+    <g fill="#ffffff" stroke="#7ea7ef">
+      <rect x="22" y="397" width="150" height="48" rx="8"/><rect x="188" y="397" width="150" height="48" rx="8"/>
+      <rect x="22" y="457" width="150" height="48" rx="8"/><rect x="188" y="457" width="150" height="48" rx="8"/>
+      <rect x="105" y="517" width="150" height="48" rx="8"/>
+    </g>
+    <g fill="#1b2a4e" font-size="10" font-weight="700" text-anchor="middle">
+      <text x="97" y="417">HTTP</text><text x="263" y="417">WebSocket</text><text x="97" y="477">Webhook</text><text x="263" y="477">MCP</text><text x="180" y="537">Chat</text>
+    </g>
+    <g fill="#64748b" font-size="8.5" text-anchor="middle">
+      <text x="97" y="433">read + command</text><text x="263" y="433">refresh hint</text><text x="97" y="493">signed delivery</text><text x="263" y="493">scoped Tool call</text><text x="180" y="553">room + message</text>
+    </g>
+    <path d="M180 565v20" stroke="#9bb8e8" stroke-width="1.4"/>
+
+    <text x="22" y="602" fill="#64748b" font-size="9" font-weight="700" letter-spacing="1.1">4 + 5 · GATE AND AUTHORITY</text>
+    <rect x="22" y="615" width="316" height="104" rx="10" fill="#fff9ed" stroke="#e6bd69"/>
+    <text x="39" y="640" fill="#8a5a00" font-size="9" font-weight="750" letter-spacing="1">CAPABILITY + AUTHORIZATION</text>
+    <text x="39" y="663" fill="#1b2a4e" font-size="10" font-weight="700">→ Core-owned quote · order · payment</text>
+    <text x="39" y="681" fill="#1b2a4e" font-size="10" font-weight="700">→ fulfillment · recovery · audit</text>
+    <text x="39" y="702" fill="#64748b" font-size="9">Only admitted transitions persist.</text>
+    <text x="180" y="753" text-anchor="middle" fill="#315b9f" font-size="9" font-weight="700">Domains route · events prompt refresh</text>
+    <text x="180" y="769" text-anchor="middle" fill="#315b9f" font-size="9" font-weight="700">messages communicate · Core decides state</text>
+  </g>
+</svg>

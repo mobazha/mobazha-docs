@@ -66,7 +66,7 @@
         "reviewed": "2026-07-06"
       },
       "language": "en",
-      "search_text": "The independent commerce unit Mobazha starts with an independently operated commerce unit: an identity, one or more stores, their policies and catalog, and the backend that owns their business state. A storefront, hosted application, community market, social channel, browser surface, or Agent can present and assist that unit, but it does not become the authority for its orders or money. This is the central product distinction. Mobazha is neither only a marketplace nor only self hosted shop software. It is a way for independently operated stores to participate in a wider network without giving one presentation channel unrestricted control. Understand identity, stores, storefronts, and channels Follow the order, payment, fulfillment, and recovery spine Four connected product promises Promise Product meaning Authority boundary Own Keep store identity, policy, data, and operating choices explicit The selected backend and operator own store and business state Connect Reach buyers through storefronts, discovery, communities, direct links, and integrations A channel may narrow access or presentation but cannot invent backend capability Trade Create, pay, fulfill, recover, and resolve an order against inspectable state Core owns order, payment verification, refund, dispute, settlement, and audit transitions Extend Add payment rails, delivery services, tools, and Agent workflows through typed contracts Extensions return bounded input; Core validates protected changes These are organizing principles, not a claim that every channel, rail, provider, or automation is available in every distribution. One Core, several operating paths The same public contracts can be used through different operating paths: An independent operator can run a Node and choose its network exposure, integrations, backups, and policies. A hosted distribution can operate Nodes and shared infrastructure while keeping tenant and store boundaries explicit. A client can render only the effective capabilities advertised by the backend it is connected to. Optional discovery, payment, delivery, messaging, AI, and managed services remain separately named dependencies. Choose hosted or self hosted Mobazha Run a Mobazha Node under your control Review architecture and trust boundaries The transaction spine The product becomes concrete around one transaction spine: A buyer reaches a seller owned offer through a storefront or distribution channel. The order owning backend creates the quote and order identity. The selected payment system reports observations or provider state; Core decides what those facts mean for the order. Fulfillment, cancellation, refund, dispute, and completion follow the active state and applicable policy. Historical bindings and evidence remain available for recovery and reconciliation. Buy from an independent store Operate incoming orders Track payment and order status Cancel, request a refund, or open a dispute Understand why order, payment, and protection states stay separate Connect offers, merchandising, supply, and fulfillment Distribution and automation are product surfaces Community markets, social entry points, direct links, marketplace curation, messaging, webhooks, MCP, and Agent workflows are not miscellaneous add ons. They are ways to connect demand, supply, and operations to the independent commerce unit. They still obey three limits: presentation does not override transaction authority; configuration or source presence does not prove runtime availability; an Agent may prepare, compare, or request an action, but identity, scope, state, quote, and confirmation still govern execution. Build on advertised capabilities Understand community markets and distributed discovery Understand Agents, Skills, Tools, and approvals Use MCP and Agent integrations Extend Mobazha through public contracts Read current, Beta, and future direction separately This page explains the product model. Exact availability comes from the connected backend, versioned publi"
+      "search_text": "The independent commerce unit Mobazha starts with an independently operated commerce unit: an identity, one or more stores, their policies and catalog, and the backend that owns their business state. A storefront, hosted application, community market, social channel, browser surface, or Agent can present and assist that unit, but it does not become the authority for its orders or money. This is the central product distinction. Mobazha is neither only a marketplace nor only self hosted shop software. It is a way for independently operated stores to participate in a wider network without giving one presentation channel unrestricted control. Understand identity, stores, storefronts, and channels Follow the order, payment, fulfillment, and recovery spine Four connected product promises Promise Product meaning Authority boundary Own Keep store identity, policy, data, and operating choices explicit The selected backend and operator own store and business state Connect Reach buyers through storefronts, discovery, communities, direct links, and integrations A channel may narrow access or presentation but cannot invent backend capability Trade Create, pay, fulfill, recover, and resolve an order against inspectable state Core owns order, payment verification, refund, dispute, settlement, and audit transitions Extend Add payment rails, delivery services, tools, and Agent workflows through typed contracts Extensions return bounded input; Core validates protected changes These are organizing principles, not a claim that every channel, rail, provider, or automation is available in every distribution. One Core, several operating paths The same public contracts can be used through different operating paths: An independent operator can run a Node and choose its network exposure, integrations, backups, and policies. A hosted distribution can operate Nodes and shared infrastructure while keeping tenant and store boundaries explicit. A client can render only the effective capabilities advertised by the backend it is connected to. Optional discovery, payment, delivery, messaging, AI, and managed services remain separately named dependencies. Choose hosted or self hosted Mobazha Run a Mobazha Node under your control Review architecture and trust boundaries The transaction spine The product becomes concrete around one transaction spine: A buyer reaches a seller owned offer through a storefront or distribution channel. The order owning backend creates the quote and order identity. The selected payment system reports observations or provider state; Core decides what those facts mean for the order. Fulfillment, cancellation, refund, dispute, and completion follow the active state and applicable policy. Historical bindings and evidence remain available for recovery and reconciliation. Buy from an independent store Operate incoming orders Track payment and order status Cancel, request a refund, or open a dispute Understand why order, payment, and protection states stay separate Connect offers, merchandising, supply, and fulfillment Distribution and automation are product surfaces Community markets, social entry points, direct links, marketplace curation, messaging, webhooks, MCP, and Agent workflows are not miscellaneous add ons. They are ways to connect demand, supply, and operations to the independent commerce unit. They still obey three limits: presentation does not override transaction authority; configuration or source presence does not prove runtime availability; an Agent may prepare, compare, or request an action, but identity, scope, state, quote, and confirmation still govern execution. Build on advertised capabilities Separate product surfaces, channels, and integration contracts Understand community markets and distributed discovery Understand Agents, Skills, Tools, and approvals Use MCP and Agent integrations Extend Mobazha through public contracts Read current, Beta, and future direction separately This page explains the product model. Exact"
     },
     {
       "id": "project-identity-and-stores",
@@ -1214,7 +1214,63 @@
         "href": "/build/quickstart"
       },
       "language": "en",
-      "search_text": "Integration rule Use the connected backend's capability response and version information as runtime truth. Documentation describes interfaces and intent, but a client must handle unavailable, disabled, or differently versioned features. Surfaces HTTP and WebSocket interfaces for commerce operations and live updates. Webhooks for operator controlled event delivery. MCP and agent oriented interfaces with explicit identity and authorization boundaries. Plugins and contracts only where the connected deployment advertises them. The current Node entry points are HTTP under /v1/, WebSocket under /ws, and MCP Streamable HTTP under /v1/mcp. Exact operations remain version and capability dependent. Start building First authenticated API call Discover capabilities and call a protected read. Authentication and scopes Select Basic, hosted JWT, or scoped API token. Errors, retries, and idempotency Preserve business correctness across unknown outcomes. HTTP API and OpenAPI Use the generated operation and schema contract. Webhooks Verify signatures, deduplicate, and reconcile. WebSocket Treat events as refresh signals. MCP and agents Initialize a scoped Streamable HTTP client."
+      "search_text": "Integration rule Use the connected backend's capability response and version information as runtime truth. Documentation describes interfaces and intent, but a client must handle unavailable, disabled, or differently versioned features. Surfaces HTTP and WebSocket interfaces for commerce operations and live updates. Webhooks for operator controlled event delivery. MCP and agent oriented interfaces with explicit identity and authorization boundaries. Plugins and contracts only where the connected deployment advertises them. The current Node entry points are HTTP under /v1/, WebSocket under /ws, and MCP Streamable HTTP under /v1/mcp. Exact operations remain version and capability dependent. Start building Choose a surface and integration contract Separate client shells, context routing, transports, events, and state authority. First authenticated API call Discover capabilities and call a protected read. Authentication and scopes Select Basic, hosted JWT, or scoped API token. Errors, retries, and idempotency Preserve business correctness across unknown outcomes. HTTP API and OpenAPI Use the generated operation and schema contract. Webhooks Verify signatures, deduplicate, and reconcile. WebSocket Treat events as refresh signals. MCP and agents Initialize a scoped Streamable HTTP client."
+    },
+    {
+      "id": "project-surfaces-and-integrations",
+      "path": "/project/surfaces-and-integrations",
+      "canonical_url": "https://docs.mobazha.org/project/surfaces-and-integrations",
+      "title": "Surfaces, channels, and integration contracts",
+      "summary": "Place Web, mobile, desktop, community, Agent, domain, chat, API, WebSocket, webhook, and MCP concerns at the right layer while keeping one commerce authority.",
+      "status": "beta",
+      "audiences": [
+        "operators",
+        "developers",
+        "client maintainers",
+        "agent builders",
+        "evaluators"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/surfaces-and-integrations",
+        "label": "Surfaces, channels, and integration contracts"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha public frontend-composition, routing, HTTP, WebSocket, webhook, MCP, chat, and capability contracts"
+      },
+      "reviewed": "2026-07-06",
+      "page_type": "concept",
+      "outcome": "Choose a product surface and integration contract without turning a channel, notification, domain, or client shell into a second state authority.",
+      "estimated_time": "10 minutes",
+      "journey": "build",
+      "primary_action": {
+        "label": "Build an integration",
+        "href": "/build"
+      },
+      "featured_visual": {
+        "id": "surfaces-and-integrations",
+        "src": "/images/docs/project/surfaces-and-integrations.svg",
+        "sha256": "aa8b65bf62d385f4c06382c37dbf8cec07d44cb886c975ab8ca88e591840dd94",
+        "mobile_src": "/images/docs/project/surfaces-and-integrations-mobile.svg",
+        "mobile_sha256": "3d61795f1ef455f36eed00ae8376160138c9f4a60809abf592670140bb86df98",
+        "kind": "conceptual",
+        "width": 760,
+        "height": 540,
+        "mobile_width": 360,
+        "mobile_height": 800,
+        "alt": "Conceptual model showing Web, mobile, desktop, community, embedded, browser, and Agent shells resolving server context before using HTTP, WebSocket, webhook, MCP, or chat contracts to reach capability-gated Core commerce state.",
+        "caption": "Many experience shells and interaction contracts can share one server-resolved context and one Core-owned commerce authority.",
+        "claim": "Explains durable surface and transport boundaries; it does not assert that every client shell, domain route, channel, event, chat service, Tool, or integration is available in every distribution.",
+        "privacy_review": "synthetic-only",
+        "source": "https://github.com/mobazha/mobazha-docs",
+        "source_revision": "surfaces-and-integrations-v1",
+        "applies_to": "Mobazha v0.3 release-candidate product model",
+        "reviewed": "2026-07-06"
+      },
+      "language": "en",
+      "search_text": "Many surfaces, one commerce authority Mobazha can be used through a hosted Web application, a self hosted storefront, a mobile or desktop client, a community entrance, an embedded view, a direct link, or an Agent. These surfaces can look and behave differently while consuming the same store, catalog, quote, order, payment, fulfillment, and policy contracts. The durable product rule is simple: a surface presents and requests; the backend with the active store or order context validates and owns admitted business state. Five layers that should not be collapsed Layer Examples Responsibility Experience shell Web, mobile, desktop, embedded, community, browser, Agent workspace Navigation, layout, local interaction, device integration, and user explanation Entry and context Domain, Storefront slug, marketplace, direct link, tenant, store, role, persona Resolve which business and policy boundary the request is about Interaction contract HTTP, WebSocket, webhook, MCP, chat Carry commands, reads, notifications, tools, or conversation with defined delivery semantics Capability and authorization Backend version, effective capabilities, identity, scopes, resource state Decide whether the operation exists and whether this actor may request it now Commerce authority Core owned quote, order, payment verification, fulfillment, recovery, and audit Admit durable facts and protected state transitions A new client does not require a new order model. A new transport does not activate a product capability. A new domain does not grant authorization. A new notification does not become transaction state. Resolve context before rendering an action Every surface needs enough server validated context to answer: Which deployment and backend is connected? Which tenant, store, Storefront, or marketplace is active? Which identity is authenticated, and which role or persona is acting? Which capability snapshot is authoritative and ready? Which resource state and policy control the requested action? Domains, subdomains, slugs, direct links, social start parameters, and embedded configuration can help locate this context. They are routing input, not proof of ownership. Server side resolution must reject unknown context and prevent client supplied routing hints from forging another store or Storefront. Understand identity, stores, storefronts, and channels Understand community and operator markets Build on effective runtime capabilities Choose the contract by delivery semantics Need Prefer Required behavior Read current state or request a protected change Versioned HTTP API Authenticate, validate schema and state, use idempotency where required, return the authoritative result Refresh an interactive client quickly Authenticated WebSocket Treat events as hints, tolerate gaps and unknown additions, then reload protected state Deliver events to an operator controlled service Signed webhook Durably accept, verify signature, deduplicate, tolerate retry and reordering, reconcile through the API Let an Agent discover and invoke permitted Tools MCP Streamable HTTP Require ai:use , Tool domain scopes, current discovery, approval policy, and underlying command validation Exchange human or Agent conversation Chat contract, currently backed by enabled messaging services such as Matrix Preserve room and message identity, membership and privacy; do not treat a message as order or payment authority Reconcile an external business system Typed extension or controller contract Consume durable Core facts and return bounded observations or attestations These contracts can cooperate. A Web client may issue an HTTP command and receive a WebSocket refresh hint. A webhook consumer may respond to an event by reading the referenced order. An Agent may discover a Tool over MCP that calls the same protected HTTP business operation. HTTP is the authoritative read and command surface The current Node exposes versioned business routes under /v1/ . OpenAPI describes reviewed methods, paths, s"
     },
     {
       "id": "build-quickstart",
@@ -2264,7 +2320,7 @@
       },
       "language": "zh-CN",
       "translation_of": "/project/product-map",
-      "search_text": "独立经营单元 Mobazha 从一个独立经营单元开始：身份、一个或多个店铺、相应政策与目录，以及拥有业务状态的后端。店面、托管应用、社群市场、社交渠道、浏览器入口或 Agent 可以展示和协助这个单元，但不会因此成为订单和资金的权威。 这是 Mobazha 的核心产品区别。它既不只是一个 Marketplace，也不只是一个自行托管商店程序，而是让独立经营的店铺在不把无限权限交给单一展示渠道的前提下参与更大的商业网络。 理解 Identity、店铺、Storefront 与渠道 沿着订单、支付、履约与恢复主线理解交易 四项相互连接的产品承诺 承诺 产品含义 权威边界 自主 明确掌握店铺身份、政策、数据和运行选择 所选后端和运营者拥有店铺及业务状态 连接 通过店面、发现、社群、直接链接和集成触达买家 渠道可以收窄访问或展示，但不能发明后端能力 交易 依据可检查的状态创建、支付、履约、恢复和解决订单 Core 拥有订单、支付验证、退款、争议、结算和审计转换 扩展 通过类型化契约接入支付轨道、配送服务、工具和 Agent 工作流 扩展只能返回受限输入，由 Core 校验受保护变更 这些是组织产品知识的原则，并不表示每个发行版都提供所有渠道、支付轨道、服务商或自动化能力。 一个 Core，多种运行路径 同一套公开契约可以通过不同运行路径使用： 独立运营者可以运行 Node，并选择网络暴露、集成、备份和政策。 托管发行版可以运营 Node 与共享基础设施，同时保持租户和店铺边界明确。 客户端只能展示其连接后端实际声明的有效能力。 发现、支付、配送、消息、AI 和托管服务仍是单独命名的可选依赖。 选择托管服务或自行托管 运行自己的 Mobazha Node 查看英文架构与信任边界 交易主线 Mobazha 围绕一条交易主线变得具体： 买家通过店面或分发渠道到达卖家拥有的报价。 拥有订单的后端创建报价与订单身份。 所选支付系统返回观察结果或服务商状态，由 Core 决定这些事实对订单意味着什么。 履约、取消、退款、争议和完成遵循当前状态与适用政策。 历史绑定和证据继续服务于恢复与对账。 在独立 Mobazha 店铺购买 查看英文订单状态指南 查看英文退款与争议指南 理解订单、支付与保护状态为何必须分离 连接 Offer、Merchandising、Supply 与 Fulfillment 分发和自动化也是产品界面 社群市场、社交入口、直接链接、Marketplace 策展、消息、Webhook、MCP 和 Agent 工作流不是互不相关的附加项，而是把需求、供给和经营操作连接到独立经营单元的方式。 它们仍遵守三个限制： 展示界面不能覆盖交易权威； 配置或源码存在不代表运行时可用； Agent 可以准备、比较或请求动作，但执行仍受身份、权限、状态、报价与确认约束。 基于后端实际公开的能力进行开发 理解社群市场与分布式发现 理解 Agent、Skill、Tool 与批准边界 查看英文 MCP 与 Agent 集成 通过公开契约扩展 Mobazha 分开阅读当前能力、Beta 和未来方向 本页解释产品模型。精确可用性来自当前连接的后端、版本化公开契约、发布范围和交易证据。 English canonical product map 证据 能证明什么 有效运行时能力 当前连接后端现在可以接纳什么 带版本的契约与发布证据 某个发布支持哪些接口与行为 Current 政策页 收费、安全、兼容性或治理的公开规则 Draft RFC 或路线图 经过评审的方向，不是已交付能力 内部设计或实施计划 维护者证据，不是公开产品承诺 查看英文发布范围与成熟度 运行时能力与产品组合 查看英文公开决策与提案 图、路线图、RFC、已链接的软件包或文档页面都不能激活一项能力。涉及可用性时，应以连接后端和适用发布的证据为准。"
+      "search_text": "独立经营单元 Mobazha 从一个独立经营单元开始：身份、一个或多个店铺、相应政策与目录，以及拥有业务状态的后端。店面、托管应用、社群市场、社交渠道、浏览器入口或 Agent 可以展示和协助这个单元，但不会因此成为订单和资金的权威。 这是 Mobazha 的核心产品区别。它既不只是一个 Marketplace，也不只是一个自行托管商店程序，而是让独立经营的店铺在不把无限权限交给单一展示渠道的前提下参与更大的商业网络。 理解 Identity、店铺、Storefront 与渠道 沿着订单、支付、履约与恢复主线理解交易 四项相互连接的产品承诺 承诺 产品含义 权威边界 自主 明确掌握店铺身份、政策、数据和运行选择 所选后端和运营者拥有店铺及业务状态 连接 通过店面、发现、社群、直接链接和集成触达买家 渠道可以收窄访问或展示，但不能发明后端能力 交易 依据可检查的状态创建、支付、履约、恢复和解决订单 Core 拥有订单、支付验证、退款、争议、结算和审计转换 扩展 通过类型化契约接入支付轨道、配送服务、工具和 Agent 工作流 扩展只能返回受限输入，由 Core 校验受保护变更 这些是组织产品知识的原则，并不表示每个发行版都提供所有渠道、支付轨道、服务商或自动化能力。 一个 Core，多种运行路径 同一套公开契约可以通过不同运行路径使用： 独立运营者可以运行 Node，并选择网络暴露、集成、备份和政策。 托管发行版可以运营 Node 与共享基础设施，同时保持租户和店铺边界明确。 客户端只能展示其连接后端实际声明的有效能力。 发现、支付、配送、消息、AI 和托管服务仍是单独命名的可选依赖。 选择托管服务或自行托管 运行自己的 Mobazha Node 查看英文架构与信任边界 交易主线 Mobazha 围绕一条交易主线变得具体： 买家通过店面或分发渠道到达卖家拥有的报价。 拥有订单的后端创建报价与订单身份。 所选支付系统返回观察结果或服务商状态，由 Core 决定这些事实对订单意味着什么。 履约、取消、退款、争议和完成遵循当前状态与适用政策。 历史绑定和证据继续服务于恢复与对账。 在独立 Mobazha 店铺购买 查看英文订单状态指南 查看英文退款与争议指南 理解订单、支付与保护状态为何必须分离 连接 Offer、Merchandising、Supply 与 Fulfillment 分发和自动化也是产品界面 社群市场、社交入口、直接链接、Marketplace 策展、消息、Webhook、MCP 和 Agent 工作流不是互不相关的附加项，而是把需求、供给和经营操作连接到独立经营单元的方式。 它们仍遵守三个限制： 展示界面不能覆盖交易权威； 配置或源码存在不代表运行时可用； Agent 可以准备、比较或请求动作，但执行仍受身份、权限、状态、报价与确认约束。 基于后端实际公开的能力进行开发 区分产品表面、渠道与集成契约 理解社群市场与分布式发现 理解 Agent、Skill、Tool 与批准边界 查看英文 MCP 与 Agent 集成 通过公开契约扩展 Mobazha 分开阅读当前能力、Beta 和未来方向 本页解释产品模型。精确可用性来自当前连接的后端、版本化公开契约、发布范围和交易证据。 English canonical product map 证据 能证明什么 有效运行时能力 当前连接后端现在可以接纳什么 带版本的契约与发布证据 某个发布支持哪些接口与行为 Current 政策页 收费、安全、兼容性或治理的公开规则 Draft RFC 或路线图 经过评审的方向，不是已交付能力 内部设计或实施计划 维护者证据，不是公开产品承诺 查看英文发布范围与成熟度 运行时能力与产品组合 查看英文公开决策与提案 图、路线图、RFC、已链接的软件包或文档页面都不能激活一项能力。涉及可用性时，应以连接后端和适用发布的证据为准。"
     },
     {
       "id": "zh-project-identity-and-stores",
@@ -2851,7 +2907,64 @@
       },
       "language": "zh-CN",
       "translation_of": "/build",
-      "search_text": "集成原则 把连接后端的版本与有效能力响应作为运行时事实。文档描述接口与意图，但客户端必须处理能力不可用、被关闭或版本不同的情况。 公开界面 版本化 HTTP API 与 WebSocket 实时事件。 面向运营者的 Webhook 事件投递。 带身份、ai:use 和工具级权限边界的 MCP。 只有部署实际声明时才可使用的扩展和合约。 继续 运行时能力 OpenAPI English canonical page"
+      "search_text": "集成原则 把连接后端的版本与有效能力响应作为运行时事实。文档描述接口与意图，但客户端必须处理能力不可用、被关闭或版本不同的情况。 公开界面 版本化 HTTP API 与 WebSocket 实时事件。 面向运营者的 Webhook 事件投递。 带身份、ai:use 和工具级权限边界的 MCP。 只有部署实际声明时才可使用的扩展和合约。 继续 选择交互表面与集成契约 运行时能力 OpenAPI English canonical page"
+    },
+    {
+      "id": "zh-project-surfaces-and-integrations",
+      "path": "/zh/project/surfaces-and-integrations",
+      "canonical_url": "https://docs.mobazha.org/zh/project/surfaces-and-integrations",
+      "title": "交互表面、渠道与集成契约",
+      "summary": "把 Web、移动、桌面、社群、Agent、域名、Chat、API、WebSocket、Webhook 与 MCP 放在正确层级，同时保持唯一商业权威。",
+      "status": "beta",
+      "audiences": [
+        "operators",
+        "developers",
+        "client maintainers",
+        "agent builders",
+        "evaluators"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/project/surfaces-and-integrations",
+        "label": "交互表面、渠道与集成契约"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha 公开前端组合、路由、HTTP、WebSocket、Webhook、MCP、Chat 与 Capability 契约"
+      },
+      "reviewed": "2026-07-06",
+      "page_type": "concept",
+      "outcome": "选择产品表面和集成契约，同时不把渠道、通知、域名或客户端 Shell 变成第二个状态权威。",
+      "estimated_time": "10 分钟",
+      "journey": "build",
+      "primary_action": {
+        "label": "查看开发者入口",
+        "href": "/zh/build"
+      },
+      "featured_visual": {
+        "id": "surfaces-and-integrations",
+        "src": "/images/docs/project/surfaces-and-integrations.svg",
+        "sha256": "aa8b65bf62d385f4c06382c37dbf8cec07d44cb886c975ab8ca88e591840dd94",
+        "mobile_src": "/images/docs/project/surfaces-and-integrations-mobile.svg",
+        "mobile_sha256": "3d61795f1ef455f36eed00ae8376160138c9f4a60809abf592670140bb86df98",
+        "kind": "conceptual",
+        "width": 760,
+        "height": 540,
+        "mobile_width": 360,
+        "mobile_height": 800,
+        "alt": "Conceptual model showing Web, mobile, desktop, community, embedded, browser, and Agent shells resolving server context before using HTTP, WebSocket, webhook, MCP, or chat contracts to reach capability-gated Core commerce state.",
+        "caption": "Many experience shells and interaction contracts can share one server-resolved context and one Core-owned commerce authority.",
+        "claim": "Explains durable surface and transport boundaries; it does not assert that every client shell, domain route, channel, event, chat service, Tool, or integration is available in every distribution.",
+        "privacy_review": "synthetic-only",
+        "source": "https://github.com/mobazha/mobazha-docs",
+        "source_revision": "surfaces-and-integrations-v1",
+        "applies_to": "Mobazha v0.3 release-candidate product model",
+        "reviewed": "2026-07-06"
+      },
+      "language": "zh-CN",
+      "translation_of": "/project/surfaces-and-integrations",
+      "search_text": "多种表面，一个商业权威 Mobazha 可以通过托管 Web 应用、自托管 Storefront、移动或桌面客户端、社群入口、嵌入式视图、Direct Link 或 Agent 使用。这些表面可以拥有不同外观与交互，同时消费相同的 Store、Catalog、Quote、Order、Payment、Fulfillment 与 Policy 契约。 稳定产品规则很简单：Surface 负责展示和请求；拥有当前 Store 或 Order 上下文的后端负责校验，并持有获准业务状态。 不能混在一起的五个层级 层级 示例 责任 Experience Shell Web、Mobile、Desktop、Embedded、Community、Browser、Agent Workspace Navigation、Layout、本地交互、设备集成与用户解释 Entry 与 Context Domain、Storefront Slug、Marketplace、Direct Link、Tenant、Store、Role、Persona 解析请求属于哪个商业与政策边界 Interaction Contract HTTP、WebSocket、Webhook、MCP、Chat 用明确投递语义承载命令、读取、通知、Tool 或会话 Capability 与 Authorization Backend Version、Effective Capability、Identity、Scope、Resource State 决定操作是否存在，以及当前 Actor 现在能否请求 Commerce Authority Core 拥有的 Quote、Order、Payment Verification、Fulfillment、Recovery 与 Audit 接纳持久事实和受保护状态迁移 新客户端不需要新的订单模型；新 Transport 不会激活产品能力；新 Domain 不会授予权限；新 Notification 也不会成为交易状态。 渲染动作前先解析 Context 每个表面都需要足够的服务端校验上下文来回答： 当前连接哪个 Deployment 和 Backend？ 当前 Tenant、Store、Storefront 或 Marketplace 是哪个？ 认证了哪个 Identity，正在以哪个 Role 或 Persona 行动？ 哪一份 Capability Snapshot 已就绪并具有权威？ 哪个 Resource State 与 Policy 控制请求动作？ Domain、Subdomain、Slug、Direct Link、社交 Start Parameter 和 Embedded Configuration 可以帮助定位 Context，但它们只是 Routing Input，不是所有权证明。服务端解析必须拒绝未知上下文，并阻止客户端提供的路由提示伪造另一个 Store 或 Storefront。 理解 Identity、Store、Storefront 与 Channel 理解社群与运营者市场 基于有效 Capability 构建 根据投递语义选择契约 需求 优先选择 必须具备的行为 读取当前状态或请求受保护变更 Versioned HTTP API 认证、校验 Schema 与 State、必要时使用 Idempotency，并返回权威结果 快速刷新交互客户端 Authenticated WebSocket 把 Event 当作提示，容忍丢失与未知新增类型，然后重新加载受保护状态 把事件投递给运营者控制的服务 Signed Webhook 持久接收、验签、去重、容忍重试与乱序，并通过 API 对账 让 Agent 发现和调用获准 Tool MCP Streamable HTTP 要求 ai:use 、Tool Domain Scope、当前 Discovery、Approval Policy 与底层命令校验 交换人类或 Agent 会话 Chat Contract，当前可由 Matrix 等已启用消息服务支撑 保留 Room、Message、Membership 与 Privacy；不把消息当作 Order 或 Payment 权威 协调外部商业系统 类型化 Extension 或 Controller Contract 消费持久 Core Fact，并返回有边界 Observation 或 Attestation 这些契约可以协作。Web Client 可以发送 HTTP Command 并收到 WebSocket 刷新提示；Webhook Consumer 可以响应事件后读取相关 Order；Agent 可以通过 MCP 发现 Tool，而该 Tool 调用同一个受保护 HTTP Business Operation。 HTTP 是权威读取与命令表面 当前 Node 在 /v1/ 下暴露带版本业务路由。OpenAPI 描述经过评审的方法、路径、Schema、Response Envelope 与认证机制。精确 Route Availability 仍取决于连接发行版、版本、Capability 与 Identity。 在 Reconnect、Notification、Chat Message、Provider Callback 或不确定 Timeout 后，应使用 HTTP 确认重要状态。客户端动画成功、Push Event 或外部 Callback 都不能替代最新权威资源。 查看英文 HTTP API 与 OpenAPI 指南 查看英文错误、重试与幂等指南 WebSocket 与 Webhook 是不同事件产品 当前 /ws WebSocket 表面用于及时的认证客户端更新。连接可能中断，瞬时事件也可能丢失；重连后，应重新加载做出业务决定所需的资源。 Webhook 是发往运营者控制 Endpoint 的出站签名投递，面向持久接收、Retry、Delivery History 与集成工作流设计。Duplicate 和 Reordering 是预期情况。Receiver 必须校验精确签名 Body、去重 Identifier，并通过 HTTP 对账相关状态。 两个事件表面都不能按 Arrival Time 定义业务状态顺序。 查看英文 WebSocket 指南 查看英文 Webhook Consumer 指南 Chat 用于沟通，不用于结算 Chat 可以承载买卖双方问题、协商上下文、履约协调、Media、Typing State 和 Read Receipt。启用的 Matrix backed Service 可以在公开 Chat Contract 后保存 Room、Membership、Message 与 Event Identity。 Chat Evidence 可以帮助解释争议，但消息写着“已付款”“已发货”“同意退款”或“已完成”不会执行状态迁移。受保护动作仍需通过 Order、Payment、Refund、Dispute 或 Fulfillment Contract。 不要在消息中放入 Credential、Recovery Material、完整 Payment Secret 或不必要的 Customer Data。Community Support Room 并不自动是私有交易渠道，除非其 Membership 与 Data Policy 明确如此。 MCP 是同一边界上的机器表面 /v1/mcp 的 MCP 提供经过认证的 Tool Discovery 与 Invocation。它不会替代 Tool 下方的 HTTP Business Contract、Capability Response、Scope Check、Request bound Approval 或 Core Command Gate。 MCP Client 不一定是自治 Agent；Agent Experience 也不必对每次读取都使用 MCP。应选择能保留 Identity、Schema、Risk、Confirmation 与 Audit 的最窄接口。 理解 Agent、Skill、Tool 与批准边界 查看英文 MCP 传输指南 Client Shell 与更新渠道不定义 Capability Web、Mobile、Desktop、已安装 Launcher、面向浏览器的 Shell 或 Community Mini App 可以为不同设备与发行上下文包装同一套产品契约。每个 Shell 仍负责自己的 Navigation、Storage、Rendering、Permission、Deep Link Handling、Update Policy 与 Release Compatibility。 更新渠道可以交付较新 Client，但不能让旧 Backend 支持缺失操作。Browser Extension 或 Launcher 源码存在，也不会因为能渲染 Mobazha 数据就成为公共 Plugin Runtime。具名 Shell 与自动更新行为需要自己的签名发布、兼容性、回滚、隐私与支持证据。 Browser extension Shell adoption、Universal Launcher Contract、Remote UI Plugin，以及每一种社交或 Embedded Channel 都不是当前通用公共能力。在适用 Release 明确之前"
     },
     {
       "id": "zh-build-runtime-capabilities",
