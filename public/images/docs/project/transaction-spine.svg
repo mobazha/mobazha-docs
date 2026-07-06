@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="500" viewBox="0 0 760 500" role="img" aria-labelledby="title desc">
+  <title id="title">Mobazha transaction spine</title>
+  <desc id="desc">A normal path from reviewing terms through order creation, payment verification, fulfillment, and completion. Three parallel bands separate Core-owned order state, payment-session evidence, and policy-gated protection and recovery.</desc>
+  <rect width="760" height="500" rx="18" fill="#fbfdff"/>
+  <rect x="1" y="1" width="758" height="498" rx="17" fill="none" stroke="#dbe5f1"/>
+  <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+    <text x="30" y="36" fill="#004eeb" font-size="11" font-weight="700" letter-spacing="1.5">TRANSACTION SPINE</text>
+    <text x="30" y="67" fill="#1b2a4e" font-size="24" font-weight="750">One trade, three state surfaces</text>
+    <text x="30" y="91" fill="#64748b" font-size="13">Order authority, payment evidence, and protection policy stay connected but distinct.</text>
+    <text x="30" y="128" fill="#64748b" font-size="10" font-weight="700" letter-spacing="1.2">NORMAL PATH</text>
+    <line x1="94" y1="161" x2="666" y2="161" stroke="#9bb8e8" stroke-width="2"/>
+    <g fill="#ffffff" stroke="#6f9ff1" stroke-width="1.4">
+      <circle cx="94" cy="161" r="22"/><circle cx="237" cy="161" r="22"/><circle cx="380" cy="161" r="22"/><circle cx="523" cy="161" r="22"/><circle cx="666" cy="161" r="22"/>
+    </g>
+    <g fill="#004eeb" font-size="12" font-weight="750" text-anchor="middle">
+      <text x="94" y="165">1</text><text x="237" y="165">2</text><text x="380" y="165">3</text><text x="523" y="165">4</text><text x="666" y="165">5</text>
+    </g>
+    <g fill="#1b2a4e" font-size="12" font-weight="700" text-anchor="middle">
+      <text x="94" y="199">Review terms</text><text x="237" y="199">Create order</text><text x="380" y="199">Fund + verify</text><text x="523" y="199">Accept + fulfill</text><text x="666" y="199">Complete</text>
+    </g>
+    <rect x="30" y="225" width="700" height="58" rx="10" fill="#eef4ff" stroke="#8aafea"/>
+    <text x="49" y="248" fill="#004eeb" font-size="10" font-weight="750" letter-spacing="1.1">ORDER · CORE AUTHORITY</text>
+    <text x="49" y="269" fill="#1b2a4e" font-size="13" font-weight="650">Accepted snapshot · admitted transition · current action · terminal business outcome</text>
+    <rect x="30" y="294" width="700" height="58" rx="10" fill="#ffffff" stroke="#b9c9dc"/>
+    <text x="49" y="317" fill="#59697f" font-size="10" font-weight="750" letter-spacing="1.1">PAYMENT SESSION · EVIDENCE</text>
+    <text x="49" y="338" fill="#1b2a4e" font-size="13" font-weight="650">Order binding · funding target · observation · verification · settlement semantics</text>
+    <rect x="30" y="363" width="700" height="80" rx="10" fill="#fff9ed" stroke="#e6bd69"/>
+    <text x="49" y="386" fill="#8a5a00" font-size="10" font-weight="750" letter-spacing="1.1">PROTECTION + RECOVERY · POLICY GATED</text>
+    <g fill="#ffffff" stroke="#dfc488">
+      <rect x="49" y="398" width="145" height="29" rx="7"/><rect x="221" y="398" width="145" height="29" rx="7"/><rect x="394" y="398" width="145" height="29" rx="7"/><rect x="566" y="398" width="145" height="29" rx="7"/>
+    </g>
+    <g fill="#6d4b0c" font-size="11" font-weight="700" text-anchor="middle">
+      <text x="121" y="417">Cancel</text><text x="293" y="417">Decline</text><text x="466" y="417">Refund</text><text x="638" y="417">Dispute</text>
+    </g>
+    <text x="380" y="469" text-anchor="middle" fill="#475569" font-size="11" font-weight="650">Events prompt a refresh · backend state is authoritative · capabilities expose the next valid action</text>
+  </g>
+</svg>

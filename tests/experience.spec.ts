@@ -8,9 +8,13 @@ const routes = [
   "/build/api",
   "/api-reference",
   "/project/product-map",
+  "/project/identity-and-stores",
+  "/project/transaction-spine",
   "/project/fees",
   "/zh/buy",
   "/zh/project/product-map",
+  "/zh/project/identity-and-stores",
+  "/zh/project/transaction-spine",
   "/zh/self-host/install",
 ];
 

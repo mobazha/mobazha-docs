@@ -28,6 +28,9 @@ Mobazha 从一个独立经营单元开始：身份、一个或多个店铺、相
 
 这是 Mobazha 的核心产品区别。它既不只是一个 Marketplace，也不只是一个自行托管商店程序，而是让独立经营的店铺在不把无限权限交给单一展示渠道的前提下参与更大的商业网络。
 
+- [理解 Identity、店铺、Storefront 与渠道](/zh/project/identity-and-stores)
+- [沿着订单、支付、履约与恢复主线理解交易](/zh/project/transaction-spine)
+
 ## 四项相互连接的产品承诺
 
 | 承诺 | 产品含义 | 权威边界 |
@@ -65,6 +68,7 @@ Mobazha 围绕一条交易主线变得具体：
 - [在独立 Mobazha 店铺购买](/zh/buy)
 - [查看英文订单状态指南](/buy/order-status)
 - [查看英文退款与争议指南](/buy/cancel-refund-dispute)
+- [理解订单、支付与保护状态为何必须分离](/zh/project/transaction-spine)
 
 ## 分发和自动化也是产品界面
 

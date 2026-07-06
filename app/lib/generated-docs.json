@@ -3351,6 +3351,264 @@
     ]
   },
   {
+    "slug": "project/identity-and-stores",
+    "title": "Identity, stores, and storefronts",
+    "summary": "Separate access accounts, store and Node identity, storefront presentation, and channel context so ownership and transaction authority stay understandable.",
+    "status": "Beta",
+    "audiences": [
+      "Buyers",
+      "Sellers",
+      "Operators",
+      "Developers",
+      "Evaluators"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Identity, stores, and storefronts",
+    "authorityUrl": "https://docs.mobazha.org/project/identity-and-stores",
+    "evidenceLabel": "Mobazha public identity, profile, capability, and architecture contracts",
+    "evidenceUrl": "https://github.com/mobazha",
+    "reviewed": "2026-07-06",
+    "pageType": "concept",
+    "outcome": "Decide which boundary should change when a person needs another login, store, storefront, or distribution channel.",
+    "estimatedTime": "8 minutes",
+    "journey": "start",
+    "primaryAction": {
+      "label": "Prepare a store",
+      "href": "/sell/store-setup"
+    },
+    "featuredVisual": "identity-storefront-model",
+    "language": "en",
+    "sections": [
+      {
+        "heading": "Four different product concepts",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Mobazha keeps four concepts separate because they carry different authority:"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Concept",
+              "What it does",
+              "What it does not prove"
+            ],
+            "rows": [
+              [
+                "Account or credential",
+                "Authenticates a person, service, or Agent and associates allowed store contexts",
+                "Ownership of every store visible in a client"
+              ],
+              [
+                "Store and Node identity",
+                "Names the independently operated commerce unit and the backend that owns its business state",
+                "That one hosted account, domain, or channel is permanently required"
+              ],
+              [
+                "Storefront",
+                "Presents a filtered, themed, or differently routed view of one store",
+                "A separate wallet, order ledger, reputation, or legal entity"
+              ],
+              [
+                "Channel",
+                "Brings a storefront into Web, embedded, social, direct-link, or integration contexts",
+                "Permission to change the store or bypass backend capability"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "An interface may display all four together. They remain separate in the product model."
+          }
+        ]
+      },
+      {
+        "heading": "The store is the business-state boundary",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "In Open Core, a Node exposes a profile and per-node commerce services. The store context owns or serves the catalog, policies, orders, messages, payment observations, fulfillment records, and reputation associated with that independently operated unit."
+          },
+          {
+            "type": "paragraph",
+            "text": "A hosted control plane may associate an authenticated account with one or more registered stores and resolve the active store for an administration request. That association is an access and routing fact. Moving between accounts or clients must not silently rewrite the store's peer identity, transaction history, or accepted obligations."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Review architecture and trust boundaries",
+                "href": "/project/architecture"
+              },
+              {
+                "label": "Prepare a store for its first order",
+                "href": "/sell/store-setup"
+              },
+              {
+                "label": "Choose hosted or self-hosted Mobazha",
+                "href": "/start/choose-deployment"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "A storefront is a view, not another store",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "A storefront can give the same store another public name, slug, theme, catalog filter, visibility rule, pricing presentation, or channel entry. The parent store still owns the shared business state."
+          },
+          {
+            "type": "paragraph",
+            "text": "Use a storefront when the requirement is presentation or distribution:"
+          },
+          {
+            "type": "unordered-list",
+            "items": [
+              "a campaign or seasonal catalog;",
+              "a community-specific entry point;",
+              "a public, unlisted, or restricted presentation;",
+              "a different theme or product subset;",
+              "a Web, embedded, or direct-link route to the same operating store."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Use a separate store or Node when the requirement is independent business state, such as a different operator, wallet or payment configuration, order ledger, reputation boundary, legal responsibility, infrastructure, or recovery plan."
+          },
+          {
+            "type": "callout",
+            "tone": "important",
+            "text": "Storefront support is capability-gated. A model or route described here does not mean the connected backend enables named storefronts, every visibility mode, channel binding, or price rule."
+          }
+        ]
+      },
+      {
+        "heading": "Roles are resolved in context",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "A person may browse, buy, administer a store, moderate a case, or operate an integration at different times. These are action contexts, not a reason to give one session every permission."
+          },
+          {
+            "type": "paragraph",
+            "text": "Before a protected action, the system resolves:"
+          },
+          {
+            "type": "ordered-list",
+            "items": [
+              "the authenticated identity or credential;",
+              "the active store and, when relevant, storefront context;",
+              "the required scope or role for that action;",
+              "the backend capability and current resource state;",
+              "any quote, policy, confirmation, or step-up requirement."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Changing the visible view cannot grant a missing scope. Hiding an Admin route cannot replace server-side authorization."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Authentication, identities, and scopes",
+                "href": "/build/authentication"
+              },
+              {
+                "label": "Runtime capabilities and product composition",
+                "href": "/build/runtime-capabilities"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Current model and evolution direction",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "Area",
+              "Public meaning now",
+              "Direction that must remain labeled"
+            ],
+            "rows": [
+              [
+                "Node profile and store policy",
+                "Per-node identity and commerce configuration are part of the Core model",
+                "Richer portable or externally anchored identity proofs"
+              ],
+              [
+                "Hosted account association",
+                "A hosted identity may be authorized for an explicit store context",
+                "Broader multi-identity and multi-operator administration"
+              ],
+              [
+                "Storefront",
+                "A lightweight presentation model may be enabled by a distribution",
+                "More channel bindings, scoped analytics, richer access and pricing rules"
+              ],
+              [
+                "Multiple stores",
+                "Registered stores remain independent commerce units",
+                "Easier creation, switching, staff delegation, and cross-store reporting"
+              ],
+              [
+                "Channel composition",
+                "Clients and distributions select experiences and narrow capabilities",
+                "Additional social, embedded, browser, and Agent surfaces"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "The connected backend's effective capabilities and the applicable release remain the availability authority. Internal design phases and future identity models are not current product guarantees."
+          }
+        ]
+      },
+      {
+        "heading": "Choose the smallest boundary that fits",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "Need",
+              "Prefer"
+            ],
+            "rows": [
+              [
+                "Different theme, catalog subset, campaign, or community entrance",
+                "Storefront when the backend supports it"
+              ],
+              [
+                "Different domain pointing to the same operating store",
+                "Domain or channel routing with explicit store context"
+              ],
+              [
+                "Independent orders, wallet configuration, reputation, or operator responsibility",
+                "Separate store or Node"
+              ],
+              [
+                "Another person or Agent helping with limited duties",
+                "A narrow account, token, or delegated scope when supported"
+              ],
+              [
+                "Strong privacy separation that must not be linked by the operator",
+                "A genuinely separate identity and operating boundary, not a cosmetic storefront"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Start with the lightest boundary that preserves the required trust, accounting, and recovery model. Do not use a new storefront to imitate isolation it cannot provide."
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "project/legal-and-privacy",
     "title": "Legal, privacy, license, and trademark boundaries",
     "summary": "Separate software licenses, hosted-service terms, privacy commitments, third-party obligations, and trademark rights.",
@@ -3476,6 +3734,19 @@
           {
             "type": "paragraph",
             "text": "This is the central product distinction. Mobazha is neither only a marketplace nor only self-hosted shop software. It is a way for independently operated stores to participate in a wider network without giving one presentation channel unrestricted control."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Understand identity, stores, storefronts, and channels",
+                "href": "/project/identity-and-stores"
+              },
+              {
+                "label": "Follow the order, payment, fulfillment, and recovery spine",
+                "href": "/project/transaction-spine"
+              }
+            ]
           }
         ]
       },
@@ -3588,6 +3859,10 @@
               {
                 "label": "Cancel, request a refund, or open a dispute",
                 "href": "/buy/cancel-refund-dispute"
+              },
+              {
+                "label": "Understand why order, payment, and protection states stay separate",
+                "href": "/project/transaction-spine"
               }
             ]
           }
@@ -4048,6 +4323,266 @@
           {
             "type": "paragraph",
             "text": "Use the affected repository's GitHub private vulnerability reporting. Do not publish exploit details, leaked credentials, signing-key concerns, or customer data in issues, chat, or documentation feedback."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "project/transaction-spine",
+    "title": "The Mobazha transaction spine",
+    "summary": "Follow one trade across order authority, payment evidence, fulfillment, and policy-gated recovery without collapsing them into one misleading status.",
+    "status": "Beta",
+    "audiences": [
+      "Buyers",
+      "Sellers",
+      "Operators",
+      "Developers",
+      "Evaluators"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "The Mobazha transaction spine",
+    "authorityUrl": "https://docs.mobazha.org/project/transaction-spine",
+    "evidenceLabel": "Mobazha public order, payment-session, capability, and recovery contracts",
+    "evidenceUrl": "https://github.com/mobazha",
+    "reviewed": "2026-07-06",
+    "pageType": "concept",
+    "outcome": "Read a transaction correctly and know which state, evidence, policy, and actor authorize the next action.",
+    "estimatedTime": "9 minutes",
+    "journey": "start",
+    "primaryAction": {
+      "label": "Track an order",
+      "href": "/buy/order-status"
+    },
+    "featuredVisual": "transaction-spine",
+    "language": "en",
+    "sections": [
+      {
+        "heading": "One trade, three state surfaces",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "A Mobazha transaction moves through one durable spine: review terms, create an order, establish and verify payment, fulfill, and complete. Recovery can branch into cancellation, decline, refund, or dispute when the active state and policy permit it."
+          },
+          {
+            "type": "paragraph",
+            "text": "The interface may present that journey as one timeline, but three state surfaces remain separate:"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Surface",
+              "What it answers",
+              "Authority"
+            ],
+            "rows": [
+              [
+                "Order",
+                "What have buyer and seller committed to, and what action is legal next?",
+                "The order-owning Core backend and its state machine"
+              ],
+              [
+                "Payment session",
+                "Where should funds go, what has been observed, and what has been verified?",
+                "A durable session binds the order, quote, rail, observations, and verification result"
+              ],
+              [
+                "Protection and recovery",
+                "Which cancellation, refund, dispute, or settlement path applies?",
+                "The accepted product terms, current state, roles, and effective capabilities"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "No surface should silently stand in for another. A wallet event is payment evidence, not an order transition. A completed order does not by itself describe the settlement rail. A dispute button does not prove that every order has the same protection model."
+          }
+        ]
+      },
+      {
+        "heading": "The normal path",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "**Review terms.** The buyer reviews one seller's item, price, shipping, payment, refund, and protection terms. Volatile values should be bound to a quote or equivalent evidence.",
+              "**Create the order.** The order-owning backend assigns the durable identity, stores the accepted snapshot, and admits the first order state.",
+              "**Establish payment.** A payment session binds the order to a funding target or provider session, amount, asset or currency, expiry, confirmation policy, and applicable settlement semantics.",
+              "**Observe and verify.** Wallet, chain, or provider events refresh payment information. Core evaluates those facts and decides whether the order may advance.",
+              "**Accept and fulfill.** The seller takes only actions exposed by the current order state and capability, then records fulfillment or pickup evidence.",
+              "**Complete.** The backend records the terminal business outcome while preserving the bindings needed for reconciliation and recovery."
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Review checkout responsibilities",
+                "href": "/buy/checkout"
+              },
+              {
+                "label": "Track payment and order status",
+                "href": "/buy/order-status"
+              },
+              {
+                "label": "Operate incoming orders",
+                "href": "/sell/orders"
+              },
+              {
+                "label": "Configure accepted payment methods",
+                "href": "/sell/payments"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Events prompt a refresh; backend state is authoritative",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Clients can receive a message, webhook, provider callback, or wallet observation before or after another surface updates. Treat those events as prompts to reload the affected resource. Render the backend's latest order and payment-session state, not a locally inferred transition."
+          },
+          {
+            "type": "paragraph",
+            "text": "This rule protects both sides from several dangerous shortcuts:"
+          },
+          {
+            "type": "unordered-list",
+            "items": [
+              "do not mark an order paid from a transaction identifier alone;",
+              "do not fulfill because a notification arrived without verified backend state;",
+              "do not infer refund completion from a requested refund;",
+              "do not infer settlement finality from order completion;",
+              "do not retry a protected command without its current idempotency and state rules."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Protection is a product term, not a universal badge",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Payment rail and protection model are independent choices. A direct-observed payment, an escrow-like flow, and a provider-hosted session may expose different actions. Product terms can further determine who may cancel, when funds can move, what evidence a dispute accepts, and which actor or mechanism resolves it."
+          },
+          {
+            "type": "paragraph",
+            "text": "Before calling a transaction “protected,” identify:"
+          },
+          {
+            "type": "ordered-list",
+            "items": [
+              "the accepted order and payment terms;",
+              "the active protection or settlement model;",
+              "the party or mechanism that controls funds at each stage;",
+              "the available recovery actions and their deadlines;",
+              "the evidence and finality rules for the applicable rail."
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Mobazha should describe these concrete properties instead of implying that one generic “buyer protection” promise covers every distribution, seller, rail, and order."
+          }
+        ]
+      },
+      {
+        "heading": "Recovery branches preserve the original spine",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Cancellation, decline, refund, and dispute are not interchangeable labels:"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Branch",
+              "Typical meaning",
+              "What must be checked"
+            ],
+            "rows": [
+              [
+                "Cancel",
+                "Stop an order before the applicable commitment or fulfillment boundary",
+                "Actor, current state, payment progress, and cancellation policy"
+              ],
+              [
+                "Decline",
+                "Seller refuses an order before acceptance or fulfillment",
+                "Seller authority, reason, and required payment recovery"
+              ],
+              [
+                "Refund",
+                "Return some or all value after payment evidence exists",
+                "Refund destination, amount, rail capability, authorization, and finality"
+              ],
+              [
+                "Dispute",
+                "Preserve and evaluate conflicting claims under an applicable protection model",
+                "Eligibility window, evidence, resolver, decision, and settlement effect"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "The original order, payment binding, and evidence remain part of the audit trail. A recovery action should not manufacture a new, disconnected history."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Cancel, request a refund, or open a dispute",
+                "href": "/buy/cancel-refund-dispute"
+              },
+              {
+                "label": "Review public security and recovery guidance",
+                "href": "/project/security"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Current contract and evolution direction",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "Area",
+              "Public meaning now",
+              "Direction that must remain labeled"
+            ],
+            "rows": [
+              [
+                "Order state",
+                "Core owns admitted business transitions and clients render current state",
+                "Richer cross-client timelines and operator diagnostics"
+              ],
+              [
+                "Payment session",
+                "Durable order binding, funding target or provider state, observations, and verification are modeled separately",
+                "More rail adapters and recovery automation"
+              ],
+              [
+                "Protection",
+                "Available actions depend on accepted terms, state, role, and effective capability",
+                "Additional product modes, resolvers, and evidence workflows"
+              ],
+              [
+                "Fulfillment",
+                "Shipping, pickup, or other fulfillment facts advance the order only through admitted actions",
+                "Broader delivery and supply-chain integrations"
+              ],
+              [
+                "Automation",
+                "Webhooks and Agents may observe, prepare, or request bounded actions",
+                "More policy-aware automation with explicit approval and audit"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "The connected backend, applicable release, accepted transaction evidence, and effective capabilities remain the availability authority. An RFC, diagram, configuration key, or source package does not activate a rail or protection mode."
           }
         ]
       }
@@ -7432,6 +7967,274 @@
     ]
   },
   {
+    "slug": "zh/project/identity-and-stores",
+    "title": "Identity、店铺与 Storefront",
+    "summary": "分开理解访问账户、店铺与 Node 身份、Storefront 展示以及渠道上下文，使所有权和交易权威保持清晰。",
+    "status": "Beta",
+    "audiences": [
+      "买家",
+      "卖家",
+      "运营者",
+      "开发者",
+      "评估者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Identity、店铺与 Storefront",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/identity-and-stores",
+    "evidenceLabel": "Mobazha 公开身份、Profile、能力与架构契约",
+    "evidenceUrl": "https://github.com/mobazha",
+    "reviewed": "2026-07-06",
+    "pageType": "concept",
+    "outcome": "当用户需要新的登录方式、店铺、店面或分发渠道时，判断真正应该改变哪一层边界。",
+    "estimatedTime": "8 分钟",
+    "journey": "start",
+    "primaryAction": {
+      "label": "准备店铺",
+      "href": "/zh/sell"
+    },
+    "featuredVisual": "identity-storefront-model",
+    "language": "zh-CN",
+    "translationOf": "project/identity-and-stores",
+    "sections": [
+      {
+        "heading": "四个不同的产品概念",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Mobazha 将四个概念分开，因为它们承载的权威不同："
+          },
+          {
+            "type": "table",
+            "headers": [
+              "概念",
+              "负责什么",
+              "不能证明什么"
+            ],
+            "rows": [
+              [
+                "Account 或 Credential",
+                "验证人、服务或 Agent，并关联允许访问的店铺上下文",
+                "客户端里看到的每个店铺都归该账户所有"
+              ],
+              [
+                "Store 与 Node Identity",
+                "标识独立经营单元，以及拥有其业务状态的后端",
+                "永久依赖某个托管账户、域名或渠道"
+              ],
+              [
+                "Storefront",
+                "为同一个店铺提供经过筛选、换主题或不同路由的展示",
+                "独立钱包、订单账本、信誉或法律主体"
+              ],
+              [
+                "Channel",
+                "将 Storefront 带入 Web、嵌入式、社交、直接链接或集成场景",
+                "修改店铺或绕过后端能力的权限"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "一个界面可以同时展示这四层，但它们在产品模型中仍然独立。"
+          }
+        ]
+      },
+      {
+        "heading": "店铺是业务状态边界",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "在 Open Core 中，Node 暴露 Profile 和节点级商业服务。店铺上下文拥有或服务于该独立经营单元的目录、政策、订单、消息、支付观察、履约记录和信誉。"
+          },
+          {
+            "type": "paragraph",
+            "text": "托管控制面可以把经过验证的账户与一个或多个已登记店铺关联，并为管理请求解析活动店铺。这是访问和路由事实。切换账户或客户端不能静默改写店铺 peer identity、交易历史或已经接受的义务。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Mobazha 产品地图",
+                "href": "/zh/project/product-map"
+              },
+              {
+                "label": "查看英文架构与信任边界",
+                "href": "/project/architecture"
+              },
+              {
+                "label": "选择托管服务或自行托管",
+                "href": "/zh/start/choose-deployment"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Storefront 是视图，不是另一个店铺",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Storefront 可以为同一个店铺提供不同公开名称、slug、主题、商品筛选、可见性规则、价格展示或渠道入口，但共享业务状态仍由父店铺拥有。"
+          },
+          {
+            "type": "paragraph",
+            "text": "展示或分发需求适合使用 Storefront："
+          },
+          {
+            "type": "unordered-list",
+            "items": [
+              "活动页或季节目录；",
+              "社群专属入口；",
+              "公开、unlisted 或受限展示；",
+              "不同主题或商品子集；",
+              "指向同一个经营店铺的 Web、嵌入式或直接链接路由。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "需要独立业务状态时应使用独立 Store 或 Node，例如不同运营者、钱包或支付配置、订单账本、信誉边界、法律责任、基础设施或恢复计划。"
+          },
+          {
+            "type": "callout",
+            "tone": "important",
+            "text": "Storefront 受运行时能力控制。本页描述的模型或路由不表示当前连接后端已经启用命名 Storefront、全部可见性模式、渠道绑定或价格规则。"
+          }
+        ]
+      },
+      {
+        "heading": "角色由当前上下文解析",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "同一个人可以在不同时候浏览、购买、管理店铺、处理争议或运行集成。这些是动作上下文，不是让一个 Session 自动拥有所有权限的理由。"
+          },
+          {
+            "type": "paragraph",
+            "text": "执行受保护动作之前，系统需要解析："
+          },
+          {
+            "type": "ordered-list",
+            "items": [
+              "已认证的身份或 Credential；",
+              "当前 Store，以及相关时的 Storefront 上下文；",
+              "该动作要求的 Scope 或 Role；",
+              "后端能力和当前资源状态；",
+              "适用的报价、政策、确认或 Step-up 要求。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "切换可见视图不能补出缺失的 Scope；隐藏 Admin 路由也不能替代服务端授权。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "查看英文身份认证与权限",
+                "href": "/build/authentication"
+              },
+              {
+                "label": "运行时能力与产品组合",
+                "href": "/zh/build/runtime-capabilities"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "当前模型与演进方向",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "领域",
+              "当前公开含义",
+              "必须继续标为方向的内容"
+            ],
+            "rows": [
+              [
+                "Node Profile 与店铺政策",
+                "节点级身份和商业配置属于 Core 模型",
+                "更丰富、可移植或外部锚定的身份证明"
+              ],
+              [
+                "托管账户关联",
+                "托管身份可以被授权到明确店铺上下文",
+                "更广泛的多 Identity 与多运营者管理"
+              ],
+              [
+                "Storefront",
+                "发行版可以启用轻量展示模型",
+                "更多渠道绑定、范围化分析、访问与价格规则"
+              ],
+              [
+                "多店铺",
+                "已登记店铺仍是相互独立的经营单元",
+                "更方便的创建、切换、Staff 委派与跨店报表"
+              ],
+              [
+                "渠道组合",
+                "客户端和发行版选择体验并收窄能力",
+                "更多社交、嵌入式、浏览器和 Agent 界面"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "实际可用性仍由当前连接后端的有效能力和适用发布决定。内部设计阶段与未来身份模型不是当前产品保证。"
+          }
+        ]
+      },
+      {
+        "heading": "选择满足需求的最小边界",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "需求",
+              "优先选择"
+            ],
+            "rows": [
+              [
+                "不同主题、商品子集、活动或社群入口",
+                "后端支持时使用 Storefront"
+              ],
+              [
+                "不同域名指向同一个经营店铺",
+                "带明确 Store 上下文的域名或渠道路由"
+              ],
+              [
+                "独立订单、钱包配置、信誉或运营责任",
+                "独立 Store 或 Node"
+              ],
+              [
+                "另一个人或 Agent 只协助有限职责",
+                "支持时使用窄范围账户、Token 或委派 Scope"
+              ],
+              [
+                "运营者也不能关联的强隐私隔离",
+                "真正独立的 Identity 和运行边界，而不是装饰性 Storefront"
+              ]
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/project/identity-and-stores"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "应从能够保留所需信任、记账和恢复模型的最轻边界开始，不能用新 Storefront 模拟它无法提供的隔离。"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "zh/project/product-map",
     "title": "Mobazha 产品地图",
     "summary": "Mobazha 把独立经营的店铺、Core 权威商业状态机、可选服务、社群分发和受控自动化连接起来，而不是把它们重新封装成一个不透明平台。",
@@ -7471,6 +8274,19 @@
           {
             "type": "paragraph",
             "text": "这是 Mobazha 的核心产品区别。它既不只是一个 Marketplace，也不只是一个自行托管商店程序，而是让独立经营的店铺在不把无限权限交给单一展示渠道的前提下参与更大的商业网络。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "理解 Identity、店铺、Storefront 与渠道",
+                "href": "/zh/project/identity-and-stores"
+              },
+              {
+                "label": "沿着订单、支付、履约与恢复主线理解交易",
+                "href": "/zh/project/transaction-spine"
+              }
+            ]
           }
         ]
       },
@@ -7579,6 +8395,10 @@
               {
                 "label": "查看英文退款与争议指南",
                 "href": "/buy/cancel-refund-dispute"
+              },
+              {
+                "label": "理解订单、支付与保护状态为何必须分离",
+                "href": "/zh/project/transaction-spine"
               }
             ]
           }
@@ -7688,6 +8508,276 @@
             "type": "callout",
             "tone": "important",
             "text": "图、路线图、RFC、已链接的软件包或文档页面都不能激活一项能力。涉及可用性时，应以连接后端和适用发布的证据为准。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/project/transaction-spine",
+    "title": "Mobazha 交易主线",
+    "summary": "沿着订单权威、支付证据、履约与策略约束的恢复路径理解一笔交易，而不是把它们压成一个容易误导的状态。",
+    "status": "Beta",
+    "audiences": [
+      "Buyers",
+      "Sellers",
+      "Operators",
+      "Developers",
+      "Evaluators"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Mobazha 交易主线",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/transaction-spine",
+    "evidenceLabel": "Mobazha 公开订单、支付会话、能力与恢复契约",
+    "evidenceUrl": "https://github.com/mobazha",
+    "reviewed": "2026-07-06",
+    "pageType": "concept",
+    "outcome": "正确读取一笔交易，并判断哪种状态、证据、策略与角色允许执行下一步。",
+    "estimatedTime": "9 分钟",
+    "journey": "start",
+    "primaryAction": {
+      "label": "跟踪订单",
+      "href": "/buy/order-status"
+    },
+    "featuredVisual": "transaction-spine",
+    "language": "zh-CN",
+    "translationOf": "project/transaction-spine",
+    "sections": [
+      {
+        "heading": "一笔交易，三个状态面",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "一笔 Mobazha 交易沿着一条稳定主线推进：确认条款、创建订单、建立并验证支付、履约、完成。在当前状态和策略允许时，恢复路径可以分支为取消、拒单、退款或争议。"
+          },
+          {
+            "type": "paragraph",
+            "text": "界面可以把它呈现为一条时间线，但三个状态面必须保持分离："
+          },
+          {
+            "type": "table",
+            "headers": [
+              "状态面",
+              "它回答什么",
+              "权威来源"
+            ],
+            "rows": [
+              [
+                "订单",
+                "买卖双方承诺了什么，下一步什么动作是合法的？",
+                "持有订单的 Core 后端及其状态机"
+              ],
+              [
+                "支付会话",
+                "资金应去哪里、观察到了什么、验证了什么？",
+                "将订单、报价、支付轨道、观察与验证结果绑定的持久会话"
+              ],
+              [
+                "保护与恢复",
+                "适用哪一种取消、退款、争议或结算路径？",
+                "已接受的产品条款、当前状态、角色与有效能力"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "任何一个状态面都不应暗中替代另一个。钱包事件是支付证据，不是订单状态迁移；订单完成本身不说明采用了哪种结算轨道；出现争议按钮，也不代表所有订单都具有相同的保护模型。"
+          }
+        ]
+      },
+      {
+        "heading": "正常路径",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "**确认条款。** 买家检查单个卖家的商品、价格、配送、支付、退款与保护条款；易变值应绑定到报价或等价证据。",
+              "**创建订单。** 持有订单的后端分配稳定标识，保存已接受的快照，并准入第一个订单状态。",
+              "**建立支付。** 支付会话把订单绑定到收款目标或提供商会话、金额、资产或币种、有效期、确认策略与适用的结算语义。",
+              "**观察并验证。** 钱包、链或提供商事件刷新支付信息；Core 评估这些事实，并决定订单能否推进。",
+              "**接受并履约。** 卖家只执行当前订单状态和能力所暴露的动作，然后记录发货、交付或自提证据。",
+              "**完成。** 后端记录终态业务结果，同时保留对账和恢复所需的绑定关系。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "查看英文结账责任指南",
+                "href": "/buy/checkout"
+              },
+              {
+                "label": "查看英文支付与订单状态指南",
+                "href": "/buy/order-status"
+              },
+              {
+                "label": "查看英文卖家订单指南",
+                "href": "/sell/orders"
+              },
+              {
+                "label": "查看英文卖家支付指南",
+                "href": "/sell/payments"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "事件用于提示刷新，后端状态才是权威",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "客户端可能先后收到消息、Webhook、提供商回调或钱包观察，而其他界面尚未同步。应把这些事件当作重新加载相关资源的提示，渲染后端最新的订单和支付会话状态，而不是在本地推断迁移。"
+          },
+          {
+            "type": "paragraph",
+            "text": "这条规则能避免多种危险捷径："
+          },
+          {
+            "type": "unordered-list",
+            "items": [
+              "不要仅凭交易标识就把订单标为已支付；",
+              "不要在后端尚未验证时仅凭通知开始履约；",
+              "不要把“已申请退款”推断成“退款已完成”；",
+              "不要从“订单完成”推断资金结算已经最终完成；",
+              "不要脱离当前幂等和状态规则重试受保护命令。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "保护是具体产品条款，不是通用徽章",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "支付轨道和保护模型是两个独立选择。直接观察型支付、类似托管的流程、提供商托管会话可以暴露不同动作；产品条款还会决定谁能取消、资金何时可移动、争议接受什么证据，以及由哪个参与方或机制裁决。"
+          },
+          {
+            "type": "paragraph",
+            "text": "在把一笔交易称为“受保护”之前，需要明确："
+          },
+          {
+            "type": "ordered-list",
+            "items": [
+              "已接受的订单与支付条款；",
+              "生效的保护或结算模型；",
+              "各阶段由谁或什么机制控制资金；",
+              "可用恢复动作及其时限；",
+              "适用支付轨道的证据与最终性规则。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Mobazha 应说明这些具体属性，而不是暗示一个笼统的“买家保护”承诺覆盖所有发行版、卖家、支付轨道和订单。"
+          }
+        ]
+      },
+      {
+        "heading": "恢复分支保留原始交易主线",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "取消、拒单、退款和争议不是可以互换的标签："
+          },
+          {
+            "type": "table",
+            "headers": [
+              "分支",
+              "通常含义",
+              "必须检查"
+            ],
+            "rows": [
+              [
+                "取消",
+                "在适用的承诺或履约边界之前终止订单",
+                "操作方、当前状态、支付进度与取消策略"
+              ],
+              [
+                "拒单",
+                "卖家在接受或履约之前拒绝订单",
+                "卖家权限、原因及所需的支付恢复"
+              ],
+              [
+                "退款",
+                "已存在支付证据后返还全部或部分价值",
+                "退款目标、金额、轨道能力、授权与最终性"
+              ],
+              [
+                "争议",
+                "在适用保护模型下保存并评估冲突主张",
+                "资格窗口、证据、裁决方、决定与结算影响"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "原始订单、支付绑定和证据仍属于审计轨迹。恢复动作不应制造一段与原交易脱节的新历史。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "查看英文取消、退款与争议指南",
+                "href": "/buy/cancel-refund-dispute"
+              },
+              {
+                "label": "查看英文安全与恢复指南",
+                "href": "/project/security"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "当前契约与演进方向",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "范围",
+              "当前公开含义",
+              "必须标注为方向的内容"
+            ],
+            "rows": [
+              [
+                "订单状态",
+                "Core 持有获准的业务迁移，客户端渲染当前状态",
+                "更丰富的跨客户端时间线与运营诊断"
+              ],
+              [
+                "支付会话",
+                "稳定的订单绑定、收款目标或提供商状态、观察与验证相互分离",
+                "更多支付轨道适配器与恢复自动化"
+              ],
+              [
+                "保护",
+                "可用动作取决于已接受条款、状态、角色与有效能力",
+                "更多产品模式、裁决方与证据工作流"
+              ],
+              [
+                "履约",
+                "配送、自提或其他履约事实只能通过获准动作推进订单",
+                "更广泛的配送与供应链集成"
+              ],
+              [
+                "自动化",
+                "Webhook 与 Agent 可以观察、准备或请求有边界的动作",
+                "更多具备策略感知、明确批准和审计的自动化"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "连接后端、适用版本、已接受的交易证据与有效能力仍是可用性的权威。RFC、示意图、配置项或源码包都不会自动启用某种支付轨道或保护模式。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical transaction spine",
+                "href": "/project/transaction-spine"
+              }
+            ]
           }
         ]
       }

@@ -11,6 +11,8 @@ Implementation evidence: the versioned sources linked from each page.
 ## Start
 - [Overview](/)
 - [Product map](/project/product-map)
+- [Identity and stores](/project/identity-and-stores)
+- [Transaction spine](/project/transaction-spine)
 - [Choose a deployment](/start/choose-deployment)
 - [For agents](/agents)
 
@@ -80,6 +82,8 @@ Implementation evidence: the versioned sources linked from each page.
 ## 开始
 - [概览](/zh)
 - [产品地图](/zh/project/product-map)
+- [Identity 与店铺](/zh/project/identity-and-stores)
+- [交易主线](/zh/project/transaction-spine)
 - [选择托管方式](/zh/start/choose-deployment)
 - [Agent 使用指南](/zh/agents)
 

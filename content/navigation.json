@@ -12,6 +12,14 @@
           "/project/product-map"
         ],
         [
+          "Identity and stores",
+          "/project/identity-and-stores"
+        ],
+        [
+          "Transaction spine",
+          "/project/transaction-spine"
+        ],
+        [
           "Choose a deployment",
           "/start/choose-deployment"
         ],
@@ -267,6 +275,14 @@
         [
           "产品地图",
           "/zh/project/product-map"
+        ],
+        [
+          "Identity 与店铺",
+          "/zh/project/identity-and-stores"
+        ],
+        [
+          "交易主线",
+          "/zh/project/transaction-spine"
         ],
         [
           "选择托管方式",

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="500" viewBox="0 0 760 500" role="img" aria-labelledby="title desc">
+  <title id="title">Identity, store, storefront, and channel model</title>
+  <desc id="desc">An account or credential selects an authorized store context. The store and its backend own identity, catalog, policy, orders, payment facts, and reputation. Several storefront views may share that state while presenting different themes, filters, visibility, and channel routes.</desc>
+  <rect width="760" height="500" rx="18" fill="#fbfdff"/>
+  <rect x="1" y="1" width="758" height="498" rx="17" fill="none" stroke="#dbe5f1"/>
+  <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+    <text x="30" y="36" fill="#004eeb" font-size="11" font-weight="700" letter-spacing="1.5">IDENTITY AND STORE MODEL</text>
+    <text x="30" y="67" fill="#1b2a4e" font-size="24" font-weight="750">Access, business state, presentation, and channel are separate</text>
+    <text x="30" y="91" fill="#64748b" font-size="13">Changing the visible surface does not move transaction authority.</text>
+
+    <rect x="30" y="119" width="700" height="58" rx="11" fill="#ffffff" stroke="#b9c9dc"/>
+    <text x="50" y="141" fill="#64748b" font-size="9" font-weight="700" letter-spacing="1.1">ACCESS ASSOCIATION</text>
+    <text x="50" y="162" fill="#1b2a4e" font-size="14" font-weight="700">Account · local admin · API token · Agent credential</text>
+    <text x="710" y="151" text-anchor="end" fill="#64748b" font-size="11">selects an authorized store context + scope</text>
+    <path d="M380 177v23m-5-5 5 5 5-5" fill="none" stroke="#7ea7ef" stroke-width="1.6"/>
+
+    <rect x="30" y="200" width="700" height="166" rx="14" fill="#eef4ff" stroke="#6f9ff1" stroke-width="1.5"/>
+    <text x="50" y="225" fill="#004eeb" font-size="10" font-weight="750" letter-spacing="1.2">STORE / NODE · BUSINESS-STATE AUTHORITY</text>
+    <g fill="#ffffff" stroke="#c4d6f5">
+      <rect x="50" y="242" width="202" height="64" rx="9"/>
+      <rect x="279" y="242" width="202" height="64" rx="9"/>
+      <rect x="508" y="242" width="202" height="64" rx="9"/>
+    </g>
+    <g fill="#1b2a4e" font-size="14" font-weight="700" text-anchor="middle">
+      <text x="151" y="268">Store identity</text>
+      <text x="380" y="268">Catalog and policy</text>
+      <text x="609" y="268">Transactions and trust</text>
+    </g>
+    <g fill="#64748b" font-size="11" text-anchor="middle">
+      <text x="151" y="287">peer identity · profile · operator</text>
+      <text x="380" y="287">listings · availability · terms</text>
+      <text x="609" y="287">orders · payment facts · reputation</text>
+    </g>
+    <line x1="50" y1="322" x2="710" y2="322" stroke="#c4d6f5"/>
+    <text x="380" y="345" text-anchor="middle" fill="#315b9f" font-size="11" font-weight="650">Independent state, policy, recovery, and accepted obligations stay with the store</text>
+
+    <path d="M380 366v21m-5-5 5 5 5-5" fill="none" stroke="#7ea7ef" stroke-width="1.6"/>
+    <text x="30" y="404" fill="#64748b" font-size="10" font-weight="700" letter-spacing="1.2">STOREFRONT VIEWS · SHARE STORE STATE</text>
+    <g fill="#ffffff" stroke="#7ea7ef">
+      <rect x="30" y="417" width="215" height="46" rx="9"/>
+      <rect x="272" y="417" width="215" height="46" rx="9"/>
+      <rect x="514" y="417" width="216" height="46" rx="9"/>
+    </g>
+    <g fill="#1b2a4e" font-size="13" font-weight="700" text-anchor="middle">
+      <text x="137" y="438">Default storefront</text>
+      <text x="379" y="438">Community storefront</text>
+      <text x="622" y="438">Campaign storefront</text>
+    </g>
+    <g fill="#64748b" font-size="10" text-anchor="middle">
+      <text x="137" y="454">primary route and presentation</text>
+      <text x="379" y="454">channel entry · visibility</text>
+      <text x="622" y="454">theme · filter · price view</text>
+    </g>
+    <g fill="#475569" font-size="10" font-weight="650" text-anchor="middle">
+      <text x="137" y="484">Web / domain</text>
+      <text x="379" y="484">Embedded / social / link</text>
+      <text x="622" y="484">Integration / Agent surface</text>
+    </g>
+  </g>
+</svg>

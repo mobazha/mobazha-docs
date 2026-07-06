@@ -27,6 +27,9 @@ Mobazha starts with an independently operated commerce unit: an identity, one or
 
 This is the central product distinction. Mobazha is neither only a marketplace nor only self-hosted shop software. It is a way for independently operated stores to participate in a wider network without giving one presentation channel unrestricted control.
 
+- [Understand identity, stores, storefronts, and channels](/project/identity-and-stores)
+- [Follow the order, payment, fulfillment, and recovery spine](/project/transaction-spine)
+
 ## Four connected product promises
 
 | Promise | Product meaning | Authority boundary |
@@ -65,6 +68,7 @@ The product becomes concrete around one transaction spine:
 - [Operate incoming orders](/sell/orders)
 - [Track payment and order status](/buy/order-status)
 - [Cancel, request a refund, or open a dispute](/buy/cancel-refund-dispute)
+- [Understand why order, payment, and protection states stay separate](/project/transaction-spine)
 
 ## Distribution and automation are product surfaces
 
