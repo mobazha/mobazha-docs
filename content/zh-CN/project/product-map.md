@@ -81,6 +81,8 @@ Mobazha 围绕一条交易主线变得具体：
 - Agent 可以准备、比较或请求动作，但执行仍受身份、权限、状态、报价与确认约束。
 
 - [基于后端实际公开的能力进行开发](/zh/build)
+- [理解社群市场与分布式发现](/zh/project/community-commerce)
+- [理解 Agent、Skill、Tool 与批准边界](/zh/project/agent-commerce)
 - [查看英文 MCP 与 Agent 集成](/build/mcp)
 - [通过公开契约扩展 Mobazha](/zh/build/extensions)
 

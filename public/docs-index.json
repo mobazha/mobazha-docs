@@ -66,7 +66,7 @@
         "reviewed": "2026-07-06"
       },
       "language": "en",
-      "search_text": "The independent commerce unit Mobazha starts with an independently operated commerce unit: an identity, one or more stores, their policies and catalog, and the backend that owns their business state. A storefront, hosted application, community market, social channel, browser surface, or Agent can present and assist that unit, but it does not become the authority for its orders or money. This is the central product distinction. Mobazha is neither only a marketplace nor only self hosted shop software. It is a way for independently operated stores to participate in a wider network without giving one presentation channel unrestricted control. Understand identity, stores, storefronts, and channels Follow the order, payment, fulfillment, and recovery spine Four connected product promises Promise Product meaning Authority boundary Own Keep store identity, policy, data, and operating choices explicit The selected backend and operator own store and business state Connect Reach buyers through storefronts, discovery, communities, direct links, and integrations A channel may narrow access or presentation but cannot invent backend capability Trade Create, pay, fulfill, recover, and resolve an order against inspectable state Core owns order, payment verification, refund, dispute, settlement, and audit transitions Extend Add payment rails, delivery services, tools, and Agent workflows through typed contracts Extensions return bounded input; Core validates protected changes These are organizing principles, not a claim that every channel, rail, provider, or automation is available in every distribution. One Core, several operating paths The same public contracts can be used through different operating paths: An independent operator can run a Node and choose its network exposure, integrations, backups, and policies. A hosted distribution can operate Nodes and shared infrastructure while keeping tenant and store boundaries explicit. A client can render only the effective capabilities advertised by the backend it is connected to. Optional discovery, payment, delivery, messaging, AI, and managed services remain separately named dependencies. Choose hosted or self hosted Mobazha Run a Mobazha Node under your control Review architecture and trust boundaries The transaction spine The product becomes concrete around one transaction spine: A buyer reaches a seller owned offer through a storefront or distribution channel. The order owning backend creates the quote and order identity. The selected payment system reports observations or provider state; Core decides what those facts mean for the order. Fulfillment, cancellation, refund, dispute, and completion follow the active state and applicable policy. Historical bindings and evidence remain available for recovery and reconciliation. Buy from an independent store Operate incoming orders Track payment and order status Cancel, request a refund, or open a dispute Understand why order, payment, and protection states stay separate Distribution and automation are product surfaces Community markets, social entry points, direct links, marketplace curation, messaging, webhooks, MCP, and Agent workflows are not miscellaneous add ons. They are ways to connect demand, supply, and operations to the independent commerce unit. They still obey three limits: presentation does not override transaction authority; configuration or source presence does not prove runtime availability; an Agent may prepare, compare, or request an action, but identity, scope, state, quote, and confirmation still govern execution. Build on advertised capabilities Use MCP and Agent integrations Extend Mobazha through public contracts Read current, Beta, and future direction separately This page explains the product model. Exact availability comes from the connected backend, versioned public contracts, release scope, and transaction evidence. Evidence What it can establish Effective runtime capability What the connected backend can admit now Tag"
+      "search_text": "The independent commerce unit Mobazha starts with an independently operated commerce unit: an identity, one or more stores, their policies and catalog, and the backend that owns their business state. A storefront, hosted application, community market, social channel, browser surface, or Agent can present and assist that unit, but it does not become the authority for its orders or money. This is the central product distinction. Mobazha is neither only a marketplace nor only self hosted shop software. It is a way for independently operated stores to participate in a wider network without giving one presentation channel unrestricted control. Understand identity, stores, storefronts, and channels Follow the order, payment, fulfillment, and recovery spine Four connected product promises Promise Product meaning Authority boundary Own Keep store identity, policy, data, and operating choices explicit The selected backend and operator own store and business state Connect Reach buyers through storefronts, discovery, communities, direct links, and integrations A channel may narrow access or presentation but cannot invent backend capability Trade Create, pay, fulfill, recover, and resolve an order against inspectable state Core owns order, payment verification, refund, dispute, settlement, and audit transitions Extend Add payment rails, delivery services, tools, and Agent workflows through typed contracts Extensions return bounded input; Core validates protected changes These are organizing principles, not a claim that every channel, rail, provider, or automation is available in every distribution. One Core, several operating paths The same public contracts can be used through different operating paths: An independent operator can run a Node and choose its network exposure, integrations, backups, and policies. A hosted distribution can operate Nodes and shared infrastructure while keeping tenant and store boundaries explicit. A client can render only the effective capabilities advertised by the backend it is connected to. Optional discovery, payment, delivery, messaging, AI, and managed services remain separately named dependencies. Choose hosted or self hosted Mobazha Run a Mobazha Node under your control Review architecture and trust boundaries The transaction spine The product becomes concrete around one transaction spine: A buyer reaches a seller owned offer through a storefront or distribution channel. The order owning backend creates the quote and order identity. The selected payment system reports observations or provider state; Core decides what those facts mean for the order. Fulfillment, cancellation, refund, dispute, and completion follow the active state and applicable policy. Historical bindings and evidence remain available for recovery and reconciliation. Buy from an independent store Operate incoming orders Track payment and order status Cancel, request a refund, or open a dispute Understand why order, payment, and protection states stay separate Distribution and automation are product surfaces Community markets, social entry points, direct links, marketplace curation, messaging, webhooks, MCP, and Agent workflows are not miscellaneous add ons. They are ways to connect demand, supply, and operations to the independent commerce unit. They still obey three limits: presentation does not override transaction authority; configuration or source presence does not prove runtime availability; an Agent may prepare, compare, or request an action, but identity, scope, state, quote, and confirmation still govern execution. Build on advertised capabilities Understand community markets and distributed discovery Understand Agents, Skills, Tools, and approvals Use MCP and Agent integrations Extend Mobazha through public contracts Read current, Beta, and future direction separately This page explains the product model. Exact availability comes from the connected backend, versioned public contracts, release scope, and transaction evidence. E"
     },
     {
       "id": "project-identity-and-stores",
@@ -179,6 +179,118 @@
       },
       "language": "en",
       "search_text": "One trade, three state surfaces A Mobazha transaction moves through one durable spine: review terms, create an order, establish and verify payment, fulfill, and complete. Recovery can branch into cancellation, decline, refund, or dispute when the active state and policy permit it. The interface may present that journey as one timeline, but three state surfaces remain separate: Surface What it answers Authority Order What have buyer and seller committed to, and what action is legal next? The order owning Core backend and its state machine Payment session Where should funds go, what has been observed, and what has been verified? A durable session binds the order, quote, rail, observations, and verification result Protection and recovery Which cancellation, refund, dispute, or settlement path applies? The accepted product terms, current state, roles, and effective capabilities No surface should silently stand in for another. A wallet event is payment evidence, not an order transition. A completed order does not by itself describe the settlement rail. A dispute button does not prove that every order has the same protection model. The normal path Review terms. The buyer reviews one seller's item, price, shipping, payment, refund, and protection terms. Volatile values should be bound to a quote or equivalent evidence. Create the order. The order owning backend assigns the durable identity, stores the accepted snapshot, and admits the first order state. Establish payment. A payment session binds the order to a funding target or provider session, amount, asset or currency, expiry, confirmation policy, and applicable settlement semantics. Observe and verify. Wallet, chain, or provider events refresh payment information. Core evaluates those facts and decides whether the order may advance. Accept and fulfill. The seller takes only actions exposed by the current order state and capability, then records fulfillment or pickup evidence. Complete. The backend records the terminal business outcome while preserving the bindings needed for reconciliation and recovery. Review checkout responsibilities Track payment and order status Operate incoming orders Configure accepted payment methods Events prompt a refresh; backend state is authoritative Clients can receive a message, webhook, provider callback, or wallet observation before or after another surface updates. Treat those events as prompts to reload the affected resource. Render the backend's latest order and payment session state, not a locally inferred transition. This rule protects both sides from several dangerous shortcuts: do not mark an order paid from a transaction identifier alone; do not fulfill because a notification arrived without verified backend state; do not infer refund completion from a requested refund; do not infer settlement finality from order completion; do not retry a protected command without its current idempotency and state rules. Protection is a product term, not a universal badge Payment rail and protection model are independent choices. A direct observed payment, an escrow like flow, and a provider hosted session may expose different actions. Product terms can further determine who may cancel, when funds can move, what evidence a dispute accepts, and which actor or mechanism resolves it. Before calling a transaction “protected,” identify: the accepted order and payment terms; the active protection or settlement model; the party or mechanism that controls funds at each stage; the available recovery actions and their deadlines; the evidence and finality rules for the applicable rail. Mobazha should describe these concrete properties instead of implying that one generic “buyer protection” promise covers every distribution, seller, rail, and order. Recovery branches preserve the original spine Cancellation, decline, refund, and dispute are not interchangeable labels: Branch Typical meaning What must be checked Cancel Stop an order before the"
+    },
+    {
+      "id": "project-community-commerce",
+      "path": "/project/community-commerce",
+      "canonical_url": "https://docs.mobazha.org/project/community-commerce",
+      "title": "Community markets and distributed discovery",
+      "summary": "Understand how communities and operator markets curate independent stores without becoming the owner of their catalog, orders, funds, or reputation.",
+      "status": "beta",
+      "audiences": [
+        "buyers",
+        "sellers",
+        "community operators",
+        "marketplace operators",
+        "evaluators"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/community-commerce",
+        "label": "Community markets and distributed discovery"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha public product boundaries and capability-gated marketplace contracts"
+      },
+      "reviewed": "2026-07-06",
+      "page_type": "concept",
+      "outcome": "Choose a store, storefront, community market, or operator market without moving transaction authority into the discovery layer.",
+      "estimated_time": "9 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Review the product map",
+        "href": "/project/product-map"
+      },
+      "featured_visual": {
+        "id": "community-commerce-network",
+        "src": "/images/docs/project/community-commerce-network.svg",
+        "sha256": "d83e1826fafaf27e1c5d390816f39f87ea0ffbdd5cef1d82c675404500efddfd",
+        "mobile_src": "/images/docs/project/community-commerce-network-mobile.svg",
+        "mobile_sha256": "c80d73c32601f4533864e4a18818de8c2fa596f6f0b4cb6e36bf0421f6096684",
+        "kind": "conceptual",
+        "width": 760,
+        "height": 520,
+        "mobile_width": 360,
+        "mobile_height": 780,
+        "alt": "Conceptual distributed discovery model showing community, Web, direct-link, and Agent channels entering an operator-owned market projection, with participating stores remaining separate transaction authorities.",
+        "caption": "Markets organize audience, consent, access, and curation; a selected offer still hands off to one seller-owned transaction.",
+        "claim": "Explains durable discovery and transaction boundaries; it does not assert that every market shape, channel, access mode, domain flow, or curation feature is available in every distribution.",
+        "privacy_review": "synthetic-only",
+        "source": "https://github.com/mobazha/mobazha-docs",
+        "source_revision": "community-commerce-network-v1",
+        "applies_to": "Mobazha v0.3 release-candidate product model",
+        "reviewed": "2026-07-06"
+      },
+      "language": "en",
+      "search_text": "Discovery can be shared without centralizing commerce Mobazha separates the place where a buyer discovers an offer from the backend that owns the resulting transaction. A community or marketplace operator can build an audience, select participating stores, organize a catalog projection, and provide a recognizable entry point. Each admitted seller still owns its store context, live listing facts, order, payment configuration, fulfillment obligations, and reputation. This produces a network of markets rather than one mandatory marketplace. A store can appear through its own domain, one or more storefronts, a community entrance, an operator curated vertical, a direct link, or an Agent facing catalog while preserving the same business state boundary. Four distribution boundaries Boundary Product responsibility It must not silently become Store and Node Own live catalog facts, policies, orders, payments, fulfillment, and reputation A tenant of every market that presents it Storefront Present one store through a theme, filter, visibility rule, or channel route A separate seller, wallet, ledger, or reputation boundary Community or operator market Curate multiple consenting stores, buyer access, catalog presentation, discovery, and attribution The seller of record, payment custodian, or owner of every order Channel Carry a market or storefront through Web, domain, embedded, social, direct link, or Agent context Permission to forge store context or bypass capability checks Understand identity, stores, and storefronts Follow the transaction spine Membership is a consent bearing relationship A market should not scrape a store into a commercial relationship and then imply endorsement. The durable relationship needs an explicit store identity and a reviewable lifecycle such as invitation, application, acceptance, rejection, leaving, or removal. Visibility is separate from membership: an accepted store may still be hidden while a market is being prepared or while a policy issue is resolved. An operator may own: the market name, description, theme, domain, and public narrative; buyer access and discoverability settings; seller entry and review policy; open, filtered, or curated catalog presentation; ordered featured items, collections, or product group projections; disclosed attribution and operator service terms. The seller retains its store identity and the authority to change or withdraw its own live listing and transaction terms. A market projection should refresh those facts rather than copy them into an unaccountable second source of truth. One engine can support different market shapes “Community,” “private,” “vertical,” and “public operator market” are useful product descriptions, but they do not require unrelated commerce stacks. Several independent dimensions can compose a market: Dimension Examples Entry context Web domain, embedded surface, community link, Telegram or Discord context Buyer access Open, invited, or approved when supported Seller entry Operator invited, reviewed application, or another explicit policy Catalog mode Open projection, filtered projection, or operator curation Discoverability Public, unlisted, or restricted Vertical General commerce or an operator defined category and presentation preset These settings describe presentation and governance. They do not change who owns an order. Exact combinations remain distribution , version , policy , and capability dependent. Discovery hands off to one seller owned transaction The safe handoff is explicit: The market helps the buyer find an offer and identifies the participating store. Live product, availability, price components, delivery, payment, refund, and protection terms are resolved for that store. The buyer confirms one seller context and the applicable quote. The seller's order owning backend creates and advances the order. The market may retain disclosed attribution and an observable handoff result, but it does not rewrite payment or order state. A multi st"
+    },
+    {
+      "id": "project-agent-commerce",
+      "path": "/project/agent-commerce",
+      "canonical_url": "https://docs.mobazha.org/project/agent-commerce",
+      "title": "Agents, Skills, Tools, and approvals",
+      "summary": "See how Mobazha turns an Agent suggestion into a scoped, reviewable commerce action without treating a model, prompt, or Skill as authority.",
+      "status": "beta",
+      "audiences": [
+        "sellers",
+        "operators",
+        "agent builders",
+        "developers",
+        "security reviewers"
+      ],
+      "applies_to": "Mobazha v0.3 release candidate",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/project/agent-commerce",
+        "label": "Agents, Skills, Tools, and approvals"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha public Agent Kernel, MCP, identity, scope, capability, and extension contracts"
+      },
+      "reviewed": "2026-07-06",
+      "page_type": "concept",
+      "outcome": "Place an Agent, Skill, Tool, MCP transport, approval, and Core command at the correct authority boundary.",
+      "estimated_time": "10 minutes",
+      "journey": "understand",
+      "primary_action": {
+        "label": "Build with MCP",
+        "href": "/build/mcp"
+      },
+      "featured_visual": {
+        "id": "agent-commerce-boundary",
+        "src": "/images/docs/project/agent-commerce-boundary.svg",
+        "sha256": "e0db66ef2305b8b88849c263cfa1c7b7670202c87ce8d0b5ca4dc0e5bd9471a7",
+        "mobile_src": "/images/docs/project/agent-commerce-boundary-mobile.svg",
+        "mobile_sha256": "a15207ce3572657c8e9d0af4366dc89010f40b5ca788d997bfc32e8cd011c1bf",
+        "kind": "conceptual",
+        "width": 760,
+        "height": 520,
+        "mobile_width": 360,
+        "mobile_height": 780,
+        "alt": "Conceptual Agent-commerce execution path from a user goal through persona and scope, a Skill, current Tool discovery, request-bound approval, Core validation, and an audited result.",
+        "caption": "Reasoning proposes an action; typed identity, scope, capability, approval, and Core state gates decide whether it executes.",
+        "claim": "Explains current authority primitives and a safe composition model; it does not assert that every Skill, Tool, workflow, approval policy, model, or autonomous mode is available.",
+        "privacy_review": "synthetic-only",
+        "source": "https://github.com/mobazha/mobazha-docs",
+        "source_revision": "agent-commerce-boundary-v1",
+        "applies_to": "Mobazha v0.3 release-candidate product model",
+        "reviewed": "2026-07-06"
+      },
+      "language": "en",
+      "search_text": "Assistance and authority are different products An Agent can help a buyer compare offers, help a seller prepare listings, summarize an order, or propose the next operating action. None of those abilities makes the Agent the authority for identity, money, policy, or commerce state. Mobazha separates reasoning from execution. A model or Skill may propose an intention. A typed Tool translates an allowed intention into a bounded request. The authenticated backend evaluates scope, capability, state, quote, policy, approval, and idempotency before it admits a protected command. Six distinct concepts Concept Responsibility It does not grant Agent Maintains a task conversation, gathers context, reasons, and presents choices Store access, spending authority, or permission to change an order Skill Packages instructions and a reusable business workflow around abstract capabilities Direct database, wallet, key, or state machine access Tool Defines one typed executable operation, including input/output, risk, side effects, and capability requirements Permission merely because the Tool is known or listed elsewhere MCP or API transport Carries discovery and calls across an authenticated interface A bypass around gateway identity or domain scopes Approval Records a human decision bound to a specific proposed request Permission for a different payload, expired quote, changed state, or unlimited retries Core command gate Validates the request and owns admitted business state transitions Trust in model output without independent checks Use the machine readable documentation surface Review authentication and scopes Understand typed extension boundaries The safe execution path Resolve context. Identify the tenant, store, thread, actor, held roles, and one acting persona for the current task. Select a Skill. Load only a Skill applicable to that persona, task, distribution, and effective capability set. Discover Tools. Resolve concrete Tools from the current catalog instead of inventing a Tool name from prompt memory. Prepare a request. Validate schema, summarize effects, expose recipients and amounts, and assign a stable idempotency key where required. Request approval. For write, financial, or dangerous actions, bind the user's decision to the exact action and request hash. Revalidate and execute. The backend checks identity, scope, capability, expected state, quote, policy, approval, and freshness again. Record the result. Preserve request, approval, command, order, and result identifiers while redacting credentials and personal data. This sequence is intentionally stricter than “the model called a function.” The same Tool request can be allowed for one actor and store, denied for another, or become stale before execution. Persona, scope, and capability solve different problems Persona says which role the user is acting as during this turn, such as buyer, seller, moderator, or operator. Holding several roles should not leak every role's Skills and Tools into one task. Scope says which domain actions the credential may request, such as reading listings, managing orders, reading a wallet, or writing chat. Capability says whether the connected distribution and backend can admit the product operation now. Resource state and policy say whether that operation is valid for this specific order, listing, payment session, or thread. All four can be required. ai:use can admit an MCP session, while an individual Tool still needs its domain scope and the underlying resource checks. A Skill is a workflow, not a secret superpower A Skill should name the business outcome, required abstract capabilities, inputs, expected artifacts, review points, and failure conditions. It should remain stable even when a concrete Tool implementation changes. Skill delivery can vary by distribution: a local or embedded plain text Skill can guide a self hosted workflow; a reviewed first party Skill can compose trusted Tools; a hosted c"
     },
     {
       "id": "start-choose-deployment",
@@ -2096,7 +2208,7 @@
       },
       "language": "zh-CN",
       "translation_of": "/project/product-map",
-      "search_text": "独立经营单元 Mobazha 从一个独立经营单元开始：身份、一个或多个店铺、相应政策与目录，以及拥有业务状态的后端。店面、托管应用、社群市场、社交渠道、浏览器入口或 Agent 可以展示和协助这个单元，但不会因此成为订单和资金的权威。 这是 Mobazha 的核心产品区别。它既不只是一个 Marketplace，也不只是一个自行托管商店程序，而是让独立经营的店铺在不把无限权限交给单一展示渠道的前提下参与更大的商业网络。 理解 Identity、店铺、Storefront 与渠道 沿着订单、支付、履约与恢复主线理解交易 四项相互连接的产品承诺 承诺 产品含义 权威边界 自主 明确掌握店铺身份、政策、数据和运行选择 所选后端和运营者拥有店铺及业务状态 连接 通过店面、发现、社群、直接链接和集成触达买家 渠道可以收窄访问或展示，但不能发明后端能力 交易 依据可检查的状态创建、支付、履约、恢复和解决订单 Core 拥有订单、支付验证、退款、争议、结算和审计转换 扩展 通过类型化契约接入支付轨道、配送服务、工具和 Agent 工作流 扩展只能返回受限输入，由 Core 校验受保护变更 这些是组织产品知识的原则，并不表示每个发行版都提供所有渠道、支付轨道、服务商或自动化能力。 一个 Core，多种运行路径 同一套公开契约可以通过不同运行路径使用： 独立运营者可以运行 Node，并选择网络暴露、集成、备份和政策。 托管发行版可以运营 Node 与共享基础设施，同时保持租户和店铺边界明确。 客户端只能展示其连接后端实际声明的有效能力。 发现、支付、配送、消息、AI 和托管服务仍是单独命名的可选依赖。 选择托管服务或自行托管 运行自己的 Mobazha Node 查看英文架构与信任边界 交易主线 Mobazha 围绕一条交易主线变得具体： 买家通过店面或分发渠道到达卖家拥有的报价。 拥有订单的后端创建报价与订单身份。 所选支付系统返回观察结果或服务商状态，由 Core 决定这些事实对订单意味着什么。 履约、取消、退款、争议和完成遵循当前状态与适用政策。 历史绑定和证据继续服务于恢复与对账。 在独立 Mobazha 店铺购买 查看英文订单状态指南 查看英文退款与争议指南 理解订单、支付与保护状态为何必须分离 分发和自动化也是产品界面 社群市场、社交入口、直接链接、Marketplace 策展、消息、Webhook、MCP 和 Agent 工作流不是互不相关的附加项，而是把需求、供给和经营操作连接到独立经营单元的方式。 它们仍遵守三个限制： 展示界面不能覆盖交易权威； 配置或源码存在不代表运行时可用； Agent 可以准备、比较或请求动作，但执行仍受身份、权限、状态、报价与确认约束。 基于后端实际公开的能力进行开发 查看英文 MCP 与 Agent 集成 通过公开契约扩展 Mobazha 分开阅读当前能力、Beta 和未来方向 本页解释产品模型。精确可用性来自当前连接的后端、版本化公开契约、发布范围和交易证据。 English canonical product map 证据 能证明什么 有效运行时能力 当前连接后端现在可以接纳什么 带版本的契约与发布证据 某个发布支持哪些接口与行为 Current 政策页 收费、安全、兼容性或治理的公开规则 Draft RFC 或路线图 经过评审的方向，不是已交付能力 内部设计或实施计划 维护者证据，不是公开产品承诺 查看英文发布范围与成熟度 运行时能力与产品组合 查看英文公开决策与提案 图、路线图、RFC、已链接的软件包或文档页面都不能激活一项能力。涉及可用性时，应以连接后端和适用发布的证据为准。"
+      "search_text": "独立经营单元 Mobazha 从一个独立经营单元开始：身份、一个或多个店铺、相应政策与目录，以及拥有业务状态的后端。店面、托管应用、社群市场、社交渠道、浏览器入口或 Agent 可以展示和协助这个单元，但不会因此成为订单和资金的权威。 这是 Mobazha 的核心产品区别。它既不只是一个 Marketplace，也不只是一个自行托管商店程序，而是让独立经营的店铺在不把无限权限交给单一展示渠道的前提下参与更大的商业网络。 理解 Identity、店铺、Storefront 与渠道 沿着订单、支付、履约与恢复主线理解交易 四项相互连接的产品承诺 承诺 产品含义 权威边界 自主 明确掌握店铺身份、政策、数据和运行选择 所选后端和运营者拥有店铺及业务状态 连接 通过店面、发现、社群、直接链接和集成触达买家 渠道可以收窄访问或展示，但不能发明后端能力 交易 依据可检查的状态创建、支付、履约、恢复和解决订单 Core 拥有订单、支付验证、退款、争议、结算和审计转换 扩展 通过类型化契约接入支付轨道、配送服务、工具和 Agent 工作流 扩展只能返回受限输入，由 Core 校验受保护变更 这些是组织产品知识的原则，并不表示每个发行版都提供所有渠道、支付轨道、服务商或自动化能力。 一个 Core，多种运行路径 同一套公开契约可以通过不同运行路径使用： 独立运营者可以运行 Node，并选择网络暴露、集成、备份和政策。 托管发行版可以运营 Node 与共享基础设施，同时保持租户和店铺边界明确。 客户端只能展示其连接后端实际声明的有效能力。 发现、支付、配送、消息、AI 和托管服务仍是单独命名的可选依赖。 选择托管服务或自行托管 运行自己的 Mobazha Node 查看英文架构与信任边界 交易主线 Mobazha 围绕一条交易主线变得具体： 买家通过店面或分发渠道到达卖家拥有的报价。 拥有订单的后端创建报价与订单身份。 所选支付系统返回观察结果或服务商状态，由 Core 决定这些事实对订单意味着什么。 履约、取消、退款、争议和完成遵循当前状态与适用政策。 历史绑定和证据继续服务于恢复与对账。 在独立 Mobazha 店铺购买 查看英文订单状态指南 查看英文退款与争议指南 理解订单、支付与保护状态为何必须分离 分发和自动化也是产品界面 社群市场、社交入口、直接链接、Marketplace 策展、消息、Webhook、MCP 和 Agent 工作流不是互不相关的附加项，而是把需求、供给和经营操作连接到独立经营单元的方式。 它们仍遵守三个限制： 展示界面不能覆盖交易权威； 配置或源码存在不代表运行时可用； Agent 可以准备、比较或请求动作，但执行仍受身份、权限、状态、报价与确认约束。 基于后端实际公开的能力进行开发 理解社群市场与分布式发现 理解 Agent、Skill、Tool 与批准边界 查看英文 MCP 与 Agent 集成 通过公开契约扩展 Mobazha 分开阅读当前能力、Beta 和未来方向 本页解释产品模型。精确可用性来自当前连接的后端、版本化公开契约、发布范围和交易证据。 English canonical product map 证据 能证明什么 有效运行时能力 当前连接后端现在可以接纳什么 带版本的契约与发布证据 某个发布支持哪些接口与行为 Current 政策页 收费、安全、兼容性或治理的公开规则 Draft RFC 或路线图 经过评审的方向，不是已交付能力 内部设计或实施计划 维护者证据，不是公开产品承诺 查看英文发布范围与成熟度 运行时能力与产品组合 查看英文公开决策与提案 图、路线图、RFC、已链接的软件包或文档页面都不能激活一项能力。涉及可用性时，应以连接后端和适用发布的证据为准。"
     },
     {
       "id": "zh-project-identity-and-stores",
@@ -2211,6 +2323,120 @@
       "language": "zh-CN",
       "translation_of": "/project/transaction-spine",
       "search_text": "一笔交易，三个状态面 一笔 Mobazha 交易沿着一条稳定主线推进：确认条款、创建订单、建立并验证支付、履约、完成。在当前状态和策略允许时，恢复路径可以分支为取消、拒单、退款或争议。 界面可以把它呈现为一条时间线，但三个状态面必须保持分离： 状态面 它回答什么 权威来源 订单 买卖双方承诺了什么，下一步什么动作是合法的？ 持有订单的 Core 后端及其状态机 支付会话 资金应去哪里、观察到了什么、验证了什么？ 将订单、报价、支付轨道、观察与验证结果绑定的持久会话 保护与恢复 适用哪一种取消、退款、争议或结算路径？ 已接受的产品条款、当前状态、角色与有效能力 任何一个状态面都不应暗中替代另一个。钱包事件是支付证据，不是订单状态迁移；订单完成本身不说明采用了哪种结算轨道；出现争议按钮，也不代表所有订单都具有相同的保护模型。 正常路径 确认条款。 买家检查单个卖家的商品、价格、配送、支付、退款与保护条款；易变值应绑定到报价或等价证据。 创建订单。 持有订单的后端分配稳定标识，保存已接受的快照，并准入第一个订单状态。 建立支付。 支付会话把订单绑定到收款目标或提供商会话、金额、资产或币种、有效期、确认策略与适用的结算语义。 观察并验证。 钱包、链或提供商事件刷新支付信息；Core 评估这些事实，并决定订单能否推进。 接受并履约。 卖家只执行当前订单状态和能力所暴露的动作，然后记录发货、交付或自提证据。 完成。 后端记录终态业务结果，同时保留对账和恢复所需的绑定关系。 查看英文结账责任指南 查看英文支付与订单状态指南 查看英文卖家订单指南 查看英文卖家支付指南 事件用于提示刷新，后端状态才是权威 客户端可能先后收到消息、Webhook、提供商回调或钱包观察，而其他界面尚未同步。应把这些事件当作重新加载相关资源的提示，渲染后端最新的订单和支付会话状态，而不是在本地推断迁移。 这条规则能避免多种危险捷径： 不要仅凭交易标识就把订单标为已支付； 不要在后端尚未验证时仅凭通知开始履约； 不要把“已申请退款”推断成“退款已完成”； 不要从“订单完成”推断资金结算已经最终完成； 不要脱离当前幂等和状态规则重试受保护命令。 保护是具体产品条款，不是通用徽章 支付轨道和保护模型是两个独立选择。直接观察型支付、类似托管的流程、提供商托管会话可以暴露不同动作；产品条款还会决定谁能取消、资金何时可移动、争议接受什么证据，以及由哪个参与方或机制裁决。 在把一笔交易称为“受保护”之前，需要明确： 已接受的订单与支付条款； 生效的保护或结算模型； 各阶段由谁或什么机制控制资金； 可用恢复动作及其时限； 适用支付轨道的证据与最终性规则。 Mobazha 应说明这些具体属性，而不是暗示一个笼统的“买家保护”承诺覆盖所有发行版、卖家、支付轨道和订单。 恢复分支保留原始交易主线 取消、拒单、退款和争议不是可以互换的标签： 分支 通常含义 必须检查 取消 在适用的承诺或履约边界之前终止订单 操作方、当前状态、支付进度与取消策略 拒单 卖家在接受或履约之前拒绝订单 卖家权限、原因及所需的支付恢复 退款 已存在支付证据后返还全部或部分价值 退款目标、金额、轨道能力、授权与最终性 争议 在适用保护模型下保存并评估冲突主张 资格窗口、证据、裁决方、决定与结算影响 原始订单、支付绑定和证据仍属于审计轨迹。恢复动作不应制造一段与原交易脱节的新历史。 查看英文取消、退款与争议指南 查看英文安全与恢复指南 当前契约与演进方向 范围 当前公开含义 必须标注为方向的内容 订单状态 Core 持有获准的业务迁移，客户端渲染当前状态 更丰富的跨客户端时间线与运营诊断 支付会话 稳定的订单绑定、收款目标或提供商状态、观察与验证相互分离 更多支付轨道适配器与恢复自动化 保护 可用动作取决于已接受条款、状态、角色与有效能力 更多产品模式、裁决方与证据工作流 履约 配送、自提或其他履约事实只能通过获准动作推进订单 更广泛的配送与供应链集成 自动化 Webhook 与 Agent 可以观察、准备或请求有边界的动作 更多具备策略感知、明确批准和审计的自动化 连接后端、适用版本、已接受的交易证据与有效能力仍是可用性的权威。RFC、示意图、配置项或源码包都不会自动启用某种支付轨道或保护模式。 English canonical transaction spine"
+    },
+    {
+      "id": "zh-project-community-commerce",
+      "path": "/zh/project/community-commerce",
+      "canonical_url": "https://docs.mobazha.org/zh/project/community-commerce",
+      "title": "社群市场与分布式发现",
+      "summary": "理解社群和运营者市场如何策展独立店铺，同时不成为其目录、订单、资金或信誉的所有者。",
+      "status": "beta",
+      "audiences": [
+        "buyers",
+        "sellers",
+        "community operators",
+        "marketplace operators",
+        "evaluators"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/project/community-commerce",
+        "label": "社群市场与分布式发现"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha 公开产品边界与受能力约束的 Marketplace 契约"
+      },
+      "reviewed": "2026-07-06",
+      "page_type": "concept",
+      "outcome": "在店铺、Storefront、社群市场和运营者市场之间做出选择，同时不把交易权威移入发现层。",
+      "estimated_time": "9 分钟",
+      "journey": "understand",
+      "primary_action": {
+        "label": "查看产品地图",
+        "href": "/zh/project/product-map"
+      },
+      "featured_visual": {
+        "id": "community-commerce-network",
+        "src": "/images/docs/project/community-commerce-network.svg",
+        "sha256": "d83e1826fafaf27e1c5d390816f39f87ea0ffbdd5cef1d82c675404500efddfd",
+        "mobile_src": "/images/docs/project/community-commerce-network-mobile.svg",
+        "mobile_sha256": "c80d73c32601f4533864e4a18818de8c2fa596f6f0b4cb6e36bf0421f6096684",
+        "kind": "conceptual",
+        "width": 760,
+        "height": 520,
+        "mobile_width": 360,
+        "mobile_height": 780,
+        "alt": "Conceptual distributed discovery model showing community, Web, direct-link, and Agent channels entering an operator-owned market projection, with participating stores remaining separate transaction authorities.",
+        "caption": "Markets organize audience, consent, access, and curation; a selected offer still hands off to one seller-owned transaction.",
+        "claim": "Explains durable discovery and transaction boundaries; it does not assert that every market shape, channel, access mode, domain flow, or curation feature is available in every distribution.",
+        "privacy_review": "synthetic-only",
+        "source": "https://github.com/mobazha/mobazha-docs",
+        "source_revision": "community-commerce-network-v1",
+        "applies_to": "Mobazha v0.3 release-candidate product model",
+        "reviewed": "2026-07-06"
+      },
+      "language": "zh-CN",
+      "translation_of": "/project/community-commerce",
+      "search_text": "共享发现，不必中心化商业 Mobazha 把“买家在哪里发现商品”与“哪个后端拥有最终交易”分开。社群或 Marketplace 运营者可以建设受众、选择参与店铺、组织目录投影并提供清晰入口；每个获准卖家仍拥有自己的店铺上下文、实时商品事实、订单、支付配置、履约义务和信誉。 这形成的是市场网络，而不是唯一强制 Marketplace。一个店铺可以同时通过自有域名、多个 Storefront、社群入口、运营者策展的垂直市场、直接链接或 Agent 目录被发现，同时保留同一个业务状态边界。 四个分发边界 边界 产品责任 不能暗中变成什么 Store 与 Node 拥有实时目录事实、政策、订单、支付、履约和信誉 每一个展示它的市场的附属租户 Storefront 通过主题、过滤、可见性或渠道路由展示一个店铺 独立卖家、钱包、账本或信誉边界 社群或运营者市场 策展多个同意加入的店铺，并管理买家访问、目录展示、发现与归因 实际卖家、资金托管方或所有订单的拥有者 Channel 通过 Web、域名、嵌入式、社交、直接链接或 Agent 上下文承载市场或 Storefront 伪造店铺上下文或绕过能力检查的权限 理解 Identity、店铺与 Storefront 沿着交易主线理解订单 成员关系必须承载同意 市场不应抓取一个店铺形成商业关系，再暗示对方已经认可。持久关系需要明确的店铺身份和可复核生命周期，例如邀请、申请、接受、拒绝、退出或移除。可见性与成员关系也应分开：获准店铺在市场准备期间或处理政策问题时仍可暂时隐藏。 运营者可以拥有： 市场名称、描述、主题、域名和公开叙事； 买家访问和可发现性设置； 卖家进入与审核政策； 开放、过滤或策展型目录展示； 有顺序的推荐商品、Collection 或产品组投影； 已披露的归因和运营服务条款。 卖家保留自己的店铺身份，以及修改或撤回实时商品和交易条款的权威。市场投影应刷新这些事实，而不是复制出第二个无人负责的事实来源。 一个引擎可以表达不同市场形态 “社群”“私有”“垂直”和“公开运营者市场”是有用的产品描述，但不需要互不相关的商业技术栈。市场可以由多个独立维度组合： 维度 示例 入口上下文 Web 域名、嵌入式界面、社群链接、Telegram 或 Discord 上下文 买家访问 支持时可为开放、邀请或审批 卖家进入 运营者邀请、审核申请或其他明确政策 目录模式 开放投影、过滤投影或运营者策展 可发现性 公开、不公开索引或受限 垂直方向 通用商业，或运营者定义的品类与展示预设 这些设置描述展示与治理，不改变谁拥有订单。精确组合仍取决于发行版、版本、政策和有效能力。 发现层交接给单一卖家交易 安全交接需要显式发生： 市场帮助买家找到商品，并明确标识参与店铺。 从该店铺解析实时商品、可售性、价格组成、配送、支付、退款与保护条款。 买家确认单一卖家上下文和适用报价。 卖家持有订单的后端创建并推进订单。 市场可以保留已披露的归因与可观察交接结果，但不能重写支付或订单状态。 多店发现页面不等于跨店购物车、合并结算、资金池托管、共享退款权限或统一运营者订单后台。任何一种能力都需要明确的产品与会计契约。 查看英文结账责任指南 理解费用、归因与收款方 运营者价值来自受众和策展 运营者的持久贡献不是占有卖家资金，而是受众、上下文、信任建设、治理、目录组织和渠道运营。商业条款可以对真实服务收费，但付款方、收款方、触发条件、撤销规则与归因必须在影响交易前可见。 Direct Link 与 Deal Link 可以缩短从已知商品到结账的路径，但仍需不可变的报价和卖家绑定。推荐或推广归因必须披露并可审计，不能把推广者或市场变成订单拥有者。 市场品牌页面、推荐位、社群徽章或 Agent 推荐都不是支付验证，也不是通用买家保护承诺。应检查卖家、已接受条款、生效保护模型和持有订单的后端。 当前契约与演进方向 范围 当前公开含义 必须标注为方向的内容 Marketplace Identity 市场可以拥有运营者、名称、Slug、状态、展示、访问、目录与可发现性设置 更多自助创建、域名、分析和合作伙伴运营能力 卖家成员关系 店铺参与和可见性是明确、可复核的关系 更丰富的卖家申请、可移植信誉信号与治理工作流 策展 启用时，运营者可以投影选定店铺、产品组或有顺序的商品 更多垂直预设、编辑工具与 Agent 可读目录 交易交接 所选店铺仍是实时条款和最终订单的权威 更一致的跨渠道交接与归因证据 渠道 Web 和其他已启用上下文可以展示同一市场或 Storefront 模型 更多嵌入式、社交、浏览器与社群界面 连接发行版的有效能力和适用公开版本仍是可用性权威。内部 Starter 计划、配置字段或源码存在都不能证明某种市场类型、渠道、域名流程、收费模式或垂直已经公开启用。 English canonical community commerce page"
+    },
+    {
+      "id": "zh-project-agent-commerce",
+      "path": "/zh/project/agent-commerce",
+      "canonical_url": "https://docs.mobazha.org/zh/project/agent-commerce",
+      "title": "Agent、Skill、Tool 与批准边界",
+      "summary": "理解 Mobazha 如何把 Agent 建议转化为有 Scope、可复核的商业动作，而不把模型、Prompt 或 Skill 当成权威。",
+      "status": "beta",
+      "audiences": [
+        "sellers",
+        "operators",
+        "agent builders",
+        "developers",
+        "security reviewers"
+      ],
+      "applies_to": "Mobazha v0.3 候选版本",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/project/agent-commerce",
+        "label": "Agent、Skill、Tool 与批准边界"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha 公开 Agent Kernel、MCP、Identity、Scope、Capability 与扩展契约"
+      },
+      "reviewed": "2026-07-06",
+      "page_type": "concept",
+      "outcome": "把 Agent、Skill、Tool、MCP 传输、批准与 Core 命令放在正确的权威边界。",
+      "estimated_time": "10 分钟",
+      "journey": "understand",
+      "primary_action": {
+        "label": "查看 MCP 指南",
+        "href": "/build/mcp"
+      },
+      "featured_visual": {
+        "id": "agent-commerce-boundary",
+        "src": "/images/docs/project/agent-commerce-boundary.svg",
+        "sha256": "e0db66ef2305b8b88849c263cfa1c7b7670202c87ce8d0b5ca4dc0e5bd9471a7",
+        "mobile_src": "/images/docs/project/agent-commerce-boundary-mobile.svg",
+        "mobile_sha256": "a15207ce3572657c8e9d0af4366dc89010f40b5ca788d997bfc32e8cd011c1bf",
+        "kind": "conceptual",
+        "width": 760,
+        "height": 520,
+        "mobile_width": 360,
+        "mobile_height": 780,
+        "alt": "Conceptual Agent-commerce execution path from a user goal through persona and scope, a Skill, current Tool discovery, request-bound approval, Core validation, and an audited result.",
+        "caption": "Reasoning proposes an action; typed identity, scope, capability, approval, and Core state gates decide whether it executes.",
+        "claim": "Explains current authority primitives and a safe composition model; it does not assert that every Skill, Tool, workflow, approval policy, model, or autonomous mode is available.",
+        "privacy_review": "synthetic-only",
+        "source": "https://github.com/mobazha/mobazha-docs",
+        "source_revision": "agent-commerce-boundary-v1",
+        "applies_to": "Mobazha v0.3 release-candidate product model",
+        "reviewed": "2026-07-06"
+      },
+      "language": "zh-CN",
+      "translation_of": "/project/agent-commerce",
+      "search_text": "辅助与权威是两种不同产品能力 Agent 可以帮助买家比较商品、帮助卖家准备 Listing、总结订单，或建议下一步运营动作。这些能力都不会让 Agent 自动获得 Identity、资金、政策或商业状态的权威。 Mobazha 把推理与执行分开。模型或 Skill 可以提出意图；类型化 Tool 把获准意图转化为有边界的请求；经过认证的后端再次评估 Scope、Capability、状态、报价、政策、批准和幂等性，然后才接纳受保护命令。 六个不同概念 概念 责任 它不会自动授予什么 Agent 维护任务会话、收集上下文、推理并呈现选择 店铺访问、消费权限或修改订单的授权 Skill 围绕抽象能力包装指令与可复用业务工作流 数据库、钱包、密钥或状态机直接访问 Tool 定义一个类型化可执行操作，包括输入输出、风险、副作用与能力要求 因为某处知道或列出了这个 Tool 就自动获得权限 MCP 或 API 传输 通过认证接口承载发现与调用 绕过网关 Identity 或领域 Scope 的通道 Approval 记录人类针对具体提议请求作出的决定 对不同 Payload、过期报价、已变化状态或无限重试的授权 Core Command Gate 校验请求并拥有获准的业务状态迁移 在没有独立检查时直接信任模型输出 使用机器可读文档界面 查看英文认证与 Scope 指南 理解类型化扩展边界 安全执行路径 解析上下文。 确认 Tenant、Store、Thread、Actor、持有角色，以及本次任务唯一的 Acting Persona。 选择 Skill。 只加载适用于当前 Persona、任务、发行版和有效 Capability 的 Skill。 发现 Tool。 从当前 Tool Catalog 解析具体 Tool，不凭 Prompt 记忆编造 Tool 名称。 准备请求。 校验 Schema，说明副作用，展示收款方和金额，并在需要时分配稳定幂等键。 请求批准。 对写入、金融或危险动作，把用户决定绑定到精确动作与请求 Hash。 重新校验并执行。 后端再次检查 Identity、Scope、Capability、预期状态、报价、政策、批准与新鲜度。 记录结果。 保留请求、批准、命令、订单与结果标识，同时脱敏 Credential 与个人数据。 这条路径有意比“模型调用了一个函数”更严格。同一个 Tool 请求可能对一个 Actor 和 Store 合法，对另一个则被拒绝，也可能在执行前已经失效。 Persona、Scope 与 Capability 解决不同问题 Persona 表明用户在本轮以买家、卖家、Moderator 或 Operator 中的哪个角色行动。持有多个角色不应让所有角色的 Skill 和 Tool 泄漏进同一个任务。 Scope 表明 Credential 可以请求哪些领域动作，例如读取 Listing、管理订单、读取钱包或写入 Chat。 Capability 表明当前连接的发行版和后端现在能否接纳该产品动作。 资源状态与政策 表明该动作对这一个订单、Listing、支付会话或 Thread 是否有效。 四者可能都必须满足。 ai:use 可以准入 MCP 会话，但单个 Tool 仍需要自己的领域 Scope 和底层资源检查。 Skill 是工作流，不是秘密超能力 Skill 应明确业务结果、所需抽象能力、输入、预期 Artifact、审核点和失败条件。即使具体 Tool 实现变化，Skill 仍应保持稳定。 不同发行版可以采用不同 Skill 交付方式： 本地或嵌入式纯文本 Skill 可以引导自托管工作流； 经审核的第一方 Skill 可以组合受信任 Tool； 托管商业 Skill 可以提供私有策略、模型路由或数据服务； 未来远程或加密 Skill 交付必须在具备运行时与安全证据之前保持明确标注。 源码存在、Skill 标识存在或发现一个 Prompt 文件，都不能证明连接后端已经授权、启用或安全支持该工作流。 Approval 把意图绑定到单次动作 受保护动作需要的不只是笼统的“同意”。审核界面应显示当前 Store 与 Persona、动作、受影响资源、收款方、金额或价格影响、政策后果和可逆性；持久 Approval 应绑定请求 Payload 并拥有稳定标识。 以下情况下执行仍必须失败关闭： 批准后订单或资源状态发生变化； 报价、收款目标或截止时间过期； 认证 Actor 或当前 Store 已不匹配； Tool Schema、Capability 或政策发生变化； 幂等与重放规则不允许再次尝试。 Approval 让提议动作可以复核，不会把 Core 权威移动到 Agent Runtime。 MCP 是一种执行界面，不是 Agent 产品本身 当前 Node MCP 入口在 /v1/mcp 使用经过认证的 Streamable HTTP。它是发现和调用获准 Tool 的机器界面。面向人的 Workspace、嵌入式 Assistant、计划任务、Webhook 和直接 API Client 可以使用相同底层业务契约，而不因此成为 MCP。 反过来，MCP 连接也不自动等于自治 Agent。自治还需要显式任务、Credential 生命周期、Scope、Tool Policy、预算、确认政策、失败处理和审计责任人。 查看英文 MCP 传输指南 查看英文冲突与幂等指南 沿着交易主线理解权威 当前契约与演进方向 范围 当前公开含义 必须标注为方向的内容 MCP 经过认证的 /v1/mcp 发现与调用还受 ai:use 和 Tool 领域 Scope 约束 更多客户端、更丰富 Tool 覆盖与跨界面编排 Agent Kernel Context Scope、Persona、Tool Metadata、Risk、Approval、Run、Memory 与 Provider 接口定义可复用边界 更广泛生产工作流、Policy Pack 与运营体验 Skills 纯文本和 Provider 加载的 Skill 契约可以描述可复用工作流 商业 Registry、许可交付与第三方 Skill 生态 Approval 请求绑定的批准和幂等原语支持 Human in the loop 写入 更丰富风险政策、身份升级、撤销与多方批准 商业自动化 Agent 可以在当前契约允许范围内读取、起草、比较、总结、准备并请求动作 通过证据门槛后的更多卖家、买家、客服与运营者工作流 不要因为 Kernel 存在就推断所有 Skill、Tool、模型提供商、Memory 系统、商业工作流或自治模式已经可用。连接后端的 Tool Catalog、有效 Capability、适用政策与发布证据仍是权威。 English canonical Agent commerce page"
     },
     {
       "id": "zh-start-choose-deployment",

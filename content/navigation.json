@@ -20,6 +20,14 @@
           "/project/transaction-spine"
         ],
         [
+          "Community commerce",
+          "/project/community-commerce"
+        ],
+        [
+          "Agents and Skills",
+          "/project/agent-commerce"
+        ],
+        [
           "Choose a deployment",
           "/start/choose-deployment"
         ],
@@ -283,6 +291,14 @@
         [
           "交易主线",
           "/zh/project/transaction-spine"
+        ],
+        [
+          "社群市场与发现",
+          "/zh/project/community-commerce"
+        ],
+        [
+          "Agent 与 Skill",
+          "/zh/project/agent-commerce"
         ],
         [
           "选择托管方式",

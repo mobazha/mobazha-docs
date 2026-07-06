@@ -81,8 +81,8 @@ The first editorial sequence is deliberately smaller than the source inventory:
 | P0 | Explain authority and trust boundaries | `/project/architecture` |
 | P1 | Explain identity, store, storefront, and channel separation | `/project/identity-and-stores` |
 | P1 | Explain the order, payment, fulfillment, and recovery spine | `/project/transaction-spine` plus linked task guides |
-| P1 | Explain community distribution and marketplace operation | Evidence-gated distribution concept and operator journeys |
-| P1 | Explain Agent, Skill, Tool, and approval boundaries | Existing MCP/extension guidance plus a product concept |
+| P1 | Explain community distribution and marketplace operation | `/project/community-commerce` plus evidence-gated operator journeys |
+| P1 | Explain Agent, Skill, Tool, and approval boundaries | `/project/agent-commerce` plus MCP and extension references |
 | P2 | Explain supply, delivery, messaging, and browser surfaces | Publish only as current capability or clearly labeled direction |
 
 ## Visual language

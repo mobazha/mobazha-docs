@@ -10,11 +10,15 @@ const routes = [
   "/project/product-map",
   "/project/identity-and-stores",
   "/project/transaction-spine",
+  "/project/community-commerce",
+  "/project/agent-commerce",
   "/project/fees",
   "/zh/buy",
   "/zh/project/product-map",
   "/zh/project/identity-and-stores",
   "/zh/project/transaction-spine",
+  "/zh/project/community-commerce",
+  "/zh/project/agent-commerce",
   "/zh/self-host/install",
 ];
 
