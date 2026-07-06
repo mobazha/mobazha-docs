@@ -157,6 +157,34 @@ test("the current whitepaper is prominent, versioned, and complete", async ({ pa
   await expect(page.locator('.site-header nav a[href="/zh/project/whitepaper"]')).toHaveText("白皮书");
 });
 
+test("article lists keep their markers without changing task step counters", async ({ page }) => {
+  await page.goto("/project/whitepaper");
+  const whitepaperStyles = await page.evaluate(() => ({
+    headerBackground: getComputedStyle(document.querySelector<HTMLElement>(".site-header")!).backgroundColor,
+    listStyleType: getComputedStyle(document.querySelector<HTMLElement>(".doc-content ul")!).listStyleType,
+  }));
+  expect(whitepaperStyles).toEqual({
+    headerBackground: "rgb(255, 255, 255)",
+    listStyleType: "disc",
+  });
+
+  await page.goto("/sell/store-setup");
+  const taskListStyles = await page.evaluate(() => {
+    const list = document.querySelector<HTMLElement>(".doc-content ol")!;
+    const item = list.querySelector<HTMLElement>("li")!;
+    return {
+      itemPaddingLeft: getComputedStyle(item).paddingLeft,
+      listStyleType: getComputedStyle(list).listStyleType,
+      stepContent: getComputedStyle(item, "::before").content,
+    };
+  });
+  expect(taskListStyles).toEqual({
+    itemPaddingLeft: "42px",
+    listStyleType: "none",
+    stepContent: "counter(task-step)",
+  });
+});
+
 test("journey and boundary diagrams use the light documentation visual system", async ({ request }) => {
   for (const path of [
     "/images/docs/buy/order-lifecycle.svg",
