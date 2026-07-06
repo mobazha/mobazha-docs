@@ -109,6 +109,29 @@ test("Chinese search stays inside the Chinese knowledge surface", async ({ page 
   expect(paths.every((path) => path?.startsWith("/zh/"))).toBeTruthy();
 });
 
+test("header language menu preserves translations and the GitHub action stays compact", async ({ page }) => {
+  await page.goto("/project/product-map");
+  const englishMenu = page.locator(".language-menu");
+  await expect(englishMenu.locator("summary")).toHaveText("English");
+  await englishMenu.locator("summary").click();
+  await expect(englishMenu).toHaveAttribute("open", "");
+  await expect(englishMenu.locator('a[href="/project/product-map"]')).toHaveAttribute("aria-current", "page");
+  await expect(englishMenu.locator('a[href="/zh/project/product-map"]')).toHaveText("简体中文");
+
+  const githubLink = page.locator('.github-link[href="https://github.com/mobazha/mobazha-docs"]');
+  await expect(githubLink).toHaveAttribute("aria-label", "Mobazha Docs on GitHub");
+  await expect(githubLink.locator("svg")).toHaveCount(1);
+  await expect(githubLink).toHaveText("");
+
+  await page.goto("/zh/project/product-map");
+  const chineseMenu = page.locator(".language-menu");
+  await expect(chineseMenu.locator("summary")).toHaveText("中文");
+  await chineseMenu.locator("summary").click();
+  await expect(chineseMenu.locator('a[href="/zh/project/product-map"]')).toHaveAttribute("aria-current", "page");
+  await expect(chineseMenu.locator('a[href="/project/product-map"]')).toHaveText("English");
+  await expect(page.locator(".github-link")).toHaveAttribute("aria-label", "在 GitHub 查看 Mobazha 文档");
+});
+
 test("reduced-motion preference removes meaningful transitions", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
