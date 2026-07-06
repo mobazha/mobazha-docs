@@ -4612,69 +4612,107 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "The following is an illustration of structure, not a Mobazha rate or current offer:"
+            "text": "The Fee Quote keeps the buyer payment and seller proceeds separate. The current public Deal Link pilot uses policy `pilot-zero-fee-v1`; it does not add an unapproved managed-service, payment, tax, or distribution charge."
+          },
+          {
+            "type": "paragraph",
+            "text": "For a Deal Link priced at $100.00, the current platform-authored quote is:"
           },
           {
             "type": "table",
             "headers": [
-              "Line",
-              "Illustrative amount",
-              "Payer",
-              "Recipient",
-              "Why it exists"
+              "Buyer view",
+              "Current pilot amount",
+              "Effect on payment"
             ],
             "rows": [
               [
-                "Item",
+                "Item or service",
                 "$100.00",
-                "Buyer",
-                "Seller",
-                "The product or service being purchased"
+                "Amount paid for the seller's offer"
               ],
               [
-                "Delivery",
-                "$8.00",
-                "Buyer",
-                "Seller or carrier",
-                "The selected fulfillment method"
+                "Buyer service charge",
+                "$0.00",
+                "A future buyer-funded service charge would increase the buyer total only after an applicable policy and quote disclose it"
               ],
               [
-                "Managed transaction service",
-                "$2.00",
-                "Buyer",
-                "Named operator",
-                "A disclosed checkout, evidence, dispute, or operating service"
+                "Payment or network cost in this Fee Quote",
+                "$0.00",
+                "A wallet, network, or provider may disclose a separate external cost before payment; it is not silently added here"
               ],
               [
-                "Payment or network cost",
-                "$1.00 estimated",
-                "Buyer",
-                "Payment provider or network",
-                "Cost of the selected rail; finality and variability must be stated"
-              ],
-              [
-                "Tax",
-                "$5.00",
-                "Buyer",
-                "Seller, merchant, or tax authority as applicable",
-                "A disclosed tax obligation"
+                "Tax or external cost in this Fee Quote",
+                "$0.00",
+                "No tax amount is asserted by the current pilot quote"
               ],
               [
                 "**Buyer total**",
-                "**$116.00**",
-                "",
-                "",
-                "The amount approved before payment"
+                "**$100.00**",
+                "Amount authorized by this Fee Quote before payment"
+              ]
+            ]
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Seller view",
+              "Current pilot amount",
+              "Effect on proceeds"
+            ],
+            "rows": [
+              [
+                "Gross order amount",
+                "$100.00",
+                "Starting amount for the seller-side calculation"
+              ],
+              [
+                "Seller service charge",
+                "$0.00",
+                "A future seller-funded transaction service would be deducted here, not added to the buyer total"
+              ],
+              [
+                "Seller payment cost",
+                "$0.00",
+                "A seller-absorbed processor or settlement cost would be disclosed here"
+              ],
+              [
+                "Seller distribution budget",
+                "$0.00",
+                "A seller-funded referral or distribution amount would be disclosed here when enabled"
+              ],
+              [
+                "**Estimated seller net**",
+                "**$100.00**",
+                "Expected seller proceeds under the current pilot quote"
               ]
             ]
           },
           {
             "type": "paragraph",
-            "text": "The quote must also show seller proceeds separately. Buyer total and seller net are not interchangeable: delivery may be passed to a carrier, a service may be seller-paid instead, a network estimate may change within stated rules, and taxes may be collected by a different party."
+            "text": "This is current implementation behavior, not a permanent zero-fee promise. It also does not claim that a wallet, blockchain network, payment provider, carrier, or tax authority can never charge an applicable external amount. Any such amount must be attributed to its actual payer and recipient and disclosed at the applicable selection or checkout step before funds are committed."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "text": "Who funds a future non-zero charge?"
+          },
+          {
+            "type": "unordered-list",
+            "items": [
+              "**Managed transaction service:** it is not inherently buyer-paid or seller-paid. A buyer-funded charge increases the buyer total; a seller-funded charge reduces seller proceeds. The quote must name the provider, payer, recipient, service, amount or rate, and refund treatment.",
+              "**Payment or network cost:** it may be paid directly by the buyer, absorbed by the seller, or included in a provider price. The quote or Payment Session must show which applies without counting the same cost twice.",
+              "**Tax:** Mobazha documentation cannot assign one universal payer or collector. Applicable law, the seller or merchant-of-record arrangement, product and location determine the obligation. A real quote must name the amount and collecting or receiving party; a seller obligation must not be relabeled as a buyer surcharge without an applicable basis.",
+              "**Delivery:** the selected fulfillment terms determine whether it is included in the item price, added to the buyer total, collected for a carrier, or absorbed by the seller."
+            ]
           },
           {
             "type": "paragraph",
-            "text": "Before accepting the example, a real quote would still need to state:"
+            "text": "An offer may show an item price before a buyer selects delivery or supplies information needed for an applicable tax calculation. It must not present that item price as the final payable total when a required additional charge is already known, and checkout must not silently introduce a charge after confirmation."
+          },
+          {
+            "type": "paragraph",
+            "text": "Before accepting a future non-zero quote, it would still need to state:"
           },
           {
             "type": "unordered-list",
