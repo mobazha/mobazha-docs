@@ -117,6 +117,40 @@ test("reduced-motion preference removes meaningful transitions", async ({ page }
   expect(transitionSeconds).toBeLessThanOrEqual(0.00001);
 });
 
+test("homepage promises lead to canonical product models", async ({ page }) => {
+  await page.goto("/");
+  const englishPromises = page.locator(".portal-principles h3 a");
+  await expect(englishPromises).toHaveCount(4);
+  expect(await englishPromises.evaluateAll((links) => links.map((link) => link.getAttribute("href")))).toEqual([
+    "/project/identity-and-stores",
+    "/project/community-commerce",
+    "/project/transaction-spine",
+    "/project/surfaces-and-integrations",
+  ]);
+
+  await page.goto("/zh");
+  const chinesePromises = page.locator(".portal-principles h3 a");
+  await expect(chinesePromises).toHaveCount(4);
+  expect(await chinesePromises.evaluateAll((links) => links.map((link) => link.getAttribute("href")))).toEqual([
+    "/zh/project/identity-and-stores",
+    "/zh/project/community-commerce",
+    "/zh/project/transaction-spine",
+    "/zh/project/surfaces-and-integrations",
+  ]);
+});
+
+test("flagship concepts share one product-model navigation group", async ({ page }) => {
+  await page.goto("/project/transaction-spine");
+  const englishGroup = page.locator(".nav-group.active-group");
+  await expect(englishGroup.locator("p")).toHaveText("Product model");
+  await expect(englishGroup.locator("a")).toHaveCount(7);
+
+  await page.goto("/zh/project/agent-commerce");
+  const chineseGroup = page.locator(".nav-group.active-group");
+  await expect(chineseGroup.locator("p")).toHaveText("产品模型");
+  await expect(chineseGroup.locator("a")).toHaveCount(7);
+});
+
 test("/start resolves to the portal home", async ({ page }) => {
   await page.goto("/start");
   await expect(page).toHaveURL(/\/$/);

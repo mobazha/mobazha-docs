@@ -1204,6 +1204,27 @@ a { color: inherit; text-decoration: none; }
   margin: 16px 0 6px;
 }
 
+.portal-principles h3 a {
+  align-items: center;
+  color: var(--portal-ink);
+  display: inline-flex;
+  gap: 8px;
+}
+
+.portal-principles h3 a span {
+  color: var(--portal-accent);
+  font-size: 16px;
+  transition: transform 140ms ease;
+}
+
+.portal-principles h3 a:hover {
+  color: var(--portal-accent);
+}
+
+.portal-principles h3 a:hover span {
+  transform: translateX(3px);
+}
+
 .portal-principles li > p {
   color: var(--portal-muted);
   font-size: var(--text-caption);

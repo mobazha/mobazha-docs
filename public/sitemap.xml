@@ -2,15 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://docs.mobazha.org/</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh</loc><lastmod>2026-07-06</lastmod></url>
-  <url><loc>https://docs.mobazha.org/project/product-map</loc><lastmod>2026-07-06</lastmod></url>
-  <url><loc>https://docs.mobazha.org/project/identity-and-stores</loc><lastmod>2026-07-06</lastmod></url>
-  <url><loc>https://docs.mobazha.org/project/transaction-spine</loc><lastmod>2026-07-06</lastmod></url>
-  <url><loc>https://docs.mobazha.org/project/community-commerce</loc><lastmod>2026-07-06</lastmod></url>
-  <url><loc>https://docs.mobazha.org/project/agent-commerce</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/start/choose-deployment</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/agents</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/sell</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/project/product-map</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/project/identity-and-stores</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/offer-to-fulfillment</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/project/transaction-spine</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/project/community-commerce</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/project/surfaces-and-integrations</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/project/agent-commerce</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/sell</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/sell/store-setup</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/sell/listings</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/sell/shipping</loc><lastmod>2026-07-04</lastmod></url>
@@ -32,7 +33,6 @@
   <url><loc>https://docs.mobazha.org/self-host/troubleshooting</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/self-host/bind-account</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/build</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/project/surfaces-and-integrations</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/build/quickstart</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/build/authentication</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/build/errors-and-idempotency</loc><lastmod>2026-07-04</lastmod></url>
@@ -62,20 +62,20 @@
   <url><loc>https://docs.mobazha.org/releases</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/contribute</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/support</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/zh/project/product-map</loc><lastmod>2026-07-06</lastmod></url>
-  <url><loc>https://docs.mobazha.org/zh/project/identity-and-stores</loc><lastmod>2026-07-06</lastmod></url>
-  <url><loc>https://docs.mobazha.org/zh/project/transaction-spine</loc><lastmod>2026-07-06</lastmod></url>
-  <url><loc>https://docs.mobazha.org/zh/project/community-commerce</loc><lastmod>2026-07-06</lastmod></url>
-  <url><loc>https://docs.mobazha.org/zh/project/agent-commerce</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/start/choose-deployment</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/agents</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/zh/sell</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/project/product-map</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/project/identity-and-stores</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/project/offer-to-fulfillment</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/project/transaction-spine</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/project/community-commerce</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/project/surfaces-and-integrations</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/project/agent-commerce</loc><lastmod>2026-07-06</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh/sell</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/buy</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/self-host</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/self-host/install</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/build</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/zh/project/surfaces-and-integrations</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/build/runtime-capabilities</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/build/token-identifiers</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/build/extensions</loc><lastmod>2026-07-04</lastmod></url>

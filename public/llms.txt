@@ -10,17 +10,20 @@ Implementation evidence: the versioned sources linked from each page.
 
 ## Start
 - [Overview](/)
-- [Product map](/project/product-map)
-- [Identity and stores](/project/identity-and-stores)
-- [Transaction spine](/project/transaction-spine)
-- [Community commerce](/project/community-commerce)
-- [Agents and Skills](/project/agent-commerce)
 - [Choose a deployment](/start/choose-deployment)
 - [For agents](/agents)
 
+## Product model
+- [Product map](/project/product-map)
+- [Identity and stores](/project/identity-and-stores)
+- [Offer to fulfillment](/project/offer-to-fulfillment)
+- [Transaction spine](/project/transaction-spine)
+- [Community commerce](/project/community-commerce)
+- [Surfaces and integrations](/project/surfaces-and-integrations)
+- [Agents and Skills](/project/agent-commerce)
+
 ## Use Mobazha
 - [Sell](/sell)
-- [Offer to fulfillment](/project/offer-to-fulfillment)
 - [Store setup](/sell/store-setup)
 - [Listings](/sell/listings)
 - [Shipping](/sell/shipping)
@@ -46,7 +49,6 @@ Implementation evidence: the versioned sources linked from each page.
 
 ## Build
 - [Developer overview](/build)
-- [Surfaces and integrations](/project/surfaces-and-integrations)
 - [Quickstart](/build/quickstart)
 - [Authentication](/build/authentication)
 - [Errors and idempotency](/build/errors-and-idempotency)
@@ -85,17 +87,20 @@ Implementation evidence: the versioned sources linked from each page.
 
 ## 开始
 - [概览](/zh)
-- [产品地图](/zh/project/product-map)
-- [Identity 与店铺](/zh/project/identity-and-stores)
-- [交易主线](/zh/project/transaction-spine)
-- [社群市场与发现](/zh/project/community-commerce)
-- [Agent 与 Skill](/zh/project/agent-commerce)
 - [选择托管方式](/zh/start/choose-deployment)
 - [Agent 使用指南](/zh/agents)
 
+## 产品模型
+- [产品地图](/zh/project/product-map)
+- [Identity 与店铺](/zh/project/identity-and-stores)
+- [从 Offer 到 Fulfillment](/zh/project/offer-to-fulfillment)
+- [交易主线](/zh/project/transaction-spine)
+- [社群市场与发现](/zh/project/community-commerce)
+- [交互表面与集成](/zh/project/surfaces-and-integrations)
+- [Agent 与 Skill](/zh/project/agent-commerce)
+
 ## 使用 Mobazha
 - [卖家指南](/zh/sell)
-- [从 Offer 到 Fulfillment](/zh/project/offer-to-fulfillment)
 - [买家指南](/zh/buy)
 
 ## 自行托管
@@ -104,7 +109,6 @@ Implementation evidence: the versioned sources linked from each page.
 
 ## 开发
 - [开发者概览](/zh/build)
-- [交互表面与集成](/zh/project/surfaces-and-integrations)
 - [运行时能力](/zh/build/runtime-capabilities)
 - [Token 标识](/zh/build/token-identifiers)
 - [扩展架构](/zh/build/extensions)

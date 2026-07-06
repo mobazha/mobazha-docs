@@ -19,7 +19,7 @@ type PortalContent = {
   primaryAction: { label: string; href: string };
   secondaryAction: { label: string; href: string };
   principlesTitle: string;
-  principles: Array<{ label: string; title: string; description: string }>;
+  principles: Array<{ label: string; title: string; description: string; href: string }>;
   quickLinksTitle: string;
   journeys: PortalJourney[];
   quickLinks: Array<{ label: string; href: string; external?: boolean }>;
@@ -35,10 +35,10 @@ const portalContent: Record<"en" | "zh-CN", PortalContent> = {
     secondaryAction: { label: "Choose an operating path", href: "/start/choose-deployment" },
     principlesTitle: "One system, four product promises",
     principles: [
-      { label: "01", title: "Own", description: "Keep store identity, policy, data, and operating choices explicit." },
-      { label: "02", title: "Connect", description: "Reach buyers through independent storefronts, communities, and integrations." },
-      { label: "03", title: "Trade", description: "Use backend-owned order state and payment paths with visible terms." },
-      { label: "04", title: "Extend", description: "Add services and Agent workflows without handing them Core authority." },
+      { label: "01", title: "Own", description: "Keep store identity, policy, data, and operating choices explicit.", href: "/project/identity-and-stores" },
+      { label: "02", title: "Connect", description: "Reach buyers through independent storefronts, communities, and integrations.", href: "/project/community-commerce" },
+      { label: "03", title: "Trade", description: "Use backend-owned order state and payment paths with visible terms.", href: "/project/transaction-spine" },
+      { label: "04", title: "Extend", description: "Add services and Agent workflows without handing them Core authority.", href: "/project/surfaces-and-integrations" },
     ],
     quickLinksTitle: "Quick links",
     journeys: [
@@ -96,10 +96,10 @@ const portalContent: Record<"en" | "zh-CN", PortalContent> = {
     secondaryAction: { label: "选择运行方式", href: "/zh/start/choose-deployment" },
     principlesTitle: "一个系统，四项产品承诺",
     principles: [
-      { label: "01", title: "自主", description: "明确掌握店铺身份、政策、数据和运行方式。" },
-      { label: "02", title: "连接", description: "通过独立店面、社群和集成触达买家。" },
-      { label: "03", title: "交易", description: "依据后端权威订单状态和条款透明的支付路径完成交易。" },
-      { label: "04", title: "扩展", description: "接入服务和 Agent 工作流，但不把 Core 权限交给扩展。" },
+      { label: "01", title: "自主", description: "明确掌握店铺身份、政策、数据和运行方式。", href: "/zh/project/identity-and-stores" },
+      { label: "02", title: "连接", description: "通过独立店面、社群和集成触达买家。", href: "/zh/project/community-commerce" },
+      { label: "03", title: "交易", description: "依据后端权威订单状态和条款透明的支付路径完成交易。", href: "/zh/project/transaction-spine" },
+      { label: "04", title: "扩展", description: "接入服务和 Agent 工作流，但不把 Core 权限交给扩展。", href: "/zh/project/surfaces-and-integrations" },
     ],
     quickLinksTitle: "快速链接",
     journeys: [
@@ -162,9 +162,9 @@ export function PortalHome({ language = "en" }: { language?: "en" | "zh-CN" }) {
           <Link className="doc-primary-action" href={content.primaryAction.href}>
             {content.primaryAction.label}<span aria-hidden="true">→</span>
           </Link>
-          <a className="portal-secondary-action" href={content.secondaryAction.href}>
+          <Link className="portal-secondary-action" href={content.secondaryAction.href}>
             {content.secondaryAction.label}
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -177,7 +177,7 @@ export function PortalHome({ language = "en" }: { language?: "en" | "zh-CN" }) {
           {content.principles.map((principle) => (
             <li key={principle.label}>
               <span>{principle.label}</span>
-              <h3>{principle.title}</h3>
+              <h3><Link href={principle.href}>{principle.title}<span aria-hidden="true">→</span></Link></h3>
               <p>{principle.description}</p>
             </li>
           ))}

@@ -70,6 +70,26 @@ These layers share facts but not presentation hierarchy. A roadmap does not
 become a task guide, and an internal implementation plan does not become a
 public capability claim.
 
+## Navigation architecture
+
+The portal navigation keeps product understanding separate from task and
+project evidence:
+
+- **Start** contains only the portal entry, operating-path choice, and Agent
+  documentation entry.
+- **Product model** contains the durable Own, Connect, Trade, and Extend
+  relationships, independent of one client or provider.
+- **Use, Operate, and Build** contain role-specific tasks and contract
+  references.
+- **Understand and Trust & governance** contain architecture, policy, release,
+  decision, and historical evidence.
+- **Community** contains contribution and support paths.
+
+The homepage product promises link directly into the Product model group. A
+new concept joins that group only when it passes the topic-selection rule; a
+new task remains in its role journey instead of becoming another top-level
+product category.
+
 ## Initial flagship set
 
 The first editorial sequence is deliberately smaller than the source inventory:
