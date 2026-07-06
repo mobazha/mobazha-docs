@@ -69,6 +69,7 @@ Mobazha 围绕一条交易主线变得具体：
 - [查看英文订单状态指南](/buy/order-status)
 - [查看英文退款与争议指南](/buy/cancel-refund-dispute)
 - [理解订单、支付与保护状态为何必须分离](/zh/project/transaction-spine)
+- [连接 Offer、Merchandising、Supply 与 Fulfillment](/zh/project/offer-to-fulfillment)
 
 ## 分发和自动化也是产品界面
 

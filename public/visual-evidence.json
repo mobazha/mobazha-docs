@@ -104,6 +104,26 @@
       "reviewed": "2026-07-06"
     },
     {
+      "id": "offer-to-fulfillment",
+      "src": "/images/docs/project/offer-to-fulfillment.svg",
+      "sha256": "507cd4856700f982c65068076ba9db5e830c7a351190e91318a0073fe5209528",
+      "mobile_src": "/images/docs/project/offer-to-fulfillment-mobile.svg",
+      "mobile_sha256": "f7cc389b9e4620a3d7105518d322baa28053eeb69ac256d5a0d8e1a8cb1ba61b",
+      "kind": "conceptual",
+      "width": 760,
+      "height": 520,
+      "mobile_width": 360,
+      "mobile_height": 780,
+      "alt": "Conceptual commerce flow from supply facts through a seller-owned listing revision, merchandising projection, accepted quote and order, and fulfillment evidence, with external providers and Core authority kept separate.",
+      "caption": "One seller-owned promise can use several merchandising, supply, and fulfillment models without allowing later changes to rewrite an accepted order.",
+      "claim": "Explains durable offer and fulfillment boundaries; it does not assert that every product shape, discount, collection rule, supply provider, or delivery path is available in every distribution.",
+      "privacy_review": "synthetic-only",
+      "source": "https://github.com/mobazha/mobazha-docs",
+      "source_revision": "offer-to-fulfillment-v1",
+      "applies_to": "Mobazha v0.3 release-candidate product model",
+      "reviewed": "2026-07-06"
+    },
+    {
       "id": "buyer-order-lifecycle",
       "src": "/images/docs/buy/order-lifecycle.svg",
       "sha256": "aa9b5fa9b8a3fc8d051eb6be36b1754148146d93e46712920dce3b6b0e3f54a7",

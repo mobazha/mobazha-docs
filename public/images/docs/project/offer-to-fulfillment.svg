@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="520" viewBox="0 0 760 520" role="img" aria-labelledby="title desc">
+  <title id="title">Offer to fulfillment model</title>
+  <desc id="desc">Supply facts feed a seller-owned listing revision. Collections, storefronts, and discounts shape discovery and a quote. The accepted quote becomes an immutable order obligation, which is fulfilled by a supported seller or provider path with evidence returning to Core.</desc>
+  <rect width="760" height="520" rx="18" fill="#fbfdff"/>
+  <rect x="1" y="1" width="758" height="518" rx="17" fill="none" stroke="#dbe5f1"/>
+  <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+    <text x="30" y="36" fill="#004eeb" font-size="11" font-weight="700" letter-spacing="1.5">OFFER TO FULFILLMENT</text>
+    <text x="30" y="67" fill="#1b2a4e" font-size="24" font-weight="750">One promise, several supporting models</text>
+    <text x="30" y="91" fill="#64748b" font-size="13">Presentation and automation can change; an accepted order keeps its obligation.</text>
+
+    <text x="30" y="127" fill="#64748b" font-size="10" font-weight="700" letter-spacing="1.2">NORMAL COMMERCE FLOW</text>
+    <g fill="#ffffff" stroke="#b9c9dc">
+      <rect x="30" y="140" width="124" height="78" rx="10"/><rect x="174" y="140" width="124" height="78" rx="10"/><rect x="318" y="140" width="124" height="78" rx="10"/><rect x="462" y="140" width="124" height="78" rx="10"/><rect x="606" y="140" width="124" height="78" rx="10"/>
+    </g>
+    <g fill="#1b2a4e" font-size="12" font-weight="700" text-anchor="middle">
+      <text x="92" y="166">Supply facts</text><text x="236" y="166">Listing revision</text><text x="380" y="166">Merchandising</text><text x="524" y="166">Quote + order</text><text x="668" y="166">Fulfillment</text>
+    </g>
+    <g fill="#64748b" font-size="9.5" text-anchor="middle">
+      <text x="92" y="187">stock · capacity</text><text x="236" y="187">item · options · retail</text><text x="380" y="187">collection · discount</text><text x="524" y="187">accepted snapshot</text><text x="668" y="187">delivery · evidence</text>
+      <text x="92" y="202">external observation</text><text x="236" y="202">policy · delivery paths</text><text x="380" y="202">storefront · market</text><text x="524" y="202">business obligation</text><text x="668" y="202">seller or provider</text>
+    </g>
+    <path d="M154 179h20m-5-5 5 5-5 5M298 179h20m-5-5 5 5-5 5M442 179h20m-5-5 5 5-5 5M586 179h20m-5-5 5 5-5 5" fill="none" stroke="#9bb8e8" stroke-width="1.5"/>
+
+    <rect x="30" y="250" width="700" height="77" rx="11" fill="#eef4ff" stroke="#6f9ff1" stroke-width="1.4"/>
+    <text x="50" y="274" fill="#004eeb" font-size="10" font-weight="750" letter-spacing="1.1">STORE-OWNED SELLABLE PROMISE</text>
+    <text x="50" y="298" fill="#1b2a4e" font-size="13" font-weight="650">Store identity · buyer-visible item · retail terms · availability · policies · supported delivery paths</text>
+    <text x="50" y="316" fill="#64748b" font-size="10">A product-type label helps presentation; it does not replace these explicit facts.</text>
+
+    <rect x="30" y="341" width="335" height="88" rx="11" fill="#ffffff" stroke="#b9c9dc"/>
+    <text x="50" y="365" fill="#59697f" font-size="10" font-weight="750" letter-spacing="1.1">EXTERNAL SUPPLY / DELIVERY</text>
+    <text x="50" y="389" fill="#1b2a4e" font-size="12" font-weight="650">Provider catalog, availability, cost, job, tracking</text>
+    <text x="50" y="408" fill="#64748b" font-size="10">returns observations · never rewrites Core state directly</text>
+
+    <rect x="395" y="341" width="335" height="88" rx="11" fill="#fff9ed" stroke="#e6bd69"/>
+    <text x="415" y="365" fill="#8a5a00" font-size="10" font-weight="750" letter-spacing="1.1">CORE-OWNED COMMITMENT</text>
+    <text x="415" y="389" fill="#1b2a4e" font-size="12" font-weight="650">Quote, order snapshot, admitted transition, audit</text>
+    <text x="415" y="408" fill="#64748b" font-size="10">preserves what the buyer and seller accepted</text>
+
+    <rect x="104" y="460" width="552" height="31" rx="8" fill="#ffffff" stroke="#7ea7ef"/>
+    <text x="380" y="480" text-anchor="middle" fill="#315b9f" font-size="11" font-weight="700">Later listing, discount, supply, or shipping changes do not rewrite an existing order</text>
+  </g>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="780" viewBox="0 0 360 780" role="img" aria-labelledby="title desc">
+  <title id="title">Offer to fulfillment model</title>
+  <desc id="desc">A vertical flow from supply facts through listing, merchandising, accepted quote and order, and fulfillment, followed by separate authority bands for the seller promise, external providers, and Core commitment.</desc>
+  <rect width="360" height="780" rx="18" fill="#fbfdff"/>
+  <rect x="1" y="1" width="358" height="778" rx="17" fill="none" stroke="#dbe5f1"/>
+  <g font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+    <text x="22" y="34" fill="#004eeb" font-size="10" font-weight="700" letter-spacing="1.3">OFFER TO FULFILLMENT</text>
+    <text x="22" y="62" fill="#1b2a4e" font-size="21" font-weight="750">One sellable promise</text>
+    <text x="22" y="85" fill="#64748b" font-size="11">Supporting models stay separate and reviewable.</text>
+    <text x="22" y="118" fill="#64748b" font-size="9" font-weight="700" letter-spacing="1.1">NORMAL COMMERCE FLOW</text>
+    <line x1="47" y1="145" x2="47" y2="345" stroke="#9bb8e8" stroke-width="2"/>
+    <g fill="#ffffff" stroke="#6f9ff1" stroke-width="1.3">
+      <circle cx="47" cy="145" r="17"/><circle cx="47" cy="195" r="17"/><circle cx="47" cy="245" r="17"/><circle cx="47" cy="295" r="17"/><circle cx="47" cy="345" r="17"/>
+    </g>
+    <g fill="#004eeb" font-size="10" font-weight="750" text-anchor="middle">
+      <text x="47" y="149">1</text><text x="47" y="199">2</text><text x="47" y="249">3</text><text x="47" y="299">4</text><text x="47" y="349">5</text>
+    </g>
+    <g fill="#1b2a4e" font-size="11" font-weight="700">
+      <text x="77" y="142">Supply facts</text><text x="77" y="192">Listing revision</text><text x="77" y="242">Merchandising projection</text><text x="77" y="292">Accepted quote + order</text><text x="77" y="342">Fulfillment + evidence</text>
+    </g>
+    <g fill="#64748b" font-size="9">
+      <text x="77" y="156">stock · capacity · provider observation</text><text x="77" y="206">item · options · retail terms · policy</text><text x="77" y="256">collection · discount · storefront · market</text><text x="77" y="306">immutable business obligation</text><text x="77" y="356">seller or provider delivery path</text>
+    </g>
+
+    <rect x="22" y="388" width="316" height="100" rx="10" fill="#eef4ff" stroke="#6f9ff1" stroke-width="1.4"/>
+    <text x="39" y="412" fill="#004eeb" font-size="9" font-weight="750" letter-spacing="1">STORE-OWNED SELLABLE PROMISE</text>
+    <text x="39" y="435" fill="#1b2a4e" font-size="10" font-weight="700">identity · item · retail terms · availability</text>
+    <text x="39" y="453" fill="#1b2a4e" font-size="10" font-weight="700">policies · supported delivery paths</text>
+    <text x="39" y="473" fill="#64748b" font-size="9">A product label does not replace explicit facts.</text>
+
+    <rect x="22" y="500" width="316" height="82" rx="10" fill="#ffffff" stroke="#b9c9dc"/>
+    <text x="39" y="524" fill="#59697f" font-size="9" font-weight="750" letter-spacing="1">EXTERNAL SUPPLY / DELIVERY</text>
+    <text x="39" y="547" fill="#1b2a4e" font-size="10" font-weight="700">catalog · availability · cost · job · tracking</text>
+    <text x="39" y="566" fill="#64748b" font-size="9">returns observations; never rewrites Core directly</text>
+
+    <rect x="22" y="594" width="316" height="82" rx="10" fill="#fff9ed" stroke="#e6bd69"/>
+    <text x="39" y="618" fill="#8a5a00" font-size="9" font-weight="750" letter-spacing="1">CORE-OWNED COMMITMENT</text>
+    <text x="39" y="641" fill="#1b2a4e" font-size="10" font-weight="700">quote · order snapshot · transition · audit</text>
+    <text x="39" y="660" fill="#64748b" font-size="9">preserves what buyer and seller accepted</text>
+
+    <rect x="22" y="704" width="316" height="48" rx="9" fill="#ffffff" stroke="#7ea7ef"/>
+    <text x="180" y="724" text-anchor="middle" fill="#315b9f" font-size="9" font-weight="700">Later offer or provider changes</text>
+    <text x="180" y="739" text-anchor="middle" fill="#315b9f" font-size="9" font-weight="700">do not rewrite an existing order.</text>
+  </g>
+</svg>

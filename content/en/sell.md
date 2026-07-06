@@ -20,6 +20,7 @@ featuredVisual: seller-operating-loop
 
 ## Start with the store journey
 
+- [Understand the offer-to-fulfillment model](/project/offer-to-fulfillment) — Separate product shape, merchandising, supply facts, accepted terms, and delivery evidence.
 - [Prepare the store](/sell/store-setup) — Validate identity, policy, fulfillment, and a complete test purchase.
 - [Publish listings](/sell/listings) — Show buyer-verifiable product, variant, price, and availability data.
 - [Configure shipping](/sell/shipping) — Match destinations, rates, listings, estimates, and evidence.

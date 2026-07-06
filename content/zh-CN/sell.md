@@ -26,6 +26,8 @@ featuredVisual: seller-operating-loop
 - 公开配送、退货、退款和争议条款。
 - 在接受订单前检查最终报价和所有收款方金额。
 
+- [理解从 Offer 到 Fulfillment 的经营模型](/zh/project/offer-to-fulfillment)
+
 ## 店铺与商品准备
 
 - 设置可识别的店铺身份、联系方式、地区、币种展示和域名。

@@ -69,6 +69,7 @@ The product becomes concrete around one transaction spine:
 - [Track payment and order status](/buy/order-status)
 - [Cancel, request a refund, or open a dispute](/buy/cancel-refund-dispute)
 - [Understand why order, payment, and protection states stay separate](/project/transaction-spine)
+- [Connect offers, merchandising, supply, and fulfillment](/project/offer-to-fulfillment)
 
 ## Distribution and automation are product surfaces
 

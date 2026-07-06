@@ -45,6 +45,10 @@
           "/sell"
         ],
         [
+          "Offer to fulfillment",
+          "/project/offer-to-fulfillment"
+        ],
+        [
           "Store setup",
           "/sell/store-setup"
         ],
@@ -316,6 +320,10 @@
         [
           "卖家指南",
           "/zh/sell"
+        ],
+        [
+          "从 Offer 到 Fulfillment",
+          "/zh/project/offer-to-fulfillment"
         ],
         [
           "买家指南",

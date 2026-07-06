@@ -20,6 +20,7 @@ Implementation evidence: the versioned sources linked from each page.
 
 ## Use Mobazha
 - [Sell](/sell)
+- [Offer to fulfillment](/project/offer-to-fulfillment)
 - [Store setup](/sell/store-setup)
 - [Listings](/sell/listings)
 - [Shipping](/sell/shipping)
@@ -93,6 +94,7 @@ Implementation evidence: the versioned sources linked from each page.
 
 ## 使用 Mobazha
 - [卖家指南](/zh/sell)
+- [从 Offer 到 Fulfillment](/zh/project/offer-to-fulfillment)
 - [买家指南](/zh/buy)
 
 ## 自行托管
