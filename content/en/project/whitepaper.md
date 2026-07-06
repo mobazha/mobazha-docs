@@ -23,6 +23,13 @@ primaryAction:
 
 > **Important:** Version 0.2 is a public discussion draft. It states principles and direction; it is not a fundraising, Token, return, ownership, or shipped-feature commitment.
 
+The whitepaper belongs to **Vision & direction**. It explains why Mobazha is being built and the durable principles the project wants to test. It is not the system architecture, current capability list, fee schedule, or release contract.
+
+- [Use the Product overview for the current product model](/project/product-map)
+- [Use System architecture for runtime and authority boundaries](/project/architecture)
+- [Use Fees and pricing for current economic policy and quote rules](/project/fees)
+- [Use Release scope for current availability and maturity](/project/release-scope)
+
 ## 0. Executive Summary
 
 AI is distributing software, content, analysis, and execution capabilities that were once available only to large organizations. Yet widely available productive capacity does not automatically create access to markets, trust, payments, distribution, or durable business opportunity. A person may use an agent to accomplish more work and still be unable to find demand, earn trust, complete a cross-border sale, manage a dispute, or retain the commercial relationships they have built.

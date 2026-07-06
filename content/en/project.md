@@ -32,6 +32,17 @@ primaryAction:
 
 The first four pages form the main explanatory spine: product model, system model, transaction model, and money model. Release scope then separates current evidence from future direction.
 
+## How the knowledge groups are classified
+
+| Left-navigation group | Purpose | Reading logic |
+|---|---|---|
+| Product model | Explain the durable objects and relationships a user encounters | Overview → who operates → what is offered → how trade advances → where demand connects → which channels present it → how Agents automate it |
+| Product foundations | Explain the system and operating rules beneath that model | Architecture → fees → compatibility → packaging and distributions |
+| Vision & direction | Explain why Mobazha exists and which outcomes it is trying to prove | Versioned whitepaper → evidence-gated roadmap |
+| Trust & governance | Establish what can be relied on and how public rules change | Security, legal, release scope, governance, decisions, RFCs, ADRs, history, and releases |
+
+The desktop header uses broader user intent: **Buy & sell, Operate, Build, Product, Project, Community**. Product covers the first three explanatory groups above. Project covers Trust & governance. The Mobazha Docs logo returns to the Start surface.
+
 ## Current authorities and records
 
 - [Product map](/project/product-map) — Independent commerce units, transaction authority, product surfaces, and optional dependencies.

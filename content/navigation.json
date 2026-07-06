@@ -21,27 +21,27 @@
       "label": "Product model",
       "links": [
         [
-          "Product map",
+          "Product overview",
           "/project/product-map"
         ],
         [
-          "Identity and stores",
+          "Identity, stores, and storefronts",
           "/project/identity-and-stores"
         ],
         [
-          "Offer to fulfillment",
+          "Listings to fulfillment",
           "/project/offer-to-fulfillment"
         ],
         [
-          "Transaction spine",
+          "Orders, payments, and recovery",
           "/project/transaction-spine"
         ],
         [
-          "Community commerce",
+          "Markets and discovery",
           "/project/community-commerce"
         ],
         [
-          "Surfaces and integrations",
+          "Channels and integrations",
           "/project/surfaces-and-integrations"
         ],
         [
@@ -198,7 +198,7 @@
       ]
     },
     {
-      "label": "Understand",
+      "label": "Product foundations",
       "links": [
         [
           "Project overview",
@@ -209,10 +209,6 @@
           "/project/architecture"
         ],
         [
-          "Whitepaper v0.2",
-          "/project/whitepaper"
-        ],
-        [
           "Fees and pricing",
           "/project/fees"
         ],
@@ -221,8 +217,17 @@
           "/project/compatibility"
         ],
         [
-          "Distribution",
+          "Packaging and distributions",
           "/project/distribution"
+        ]
+      ]
+    },
+    {
+      "label": "Vision & direction",
+      "links": [
+        [
+          "Whitepaper v0.2",
+          "/project/whitepaper"
         ],
         [
           "Product roadmap",

@@ -142,9 +142,10 @@ test("homepage promises lead to canonical product models", async ({ page }) => {
 test("the current whitepaper is prominent, versioned, and complete", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator('.portal-home-actions a[href="/project/whitepaper"]')).toHaveText("Read the v0.2 whitepaper");
-  await expect(page.locator('.site-header nav a[href="/project/whitepaper"]')).toHaveText("Whitepaper");
 
   await page.goto("/project/whitepaper");
+  await expect(page.locator('.site-header nav a[href="/project/product-map"]')).toHaveAttribute("aria-current", "page");
+  await expect(page.locator(".nav-group.active-group > p")).toHaveText("Vision & direction");
   await expect(page.locator("h1")).toHaveText("Mobazha Founding Whitepaper");
   await expect(page.locator(".doc-metadata")).toContainText("0.2-discussion");
   await expect(page.getByRole("heading", { name: "0. Executive Summary" })).toBeVisible();
@@ -155,6 +156,32 @@ test("the current whitepaper is prominent, versioned, and complete", async ({ pa
   await page.goto("/zh");
   await expect(page.locator('.portal-home-actions a[href="/zh/project/whitepaper"]')).toHaveText("阅读 v0.2 白皮书");
   await expect(page.locator('.site-header nav a[href="/zh/project/whitepaper"]')).toHaveText("白皮书");
+});
+
+test("primary tabs and project knowledge groups use one taxonomy", async ({ page }) => {
+  await page.goto("/project/product-map");
+  expect(await page.locator(".site-header nav a").evaluateAll((links) => links.map((link) => link.textContent))).toEqual([
+    "Buy & sell",
+    "Operate",
+    "Build",
+    "Product",
+    "Project",
+    "Community",
+  ]);
+  await expect(page.locator('.site-header nav a[href="/project/product-map"]')).toHaveAttribute("aria-current", "page");
+  await expect(page.locator(".nav-group.active-group > p")).toHaveText("Product model");
+
+  await page.goto("/project/compatibility");
+  await expect(page.locator('.site-header nav a[href="/project/product-map"]')).toHaveAttribute("aria-current", "page");
+  await expect(page.locator(".nav-group.active-group > p")).toHaveText("Product foundations");
+
+  await page.goto("/project/whitepaper");
+  await expect(page.locator('.site-header nav a[href="/project/product-map"]')).toHaveAttribute("aria-current", "page");
+  await expect(page.locator(".nav-group.active-group > p")).toHaveText("Vision & direction");
+
+  await page.goto("/project/security");
+  await expect(page.locator('.site-header nav a[href="/project/release-scope"]')).toHaveAttribute("aria-current", "page");
+  await expect(page.locator(".nav-group.active-group > p")).toHaveText("Trust & governance");
 });
 
 test("article lists keep their markers without changing task step counters", async ({ page }) => {

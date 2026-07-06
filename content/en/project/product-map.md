@@ -21,6 +21,22 @@ primaryAction:
 featuredVisual: mobazha-product-atlas
 ---
 
+## How to read the Product model
+
+The Product model navigation is a sequence, not a list of unrelated features:
+
+| Step | Question | Page |
+|---|---|---|
+| Overview | How does the whole Mobazha product fit together? | This page |
+| Who | Which identity, store, storefront, and operator owns the commercial context? | [Identity, stores, and storefronts](/project/identity-and-stores) |
+| What | How do listings, pricing, merchandising, supply, and fulfillment relate? | [Listings to fulfillment](/project/offer-to-fulfillment) |
+| Trade | How do orders, payment evidence, protection, fulfillment, and recovery advance? | [Orders, payments, and recovery](/project/transaction-spine) |
+| Connect | How do markets, communities, discovery, and direct demand connect to stores? | [Markets and discovery](/project/community-commerce) |
+| Present | How do web, API, events, messaging, embedded channels, and integrations expose the same system? | [Channels and integrations](/project/surfaces-and-integrations) |
+| Automate | How do Agents, Skills, Tools, identity, scope, approval, and audit participate? | [Agents and Skills](/project/agent-commerce) |
+
+Implementation names and individual providers belong under these stable questions; they do not become new top-level product categories merely because they are added to source.
+
 ## The independent commerce unit
 
 Mobazha starts with an independently operated commerce unit: an identity, one or more stores, their policies and catalog, and the backend that owns their business state. A storefront, hosted application, community market, social channel, browser surface, or Agent can present and assist that unit, but it does not become the authority for its orders or money.

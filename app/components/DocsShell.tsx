@@ -16,6 +16,7 @@ function isNavLinkActive(activePath: string, href: string): boolean {
 
 export function SiteHeader({ activePath }: { activePath?: string }) {
   const isChinese = isChinesePath(activePath);
+  const activeGroupLabel = activePath ? activeNavGroupForPath(activePath)?.label : undefined;
   const activeDoc = activePath && activePath !== "/" && activePath !== "/zh"
     ? docsBySlug.get(activePath.slice(1))
     : undefined;
@@ -25,15 +26,21 @@ export function SiteHeader({ activePath }: { activePath?: string }) {
     : isChinese ? "/" : "/zh";
   const primaryLinks = isChinese
     ? [["使用", "/zh/buy"], ["自行托管", "/zh/self-host"], ["开发", "/zh/build"], ["产品", "/zh/project/product-map"], ["白皮书", "/zh/project/whitepaper"], ["社区", "/zh/support"]]
-    : [["Buy & sell", "/buy"], ["Operate", "/self-host"], ["Build", "/build"], ["Product", "/project/product-map"], ["Whitepaper", "/project/whitepaper"], ["Community", "/support"]];
+    : [["Buy & sell", "/buy"], ["Operate", "/self-host"], ["Build", "/build"], ["Product", "/project/product-map"], ["Project", "/project/release-scope"], ["Community", "/support"]];
   const isPrimaryActive = (href: string) => {
     if (!activePath) return false;
     if (href.endsWith("/buy") || href === "/buy") return /\/(buy|sell)(\/|$)/.test(activePath);
     if (href.endsWith("/self-host")) return activePath.includes("/self-host");
     if (href.endsWith("/build")) return activePath.includes("/build") || activePath === "/reference" || activePath === "/api-reference";
-    if (href.endsWith("/project/whitepaper")) return activePath === href;
-    if (href.endsWith("/project/product-map")) {
-      return (activePath.includes("/project") && !activePath.endsWith("/project/whitepaper")) || activePath === "/releases";
+    if (!isChinese && href === "/project/product-map") {
+      return ["Product model", "Product foundations", "Vision & direction"].includes(activeGroupLabel ?? "");
+    }
+    if (!isChinese && href === "/project/release-scope") {
+      return activeGroupLabel === "Trust & governance";
+    }
+    if (isChinese && href.endsWith("/project/whitepaper")) return activePath === href;
+    if (isChinese && href.endsWith("/project/product-map")) {
+      return activePath.includes("/project") && !activePath.endsWith("/project/whitepaper");
     }
     if (href.endsWith("/support")) return activePath.includes("/support") || activePath.includes("/contribute");
     return activePath === href;

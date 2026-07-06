@@ -14,12 +14,12 @@ Implementation evidence: the versioned sources linked from each page.
 - [For agents](/agents)
 
 ## Product model
-- [Product map](/project/product-map)
-- [Identity and stores](/project/identity-and-stores)
-- [Offer to fulfillment](/project/offer-to-fulfillment)
-- [Transaction spine](/project/transaction-spine)
-- [Community commerce](/project/community-commerce)
-- [Surfaces and integrations](/project/surfaces-and-integrations)
+- [Product overview](/project/product-map)
+- [Identity, stores, and storefronts](/project/identity-and-stores)
+- [Listings to fulfillment](/project/offer-to-fulfillment)
+- [Orders, payments, and recovery](/project/transaction-spine)
+- [Markets and discovery](/project/community-commerce)
+- [Channels and integrations](/project/surfaces-and-integrations)
 - [Agents and Skills](/project/agent-commerce)
 
 ## Use Mobazha
@@ -61,13 +61,15 @@ Implementation evidence: the versioned sources linked from each page.
 - [Extensions](/build/extensions)
 - [Reference](/reference)
 
-## Understand
+## Product foundations
 - [Project overview](/project)
 - [System architecture](/project/architecture)
-- [Whitepaper v0.2](/project/whitepaper)
 - [Fees and pricing](/project/fees)
 - [Compatibility](/project/compatibility)
-- [Distribution](/project/distribution)
+- [Packaging and distributions](/project/distribution)
+
+## Vision & direction
+- [Whitepaper v0.2](/project/whitepaper)
 - [Product roadmap](/project/roadmap)
 
 ## Trust & governance

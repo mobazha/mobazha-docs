@@ -76,16 +76,18 @@ sizes while allowing titles to contract.
 
 ### Global navigation
 
-Use no more than five primary choices:
+Use six primary choices in task-to-knowledge order:
 
-- **Use** — Buy and Sell
+- **Buy & sell** — Buyer and seller journeys
 - **Operate** — Self-host and maintain a Node
 - **Build** — API, events, MCP, webhooks, and extensions
-- **Understand** — Architecture, economics, security, releases, and governance
+- **Product** — Product model, system and economic foundations, whitepaper, and roadmap
+- **Project** — Release scope, security, legal, governance, decisions, and history
 - **Community** — Support and contribution
 
-Search and language selection remain global utilities. Reference is available
-inside Build rather than competing with Buy and Sell in the primary header.
+The logo returns to Start. Search and language selection remain global
+utilities. Reference is available inside Build rather than competing with
+Buy and Sell in the primary header.
 
 ### Local navigation
 

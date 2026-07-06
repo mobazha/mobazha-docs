@@ -77,13 +77,24 @@ project evidence:
 
 - **Start** contains only the portal entry, operating-path choice, and Agent
   documentation entry.
-- **Product model** contains the durable Own, Connect, Trade, and Extend
-  relationships, independent of one client or provider.
+- **Product model** explains the durable Own, Connect, Trade, and Extend
+  relationships in a user-readable sequence: who operates, what is offered,
+  how trade advances, where demand connects, and how automation participates.
 - **Use, Operate, and Build** contain role-specific tasks and contract
   references.
-- **Understand and Trust & governance** contain architecture, policy, release,
+- **Product foundations** contains the system architecture, fee model,
+  compatibility boundary, and distribution choices behind those concepts.
+- **Vision & direction** contains the versioned whitepaper and public roadmap;
+  neither is a shipped-capability claim.
+- **Trust & governance** contains release, security, legal, policy-change,
   decision, and historical evidence.
 - **Community** contains contribution and support paths.
+
+The desktop header follows user intent rather than document type: **Buy & sell,
+Operate, Build, Product, Project, Community**. The logo returns to Start.
+Product activates the Product model, Product foundations, and Vision &
+direction groups; Project activates Trust & governance. Whitepaper is a
+versioned document inside Vision & direction, not a standalone product area.
 
 The homepage product promises link directly into the Product model group. A
 new concept joins that group only when it passes the topic-selection rule; a
