@@ -13,14 +13,20 @@
 
 Define the trust and custody contract for Guest Checkout: a buyer without a
 Mobazha node pays a funding target controlled by the seller's node. Guest
-orders are a custodial direct-payment product, not a moderated escrow product,
-and must be disclosed as such.
+orders are seller-custodied orders, not moderated escrow orders, and must be
+disclosed as such. An observed-address payment may be an internal rail
+mechanism; this RFC does not introduce a separate Direct payment product.
 
 The RFC fixes four public boundaries: what protection a guest buyer does and
 does not receive; who holds funds at each stage; when a payment method may be
-buyer-visible on a chain; and how an anonymous guest identity is created and
-limited. It builds on the receiving architecture of RFC-0008 and supports the
-Affiliate outputs of RFC-0007 without changing either.
+buyer-visible on a chain; and how an order-scoped guest access credential is
+issued and limited. It builds on the receiving architecture of
+[RFC-0008](./0008-node-key-domains-and-receiving-architecture.md), consumes
+frozen attempt terms from
+[RFC-0009](./0009-frozen-payment-attempt-settlement-terms.md), and supports the
+Affiliate outputs of
+[RFC-0007](./0007-seller-funded-affiliate-atomic-settlement.md) without changing
+their authority.
 
 ## Problem and evidence
 
@@ -50,10 +56,11 @@ Three ambiguities need a public contract:
 
 ### 1. Trust model
 
-A guest order is a direct, custodial sale by the seller:
+A guest order is a seller-custodied sale:
 
-- the buyer pays exactly the quoted amount to a funding target controlled by
-  the seller's node key material;
+- the funding target requests the quoted amount and is controlled through the
+  seller node's Wallet or Settlement domain; actual receipts are classified
+  under the overpayment and underpayment rules below;
 - there is no moderated escrow, third-party arbiter, or protocol-level
   dispute release for guest orders;
 - buyer recourse is the seller's published policies plus any applicable
@@ -69,9 +76,11 @@ escrowed, or refundable-by-protocol.
 - Guest funding targets are owned by the Wallet Domain guest account or a
   Settlement Domain managed-escrow container defined in RFC-0008; identity
   keys never receive guest funds.
-- On wallet-account rails, received funds are seller wallet balance at
-  confirmation; a transfer to an external payout destination is ordinary
-  wallet fund management, not part of the order contract.
+- On wallet-account rails, an unsplit receipt may become seller wallet balance
+  at confirmation. If frozen terms require Affiliate or other recipient
+  outputs, the receipt remains settlement input until the corresponding
+  SettlementAction completes; only the settled seller remainder and later
+  external payout transfer are ordinary wallet fund management.
 - On managed-escrow rails, the container is seller-controlled custody, not a
   buyer-protection instrument, and must not be marketed as escrow.
 - Hosted deployments that hold or operate seller key material must review and
@@ -86,15 +95,16 @@ close end to end and survive restart:
 2. funding-target allocation;
 3. payment detection with defined overpay, underpay, and expiry behavior;
 4. confirmation to the funded state with a disclosed finality rule;
-5. funds settlement, or an explicitly documented custody decision not to
-   settle automatically;
+5. funds are directly spendable through the Wallet Domain, or every output
+   required by the frozen attempt terms can complete, confirm, and recover
+   after restart;
 6. watch and recovery restoration after restart.
 
 Store configuration may list additional chains, but configuration alone must
 not make a chain buyer-visible. Capability status is evaluated per chain and
 network, not inferred from code presence.
 
-### 4. Anonymous guest identity
+### 4. Order-scoped guest access credential
 
 A guest buyer receives a server-derived, unguessable order-scoped credential
 (buyer portal token). The buyer does not choose or carry a peer identity, and
@@ -108,8 +118,9 @@ this boundary (RFC-0007).
 - Detection classifies exact payment, overpayment, underpayment, and
   expiration with published store-level rules for each;
 - the funded state requires the chain's disclosed confirmation depth;
-- guest orders may carry a frozen Affiliate output that settles with the
-  seller's funds under RFC-0007;
+- guest orders consume the frozen attempt terms defined by RFC-0009 and may
+  carry an Affiliate output that settles with the seller's funds under
+  RFC-0007;
 - unfinished watches, sweeps, and transfers must restore after a node or
   service restart without manual reconstruction.
 
@@ -119,7 +130,7 @@ Guest refunds are seller-initiated payments, not protocol releases. A refund
 needs a buyer-provided destination collected through the buyer portal, and the
 refund destination is validated for the order's rail and network. The protocol
 does not guarantee a refund; it guarantees that a refund, if made, is
-attributable to the order.
+attributable to the original attempt. A refund creates no new Affiliate output.
 
 ## Security, privacy, and abuse analysis
 
@@ -188,11 +199,11 @@ loses operational closure (for example, unhealthy chain sources) drops back to
 buyer-invisible without affecting funded orders.
 
 Required evidence per enabled rail: allocation, detection, confirmation,
-settlement or documented custody decision, restart recovery, overpay and
-expiry behavior, and refund-destination validation, exercised by end-to-end
-tests. Rollback removes buyer visibility for new orders while continuing to
-watch, settle, and service already-funded orders; it never abandons funds
-already received at seller-controlled targets.
+Wallet Domain spendability or completion of every required settlement output,
+restart recovery, overpay and expiry behavior, and refund-destination
+validation, exercised by end-to-end tests. Rollback removes buyer visibility
+for new orders while continuing to watch, settle, and service already-funded
+orders; it never abandons funds already received at seller-controlled targets.
 
 ## Documentation impact
 
@@ -200,8 +211,9 @@ already received at seller-controlled targets.
   absence of escrow protection before payment.
 - Seller and operator docs must cover custody responsibilities, refund
   process, and per-chain availability.
-- Link this RFC from RFC-0007 (guest Affiliate boundary) and RFC-0008 (guest
-  account and managed-escrow custody) without moving their authority.
+- Link this RFC from RFC-0007 (guest Affiliate boundary), RFC-0008 (guest
+  account and managed-escrow custody), and RFC-0009 (frozen attempt terms)
+  without moving their authority.
 - Publish per-chain capability status as release evidence when scopes ship.
 
 ## Open questions
@@ -220,6 +232,6 @@ already received at seller-controlled targets.
 ## Decision
 
 Pending maintainer review. This Draft records the proposed public trust,
-custody, capability, and identity contract for Guest Checkout. Current
+custody, capability, and access-credential contract for Guest Checkout. Current
 interfaces, effective runtime capability gates, and release evidence continue
 to govern actual availability.

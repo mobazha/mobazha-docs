@@ -23,8 +23,14 @@ paid attempt. No later state — fulfillment, shipment, operator action, retry,
 or adapter execution — may recompute who is paid, how much, or to where.
 
 This RFC defines when economic terms bind and who authorizes them. It does not
-define commission economics (RFC-0007), receiving destinations (RFC-0008), or
-payment-rail admission (RFC-0006).
+define commission economics
+([RFC-0007](./0007-seller-funded-affiliate-atomic-settlement.md)), receiving
+destinations
+([RFC-0008](./0008-node-key-domains-and-receiving-architecture.md)), or
+payment-rail admission
+([RFC-0006](./0006-payment-kernel-rails-and-trusted-modules.md)).
+[RFC-0010](./0010-guest-checkout-trust-and-custody.md) separately defines the
+Guest Checkout trust and custody contract that consumes these frozen terms.
 
 ## Problem and evidence
 
@@ -189,8 +195,9 @@ never reprices or redirects a paid attempt.
 
 ## Documentation impact
 
-- Link this RFC from RFC-0006 (attempt and route immutability) and RFC-0007
-  (Affiliate terms content) without moving their authority.
+- Link this RFC from RFC-0006 (attempt and route immutability), RFC-0007
+  (Affiliate terms content), and RFC-0010 (Guest trust and custody) without
+  moving their authority.
 - Publish the terms field contract, canonical encoding, and signature rules as
   a public spec once stable.
 - Update buyer and seller task pages to state that displayed payment terms are

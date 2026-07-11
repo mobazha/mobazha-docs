@@ -169,6 +169,11 @@ role becomes publicly available only after allocation, monitoring, restart
 recovery, spending, fee handling, confirmation, network isolation, and the
 required order-settlement operations close end to end.
 
+[RFC-0010](./0010-guest-checkout-trust-and-custody.md) applies this gate to
+Guest buyer visibility and defines the associated custody disclosure. A
+documented inability to spend or complete required settlement outputs is not a
+capability and cannot satisfy this gate.
+
 Adding a chain requires:
 
 1. canonical asset-to-rail registration;
@@ -315,7 +320,8 @@ obligations; it never redirects an accepted destination automatically.
 ## Documentation impact
 
 - Link this RFC from RFC-0006 and RFC-0007 while preserving their separate
-  payment and economic authority.
+  payment and economic authority; link RFC-0010 for the Guest trust, custody,
+  and buyer-visibility contract.
 - Publish the final Destination schema, rail identifiers, account-role recovery
   vectors, Profile binding, and order participant-key protocol when stable.
 - Update operator backup/recovery and hosted custody disclosures before public

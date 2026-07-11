@@ -4137,7 +4137,7 @@ Draft; proposes separate Identity, Wallet, and Settlement domains, generic recei
 RFC-0009: Frozen Payment Attempt Settlement Terms
 Draft; proposes freezing seller payout, platform and cancellation fees, Affiliate terms, and dispute policy into the immutable payment attempt before a funding target is payable.
 RFC-0010: Guest Checkout Trust and Custody Model
-Draft; proposes the custodial direct-payment trust contract, per-chain capability gate, anonymous buyer identity, and disclosure rules for Guest Checkout.
+Draft; proposes seller-custodied Guest Checkout, a strict per-chain closure gate, an order-scoped access credential, and buyer disclosure rules without introducing a separate Direct payment product.
 RFC template
 Required metadata and review questions.
 Repository RFC guide

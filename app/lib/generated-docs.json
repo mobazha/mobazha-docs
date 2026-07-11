@@ -6458,7 +6458,7 @@
               {
                 "label": "RFC-0010: Guest Checkout Trust and Custody Model",
                 "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0010-guest-checkout-trust-and-custody.md",
-                "description": "Draft; proposes the custodial direct-payment trust contract, per-chain capability gate, anonymous buyer identity, and disclosure rules for Guest Checkout."
+                "description": "Draft; proposes seller-custodied Guest Checkout, a strict per-chain closure gate, an order-scoped access credential, and buyer disclosure rules without introducing a separate Direct payment product."
               },
               {
                 "label": "RFC template",

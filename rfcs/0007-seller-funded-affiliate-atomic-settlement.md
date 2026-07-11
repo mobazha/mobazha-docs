@@ -72,6 +72,11 @@ change affects only new links or orders. Missing, invalid, stale, wrong-network,
 or unsupported payout terms fail closed; they are not repaired after order
 acceptance by silently selecting another destination.
 
+[RFC-0009](./0009-frozen-payment-attempt-settlement-terms.md) governs when
+these terms bind to a payment attempt, their authorization boundary, and how a
+settlement action references them. This RFC remains authoritative for the
+Affiliate payer, recipient, calculation, reversal, and output rules.
+
 ### 3. Make the seller the payer
 
 The seller is the commission payer and the direct promoter is the recipient.
@@ -112,6 +117,9 @@ The exact output encoding is rail-specific, but the amount, destination,
 idempotency, value-conservation, and confirmation semantics are Core-owned.
 New rails remain closed until their required settlement operations, output
 validation, confirmation, reorg, and retry behavior pass capability gates.
+Guest orders use these output rules only within the trust, custody, and
+buyer-visibility boundary defined by
+[RFC-0010](./0010-guest-checkout-trust-and-custody.md).
 
 ### 5. Keep business and settlement state separate
 
@@ -248,7 +256,9 @@ owner-directed resolution.
 ## Documentation impact
 
 - Mark RFC-0004 Superseded and retain it for historical interpretation.
-- Link this RFC from RFC-0006 and RFC-0008 without copying their authority.
+- Link this RFC from RFC-0006 and RFC-0008 without copying their authority;
+  link RFC-0009 for frozen attempt terms and RFC-0010 for the Guest custody
+  boundary.
 - Add public seller and promoter task pages, calculation and reversal examples,
   disclosures, supported-rail capability language, and abuse reporting before
   broad release.

@@ -38,6 +38,11 @@ signers. Its Wallet Adapter Registry is an evolution of wallet infrastructure;
 it is not this RFC's Payment Rail Contribution Registry and does not select or
 authorize order settlement routes.
 
+[RFC-0009](./0009-frozen-payment-attempt-settlement-terms.md) separately
+governs the economic terms that bind to a payment attempt before its funding
+target becomes actionable. Rail contributions execute the resulting commands;
+they do not own or recompute those terms.
+
 ## Problem and evidence
 
 Payment integrations differ in real protocol semantics:
@@ -575,6 +580,8 @@ an accepted payment to a different provider or protocol.
   routing its settlement actions through the Core financial command gate.
 - Keep RFC-0008's wallet accounts, receiving destinations, and signing domains
   separate from payment rail contribution and route selection.
+- Keep RFC-0009's frozen attempt terms authoritative for economic allocation;
+  rail modules consume validated action outputs without repricing them.
 - Keep Open Core ADR-015, ADR-016, and ADR-018 authoritative for implemented
   code-near boundaries.
 - Add the kernel, rail, trusted manager, and profile model to the public
