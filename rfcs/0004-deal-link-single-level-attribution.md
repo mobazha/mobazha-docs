@@ -1,13 +1,18 @@
 # RFC-0004: Deal Link Single-Level Attribution
 
-- Status: Draft
+- Status: Superseded
 - Authors: Mobazha product, architecture, and documentation maintainers
 - Created: 2026-07-05
-- Updated: 2026-07-05
+- Updated: 2026-07-11
 - Decision owners: Mobazha hosted commerce, Open Core, Unified, and documentation maintainers
 - Affected surfaces: hosted service, Deal Link checkout, Unified, public API, economics, abuse operations
 - Supersedes: None
-- Superseded by: None
+- Superseded by: RFC-0007
+
+> Superseded by
+> [RFC-0007](./0007-seller-funded-affiliate-atomic-settlement.md). This record
+> preserves the earlier manual-review-only proposal; it is not the current
+> target for Affiliate settlement.
 
 ## Summary
 
@@ -61,14 +66,18 @@ This RFC proposes:
   policy version, basis-point rate, calculation base, cap, currency, and
   declared funding source;
 - explicit self-referral rejection;
-- manual eligibility review before any statement, ledger entry, or payout.
+- automatic creation of a non-payable provisional observation when the claim
+  and authoritative order are atomically bound;
+- manual eligibility review before any payable balance, promoter statement,
+  settlement ledger entry, or payout.
 
 This RFC does not propose:
 
 - first-level or second-level downstream relationships;
 - recruitment rewards or commission on another promoter's activity;
 - multi-touch, last-click, cookie, fingerprint, or cross-device attribution;
-- automatic commission creation, payout, Provider transfer, or escrow split;
+- automatic payable commission creation, payout, Provider transfer, or escrow
+  split; the provisional observation is audit evidence only;
 - a change to the canonical order, refund, dispute, or payment state machines;
 - selecting Stripe, PayPal, cryptocurrency, or any other payment method from a
   Deal Link or promotion link;
@@ -129,6 +138,12 @@ During Deal acceptance, the hosted service:
    creation is verified;
 7. releases the reservation only after a known-safe pre-order failure;
 8. leaves uncertain post-order outcomes reserved for reconciliation.
+
+Step 6 may also create a non-payable provisional commission observation in the
+same transaction. That row records what the immutable policy would calculate;
+it is not a balance, statement item, settlement instruction, or promise to pay.
+Only the separately gated manual eligibility decision may promote it toward a
+payable ledger state.
 
 A consumed or reserved claim cannot be attached to another order. A buyer may
 still accept a Deal without any attribution claim.
@@ -274,5 +289,7 @@ authority for code-level completion.
 
 ## Decision
 
-Pending review. Implementation of the evidence foundation does not resolve the
-funding, eligibility, payout, or legal questions above.
+Superseded on 2026-07-11 by RFC-0007. The successor retains single-level,
+auditable attribution but replaces manual eligibility and a future payout
+ledger with seller-funded Affiliate outputs in the canonical order settlement.
+This status does not claim that RFC-0007 is Accepted or Implemented.

@@ -6362,7 +6362,7 @@
     "authorityUrl": "https://docs.mobazha.org/project/rfcs",
     "evidenceLabel": "Public Mobazha RFC registry",
     "evidenceUrl": "https://github.com/mobazha/mobazha-docs/tree/main/rfcs",
-    "reviewed": "2026-07-05",
+    "reviewed": "2026-07-11",
     "pageType": "hub",
     "outcome": "Find or start a public proposal without presenting Draft design direction as accepted or shipped behavior.",
     "estimatedTime": "5 minutes",
@@ -6426,6 +6426,11 @@
                 "description": "Draft; separates deployment, experience, channel, code inclusion, and effective capability so public and private distributions can assemble coherent products without product-name branching."
               },
               {
+                "label": "RFC-0004: Deal Link Single-Level Attribution",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0004-deal-link-single-level-attribution.md",
+                "description": "Superseded by RFC-0007; retained as the earlier manual-review-only proposal."
+              },
+              {
                 "label": "RFC-0005: Core-owned Resource Collateral Lifecycle",
                 "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0005-core-owned-resource-collateral.md",
                 "description": "Draft; proposes a separate Core-owned collateral aggregate without merging collateral into Order Extension or order settlement state."
@@ -6434,6 +6439,16 @@
                 "label": "RFC-0006: Payment Kernel, Rails, and Trusted Distribution Modules",
                 "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0006-payment-kernel-rails-and-trusted-modules.md",
                 "description": "Draft; proposes typed payment rails, reviewed module composition, contribution-level routing, and durable payment recovery boundaries."
+              },
+              {
+                "label": "RFC-0007: Seller-funded Affiliate Attribution and Atomic Settlement",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0007-seller-funded-affiliate-atomic-settlement.md",
+                "description": "Draft; proposes seller-funded Affiliate outputs in the canonical order release without a second payout engine or commission balance."
+              },
+              {
+                "label": "RFC-0008: Node Key Domains and Receiving Architecture",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0008-node-key-domains-and-receiving-architecture.md",
+                "description": "Draft; proposes separate Identity, Wallet, and Settlement domains, generic receiving destinations, and a production gate for order authorization keys."
               },
               {
                 "label": "RFC template",

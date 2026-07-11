@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha architecture and payment maintainers
 - Created: 2026-07-05
-- Updated: 2026-07-05
+- Updated: 2026-07-11
 - Decision owners: Mobazha Open Core, distribution, and payment maintainers
 - Affected surfaces: Node, distributions, payment rails, hosted service, clients, docs
 - Supersedes: None
@@ -31,6 +31,12 @@ This RFC specializes the domain-manager model in
 universal manager for every extension domain, and it does not claim that every
 rail, durable route, profile gate, or third-party runtime described below is
 implemented.
+
+[RFC-0008](./0008-node-key-domains-and-receiving-architecture.md) separately
+governs wallet accounts, receiving destinations, key domains, and opaque
+signers. Its Wallet Adapter Registry is an evolution of wallet infrastructure;
+it is not this RFC's Payment Rail Contribution Registry and does not select or
+authorize order settlement routes.
 
 ## Problem and evidence
 
@@ -565,11 +571,15 @@ an accepted payment to a different provider or protocol.
 
 - Keep RFC-0002 as the cross-domain extension model and this RFC as its
   payment-domain specialization.
+- Keep RFC-0007's Affiliate economics and order-output rules separate while
+  routing its settlement actions through the Core financial command gate.
+- Keep RFC-0008's wallet accounts, receiving destinations, and signing domains
+  separate from payment rail contribution and route selection.
 - Keep Open Core ADR-015, ADR-016, and ADR-018 authoritative for implemented
   code-near boundaries.
 - Add the kernel, rail, trusted manager, and profile model to the public
   architecture and extension guides after review.
-- Keep RFC-0004's collateral aggregate separate while documenting the shared
+- Keep RFC-0005's collateral aggregate separate while documenting the shared
   financial command gate and explicitly compatible rail capabilities.
 - Document effective capability and stable denial reasons for users, clients,
   and Agents before treating profile selection as public behavior.
