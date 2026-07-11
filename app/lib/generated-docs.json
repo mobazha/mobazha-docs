@@ -6451,6 +6451,16 @@
                 "description": "Draft; proposes separate Identity, Wallet, and Settlement domains, generic receiving destinations, and a production gate for order authorization keys."
               },
               {
+                "label": "RFC-0009: Frozen Payment Attempt Settlement Terms",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0009-frozen-payment-attempt-settlement-terms.md",
+                "description": "Draft; proposes freezing seller payout, platform and cancellation fees, Affiliate terms, and dispute policy into the immutable payment attempt before a funding target is payable."
+              },
+              {
+                "label": "RFC-0010: Guest Checkout Trust and Custody Model",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0010-guest-checkout-trust-and-custody.md",
+                "description": "Draft; proposes the custodial direct-payment trust contract, per-chain capability gate, anonymous buyer identity, and disclosure rules for Guest Checkout."
+              },
+              {
                 "label": "RFC template",
                 "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0000-template.md",
                 "description": "Required metadata and review questions."

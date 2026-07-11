@@ -4134,6 +4134,10 @@ RFC-0007: Seller-funded Affiliate Attribution and Atomic Settlement
 Draft; proposes seller-funded Affiliate outputs in the canonical order release without a second payout engine or commission balance.
 RFC-0008: Node Key Domains and Receiving Architecture
 Draft; proposes separate Identity, Wallet, and Settlement domains, generic receiving destinations, and a production gate for order authorization keys.
+RFC-0009: Frozen Payment Attempt Settlement Terms
+Draft; proposes freezing seller payout, platform and cancellation fees, Affiliate terms, and dispute policy into the immutable payment attempt before a funding target is payable.
+RFC-0010: Guest Checkout Trust and Custody Model
+Draft; proposes the custodial direct-payment trust contract, per-chain capability gate, anonymous buyer identity, and disclosure rules for Guest Checkout.
 RFC template
 Required metadata and review questions.
 Repository RFC guide

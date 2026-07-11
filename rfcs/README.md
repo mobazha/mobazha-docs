@@ -16,6 +16,8 @@ record; it does not activate behavior.
 | [0006](./0006-payment-kernel-rails-and-trusted-modules.md) | Payment Kernel, Rails, and Trusted Distribution Modules | Draft | 2026-07-11 |
 | [0007](./0007-seller-funded-affiliate-atomic-settlement.md) | Seller-funded Affiliate Attribution and Atomic Settlement | Draft | 2026-07-11 |
 | [0008](./0008-node-key-domains-and-receiving-architecture.md) | Node Key Domains and Receiving Architecture | Draft | 2026-07-11 |
+| [0009](./0009-frozen-payment-attempt-settlement-terms.md) | Frozen Payment Attempt Settlement Terms | Draft | 2026-07-11 |
+| [0010](./0010-guest-checkout-trust-and-custody.md) | Guest Checkout Trust and Custody Model | Draft | 2026-07-11 |
 
 Start from [`0000-template.md`](./0000-template.md). Allocate the next number,
 keep the filename stable, and update this table in the same change.
