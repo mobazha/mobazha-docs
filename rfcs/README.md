@@ -13,11 +13,12 @@ record; it does not activate behavior.
 | [0003](./0003-composable-frontend-product-model.md) | Composable Frontend Product Model | Draft | 2026-07-04 |
 | [0004](./0004-deal-link-single-level-attribution.md) | Deal Link Single-Level Attribution | Superseded | 2026-07-11 |
 | [0005](./0005-core-owned-resource-collateral.md) | Core-owned Resource Collateral Lifecycle | Draft | 2026-07-05 |
-| [0006](./0006-payment-kernel-rails-and-trusted-modules.md) | Payment Kernel, Rails, and Trusted Distribution Modules | Draft | 2026-07-11 |
-| [0007](./0007-seller-funded-affiliate-atomic-settlement.md) | Seller-funded Affiliate Attribution and Atomic Settlement | Draft | 2026-07-11 |
-| [0008](./0008-node-key-domains-and-receiving-architecture.md) | Node Key Domains and Receiving Architecture | Draft | 2026-07-11 |
-| [0009](./0009-frozen-payment-attempt-settlement-terms.md) | Frozen Payment Attempt Settlement Terms | Draft | 2026-07-11 |
-| [0010](./0010-guest-checkout-trust-and-custody.md) | Guest Checkout Trust and Custody Model | Draft | 2026-07-11 |
+| [0006](./0006-payment-kernel-rails-and-trusted-modules.md) | Payment Kernel, Rails, and Trusted Distribution Modules | Draft | 2026-07-12 |
+| [0007](./0007-seller-funded-affiliate-atomic-settlement.md) | Seller-funded Affiliate Attribution and Atomic Settlement | Draft | 2026-07-12 |
+| [0008](./0008-node-key-domains-and-receiving-architecture.md) | Node Key Domains and Receiving Architecture | Draft | 2026-07-12 |
+| [0009](./0009-frozen-payment-attempt-settlement-terms.md) | Frozen Payment Attempt Settlement Terms | Draft | 2026-07-12 |
+| [0010](./0010-guest-checkout-trust-and-custody.md) | Guest Checkout Trust and Custody Model | Draft | 2026-07-12 |
+| [0011](./0011-order-settlement-authorization-keys.md) | Order Settlement Authorization Keys | Draft | 2026-07-12 |
 
 Start from [`0000-template.md`](./0000-template.md). Allocate the next number,
 keep the filename stable, and update this table in the same change.

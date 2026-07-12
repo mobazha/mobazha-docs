@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha product, settlement, and documentation maintainers
 - Created: 2026-07-11
-- Updated: 2026-07-11
+- Updated: 2026-07-12
 - Decision owners: Mobazha hosted commerce, Open Core settlement, Unified, and documentation maintainers
 - Affected surfaces: Node order settlement, hosted Affiliate service, Unified, public API, economics, supported payment rails, docs
 - Supersedes: RFC-0004
@@ -76,6 +76,9 @@ acceptance by silently selecting another destination.
 these terms bind to a payment attempt, their authorization boundary, and how a
 settlement action references them. This RFC remains authoritative for the
 Affiliate payer, recipient, calculation, reversal, and output rules.
+[RFC-0011](./0011-order-settlement-authorization-keys.md) proposes how the
+buyer, seller, and moderator keys authorizing those frozen attempt terms are
+certified and isolated; it does not change the Affiliate amount or recipient.
 
 ### 3. Make the seller the payer
 
@@ -258,7 +261,7 @@ owner-directed resolution.
 - Mark RFC-0004 Superseded and retain it for historical interpretation.
 - Link this RFC from RFC-0006 and RFC-0008 without copying their authority;
   link RFC-0009 for frozen attempt terms and RFC-0010 for the Guest custody
-  boundary.
+  boundary, and RFC-0011 for participant authorization keys.
 - Add public seller and promoter task pages, calculation and reversal examples,
   disclosures, supported-rail capability language, and abuse reporting before
   broad release.

@@ -9,7 +9,7 @@ audiences:
   - Agents
 evidenceLabel: Public Mobazha RFC registry
 evidenceUrl: https://github.com/mobazha/mobazha-docs/tree/main/rfcs
-reviewed: 2026-07-11
+reviewed: 2026-07-12
 pageType: hub
 outcome: Find or start a public proposal without presenting Draft design direction as accepted or shipped behavior.
 estimatedTime: 5 minutes
@@ -48,6 +48,7 @@ primaryAction:
 - [RFC-0008: Node Key Domains and Receiving Architecture](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0008-node-key-domains-and-receiving-architecture.md) — Draft; proposes separate Identity, Wallet, and Settlement domains, generic receiving destinations, and a production gate for order authorization keys.
 - [RFC-0009: Frozen Payment Attempt Settlement Terms](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0009-frozen-payment-attempt-settlement-terms.md) — Draft; proposes freezing seller payout, platform and cancellation fees, Affiliate terms, and dispute policy into the immutable payment attempt before a funding target is payable.
 - [RFC-0010: Guest Checkout Trust and Custody Model](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0010-guest-checkout-trust-and-custody.md) — Draft; proposes seller-custodied Guest Checkout, a strict per-chain closure gate, an order-scoped access credential, and buyer disclosure rules without introducing a separate Direct payment product.
+- [RFC-0011: Order Settlement Authorization Keys](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0011-order-settlement-authorization-keys.md) — Draft; proposes deterministic hardened attempt-scoped settlement keys for all order participants, Identity-signed public-key offers without private-key exposure, and moderator selectability gated on obtaining a valid offer before payment.
 - [RFC template](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0000-template.md) — Required metadata and review questions.
 - [Repository RFC guide](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/README.md)
 

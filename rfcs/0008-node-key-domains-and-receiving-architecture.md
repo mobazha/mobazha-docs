@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha identity, wallet, settlement, and documentation maintainers
 - Created: 2026-07-11
-- Updated: 2026-07-11
+- Updated: 2026-07-12
 - Decision owners: Mobazha Open Core, distributions, hosted service, clients, and documentation maintainers
 - Affected surfaces: Node identity and wallets, Profile, order protocol, settlement signers, hosted service, clients, recovery, docs
 - Supersedes: None
@@ -23,8 +23,9 @@ typed signing results, never raw seeds, extended private keys, or private-key
 objects.
 
 The exact replacement protocol for existing standard-order participant keys is
-an unresolved production gate. This RFC remains Draft and does not claim the
-target key domains or every listed chain are implemented.
+an unresolved production gate; RFC-0011 now records a concrete Draft proposal
+for that gate. Neither RFC is Accepted, and this RFC does not claim the target
+key domains or every listed chain are implemented.
 
 ## Problem and evidence
 
@@ -211,18 +212,21 @@ published and frozen for UTXO, EVM, and Solana orders.
 The selected protocol must ensure:
 
 - disclosure of one order-level private key cannot recover a node, wallet,
-  another order, or another rotation epoch root;
+  another order, or the Settlement root;
 - chain and network enter the signing domain to prevent cross-chain replay;
 - each order freezes complete key identity and version semantics;
 - Profile rotation cannot reinterpret an accepted order;
-- revocation, device loss, recovery, and multi-device behavior are explicit;
+- key loss, rotation, and recovery are explicit before real-funds release;
+  RFC-0011's first production scope does not require multi-device or delegated
+  moderator authority;
 - Standalone and hosted custody implement the same observable protocol.
 
-Candidate mechanisms include hardened per-order keys whose public keys are
-carried in signed order terms, short-lived identity-signed settlement epoch
-public keys, or signed prekey pools/order handshakes for chains that cannot
-support public child derivation. Existing public non-hardened derivation is the
-rejection baseline, not an acceptable target.
+Candidate mechanisms considered for this gate included hardened per-order
+keys, short-lived settlement epoch fund keys, and signed prekey pools or order
+handshakes. Existing public non-hardened derivation is the rejection baseline,
+not an acceptable target. [RFC-0011](./0011-order-settlement-authorization-keys.md)
+proposes hardened attempt-scoped participant keys and Identity-signed key
+offers, with no shared epoch fund key or weaker fallback path.
 
 ## Security, privacy, and abuse analysis
 
@@ -333,9 +337,14 @@ obligations; it never redirects an accepted destination automatically.
 ## Open questions
 
 1. Which per-order, epoch, or prekey protocol should each supported settlement
-   chain use?
-2. Which exact key-reference, version, expiry, and revocation fields belong in
-   Profile, Listing, and Order messages?
+   chain use? Proposed resolution in
+   [RFC-0011](./0011-order-settlement-authorization-keys.md).
+2. Which exact key-reference, version, and binding semantics belong
+   to Profile, Listing, Order, and Payment Attempt messages? Proposed
+   resolution in
+   [RFC-0011](./0011-order-settlement-authorization-keys.md); exact
+   encodings remain specification work, and its first production scope does
+   not add a key-offer TTL or availability lease.
 3. Which exact wire encoding, schema version, extension rules, and canonical
    rail-identifier registry should realize the Destination semantics above?
 4. What minimum wallet-state backup is required for each adapter family, and

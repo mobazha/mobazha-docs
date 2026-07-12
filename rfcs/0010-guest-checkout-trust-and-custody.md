@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha commerce, payment, and documentation maintainers
 - Created: 2026-07-11
-- Updated: 2026-07-11
+- Updated: 2026-07-12
 - Decision owners: Mobazha Open Core, hosted service, Unified, clients, and documentation maintainers
 - Affected surfaces: Guest checkout, Node order settlement, hosted service, buyer clients, custody disclosure, docs
 - Supersedes: None
@@ -83,6 +83,11 @@ escrowed, or refundable-by-protocol.
   external payout transfer are ordinary wallet fund management.
 - On managed-escrow rails, the container is seller-controlled custody, not a
   buyer-protection instrument, and must not be marketed as escrow.
+- RFC-0011's buyer/seller/moderator authorization ceremony does not turn a
+  Guest order into multi-party escrow. If a Guest managed container uses an
+  order-scoped Settlement signer, only RFC-0011's domain separation,
+  order-attempt binding, and incident-safety requirements apply; the seller
+  remains the sole custody principal under this RFC.
 - Hosted deployments that hold or operate seller key material must review and
   disclose their custody role before offering guest checkout on real funds.
 
@@ -213,7 +218,8 @@ orders; it never abandons funds already received at seller-controlled targets.
   process, and per-chain availability.
 - Link this RFC from RFC-0007 (guest Affiliate boundary), RFC-0008 (guest
   account and managed-escrow custody), and RFC-0009 (frozen attempt terms)
-  without moving their authority.
+  without moving their authority; link RFC-0011 only for any shared
+  order-scoped Settlement signer requirements.
 - Publish per-chain capability status as release evidence when scopes ship.
 
 ## Open questions

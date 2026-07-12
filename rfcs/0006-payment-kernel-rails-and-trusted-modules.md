@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha architecture and payment maintainers
 - Created: 2026-07-05
-- Updated: 2026-07-11
+- Updated: 2026-07-12
 - Decision owners: Mobazha Open Core, distribution, and payment maintainers
 - Affected surfaces: Node, distributions, payment rails, hosted service, clients, docs
 - Supersedes: None
@@ -42,6 +42,12 @@ authorize order settlement routes.
 governs the economic terms that bind to a payment attempt before its funding
 target becomes actionable. Rail contributions execute the resulting commands;
 they do not own or recompute those terms.
+
+[RFC-0011](./0011-order-settlement-authorization-keys.md) proposes the
+participant-key certification, attempt binding, and signing-domain contract.
+The payment kernel validates and freezes that authorization before admitting a
+funding target; rail contributions and modules never choose participant keys
+or weaken the required protocol version.
 
 ## Problem and evidence
 
@@ -582,6 +588,9 @@ an accepted payment to a different provider or protocol.
   separate from payment rail contribution and route selection.
 - Keep RFC-0009's frozen attempt terms authoritative for economic allocation;
   rail modules consume validated action outputs without repricing them.
+- Keep RFC-0011's participant-key offers and attempt authorization bundle
+  separate from module descriptors and rail routing; modules receive only
+  policy-approved typed signing requests and validated public bindings.
 - Keep Open Core ADR-015, ADR-016, and ADR-018 authoritative for implemented
   code-near boundaries.
 - Add the kernel, rail, trusted manager, and profile model to the public

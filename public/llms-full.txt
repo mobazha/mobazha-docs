@@ -4100,7 +4100,7 @@ A record's status must remain explicit. Agents and readers must not infer availa
 - Audience: contributors, maintainers, evaluators, agents
 - Knowledge authority: https://docs.mobazha.org/project/rfcs
 - Evidence: https://github.com/mobazha/mobazha-docs/tree/main/rfcs
-- Reviewed: 2026-07-11
+- Reviewed: 2026-07-12
 - Language: en
 - Summary: Review substantial protocol, policy, economic, security, governance, and cross-repository proposals before treating them as commitments.
 
@@ -4138,6 +4138,8 @@ RFC-0009: Frozen Payment Attempt Settlement Terms
 Draft; proposes freezing seller payout, platform and cancellation fees, Affiliate terms, and dispute policy into the immutable payment attempt before a funding target is payable.
 RFC-0010: Guest Checkout Trust and Custody Model
 Draft; proposes seller-custodied Guest Checkout, a strict per-chain closure gate, an order-scoped access credential, and buyer disclosure rules without introducing a separate Direct payment product.
+RFC-0011: Order Settlement Authorization Keys
+Draft; proposes deterministic hardened attempt-scoped settlement keys for all order participants, Identity-signed public-key offers without private-key exposure, and moderator selectability gated on obtaining a valid offer before payment.
 RFC template
 Required metadata and review questions.
 Repository RFC guide

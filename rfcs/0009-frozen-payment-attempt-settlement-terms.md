@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha payment, settlement, and documentation maintainers
 - Created: 2026-07-11
-- Updated: 2026-07-11
+- Updated: 2026-07-12
 - Decision owners: Mobazha Open Core settlement, hosted commerce, Unified, and documentation maintainers
 - Affected surfaces: Node order settlement, payment session API, hosted service, Unified, clients, economics, docs
 - Supersedes: None
@@ -31,6 +31,9 @@ payment-rail admission
 ([RFC-0006](./0006-payment-kernel-rails-and-trusted-modules.md)).
 [RFC-0010](./0010-guest-checkout-trust-and-custody.md) separately defines the
 Guest Checkout trust and custody contract that consumes these frozen terms.
+[RFC-0011](./0011-order-settlement-authorization-keys.md) proposes how standard
+order participant keys and their attempt authorization bundle are certified,
+validated, and frozen; this RFC remains authoritative for economic content.
 
 ## Problem and evidence
 
@@ -92,6 +95,10 @@ At minimum the frozen terms identify:
   select or alter another participant's destination or amount.
 - Rail adapters and relays execute only outputs already validated against the
   frozen terms. They cannot read business stores or reprice at execution time.
+- Standard-order participant public keys and authorization proofs bind through
+  the attempt authorization bundle proposed by RFC-0011. A funding target is
+  not actionable when any required participant or rail lacks the same accepted
+  authorization-protocol version.
 
 ### 4. Action expansion
 
@@ -197,7 +204,8 @@ never reprices or redirects a paid attempt.
 
 - Link this RFC from RFC-0006 (attempt and route immutability), RFC-0007
   (Affiliate terms content), and RFC-0010 (Guest trust and custody) without
-  moving their authority.
+  moving their authority; link RFC-0011 for participant authorization without
+  moving economic-term authority.
 - Publish the terms field contract, canonical encoding, and signature rules as
   a public spec once stable.
 - Update buyer and seller task pages to state that displayed payment terms are
