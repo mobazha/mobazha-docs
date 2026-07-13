@@ -3,14 +3,14 @@
   "title": "Mobazha Node API",
   "openapiVersion": "3.1.0",
   "apiVersion": "1.0.0",
-  "revision": "b21ea986698aad3c1165dbdd8ac7d4acc7f2afba",
-  "shortRevision": "b21ea986698a",
-  "reviewed": "2026-07-08",
-  "sourceUrl": "https://raw.githubusercontent.com/mobazha/mobazha/b21ea986698aad3c1165dbdd8ac7d4acc7f2afba/api-spec/openapi.json",
+  "revision": "604f2eb904f7b8c20d6358d155bb826232e80052",
+  "shortRevision": "604f2eb904f7",
+  "reviewed": "2026-07-13",
+  "sourceUrl": "https://raw.githubusercontent.com/mobazha/mobazha/604f2eb904f7b8c20d6358d155bb826232e80052/api-spec/openapi.json",
   "sourceRepository": "https://github.com/mobazha/mobazha/tree/main/api-spec",
-  "publicPath": "/openapi/revisions/b21ea986698aad3c1165dbdd8ac7d4acc7f2afba.json",
-  "sha256": "9cf6ea2f9872c36c90def24823d4a5de624d7e27453a6bbe3f286f7e44129f70",
-  "pathCount": 283,
-  "operationCount": 359,
-  "schemaCount": 42
+  "publicPath": "/openapi/revisions/604f2eb904f7b8c20d6358d155bb826232e80052.json",
+  "sha256": "237a20d4afc9ef988a7efe788c5d603c8cbb8466dcd3b123aa156f9c6a12b21b",
+  "pathCount": 292,
+  "operationCount": 370,
+  "schemaCount": 48
 }

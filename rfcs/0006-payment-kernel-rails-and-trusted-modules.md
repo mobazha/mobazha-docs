@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha architecture and payment maintainers
 - Created: 2026-07-05
-- Updated: 2026-07-12
+- Updated: 2026-07-13
 - Decision owners: Mobazha Open Core, distribution, and payment maintainers
 - Affected surfaces: Node, distributions, payment rails, hosted service, clients, docs
 - Supersedes: None
@@ -236,6 +236,16 @@ The binding is tenant- or store-scoped configuration governed by a separate
 Core-owned registry. Rebinding an account or rotating credentials creates a
 new configuration generation; it cannot silently reinterpret an accepted
 session. A binding stores an opaque credential reference, never a secret.
+
+A provider-session route may advertise a moderated product mode only when its
+effective capabilities preserve the required funds lifecycle, such as delayed
+seller disbursement or capture plus supported refund/reversal operations, and
+Core can reconcile that lifecycle after restart. A provider that reports a
+successful buyer charge but immediately and irreversibly pays the seller does
+not gain moderated capability from a UI label or local dispute record. The
+provider's own chargeback and payment-dispute process remains distinct from a
+Mobazha moderator's order verdict; neither process may be represented as
+controlling the other.
 
 ### 4. Define the trusted payment module contract
 

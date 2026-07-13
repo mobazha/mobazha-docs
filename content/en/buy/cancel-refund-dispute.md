@@ -8,9 +8,9 @@ audiences:
   - Agents
 evidenceLabel: Node order and dispute contracts
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main/api-spec
-reviewed: 2026-07-06
+reviewed: 2026-07-13
 pageType: task
-lastTested: 2026-07-04
+lastTested: 2026-07-13
 outcome: Choose a valid resolution path for the active order without losing the evidence behind it.
 estimatedTime: 5 minutes to assess
 journey: use
@@ -46,6 +46,13 @@ The order detail may expose Summary, Discussion, Dispute, and Evidence views. Di
 5. Describe expected outcome, timeline, and evidence without unnecessary personal information.
 6. Add or reference original material in the Evidence view where supported; do not replace evidence with a summary that loses timestamps or provenance.
 7. Reconcile final refund, release, or closure against both backend state and the payment system or provider.
+
+For an attempt-scoped crypto payment, settlement recipients, fees, the
+moderator allocation, and the settlement asset are frozen before its funding
+target becomes actionable. A refund or dispute allocation is derived from
+that paid attempt; it is not repriced from the order currency or a later
+exchange rate. Always verify the asset and destination shown for the current
+action rather than reusing a previous attempt's address.
 
 ## Expected result and verification
 

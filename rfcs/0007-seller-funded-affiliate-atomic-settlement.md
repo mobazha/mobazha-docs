@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha product, settlement, and documentation maintainers
 - Created: 2026-07-11
-- Updated: 2026-07-12
+- Updated: 2026-07-13
 - Decision owners: Mobazha hosted commerce, Open Core settlement, Unified, and documentation maintainers
 - Affected surfaces: Node order settlement, hosted Affiliate service, Unified, public API, economics, supported payment rails, docs
 - Supersedes: RFC-0004
@@ -67,6 +67,18 @@ Before an attributed order is accepted, the system freezes at least:
 - promoter payout destination and destination version;
 - the order and settlement-term binding used by participant signatures.
 
+The seller-side order-open path prepares this immutable attribution snapshot
+before accepting the order and commits the order and snapshot atomically. A
+prepare failure rejects the order; a commit failure leaves neither an accepted
+order without attribution nor an independently payable commission. Recovery
+of an older accepted order may repair a missing snapshot only from the signed,
+order-bound referral evidence that originally authorized it; it may not read
+current program or payout-profile defaults.
+
+An attribution whose calculation rounds to zero remains an explicit frozen
+zero allocation. Omitting it would lose the order's attribution and reversal
+semantics and let later code reinterpret zero as “no Affiliate terms.”
+
 A later program pause, destination rotation, profile change, or default-policy
 change affects only new links or orders. Missing, invalid, stale, wrong-network,
 or unsupported payout terms fail closed; they are not repaired after order
@@ -105,8 +117,8 @@ value.
 
 ### 4. Settle atomically with the order
 
-On supported Safe and UTXO rails, the promoter output is part of the same
-canonical transaction that releases seller funds:
+On an admitted UTXO, Safe, or Solana scope, the promoter output is part of the
+same canonical transaction that releases seller funds:
 
 - moderated completion pays seller and promoter;
 - cancelable seller confirmation pays seller and promoter;
@@ -115,6 +127,17 @@ canonical transaction that releases seller funds:
   release entitlement, never below zero or above the frozen maximum;
 - retries rebuild or reconcile the same logical action and must not create a
   second promoter payment.
+
+For a dispute, the promoter amount is the floor of the frozen Affiliate amount
+multiplied by the seller award and divided by the frozen seller-gross basis,
+capped by both the frozen Affiliate amount and the seller-funded value
+available for release. A zero seller award produces no promoter output. This
+same rule applies across admitted rails; an adapter cannot invent a different
+rounding or denominator.
+
+An unpaid buyer cancellation or seller decline reverses the pending Affiliate
+business record as an invalid order outcome. It does not wait for a settlement
+transaction that will never contain a promoter output.
 
 The exact output encoding is rail-specific, but the amount, destination,
 idempotency, value-conservation, and confirmation semantics are Core-owned.
@@ -242,8 +265,9 @@ Implementation may proceed during development without historical-data dual
 write, but every enabled rail must provide evidence for:
 
 1. frozen destination and amount validation;
-2. moderated complete, cancelable seller confirm, buyer cancel/refund, and
-   dispute release;
+2. moderated complete, cancelable seller confirm, buyer cancel/refund, seller
+   decline, and dispute release across each admitted UTXO, Safe, or Solana
+   scope;
 3. dust, fee, value-conservation, and output-count handling;
 4. idempotent retries, replacement tracking, confirmation, and reorg;
 5. statement projection from planned/submitted/confirmed actions and outputs;

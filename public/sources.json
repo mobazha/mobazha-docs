@@ -1,13 +1,13 @@
 {
   "$schema": "https://docs.mobazha.org/sources.schema.json",
-  "reviewed": "2026-07-08",
+  "reviewed": "2026-07-13",
   "policy": "Only reviewed public material from these owners may be curated into the public site.",
   "sources": [
     {
       "id": "community-backend",
       "repository": "https://github.com/mobazha/mobazha/tree/main",
-      "revision": "b21ea986698aad3c1165dbdd8ac7d4acc7f2afba",
-      "reviewed": "2026-07-08",
+      "revision": "604f2eb904f7b8c20d6358d155bb826232e80052",
+      "reviewed": "2026-07-13",
       "owns": [
         "backend",
         "deployment",

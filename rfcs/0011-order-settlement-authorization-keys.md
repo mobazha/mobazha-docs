@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha settlement, order-protocol, and documentation maintainers
 - Created: 2026-07-12
-- Updated: 2026-07-12
+- Updated: 2026-07-13
 - Decision owners: Mobazha Open Core, distributions, hosted service, clients, and documentation maintainers
 - Affected surfaces: Order protocol (Profile, Listing, OrderOpen, Payment Attempt), settlement signers, moderation, hosted service, clients, recovery, docs
 - Supersedes: None
@@ -153,6 +153,14 @@ Exact protobuf/JSON placement and canonical bytes belong to the public
 specification, but implementations must preserve this semantic ownership and
 must not create a second mutable authorization source.
 
+Bundle validation also binds the economic fields that offers are intended to
+authorize. For a moderated attempt, the terms' moderator payout address and
+fee equal the moderator offer, and the escrow timeout equals the value agreed
+by the required offers. Affiliate terms equal the accepted order's immutable
+attribution snapshot, including an explicit zero-rounded allocation. Valid
+signatures over a bundle assembled from self-consistent but substituted terms
+do not satisfy these cross-object invariants.
+
 ### 4. Authorization ceremony and participant liveness
 
 The target flow is:
@@ -170,6 +178,20 @@ The target flow is:
    commitment, and terms hash;
 6. atomically persist the authorization bundle and actionable funding target;
    only then expose the target to the buyer.
+
+Before step 1, route admission checks the order shape and every required
+operation, not merely whether a projector exists for the rail. An economic or
+product feature the attempt protocol does not support must use a separately
+admitted route before any authorization draft is created. It must not enter
+the ceremony and then fail permanently at seller finalization.
+
+After a draft exists, retryable seller or moderator unavailability leaves the
+same draft non-actionable and may project `awaiting_seller_receipt`; this means
+the seller-side funding target is not ready, not that buyer funds are late.
+Retries republish or reacquire the same scoped offers. A permanently
+incompatible stale draft is atomically abandoned together with its retained
+offers before another route may become actionable, so one order never exposes
+two live funding targets.
 
 No external key-offer request or funding-target provisioning occurs before the
 draft and context are durable. No database transaction remains open across a
@@ -229,6 +251,12 @@ action kind and sequence/nonce, the exact transaction-plan or target
 commitment, and the frozen-terms hash.
 Signatures are not valid across chains, networks, attempts, orders, actions,
 roles, or purposes.
+
+Address comparison never erases an economic network boundary merely because
+two encodings contain the same witness program or public key. Any accepted
+cross-prefix equivalence must be an explicit non-production network rule (for
+example, a testnet/regtest compatibility mapping); a mainnet address is never
+equal to its test-network spelling.
 
 ### 7. Chain mapping
 
@@ -424,6 +452,10 @@ result, tests, and runtime capability gates that shipped.
 - RFC-0006, RFC-0007, RFC-0009, RFC-0010: add cross-links where typed signing,
   frozen terms, order outputs, Guest managed authority, or moderated flows are
   referenced without moving their authority here.
+- RFC-0012 proposes a second, parallel participant-key provisioning path
+  (buyer-vendor-custodied keys, not derived from a Settlement root) for
+  buyers without a Mobazha node; link it without moving this RFC's
+  Settlement-root key hierarchy or signing-domain authority.
 - Publish the field-level offer, authorization-bundle, KDF and
   signing-domain specification plus per-chain conformance vectors when stable.
 - Operator documentation: seller reachability requirement, moderator
@@ -443,7 +475,9 @@ result, tests, and runtime capability gates that shipped.
    before real-funds production.
 3. Exact order-scoped managed-escrow-owner semantics for EVM and Solana;
    long-lived contract administration and program upgrade authority remain
-   outside this RFC.
+   outside this RFC. (A buyer key that a third-party embedded-wallet
+   provider generates and holds, rather than one this RFC's Settlement root
+   derives, is out of scope here and is addressed by RFC-0012.)
 
 ## Decision
 

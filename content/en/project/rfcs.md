@@ -9,7 +9,7 @@ audiences:
   - Agents
 evidenceLabel: Public Mobazha RFC registry
 evidenceUrl: https://github.com/mobazha/mobazha-docs/tree/main/rfcs
-reviewed: 2026-07-12
+reviewed: 2026-07-13
 pageType: hub
 outcome: Find or start a public proposal without presenting Draft design direction as accepted or shipped behavior.
 estimatedTime: 5 minutes
@@ -46,9 +46,10 @@ primaryAction:
 - [RFC-0006: Payment Kernel, Rails, and Trusted Distribution Modules](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0006-payment-kernel-rails-and-trusted-modules.md) — Draft; proposes typed payment rails, reviewed module composition, contribution-level routing, and durable payment recovery boundaries.
 - [RFC-0007: Seller-funded Affiliate Attribution and Atomic Settlement](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0007-seller-funded-affiliate-atomic-settlement.md) — Draft; proposes seller-funded Affiliate outputs in the canonical order release without a second payout engine or commission balance.
 - [RFC-0008: Node Key Domains and Receiving Architecture](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0008-node-key-domains-and-receiving-architecture.md) — Draft; proposes separate Identity, Wallet, and Settlement domains, generic receiving destinations, and a production gate for order authorization keys.
-- [RFC-0009: Frozen Payment Attempt Settlement Terms](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0009-frozen-payment-attempt-settlement-terms.md) — Draft; proposes freezing seller payout, platform and cancellation fees, Affiliate terms, and dispute policy into the immutable payment attempt before a funding target is payable.
+- [RFC-0009: Frozen Payment Attempt Settlement Terms](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0009-frozen-payment-attempt-settlement-terms.md) — Draft; proposes freezing seller payout, platform and cancellation fees, Affiliate and moderator terms, escrow timeout, and dispute policy into the immutable payment attempt before a funding target is payable.
 - [RFC-0010: Guest Checkout Trust and Custody Model](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0010-guest-checkout-trust-and-custody.md) — Draft; proposes seller-custodied Guest Checkout, a strict per-chain closure gate, an order-scoped access credential, and buyer disclosure rules without introducing a separate Direct payment product.
 - [RFC-0011: Order Settlement Authorization Keys](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0011-order-settlement-authorization-keys.md) — Draft; proposes deterministic hardened attempt-scoped settlement keys for all order participants, Identity-signed public-key offers without private-key exposure, and moderator selectability gated on obtaining a valid offer before payment.
+- [RFC-0012: Embedded Wallet Buyer Settlement Keys and Onramp-Funded Attempts](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0012-embedded-wallet-buyer-settlement-keys.md) — Draft; proposes a buyer-vendor-custodied participant key class for moderated escrow, admits embedded-wallet providers as a reviewed trusted-module class, and defines onramp-funded attempts without changing the RFC-0010 guest-custodial default or the RFC-0011 Settlement-root key hierarchy.
 - [RFC template](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0000-template.md) — Required metadata and review questions.
 - [Repository RFC guide](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/README.md)
 

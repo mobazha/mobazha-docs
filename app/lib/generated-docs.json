@@ -1988,9 +1988,9 @@
     "authorityUrl": "https://docs.mobazha.org/buy/cancel-refund-dispute",
     "evidenceLabel": "Node order and dispute contracts",
     "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/api-spec",
-    "reviewed": "2026-07-06",
+    "reviewed": "2026-07-13",
     "pageType": "task",
-    "lastTested": "2026-07-04",
+    "lastTested": "2026-07-13",
     "outcome": "Choose a valid resolution path for the active order without losing the evidence behind it.",
     "estimatedTime": "5 minutes to assess",
     "journey": "use",
@@ -2067,6 +2067,10 @@
               "Add or reference original material in the Evidence view where supported; do not replace evidence with a summary that loses timestamps or provenance.",
               "Reconcile final refund, release, or closure against both backend state and the payment system or provider."
             ]
+          },
+          {
+            "type": "paragraph",
+            "text": "For an attempt-scoped crypto payment, settlement recipients, fees, the moderator allocation, and the settlement asset are frozen before its funding target becomes actionable. A refund or dispute allocation is derived from that paid attempt; it is not repriced from the order currency or a later exchange rate. Always verify the asset and destination shown for the current action rather than reusing a previous attempt's address."
           }
         ]
       },
@@ -6362,7 +6366,7 @@
     "authorityUrl": "https://docs.mobazha.org/project/rfcs",
     "evidenceLabel": "Public Mobazha RFC registry",
     "evidenceUrl": "https://github.com/mobazha/mobazha-docs/tree/main/rfcs",
-    "reviewed": "2026-07-12",
+    "reviewed": "2026-07-13",
     "pageType": "hub",
     "outcome": "Find or start a public proposal without presenting Draft design direction as accepted or shipped behavior.",
     "estimatedTime": "5 minutes",
@@ -6453,7 +6457,7 @@
               {
                 "label": "RFC-0009: Frozen Payment Attempt Settlement Terms",
                 "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0009-frozen-payment-attempt-settlement-terms.md",
-                "description": "Draft; proposes freezing seller payout, platform and cancellation fees, Affiliate terms, and dispute policy into the immutable payment attempt before a funding target is payable."
+                "description": "Draft; proposes freezing seller payout, platform and cancellation fees, Affiliate and moderator terms, escrow timeout, and dispute policy into the immutable payment attempt before a funding target is payable."
               },
               {
                 "label": "RFC-0010: Guest Checkout Trust and Custody Model",
@@ -6464,6 +6468,11 @@
                 "label": "RFC-0011: Order Settlement Authorization Keys",
                 "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0011-order-settlement-authorization-keys.md",
                 "description": "Draft; proposes deterministic hardened attempt-scoped settlement keys for all order participants, Identity-signed public-key offers without private-key exposure, and moderator selectability gated on obtaining a valid offer before payment."
+              },
+              {
+                "label": "RFC-0012: Embedded Wallet Buyer Settlement Keys and Onramp-Funded Attempts",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0012-embedded-wallet-buyer-settlement-keys.md",
+                "description": "Draft; proposes a buyer-vendor-custodied participant key class for moderated escrow, admits embedded-wallet providers as a reviewed trusted-module class, and defines onramp-funded attempts without changing the RFC-0010 guest-custodial default or the RFC-0011 Settlement-root key hierarchy."
               },
               {
                 "label": "RFC template",
@@ -10006,9 +10015,9 @@
     "authorityUrl": "https://docs.mobazha.org/sell/payments",
     "evidenceLabel": "Node payment capabilities and Unified payment administration",
     "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/payments",
-    "reviewed": "2026-07-06",
+    "reviewed": "2026-07-13",
     "pageType": "task",
-    "lastTested": "2026-07-04",
+    "lastTested": "2026-07-13",
     "outcome": "Enable one payment method only after its configuration, health, observation, and recovery path are proven.",
     "estimatedTime": "20–40 minutes",
     "journey": "use",
@@ -10101,6 +10110,10 @@
               "Reopen the order detail and confirm that capabilities expose only state-valid actions.",
               "Exercise the applicable cancellation or refund path before accepting material orders."
             ]
+          },
+          {
+            "type": "paragraph",
+            "text": "For an attempt-scoped standard crypto payment, the funding target becomes actionable only after the required seller and moderator offers, frozen settlement terms, and authorization bundle agree. If Affiliate attribution or another order feature is not supported by that exact route, the backend must keep the route unavailable before creating a draft; a frontend must not infer support from the coin or rail alone."
           }
         ]
       },
@@ -10123,6 +10136,16 @@
               "If health becomes unknown, stop advertising new checkout work while preserving existing recovery.",
               "If payment is observed for the wrong amount or destination, do not settle automatically.",
               "If a session says `awaiting_seller_receipt`, do not present it as buyer payment delay; the seller-side funding target is not ready yet.",
+              "Do not ask the buyer to pay an address retained from an abandoned or"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "incompatible attempt. Refresh the Payment Session and use only its current actionable target."
+          },
+          {
+            "type": "unordered-list",
+            "items": [
               "If a provider checkout or wallet action fails, keep the order and Payment Session identifiers before retrying.",
               "If a refund path is unavailable, disclose that limitation before accepting the method."
             ]
@@ -10135,6 +10158,10 @@
           {
             "type": "paragraph",
             "text": "The public client and backend contain several payment adapters and compatibility paths, but availability is decided at runtime by distribution policy, backend implementation, store configuration, health, order mode, and Payment Session capabilities. A Token identifier or source module does not create a release commitment. See [release scope](/project/release-scope) and [fees](/project/fees)."
+          },
+          {
+            "type": "paragraph",
+            "text": "A provider-session payment can expose a moderated product mode only when the provider route can keep seller disbursement pending (or preserve an equivalent reversible funds state) and supports the required recovery operations. The provider's own payment dispute or chargeback process remains separate from a Mobazha moderator's order decision."
           }
         ]
       }

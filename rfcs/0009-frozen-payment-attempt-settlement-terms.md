@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha payment, settlement, and documentation maintainers
 - Created: 2026-07-11
-- Updated: 2026-07-12
+- Updated: 2026-07-13
 - Decision owners: Mobazha Open Core settlement, hosted commerce, Unified, and documentation maintainers
 - Affected surfaces: Node order settlement, payment session API, hosted service, Unified, clients, economics, docs
 - Supersedes: None
@@ -14,8 +14,9 @@
 Freeze every economic allocation term of an order payment attempt before the
 buyer sees an actionable funding target. The frozen terms name the seller
 payout destination, platform release fee, buyer cancellation fee, Affiliate
-terms, and dispute allocation policy, bound together by a canonical terms hash
-and the required participant signatures.
+terms, moderator payout and fee, escrow timeout, and dispute allocation policy,
+bound together by a canonical terms hash and the required participant
+signatures.
 
 Settlement actions such as completion, cancellation, seller decline, dispute
 release, and refund expand their concrete outputs from the frozen terms of the
@@ -76,10 +77,18 @@ as payable before that point.
 At minimum the frozen terms identify:
 
 - the order, attempt, asset, rail/network, and amount they govern;
+- the settlement asset as the sole unit of account for every allocation and
+  reversal under this attempt: refunds, cancellations, and dispute reversals
+  return quantities of the frozen settlement asset, not a value recomputed
+  against the order's pricing currency, a later exchange rate, or the
+  settlement asset's price movement during the attempt's holding period;
 - the seller payout destination and destination version;
 - the platform release fee basis and amount rules;
 - the buyer cancellation fee basis and amount rules;
-- Affiliate terms as defined by RFC-0007, when an attribution exists;
+- Affiliate terms as defined by RFC-0007, when an attribution exists,
+  including an explicit zero allocation when calculation rounded to zero;
+- the moderator payout destination and fee amount for moderated attempts;
+- the escrow timeout agreed by the participant offers;
 - the dispute allocation policy used to scale outputs from a verdict;
 - a canonical terms hash and the signatures or signed configuration
   references that authorize each funded leg.
@@ -88,6 +97,13 @@ At minimum the frozen terms identify:
 
 - The seller authorizes seller-funded legs: the seller payout destination and
   any seller-funded Affiliate terms.
+- The moderator's Identity-signed offer authorizes its payout destination and
+  fee amount. Seller-built terms must copy both values exactly; the seller
+  cannot replace the recipient, lower the fee, or use the moderator's genuine
+  offer as proof for different terms.
+- The frozen escrow timeout must equal the timeout accepted by the required
+  participant offers. It is not a seller-selected free field merely because
+  the seller assembles the final terms object.
 - Platform fees bind through a platform signature or an immutable, versioned
   platform configuration reference; they cannot silently track later
   configuration changes.
@@ -100,6 +116,13 @@ At minimum the frozen terms identify:
   not actionable when any required participant or rail lacks the same accepted
   authorization-protocol version.
 
+Validation occurs where the order facts, terms, and signed offers are visible
+together. A value object's local checks (non-empty address, amount bounds, and
+canonical encoding) are necessary but cannot prove that a recipient, fee,
+timeout, or Affiliate allocation matches the external authority that supplied
+it. The final authorization bundle must perform those cross-object checks
+before the terms hash gains financial meaning.
+
 ### 4. Action expansion
 
 A settlement action references the paid attempt and its terms hash, then
@@ -111,7 +134,7 @@ expands outputs for its kind:
 | buyer cancel | buyer refund minus the frozen buyer cancellation fee; no Affiliate output |
 | seller decline | full buyer refund; no cancellation fee; no Affiliate output |
 | dispute release | verdict first, then frozen policy scales remaining legs from the seller basis |
-| refund | reversal derived from the original attempt and refund policy; not a buyer cancel |
+| refund | reversal derived from the original attempt and refund policy; not a buyer cancel; denominated in the frozen settlement asset per Proposal 2 |
 
 Retries rebuild or reconcile the same logical action. Value conservation and
 per-rail fee handling follow the owning rail's rules under RFC-0006 and
@@ -205,7 +228,8 @@ never reprices or redirects a paid attempt.
 - Link this RFC from RFC-0006 (attempt and route immutability), RFC-0007
   (Affiliate terms content), and RFC-0010 (Guest trust and custody) without
   moving their authority; link RFC-0011 for participant authorization without
-  moving economic-term authority.
+  moving economic-term authority; link RFC-0012 for onramp-funded attempts
+  consuming these frozen terms without moving economic-term authority.
 - Publish the terms field contract, canonical encoding, and signature rules as
   a public spec once stable.
 - Update buyer and seller task pages to state that displayed payment terms are

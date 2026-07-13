@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha commerce, payment, and documentation maintainers
 - Created: 2026-07-11
-- Updated: 2026-07-12
+- Updated: 2026-07-13
 - Decision owners: Mobazha Open Core, hosted service, Unified, clients, and documentation maintainers
 - Affected surfaces: Guest checkout, Node order settlement, hosted service, buyer clients, custody disclosure, docs
 - Supersedes: None
@@ -189,7 +189,8 @@ the seller-owned settlement model of RFC-0006/0007.
 Rejected for the current scope. Without a buyer identity there is no
 meaningful buyer signing party; simulating one server-side would misrepresent
 who controls funds. A future buyer-wallet escrow product would be a separate
-proposal.
+proposal. [RFC-0012](./0012-embedded-wallet-buyer-settlement-keys.md) is that
+proposal; it does not change the guest-custodial default of this RFC.
 
 ### One global guest flag per store
 
@@ -219,7 +220,9 @@ orders; it never abandons funds already received at seller-controlled targets.
 - Link this RFC from RFC-0007 (guest Affiliate boundary), RFC-0008 (guest
   account and managed-escrow custody), and RFC-0009 (frozen attempt terms)
   without moving their authority; link RFC-0011 only for any shared
-  order-scoped Settlement signer requirements.
+  order-scoped Settlement signer requirements; link RFC-0012 as the separate
+  buyer-wallet escrow proposal this RFC's Alternatives section named, without
+  moving this RFC's guest-custodial authority.
 - Publish per-chain capability status as release evidence when scopes ship.
 
 ## Open questions
@@ -231,7 +234,9 @@ orders; it never abandons funds already received at seller-controlled targets.
 3. Under what conditions, if any, do account-based chains without a managed
    escrow container (for example TRON) become guest-visible?
 4. Do fiat provider payments join guest checkout under the same disclosure
-   contract or remain a separate provider product?
+   contract or remain a separate provider product? (For onramp funding used
+   with a buyer-vendor-custodied key rather than guest custody, see
+   RFC-0012, which is a separate product under this RFC's own terms.)
 5. Which jurisdictions' custody or money-transmission review must complete
    before hosted deployments enable guest checkout for real funds?
 

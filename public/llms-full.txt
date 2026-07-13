@@ -1252,8 +1252,8 @@ Do not attach physical shipping charges to digital or service flows merely to sa
 - Audience: sellers, operators
 - Knowledge authority: https://docs.mobazha.org/sell/payments
 - Evidence: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/payments
-- Reviewed: 2026-07-06
-- Last tested: 2026-07-04
+- Reviewed: 2026-07-13
+- Last tested: 2026-07-13
 - Language: en
 - Summary: Advertise only payment methods that are allowed, configured, healthy, and operationally monitored by the store backend.
 
@@ -1292,6 +1292,7 @@ Create a small testnet order and compare the displayed Payment Session ID, order
 Broadcast or authorize the test payment, then distinguish observed progress from the backend-owned funded state.
 Reopen the order detail and confirm that capabilities expose only state-valid actions.
 Exercise the applicable cancellation or refund path before accepting material orders.
+For an attempt-scoped standard crypto payment, the funding target becomes actionable only after the required seller and moderator offers, frozen settlement terms, and authorization bundle agree. If Affiliate attribution or another order feature is not supported by that exact route, the backend must keep the route unavailable before creating a draft; a frontend must not infer support from the coin or rail alone.
 Expected result and verification
 The method should appear in checkout only when the full effective-capability intersection is ready. Payment observation must bind to intended order, asset, address, amount, expected state, and confirmation policy. A recognized code or installed adapter is not enough.
 If something fails
@@ -1299,10 +1300,13 @@ If setup is incomplete, keep the method unavailable rather than falling back sil
 If health becomes unknown, stop advertising new checkout work while preserving existing recovery.
 If payment is observed for the wrong amount or destination, do not settle automatically.
 If a session says `awaiting_seller_receipt`, do not present it as buyer payment delay; the seller-side funding target is not ready yet.
+Do not ask the buyer to pay an address retained from an abandoned or
+incompatible attempt. Refresh the Payment Session and use only its current actionable target.
 If a provider checkout or wallet action fails, keep the order and Payment Session identifiers before retrying.
 If a refund path is unavailable, disclose that limitation before accepting the method.
 Current release boundary
 The public client and backend contain several payment adapters and compatibility paths, but availability is decided at runtime by distribution policy, backend implementation, store configuration, health, order mode, and Payment Session capabilities. A Token identifier or source module does not create a release commitment. See [release scope](/project/release-scope) and [fees](/project/fees).
+A provider-session payment can expose a moderated product mode only when the provider route can keep seller disbursement pending (or preserve an equivalent reversible funds state) and supports the required recovery operations. The provider's own payment dispute or chargeback process remains separate from a Mobazha moderator's order decision.
 
 ### Operate incoming orders
 - URL: /sell/orders
@@ -1615,8 +1619,8 @@ Do not attempt database edits or direct settlement calls to repair a buyer order
 - Audience: buyers, sellers, agents
 - Knowledge authority: https://docs.mobazha.org/buy/cancel-refund-dispute
 - Evidence: https://github.com/mobazha/mobazha/tree/main/api-spec
-- Reviewed: 2026-07-06
-- Last tested: 2026-07-04
+- Reviewed: 2026-07-13
+- Last tested: 2026-07-13
 - Language: en
 - Summary: Choose the transition allowed by the current order state and preserve the evidence needed to explain the requested remedy.
 
@@ -1650,6 +1654,7 @@ Open the order Dispute view only when the deployment, order mode, deadline, and 
 Describe expected outcome, timeline, and evidence without unnecessary personal information.
 Add or reference original material in the Evidence view where supported; do not replace evidence with a summary that loses timestamps or provenance.
 Reconcile final refund, release, or closure against both backend state and the payment system or provider.
+For an attempt-scoped crypto payment, settlement recipients, fees, the moderator allocation, and the settlement asset are frozen before its funding target becomes actionable. A refund or dispute allocation is derived from that paid attempt; it is not repriced from the order currency or a later exchange rate. Always verify the asset and destination shown for the current action rather than reusing a previous attempt's address.
 Expected result and verification
 The UI should expose only actions valid for the current order, role, payment method, and protection state. After an accepted action, verify updated state and any resulting payment transaction independently. A submitted request is not a completed refund or settlement.
 If something fails
@@ -4100,7 +4105,7 @@ A record's status must remain explicit. Agents and readers must not infer availa
 - Audience: contributors, maintainers, evaluators, agents
 - Knowledge authority: https://docs.mobazha.org/project/rfcs
 - Evidence: https://github.com/mobazha/mobazha-docs/tree/main/rfcs
-- Reviewed: 2026-07-12
+- Reviewed: 2026-07-13
 - Language: en
 - Summary: Review substantial protocol, policy, economic, security, governance, and cross-repository proposals before treating them as commitments.
 
@@ -4135,11 +4140,13 @@ Draft; proposes seller-funded Affiliate outputs in the canonical order release w
 RFC-0008: Node Key Domains and Receiving Architecture
 Draft; proposes separate Identity, Wallet, and Settlement domains, generic receiving destinations, and a production gate for order authorization keys.
 RFC-0009: Frozen Payment Attempt Settlement Terms
-Draft; proposes freezing seller payout, platform and cancellation fees, Affiliate terms, and dispute policy into the immutable payment attempt before a funding target is payable.
+Draft; proposes freezing seller payout, platform and cancellation fees, Affiliate and moderator terms, escrow timeout, and dispute policy into the immutable payment attempt before a funding target is payable.
 RFC-0010: Guest Checkout Trust and Custody Model
 Draft; proposes seller-custodied Guest Checkout, a strict per-chain closure gate, an order-scoped access credential, and buyer disclosure rules without introducing a separate Direct payment product.
 RFC-0011: Order Settlement Authorization Keys
 Draft; proposes deterministic hardened attempt-scoped settlement keys for all order participants, Identity-signed public-key offers without private-key exposure, and moderator selectability gated on obtaining a valid offer before payment.
+RFC-0012: Embedded Wallet Buyer Settlement Keys and Onramp-Funded Attempts
+Draft; proposes a buyer-vendor-custodied participant key class for moderated escrow, admits embedded-wallet providers as a reviewed trusted-module class, and defines onramp-funded attempts without changing the RFC-0010 guest-custodial default or the RFC-0011 Settlement-root key hierarchy.
 RFC template
 Required metadata and review questions.
 Repository RFC guide
