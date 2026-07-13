@@ -371,6 +371,17 @@ The result is allowed or denied with a stable reason. Clients and Agents use
 the connected backend's effective capability response; they do not infer
 availability from source code, a module identifier, or a distribution name.
 
+Configuration gates are evaluated at the authority boundary that owns the
+configuration; they are not a requirement to duplicate configuration on every
+participant. Seller-side payment discovery validates the seller or store's
+receiving configuration. Buyer-side escrow session admission validates the
+seller's signed order terms, the selected asset and required module readiness;
+it must not require a matching receiving-account row on the buyer's Node.
+Provider-session admission resolves the immutable binding owned by the tenant
+or store whose external provider account serves that session. Cross-store
+checkout tests must cover this distinction so a fail-closed tenant gate does
+not become a false cross-tenant dependency.
+
 Lifecycle state maps to work admission explicitly:
 
 | State | Admit new work | Service existing work | Reconcile |
@@ -491,7 +502,7 @@ third-party integration need exists.
 | Contribution registration and health | Transitional chain-keyed escrow registry, module/chain health, and one direct-observed runtime; typed contribution-level registry remains a target |
 | Escrow and direct-observed module conformance | Implemented family-specific slices |
 | Provider-session integrations | Existing built-in provider path; reviewed driver plus tenant/store ProviderBinding governance remains a target |
-| Distribution and tenant capability projection | Implemented slices for tenant-scoped runtime resolution and availability-filtered distribution payment advertisement; one operation-level route decision remains a target |
+| Distribution and tenant capability projection | Implemented slices for tenant-scoped runtime resolution, availability-filtered payment advertisement, and setup admission with stable denial reasons; service-existing and reconcile decisions remain targets |
 | Persistent Payment Session attempt and immutable route binding | Payment Session projection exists; durable attempt, contribution, provider-binding, protocol, and state-schema identity remain a target |
 | Persistence-first external-effect protocol | Durable settlement actions exist in family-specific slices; uniform create-or-retrieve and reconciliation remain a target |
 | Drain, compatible upgrade, and historical implementation routing | Target |

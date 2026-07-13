@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha identity, wallet, settlement, and documentation maintainers
 - Created: 2026-07-11
-- Updated: 2026-07-12
+- Updated: 2026-07-13
 - Decision owners: Mobazha Open Core, distributions, hosted service, clients, and documentation maintainers
 - Affected surfaces: Node identity and wallets, Profile, order protocol, settlement signers, hosted service, clients, recovery, docs
 - Supersedes: None
@@ -139,6 +139,15 @@ freezes the selected destination into the applicable link and order terms.
 Profile rotation affects new work only. A destination already frozen into an
 accepted order never follows later Profile changes.
 
+Affiliate link rotation uses successor-generation semantics: a newer
+Destination version may reuse the logical link ID, but it rotates the bearer
+token and routing generation used for new sessions. A superseded token stops
+issuing sessions without rewriting already issued sessions or accepted
+attempts. The initial development slice freezes destinations in sessions and
+orders but does not yet expose an explicit destination-generation field;
+adding that field remains contract work rather than being inferred from
+timestamps or address comparison.
+
 The first Affiliate release may use one stable destination per rail and accept
 the resulting public linkability. Per-seller or per-link privacy and external
 user-entered destinations require a separately reviewed publication and
@@ -169,6 +178,10 @@ A chain may support Main wallet use without supporting Guest or Affiliate. A
 role becomes publicly available only after allocation, monitoring, restart
 recovery, spending, fee handling, confirmation, network isolation, and the
 required order-settlement operations close end to end.
+
+Consumers must query the effective role/rail capability set. Publishing one
+Affiliate destination does not imply every token, network, order kind, or
+settlement action on that address-bearing chain can pay an Affiliate output.
 
 [RFC-0010](./0010-guest-checkout-trust-and-custody.md) applies this gate to
 Guest buyer visibility and defines the associated custody disclosure. A

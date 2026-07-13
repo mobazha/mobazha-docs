@@ -192,6 +192,123 @@ This proposal does not add:
 - a Direct payment product or compatibility with retired escrow contracts;
 - multi-level or recurring recruitment commissions.
 
+### 8. Admit referrals only through effective rail capabilities
+
+Affiliate availability is an effective runtime capability, not an inference
+from an address field, source package, or broadly supported chain. Before a
+financial referral can enter an order, the selected rail/network/asset must
+advertise the Affiliate operations required by that order kind, including
+output construction, fee and minimum-output validation, submission,
+confirmation, retry, and statement evidence.
+
+An unsupported rail has two valid product outcomes: remove the financial
+referral before order acceptance and disclose that no commission applies, or
+reject that payment choice. It must never retain an Affiliate attribution that
+looks payable while silently omitting its output. Marketplace analytics that
+need attribution without money use a separate non-financial marketplace event;
+they do not create a zero-rate Affiliate program or commission line.
+
+### 9. Rotate destinations by issuing a successor generation
+
+Destination rotation affects new work without mutating frozen obligations. A
+link records the destination version it accepted. When the promoter publishes
+a newer valid destination set, the seller may issue a successor generation for
+new sessions. The logical link ID may remain stable, but its bearer token must
+rotate so the previous public route stops issuing sessions. This is not an
+in-place rewrite of already issued sessions or accepted attempts.
+Already issued sessions retain their expiry rules, and accepted attempts retain
+their exact frozen destination until final reconciliation.
+
+Revocation cannot redirect an accepted output. APIs must distinguish link
+revocation, destination-version supersession, and invalid rail capability so a
+client can explain the next action instead of returning a generic conflict.
+
+### 10. Reverse partial refunds at commission-line granularity
+
+Before a settlement action is submitted, a partial refund reverses only the
+commission lines for the refunded order lines. Remaining lines keep their
+original rate, basis, rounding, asset, and destination snapshots; they are not
+repriced from current program configuration. A full refund reverses every
+line. If the refund fact cannot be deterministically allocated to order lines,
+the Affiliate output must not be submitted until policy resolves the
+allocation; implementations may fail closed by reversing the whole commission
+but must expose that outcome explicitly.
+
+After a matching Affiliate output is confirmed, a later voluntary refund does
+not claw funds back from the promoter; the seller bears that later refund under
+the disclosed policy.
+
+### 11. Make aggregated statements partial-failure tolerant
+
+Seller-local statement lines remain authoritative. A hosted promoter statement
+that aggregates multiple seller nodes must use stable pagination, preserve
+successful seller projections when another seller is unavailable, and return
+per-source freshness/error metadata. One unavailable seller must not erase or
+fail an otherwise valid page, and aggregation must never invent a paid state
+without the seller node's confirmed output evidence.
+
+### Development implementation snapshot (not release evidence)
+
+As of 2026-07-13, the development branches implement these bounded slices:
+
+- Open Core validates a referred `OrderOpen` before the seller accepts it and
+  commits the immutable attribution/commission snapshot in the same database
+  transaction as the order. Pre-cutover accepted orders have an idempotent
+  repair path based on their signed order evidence.
+- Open Core binds the frozen Affiliate allocation into
+  `PaymentAttemptSettlementTerms`. Standard UTXO complete, cancelable release,
+  and moderated dispute paths reject Affiliate destinations or amounts that do
+  not match the paid attempt, including explicit zero-rounded allocations.
+- The commercial Safe implementation validates complete, dispute release, and
+  cancelable seller-confirm Affiliate payouts against frozen attempt terms.
+  The Solana attempt path validates complete and dispute release, but promoter
+  destination publication/snapshotting and cancelable seller-confirm have not
+  yet reached the same Affiliate conformance boundary. Solana therefore
+  remains unadvertised by the capability envelope.
+- Open Core stores one commission record per `orderID:itemIndex` and consumes
+  `Refund.refundedItemIndexes`; an allocated partial refund reverses only those
+  lines, while a full or unallocated refund conservatively reverses all lines.
+- Open Core can rotate a link's token and destination set for future referral
+  sessions. Previously issued sessions and accepted order attributions retain
+  their stored destination snapshots.
+- Hosting updates its public-token route for that logical link, exposes
+  `GET /platform/v1/seller-affiliate/capabilities`, and advertises only the
+  reviewed rail/order/action combinations that intersect Core's tenant-scoped
+  runtime payment decisions. Guest support additionally requires the complete
+  wallet receive/watch/spend/automatic-transfer capability set; chain presence
+  alone is not sufficient. Version 2 advertises exact canonical asset IDs, so
+  reviewed Safe ERC-20 assets such as configured USDT/USDC can be admitted
+  without incorrectly widening support to every asset on the chain. Guest
+  remains native-only until its wallet transfer capability closes for tokens.
+- Hosting's promoter statement returns `{items, page, pageSize, total,
+  partial, sourceErrors}` and retains successful seller-node results when
+  another source is unavailable.
+- Unified has typed clients for the capability and paginated statement
+  envelopes. The seller-authenticated capability endpoint is not a public
+  buyer discovery contract; exact order/payment admission must still fail
+  closed in Core, and client display must not broaden that decision.
+- The hosted BTC E2E exercises an Affiliate referral through frozen attempt
+  settlement. Independent BCH/LTC, Safe, Solana, and reorg/retry balance
+  evidence remains part of the rollout gate.
+
+Solana is closed only when all of the following land as one admission unit:
+
+1. Profile publishes a canonical Solana native/SPL destination and Hosting
+   validates it with the wallet adapter instead of projecting the EVM field.
+2. Link, referral session, attribution, and `PaymentAttemptAffiliateTerm`
+   preserve that exact rail-qualified destination and version through token
+   rotation and retries.
+3. Cancelable seller-confirm constructs seller, platform, and Affiliate splits
+   from the frozen attempt terms, and the observed transaction verifier checks
+   the same destination/amount set before marking settlement confirmed.
+4. The exact Solana asset passes setup, confirm, complete, dispute-release,
+   restart/idempotency, and destination-tamper tests. Only then may the
+   capability endpoint advertise it; module registration alone is insufficient.
+
+These are implementation facts under review, not a claim that the RFC is
+Accepted, that a production release is tagged, or that every advertised action
+has completed end-to-end rail conformance.
+
 ## Security, privacy, and abuse analysis
 
 Referral tokens and signed sessions are bearer artifacts and require entropy,
@@ -304,6 +421,8 @@ owner-directed resolution.
    or remain unsupported until a concrete provider contract is proposed?
 5. What confirmation depth and reorg language should statements expose across
    supported chains?
+6. Which stable denial/error code registry and explicit destination-generation
+   field should complement the implemented v1 rail capability envelope?
 
 ## Decision
 

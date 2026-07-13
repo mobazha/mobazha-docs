@@ -140,6 +140,14 @@ Retries rebuild or reconcile the same logical action. Value conservation and
 per-rail fee handling follow the owning rail's rules under RFC-0006 and
 RFC-0007.
 
+For partial refunds, the attempt retains the original per-order-line Affiliate
+basis and amount. Before action submission, refunded lines are reversed and
+the remaining Affiliate output is the sum of the still-payable frozen line
+amounts. No line is repriced. If a refund cannot be mapped deterministically to
+lines, settlement fails closed until the policy produces an unambiguous
+allocation; a documented whole-commission reversal is the conservative
+fallback, not an implicit proportional guess.
+
 ### 5. Facts that are never frozen
 
 Terms freeze policy, not chain facts. Transaction inputs and outpoints, actual
@@ -204,6 +212,18 @@ Rejected for accepted attempts. Quotes may change freely before an attempt is
 actionable; after a funding target is payable, expiry-based mutation would
 still allow the paid terms to drift from the executed terms.
 
+## Development implementation snapshot (not release evidence)
+
+As of 2026-07-13, referred standard orders are snapshotted atomically with
+seller acceptance, and their Affiliate allocation is copied into the payment
+attempt's frozen terms before settlement. Standard UTXO complete, cancelable
+release, and moderated dispute validation consume those terms. Commercial Safe
+complete, dispute release, and cancelable seller-confirm validation also bind
+the Affiliate output to the frozen attempt. Solana complete and dispute release
+do so, while its promoter destination snapshot and cancelable seller-confirm
+Affiliate path remain rollout gaps. These facts do not complete the removal of
+every shipment/legacy fallback or advance this RFC beyond Draft.
+
 ## Rollout and rollback
 
 Implementation lands in the Open Core order and payment repositories with the
@@ -241,8 +261,9 @@ never reprices or redirects a paid attempt.
 1. Which canonical encoding (and versioning rule) should the terms hash use?
 2. Should platform fees bind by live platform signature, by signed
    configuration generation, or both?
-3. How are partial refunds expressed against frozen terms — per-line reversal
-   policy or a single scaled reversal?
+3. Should the implemented `Refund.refundedItemIndexes` allocation be extended
+   with quantities or monetary allocation for partial refunds within one order
+   line? Until then, those cases use the documented conservative fallback.
 4. Which parts of the frozen terms are disclosed to the buyer versus only
    hashed and disclosed on demand?
 5. Do provider (fiat) attempts adopt the same terms object immediately or
