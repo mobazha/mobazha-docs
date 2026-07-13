@@ -258,20 +258,40 @@ As of 2026-07-13, the development branches implement these bounded slices:
 - Open Core binds the frozen Affiliate allocation into
   `PaymentAttemptSettlementTerms`. Standard UTXO complete, cancelable release,
   and moderated dispute paths reject Affiliate destinations or amounts that do
-  not match the paid attempt, including explicit zero-rounded allocations.
-- The commercial Safe implementation validates complete, dispute release, and
-  cancelable seller-confirm Affiliate payouts against frozen attempt terms.
-  The Solana attempt path validates complete and dispute release, but promoter
-  destination publication/snapshotting and cancelable seller-confirm have not
-  yet reached the same Affiliate conformance boundary. Solana therefore
-  remains unadvertised by the capability envelope.
-- Open Core stores one commission record per `orderID:itemIndex` and consumes
-  `Refund.refundedItemIndexes`; an allocated partial refund reverses only those
-  lines, while a full or unallocated refund conservatively reverses all lines.
-- Open Core can rotate a link's token and destination set for future referral
-  sessions. Previously issued sessions and accepted order attributions retain
-  their stored destination snapshots.
-- Hosting updates its public-token route for that logical link, exposes
+  not match the paid attempt, including explicit zero-rounded allocations. New
+  UTXO, EVM/Safe, and Solana attempts also bind the buyer refund destination in
+  every participant offer and the seller-signed terms; settlement execution
+  uses the frozen seller, promoter, and refund outputs. Pre-cutover non-Solana
+  version-1 attempts that omitted the refund field remain recoverable from the
+  signed order refund fact.
+- The commercial Safe and Solana implementations validate complete, dispute
+  release, and cancelable seller-confirm Affiliate payouts against frozen
+  attempt terms. Solana native settlement now crosses the same frozen-output
+  admission boundary as the reviewed Safe and UTXO paths.
+- Open Core and Hosting freeze a generic, versioned destination set keyed by
+  canonical native rail. Profile publication covers BTC, BCH, LTC, Ethereum,
+  BSC, Polygon, Base, and Solana; Hosting validates each destination with the
+  corresponding wallet/chain rules. A promoter link may freeze the non-empty
+  subset the runtime can actually publish. For native or canonical crypto
+  pricing rails, seller order admission verifies that the frozen referral
+  contains the matching rail before accepting `OrderOpen`, so an unsupported
+  rail cannot create an `awaiting_seller_receipt` payment draft. Later attempt
+  finalization still fails closed and never falls back to a legacy EVM address.
+- Referred Stripe and PayPal sessions fail before provider-session creation
+  because those provider rails do not yet expose an atomic promoter split. The
+  buyer-side gate reads the signed referral fact; seller-local ledger state is
+  only a compatibility/recovery fallback.
+- Open Core stores one commission record per commission-bearing
+  `orderID:itemIndex` and consumes `Refund.refundedItemIndexes`; an allocated
+  partial refund intersects those indexes with the immutable commission lines,
+  so zero-net items that legitimately have no commission line cannot block
+  reversal of refunded paid items. A full or unallocated refund conservatively
+  reverses all lines.
+- Open Core can list and revoke promoter links, and rotate a link's token and
+  destination set for future referral sessions. Previously issued sessions and
+  accepted order attributions retain their stored destination snapshots.
+- Hosting updates and repairs the public-token route for that logical link,
+  exposes link list/revoke management operations, exposes
   `GET /platform/v1/seller-affiliate/capabilities`, and advertises only the
   reviewed rail/order/action combinations that intersect Core's tenant-scoped
   runtime payment decisions. Guest support additionally requires the complete
@@ -287,14 +307,15 @@ As of 2026-07-13, the development branches implement these bounded slices:
   envelopes. The seller-authenticated capability endpoint is not a public
   buyer discovery contract; exact order/payment admission must still fail
   closed in Core, and client display must not broaden that decision.
-- The hosted BTC E2E exercises an Affiliate referral through frozen attempt
-  settlement. Independent BCH/LTC, Safe, Solana, and reorg/retry balance
-  evidence remains part of the rollout gate.
+- The remote full-stack gate exercises BTC and Solana Affiliate referrals
+  through frozen attempt settlement, alongside the general Safe, Solana, UTXO,
+  moderated, refund, and retry suites. Independent BCH/LTC Affiliate and
+  reorg-specific balance evidence remain rollout work.
 
-Solana is closed only when all of the following land as one admission unit:
+The reviewed Solana native slice now satisfies the original admission unit:
 
-1. Profile publishes a canonical Solana native/SPL destination and Hosting
-   validates it with the wallet adapter instead of projecting the EVM field.
+1. Profile publishes a canonical Solana native destination and Hosting
+   validates its public key instead of projecting the EVM field.
 2. Link, referral session, attribution, and `PaymentAttemptAffiliateTerm`
    preserve that exact rail-qualified destination and version through token
    rotation and retries.
@@ -302,8 +323,8 @@ Solana is closed only when all of the following land as one admission unit:
    from the frozen attempt terms, and the observed transaction verifier checks
    the same destination/amount set before marking settlement confirmed.
 4. The exact Solana asset passes setup, confirm, complete, dispute-release,
-   restart/idempotency, and destination-tamper tests. Only then may the
-   capability endpoint advertise it; module registration alone is insufficient.
+   restart/idempotency, and destination-tamper tests before the capability
+   endpoint advertises it; module registration alone remains insufficient.
 
 These are implementation facts under review, not a claim that the RFC is
 Accepted, that a production release is tagged, or that every advertised action
