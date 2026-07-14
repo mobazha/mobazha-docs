@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha product, settlement, and documentation maintainers
 - Created: 2026-07-11
-- Updated: 2026-07-13
+- Updated: 2026-07-14
 - Decision owners: Mobazha hosted commerce, Open Core settlement, Unified, and documentation maintainers
 - Affected surfaces: Node order settlement, hosted Affiliate service, Unified, public API, economics, supported payment rails, docs
 - Supersedes: RFC-0004
@@ -48,9 +48,25 @@ settlement and chain evidence govern payment status.
 
 ### 1. Preserve single-level attribution
 
-The hosted Affiliate service owns seller programs, promoter links, signed
-referral sessions, attribution evidence, and the immutable policy snapshot used
-to prepare an order. One order accepts at most one direct promoter attribution.
+The seller's store Node, identified by its stable Peer ID, owns the Affiliate
+program, promoter-link lifecycle, referral-session validity, order attribution,
+immutable policy snapshot, and seller/promoter statement facts. One order
+accepts at most one direct promoter attribution.
+
+Hosting may provide public-token routing, short-link presentation, indexed
+projections, cross-store statement aggregation, and optional account-based
+administration. Those are routing and view responsibilities, not a second
+Affiliate fact source. A Casdoor user or other hosted owner association may
+authorize access to an explicitly selected store, but it must not replace the
+store Peer ID, merge programs from different stores, or become necessary for a
+standalone store to configure its local program.
+
+An independently operated store therefore keeps attribution working when the
+hosted control plane or account association is unavailable. A hosted public
+route must resolve to seller-Node facts or carry seller-verifiable,
+expiry-bound evidence; it must not resolve to a synthetic account Node that has
+a different Peer ID. Exact transport, signed-token, and projection freshness
+contracts remain rollout questions and must fail closed until reviewed.
 
 The model excludes referral trees, recruitment rewards, multi-touch
 attribution, ambient cookies, fingerprinting, and commission on another
@@ -303,6 +319,11 @@ As of 2026-07-13, the development branches implement these bounded slices:
 - Hosting's promoter statement returns `{items, page, pageSize, total,
   partial, sourceErrors}` and retains successful seller-node results when
   another source is unavailable.
+- The current development Hosting handlers still resolve some seller Affiliate
+  operations through an account-scoped synthetic Node. This is a known
+  migration gap, not the ownership contract: handlers must fail closed on a
+  different active store Peer, and release evidence must prove store-local
+  source-of-truth behavior before standalone Affiliate is advertised.
 - Unified has typed clients for the capability and paginated statement
   envelopes. The seller-authenticated capability endpoint is not a public
   buyer discovery contract; exact order/payment admission must still fail
@@ -411,6 +432,9 @@ write, but every enabled rail must provide evidence for:
 5. statement projection from planned/submitted/confirmed actions and outputs;
 6. cross-repository contract and end-to-end tests;
 7. public seller/promoter disclosure and applicable legal review.
+8. same-account multi-store isolation, unbound standalone operation, optional
+   account association, and hosted-outage conformance against the same store
+   Peer and immutable attribution facts.
 
 Rollback disables new Affiliate links or per-rail admission. It must continue
 to service and reconcile already accepted orders, preserve confirmed history,
@@ -428,6 +452,9 @@ owner-directed resolution.
   disclosures, supported-rail capability language, and abuse reporting before
   broad release.
 - Publish API and statement field contracts only after their schema is stable.
+- Document Peer ID as the store business identity and hosted account binding as
+  optional access/routing metadata; do not instruct sellers to connect an
+  account merely to make local attribution correct.
 - Add release evidence separately when an Accepted scope actually ships.
 
 ## Open questions
@@ -444,6 +471,9 @@ owner-directed resolution.
    supported chains?
 6. Which stable denial/error code registry and explicit destination-generation
    field should complement the implemented v1 rail capability envelope?
+7. Should hosted public referral entry use a self-contained seller-signed
+   session, a live seller-Node lookup, or a versioned combination with explicit
+   freshness and outage behavior?
 
 ## Decision
 

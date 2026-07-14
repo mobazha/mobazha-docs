@@ -5326,7 +5326,7 @@
     "authorityUrl": "https://docs.mobazha.org/project/identity-and-stores",
     "evidenceLabel": "Mobazha public identity, profile, capability, and architecture contracts",
     "evidenceUrl": "https://github.com/mobazha",
-    "reviewed": "2026-07-06",
+    "reviewed": "2026-07-14",
     "pageType": "concept",
     "outcome": "Decide which boundary should change when a person needs another login, store, storefront, or distribution channel.",
     "estimatedTime": "8 minutes",
@@ -5390,7 +5390,15 @@
           },
           {
             "type": "paragraph",
+            "text": "The Node's Peer ID is the stable technical identity for that store boundary. It identifies the store even before any hosted owner is bound and remains the seller binding used by listings and transactions. A Peer ID does not by itself prove that a particular human or hosted account is authorized to administer the store; administration still requires a store credential, Peer proof, or an explicitly authorized account-to-store association."
+          },
+          {
+            "type": "paragraph",
             "text": "A hosted control plane may associate an authenticated account with one or more registered stores and resolve the active store for an administration request. That association is an access and routing fact. Moving between accounts or clients must not silently rewrite the store's peer identity, transaction history, or accepted obligations."
+          },
+          {
+            "type": "paragraph",
+            "text": "This also applies to optional hosted distribution services. Connecting an account may add SSO, multi-store switching, branded routing, aggregation, or recovery, but it must not be required merely to make store-local commerce facts correct. Draft [RFC-0007](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0007-seller-funded-affiliate-atomic-settlement.md) applies this boundary to Affiliate, and Draft [RFC-0013](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0013-peer-scoped-deal-link-hosting.md) proposes it for Deal Link administration and hosted routing."
           },
           {
             "type": "links",
@@ -6540,7 +6548,7 @@
     "authorityUrl": "https://docs.mobazha.org/project/rfcs",
     "evidenceLabel": "Public Mobazha RFC registry",
     "evidenceUrl": "https://github.com/mobazha/mobazha-docs/tree/main/rfcs",
-    "reviewed": "2026-07-13",
+    "reviewed": "2026-07-14",
     "pageType": "hub",
     "outcome": "Find or start a public proposal without presenting Draft design direction as accepted or shipped behavior.",
     "estimatedTime": "5 minutes",
@@ -6647,6 +6655,11 @@
                 "label": "RFC-0012: Embedded Wallet Buyer Settlement Keys and Onramp-Funded Attempts",
                 "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0012-embedded-wallet-buyer-settlement-keys.md",
                 "description": "Draft; proposes a buyer-vendor-custodied participant key class for moderated escrow, admits embedded-wallet providers as a reviewed trusted-module class, and defines onramp-funded attempts without changing the RFC-0010 guest-custodial default or the RFC-0011 Settlement-root key hierarchy."
+              },
+              {
+                "label": "RFC-0013: Peer-scoped Deal Link Hosting and Store Authority",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0013-peer-scoped-deal-link-hosting.md",
+                "description": "Draft; proposes Peer-scoped seller administration, optional hosted account association, and a bounded Hosting-to-Node authority split for Deal Links."
               },
               {
                 "label": "RFC template",
@@ -16973,7 +16986,15 @@
           },
           {
             "type": "paragraph",
+            "text": "Node 的 Peer ID 是该店铺边界的稳定技术身份。即使尚未绑定任何托管 owner，它也能标识店铺，并继续作为 Listing 与交易中的卖家绑定。但 Peer ID 本身不能证明某个具体的人或托管账户有权管理店铺；管理操作仍需店铺 Credential、Peer 持有证明，或明确授权的账户—店铺关联。"
+          },
+          {
+            "type": "paragraph",
             "text": "托管控制面可以把经过验证的账户与一个或多个已登记店铺关联，并为管理请求解析活动店铺。这是访问和路由事实。切换账户或客户端不能静默改写店铺 peer identity、交易历史或已经接受的义务。"
+          },
+          {
+            "type": "paragraph",
+            "text": "该原则同样适用于可选托管分发服务。连接账户可以增加 SSO、多店切换、品牌路由、聚合或恢复，但不能只是为了让店铺本地商业事实正确而成为必需步骤。Draft [RFC-0007](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0007-seller-funded-affiliate-atomic-settlement.md) 将该边界应用于 Affiliate；Draft [RFC-0013](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0013-peer-scoped-deal-link-hosting.md) 则针对 Deal Link 管理与托管路由提出同样的边界。"
           },
           {
             "type": "links",
@@ -18217,6 +18238,11 @@
                 "label": "RFC-0012：内嵌钱包买家结算密钥与 Onramp 注资",
                 "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0012-embedded-wallet-buyer-settlement-keys.md",
                 "description": "Draft；提出由买家和卖家共同保管的参与者密钥类别，并允许经过审阅的内嵌钱包可信模块。"
+              },
+              {
+                "label": "RFC-0013：按 Peer 隔离的 Deal Link 托管与店铺权威",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0013-peer-scoped-deal-link-hosting.md",
+                "description": "Draft；提出按 Peer 隔离卖家管理、可选托管账户关联，以及 Deal Link 在 Hosting 与 Node 之间的明确权威边界。"
               },
               {
                 "label": "RFC 模板",

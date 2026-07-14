@@ -39,7 +39,11 @@ Mobazha 将四个概念分开，因为它们承载的权威不同：
 
 在 Open Core 中，Node 暴露 Profile 和节点级商业服务。店铺上下文拥有或服务于该独立经营单元的目录、政策、订单、消息、支付观察、履约记录和信誉。
 
+Node 的 Peer ID 是该店铺边界的稳定技术身份。即使尚未绑定任何托管 owner，它也能标识店铺，并继续作为 Listing 与交易中的卖家绑定。但 Peer ID 本身不能证明某个具体的人或托管账户有权管理店铺；管理操作仍需店铺 Credential、Peer 持有证明，或明确授权的账户—店铺关联。
+
 托管控制面可以把经过验证的账户与一个或多个已登记店铺关联，并为管理请求解析活动店铺。这是访问和路由事实。切换账户或客户端不能静默改写店铺 peer identity、交易历史或已经接受的义务。
+
+该原则同样适用于可选托管分发服务。连接账户可以增加 SSO、多店切换、品牌路由、聚合或恢复，但不能只是为了让店铺本地商业事实正确而成为必需步骤。Draft [RFC-0007](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0007-seller-funded-affiliate-atomic-settlement.md) 将该边界应用于 Affiliate；Draft [RFC-0013](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0013-peer-scoped-deal-link-hosting.md) 则针对 Deal Link 管理与托管路由提出同样的边界。
 
 - [Mobazha 产品地图](/zh/project/product-map)
 - [查看架构与信任边界](/zh/project/architecture)

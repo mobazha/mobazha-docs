@@ -20,6 +20,7 @@ record; it does not activate behavior.
 | [0010](./0010-guest-checkout-trust-and-custody.md) | Guest Checkout Trust and Custody Model | Draft | 2026-07-13 |
 | [0011](./0011-order-settlement-authorization-keys.md) | Order Settlement Authorization Keys | Draft | 2026-07-13 |
 | [0012](./0012-embedded-wallet-buyer-settlement-keys.md) | Embedded Wallet Buyer Settlement Keys and Onramp-Funded Attempts | Draft | 2026-07-13 |
+| [0013](./0013-peer-scoped-deal-link-hosting.md) | Peer-scoped Deal Link Hosting and Store Authority | Draft | 2026-07-14 |
 
 Start from [`0000-template.md`](./0000-template.md). Allocate the next number,
 keep the filename stable, and update this table in the same change.

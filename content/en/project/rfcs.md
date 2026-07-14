@@ -9,7 +9,7 @@ audiences:
   - Agents
 evidenceLabel: Public Mobazha RFC registry
 evidenceUrl: https://github.com/mobazha/mobazha-docs/tree/main/rfcs
-reviewed: 2026-07-13
+reviewed: 2026-07-14
 pageType: hub
 outcome: Find or start a public proposal without presenting Draft design direction as accepted or shipped behavior.
 estimatedTime: 5 minutes
@@ -50,6 +50,7 @@ primaryAction:
 - [RFC-0010: Guest Checkout Trust and Custody Model](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0010-guest-checkout-trust-and-custody.md) — Draft; proposes seller-custodied Guest Checkout, a strict per-chain closure gate, an order-scoped access credential, and buyer disclosure rules without introducing a separate Direct payment product.
 - [RFC-0011: Order Settlement Authorization Keys](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0011-order-settlement-authorization-keys.md) — Draft; proposes deterministic hardened attempt-scoped settlement keys for all order participants, Identity-signed public-key offers without private-key exposure, and moderator selectability gated on obtaining a valid offer before payment.
 - [RFC-0012: Embedded Wallet Buyer Settlement Keys and Onramp-Funded Attempts](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0012-embedded-wallet-buyer-settlement-keys.md) — Draft; proposes a buyer-vendor-custodied participant key class for moderated escrow, admits embedded-wallet providers as a reviewed trusted-module class, and defines onramp-funded attempts without changing the RFC-0010 guest-custodial default or the RFC-0011 Settlement-root key hierarchy.
+- [RFC-0013: Peer-scoped Deal Link Hosting and Store Authority](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0013-peer-scoped-deal-link-hosting.md) — Draft; proposes Peer-scoped seller administration, optional hosted account association, and a bounded Hosting-to-Node authority split for Deal Links.
 - [RFC template](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0000-template.md) — Required metadata and review questions.
 - [Repository RFC guide](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/README.md)
 

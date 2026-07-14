@@ -10,7 +10,7 @@ audiences:
   - Evaluators
 evidenceLabel: Mobazha public identity, profile, capability, and architecture contracts
 evidenceUrl: https://github.com/mobazha
-reviewed: 2026-07-06
+reviewed: 2026-07-14
 pageType: concept
 outcome: Decide which boundary should change when a person needs another login, store, storefront, or distribution channel.
 estimatedTime: 8 minutes
@@ -38,7 +38,11 @@ An interface may display all four together. They remain separate in the product 
 
 In Open Core, a Node exposes a profile and per-node commerce services. The store context owns or serves the catalog, policies, orders, messages, payment observations, fulfillment records, and reputation associated with that independently operated unit.
 
+The Node's Peer ID is the stable technical identity for that store boundary. It identifies the store even before any hosted owner is bound and remains the seller binding used by listings and transactions. A Peer ID does not by itself prove that a particular human or hosted account is authorized to administer the store; administration still requires a store credential, Peer proof, or an explicitly authorized account-to-store association.
+
 A hosted control plane may associate an authenticated account with one or more registered stores and resolve the active store for an administration request. That association is an access and routing fact. Moving between accounts or clients must not silently rewrite the store's peer identity, transaction history, or accepted obligations.
+
+This also applies to optional hosted distribution services. Connecting an account may add SSO, multi-store switching, branded routing, aggregation, or recovery, but it must not be required merely to make store-local commerce facts correct. Draft [RFC-0007](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0007-seller-funded-affiliate-atomic-settlement.md) applies this boundary to Affiliate, and Draft [RFC-0013](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0013-peer-scoped-deal-link-hosting.md) proposes it for Deal Link administration and hosted routing.
 
 - [Review architecture and trust boundaries](/project/architecture)
 - [Prepare a store for its first order](/sell/store-setup)

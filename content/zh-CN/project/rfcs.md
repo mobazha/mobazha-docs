@@ -51,6 +51,7 @@ primaryAction:
 - [RFC-0010：Guest Checkout 信任与保管模型](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0010-guest-checkout-trust-and-custody.md) — Draft；提出卖家保管的 Guest Checkout、逐链关闭门槛和订单 Scope 凭据。
 - [RFC-0011：订单结算授权密钥](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0011-order-settlement-authorization-keys.md) — Draft；提出针对每个 attempt 的确定性硬化结算密钥，以及付款前 Moderator 可选性的密钥条件。
 - [RFC-0012：内嵌钱包买家结算密钥与 Onramp 注资](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0012-embedded-wallet-buyer-settlement-keys.md) — Draft；提出由买家和卖家共同保管的参与者密钥类别，并允许经过审阅的内嵌钱包可信模块。
+- [RFC-0013：按 Peer 隔离的 Deal Link 托管与店铺权威](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0013-peer-scoped-deal-link-hosting.md) — Draft；提出按 Peer 隔离卖家管理、可选托管账户关联，以及 Deal Link 在 Hosting 与 Node 之间的明确权威边界。
 - [RFC 模板](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0000-template.md) — 必需 metadata 和审阅问题。
 - [仓库 RFC 指南](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/README.md)
 
