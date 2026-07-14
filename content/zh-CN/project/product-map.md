@@ -10,7 +10,7 @@ audiences:
   - 评估者
 evidenceLabel: Mobazha 公开架构、发布与政策文档
 evidenceUrl: https://github.com/mobazha
-reviewed: 2026-07-06
+reviewed: 2026-07-14
 translationOf: project/product-map
 pageType: concept
 outcome: 理解 Mobazha 的长期产品模型、权威边界，以及当前发布证据在哪里结束。
@@ -53,7 +53,7 @@ Mobazha 从一个独立经营单元开始：身份、一个或多个店铺、相
 
 - [选择托管服务或自行托管](/zh/start/choose-deployment)
 - [运行自己的 Mobazha Node](/zh/self-host)
-- [查看英文架构与信任边界](/project/architecture)
+- [查看架构与信任边界](/zh/project/architecture)
 
 ## 交易主线
 
@@ -66,8 +66,8 @@ Mobazha 围绕一条交易主线变得具体：
 5. 历史绑定和证据继续服务于恢复与对账。
 
 - [在独立 Mobazha 店铺购买](/zh/buy)
-- [查看英文订单状态指南](/buy/order-status)
-- [查看英文退款与争议指南](/buy/cancel-refund-dispute)
+- [查看订单状态指南](/zh/buy/order-status)
+- [查看退款与争议指南](/zh/buy/cancel-refund-dispute)
 - [理解订单、支付与保护状态为何必须分离](/zh/project/transaction-spine)
 - [连接 Offer、Merchandising、Supply 与 Fulfillment](/zh/project/offer-to-fulfillment)
 
@@ -85,7 +85,7 @@ Mobazha 围绕一条交易主线变得具体：
 - [区分产品表面、渠道与集成契约](/zh/project/surfaces-and-integrations)
 - [理解社群市场与分布式发现](/zh/project/community-commerce)
 - [理解 Agent、Skill、Tool 与批准边界](/zh/project/agent-commerce)
-- [查看英文 MCP 与 Agent 集成](/build/mcp)
+- [查看 MCP 与 Agent 集成](/zh/build/mcp)
 - [通过公开契约扩展 Mobazha](/zh/build/extensions)
 
 ## 分开阅读当前能力、Beta 和未来方向
@@ -102,8 +102,8 @@ Mobazha 围绕一条交易主线变得具体：
 | Draft RFC 或路线图 | 经过评审的方向，不是已交付能力 |
 | 内部设计或实施计划 | 维护者证据，不是公开产品承诺 |
 
-- [查看英文发布范围与成熟度](/project/release-scope)
+- [查看发布范围与成熟度](/zh/project/release-scope)
 - [运行时能力与产品组合](/zh/build/runtime-capabilities)
-- [查看英文公开决策与提案](/project/decisions)
+- [查看公开决策与提案](/zh/project/decisions)
 
 > **Important:** 图、路线图、RFC、已链接的软件包或文档页面都不能激活一项能力。涉及可用性时，应以连接后端和适用发布的证据为准。

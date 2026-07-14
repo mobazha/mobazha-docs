@@ -10,7 +10,7 @@ audiences:
   - Evaluators
 evidenceLabel: Mobazha 公开产品边界与受能力约束的 Marketplace 契约
 evidenceUrl: https://github.com/mobazha
-reviewed: 2026-07-06
+reviewed: 2026-07-14
 pageType: concept
 outcome: 在店铺、Storefront、社群市场和运营者市场之间做出选择，同时不把交易权威移入发现层。
 estimatedTime: 9 分钟
@@ -82,7 +82,7 @@ Mobazha 把“买家在哪里发现商品”与“哪个后端拥有最终交易
 
 多店发现页面不等于跨店购物车、合并结算、资金池托管、共享退款权限或统一运营者订单后台。任何一种能力都需要明确的产品与会计契约。
 
-- [查看英文结账责任指南](/buy/checkout)
+- [查看结账责任指南](/zh/buy/checkout)
 - [理解费用、归因与收款方](/zh/project/fees)
 
 ## 运营者价值来自受众和策展

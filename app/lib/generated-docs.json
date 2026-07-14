@@ -12188,7 +12188,7 @@
     "authorityUrl": "https://docs.mobazha.org/zh/build/runtime-capabilities",
     "evidenceLabel": "Unified 运行时配置实现",
     "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config",
-    "reviewed": "2026-07-04",
+    "reviewed": "2026-07-14",
     "pageType": "concept",
     "outcome": "判断功能是否实际可用，同时区分源码存在、产品组合、能力、权限和就绪状态。",
     "estimatedTime": "8 分钟",
@@ -12298,7 +12298,7 @@
             "items": [
               {
                 "label": "兼容性政策",
-                "href": "/project/compatibility"
+                "href": "/zh/project/compatibility"
               },
               {
                 "label": "Unified 运行时配置代码",
@@ -13702,14 +13702,14 @@
     "authorityUrl": "https://docs.mobazha.org/zh/project/agent-commerce",
     "evidenceLabel": "Mobazha 公开 Agent Kernel、MCP、Identity、Scope、Capability 与扩展契约",
     "evidenceUrl": "https://github.com/mobazha",
-    "reviewed": "2026-07-06",
+    "reviewed": "2026-07-14",
     "pageType": "concept",
     "outcome": "把 Agent、Skill、Tool、MCP 传输、批准与 Core 命令放在正确的权威边界。",
     "estimatedTime": "10 分钟",
     "journey": "understand",
     "primaryAction": {
       "label": "查看 MCP 指南",
-      "href": "/build/mcp"
+      "href": "/zh/build/mcp"
     },
     "featuredVisual": "agent-commerce-boundary",
     "language": "zh-CN",
@@ -13779,8 +13779,8 @@
                 "href": "/zh/agents"
               },
               {
-                "label": "查看英文认证与 Scope 指南",
-                "href": "/build/authentication"
+                "label": "查看认证与 Scope 指南",
+                "href": "/zh/build/authentication"
               },
               {
                 "label": "理解类型化扩展边界",
@@ -13897,12 +13897,12 @@
             "type": "links",
             "items": [
               {
-                "label": "查看英文 MCP 传输指南",
-                "href": "/build/mcp"
+                "label": "查看 MCP 传输指南",
+                "href": "/zh/build/mcp"
               },
               {
-                "label": "查看英文冲突与幂等指南",
-                "href": "/build/errors-and-idempotency"
+                "label": "查看冲突与幂等指南",
+                "href": "/zh/build/errors-and-idempotency"
               },
               {
                 "label": "沿着交易主线理解权威",
@@ -14284,7 +14284,7 @@
     "authorityUrl": "https://docs.mobazha.org/zh/project/community-commerce",
     "evidenceLabel": "Mobazha 公开产品边界与受能力约束的 Marketplace 契约",
     "evidenceUrl": "https://github.com/mobazha",
-    "reviewed": "2026-07-06",
+    "reviewed": "2026-07-14",
     "pageType": "concept",
     "outcome": "在店铺、Storefront、社群市场和运营者市场之间做出选择，同时不把交易权威移入发现层。",
     "estimatedTime": "9 分钟",
@@ -14457,8 +14457,8 @@
             "type": "links",
             "items": [
               {
-                "label": "查看英文结账责任指南",
-                "href": "/buy/checkout"
+                "label": "查看结账责任指南",
+                "href": "/zh/buy/checkout"
               },
               {
                 "label": "理解费用、归因与收款方",
@@ -15277,7 +15277,7 @@
     "authorityUrl": "https://docs.mobazha.org/zh/project/identity-and-stores",
     "evidenceLabel": "Mobazha 公开身份、Profile、能力与架构契约",
     "evidenceUrl": "https://github.com/mobazha",
-    "reviewed": "2026-07-06",
+    "reviewed": "2026-07-14",
     "pageType": "concept",
     "outcome": "当用户需要新的登录方式、店铺、店面或分发渠道时，判断真正应该改变哪一层边界。",
     "estimatedTime": "8 分钟",
@@ -15352,8 +15352,8 @@
                 "href": "/zh/project/product-map"
               },
               {
-                "label": "查看英文架构与信任边界",
-                "href": "/project/architecture"
+                "label": "查看架构与信任边界",
+                "href": "/zh/project/architecture"
               },
               {
                 "label": "选择托管服务或自行托管",
@@ -15424,8 +15424,8 @@
             "type": "links",
             "items": [
               {
-                "label": "查看英文身份认证与权限",
-                "href": "/build/authentication"
+                "label": "查看身份认证与权限",
+                "href": "/zh/build/authentication"
               },
               {
                 "label": "运行时能力与产品组合",
@@ -15642,7 +15642,7 @@
     "authorityUrl": "https://docs.mobazha.org/zh/project/offer-to-fulfillment",
     "evidenceLabel": "Mobazha 公开 Listing、Collection、Discount、Shipping、Supply、Fulfillment、Quote 与 Order 契约",
     "evidenceUrl": "https://github.com/mobazha",
-    "reviewed": "2026-07-06",
+    "reviewed": "2026-07-14",
     "pageType": "concept",
     "outcome": "为可销售 Offer 及其履约路径建立模型，同时保留现有订单已经接受的事实。",
     "estimatedTime": "10 分钟",
@@ -15790,12 +15790,12 @@
             "type": "links",
             "items": [
               {
-                "label": "查看英文 Listing 创建与验证指南",
-                "href": "/sell/listings"
+                "label": "查看 Listing 创建与验证指南",
+                "href": "/zh/sell/listings"
               },
               {
-                "label": "查看英文首单准备指南",
-                "href": "/sell/store-setup"
+                "label": "查看首单准备指南",
+                "href": "/zh/sell/store-setup"
               }
             ]
           }
@@ -15908,12 +15908,12 @@
             "type": "links",
             "items": [
               {
-                "label": "查看英文 Shipping 与 Delivery 指南",
-                "href": "/sell/shipping"
+                "label": "查看 Shipping 与 Delivery 指南",
+                "href": "/zh/sell/shipping"
               },
               {
-                "label": "查看英文卖家订单运营指南",
-                "href": "/sell/orders"
+                "label": "查看卖家订单运营指南",
+                "href": "/zh/sell/orders"
               },
               {
                 "label": "沿着订单与支付交易主线理解状态",
@@ -16043,7 +16043,7 @@
     "authorityUrl": "https://docs.mobazha.org/zh/project/product-map",
     "evidenceLabel": "Mobazha 公开架构、发布与政策文档",
     "evidenceUrl": "https://github.com/mobazha",
-    "reviewed": "2026-07-06",
+    "reviewed": "2026-07-14",
     "pageType": "concept",
     "outcome": "理解 Mobazha 的长期产品模型、权威边界，以及当前发布证据在哪里结束。",
     "estimatedTime": "8 分钟",
@@ -16149,8 +16149,8 @@
                 "href": "/zh/self-host"
               },
               {
-                "label": "查看英文架构与信任边界",
-                "href": "/project/architecture"
+                "label": "查看架构与信任边界",
+                "href": "/zh/project/architecture"
               }
             ]
           }
@@ -16181,12 +16181,12 @@
                 "href": "/zh/buy"
               },
               {
-                "label": "查看英文订单状态指南",
-                "href": "/buy/order-status"
+                "label": "查看订单状态指南",
+                "href": "/zh/buy/order-status"
               },
               {
-                "label": "查看英文退款与争议指南",
-                "href": "/buy/cancel-refund-dispute"
+                "label": "查看退款与争议指南",
+                "href": "/zh/buy/cancel-refund-dispute"
               },
               {
                 "label": "理解订单、支付与保护状态为何必须分离",
@@ -16239,8 +16239,8 @@
                 "href": "/zh/project/agent-commerce"
               },
               {
-                "label": "查看英文 MCP 与 Agent 集成",
-                "href": "/build/mcp"
+                "label": "查看 MCP 与 Agent 集成",
+                "href": "/zh/build/mcp"
               },
               {
                 "label": "通过公开契约扩展 Mobazha",
@@ -16299,16 +16299,16 @@
             "type": "links",
             "items": [
               {
-                "label": "查看英文发布范围与成熟度",
-                "href": "/project/release-scope"
+                "label": "查看发布范围与成熟度",
+                "href": "/zh/project/release-scope"
               },
               {
                 "label": "运行时能力与产品组合",
                 "href": "/zh/build/runtime-capabilities"
               },
               {
-                "label": "查看英文公开决策与提案",
-                "href": "/project/decisions"
+                "label": "查看公开决策与提案",
+                "href": "/zh/project/decisions"
               }
             ]
           },
@@ -16859,7 +16859,7 @@
     "authorityUrl": "https://docs.mobazha.org/zh/project/surfaces-and-integrations",
     "evidenceLabel": "Mobazha 公开前端组合、路由、HTTP、WebSocket、Webhook、MCP、Chat 与 Capability 契约",
     "evidenceUrl": "https://github.com/mobazha",
-    "reviewed": "2026-07-06",
+    "reviewed": "2026-07-14",
     "pageType": "concept",
     "outcome": "选择产品表面和集成契约，同时不把渠道、通知、域名或客户端 Shell 变成第二个状态权威。",
     "estimatedTime": "10 分钟",
@@ -17033,12 +17033,12 @@
             "type": "links",
             "items": [
               {
-                "label": "查看英文 HTTP API 与 OpenAPI 指南",
-                "href": "/build/api"
+                "label": "查看 HTTP API 与 OpenAPI 指南",
+                "href": "/zh/build/api"
               },
               {
-                "label": "查看英文错误、重试与幂等指南",
-                "href": "/build/errors-and-idempotency"
+                "label": "查看错误、重试与幂等指南",
+                "href": "/zh/build/errors-and-idempotency"
               }
             ]
           }
@@ -17063,12 +17063,12 @@
             "type": "links",
             "items": [
               {
-                "label": "查看英文 WebSocket 指南",
-                "href": "/build/websocket"
+                "label": "查看 WebSocket 指南",
+                "href": "/zh/build/websocket"
               },
               {
-                "label": "查看英文 Webhook Consumer 指南",
-                "href": "/build/webhooks"
+                "label": "查看 Webhook Consumer 指南",
+                "href": "/zh/build/webhooks"
               }
             ]
           }
@@ -17110,8 +17110,8 @@
                 "href": "/zh/project/agent-commerce"
               },
               {
-                "label": "查看英文 MCP 传输指南",
-                "href": "/build/mcp"
+                "label": "查看 MCP 传输指南",
+                "href": "/zh/build/mcp"
               }
             ]
           }
@@ -17217,14 +17217,14 @@
     "authorityUrl": "https://docs.mobazha.org/zh/project/transaction-spine",
     "evidenceLabel": "Mobazha 公开订单、支付会话、能力与恢复契约",
     "evidenceUrl": "https://github.com/mobazha",
-    "reviewed": "2026-07-06",
+    "reviewed": "2026-07-14",
     "pageType": "concept",
     "outcome": "正确读取一笔交易，并判断哪种状态、证据、策略与角色允许执行下一步。",
     "estimatedTime": "9 分钟",
     "journey": "start",
     "primaryAction": {
       "label": "跟踪订单",
-      "href": "/buy/order-status"
+      "href": "/zh/buy/order-status"
     },
     "featuredVisual": "transaction-spine",
     "language": "zh-CN",
@@ -17290,20 +17290,20 @@
             "type": "links",
             "items": [
               {
-                "label": "查看英文结账责任指南",
-                "href": "/buy/checkout"
+                "label": "查看结账责任指南",
+                "href": "/zh/buy/checkout"
               },
               {
-                "label": "查看英文支付与订单状态指南",
-                "href": "/buy/order-status"
+                "label": "查看支付与订单状态指南",
+                "href": "/zh/buy/order-status"
               },
               {
-                "label": "查看英文卖家订单指南",
-                "href": "/sell/orders"
+                "label": "查看卖家订单指南",
+                "href": "/zh/sell/orders"
               },
               {
-                "label": "查看英文卖家支付指南",
-                "href": "/sell/payments"
+                "label": "查看卖家支付指南",
+                "href": "/zh/sell/payments"
               }
             ]
           }
@@ -17404,12 +17404,12 @@
             "type": "links",
             "items": [
               {
-                "label": "查看英文取消、退款与争议指南",
-                "href": "/buy/cancel-refund-dispute"
+                "label": "查看取消、退款与争议指南",
+                "href": "/zh/buy/cancel-refund-dispute"
               },
               {
-                "label": "查看英文安全与恢复指南",
-                "href": "/project/security"
+                "label": "查看安全与恢复指南",
+                "href": "/zh/project/security"
               }
             ]
           }
@@ -18625,8 +18625,8 @@
                 "href": "/zh/build/runtime-capabilities"
               },
               {
-                "label": "英文兼容性政策",
-                "href": "/project/compatibility"
+                "label": "兼容性政策",
+                "href": "/zh/project/compatibility"
               }
             ]
           }
@@ -18672,7 +18672,7 @@
     "authorityUrl": "https://docs.mobazha.org/zh/self-host/install",
     "evidenceLabel": "Mobazha Node 快速开始",
     "evidenceUrl": "https://github.com/mobazha/mobazha#quick-start",
-    "reviewed": "2026-07-04",
+    "reviewed": "2026-07-14",
     "pageType": "task",
     "lastTested": "2026-07-04",
     "outcome": "从记录过版本的公开源码启动本地测试网 Node，并验证健康边界。",
@@ -18696,12 +18696,12 @@
             "type": "links",
             "items": [
               {
-                "label": "查看英文详细要求",
-                "href": "/self-host/requirements"
+                "label": "查看详细要求",
+                "href": "/zh/self-host/requirements"
               },
               {
-                "label": "查看英文发布边界",
-                "href": "/project/release-scope"
+                "label": "查看发布边界",
+                "href": "/zh/project/release-scope"
               }
             ]
           }
@@ -20039,7 +20039,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "公开客户端与后端包含多种付款 adapter 和兼容路径，但实际可用性由 distribution 政策、后端实现、店铺配置、健康状态、订单模式和 Payment Session capabilities 在运行时共同决定。Token 标识符或源码模块不会创造发布承诺。参见[英文发布范围](/project/release-scope)与[收费与经济模式](/zh/project/fees)。"
+            "text": "公开客户端与后端包含多种付款 adapter 和兼容路径，但实际可用性由 distribution 政策、后端实现、店铺配置、健康状态、订单模式和 Payment Session capabilities 在运行时共同决定。Token 标识符或源码模块不会创造发布承诺。参见[发布范围](/zh/project/release-scope)与[收费与经济模式](/zh/project/fees)。"
           },
           {
             "type": "paragraph",

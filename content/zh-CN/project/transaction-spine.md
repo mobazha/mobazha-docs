@@ -10,14 +10,14 @@ audiences:
   - Evaluators
 evidenceLabel: Mobazha 公开订单、支付会话、能力与恢复契约
 evidenceUrl: https://github.com/mobazha
-reviewed: 2026-07-06
+reviewed: 2026-07-14
 pageType: concept
 outcome: 正确读取一笔交易，并判断哪种状态、证据、策略与角色允许执行下一步。
 estimatedTime: 9 分钟
 journey: start
 primaryAction:
   label: 跟踪订单
-  href: /buy/order-status
+  href: /zh/buy/order-status
 featuredVisual: transaction-spine
 translationOf: project/transaction-spine
 ---
@@ -45,10 +45,10 @@ translationOf: project/transaction-spine
 5. **接受并履约。** 卖家只执行当前订单状态和能力所暴露的动作，然后记录发货、交付或自提证据。
 6. **完成。** 后端记录终态业务结果，同时保留对账和恢复所需的绑定关系。
 
-- [查看英文结账责任指南](/buy/checkout)
-- [查看英文支付与订单状态指南](/buy/order-status)
-- [查看英文卖家订单指南](/sell/orders)
-- [查看英文卖家支付指南](/sell/payments)
+- [查看结账责任指南](/zh/buy/checkout)
+- [查看支付与订单状态指南](/zh/buy/order-status)
+- [查看卖家订单指南](/zh/sell/orders)
+- [查看卖家支付指南](/zh/sell/payments)
 
 ## 事件用于提示刷新，后端状态才是权威
 
@@ -89,8 +89,8 @@ Mobazha 应说明这些具体属性，而不是暗示一个笼统的“买家保
 
 原始订单、支付绑定和证据仍属于审计轨迹。恢复动作不应制造一段与原交易脱节的新历史。
 
-- [查看英文取消、退款与争议指南](/buy/cancel-refund-dispute)
-- [查看英文安全与恢复指南](/project/security)
+- [查看取消、退款与争议指南](/zh/buy/cancel-refund-dispute)
+- [查看安全与恢复指南](/zh/project/security)
 
 ## 当前契约与演进方向
 

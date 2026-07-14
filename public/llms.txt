@@ -141,6 +141,7 @@ Implementation evidence: the versioned sources linked from each page.
 - [参考与来源](/zh/reference)
 
 ## 产品基础
+- [项目概览](/zh/project)
 - [系统架构](/zh/project/architecture)
 - [收费与经济模式](/zh/project/fees)
 - [兼容性](/zh/project/compatibility)
@@ -151,7 +152,6 @@ Implementation evidence: the versioned sources linked from each page.
 - [产品路线图](/zh/project/roadmap)
 
 ## 信任与治理
-- [项目概览](/zh/project)
 - [安全模型](/zh/project/security)
 - [法律与隐私](/zh/project/legal-and-privacy)
 - [发布范围](/zh/project/release-scope)

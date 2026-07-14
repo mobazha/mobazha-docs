@@ -7,7 +7,7 @@ audiences:
   - 开发者
 evidenceLabel: Mobazha Node 快速开始
 evidenceUrl: https://github.com/mobazha/mobazha#quick-start
-reviewed: 2026-07-04
+reviewed: 2026-07-14
 translationOf: self-host/install
 pageType: task
 lastTested: 2026-07-04
@@ -23,8 +23,8 @@ primaryAction:
 
 当前候选版本需要 Go 1.26.4、Git，以及受支持的 macOS 或 Linux 环境。先准备专用数据目录，确认磁盘空间、本地防火墙策略、备份位置以及管理员会话由谁控制。付款流程只能先在测试网评估。
 
-- [查看英文详细要求](/self-host/requirements)
-- [查看英文发布边界](/project/release-scope)
+- [查看详细要求](/zh/self-host/requirements)
+- [查看发布边界](/zh/project/release-scope)
 
 ## 安装步骤
 

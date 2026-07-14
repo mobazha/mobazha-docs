@@ -59,7 +59,7 @@ curl -fsS http://127.0.0.1:5102/v1/runtime-config | jq
 确认进程使用预定数据目录与网络、本地 UI 可访问、effective capabilities 与已配置依赖一致，并且没有管理接口意外公开。
 
 - [运行时能力](/zh/build/runtime-capabilities)
-- [英文兼容性政策](/project/compatibility)
+- [兼容性政策](/zh/project/compatibility)
 
 ## 失败时
 

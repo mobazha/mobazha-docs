@@ -4,6 +4,7 @@ import { renderPublication } from "./publication.mjs";
 import { documentLinks, documentText, loadContentDocuments, renderDocumentRegistry } from "./content-files.mjs";
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
+const navigation = JSON.parse(read("content/navigation.json"));
 const failures = [];
 const fail = (message) => failures.push(message);
 const canonicalBaseUrl = "https://docs.mobazha.org";
@@ -39,6 +40,12 @@ const visualEvidence = JSON.parse(read("visual-evidence.json"));
 const visualEvidenceSchema = read("visual-evidence.schema.json");
 const expectedFiles = renderPublication({ docs, navGroups, docApplicability, sources, sourceSchema, agentEvals, agentEvalSchema, visualEvidence, visualEvidenceSchema });
 const paths = new Set(docs.map((doc) => `/${doc.slug}`));
+const localizedRouteByEnglishPath = new Map(
+  docs
+    .filter((doc) => doc.language === "zh-CN" && doc.translationOf)
+    .map((doc) => [`/${doc.translationOf}`, doc.translationOf === "start" ? "/zh" : `/${doc.slug}`]),
+);
+localizedRouteByEnglishPath.set("/", "/zh");
 const allowedInternal = new Set([
   "/",
   "/zh",
@@ -73,6 +80,24 @@ if (new Set(docs.map((doc) => doc.slug)).size !== docs.length) fail("duplicate d
 
 const portalNavRoutes = new Set(["/", "/zh"]);
 const redirectedHubSlugs = new Set(["start", "zh/start"]);
+
+const englishNavGroups = navigation.en;
+const chineseNavGroups = navigation["zh-CN"];
+if (englishNavGroups.length !== chineseNavGroups.length) {
+  fail("English and Chinese navigation group counts do not match");
+}
+for (let index = 0; index < englishNavGroups.length; index += 1) {
+  const expectedChineseRoutes = englishNavGroups[index].links
+    .map(([, path]) => localizedRouteByEnglishPath.get(path))
+    .filter(Boolean);
+  const actualChineseRoutes = (chineseNavGroups[index]?.links ?? []).map(([, path]) => path);
+  if (JSON.stringify(actualChineseRoutes) !== JSON.stringify(expectedChineseRoutes)) {
+    fail(
+      `Chinese navigation group ${chineseNavGroups[index]?.label ?? index} does not match ` +
+      `the translated routes and order of ${englishNavGroups[index].label}`,
+    );
+  }
+}
 
 const navPaths = navGroups.flatMap((group) => group.links.map(([, path]) => path));
 if (new Set(navPaths).size !== navPaths.length) fail("duplicate navigation path");
@@ -155,6 +180,21 @@ for (const doc of docs) {
     if (canonicalPath === "/zh/start") canonicalLinkPaths.add("/zh");
     const linksCanonical = documentLinks(doc).some((link) => canonicalLinkPaths.has(link));
     if (!linksCanonical) fail(`Chinese document /${doc.slug} does not link to ${canonicalPath}`);
+    for (const link of documentLinks(doc)) {
+      const linkPath = link.split("#", 1)[0];
+      const localizedRoute = localizedRouteByEnglishPath.get(linkPath);
+      if (localizedRoute && !canonicalLinkPaths.has(linkPath)) {
+        fail(`Chinese document /${doc.slug} should link to ${localizedRoute} instead of ${linkPath}`);
+      }
+    }
+    const primaryActionPath = doc.primaryAction?.href.split("#", 1)[0];
+    const localizedPrimaryAction = localizedRouteByEnglishPath.get(primaryActionPath);
+    if (localizedPrimaryAction) {
+      fail(
+        `Chinese document /${doc.slug} primary action should link to ` +
+        `${localizedPrimaryAction} instead of ${primaryActionPath}`,
+      );
+    }
   }
 
   const headings = doc.sections.map((section) => section.heading).join("\n");

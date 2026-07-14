@@ -8,7 +8,7 @@ audiences:
   - 运营者
 evidenceLabel: Unified 运行时配置实现
 evidenceUrl: https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config
-reviewed: 2026-07-04
+reviewed: 2026-07-14
 translationOf: build/runtime-capabilities
 pageType: concept
 outcome: 判断功能是否实际可用，同时区分源码存在、产品组合、能力、权限和就绪状态。
@@ -73,7 +73,7 @@ primaryAction:
 
 ## 实现证据
 
-- [兼容性政策](/project/compatibility)
+- [兼容性政策](/zh/project/compatibility)
 - [Unified 运行时配置代码](https://github.com/mobazha/mobazha-unified/tree/main/packages/core/config)
 - [Commerce Kit 组合解析内核](https://github.com/mobazha/mobazha-unified/blob/main/packages/commerce-kit/src/composition.ts)
 - [前端产品组合实现说明](https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/FRONTEND_PRODUCT_COMPOSITION.md)

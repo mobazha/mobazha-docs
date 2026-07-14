@@ -492,6 +492,10 @@
       "label": "产品基础",
       "links": [
         [
+          "项目概览",
+          "/zh/project"
+        ],
+        [
           "系统架构",
           "/zh/project/architecture"
         ],
@@ -525,10 +529,6 @@
     {
       "label": "信任与治理",
       "links": [
-        [
-          "项目概览",
-          "/zh/project"
-        ],
         [
           "安全模型",
           "/zh/project/security"

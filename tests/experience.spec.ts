@@ -266,8 +266,10 @@ test("primary tabs and project knowledge groups use one taxonomy", async ({ page
   await expect(page.locator('.nav-group a[href="/zh/project/whitepaper"]')).toHaveText("白皮书 v0.2");
 
   await page.goto("/zh/project");
-  await expect(page.locator('.site-header nav a[href="/zh/project"]')).toHaveAttribute("aria-current", "page");
-  await expect(page.locator(".nav-group.active-group > p")).toHaveText("信任与治理");
+  await expect(page.locator('.site-header nav a[href="/zh/project/product-map"]')).toHaveAttribute("aria-current", "page");
+  await expect(page.locator(".product-nav-group.active-group > summary span")).toHaveText("产品基础");
+  await expect(page.locator(".nav-group a.active")).toHaveCount(1);
+  await expect(page.locator(".nav-group a.active")).toHaveAttribute("href", "/zh/project");
 });
 
 test("article lists keep their markers without changing task step counters", async ({ page }) => {

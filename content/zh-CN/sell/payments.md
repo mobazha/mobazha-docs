@@ -72,7 +72,7 @@ primaryAction:
 
 ## 当前发布边界
 
-公开客户端与后端包含多种付款 adapter 和兼容路径，但实际可用性由 distribution 政策、后端实现、店铺配置、健康状态、订单模式和 Payment Session capabilities 在运行时共同决定。Token 标识符或源码模块不会创造发布承诺。参见[英文发布范围](/project/release-scope)与[收费与经济模式](/zh/project/fees)。
+公开客户端与后端包含多种付款 adapter 和兼容路径，但实际可用性由 distribution 政策、后端实现、店铺配置、健康状态、订单模式和 Payment Session capabilities 在运行时共同决定。Token 标识符或源码模块不会创造发布承诺。参见[发布范围](/zh/project/release-scope)与[收费与经济模式](/zh/project/fees)。
 
 只有当服务商路径能让卖家出款保持 pending（或保留等价的可逆资金状态），并支持所需恢复操作时，provider-session payment 才能提供 moderated product mode。服务商自己的付款争议或 chargeback 流程，与 Mobazha moderator 的订单决定仍是两件事。
 
