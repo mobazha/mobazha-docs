@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha payment, order, security, and documentation maintainers
 - Created: 2026-07-14
-- Updated: 2026-07-14
+- Updated: 2026-07-15
 - Decision owners: Mobazha Open Core payment and order maintainers, Unified maintainers, and documentation maintainers
 - Affected surfaces: payment selection quote, payment attempt, settlement authorization wire protocol, payment rails, Unified, hosted Deal acceptance, persistence, recovery, docs
 - Supersedes: None
@@ -13,7 +13,7 @@
 
 Extend the frozen payment-attempt and settlement-authorization model from
 same-currency orders to orders whose signed pricing currency differs from the
-selected payment asset. A seller-authorized, immutable funding basis binds the
+selected payment asset. A buyer-proposed and seller-authorized immutable funding basis binds the
 signed order price, exact payment amount, conversion rate and orientation,
 rounding policy, quote identity, policy version, and validity window into the
 same attempt that owns settlement terms, participant authorization, and the
@@ -26,8 +26,10 @@ enter the authorization ceremony and fail later merely because pricing and
 payment currency differ.
 
 This RFC extends RFC-0009 and RFC-0011. It does not make `SettlementKeyOffer`
-an economic quote, does not authorize buyer-computed amounts, and does not mark
-cross-currency authorization as released while this RFC remains Draft.
+an economic quote. A buyer proposal is non-actionable: only seller validation
+and a seller signature over its funding-basis hash authorize the amount. This
+RFC does not mark cross-currency authorization as released while it remains
+Draft.
 
 ## Problem and evidence
 
@@ -78,14 +80,15 @@ conformance, recovery, and migration gates pass.
 Every cross-currency v2 attempt owns one immutable
 `PaymentAttemptFundingBasis`. Its canonical representation contains at least:
 
-- schema version, order ID, attempt ID, and hash of the signed `OrderOpen`;
+- schema version, order ID, attempt ID, authorization context ID, and hash of
+  the signed `OrderOpen`;
 - signed pricing currency, amount, and divisibility;
 - canonical payment rail/asset ID, payment currency, exact atomic subtotal,
   explicit provider/network cost, explicit platform payment cost, and exact
   buyer payment total;
 - `conversionRequired`, exchange-rate value, base currency, quote currency,
   quote divisibility, rate-source update time, and the normative rounding rule;
-- quote ID, quote policy version, issuer identity or delegated issuer identity,
+- quote ID, quote policy version, buyer issuer identity,
   issue time, and expiry time.
 
 Amounts are unsigned canonical base-10 integers without signs, whitespace, or
@@ -101,19 +104,27 @@ the seller's settlement-terms authorization. A retry may reuse byte-identical
 facts; any change requires a new attempt and, when conversion is required, a
 new quote.
 
-### Quote authority
+### Quote proposal and seller authority
 
-The seller is the authority that accepts the payment amount for an order. The
-funding basis must therefore be seller-authored or issued by a quote service
-whose exact authority the seller explicitly delegates under a versioned
-policy. Hosting may produce a Deal payment-selection quote, but Core must load
-and verify that immutable quote from its trusted boundary; API callers and
-buyers may submit only its opaque ID, never an authoritative amount or rate.
+The buyer Core that creates the payment session loads its immutable
+`PaymentSelectionQuote` and publishes the resulting canonical funding basis as
+a non-actionable proposal. `QuoteIssuer` is the signed `OrderOpen` buyer PeerID
+and must equal the outer signed-message sender. v2 does not accept a delegated
+quote issuer; delegation requires a later protocol and quote-policy version.
 
-The seller signs settlement terms that bind the funding-basis hash. This
-signature means the seller accepts the exact conversion facts and allocation
-for the attempt. A buyer-computed quote, unsigned API amount, exchange ticker,
-or locally refreshed rate is insufficient authority.
+The seller remains the authority that accepts the payment amount. Before it
+creates its local attempt or signs terms, seller Core verifies the complete
+order, attempt, rail, quote, lifetime, orientation, rounding, and zero-fee
+policy bindings. It then refreshes its own exchange-rate snapshot for the same
+payment-base/pricing-quote pair and computes the seller-local minimum atomic
+payment with the normative round-up rule. The proposal is rejected if it is
+below that minimum or the seller snapshot is stale. A proposal above the
+minimum may be accepted; this preserves the buyer's selected amount without
+allowing underpayment.
+
+The seller signs settlement terms that bind the exact funding-basis hash. That
+signature, rather than the buyer's local rate or the proposal message alone,
+makes the amount authoritative for the attempt.
 
 ### Protocol separation and sequence
 
@@ -126,12 +137,14 @@ The normative sequence is:
 
 1. Buyer selects a canonical payment asset and, when required, supplies an
    opaque quote ID.
-2. Core loads the signed order and authoritative immutable quote, validates
-   issuer policy, order and revision binding, rail, amount derivation, and
-   freshness, then creates the non-actionable attempt and canonical funding
-   basis.
-3. Required participants exchange and durably retain valid key offers for the
-   same authorization context.
+2. Buyer Core loads its signed order and immutable local quote, validates its
+   order, rail, amount derivation, and freshness, creates the non-actionable
+   attempt, and sends the complete canonical funding-basis proposal to the
+   seller in a signed order message.
+3. Seller durably retains the proposal, verifies that the issuer is the signed
+   buyer, refreshes its own rate, and admits only a proposal at or above its
+   local atomic minimum. Required participants then exchange and durably retain
+   valid key offers for the same authorization context.
 4. Seller resolves payout, fee, Affiliate, moderator, dispute, and timeout
    facts, constructs settlement terms binding the funding-basis hash, and signs
    the terms.
@@ -180,8 +193,8 @@ load the quote by tenant/order scope and use constant semantic checks before
 accepting caller-controlled identifiers.
 
 Replay is rejected across order ID, attempt ID, authorization context, rail,
-signed-order hash, quote ID, and policy version. A quote for one Deal revision,
-asset, tenant, or seller delegation cannot authorize another. Implementations
+signed-order hash, quote ID, buyer issuer, and policy version. A quote for one
+Deal revision, asset, tenant, or buyer cannot authorize another. Implementations
 fail closed on unknown versions, issuer policies, currencies, divisibility,
 rounding rules, malformed atomic values, expired pre-authorization quotes, or
 hash disagreement.
@@ -222,10 +235,12 @@ seller freezes economics. Combining them would create multiple economic
 proposals, couple key reuse safety to quote refresh, and violate RFC-0011's
 separation.
 
-### Trust the buyer or API caller's authorized amount
+### Trust the buyer or API caller's proposed amount without seller validation
 
-Rejected. The seller cannot verify the signed price conversion and an attacker
-could substitute a lower amount, stale rate, or different asset.
+Rejected. The buyer may propose a canonical amount derived from its local
+quote, but an unsigned API amount or proposal below the seller-local fresh-rate
+minimum cannot become actionable. Seller validation and signature are
+mandatory.
 
 ### Keep the conversion route permanently outside payment attempts
 
@@ -239,11 +254,16 @@ participant binding, and recovery guarantees of RFC-0009 and RFC-0011.
    the already admitted conversion path; add regression coverage proving an
    eligible rail does not enter v1 and still derives the correct atomic amount.
 2. Add canonical funding-basis validation, hashing, persistence, quote loading,
-   and order/rail/amount/expiry checks without exposing a target.
-3. Add authorization v2 wire messages and signatures while retaining v1
-   readers. Persist inbound funding basis and offers before seller finalization.
-4. Implement seller construction and buyer validation for UTXO, EVM, Solana,
-   tokens, moderated orders, Affiliate allocation, and platform terms.
+   and order/rail/amount/expiry checks without exposing a target. Implemented
+   in Open Core on 2026-07-15; release evidence remains pending.
+3. Add a signed funding-basis proposal wire message and authorization v2 final
+   snapshot while retaining v1 readers. Persist inbound funding basis and
+   offers before seller finalization. Implemented in Open Core on 2026-07-15;
+   release evidence remains pending.
+4. Implement seller-local fresh-rate floor validation, seller construction,
+   and byte-identical buyer validation for the exact rail. Base EVM/token and
+   finalization/adoption coverage is implemented; UTXO, Solana, moderated,
+   Affiliate, and platform-term release conformance remains required.
 5. Run conformance tests for USD-to-BTC/ETH/token, crypto-to-crypto,
    divisibility and round-up edges, stale quote, tamper, replay, wrong order,
    wrong revision, wrong rail, wrong amount, and valid-then-expired recovery.
@@ -274,21 +294,24 @@ same-currency hard-stop.
 
 ## Open questions
 
-1. What public key or policy document expresses seller delegation to each
-   hosted or local quote issuer?
-2. Is the full canonical funding basis transported in every final
-   authorization, or may peers resolve a content-addressed value with an
-   offline-complete retention requirement?
-3. What bounded clock-skew value and trusted-time evidence apply at admission
+Resolved for v2: delegated quote issuers are not accepted, and both the
+proposal message and final authorization transport the complete canonical
+funding basis.
+
+1. What bounded clock-skew value and trusted-time evidence apply at admission
    and seller authorization?
-4. Which provider/network costs are estimable before target creation, and what
+2. Which provider/network costs are estimable before target creation, and what
    policy handles a later chain fee without mutating buyer payment total?
-5. Which stable capability and denial codes are exposed to Unified and other
+3. Which stable capability and denial codes are exposed to Unified and other
    clients during mixed-version rollout?
+4. What peer-advertised protocol capability should suppress a v2 proposal to
+   an older seller before a draft is created?
 
 ## Decision
 
-Pending maintainer review. Until Accepted and implemented with release
-evidence, same-currency authorization v1 and any explicitly admitted
-cross-currency conversion route remain the effective behavior. Pricing and
-payment currency equality is not a protocol invariant.
+Pending maintainer review. The Open Core v2 writer, signed proposal transport,
+seller-local rate-floor validation, and final authorization reader are
+implemented but not yet release evidence. Until Accepted and released,
+same-currency authorization v1 and any explicitly admitted cross-currency
+conversion route remain compatibility behavior. Pricing and payment currency
+equality is not a protocol invariant.

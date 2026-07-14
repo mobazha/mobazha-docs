@@ -6664,7 +6664,7 @@
               {
                 "label": "RFC-0014: Quote-bound Cross-currency Payment Attempt Authorization",
                 "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0014-quote-bound-cross-currency-payment-attempt-authorization.md",
-                "description": "Draft; proposes binding an authoritative conversion quote, exact payment amount, rounding, and validity window into the same seller-authorized attempt that owns settlement terms and the funding target."
+                "description": "Draft; specifies a buyer-proposed funding basis that the seller checks against a fresh local rate floor and authorizes by signing the exact basis hash with the attempt terms."
               },
               {
                 "label": "RFC template",
@@ -18252,7 +18252,7 @@
               {
                 "label": "RFC-0014：报价绑定的跨币种 Payment Attempt 授权",
                 "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0014-quote-bound-cross-currency-payment-attempt-authorization.md",
-                "description": "Draft；提出把权威换汇报价、精确支付金额、舍入规则和有效期绑定到同一个由卖家授权、并拥有结算条款与付款目标的 attempt。"
+                "description": "Draft；规定买家提出不可执行的资金依据，卖家用本地新鲜汇率下限校验，并在 attempt 结算条款中签署其精确哈希后才完成授权。"
               },
               {
                 "label": "RFC 模板",

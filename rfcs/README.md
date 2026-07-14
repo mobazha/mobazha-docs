@@ -18,10 +18,10 @@ record; it does not activate behavior.
 | [0008](./0008-node-key-domains-and-receiving-architecture.md) | Node Key Domains and Receiving Architecture | Draft | 2026-07-12 |
 | [0009](./0009-frozen-payment-attempt-settlement-terms.md) | Frozen Payment Attempt Settlement Terms | Draft | 2026-07-13 |
 | [0010](./0010-guest-checkout-trust-and-custody.md) | Guest Checkout Trust and Custody Model | Draft | 2026-07-13 |
-| [0011](./0011-order-settlement-authorization-keys.md) | Order Settlement Authorization Keys | Draft | 2026-07-13 |
+| [0011](./0011-order-settlement-authorization-keys.md) | Order Settlement Authorization Keys | Draft | 2026-07-15 |
 | [0012](./0012-embedded-wallet-buyer-settlement-keys.md) | Embedded Wallet Buyer Settlement Keys and Onramp-Funded Attempts | Draft | 2026-07-13 |
 | [0013](./0013-peer-scoped-deal-link-hosting.md) | Peer-scoped Deal Link Hosting and Store Authority | Draft | 2026-07-14 |
-| [0014](./0014-quote-bound-cross-currency-payment-attempt-authorization.md) | Quote-bound Cross-currency Payment Attempt Authorization | Draft | 2026-07-14 |
+| [0014](./0014-quote-bound-cross-currency-payment-attempt-authorization.md) | Quote-bound Cross-currency Payment Attempt Authorization | Draft | 2026-07-15 |
 
 Start from [`0000-template.md`](./0000-template.md). Allocate the next number,
 keep the filename stable, and update this table in the same change.
