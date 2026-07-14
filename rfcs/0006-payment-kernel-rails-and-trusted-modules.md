@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha architecture and payment maintainers
 - Created: 2026-07-05
-- Updated: 2026-07-13
+- Updated: 2026-07-14
 - Decision owners: Mobazha Open Core, distribution, and payment maintainers
 - Affected surfaces: Node, distributions, payment rails, hosted service, clients, docs
 - Supersedes: None
@@ -48,6 +48,12 @@ participant-key certification, attempt binding, and signing-domain contract.
 The payment kernel validates and freezes that authorization before admitting a
 funding target; rail contributions and modules never choose participant keys
 or weaken the required protocol version.
+
+[RFC-0014](./0014-quote-bound-cross-currency-payment-attempt-authorization.md)
+extends that route-admission and attempt contract for pricing and payment
+currencies that differ. Rail capability must select v2 or an explicitly
+admitted conversion route before authorization begins; currency equality is
+not a rail invariant.
 
 ## Problem and evidence
 

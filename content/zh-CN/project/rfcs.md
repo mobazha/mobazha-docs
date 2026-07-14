@@ -52,6 +52,7 @@ primaryAction:
 - [RFC-0011：订单结算授权密钥](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0011-order-settlement-authorization-keys.md) — Draft；提出针对每个 attempt 的确定性硬化结算密钥，以及付款前 Moderator 可选性的密钥条件。
 - [RFC-0012：内嵌钱包买家结算密钥与 Onramp 注资](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0012-embedded-wallet-buyer-settlement-keys.md) — Draft；提出由买家和卖家共同保管的参与者密钥类别，并允许经过审阅的内嵌钱包可信模块。
 - [RFC-0013：按 Peer 隔离的 Deal Link 托管与店铺权威](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0013-peer-scoped-deal-link-hosting.md) — Draft；提出按 Peer 隔离卖家管理、可选托管账户关联，以及 Deal Link 在 Hosting 与 Node 之间的明确权威边界。
+- [RFC-0014：报价绑定的跨币种 Payment Attempt 授权](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0014-quote-bound-cross-currency-payment-attempt-authorization.md) — Draft；提出把权威换汇报价、精确支付金额、舍入规则和有效期绑定到同一个由卖家授权、并拥有结算条款与付款目标的 attempt。
 - [RFC 模板](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0000-template.md) — 必需 metadata 和审阅问题。
 - [仓库 RFC 指南](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/README.md)
 

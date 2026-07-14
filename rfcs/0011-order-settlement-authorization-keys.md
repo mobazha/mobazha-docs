@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha settlement, order-protocol, and documentation maintainers
 - Created: 2026-07-12
-- Updated: 2026-07-13
+- Updated: 2026-07-14
 - Decision owners: Mobazha Open Core, distributions, hosted service, clients, and documentation maintainers
 - Affected surfaces: Order protocol (Profile, Listing, OrderOpen, Payment Attempt), settlement signers, moderation, hosted service, clients, recovery, docs
 - Supersedes: None
@@ -26,6 +26,11 @@ which key-reference semantics Profile, Listing, Order, and Payment Attempt
 messages carry.
 It defines the public protocol contract; exact field encodings and
 conformance vectors belong to a separate specification.
+
+[RFC-0014](./0014-quote-bound-cross-currency-payment-attempt-authorization.md)
+extends this authorization ceremony for cross-currency attempts by binding a
+seller-authorized funding basis. Participant key offers remain free of price,
+rate, fee, and payment-amount data.
 
 ## Problem and evidence
 

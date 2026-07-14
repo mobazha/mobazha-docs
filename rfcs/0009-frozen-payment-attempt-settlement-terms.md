@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha payment, settlement, and documentation maintainers
 - Created: 2026-07-11
-- Updated: 2026-07-13
+- Updated: 2026-07-14
 - Decision owners: Mobazha Open Core settlement, hosted commerce, Unified, and documentation maintainers
 - Affected surfaces: Node order settlement, payment session API, hosted service, Unified, clients, economics, docs
 - Supersedes: None
@@ -35,6 +35,9 @@ Guest Checkout trust and custody contract that consumes these frozen terms.
 [RFC-0011](./0011-order-settlement-authorization-keys.md) proposes how standard
 order participant keys and their attempt authorization bundle are certified,
 validated, and frozen; this RFC remains authoritative for economic content.
+[RFC-0014](./0014-quote-bound-cross-currency-payment-attempt-authorization.md)
+extends that economic content with a canonical funding-basis hash when signed
+pricing currency and selected payment currency differ.
 
 ## Problem and evidence
 
