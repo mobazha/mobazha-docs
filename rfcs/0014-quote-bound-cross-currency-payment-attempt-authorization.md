@@ -254,12 +254,16 @@ participant binding, and recovery guarantees of RFC-0009 and RFC-0011.
    offers before seller finalization. Implemented in Open Core on 2026-07-15;
    release evidence remains pending.
 4. Implement seller-local fresh-rate floor validation, seller construction,
-   and byte-identical buyer validation for the exact rail. Base EVM/token and
-   finalization/adoption coverage is implemented; UTXO, Solana, moderated,
-   Affiliate, and platform-term release conformance remains required.
-5. Run conformance tests for USD-to-BTC/ETH/token, crypto-to-crypto,
-   divisibility and round-up edges, stale quote, tamper, replay, wrong order,
-   wrong revision, wrong rail, wrong amount, and valid-then-expired recovery.
+   and byte-identical buyer validation for the exact rail. Core unit coverage
+   includes base EVM/token finalization/adoption, canonical wire tamper and
+   replay rejection, issuer/order/expiry binding, round-up rejection,
+   pre-authorization expiry terminalization, and moderator snapshot binding.
+   UTXO, Solana, fully moderated, Affiliate, and platform-term release
+   conformance remains required.
+5. Run rail integration conformance for USD-to-BTC/ETH/token,
+   crypto-to-crypto, real-writer divisibility and round-up edges, wrong rail
+   and amount, restart before and after quote expiry, and end-to-end funding
+   observation, refund, and dispute behavior.
 6. Enable `quote_bound_authorization_v2` per rail only after restart,
    idempotency, funding observation, refund, and dispute tests pass.
 7. Advance the RFC status only with review, tagged release evidence, effective
