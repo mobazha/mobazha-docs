@@ -19,11 +19,10 @@ rounding policy, quote identity, policy version, and validity window into the
 same attempt that owns settlement terms, participant authorization, and the
 funding target.
 
-Cross-currency is a product capability, not an invalid order shape. Until the
-new protocol is implemented for a rail, route admission must select an already
-supported conversion path before starting settlement authorization. It must not
-enter the authorization ceremony and fail later merely because pricing and
-payment currency differ.
+Cross-currency is a product capability, not an invalid order shape. During
+development it has one settlement path: quote-bound authorization v2. Missing
+quote state or exact-rail v2 capability fails before starting settlement
+authorization; it does not fall through to the legacy conversion setup path.
 
 This RFC extends RFC-0009 and RFC-0011. It does not make `SettlementKeyOffer`
 an economic quote. A buyer proposal is non-actionable: only seller validation
@@ -64,16 +63,11 @@ capability before creating an authorization draft:
 - same-currency orders may enter settlement authorization v1 where the rail's
   attempt owner and funding-target projector are effective;
 - cross-currency orders may enter settlement authorization only where the rail
-  advertises quote-bound authorization v2;
-- until v2 is effective for that rail, an existing supported conversion route
-  remains admissible and must be selected before the ceremony starts;
-- if neither route exists, session creation fails with a stable unsupported
+  has an exact funding-target projector and a resolved quote-bound v2 writer;
+- missing quote ID, unresolved quote amount, unsupported exact rail, or
+  unsupported economic policy fails with a stable
   capability error before creating an attempt, publishing participant offers,
   reserving a target, or exposing an address.
-
-The temporary admitted conversion route is a rollback and continuity measure,
-not a second long-term authority. It may be removed per rail only after v2
-conformance, recovery, and migration gates pass.
 
 ### Canonical funding basis
 
@@ -171,18 +165,18 @@ new attempt; it is not a mutable cancellation switch for an authorized one.
 An attempt that reaches quote expiry before seller authorization becomes
 terminally expired and cannot expose a target.
 
-### Versioning and migration
+### Versioning and development migration
 
-Authorization v1 bytes and hashes remain unchanged and recoverable for
-same-currency attempts already created. New cross-currency attempts use v2.
-Readers dispatch by explicit version and never reinterpret v1 as v2.
+Same-currency attempts use authorization v1 because they have no conversion
+funding basis. Cross-currency attempts use v2. Readers dispatch by explicit
+version and never reinterpret v1 as v2; this separation is part of the current
+protocol, not compatibility with old nodes.
 
-The database adds immutable funding-basis bytes and hash to the attempt. A
-deployment first ships readers and persistence, then writers behind a
-rail-scoped `quote_bound_authorization_v2` capability. Mixed-version peers
-negotiate the effective route before draft creation. There is no synthetic
-backfill for historical attempts because their original quote authority cannot
-be proven retroactively.
+The database stores immutable funding-basis bytes and hash on the attempt and
+uses a durable seller proposal inbox. Development environments migrate or
+reset to the current schema. Mixed-version peer negotiation, legacy-node
+fallback, and synthetic backfill of historical cross-currency attempts are out
+of scope.
 
 ## Security, privacy, and abuse analysis
 
@@ -250,9 +244,8 @@ participant binding, and recovery guarantees of RFC-0009 and RFC-0011.
 
 ## Rollout and rollback
 
-1. Restore route admission so cross-currency orders outside v2 fall through to
-   the already admitted conversion path; add regression coverage proving an
-   eligible rail does not enter v1 and still derives the correct atomic amount.
+1. Require every cross-currency crypto session to resolve a quote-bound v2
+   writer before draft creation; remove the legacy conversion fallback.
 2. Add canonical funding-basis validation, hashing, persistence, quote loading,
    and order/rail/amount/expiry checks without exposing a target. Implemented
    in Open Core on 2026-07-15; release evidence remains pending.
@@ -268,16 +261,13 @@ participant binding, and recovery guarantees of RFC-0009 and RFC-0011.
    divisibility and round-up edges, stale quote, tamper, replay, wrong order,
    wrong revision, wrong rail, wrong amount, and valid-then-expired recovery.
 6. Enable `quote_bound_authorization_v2` per rail only after restart,
-   idempotency, mixed-version, funding observation, refund, dispute, and
-   rollback tests pass. Then remove that rail's temporary conversion fallback.
+   idempotency, funding observation, refund, and dispute tests pass.
 7. Advance the RFC status only with review, tagged release evidence, effective
    capability output, and public user documentation.
 
-Rollback disables new v2 admission per rail. Existing authorized v2 attempts
-remain readable and recoverable; authorized targets are never invalidated by a
-feature-flag rollback. New cross-currency sessions return to the admitted
-conversion path where it is still supported. Rollback must not reintroduce the
-same-currency hard-stop.
+During development, disabling a rail's v2 writer makes new cross-currency
+sessions fail before draft creation. It does not redirect them to a legacy
+conversion path.
 
 ## Documentation impact
 
@@ -303,15 +293,13 @@ funding basis.
 2. Which provider/network costs are estimable before target creation, and what
    policy handles a later chain fee without mutating buyer payment total?
 3. Which stable capability and denial codes are exposed to Unified and other
-   clients during mixed-version rollout?
-4. What peer-advertised protocol capability should suppress a v2 proposal to
-   an older seller before a draft is created?
+   clients for missing quote or exact-rail v2 capability?
 
 ## Decision
 
 Pending maintainer review. The Open Core v2 writer, signed proposal transport,
 seller-local rate-floor validation, and final authorization reader are
-implemented but not yet release evidence. Until Accepted and released,
-same-currency authorization v1 and any explicitly admitted cross-currency
-conversion route remain compatibility behavior. Pricing and payment currency
-equality is not a protocol invariant.
+implemented but not yet release evidence. Cross-currency development traffic
+uses only this v2 path; same-currency authorization v1 remains a distinct
+current protocol. Pricing and payment currency equality is not a protocol
+invariant.
