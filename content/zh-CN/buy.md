@@ -24,6 +24,7 @@ featuredVisual: buyer-order-lifecycle
 - [完成结账](/zh/buy/checkout) — 根据一份已审阅报价创建一笔订单。
 - [使用 Guest Checkout](/zh/buy/guest-checkout) — 不关联账号购买，并保留可恢复的跟踪链接。
 - [跟踪订单](/zh/buy/order-status) — 对照付款证据与后端拥有的订单状态。
+- [响应订单通知](/zh/buy/order-notifications) — 通过事件进入相关记录，再刷新权威状态后行动。
 - [取消、退款或争议](/zh/buy/cancel-refund-dispute) — 使用当前订单状态允许的转换。
 
 ## Mobazha 的购买模型

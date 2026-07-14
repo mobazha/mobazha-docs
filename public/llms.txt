@@ -25,7 +25,9 @@ Implementation evidence: the versioned sources linked from each page.
 ## Use Mobazha
 - [Sell](/sell)
 - [Store setup](/sell/store-setup)
+- [Marketplace participation](/sell/marketplace-participation)
 - [Listings](/sell/listings)
+- [Catalog operations](/sell/catalog-operations)
 - [Shipping](/sell/shipping)
 - [Payments](/sell/payments)
 - [Orders](/sell/orders)
@@ -33,6 +35,7 @@ Implementation evidence: the versioned sources linked from each page.
 - [Checkout](/buy/checkout)
 - [Guest checkout](/buy/guest-checkout)
 - [Order status](/buy/order-status)
+- [Order notifications](/buy/order-notifications)
 - [Cancel, refund, or dispute](/buy/cancel-refund-dispute)
 
 ## Operate
@@ -104,7 +107,9 @@ Implementation evidence: the versioned sources linked from each page.
 ## 使用 Mobazha
 - [卖家指南](/zh/sell)
 - [店铺准备](/zh/sell/store-setup)
+- [参与市场](/zh/sell/marketplace-participation)
 - [Listing](/zh/sell/listings)
+- [Catalog 运营](/zh/sell/catalog-operations)
 - [配送](/zh/sell/shipping)
 - [付款](/zh/sell/payments)
 - [订单](/zh/sell/orders)
@@ -112,6 +117,7 @@ Implementation evidence: the versioned sources linked from each page.
 - [Checkout](/zh/buy/checkout)
 - [Guest Checkout](/zh/buy/guest-checkout)
 - [订单状态](/zh/buy/order-status)
+- [订单通知](/zh/buy/order-notifications)
 - [取消、退款与争议](/zh/buy/cancel-refund-dispute)
 
 ## 运营

@@ -99,7 +99,7 @@ count.
   local-TOC, section-anchor, and copyable-code foundations.
 - Moved full trust metadata into progressive disclosure while preserving visible
   lifecycle and material applicability.
-- Migrated all 61 English and 61 Chinese pages to explicit outcome, effort,
+- Migrated all 64 English and 64 Chinese pages to explicit outcome, effort,
   journey, page-type, and primary-action contracts.
 - Published reviewed responsive conceptual models for buyer, seller, and
   self-host journeys; real product screenshots remain behind the pricing,
@@ -137,7 +137,7 @@ Product narrative, topic selection, and flagship sequencing are maintained in
   with required claims, forbidden claims, and authority paths.
 - Published English and Chinese core journeys with per-page translation,
   canonical-source, lifecycle, and review metadata.
-- Reached same-path Chinese coverage for all 61 English canonical pages and
+- Reached same-path Chinese coverage for all 64 English canonical pages and
   restored equivalent decision, risk, verification, and recovery depth on the
   14 pages that had been reduced to summaries.
 - Added a normalized semantic-volume floor that rejects severe non-whitepaper

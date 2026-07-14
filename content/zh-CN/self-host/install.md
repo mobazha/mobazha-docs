@@ -29,7 +29,7 @@ primaryAction:
 ## 安装步骤
 
 1. 克隆公开 Node 仓库，并记录准备评估的准确 commit。
-2. 使用下面的纯 Go 加密实现构建二进制文件。
+2. 使用下面的纯 Go 加密实现构建 Node module。当前 main checkout 的 Workspace 声明可能落后于 Module 的 Go 要求，因此源码构建使用 `GOWORK=off` 隔离 Module。
 3. 为服务账号初始化测试网数据目录。
 4. 在默认的仅本机监听地址启动 Node，并打开内嵌 UI。
 5. 保持终端可见，直到首次启动和健康检查完成。
@@ -37,7 +37,7 @@ primaryAction:
 ```text
 git clone https://github.com/mobazha/mobazha.git
 cd mobazha
-go build -tags goolm -o mobazha .
+GOWORK=off go build -tags goolm -o mobazha .
 ./mobazha init --testnet
 ./mobazha start --testnet --open
 ```
@@ -97,6 +97,7 @@ curl -fsS http://127.0.0.1:5102/v1/runtime-config | jq
 ## 失败时恢复
 
 - 构建失败时，确认 `go version`、检出的 commit、平台工具链和可用存储空间。
+- 如果 Go 报告 `go.work` 声明的版本低于 `go.mod`，先确认当前是计划评估的公开 revision，再使用文档中的 `GOWORK=off` 隔离构建；不要为了让候选版本编译而降低 Module 要求。
 - 启动失败时，保留脱敏诊断，并确认数据目录所有权和端口占用。
 - UI 无法打开时，先测试本地监听，不要直接修改 DNS、TLS 或防火墙。
 - 运行时能力未就绪时，检查配置和依赖，不要手动强制开启前端入口。

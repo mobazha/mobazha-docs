@@ -3,7 +3,7 @@
 - Status: Active editorial audit
 - First review: 2026-07-06
 - Last reviewed: 2026-07-14
-- Scope: 61 English canonical pages and 61 same-path Chinese translations; product routes are evidence inputs, not automatic documentation commitments
+- Scope: 64 English canonical pages and 64 same-path Chinese translations; product routes are evidence inputs, not automatic documentation commitments
 - Success measure: time to a correct next action and a verifiable answer, not page count
 
 ## Audit method
@@ -55,6 +55,21 @@ amount, expiry, observed transfer, confirmation, underpayment, expired-target,
 and unknown-outcome handling. Five targeted test files passed 48 assertions on
 2026-07-14 before the affected `lastTested` dates were advanced.
 
+A continuation pass published three bounded tasks backed by 97 passing Unified
+assertions across seven test files: batch maintenance of tracked stock and
+license-code supply, seller self-service marketplace applications, and routing
+order, payment, dispute, Guest Order, and marketplace-review notifications to
+their current records. The pages preserve per-item partial failure, membership
+state, store context, and notification-versus-business-state boundaries.
+
+The public Node source-build check also exposed a current workspace mismatch:
+the module requires Go 1.26.4 while the checked-out `go.work` declaration can
+still report 1.26.1. A Go 1.26.4 module-isolated build with `GOWORK=off`, the
+`goolm` tag, `internal/doctor` tests, `cmd` compilation, and `doctor` and
+`backup` help contracts succeeded. The install page now uses the reproducible
+module-isolated build. Its overall `lastTested` date was not advanced because
+this pass did not initialize, start, expose, back up, or restore a real Node.
+
 ## Completed correction batches
 
 The first batch closes the highest-impact architecture comprehension gap:
@@ -90,9 +105,9 @@ payment gaps:
 |---|---|---|---|
 | P0 | Protect account, store identity, address, privacy, credentials, and recovery | Identity concepts and developer authentication exist; no verified end-user recovery task | One released account flow, explicit custody and recovery behavior, privacy review, failure test, and observable completion state |
 | P0 | Pay safely with a wallet and recover an unknown outcome | Checkout and order status now cover the tested Payment Session and external-wallet boundary | Add rail-specific pages only after the rail is released, capability-gated, and its expiry, underpayment, confirmation, refund, and recovery paths are tested |
-| P1 | Operate a community market and membership boundary | Community-commerce concepts exist; route candidates are not treated as delivery evidence | Released operator role, membership and consent contract, moderation responsibility, seller handoff, order-owner proof, and recovery test |
-| P1 | Import and merchandise a catalog, use collections or discounts, and inspect business results | Listing guidance identifies the objects but does not claim all Admin candidates are shipped | Released capability, role and store-context authorization, migration or rollback behavior, responsive flow, and representative test |
-| P1 | Use messages, notifications, order discussion, cases, moderators, and evidence safely | Order and dispute pages identify evidence and authority but do not describe an unverified universal UI | Released case and moderation contract, privacy-safe evidence handling, deadlines, permissions, failure behavior, and test data |
+| P1 | Operate a community market and membership boundary | Seller self-service application, withdrawal, reapplication, review state, and order-authority boundaries are documented | Operator configuration, invitation, moderation responsibility, consent changes, and recovery still need released role and failure-path evidence |
+| P1 | Import and merchandise a catalog, use collections or discounts, and inspect business results | Batch tracked-stock and license-code operations now preserve per-listing results and safe retry | Collection, discount, broader import, analytics, and export tasks still need released capability, store-context authorization, rollback, responsive flow, and representative tests |
+| P1 | Use messages, notifications, order discussion, cases, moderators, and evidence safely | Notification routing now leads users back to authoritative order, dispute, market, or chat context | Detailed evidence upload, deadlines, moderator decisions, case privacy, and recovery still need a released end-to-end dispute contract and test data |
 | P2 | Configure AI providers and Agent operations | Agent, MCP, scope, approval, and audit concepts are documented | Runtime-discovered Tool and Skill availability, provider privacy and cost disclosure, approval, revocation, and audit evidence |
 
 Do not create one page per frontend route. Group a task only when the released

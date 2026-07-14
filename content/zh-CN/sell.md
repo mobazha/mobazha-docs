@@ -23,7 +23,9 @@ featuredVisual: seller-operating-loop
 
 - [理解从 Offer 到履约的模型](/zh/project/offer-to-fulfillment) — 区分产品结构、陈列、供应事实、已接受条款和履约证据。
 - [准备店铺](/zh/sell/store-setup) — 验证身份、政策、履约和一次完整测试购买。
+- [申请加入社群市场](/zh/sell/marketplace-participation) — 遵循选中市场的卖家准入、审阅和 Catalog 规则，同时不转移订单权威。
 - [发布商品](/zh/sell/listings) — 提供买家可核对的产品、规格、价格和可用性数据。
+- [维护 Catalog 供应](/zh/sell/catalog-operations) — 补充受跟踪的实体库存或导入 License code，并对账部分成功结果。
 - [配置配送](/zh/sell/shipping) — 匹配目的地、费率、商品、时效和证据。
 - [准备收款](/zh/sell/payments) — 只公开后端和运营者已经准备支持的能力。
 - [运营订单](/zh/sell/orders) — 安全处理付款对账、履约、退款、争议和完成。

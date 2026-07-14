@@ -62,8 +62,16 @@
           "/sell/store-setup"
         ],
         [
+          "Marketplace participation",
+          "/sell/marketplace-participation"
+        ],
+        [
           "Listings",
           "/sell/listings"
+        ],
+        [
+          "Catalog operations",
+          "/sell/catalog-operations"
         ],
         [
           "Shipping",
@@ -92,6 +100,10 @@
         [
           "Order status",
           "/buy/order-status"
+        ],
+        [
+          "Order notifications",
+          "/buy/order-notifications"
         ],
         [
           "Cancel, refund, or dispute",
@@ -353,8 +365,16 @@
           "/zh/sell/store-setup"
         ],
         [
+          "参与市场",
+          "/zh/sell/marketplace-participation"
+        ],
+        [
           "Listing",
           "/zh/sell/listings"
+        ],
+        [
+          "Catalog 运营",
+          "/zh/sell/catalog-operations"
         ],
         [
           "配送",
@@ -383,6 +403,10 @@
         [
           "订单状态",
           "/zh/buy/order-status"
+        ],
+        [
+          "订单通知",
+          "/zh/buy/order-notifications"
         ],
         [
           "取消、退款与争议",

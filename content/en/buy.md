@@ -7,7 +7,7 @@ audiences:
   - Agents
 evidenceLabel: Mobazha Unified public client
 evidenceUrl: https://github.com/mobazha/mobazha-unified
-reviewed: 2026-07-06
+reviewed: 2026-07-14
 pageType: hub
 outcome: See who operates the store, what you will pay, and how to recover the order before you commit funds.
 estimatedTime: 5 minutes
@@ -23,6 +23,7 @@ featuredVisual: buyer-order-lifecycle
 - [Complete checkout](/buy/checkout) — Create one order from one reviewed quote.
 - [Use Guest Checkout](/buy/guest-checkout) — Buy without attaching an account and keep a recoverable tracking link.
 - [Track an order](/buy/order-status) — Reconcile payment evidence with backend-owned order state.
+- [Respond to order notifications](/buy/order-notifications) — Use an event to reach the related record, then refresh authoritative state before acting.
 - [Cancel, refund, or dispute](/buy/cancel-refund-dispute) — Use the transition available for the active order.
 
 ## The Mobazha purchase model

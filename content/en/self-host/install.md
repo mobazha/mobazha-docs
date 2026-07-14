@@ -7,7 +7,7 @@ audiences:
   - Developers
 evidenceLabel: Mobazha Node quick start
 evidenceUrl: https://github.com/mobazha/mobazha#quick-start
-reviewed: 2026-07-04
+reviewed: 2026-07-14
 pageType: task
 lastTested: 2026-07-04
 outcome: Start a local testnet Node from a recorded source revision and verify its health boundary.
@@ -28,7 +28,7 @@ The current public release candidate requires Go 1.26.4, Git, and a supported ma
 ## Install steps
 
 1. Clone the public Node repository and record the exact commit you intend to evaluate.
-2. Build with the pure-Go crypto implementation shown below.
+2. Build the Node module with the pure-Go crypto implementation shown below. The current main checkout's workspace declaration can lag the module's Go requirement, so the source-build command isolates the module with `GOWORK=off`.
 3. Initialize a testnet data directory owned by the service account.
 4. Start the Node on the default local-only listener and open the embedded UI.
 5. Keep the terminal visible until initial startup and health checks succeed.
@@ -36,7 +36,7 @@ The current public release candidate requires Go 1.26.4, Git, and a supported ma
 ```text
 git clone https://github.com/mobazha/mobazha.git
 cd mobazha
-go build -tags goolm -o mobazha .
+GOWORK=off go build -tags goolm -o mobazha .
 ./mobazha init --testnet
 ./mobazha start --testnet --open
 ```
@@ -110,6 +110,7 @@ Docker, standalone, and appliance packaging exists in the public repository, but
 ## If something fails
 
 - If the build fails, confirm `go version`, the checked-out commit, platform toolchain, and available storage.
+- If Go reports that `go.work` declares an older version than `go.mod`, first confirm you are on the intended public revision, then use the documented module-isolated `GOWORK=off` build. Do not lower the module requirement to make a release-candidate checkout compile.
 - If startup fails, capture sanitized diagnostics and confirm data-directory ownership and port availability.
 - If the UI does not open, test the local listener before changing DNS, TLS, or firewall configuration.
 - If runtime capabilities are not ready, inspect configuration and dependencies rather than enabling frontend controls manually.

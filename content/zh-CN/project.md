@@ -42,7 +42,7 @@ primaryAction:
 
 ## 当前中文覆盖边界
 
-除已单独校验的白皮书外，当前 61 篇英文文档均已有同路径中文对应页。检查分别验证文件与导航覆盖、翻译元数据、内部链接和严重语义缺失；“中文文件存在”本身不再被视为内容完成。中文页应保留完成同一用户任务需要的决策、风险、验证、恢复和下一步，但英文仍是第一阶段政策与产品事实的 canonical authoring authority。
+除已单独校验的白皮书外，当前 64 篇英文文档均已有同路径中文对应页。检查分别验证文件与导航覆盖、翻译元数据、内部链接和严重语义缺失；“中文文件存在”本身不再被视为内容完成。中文页应保留完成同一用户任务需要的决策、风险、验证、恢复和下一步，但英文仍是第一阶段政策与产品事实的 canonical authoring authority。
 
 - 精确 API operation 与 Schema 继续由共用的 [API Reference](/api-reference) 和 [OpenAPI JSON](/openapi.json) 提供，不复制 359 个 operation。
 - 每个中文页保留与英文一致的 lifecycle status、page type、journey、version 与适用 visual，并明确链接英文 canonical page。

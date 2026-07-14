@@ -7,7 +7,7 @@ audiences:
   - Operators
 evidenceLabel: Mobazha README and release scope
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main
-reviewed: 2026-07-06
+reviewed: 2026-07-14
 pageType: hub
 outcome: Prepare a store that a buyer can understand, pay, and receive from through one tested journey.
 estimatedTime: 6 minutes
@@ -22,7 +22,9 @@ featuredVisual: seller-operating-loop
 
 - [Understand the offer-to-fulfillment model](/project/offer-to-fulfillment) — Separate product shape, merchandising, supply facts, accepted terms, and delivery evidence.
 - [Prepare the store](/sell/store-setup) — Validate identity, policy, fulfillment, and a complete test purchase.
+- [Apply to a community market](/sell/marketplace-participation) — Follow the selected market's seller-entry, review, and catalog rules without transferring order authority.
 - [Publish listings](/sell/listings) — Show buyer-verifiable product, variant, price, and availability data.
+- [Maintain catalog supply](/sell/catalog-operations) — Restock tracked physical listings or import license codes and reconcile partial results.
 - [Configure shipping](/sell/shipping) — Match destinations, rates, listings, estimates, and evidence.
 - [Prepare payments](/sell/payments) — Advertise only capabilities the backend and operator are ready to support.
 - [Operate orders](/sell/orders) — Reconcile payment, fulfill, refund, dispute, and complete safely.

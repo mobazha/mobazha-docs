@@ -24,7 +24,7 @@ The baseline measurements below are retained for change history; they no
 longer describe the complete current portal. Role- and journey-scoped
 navigation, page-type presentation, visible primary actions, local section
 navigation, readable type scales, conceptual evidence, and responsive checks
-have since been implemented. English and Chinese now have 61 same-path pages.
+have since been implemented. English and Chinese now have 64 same-path pages.
 
 The remaining human-product gap is evidence, not another general renderer
 redesign. Released buyer, seller, hosted-operator, self-hosted-operator,

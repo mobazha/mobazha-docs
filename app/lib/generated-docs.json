@@ -1774,7 +1774,7 @@
     "authorityUrl": "https://docs.mobazha.org/buy",
     "evidenceLabel": "Mobazha Unified public client",
     "evidenceUrl": "https://github.com/mobazha/mobazha-unified",
-    "reviewed": "2026-07-06",
+    "reviewed": "2026-07-14",
     "pageType": "hub",
     "outcome": "See who operates the store, what you will pay, and how to recover the order before you commit funds.",
     "estimatedTime": "5 minutes",
@@ -1806,6 +1806,11 @@
                 "label": "Track an order",
                 "href": "/buy/order-status",
                 "description": "Reconcile payment evidence with backend-owned order state."
+              },
+              {
+                "label": "Respond to order notifications",
+                "href": "/buy/order-notifications",
+                "description": "Use an event to reach the related record, then refresh authoritative state before acting."
               },
               {
                 "label": "Cancel, refund, or dispute",
@@ -2368,6 +2373,151 @@
           {
             "type": "paragraph",
             "text": "Share the tracking link only with parties who need it. Do not post order tokens, delivery details, or transaction evidence publicly. An Agent may help explain the flow but must not create or fund the order without explicit confirmation."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "buy/order-notifications",
+    "title": "Respond to order and dispute notifications",
+    "summary": "Use a notification to reach the related order or case, then refresh authoritative state before paying, fulfilling, refunding, or disputing.",
+    "status": "Beta",
+    "audiences": [
+      "Buyers",
+      "Sellers",
+      "Support",
+      "Agents"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Respond to order and dispute notifications",
+    "authorityUrl": "https://docs.mobazha.org/buy/order-notifications",
+    "evidenceLabel": "Unified notification routing, grouping, and state tests",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/app/notifications/page.tsx",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-14",
+    "outcome": "Route a notification to the intended business record, verify current backend state, and avoid acting on a stale or incomplete event.",
+    "estimatedTime": "3–5 minutes",
+    "journey": "use",
+    "primaryAction": {
+      "label": "Check a notification safely",
+      "href": "/buy/order-notifications#before-you-start"
+    },
+    "language": "en",
+    "sections": [
+      {
+        "heading": "Before you start",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Use the account, store context, or Guest Order recovery link that owns the related record.",
+              "Keep the order identifier, case identifier, or Guest Order token private.",
+              "Remember that read status, grouping, sound, and the notification text are presentation state. They do not change the order, payment, fulfillment, refund, dispute, or market-membership state."
+            ]
+          },
+          {
+            "type": "callout",
+            "tone": "warning",
+            "text": "Never pay, ship, refund, release funds, or disclose evidence solely because a notification requests it. Open the related record and verify the action there."
+          }
+        ]
+      },
+      {
+        "heading": "Check the notification",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "Open the notification bell or `/notifications`. Use the available order, transaction, system, or other filters only to narrow the list.",
+              "Read the source, event type, time, counterparty label, and order or case context. Grouped notifications may show the latest event while retaining several event identities.",
+              "Open the notification. Current routing sends ordinary order events to order detail, dispute events to the order's dispute tab, seller Guest Order events to the Admin order view, and marketplace-review events to the applicable market seller page when context exists.",
+              "On the target page, confirm the order, case, seller, buyer, asset, amount, and current state. Refresh from the owning backend before taking an irreversible or financial action.",
+              "Marking one item or a group as read may update the unread count; it does not acknowledge fulfillment, accept a decision, or approve a transaction.",
+              "Preserve the relevant business evidence in the order or dispute flow, not only in the notification list or an external chat."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Expected result and verification",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "Notification kind",
+              "Expected destination",
+              "What to verify there"
+            ],
+            "rows": [
+              [
+                "Order created, funded, confirmed, shipped, completed, canceled, or expired",
+                "`/orders/{orderID}` or the seller Guest Order view",
+                "Current backend order and Payment Session state"
+              ],
+              [
+                "Payment received or payment-state event",
+                "Related order detail",
+                "Asset, target, amount, observation, confirmations, and funded state"
+              ],
+              [
+                "Dispute opened or case update",
+                "`/orders/{orderOrCaseID}?tab=dispute` when an identifier exists",
+                "Claim, response, evidence references, deadline, moderator, and current dispute state"
+              ],
+              [
+                "Marketplace seller review",
+                "`/marketplace/{slug}/sell` when market context exists",
+                "Current membership record and decision reason"
+              ],
+              [
+                "Chat message",
+                "Chat interface or drawer",
+                "Sender, room or order context, and whether an order action is separately available"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "The destination should preserve the related identifier and show a current record. Duplicate notification identities should not create duplicate local items, but a missing or stale notification is still possible; the business record remains authoritative."
+          }
+        ]
+      },
+      {
+        "heading": "If something fails",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "If a dispute notification has no order or case identifier, it may have no safe route. Open the relevant order or cases view manually and do not guess an identifier.",
+              "If marking as read or deleting a notification fails, leave the business action unchanged and retry only the presentation operation later.",
+              "If a notification opens the wrong store, order, or market context, stop and report the routing defect with sanitized notification and target identifiers.",
+              "If the notification is newer than the displayed order state, refresh through the product or authenticated API; do not replay the underlying mutation.",
+              "If the record no longer permits the suggested action, follow the current state rather than the old notification text."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Continue",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Track payment and order status",
+                "href": "/buy/order-status"
+              },
+              {
+                "label": "Cancel, refund, or dispute",
+                "href": "/buy/cancel-refund-dispute"
+              },
+              {
+                "label": "Get help with sanitized evidence",
+                "href": "/support"
+              }
+            ]
           }
         ]
       }
@@ -8798,7 +8948,7 @@
     "authorityUrl": "https://docs.mobazha.org/self-host/install",
     "evidenceLabel": "Mobazha Node quick start",
     "evidenceUrl": "https://github.com/mobazha/mobazha#quick-start",
-    "reviewed": "2026-07-04",
+    "reviewed": "2026-07-14",
     "pageType": "task",
     "lastTested": "2026-07-04",
     "outcome": "Start a local testnet Node from a recorded source revision and verify its health boundary.",
@@ -8839,7 +8989,7 @@
             "type": "ordered-list",
             "items": [
               "Clone the public Node repository and record the exact commit you intend to evaluate.",
-              "Build with the pure-Go crypto implementation shown below.",
+              "Build the Node module with the pure-Go crypto implementation shown below. The current main checkout's workspace declaration can lag the module's Go requirement, so the source-build command isolates the module with `GOWORK=off`.",
               "Initialize a testnet data directory owned by the service account.",
               "Start the Node on the default local-only listener and open the embedded UI.",
               "Keep the terminal visible until initial startup and health checks succeed."
@@ -8848,7 +8998,7 @@
           {
             "type": "code",
             "language": "text",
-            "code": "git clone https://github.com/mobazha/mobazha.git\ncd mobazha\ngo build -tags goolm -o mobazha .\n./mobazha init --testnet\n./mobazha start --testnet --open"
+            "code": "git clone https://github.com/mobazha/mobazha.git\ncd mobazha\nGOWORK=off go build -tags goolm -o mobazha .\n./mobazha init --testnet\n./mobazha start --testnet --open"
           },
           {
             "type": "callout",
@@ -8945,6 +9095,7 @@
             "type": "unordered-list",
             "items": [
               "If the build fails, confirm `go version`, the checked-out commit, platform toolchain, and available storage.",
+              "If Go reports that `go.work` declares an older version than `go.mod`, first confirm you are on the intended public revision, then use the documented module-isolated `GOWORK=off` build. Do not lower the module requirement to make a release-candidate checkout compile.",
               "If startup fails, capture sanitized diagnostics and confirm data-directory ownership and port availability.",
               "If the UI does not open, test the local listener before changing DNS, TLS, or firewall configuration.",
               "If runtime capabilities are not ready, inspect configuration and dependencies rather than enabling frontend controls manually.",
@@ -9521,7 +9672,7 @@
     "authorityUrl": "https://docs.mobazha.org/sell",
     "evidenceLabel": "Mobazha README and release scope",
     "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main",
-    "reviewed": "2026-07-06",
+    "reviewed": "2026-07-14",
     "pageType": "hub",
     "outcome": "Prepare a store that a buyer can understand, pay, and receive from through one tested journey.",
     "estimatedTime": "6 minutes",
@@ -9550,9 +9701,19 @@
                 "description": "Validate identity, policy, fulfillment, and a complete test purchase."
               },
               {
+                "label": "Apply to a community market",
+                "href": "/sell/marketplace-participation",
+                "description": "Follow the selected market's seller-entry, review, and catalog rules without transferring order authority."
+              },
+              {
                 "label": "Publish listings",
                 "href": "/sell/listings",
                 "description": "Show buyer-verifiable product, variant, price, and availability data."
+              },
+              {
+                "label": "Maintain catalog supply",
+                "href": "/sell/catalog-operations",
+                "description": "Restock tracked physical listings or import license codes and reconcile partial results."
               },
               {
                 "label": "Configure shipping",
@@ -9707,6 +9868,174 @@
               {
                 "label": "Understand fees",
                 "href": "/project/fees"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "sell/catalog-operations",
+    "title": "Maintain supply across several listings",
+    "summary": "Restock tracked physical listings or import license codes in batches without hiding partial failures or changing unlimited supply.",
+    "status": "Beta",
+    "audiences": [
+      "Sellers",
+      "Store operators"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Maintain supply across several listings",
+    "authorityUrl": "https://docs.mobazha.org/sell/catalog-operations",
+    "evidenceLabel": "Unified Admin product bulk-action implementation and tests",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/app/admin/products/page.tsx",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-14",
+    "outcome": "Update the intended supply mode across selected listings, verify each result, and retry only the failed items.",
+    "estimatedTime": "5–15 minutes",
+    "journey": "use",
+    "primaryAction": {
+      "label": "Prepare the batch",
+      "href": "/sell/catalog-operations#before-you-start"
+    },
+    "language": "en",
+    "sections": [
+      {
+        "heading": "Before you start",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Use the seller or administrator identity for the intended store context.",
+              "Confirm that the connected deployment exposes **Admin → Products** and the applicable bulk action. Source presence does not make the action available on every deployment.",
+              "Record the selected listing slugs, current supply mode, and current quantities before a bulk change.",
+              "Separate tracked physical stock from digital license-code supply. They use different operations and failure rules."
+            ]
+          },
+          {
+            "type": "callout",
+            "tone": "warning",
+            "text": "License codes are fulfillment secrets. Do not paste them into chat, screenshots, support issues, analytics, or a batch for the wrong listing."
+          }
+        ]
+      },
+      {
+        "heading": "Add tracked physical stock",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "Open `/admin/products` in the correct store context and select only the physical listings you intend to change.",
+              "Choose the bulk restock action. The action is eligible only for listings using tracked stock; an unlimited quantity represented by `-1` is deliberately not restocked.",
+              "Enter a positive whole-number quantity. The same increment is added to every tracked SKU variant in each selected listing; it is not a new final quantity.",
+              "Review the target titles and count, then confirm once.",
+              "Read the success and failure counts. Re-open or refresh the affected listings and verify every variant quantity rather than relying only on the toast."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Import license codes",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "Select only listings whose supply mode is license codes, then open the bulk license-code import action.",
+              "Enter codes in the field for the matching listing. Newlines and commas separate codes; blank entries are ignored.",
+              "Compare the parsed count shown for each listing with the source you intended to import.",
+              "Confirm once. The result reports how many listings succeeded and how many codes were imported from successful assignments.",
+              "Verify usable supply through the listing or fulfillment workflow. Do not expose the imported values while checking the count."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Expected result and verification",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Each selected listing produces its own result. A successful physical restock preserves the listing shape and adds the requested quantity to each tracked SKU. A successful license-code import reports an imported count for that listing."
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Result",
+              "What it means",
+              "Safe next action"
+            ],
+            "rows": [
+              [
+                "Success",
+                "The named listing operation returned successfully",
+                "Refresh and verify that listing's supply state"
+              ],
+              [
+                "`invalid_quantity`",
+                "The restock increment was zero or negative",
+                "Correct the input; no valid restock was requested"
+              ],
+              [
+                "`not_found`",
+                "The selected listing could not be loaded",
+                "Confirm store context and slug before retrying"
+              ],
+              [
+                "`not_physical`",
+                "A non-physical listing reached the physical restock path",
+                "Use the supply operation for that listing type"
+              ],
+              [
+                "`untracked_stock`",
+                "Every SKU uses unlimited supply",
+                "Leave it unchanged unless the listing is intentionally converted to tracked stock"
+              ],
+              [
+                "`no_keys`",
+                "No license codes were assigned to that listing",
+                "Add codes only if that listing should receive them"
+              ],
+              [
+                "Other failure",
+                "The listing update or license import did not complete",
+                "Refresh current state and retry only the failed listing"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "If something fails",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Do not repeat the whole batch after a partial failure. Successful items may already have changed.",
+              "Refresh each failed listing before retrying so a concurrent edit is not overwritten.",
+              "If the visible result count and listing state disagree, preserve the listing slug and sanitized error, then [get help](/support).",
+              "If the wrong listing received a quantity change, correct it through the normal listing editor and preserve an audit note; do not edit the database directly.",
+              "If license codes may have been disclosed or assigned incorrectly, stop using the affected codes and follow the store's secret-rotation and buyer-support process."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Continue",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Publish and revise listings",
+                "href": "/sell/listings"
+              },
+              {
+                "label": "Prepare fulfillment and shipping",
+                "href": "/sell/shipping"
+              },
+              {
+                "label": "Operate orders",
+                "href": "/sell/orders"
               }
             ]
           }
@@ -9887,6 +10216,168 @@
           {
             "type": "paragraph",
             "text": "When editing a listing with active orders, preserve the version and terms accepted by existing buyers. A new listing revision must not silently rewrite an already created order."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "sell/marketplace-participation",
+    "title": "Apply to sell in a community market",
+    "summary": "Read a market's seller-entry, review, and catalog rules before applying, withdrawing, or reapplying with selected product groups.",
+    "status": "Beta",
+    "audiences": [
+      "Sellers",
+      "Market operators"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Apply to sell in a community market",
+    "authorityUrl": "https://docs.mobazha.org/sell/marketplace-participation",
+    "evidenceLabel": "Unified native marketplace seller policy and tests",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/app/marketplace/%5Bslug%5D/sell/page.tsx",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-14",
+    "outcome": "Submit one eligible market application, understand its current membership state, and take only the transition that state allows.",
+    "estimatedTime": "5–10 minutes",
+    "journey": "use",
+    "primaryAction": {
+      "label": "Check seller eligibility",
+      "href": "/sell/marketplace-participation#before-you-start"
+    },
+    "language": "en",
+    "sections": [
+      {
+        "heading": "Before you start",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Sign in as the seller responsible for the intended store and product groups.",
+              "Open the selected market and confirm its identity, operator, seller-entry mode, seller-review mode, and catalog mode.",
+              "Treat market membership as a discovery and curation relationship. Approval does not transfer store, listing, quote, payment, or order authority to the market.",
+              "Continue only when the deployment exposes the market's seller page and the market allows self-service applications."
+            ]
+          },
+          {
+            "type": "callout",
+            "tone": "important",
+            "text": "An `operator_invited` market does not accept a self-service application. The absence of a submit control is a policy result, not a reason to call a hidden route."
+          }
+        ]
+      },
+      {
+        "heading": "Apply to the market",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "Open the market's **Sell** entry, normally `/marketplace/{slug}/sell`.",
+              "Read the displayed seller-entry, review, buyer-access, and catalog rules before selecting products.",
+              "For a curated catalog, select at least one product group owned by the current seller. A group may be eligible even when it currently contains zero items. An open catalog can permit submission without a selected group.",
+              "Review the selected groups and submit once. The submit control remains visible but disabled while the request is in flight.",
+              "Read the returned membership state. Automatic review may approve immediately; manual review normally records an applied state pending an operator decision.",
+              "Return to the same seller page for review updates. A notification can lead to this page, but the current application and membership record determine the status."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Understand the current state",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "State",
+              "What the seller can conclude",
+              "Available next action"
+            ],
+            "rows": [
+              [
+                "No application",
+                "No current self-service application is recorded",
+                "Select required groups and submit if the market permits self-service"
+              ],
+              [
+                "`applied`",
+                "The application exists and is awaiting a decision",
+                "Keep selection locked; withdraw if the product offers that action"
+              ],
+              [
+                "`approved`",
+                "The market accepted the seller under its current policy",
+                "Inspect which groups and listings are visible; market approval does not prove order readiness"
+              ],
+              [
+                "`rejected`",
+                "The application was declined",
+                "Read the decision reason where provided; reapply only when the current policy exposes submission"
+              ],
+              [
+                "`left`",
+                "The seller withdrew or left",
+                "Reapply when the current policy permits it"
+              ],
+              [
+                "`suspended`",
+                "The operator has suspended participation",
+                "Do not reapply through self-service; follow the market operator's published review route"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Selections remain locked while the application is applied, approved, or suspended. This prevents a local draft from silently changing the groups attached to an active membership state."
+          }
+        ]
+      },
+      {
+        "heading": "Expected result and verification",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The seller page should show one current application and membership state for the selected market and seller context. Verify the market identifier, store or seller identity, selected product-group identifiers, review mode, and current status after a refresh."
+          },
+          {
+            "type": "paragraph",
+            "text": "For an approved seller, separately verify that the intended groups or listings are visible in the market and that a buyer handoff still resolves to the correct seller-owned backend. Membership alone does not prove availability, price, payment readiness, or fulfillment readiness."
+          }
+        ]
+      },
+      {
+        "heading": "If something fails",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "If submission is disabled in a curated market, select at least one eligible product group and verify it belongs to the current seller.",
+              "If the market is invite-controlled, do not repeatedly submit API requests; use the operator's published admission route.",
+              "If submission or withdrawal returns an unknown result, refresh the current application before retrying. A delayed response may already have changed membership state.",
+              "After rejection or `left`, submit a new application only when the page makes it available. A suspended seller cannot self-serve a new application.",
+              "If the notification and seller page disagree, use the refreshed membership record and report the stale notification with sanitized identifiers."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Continue",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Understand markets and discovery",
+                "href": "/project/community-commerce"
+              },
+              {
+                "label": "Maintain product groups and supply",
+                "href": "/sell/catalog-operations"
+              },
+              {
+                "label": "Verify the buyer checkout boundary",
+                "href": "/buy/checkout"
+              }
+            ]
           }
         ]
       }
@@ -12838,6 +13329,11 @@
                 "description": "对照付款证据与后端拥有的订单状态。"
               },
               {
+                "label": "响应订单通知",
+                "href": "/zh/buy/order-notifications",
+                "description": "通过事件进入相关记录，再刷新权威状态后行动。"
+              },
+              {
                 "label": "取消、退款或争议",
                 "href": "/zh/buy/cancel-refund-dispute",
                 "description": "使用当前订单状态允许的转换。"
@@ -13433,6 +13929,156 @@
     ]
   },
   {
+    "slug": "zh/buy/order-notifications",
+    "title": "响应订单与争议通知",
+    "summary": "使用通知进入相关订单或案件，再刷新权威状态，然后决定是否付款、履约、退款或争议。",
+    "status": "Beta",
+    "audiences": [
+      "买家",
+      "卖家",
+      "支持人员",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "响应订单与争议通知",
+    "authorityUrl": "https://docs.mobazha.org/zh/buy/order-notifications",
+    "evidenceLabel": "Unified 通知路由、分组与状态测试",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/app/notifications/page.tsx",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-14",
+    "outcome": "把通知路由到目标业务记录，验证当前后端状态，并避免依据过期或不完整事件行动。",
+    "estimatedTime": "3–5 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "安全检查通知",
+      "href": "/zh/buy/order-notifications#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "buy/order-notifications",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "使用拥有相关记录的账号、Store context 或 Guest Order recovery link。",
+              "对 Order identifier、Case identifier 或 Guest Order token 保密。",
+              "Read status、Grouping、Sound 和 Notification text 都是展示状态，不会改变 Order、Payment、Fulfillment、Refund、Dispute 或 Market membership state。"
+            ]
+          },
+          {
+            "type": "callout",
+            "tone": "warning",
+            "text": "绝不能仅因为通知要求就付款、发货、退款、Release fund 或披露证据。打开相关记录并在那里验证动作。"
+          }
+        ]
+      },
+      {
+        "heading": "检查通知",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "打开通知铃或 `/notifications`。使用可用的 Order、Transaction、System 或其他 Filter 缩小列表。",
+              "阅读 Source、Event type、Time、Counterparty label 和 Order 或 Case context。分组通知可能展示最新事件，同时保留多个 Event identity。",
+              "打开通知。当前路由把普通 Order event 送到订单详情、Dispute event 送到订单 Dispute tab、卖家 Guest Order event 送到 Admin order view，并在上下文存在时把 Marketplace review event 送到相应市场卖家页。",
+              "在目标页核对 Order、Case、Seller、Buyer、Asset、Amount 和当前 State。执行不可逆或资金动作前，从拥有后端刷新状态。",
+              "把一个通知或一组通知标记为已读可以更新 Unread count，但不会确认履约、接受决定或批准交易。",
+              "在 Order 或 Dispute flow 中保存相关业务证据，不能只留在通知列表或外部聊天。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "通知类型",
+              "预期目标",
+              "在目标页验证什么"
+            ],
+            "rows": [
+              [
+                "Order created、funded、confirmed、shipped、completed、canceled 或 expired",
+                "`/orders/{orderID}` 或卖家 Guest Order view",
+                "当前后端 Order 与 Payment Session state"
+              ],
+              [
+                "Payment received 或付款状态事件",
+                "相关订单详情",
+                "Asset、Target、Amount、Observation、Confirmation 和 Funded state"
+              ],
+              [
+                "Dispute opened 或 Case update",
+                "有标识符时进入 `/orders/{orderOrCaseID}?tab=dispute`",
+                "Claim、Response、Evidence reference、Deadline、Moderator 和当前 Dispute state"
+              ],
+              [
+                "Marketplace seller review",
+                "有市场上下文时进入 `/marketplace/{slug}/sell`",
+                "当前 Membership record 与 Decision reason"
+              ],
+              [
+                "Chat message",
+                "Chat interface 或 Drawer",
+                "Sender、Room 或 Order context，以及是否另有 Order action"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "目标页应保留相关标识符并显示当前记录。重复 Notification identity 不应创建重复本地项目，但通知仍可能缺失或过期；业务记录始终是权威。"
+          }
+        ]
+      },
+      {
+        "heading": "失败时",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Dispute notification 没有 Order 或 Case identifier 时可能没有安全路由。手动打开相关 Order 或 Cases view，不要猜测标识符。",
+              "Mark as read 或删除通知失败时，不要改变业务动作，稍后只重试展示操作。",
+              "通知打开错误 Store、Order 或 Market context 时立即停止，使用脱敏 Notification 与目标标识符报告路由缺陷。",
+              "通知比显示订单状态更新时，通过产品或认证 API 刷新；不要重放底层 Mutation。",
+              "当前记录已不允许建议动作时，遵循当前 State，不要遵循旧通知文字。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "继续",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "跟踪付款与订单状态",
+                "href": "/zh/buy/order-status"
+              },
+              {
+                "label": "取消、退款或争议",
+                "href": "/zh/buy/cancel-refund-dispute"
+              },
+              {
+                "label": "携带脱敏证据获取帮助",
+                "href": "/zh/support"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/buy/order-notifications"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "zh/buy/order-status",
     "title": "追踪付款与订单状态",
     "summary": "在判断订单是否已资助、发货、可退款或完成前，对照钱包证据与后端拥有的订单状态。",
@@ -13759,7 +14405,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "除已单独校验的白皮书外，当前 61 篇英文文档均已有同路径中文对应页。检查分别验证文件与导航覆盖、翻译元数据、内部链接和严重语义缺失；“中文文件存在”本身不再被视为内容完成。中文页应保留完成同一用户任务需要的决策、风险、验证、恢复和下一步，但英文仍是第一阶段政策与产品事实的 canonical authoring authority。"
+            "text": "除已单独校验的白皮书外，当前 64 篇英文文档均已有同路径中文对应页。检查分别验证文件与导航覆盖、翻译元数据、内部链接和严重语义缺失；“中文文件存在”本身不再被视为内容完成。中文页应保留完成同一用户任务需要的决策、风险、验证、恢复和下一步，但英文仍是第一阶段政策与产品事实的 canonical authoring authority。"
           },
           {
             "type": "unordered-list",
@@ -19975,7 +20621,7 @@
             "type": "ordered-list",
             "items": [
               "克隆公开 Node 仓库，并记录准备评估的准确 commit。",
-              "使用下面的纯 Go 加密实现构建二进制文件。",
+              "使用下面的纯 Go 加密实现构建 Node module。当前 main checkout 的 Workspace 声明可能落后于 Module 的 Go 要求，因此源码构建使用 `GOWORK=off` 隔离 Module。",
               "为服务账号初始化测试网数据目录。",
               "在默认的仅本机监听地址启动 Node，并打开内嵌 UI。",
               "保持终端可见，直到首次启动和健康检查完成。"
@@ -19984,7 +20630,7 @@
           {
             "type": "code",
             "language": "text",
-            "code": "git clone https://github.com/mobazha/mobazha.git\ncd mobazha\ngo build -tags goolm -o mobazha .\n./mobazha init --testnet\n./mobazha start --testnet --open"
+            "code": "git clone https://github.com/mobazha/mobazha.git\ncd mobazha\nGOWORK=off go build -tags goolm -o mobazha .\n./mobazha init --testnet\n./mobazha start --testnet --open"
           },
           {
             "type": "callout",
@@ -20054,6 +20700,7 @@
             "type": "unordered-list",
             "items": [
               "构建失败时，确认 `go version`、检出的 commit、平台工具链和可用存储空间。",
+              "如果 Go 报告 `go.work` 声明的版本低于 `go.mod`，先确认当前是计划评估的公开 revision，再使用文档中的 `GOWORK=off` 隔离构建；不要为了让候选版本编译而降低 Module 要求。",
               "启动失败时，保留脱敏诊断，并确认数据目录所有权和端口占用。",
               "UI 无法打开时，先测试本地监听，不要直接修改 DNS、TLS 或防火墙。",
               "运行时能力未就绪时，检查配置和依赖，不要手动强制开启前端入口。",
@@ -20713,9 +21360,19 @@
                 "description": "验证身份、政策、履约和一次完整测试购买。"
               },
               {
+                "label": "申请加入社群市场",
+                "href": "/zh/sell/marketplace-participation",
+                "description": "遵循选中市场的卖家准入、审阅和 Catalog 规则，同时不转移订单权威。"
+              },
+              {
                 "label": "发布商品",
                 "href": "/zh/sell/listings",
                 "description": "提供买家可核对的产品、规格、价格和可用性数据。"
+              },
+              {
+                "label": "维护 Catalog 供应",
+                "href": "/zh/sell/catalog-operations",
+                "description": "补充受跟踪的实体库存或导入 License code，并对账部分成功结果。"
               },
               {
                 "label": "配置配送",
@@ -20874,6 +21531,179 @@
               {
                 "label": "English canonical page",
                 "href": "/sell"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/sell/catalog-operations",
+    "title": "批量维护多个商品的供应",
+    "summary": "批量补充受跟踪的实体库存或导入 License code，同时保留部分失败信息且不改变无限供应。",
+    "status": "Beta",
+    "audiences": [
+      "卖家",
+      "店铺运营者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "批量维护多个商品的供应",
+    "authorityUrl": "https://docs.mobazha.org/zh/sell/catalog-operations",
+    "evidenceLabel": "Unified Admin 商品批量操作实现与测试",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/app/admin/products/page.tsx",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-14",
+    "outcome": "按预期供应模式更新选中商品，逐项验证结果，并只重试失败项目。",
+    "estimatedTime": "5–15 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "准备批量操作",
+      "href": "/zh/sell/catalog-operations#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "sell/catalog-operations",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "使用目标店铺上下文中的卖家或管理员身份。",
+              "确认连接部署提供 **Admin → Products** 及适用批量操作。源码存在不表示每个部署都提供该操作。",
+              "批量变更前记录选中的 Listing slug、当前供应模式和当前数量。",
+              "把受跟踪的实体库存和数字 License code 分开，它们使用不同操作和失败规则。"
+            ]
+          },
+          {
+            "type": "callout",
+            "tone": "warning",
+            "text": "License code 是履约秘密。不要把它们放入聊天、截图、支持 Issue、Analytics，或错误商品的批次。"
+          }
+        ]
+      },
+      {
+        "heading": "增加受跟踪的实体库存",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "在正确店铺上下文中打开 `/admin/products`，只选择需要改变的实体商品。",
+              "选择批量补货。只有使用 Tracked stock 的 Listing 符合条件；以 `-1` 表示的无限数量不会被补货。",
+              "输入正整数。相同增量会加到每个选中 Listing 的所有受跟踪 SKU Variant；它不是新的最终数量。",
+              "复核目标标题和数量，然后确认一次。",
+              "阅读成功和失败数量。重新打开或刷新受影响的 Listing，核对每个 Variant，而不是只相信 Toast。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "导入 License code",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "只选择供应模式为 License code 的 Listing，然后打开批量 License code 导入。",
+              "在对应 Listing 的字段输入 Code。换行和逗号用于分隔，空白条目会被忽略。",
+              "将每个 Listing 显示的解析数量与计划导入的来源对照。",
+              "确认一次。结果会报告成功的 Listing 数量及其导入 Code 总数。",
+              "通过 Listing 或履约流程验证可用供应。检查数量时不要暴露已导入值。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "每个选中 Listing 都有独立结果。成功的实体补货会保留 Listing 结构，并把请求数量加到每个受跟踪 SKU；成功的 License code 导入会报告该 Listing 的导入数量。"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "结果",
+              "含义",
+              "安全下一步"
+            ],
+            "rows": [
+              [
+                "Success",
+                "指定 Listing 操作成功返回",
+                "刷新并验证该 Listing 的供应状态"
+              ],
+              [
+                "`invalid_quantity`",
+                "补货增量为零或负数",
+                "修正输入；没有有效补货请求"
+              ],
+              [
+                "`not_found`",
+                "无法载入选中的 Listing",
+                "重试前确认 Store context 与 Slug"
+              ],
+              [
+                "`not_physical`",
+                "非实体 Listing 进入实体补货路径",
+                "使用该 Listing 类型对应的供应操作"
+              ],
+              [
+                "`untracked_stock`",
+                "所有 SKU 都使用无限供应",
+                "保持不变，除非有意把 Listing 改为受跟踪库存"
+              ],
+              [
+                "`no_keys`",
+                "没有为该 Listing 分配 License code",
+                "只有确实需要时才添加 Code"
+              ],
+              [
+                "其他失败",
+                "Listing 更新或 License 导入未完成",
+                "刷新当前状态，只重试失败 Listing"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "失败时",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "部分失败后不要重复整个批次，成功项目可能已经改变。",
+              "重试前刷新每个失败 Listing，避免覆盖并发编辑。",
+              "如果显示结果数量与 Listing 状态不一致，保留 Slug 和脱敏错误并[获取帮助](/zh/support)。",
+              "如果错误 Listing 收到数量变更，通过普通 Listing Editor 修正并保留审计说明；不要直接编辑数据库。",
+              "如果 License code 可能泄露或分配错误，停止使用受影响 Code，并执行店铺的秘密轮换和买家支持流程。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "继续",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "发布和修改 Listing",
+                "href": "/zh/sell/listings"
+              },
+              {
+                "label": "准备履约与配送",
+                "href": "/zh/sell/shipping"
+              },
+              {
+                "label": "运营订单",
+                "href": "/zh/sell/orders"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/sell/catalog-operations"
               }
             ]
           }
@@ -21062,6 +21892,173 @@
               {
                 "label": "English canonical page",
                 "href": "/sell/listings"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/sell/marketplace-participation",
+    "title": "申请在社群市场销售",
+    "summary": "在申请、撤回或重新申请前，先阅读市场的卖家准入、审阅和 Catalog 规则。",
+    "status": "Beta",
+    "audiences": [
+      "卖家",
+      "市场运营者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "申请在社群市场销售",
+    "authorityUrl": "https://docs.mobazha.org/zh/sell/marketplace-participation",
+    "evidenceLabel": "Unified Native Marketplace 卖家政策与测试",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/app/marketplace/%5Bslug%5D/sell/page.tsx",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-14",
+    "outcome": "提交一项符合条件的市场申请，理解当前 Membership state，并只使用该状态允许的转换。",
+    "estimatedTime": "5–10 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "检查卖家资格",
+      "href": "/zh/sell/marketplace-participation#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "sell/marketplace-participation",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "以负责目标店铺和 Product group 的卖家身份登录。",
+              "打开选中的市场，确认其身份、运营者、Seller entry mode、Seller review mode 和 Catalog mode。",
+              "把市场 Membership 视为发现与策展关系。批准不会把 Store、Listing、Quote、Payment 或 Order authority 转移给市场。",
+              "只有部署公开市场卖家页且市场允许自助申请时才继续。"
+            ]
+          },
+          {
+            "type": "callout",
+            "tone": "important",
+            "text": "`operator_invited` 市场不接受自助申请。没有 Submit control 是政策结果，不是调用隐藏 Route 的理由。"
+          }
+        ]
+      },
+      {
+        "heading": "申请加入市场",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "打开市场的 **Sell** 入口，通常是 `/marketplace/{slug}/sell`。",
+              "选择商品前阅读显示的 Seller entry、Review、Buyer access 和 Catalog 规则。",
+              "Curated catalog 要求选择至少一个属于当前卖家的 Product group。即使 Group 目前有零个商品，也可以符合申请条件。Open catalog 可以允许不选 Group 提交。",
+              "复核选中 Group 并提交一次。请求进行时 Submit control 仍显示但不可再次点击。",
+              "阅读返回的 Membership state。Automatic review 可能立即批准；Manual review 通常记录 `applied` 并等待运营者决定。",
+              "返回同一卖家页查看 Review update。Notification 可以把用户带到该页，但当前 Application 和 Membership record 才决定状态。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "理解当前状态",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "状态",
+              "卖家可以得出的结论",
+              "可用下一步"
+            ],
+            "rows": [
+              [
+                "No application",
+                "没有当前自助申请",
+                "市场允许时选择所需 Group 并提交"
+              ],
+              [
+                "`applied`",
+                "申请已存在并等待决定",
+                "保持选择锁定；产品提供时可以撤回"
+              ],
+              [
+                "`approved`",
+                "市场已按当前政策接受卖家",
+                "检查哪些 Group 和 Listing 可见；批准不证明订单已就绪"
+              ],
+              [
+                "`rejected`",
+                "申请被拒绝",
+                "阅读可用 Decision reason；只有当前政策公开提交时才重新申请"
+              ],
+              [
+                "`left`",
+                "卖家已撤回或离开",
+                "当前政策允许时重新申请"
+              ],
+              [
+                "`suspended`",
+                "运营者已暂停参与资格",
+                "不要自助重新申请；使用市场运营者公开的复核路线"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "当申请处于 `applied`、`approved` 或 `suspended` 时，Group selection 保持锁定，防止本地 Draft 悄悄改变活动 Membership 关联的 Group。"
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "卖家页应为选中的市场与卖家上下文显示一项当前 Application 和 Membership state。刷新后核对 Marketplace identifier、Store 或 Seller identity、选中的 Product-group identifier、Review mode 和当前状态。"
+          },
+          {
+            "type": "paragraph",
+            "text": "卖家获得批准后，还要单独确认目标 Group 或 Listing 在市场中可见，并且买家 Handoff 仍解析到正确的卖家后端。Membership 本身不能证明 Availability、Price、Payment readiness 或 Fulfillment readiness。"
+          }
+        ]
+      },
+      {
+        "heading": "失败时",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Curated market 中 Submit 被禁用时，选择至少一个符合条件的 Product group，并确认它属于当前卖家。",
+              "市场由邀请控制时，不要反复提交 API 请求；使用运营者公开的准入路线。",
+              "Submit 或 Withdraw 结果未知时，重试前刷新当前 Application。延迟响应可能已经改变 Membership state。",
+              "在 `rejected` 或 `left` 后，只有页面再次公开提交动作时才新建申请。Suspended seller 不能自助重新申请。",
+              "Notification 与卖家页不一致时，以刷新后的 Membership record 为准，并使用脱敏标识符报告过期通知。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "继续",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "理解市场与发现",
+                "href": "/zh/project/community-commerce"
+              },
+              {
+                "label": "维护 Product group 与供应",
+                "href": "/zh/sell/catalog-operations"
+              },
+              {
+                "label": "验证买家 Checkout 边界",
+                "href": "/zh/buy/checkout"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/sell/marketplace-participation"
               }
             ]
           }
