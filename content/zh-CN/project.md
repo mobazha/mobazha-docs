@@ -8,7 +8,7 @@ audiences:
   - 评估者
 evidenceLabel: Mobazha 公开仓库与项目记录
 evidenceUrl: https://github.com/mobazha
-reviewed: 2026-07-06
+reviewed: 2026-07-14
 translationOf: project
 pageType: hub
 outcome: 根据问题进入正确的知识分组，并了解当前中文文档的覆盖边界。
@@ -34,16 +34,16 @@ primaryAction:
 | 左侧分组 | 用途 | 当前中文覆盖 |
 |---|---|---|
 | 产品模型 | 解释用户会遇到的对象、关系和交易主线 | 产品地图、身份与店铺、Offer 与履约、交易、市场、集成、Agent |
-| 产品基础 | 解释产品模型下面的运行与经济规则 | 收费与经济模式 |
-| 愿景与方向 | 解释项目存在的原因和长期原则 | 白皮书 v0.2 |
-| 信任与治理 | 区分当前事实、政策、发布证据和治理记录 | 本项目概览；详细事实目前以英文项目页为准 |
+| 产品基础 | 解释产品模型下面的运行与经济规则 | 系统架构、收费、兼容性、Packaging 与 Distribution |
+| 愿景与方向 | 解释项目存在的原因、长期原则与证据门槛 | 白皮书 v0.2、Draft 产品路线图 |
+| 信任与治理 | 区分当前事实、政策、发布证据和治理记录 | 安全、法律与隐私、发布范围、治理、RFC、ADR、历史与 Release |
 
 顶部导航与英文站使用同一逻辑：**买卖、运营、开发、产品、项目、社区**。产品覆盖前三个解释性分组；项目承载信任与治理。Mobazha Docs 标志返回中文起始页。
 
 ## 当前中文覆盖边界
 
-中文页面只链接已经存在且经过维护的中文内容。尚未翻译的架构、兼容性、发行范围、安全和治理页面不会被伪装成中文页面。
+除已单独校验的白皮书外，当前英文文档均已有同路径中文对应页，并通过翻译元数据、内部链接、内容治理与发布检查。中文页提供同等任务入口，但英文仍是第一阶段政策与产品事实的 canonical authoring authority。
 
-- 中文页适合建立产品脉络和完成已有任务。
-- 涉及精确版本、当前发布范围、安全政策或治理记录时，应使用[英文项目事实入口](/project)。
-- 页面状态、适用范围和证据链接仍决定一项描述能否被当作当前事实。
+- 精确 API operation 与 Schema 继续由共用的 [API Reference](/api-reference) 和 [OpenAPI JSON](/openapi.json) 提供，不复制 359 个 operation。
+- 每个中文页保留与英文一致的 lifecycle status、page type、journey、version 与适用 visual，并明确链接英文 canonical page。
+- Runtime、交易、发布与法律事实仍由连接后端、订单记录、版本合约、tagged release 或其公开 policy owner 决定；翻译不会扩大产品、收费或治理承诺。

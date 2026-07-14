@@ -11113,6 +11113,458 @@
     ]
   },
   {
+    "slug": "zh/build/api",
+    "title": "HTTP API 与 OpenAPI",
+    "summary": "用生成的 Mobazha Node OpenAPI 合约查 operation 与 schema，并在调用可选能力前验证运行时 capability。",
+    "status": "Beta",
+    "audiences": [
+      "开发者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "HTTP API 与 OpenAPI",
+    "authorityUrl": "https://docs.mobazha.org/zh/build/api",
+    "evidenceLabel": "生成的 Mobazha Node OpenAPI 合约",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json",
+    "reviewed": "2026-07-14",
+    "pageType": "reference",
+    "lastTested": "2026-07-04",
+    "outcome": "确认当前 Node 合约与 capability，再针对其 versioned route 构建。",
+    "estimatedTime": "7 分钟",
+    "journey": "build",
+    "primaryAction": {
+      "label": "运行 Capability 调用",
+      "href": "/zh/build/api#首次-capability-调用"
+    },
+    "language": "zh-CN",
+    "translationOf": "build/api",
+    "sections": [
+      {
+        "heading": "合约与入口",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Mobazha Node 在 `/v1/` 下提供 versioned HTTP route，在 `/ws` 提供 WebSocket。生成的 OpenAPI 文档描述 API Reference 所示审核版本中的 request method、path、schema、response envelope 与声明的 authentication mechanism。"
+          },
+          {
+            "type": "paragraph",
+            "text": "Specification 是候选版本合约，不能证明某个后端已启用所有可选 operation。公开可选 UI 或自动化前，读取 `/v1/runtime-config` 与 capability endpoint。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "浏览共用 API Reference",
+                "href": "/api-reference",
+                "description": "在只读、面向人的参考中搜索 operation 与 schema。"
+              },
+              {
+                "label": "下载 OpenAPI JSON",
+                "href": "/openapi.json",
+                "description": "对 generator、Agent 与 CI 使用同一份审核合约。"
+              },
+              {
+                "label": "API source 与 generator",
+                "href": "https://github.com/mobazha/mobazha/tree/main/api-spec",
+                "description": "检查生成 artifact 与其所属仓库。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "首次 Capability 调用",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "本地 Node 无需执行已认证业务 operation，即可公开 frontend runtime snapshot。构建可选 UI 或自动化前，用它验证 schema version、deployment composition、readiness、features 与 capabilities。"
+          },
+          {
+            "type": "code",
+            "language": "text",
+            "code": "curl -sS http://127.0.0.1:5102/v1/runtime-config | jq"
+          },
+          {
+            "type": "callout",
+            "tone": "important",
+            "text": "示例假定默认本地 listener。不要为了让示例工作而禁用认证或公开管理 listener。"
+          }
+        ]
+      },
+      {
+        "heading": "预期结果",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Runtime 调用应返回成功 JSON envelope，描述 Node schema、deployment composition、readiness 与 effective capabilities。记录准备使用的 Node version 与 capability。Capability 缺失或不可用意味着应停止或降级集成，而不是打开只存在于前端的 switch。"
+          },
+          {
+            "type": "paragraph",
+            "text": "默认 standalone store 在把响应缩小到 composition 字段时，当前会返回以下代表性 projection；capability 与 feature 值依连接的 Node 而异，并保持权威。"
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "code": "curl -fsS http://127.0.0.1:5102/v1/runtime-config |\n  jq '.data | {schemaVersion, authMode, deployment, experience, capabilitiesReady}'"
+          },
+          {
+            "type": "code",
+            "language": "json",
+            "code": "{\n  \"schemaVersion\": 3,\n  \"authMode\": \"standalone\",\n  \"deployment\": {\n    \"mode\": \"standalone\",\n    \"allowExternalResources\": true\n  },\n  \"experience\": {\n    \"kind\": \"store\"\n  },\n  \"capabilitiesReady\": true\n}"
+          }
+        ]
+      },
+      {
+        "heading": "Authentication 选择",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Standalone 管理员边界可使用 HTTP Basic authentication。",
+              "Deployment 支持时，Bearer JWT 代表 hosted identity。",
+              "对受支持 standalone integration，带 scope 的 `mbz_` API token 是首选自动化凭据。",
+              "选择最窄 credential 与 scope set，保存在源码外，暴露后及时轮换或撤销。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Client 要求",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "使用连接 deployment 要求的 authentication mechanism；凭据不进入 URL 或日志。",
+              "把 non-success response 与 stable error code 当作状态机一部分，而不只是 transport failure。",
+              "对可能重试或有资金影响的 operation 使用 idempotency 与 reconciliation。",
+              "Integration 固定到已测试 Node version，升级前重跑 contract tests。",
+              "OpenAPI 或源码中出现 endpoint 但 effective capability 缺失时，不得推断支持。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Request 与 Response 工作流",
+        "blocks": [
+          {
+            "type": "code",
+            "language": "bash",
+            "code": "BASE_URL=http://127.0.0.1:5102\ncurl -fsS \"$BASE_URL/v1/runtime-config\" | jq\ncurl -fsS -H \"Authorization: Bearer $MBZ_API_TOKEN\" \"$BASE_URL/v1/webhooks\" | jq"
+          },
+          {
+            "type": "paragraph",
+            "text": "消费 success envelope 前检查 HTTP status。精确内部 response schema 属于生成的 OpenAPI 合约。Client 配置中明确 base URL、Node version、credential type 与 expected capability。"
+          }
+        ]
+      },
+      {
+        "heading": "错误、重试与 Compatibility",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "分别处理 `401`、`403`、`404`、`409`、`429` 与 `5xx`。",
+              "订单、付款、退款或 settlement operation timeout 后核对权威状态。",
+              "Endpoint contract 未提供 idempotency 或 reconciliation 时，不重试资金 mutation。",
+              "升级前，让生成 client 与手写 integration 对准确 release tag 运行测试。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "认证与 Scope",
+                "href": "/zh/build/authentication"
+              },
+              {
+                "label": "错误、重试与 Idempotency",
+                "href": "/zh/build/errors-and-idempotency"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/build/api"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/build/authentication",
+    "title": "认证、身份与 Scope",
+    "summary": "选择连接 deployment 声明的身份与凭据模型，只授予单一集成需要的 scope。",
+    "status": "Beta",
+    "audiences": [
+      "开发者",
+      "运营者",
+      "Agent 构建者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "认证、身份与 Scope",
+    "authorityUrl": "https://docs.mobazha.org/zh/build/authentication",
+    "evidenceLabel": "OpenAPI security schemes 与 Node auth token API",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json",
+    "reviewed": "2026-07-14",
+    "pageType": "reference",
+    "lastTested": "2026-07-04",
+    "outcome": "选择受支持身份，并签发单一集成所需的最窄凭据。",
+    "estimatedTime": "10 分钟",
+    "journey": "build",
+    "primaryAction": {
+      "label": "查看带 Scope 的 API Token",
+      "href": "/zh/build/authentication#带-scope-的-api-token"
+    },
+    "language": "zh-CN",
+    "translationOf": "build/authentication",
+    "sections": [
+      {
+        "heading": "Authentication 模型",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "凭据",
+              "预定边界",
+              "Transport"
+            ],
+            "rows": [
+              [
+                "Standalone administrator",
+                "本地运营者管理",
+                "在受信任 TLS 或 loopback 边界使用 HTTP Basic"
+              ],
+              [
+                "Hosted identity",
+                "托管用户或 service identity",
+                "由托管认证流程签发的 Bearer JWT"
+              ],
+              [
+                "Scoped standalone token",
+                "对 standalone Node 的自动化",
+                "带 `mbz_` 前缀和明确 scopes 的 Bearer token"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Operation 的 OpenAPI `security` 声明是可接受凭据类型的权威。在一条路由被接受的 token，不代表拥有所有路由权限。"
+          }
+        ]
+      },
+      {
+        "heading": "带 Scope 的 API Token",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "创建和列出本地 API token 需要管理员身份。使用受支持 Admin 表面或 `/v1/auth/tokens`，记录用途与 owner；secret 只通过受支持的创建响应显示，并存入 secret manager。"
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "code": "BASE_URL=http://127.0.0.1:5102\n\ncurl -fsS \\\n  -u \"$MBZ_ADMIN_USER:$MBZ_ADMIN_PASSWORD\" \\\n  \"$BASE_URL/v1/auth/tokens\" | jq\n\ncurl -fsS \\\n  -H \"Authorization: Bearer $MBZ_API_TOKEN\" \\\n  \"$BASE_URL/v1/webhooks\" | jq"
+          }
+        ]
+      },
+      {
+        "heading": "验证凭据边界",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "在可丢弃环境调用一条集成所需只读路由和一条 scope 外路由。目标路由应成功，scope 外路由应返回 `403`，不要扩大 token。无效或已撤销 token 应返回 `401`。记录 token owner、purpose、scopes、creation time、rotation plan 与 revocation path，但不记录 secret。"
+          }
+        ]
+      },
+      {
+        "heading": "Authorization 与 Scope 规则",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Read scope 与 create、manage、spend、settlement 或 administrative scope 分开授予。",
+              "MCP transport 边界要求 `ai:use`，每个 tool 还要求相应 domain scope。",
+              "Buyer-anonymous Guest Checkout 请求不得携带卖家或管理员凭据。",
+              "Multi-store 或 hosted deployment 要明确解析当前 role 与 store context。",
+              "凭据暴露、角色变化、集成下线或出现无法解释的使用后，轮换并撤销 token。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "错误与安全处理",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "`401` 是 authentication failure，`403` 是 authorization failure；不要把两者合并成重试循环。",
+              "不要把 token 放入 URL query、文档示例、产品合约之外的 browser storage 或支持报告。",
+              "日志必须移除 authorization header 与 token creation response。",
+              "广泛 token 暴露时，先撤销，再调查后续使用。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Compatibility",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "自动化应固定到已测试 Node version，并在升级时重新读取 OpenAPI security 与 scope requirements。Frontend login cookie、旧 Basic credential 或 internal hosted token 不会自动成为受支持的公开集成凭据。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/build/authentication"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/build/errors-and-idempotency",
+    "title": "错误、重试与 Idempotency",
+    "summary": "在 transport failure、重复投递、conflict、timeout 和结果未知时保持业务正确。",
+    "status": "Beta",
+    "audiences": [
+      "开发者",
+      "Agent 构建者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "错误、重试与 Idempotency",
+    "authorityUrl": "https://docs.mobazha.org/zh/build/errors-and-idempotency",
+    "evidenceLabel": "Node API 错误合约与状态机实现",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json",
+    "reviewed": "2026-07-14",
+    "pageType": "reference",
+    "lastTested": "2026-07-04",
+    "outcome": "判断应停止、修正、核对还是重试，同时不重复执行受保护业务操作。",
+    "estimatedTime": "8 分钟",
+    "journey": "build",
+    "primaryAction": {
+      "label": "查看重试决定",
+      "href": "/zh/build/errors-and-idempotency#重试决定"
+    },
+    "language": "zh-CN",
+    "translationOf": "build/errors-and-idempotency",
+    "sections": [
+      {
+        "heading": "错误类别",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "Status",
+              "解释",
+              "默认响应"
+            ],
+            "rows": [
+              [
+                "`400`",
+                "请求不符合声明合约",
+                "修正请求，不盲目重试"
+              ],
+              [
+                "`401`",
+                "认证缺失或无效",
+                "刷新或替换预定凭据"
+              ],
+              [
+                "`403`",
+                "身份缺少 permission 或 scope",
+                "停止并申请范围更窄的授权访问"
+              ],
+              [
+                "`404`",
+                "Resource、route 或 deployment surface 不存在",
+                "核对 identity、version、path 与 capability"
+              ],
+              [
+                "`409`",
+                "当前状态与尝试的转换冲突",
+                "决定前重载权威状态"
+              ],
+              [
+                "`429`",
+                "超过 rate boundary",
+                "Back off 并遵循服务端指示"
+              ],
+              [
+                "`5xx`",
+                "服务端或依赖失败",
+                "仅在 operation 可安全核对时重试"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "读取结构化错误响应和合约定义的 stable code，不要把人类消息解析成机器状态。"
+          }
+        ]
+      },
+      {
+        "heading": "重试决定",
+        "blocks": [
+          {
+            "type": "code",
+            "language": "text",
+            "code": "request outcome known success -> record result\nrequest outcome known rejection -> correct or stop\nrequest outcome unknown -> reconcile authoritative state\nsafe idempotent read -> bounded retry with jitter\nfinancial or state transition -> retry only with contract-supported idempotency"
+          }
+        ]
+      },
+      {
+        "heading": "Idempotency 与 Reconciliation",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Endpoint 支持时，为 client operation 分配稳定标识。",
+              "发送资金或订单转换前持久化 request intent。",
+              "Timeout 后，先读取订单、付款、webhook delivery 或 action status，再重新提交。",
+              "按 delivery 与 event identity 对 webhook 去重。",
+              "把 WebSocket event 当作刷新信号，而不是命令。",
+              "Retry budget 必须有限；未知结果交由审核。"
+            ]
+          },
+          {
+            "type": "code",
+            "language": "javascript",
+            "code": "async function reconcileBeforeRetry(orderId) {\n  const order = await api.get('/v1/orders/' + orderId);\n  if (order.state !== 'AWAITING_ACTION') return order;\n  throw new Error('State still requires an explicitly idempotent retry');\n}"
+          }
+        ]
+      },
+      {
+        "heading": "Authentication 与信息安全",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "错误日志可以包含 route、status、stable error code、correlation identifier 与脱敏 resource identity，但不得包含 Bearer token、Basic credential、seed、private key、customer payload 或未脱敏 webhook secret。"
+          }
+        ]
+      },
+      {
+        "heading": "Compatibility",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "针对每个受支持 Node version 重新运行 negative、timeout、duplicate 与 conflict 测试。Happy path 成功并不能证明重试安全。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/build/errors-and-idempotency"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "zh/build/extensions",
     "title": "通过公共契约扩展 Mobazha",
     "summary": "选择最窄的类型化扩展机制，并保留 Core 权威、能力门槛、运行隔离、恢复和审计边界。",
@@ -11445,6 +11897,283 @@
     ]
   },
   {
+    "slug": "zh/build/mcp",
+    "title": "MCP 与 Agent 集成",
+    "summary": "Agent 可以发现并调用获准商业能力，但不能取代用户同意、政策或后端授权。",
+    "status": "Beta",
+    "audiences": [
+      "Agent 构建者",
+      "安全审核者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "MCP 与 Agent 集成",
+    "authorityUrl": "https://docs.mobazha.org/zh/build/mcp",
+    "evidenceLabel": "Mobazha Agent capability 源码",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/pkg/mcp",
+    "reviewed": "2026-07-14",
+    "pageType": "reference",
+    "lastTested": "2026-07-04",
+    "outcome": "初始化已认证 MCP session，只发现其解析 scope 允许的 tool。",
+    "estimatedTime": "10 分钟",
+    "journey": "build",
+    "primaryAction": {
+      "label": "初始化 Transport",
+      "href": "/zh/build/mcp#初始化-transport"
+    },
+    "language": "zh-CN",
+    "translationOf": "build/mcp",
+    "sections": [
+      {
+        "heading": "当前 Transport",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Mobazha Node 在 `/v1/mcp` 通过 Streamable HTTP 提供 MCP，GET 与 POST 共用 endpoint。Discovery、authentication、scopes、tool availability 与 error 都是连接 Node version 的属性，而不是本页文字的属性。"
+          }
+        ]
+      },
+      {
+        "heading": "当前 Authentication 与 Scope 合约",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "每个 `/v1/mcp` 请求首先通过 Node gateway authentication boundary。",
+              "Streamable HTTP front door 解析 caller identity，并要求 `ai:use` scope。",
+              "管理员身份取得适用 administrative scope set；API token 必须明确包含 `ai:use`。",
+              "每个 tool 还要求 domain scope，例如 `listings:read`、`orders:manage`、`wallet:read` 或 `chat:write`。",
+              "缺少所需 scope 的 tool 必须保持不可用或返回 permission denied；MCP 不绕过底层 HTTP authorization。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "MCP scope guard",
+                "href": "https://github.com/mobazha/mobazha/blob/main/pkg/mcp/scope_guard.go"
+              },
+              {
+                "label": "Tool scope mapping",
+                "href": "https://github.com/mobazha/mobazha/blob/main/pkg/mcp/auth.go"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "初始化 Transport",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "使用支持 Streamable HTTP 的 MCP SDK，并保留服务端返回的 session 信息。初始请求是已认证 `/v1/mcp` endpoint 上的标准 JSON-RPC。"
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "code": "curl -i -sS http://127.0.0.1:5102/v1/mcp \\\n  -H \"Authorization: Bearer $MBZ_API_TOKEN\" \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Accept: application/json, text/event-stream\" \\\n  --data '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"initialize\",\"params\":{\"protocolVersion\":\"2025-03-26\",\"capabilities\":{},\"clientInfo\":{\"name\":\"example\",\"version\":\"0.1.0\"}}}'"
+          },
+          {
+            "type": "paragraph",
+            "text": "初始化后，完成 SDK 的 initialized notification、列出可用 tool，并只调用当前 identity 与 scope set 返回的 tool。"
+          }
+        ]
+      },
+      {
+        "heading": "预期结果",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Initialization 应返回与请求 protocol version 兼容的 MCP session。Tool discovery 只应展示 `ai:use`、解析身份、domain scopes、runtime capabilities 与连接 Node version 共同允许的 tool。换一个更窄的可丢弃 token 重复 discovery，确认受保护 tool 消失或拒绝访问，而不是依赖 prompt 限制。"
+          }
+        ]
+      },
+      {
+        "heading": "不可绕过的边界",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "认证适合该操作的人类、service 或 Agent identity。",
+              "请求最窄 scopes，明确 spend 或 settlement authority。",
+              "后端或政策要求时必须确认。",
+              "Prompt text 不得覆盖 order state、Quote terms、recipient amounts 或 authorization checks。",
+              "保留可审计 request、approval 与 result 标识，但不记录 secret。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Audit 与错误",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Standalone server 记录结构化 MCP tool audit event，包含 tool name、result、duration、transport、可用时的 resolved identity 与脱敏 arguments。Bridge error 保留 API error boundary，包括 authentication、permission、conflict、rate-limit 与 server failure。"
+          },
+          {
+            "type": "callout",
+            "tone": "important",
+            "text": "Audit visibility 便于审核，但不会让广泛 token 变安全。创建范围窄、可撤销的 token，并让 secret 远离 prompt 与日志。"
+          }
+        ]
+      },
+      {
+        "heading": "失败处理与 Compatibility",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Authentication 与 permission error 要修正 credential 或 scope，而不是重试 prompt。",
+              "Tool conflict 要重新读取底层 order 或 resource state。",
+              "Rate limit 与 transient server failure 使用有限 backoff。",
+              "Unknown tool 或 schema version 要重新 discovery，不盲调缓存定义。",
+              "Tool response 成功不能取代用户确认、付款证据或后端拥有的状态。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/build/mcp"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/build/quickstart",
+    "title": "五分钟调用本地 Mobazha Node API",
+    "summary": "发现运行时能力，使用声明的认证边界，并向本地评估 Node 发出一条只读请求。",
+    "status": "Beta",
+    "audiences": [
+      "开发者",
+      "Agent 构建者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "五分钟调用本地 Mobazha Node API",
+    "authorityUrl": "https://docs.mobazha.org/zh/build/quickstart",
+    "evidenceLabel": "生成的 Node OpenAPI 与运行时合约",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/api-spec/openapi.json",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "确认连接到哪个 Node，并完成一条带 scope 的只读 API 请求。",
+    "estimatedTime": "5 分钟",
+    "journey": "build",
+    "primaryAction": {
+      "label": "运行首次调用",
+      "href": "/zh/build/quickstart#首次调用"
+    },
+    "language": "zh-CN",
+    "translationOf": "build/quickstart",
+    "sections": [
+      {
+        "heading": "首次调用",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "本地评估 Node 运行后，把带 scope 的 `MBZ_API_TOKEN` 放入环境变量；先发现运行时，再调用受保护的只读 endpoint。"
+          },
+          {
+            "type": "paragraph",
+            "text": "Token 不是公开注册 key。Standalone 管理员通过受支持的 Admin 表面或 token API 创建它，只赋予集成所需 scope，并把一次性 secret 保存在源码外。运行受保护调用前先阅读[Token 创建与撤销](/zh/build/authentication)。"
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "code": "BASE_URL=http://127.0.0.1:5102\n\ncurl -fsS \"$BASE_URL/v1/runtime-config\" | jq\n\ncurl -fsS \\\n  -H \"Authorization: Bearer $MBZ_API_TOKEN\" \\\n  \"$BASE_URL/v1/webhooks\" | jq"
+          }
+        ]
+      },
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "在默认 loopback listener 上运行 v0.3 候选版本 Node。",
+              "安装 `curl` 与 `jq`；凭据放入环境变量，不留在 shell history。",
+              "使用可丢弃测试 profile，以及 operation 所需的最窄身份。",
+              "阅读当前 OpenAPI security 声明；公开 runtime discovery 不会让管理路由变成公开路由。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "首次调用步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "读取公开 runtime snapshot，记录 schema、deployment、readiness 与展示的 capabilities。",
+              "确认 Node version 和 operation 存在于生成的 OpenAPI 合约。",
+              "按 operation 声明选择 standalone Basic Auth、hosted Bearer JWT 或带 scope 的 `mbz_` API token。",
+              "先调用只读 endpoint，同时检查 HTTP status 与 response envelope。",
+              "从终端输出、日志、截图和支持证据中移除凭据。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Runtime discovery 应无需管理凭据即可返回成功 envelope。只有 token 有效且具备所需 scope 时，受保护调用才成功。构建自动化前确认响应属于目标 Node。"
+          },
+          {
+            "type": "paragraph",
+            "text": "还应在可丢弃环境测试一条 token scope 之外的路由，它应返回 `403`；如果成功，说明凭据比 quickstart 所需更宽，应在部署自动化前替换。"
+          }
+        ]
+      },
+      {
+        "heading": "失败时",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "`401` 表示认证缺失或无效；不要用猜测凭据快速重试。",
+              "`403` 表示解析出的身份缺少所需 permission 或 scope。",
+              "`404` 可能表示 base URL、version、route 错误或 composition 不可用；检查 OpenAPI 与 runtime capabilities。",
+              "`409` 通常要求先核对状态再重试。",
+              "`429` 要求有限 backoff 并遵循服务端指示。",
+              "Transport 成功但 application error 仍需错误处理。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "继续",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "认证、身份与 Scope",
+                "href": "/zh/build/authentication"
+              },
+              {
+                "label": "错误、重试与 Idempotency",
+                "href": "/zh/build/errors-and-idempotency"
+              },
+              {
+                "label": "HTTP API 与 OpenAPI",
+                "href": "/zh/build/api"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/build/quickstart"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "zh/build/runtime-capabilities",
     "title": "运行时能力与产品组合",
     "summary": "从后端发现有效行为，并把部署方式、产品体验、能力、权限和实验开关分开处理。",
@@ -11692,6 +12421,281 @@
     ]
   },
   {
+    "slug": "zh/build/webhooks",
+    "title": "Webhook 集成合约",
+    "summary": "在依赖事件投递前，让 consumer 能处理认证、重试、重复、乱序与版本变化。",
+    "status": "Beta",
+    "audiences": [
+      "开发者",
+      "运营者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Webhook 集成合约",
+    "authorityUrl": "https://docs.mobazha.org/zh/build/webhooks",
+    "evidenceLabel": "Mobazha webhook engine 与 OpenAPI 合约",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/pkg/webhook",
+    "reviewed": "2026-07-14",
+    "pageType": "reference",
+    "lastTested": "2026-07-04",
+    "outcome": "认证、持久接收、去重并安全核对一次 webhook delivery。",
+    "estimatedTime": "15 分钟",
+    "journey": "build",
+    "primaryAction": {
+      "label": "实现 Delivery 验证",
+      "href": "/zh/build/webhooks#delivery-envelope-与验证"
+    },
+    "language": "zh-CN",
+    "translationOf": "build/webhooks",
+    "sections": [
+      {
+        "heading": "Consumer 检查清单",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "解析或处理 payload 前验证真实性。",
+              "使用稳定 event identifier 实现 idempotency。",
+              "只有持久接收后才返回 success。",
+              "通过权威 API 核对状态，不把 delivery order 当作 state order。",
+              "从日志与 dead-letter 工具中移除凭据和个人资料。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "当前管理表面",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Node OpenAPI 合约在 `/v1/webhooks` 下包含 webhook registration、update、deletion、test delivery 与 delivery-history operation。候选版本阶段，event name 与 payload schema 仍随版本变化。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Webhook source",
+                "href": "https://github.com/mobazha/mobazha/tree/main/pkg/webhook",
+                "description": "Signing、event、persistence、retry 与 delivery 合约。"
+              },
+              {
+                "label": "OpenAPI JSON",
+                "href": "/openapi.json",
+                "description": "查找当前 `/v1/webhooks` operation 与 schema。"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Delivery Envelope 与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "当前 event 使用 CloudEvents 1.0 structured JSON envelope。每次 delivery 包含 `X-Webhook-ID`、`X-Webhook-Timestamp` 与 `X-Webhook-Signature` header。Signature 是对 delivery ID、Unix timestamp 与准确 request body 计算的 HMAC-SHA256，并带 `sha256=` 前缀。"
+          },
+          {
+            "type": "unordered-list",
+            "items": [
+              "用 endpoint secret 和未经修改的 raw body 验证 signature。",
+              "拒绝当前五分钟 replay window 之外的 timestamp。",
+              "用 CloudEvent ID 与 delivery ID 作为去重证据；不要假定到达顺序就是业务状态顺序。",
+              "只有持久接收 event 后才返回 2xx。"
+            ]
+          },
+          {
+            "type": "code",
+            "language": "javascript",
+            "code": "import { createHmac, timingSafeEqual } from 'node:crypto';\n\nexport function verifyMobazhaWebhook({ secret, webhookId, timestamp, signature, rawBody }) {\n  if (Math.abs(Date.now() / 1000 - Number(timestamp)) > 300) return false;\n  const message = webhookId + '.' + timestamp + '.' + rawBody;\n  const expected = 'sha256=' + createHmac('sha256', secret).update(message).digest('hex');\n  return expected.length === signature.length &&\n    timingSafeEqual(Buffer.from(expected), Buffer.from(signature));\n}"
+          },
+          {
+            "type": "paragraph",
+            "text": "必须使用准确 raw request bytes；验证前 parse 再 serialize JSON 可能改变签名 body。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Signing implementation",
+                "href": "https://github.com/mobazha/mobazha/blob/main/pkg/webhook/signer.go"
+              },
+              {
+                "label": "CloudEvent envelope",
+                "href": "https://github.com/mobazha/mobazha/blob/main/pkg/webhook/events.go"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "验证练习",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "注册非生产 endpoint，触发一次 test delivery 并保留 delivery ID。确认有效请求只持久接收一次；完全相同的 delivery 被去重；修改 body 后 signature verification 失败；replay window 之外的 timestamp 被拒绝。然后通过 HTTP API 核对相关 resource，而不是信任 event order。"
+          }
+        ]
+      },
+      {
+        "heading": "Standalone 默认值",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "当前 standalone 默认最多投递五次，exponential backoff 从 30 秒开始、上限一小时，request timeout 为 10 秒，polling 为 5 秒，已完成 delivery 保留 7 天。Deployment 可以覆盖这些值，consumer 不得把默认值推断为保证的 retry schedule。"
+          },
+          {
+            "type": "callout",
+            "tone": "important",
+            "text": "实际 delivery 是 at least once；重复与乱序是预期集成条件，而非异常 bug。"
+          }
+        ]
+      },
+      {
+        "heading": "Authentication、错误与恢复",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Webhook 管理 operation 要求受接受的 administrator、hosted 或 scoped API-token identity。Receiver 使用 endpoint secret 与 signature header 认证 delivery。"
+          },
+          {
+            "type": "unordered-list",
+            "items": [
+              "只在持久接收后返回 `2xx`；transient failure 应返回可重试的 non-success。",
+              "执行业务效果前去重。",
+              "每个重要 event 后通过 API 核对 order 或 payment state。",
+              "手工 replay 前检查 delivery history 与 dead-letter state。",
+              "Endpoint secret 暴露后轮换，并拒绝 replay window 之外的 signature。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/build/webhooks"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/build/websocket",
+    "title": "WebSocket 事件",
+    "summary": "使用已认证 WebSocket 事件及时更新 UI，再通过权威 HTTP API 核对重要状态。",
+    "status": "Beta",
+    "audiences": [
+      "开发者",
+      "客户端维护者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "WebSocket 事件",
+    "authorityUrl": "https://docs.mobazha.org/zh/build/websocket",
+    "evidenceLabel": "Mobazha WebSocket gateway 与 event registry",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/internal/api/ws.go",
+    "reviewed": "2026-07-14",
+    "pageType": "reference",
+    "lastTested": "2026-07-04",
+    "outcome": "把已认证事件作为刷新信号，并在重连后恢复当前状态。",
+    "estimatedTime": "10 分钟",
+    "journey": "build",
+    "primaryAction": {
+      "label": "查看 Client 行为",
+      "href": "/zh/build/websocket#client-行为"
+    },
+    "language": "zh-CN",
+    "translationOf": "build/websocket",
+    "sections": [
+      {
+        "heading": "当前连接边界",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "默认 Node WebSocket endpoint 是 `/ws`。路由多个 Node 的 deployment 也可能使用 Node-specific path。Gateway 在连接加入 Node event hub 前完成认证。"
+          },
+          {
+            "type": "callout",
+            "tone": "important",
+            "text": "完整、带版本的 AsyncAPI-style event contract 尚未发布。当前 event envelope 只代表候选版本行为，应针对实际部署的准确 Node 与 client version 测试。"
+          }
+        ]
+      },
+      {
+        "heading": "Client 行为",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "使用受支持 client authentication path；存在更安全 protocol 或 header mechanism 时，不把 token 放入 URL。",
+              "以有限 backoff 重连，并假定连接缺口会丢失 transient event。",
+              "对 persistent notification 去重，并容忍新增的未知 event type。",
+              "把 event 作为刷新受保护状态的信号；不得只凭未经验证的 push payload 结算、退款或完成订单。",
+              "即使 event 宣布 feature 或 action，也保留 route capability 与 authorization 检查。"
+            ]
+          },
+          {
+            "type": "code",
+            "language": "javascript",
+            "code": "function reconnectDelay(attempt) {\n  const capped = Math.min(30_000, 500 * 2 ** attempt);\n  return capped / 2 + Math.random() * capped / 2;\n}\n\nasync function onOrderEvent(orderId) {\n  // The event is a refresh signal. Read protected state before acting.\n  return api.get('/v1/orders/' + orderId);\n}"
+          }
+        ]
+      },
+      {
+        "heading": "预期结果",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "认证后，client 应只收到解析身份与 deployment 允许的 event。短暂断开后以有限 backoff 重连，并确认 client 先通过 HTTP 刷新当前 resource state，再启用操作。如果集成要求每个 transient event 都恰好一次、按业务状态顺序到达，则尚不完整。"
+          }
+        ]
+      },
+      {
+        "heading": "Authentication 与 Connection Error",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "使用部署的 client 与 gateway 支持的认证方式。当有更安全的 session、cookie、header 或 subprotocol 边界时，不要在 WebSocket URL 中放入凭据。认证失败不得降级为匿名管理连接。"
+          },
+          {
+            "type": "unordered-list",
+            "items": [
+              "断开后使用带 jitter 的 backoff，并限制重试次数。",
+              "假定 gap 中会丢 event，重连后核对当前状态。",
+              "把 malformed 或 unknown event 当作非权威输入。",
+              "Event identity、version 或 resource binding 有歧义时，停止自动资金操作。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "实现证据",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "WebSocket gateway",
+                "href": "https://github.com/mobazha/mobazha/blob/main/internal/api/ws.go"
+              },
+              {
+                "label": "Event registry",
+                "href": "https://github.com/mobazha/mobazha/blob/main/pkg/events/registry.go"
+              },
+              {
+                "label": "Shared client",
+                "href": "https://github.com/mobazha/mobazha-unified"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/build/websocket"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "zh/buy",
     "title": "在条款与成本透明的前提下购买",
     "summary": "付款前确认卖家、商品、配送、支付路径、完整成本和争议规则。",
@@ -11825,6 +12829,629 @@
     ]
   },
   {
+    "slug": "zh/buy/cancel-refund-dispute",
+    "title": "取消订单、申请退款或发起争议",
+    "summary": "根据当前订单状态选择允许的转换，并保留解释所请求 remedy 所需的证据。",
+    "status": "Beta",
+    "audiences": [
+      "买家",
+      "卖家",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "取消订单、申请退款或发起争议",
+    "authorityUrl": "https://docs.mobazha.org/zh/buy/cancel-refund-dispute",
+    "evidenceLabel": "Node 订单与争议合约",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/api-spec",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-13",
+    "outcome": "为当前订单选择有效解决路径，同时保留支持该请求的证据。",
+    "estimatedTime": "评估约 5 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "评估当前订单",
+      "href": "/zh/buy/cancel-refund-dispute#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "buy/cancel-refund-dispute",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "打开权威订单详情并记录当前状态。",
+              "阅读订单显示的取消、退货、退款、交付与争议条款。",
+              "保留消息、Quote、付款引用、交付证据以及请求的 remedy。",
+              "确认下一项转换由哪一方控制；并非所有状态都允许单方面取消。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "按订单模式与当前 capability 选择路径",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "路径",
+              "典型用途",
+              "必须验证"
+            ],
+            "rows": [
+              [
+                "Cancel",
+                "在当前承诺或付款路径关闭取消前，停止符合条件的订单",
+                "当前订单状态、actor、Payment Session capability、expiry，以及已有资金时的退款目的地。"
+              ],
+              [
+                "Refund",
+                "通过受支持付款路径返还符合条件的金额",
+                "收款方或退款地址、金额、资产、既有 observation、idempotency，以及产生的交易或服务商引用。"
+              ],
+              [
+                "Dispute",
+                "请求受支持的保障或 moderation 路径检查证据与 remedy",
+                "订单模式、期限、dispute capability、角色、政策版本、证据与结算后果。"
+              ],
+              [
+                "Complete 或 release",
+                "在模型支持时接受履约或释放受保护资金",
+                "交付证据、actor 权限、预期状态、金额与不可逆性。"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "订单详情可提供 Summary、Discussion、Dispute 与 Evidence。Discussion 用于协调，Evidence 支持主张；只有已允许的 Core action 能改变受保护的订单或付款状态。"
+          }
+        ]
+      },
+      {
+        "heading": "解决步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "订单未付款且提供取消操作时，通过订单页面取消。",
+              "已资助订单尚未履约时，使用订单 Discussion 说明请求的 remedy，不要暴露无关个人信息。",
+              "只使用当前订单显示的地址、金额与条件执行 **Refund**。",
+              "只有 deployment、订单模式、期限与当前 capabilities 提供该路径，且普通协商未成功时，才打开订单 Dispute 视图。",
+              "说明期望结果、时间线与证据，同时避免无关个人信息。",
+              "支持时在 Evidence 视图添加或引用原始材料，不要用丢失时间戳或 provenance 的摘要替代证据。",
+              "同时对照后端状态与付款系统或服务商，核对最终退款、release 或 closure。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "对 attempt-scoped 加密货币付款，在 funding target 可操作之前，结算收款方、费用、moderator allocation 与 settlement asset 已冻结。退款或争议分配从该已付款 attempt 推导，不会按订单币种或后续汇率重新计价。始终核对当前操作显示的资产与目的地，不要复用上一 attempt 的地址。"
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "UI 应只显示当前订单、角色、付款方式与保障状态有效的操作。操作被接受后，应独立核对更新后的状态和产生的付款交易。提交请求不代表退款或结算已完成。"
+          }
+        ]
+      },
+      {
+        "heading": "失败时",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "操作缺失时，确认订单状态、当前身份、权限、期限与运行时 capabilities。",
+              "退款交易已存在但 UI 未更新时，保留其标识符并请求 reconciliation。",
+              "卖家要求绕过订单流程时，不要放弃证据或接受未经验证的付款目的地。",
+              "争议期限临近时，记录当前时间并及时使用受支持路径。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "安全边界",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "不得把文档或 Agent 文本视为释放 escrow、签署 settlement 或透露恢复材料的授权。资金状态转换仍受身份、预期状态、金额、idempotency 与付款政策检查约束。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/buy/cancel-refund-dispute"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/buy/checkout",
+    "title": "完成买家 Checkout",
+    "summary": "创建或资助订单前，核对一个店铺、一份 Quote 和一套付款指示。",
+    "status": "Beta",
+    "audiences": [
+      "买家",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "完成买家 Checkout",
+    "authorityUrl": "https://docs.mobazha.org/zh/buy/checkout",
+    "evidenceLabel": "Unified Checkout 路由与 Node 订单合约",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/checkout",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "从已核对的卖家 Quote 创建订单，并保留恢复所需标识符。",
+    "estimatedTime": "5–10 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "开始 Checkout 检查",
+      "href": "/zh/buy/checkout#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "buy/checkout",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "核对店铺身份、商品、数量、Variant、履约方式与退货政策。",
+              "使用连接到目标店铺与后端的当前浏览器会话。",
+              "确定使用账号 Checkout，还是店铺可选的 Guest Checkout。",
+              "准备准确的付款资产；在订单显示地址、金额和过期时间前不要转账。"
+            ]
+          },
+          {
+            "type": "callout",
+            "tone": "warning",
+            "text": "绝不要复用其他订单、消息、截图或 Agent 回答中的地址、QR code、Quote 或金额。"
+          }
+        ]
+      },
+      {
+        "heading": "Checkout 步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "打开 `/product/{slug}`，核对卖家与店铺上下文，选择必填选项并加入购物车。",
+              "打开 **Cart**，确认每项商品属于目标卖家。Marketplace 可以组织发现并记录 attribution，但必须由获准卖家而不是 Marketplace projection 拥有 Checkout handoff 和产生的订单。",
+              "继续到 `/checkout`；只填写此订单需要的交付与联系资料，并在需要时选择适用于目的地的配送方式。",
+              "核对商品小计、运费、折扣、税费、网络或服务商成本、可选服务与最终总额。",
+              "在付款方式步骤选择当前可用方式。可用性来自连接的后端与店铺政策，而不是本指南中的静态列表。",
+              "如果订单模式要求 moderator 或其他保障选择，确认前查看其范围与成本。",
+              "只有在卖家、收件人、最终总额、付款资产或服务商、适用政策及保障选择都清晰可见时才确认订单。",
+              "确认后保存订单标识符与追踪链接，再从订单绑定的 Payment Session 取得地址、服务商 payload、金额、过期时间与进度。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "应用应显示带有权威状态和订单绑定 Payment Session 的新订单。核对商品版本、卖家、卖家拥有的后端、总额、canonical payment asset 或 provider、funding target、金额、settlement mode 与 expiry 是否和最终确认一致。Marketplace 页面或 referral 标签不是卖家，不得静默成为订单 owner。"
+          },
+          {
+            "type": "paragraph",
+            "text": "不要把钱包广播、截图或 pending transaction 当作付款完成。等待订单页报告所需确认数与 funded 状态。"
+          }
+        ]
+      },
+      {
+        "heading": "失败时",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Quote 过期时返回 Checkout 请求新 Quote，不要发送旧金额。",
+              "商品变为不可用时返回 Cart 重新评估，不要反复提交。",
+              "付款资产或目的地意外变化时停止操作，核对店铺与后端身份。",
+              "订单已创建但页面丢失时，使用已保存的订单标识符或 Guest Order 追踪链接。",
+              "资金已发出但状态未推进时，保留 transaction ID 与 order ID，并按[订单状态故障排查](/zh/buy/order-status)处理。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "继续",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "安全使用 Guest Checkout",
+                "href": "/zh/buy/guest-checkout",
+                "description": "不附加卖家或管理员会话即可购买。"
+              },
+              {
+                "label": "追踪付款与订单状态",
+                "href": "/zh/buy/order-status",
+                "description": "理解当前状态能证明什么。"
+              },
+              {
+                "label": "取消、退款与争议",
+                "href": "/zh/buy/cancel-refund-dispute",
+                "description": "只使用当前订单可用的转换。"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/buy/checkout"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/buy/guest-checkout",
+    "title": "安全使用 Guest Checkout",
+    "summary": "创建不绑定买家账号的订单，同时保留店铺路由上下文和可恢复的追踪链接。",
+    "status": "Beta",
+    "audiences": [
+      "买家",
+      "卖家",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "安全使用 Guest Checkout",
+    "authorityUrl": "https://docs.mobazha.org/zh/buy/guest-checkout",
+    "evidenceLabel": "Unified Guest Checkout 实现与 Node 公开 Guest API",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/blob/main/packages/core/services/api/guestCheckout.ts",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "创建一笔不把买家账号附加到请求、并且可以恢复的订单。",
+    "estimatedTime": "5 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "检查 Guest Checkout 就绪状态",
+      "href": "/zh/buy/guest-checkout#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "buy/guest-checkout",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "店铺必须展示 Guest Checkout，并至少有一种就绪的付款方式。",
+              "在同一个店铺完成购物车；Guest Checkout 不会合并无关店铺上下文。",
+              "准备立即保存生成的订单 token 或追踪链接；两者都丢失后可能难以恢复订单。",
+              "Guest Checkout 提供匿名 transport，不代表可以豁免店铺政策、付款确认或合法交付所需信息。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Guest Checkout 步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "把符合条件的商品加入购物车并继续 Checkout。",
+              "在店铺提供该选项时选择 **Guest Checkout**。",
+              "提交个人信息前，查看交付字段与卖家政策。",
+              "让应用请求 Supply Quote；它仅供参考，本身不会保留库存。",
+              "从后端当前展示的付款方式中选择一种。",
+              "创建订单后，立即把订单 token 或买家追踪链接保存到当前分页之外。",
+              "只按显示的地址与金额，在显示的过期时间前付款。",
+              "重新打开追踪链接，查看确认、配送证据与完成状态。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "买家请求不应携带管理员、卖家或之前存储的用户凭据。请求可以保留同源店铺路由上下文，以到达正确店铺。追踪页面应显示订单 token、付款资产、付款目的地、所需确认数、过期时间和里程碑状态。"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "里程碑",
+              "含义",
+              "不能证明"
+            ],
+            "rows": [
+              [
+                "Awaiting payment",
+                "订单已存在，等待所显示的付款",
+                "资金已结算"
+              ],
+              [
+                "Funded",
+                "后端已接受所需付款证据",
+                "实体商品已送达"
+              ],
+              [
+                "Shipped",
+                "卖家已记录发货或交付证据",
+                "买家已经收到或接受商品"
+              ],
+              [
+                "Completed",
+                "订单到达完成转换",
+                "所有外部陈述或保修都得到保证"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "失败时",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "没有 Guest Checkout 时，后端可能已禁用、未通过就绪检查，或要求账号 Checkout。",
+              "追踪链接丢失时，不要创建多笔已付款订单；用脱敏付款证据联系卖家。",
+              "既有登录似乎影响 Guest 请求时，停止操作并报告可复现的客户端缺陷。",
+              "付款过期时，不要在未刷新订单指示的情况下付款。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "安全与隐私",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "只向确有需要的参与方分享追踪链接。不要公开发布订单 token、交付资料或交易证据。Agent 可以帮助解释流程，但没有明确确认时不得创建或资助订单。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/buy/guest-checkout"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/buy/order-status",
+    "title": "追踪付款与订单状态",
+    "summary": "在判断订单是否已资助、发货、可退款或完成前，对照钱包证据与后端拥有的订单状态。",
+    "status": "Beta",
+    "audiences": [
+      "买家",
+      "支持人员",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "追踪付款与订单状态",
+    "authorityUrl": "https://docs.mobazha.org/zh/buy/order-status",
+    "evidenceLabel": "Unified 订单里程碑与 Node Order API",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/components/orders/guestOrderStages.ts",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "判断当前订单状态能证明什么，以及下一步采取哪项恢复操作才安全。",
+    "estimatedTime": "3 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "核对订单",
+      "href": "/zh/buy/order-status#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "buy/order-status",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "保留订单标识符或 Guest Order token，以及付款 transaction ID。",
+              "使用创建订单时的同一店铺与后端。",
+              "不要把私钥、恢复短语、已认证追踪 URL 或完整客户资料贴入支持聊天。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "追踪步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "对账号购买打开 **Orders**；对 Guest Order 打开已保存的追踪链接。",
+              "解释状态前先核对卖家、商品、金额、付款资产与创建时间。",
+              "打开订单绑定的 Payment Session，将 session ID、canonical asset、funding target、预期金额、settlement mode 与 expiry 和钱包或服务商记录对照。",
+              "分别读取 observed amount、remaining amount、observations、适用时的 confirmations，以及后端 funding 状态。",
+              "事件通知状态变化时，通过产品 UI 或 `GET /v1/orders/{orderID}/payment-session` 刷新。",
+              "采取下一项可用操作前，保存履约、取消、退款或争议证据。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "订单页应显示由后端拥有、单调推进的业务状态视图。WebSocket 事件或钱包通知只是刷新信号；重要决定应通过已认证 HTTP API 或追踪端点复核当前订单。"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "观察结果",
+              "安全结论"
+            ],
+            "rows": [
+              [
+                "Payment target ready",
+                "订单已有买家可在过期前使用的地址或服务商会话"
+              ],
+              [
+                "Transaction broadcast",
+                "钱包尝试发布交易"
+              ],
+              [
+                "Transaction detected",
+                "付款系统观察到候选交易"
+              ],
+              [
+                "Required confirmations reached",
+                "已可能满足配置的确认 gate"
+              ],
+              [
+                "Backend state is funded",
+                "订单后端已接受这笔订单的付款证据"
+              ],
+              [
+                "Seller marked shipped",
+                "已记录履约证据，仍需检查证据内容"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Payment Session capability set，而不是静态按钮列表，决定 refresh、cancel、confirm、refund 或 completion 中哪些操作当前可用。"
+          }
+        ]
+      },
+      {
+        "heading": "失败时",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "**No transaction detected：**核对资产、网络、目的地、金额与 expiry，不要发送第二笔付款。",
+              "**Confirmations stalled：**独立检查付款网络，并保留 transaction ID。",
+              "**Wallet confirmed but order awaiting payment：**私下向运营者提供准确的 order 与 transaction 标识符。",
+              "**不同页面状态冲突：**停止自动化操作并报告一致性缺陷。",
+              "**追踪链接无法打开：**确认它属于当前 deployment 且未被截断。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "恢复与升级处理",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "不要通过数据库编辑或直接 settlement call 修复买家订单。使用订单状态提供的操作，再携带脱敏证据[获取帮助](/zh/support)。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/buy/order-status"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/contribute",
+    "title": "参与 Mobazha",
+    "summary": "选择 owner 仓库，提前讨论大型变更，保留公开合约，补测试、更新文档并为 commit sign off。",
+    "status": "Current",
+    "audiences": [
+      "贡献者",
+      "维护者",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "参与 Mobazha",
+    "authorityUrl": "https://docs.mobazha.org/zh/contribute",
+    "evidenceLabel": "Mobazha 贡献与治理政策",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/CONTRIBUTING.md",
+    "reviewed": "2026-07-14",
+    "pageType": "hub",
+    "outcome": "把文档、client、Node、website、RFC 或 policy 贡献送到拥有它的仓库。",
+    "estimatedTime": "5 分钟",
+    "journey": "community",
+    "primaryAction": {
+      "label": "选择 Owner 仓库",
+      "href": "/zh/contribute#选择仓库"
+    },
+    "language": "zh-CN",
+    "translationOf": "contribute",
+    "sections": [
+      {
+        "heading": "选择仓库",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Node business logic、deployment、public API、extension、conformance 与 release evidence：mobazha/mobazha。",
+              "Buyer/seller UI、responsive experience 与 runtime-capability client behavior：mobazha/mobazha-unified。",
+              "Brand website、pricing、service terms 与 public marketing：mobazha/mobazha.org。",
+              "项目级 public policy、task guidance、跨仓库解释、Agent discovery 与文档质量：mobazha/mobazha-docs。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "贡献合约",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "大型 architecture、protocol、payment、security 或 governance change 前先开 issue 或 discussion。",
+              "保持变更聚焦，并一起更新 test、schema、docs、migration guidance 与 release note。",
+              "不包含 credential、private endpoint、customer data、proprietary code 或 generated release binary。",
+              "Owner 仓库要求时，对源码贡献使用 DCO sign-off。",
+              "漏洞通过私下渠道报告，不使用公开 PR 或 issue。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "仓库指南",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Contribute to Mobazha Node",
+                "href": "https://github.com/mobazha/mobazha/blob/main/CONTRIBUTING.md"
+              },
+              {
+                "label": "Contribute to Mobazha Unified",
+                "href": "https://github.com/mobazha/mobazha-unified/blob/main/CONTRIBUTING.md"
+              },
+              {
+                "label": "Improve this documentation",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/CONTRIBUTING.md"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/contribute"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "zh/project",
     "title": "了解 Mobazha 项目",
     "summary": "区分当前产品模型、实现基础、长期方向与可依赖的项目事实，避免把愿景、政策和已交付能力混为一谈。",
@@ -11839,7 +13466,7 @@
     "authorityUrl": "https://docs.mobazha.org/zh/project",
     "evidenceLabel": "Mobazha 公开仓库与项目记录",
     "evidenceUrl": "https://github.com/mobazha",
-    "reviewed": "2026-07-06",
+    "reviewed": "2026-07-14",
     "pageType": "hub",
     "outcome": "根据问题进入正确的知识分组，并了解当前中文文档的覆盖边界。",
     "estimatedTime": "4 分钟",
@@ -11904,17 +13531,17 @@
               [
                 "产品基础",
                 "解释产品模型下面的运行与经济规则",
-                "收费与经济模式"
+                "系统架构、收费、兼容性、Packaging 与 Distribution"
               ],
               [
                 "愿景与方向",
-                "解释项目存在的原因和长期原则",
-                "白皮书 v0.2"
+                "解释项目存在的原因、长期原则与证据门槛",
+                "白皮书 v0.2、Draft 产品路线图"
               ],
               [
                 "信任与治理",
                 "区分当前事实、政策、发布证据和治理记录",
-                "本项目概览；详细事实目前以英文项目页为准"
+                "安全、法律与隐私、发布范围、治理、RFC、ADR、历史与 Release"
               ]
             ]
           },
@@ -11929,14 +13556,129 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "中文页面只链接已经存在且经过维护的中文内容。尚未翻译的架构、兼容性、发行范围、安全和治理页面不会被伪装成中文页面。"
+            "text": "除已单独校验的白皮书外，当前英文文档均已有同路径中文对应页，并通过翻译元数据、内部链接、内容治理与发布检查。中文页提供同等任务入口，但英文仍是第一阶段政策与产品事实的 canonical authoring authority。"
           },
           {
             "type": "unordered-list",
             "items": [
-              "中文页适合建立产品脉络和完成已有任务。",
-              "涉及精确版本、当前发布范围、安全政策或治理记录时，应使用[英文项目事实入口](/project)。",
-              "页面状态、适用范围和证据链接仍决定一项描述能否被当作当前事实。"
+              "精确 API operation 与 Schema 继续由共用的 [API Reference](/api-reference) 和 [OpenAPI JSON](/openapi.json) 提供，不复制 359 个 operation。",
+              "每个中文页保留与英文一致的 lifecycle status、page type、journey、version 与适用 visual，并明确链接英文 canonical page。",
+              "Runtime、交易、发布与法律事实仍由连接后端、订单记录、版本合约、tagged release 或其公开 policy owner 决定；翻译不会扩大产品、收费或治理承诺。"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/project/adrs",
+    "title": "Architecture Decision Records",
+    "summary": "保存持久技术与产品决定的理由、被拒替代方案，以及将来如何取代。",
+    "status": "Current",
+    "audiences": [
+      "贡献者",
+      "维护者",
+      "架构师",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Architecture Decision Records",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/adrs",
+    "evidenceLabel": "Mobazha 公开 ADR registry",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-docs/tree/main/adrs",
+    "reviewed": "2026-07-14",
+    "pageType": "hub",
+    "outcome": "查找 accepted architecture decision，并与提案或仓库本地实现说明区分。",
+    "estimatedTime": "5 分钟",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "打开 ADR Registry",
+      "href": "/zh/project/adrs#当前-registry"
+    },
+    "language": "zh-CN",
+    "translationOf": "project/adrs",
+    "sections": [
+      {
+        "heading": "哪些内容属于 ADR",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "长期架构、权威、ownership、compatibility 或 publication decision。",
+              "不记录就会反复重新推导理由的选择。",
+              "影响多个 module、repository、deployment type 或 public contract 的决定。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Editorial change、日常实现细节与临时实验通常不需要 ADR。"
+          }
+        ]
+      },
+      {
+        "heading": "当前 Registry",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "ADR-0001: Markdown files are the documentation content authority",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/adrs/0001-markdown-content-authority.md",
+                "description": "Accepted。"
+              },
+              {
+                "label": "ADR-0002: Mobazha Docs owns public knowledge",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/adrs/0002-public-knowledge-authority.md",
+                "description": "Accepted。"
+              },
+              {
+                "label": "ADR template",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/adrs/0000-template.md"
+              },
+              {
+                "label": "Repository ADR guide",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/adrs/README.md"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "仓库拥有的架构决定",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "跨仓库索引只链接决定的 owner，不在本仓库复制或重新编号。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Open Core ADR-018: Extension architecture",
+                "href": "https://github.com/mobazha/mobazha/blob/main/docs/adr/018-open-core-extension-architecture.md"
+              },
+              {
+                "label": "Open Core Extension 指南",
+                "href": "/zh/build/extensions"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "安全阅读 ADR",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Accepted ADR 解释预定持久决定，但不会自行激活 capability、迁移 deployment，或证明每个仓库已完成。适用时仍要检查 implementation、conformance test、release note 与 effective runtime capability。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/project/adrs"
+              }
             ]
           }
         ]
@@ -12226,6 +13968,306 @@
     ]
   },
   {
+    "slug": "zh/project/architecture",
+    "title": "Mobazha 系统与店铺网络如何组合",
+    "summary": "比较直接 P2P 与混合店铺网络，并沿请求找到拥有店铺和交易状态的后端。",
+    "status": "Beta",
+    "audiences": [
+      "买家",
+      "卖家",
+      "运营者",
+      "开发者",
+      "评估者",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Mobazha 系统与店铺网络如何组合",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/architecture",
+    "evidenceLabel": "Mobazha 公开产品、Node、运行时与 Distribution 合约",
+    "evidenceUrl": "https://github.com/mobazha",
+    "reviewed": "2026-07-14",
+    "pageType": "concept",
+    "outcome": "区分直接 P2P 与混合店铺网络，找出每项决定的后端 owner，并追踪不同表面与服务间的权威。",
+    "estimatedTime": "10 分钟",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "比较两种拓扑",
+      "href": "/zh/project/architecture#阅读拓扑"
+    },
+    "featuredVisual": "store-network-topologies",
+    "language": "zh-CN",
+    "translationOf": "project/architecture",
+    "sections": [
+      {
+        "heading": "阅读拓扑",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Mobazha 的 P2P 含义是：独立运营的店铺后端可以参与共享发现、签名内容、消息与商业协议，而不必把每个店铺和订单都迁入一个中央平台数据库。它不表示每个买家都必须运行 Node、每个请求都在 transport 层直连，或每个 peer 都持有所有订单副本。"
+          },
+          {
+            "type": "paragraph",
+            "text": "两种拓扑中，所选卖家后端都是稳定权威边界："
+          },
+          {
+            "type": "table",
+            "headers": [
+              "问题",
+              "直接 P2P 店铺网络",
+              "混合店铺网络"
+            ],
+            "rows": [
+              [
+                "店铺在哪里运行？",
+                "由独立店铺运营的 Node",
+                "独立 Node 或托管 Commercial Node"
+              ],
+              [
+                "买家如何到达？",
+                "Storefront、app、direct link 或 Agent 解析卖家 Node 并请求操作",
+                "入口解析卖家上下文；Hosting gateway 路由托管上下文，独立上下文继续到自己的 Node"
+              ],
+              [
+                "哪些内容可跨网络？",
+                "公开 profile、Offer、发现信号、消息与明确 protocol request",
+                "相同公开关系，加上分别启用的 hosted、index、payment、delivery、messaging 或 automation service"
+              ],
+              [
+                "哪些不会自动扩散？",
+                "私有店铺数据、恢复材料、凭据与权威订单记录",
+                "独立 Node 使用托管渠道或可选服务，不会因此把数据与订单迁入 Hosting"
+              ],
+              [
+                "谁决定订单状态变化？",
+                "创建并拥有订单的卖家后端",
+                "所选卖家后端；不是入口渠道、gateway、index 或其他 peer"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "**Direct P2P** 指独立 Node 互为 peer，而不是共享一个数据库；**Hybrid** 指共存与有边界的服务组合，不产生第三种订单 owner。"
+          }
+        ]
+      },
+      {
+        "heading": "选择正确的架构视图",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "视图",
+              "回答的问题",
+              "来源"
+            ],
+            "rows": [
+              [
+                "店铺网络拓扑",
+                "独立与托管店铺如何共存，谁拥有订单？",
+                "本页"
+              ],
+              [
+                "交易与保障",
+                "付款、履约、退款、争议如何协作？",
+                "[交易主线](/zh/project/transaction-spine)与[取消、退款或争议](/zh/buy/cancel-refund-dispute)"
+              ],
+              [
+                "体验与渠道",
+                "Web、桌面、移动、社群、消息和 Agent 如何到达同一商业上下文？",
+                "[交互表面与集成](/zh/project/surfaces-and-integrations)"
+              ],
+              [
+                "Node composition",
+                "Core、数据、内容、消息、钱包和 adapter 如何组成后端？",
+                "本页六部分模型与[自行托管](/zh/self-host)"
+              ],
+              [
+                "付款与结算",
+                "某订单适用哪个 rail、wallet、provider、chain 或 escrow？",
+                "[卖家付款](/zh/sell/payments)、订单 Payment Session 与运行时能力"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "具名 blockchain、smart contract、social client 或托管服务只有在当前 capability 与政策证据支持时才进入更具体视图；概念图中出现不代表普遍可用。"
+          }
+        ]
+      },
+      {
+        "heading": "系统的六个部分",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "部分",
+              "用户看到或依赖什么",
+              "可以决定什么"
+            ],
+            "rows": [
+              [
+                "Presentation surface",
+                "Storefront、Admin、hosted app、client、direct link、community、Agent 或 API client",
+                "展示方式与请求哪个受支持操作"
+              ],
+              [
+                "Selected backend",
+                "服务当前店铺与订单上下文的 hosted 或 self-hosted Node",
+                "店铺数据、身份上下文、effective capabilities、授权与获准业务操作"
+              ],
+              [
+                "Open Core",
+                "订单、付款验证、退款、争议、结算、保障与审计状态机",
+                "受保护转换是否有效，以及下一个权威状态"
+              ],
+              [
+                "Adapter 与 controller",
+                "Payment、delivery、messaging、search、webhook 等集成",
+                "转换请求和 observation；不能直接创造 Core state"
+              ],
+              [
+                "External system",
+                "Chain、wallet、provider、carrier、messaging、indexer 或 AI provider",
+                "自身边界内的事实与操作"
+              ],
+              [
+                "Public knowledge 与 release evidence",
+                "Canonical docs、生成合约、capability response、conformance test 与 tagged release",
+                "公开政策含义与某版本可以声称的内容"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "规则很简单：表面可以请求操作，外部 provider 可以报告事实；只有拥有订单的后端决定输入是否形成有效业务状态变化。"
+          }
+        ]
+      },
+      {
+        "heading": "一个请求如何经过系统",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "表面解析目标店铺与后端上下文。",
+              "Client 读取 runtime configuration 与 effective capabilities，而不是假定所有 deployment 相同。",
+              "后端检查身份、政策、Listing revision、Quote、authorization 与当前状态后创建业务记录。",
+              "Core 为订单建立 durable identity，并用 Payment Session 绑定 rail、金额、funding target 或 provider state、expiry 与 verification rule。",
+              "外部系统报告 evidence；evidence 不是跳过状态机的权限。",
+              "Core 检查预期订单、金额、资产、confirmations、身份、政策与 idempotency 后接受或拒绝转换。",
+              "Buyer、seller、webhook consumer 与 Agent 从最新后端状态刷新，而不是只看 notification。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Shipping、pickup、cancel、refund、dispute 与 settlement 都遵循同一结构：集成提供有边界输入，拥有后端验证受保护变更。"
+          }
+        ]
+      },
+      {
+        "heading": "托管、自行托管与可选服务",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "路径",
+              "谁运行后端？",
+              "谁负责运营？",
+              "保持分离的内容"
+            ],
+            "rows": [
+              [
+                "Hosted",
+                "托管服务运行相应 commercial distribution",
+                "服务商按其条款负责 deployment；店铺运营者仍负责 catalog、政策与订单义务",
+                "Payment rail、delivery、AI、messaging 等仍是具名依赖"
+              ],
+              [
+                "Self-hosted",
+                "卖家或独立运营者运行已发布 Node distribution",
+                "运营者负责主机安全、数据、备份、网络、更新、监控与恢复",
+                "可选 Mobazha 或第三方服务分别启用，并披露数据与价格"
+              ],
+              [
+                "Hybrid",
+                "Hosted 或 self-hosted backend 调用选定外部能力",
+                "责任按服务与交易合约拆分",
+                "连接服务不会自动转移订单权威或本地恢复材料"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "查找权威答案",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "问题",
+              "首先检查"
+            ],
+            "rows": [
+              [
+                "当前订单状态？",
+                "拥有订单的后端"
+              ],
+              [
+                "应付哪里、已验证什么？",
+                "订单绑定 Payment Session 与后端付款记录"
+              ],
+              [
+                "此处是否可用？",
+                "连接后端 ready 的 runtime capability"
+              ],
+              [
+                "人或 Agent 能否操作？",
+                "Backend authorization、role、scope、store context 与当前 state"
+              ],
+              [
+                "精确 request/response？",
+                "Generated contract 与 tagged release evidence"
+              ],
+              [
+                "公开收费、安全或兼容规则？",
+                "docs.mobazha.org 的 canonical policy page"
+              ],
+              [
+                "本订单金额与收款方？",
+                "公开政策范围内的 accepted Quote 与 transaction record"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Extension 只能接收最少数据与 capability；controller 不能直接写受保护订单或付款状态，所有财务或订单变更都要返回授权 Core command。"
+          },
+          {
+            "type": "paragraph",
+            "text": "当前 v0.3 仍是候选版本。Dynamic plugin、remote UI code、universal product manifest 与无限制 runtime extension 不是当前公开合约。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "发布范围",
+                "href": "/zh/project/release-scope"
+              },
+              {
+                "label": "兼容性",
+                "href": "/zh/project/compatibility"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/project/architecture"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "zh/project/community-commerce",
     "title": "社群市场与分布式发现",
     "summary": "理解社群和运营者市场如何策展独立店铺，同时不成为其目录、订单、资金或信誉的所有者。",
@@ -12500,6 +14542,417 @@
     ]
   },
   {
+    "slug": "zh/project/compatibility",
+    "title": "这些 Mobazha 组件能否协同工作？",
+    "summary": "连接系统或升级店铺前，检查 client、backend、contract、capability、extension、data 与 distribution 兼容性。",
+    "status": "Current",
+    "audiences": [
+      "卖家",
+      "运营者",
+      "开发者",
+      "Distribution 发布者",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "这些 Mobazha 组件能否协同工作？",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/compatibility",
+    "evidenceLabel": "Node 公开合约、运行时能力、Migration 与 Conformance 来源",
+    "evidenceUrl": "https://github.com/mobazha/mobazha",
+    "reviewed": "2026-07-14",
+    "pageType": "policy",
+    "outcome": "判断两个组件能否安全交换数据并保留业务含义，明确部署前所需证据。",
+    "estimatedTime": "9 分钟",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "执行兼容性检查",
+      "href": "/zh/project/compatibility#快速兼容性检查"
+    },
+    "language": "zh-CN",
+    "translationOf": "project/compatibility",
+    "sections": [
+      {
+        "heading": "快速兼容性检查",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "连接或升级前回答七个问题："
+          },
+          {
+            "type": "ordered-list",
+            "items": [
+              "**Identity：**涉及哪些准确 client、backend、package、adapter 或 distribution version？",
+              "**Contract：**双方声明哪一版 HTTP、event、webhook、MCP、extension 或 data contract？",
+              "**Capability：**连接后端是否把所需 effective capability 标为 ready？",
+              "**Authorization：**当前身份是否有正确 role、scope、store context 与 permission？",
+              "**Semantics：**双方是否同意 state transition、amount、identifier、idempotency、finality 与 recovery？",
+              "**Migration：**既有 data、configuration、credential 与 provider binding 能否安全升级与恢复？",
+              "**Evidence：**是否有 conformance、integration 或 release test 覆盖这个准确组合？"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "任何答案未知，即使能够编译或渲染，组合仍未经验证。"
+          }
+        ]
+      },
+      {
+        "heading": "常见误判",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "双方认识同一字段名，不代表 authorization、状态含义、重试、确认与恢复兼容。",
+              "源码有 adapter，不代表 distribution 包含、运营者授权配置、依赖健康或后端展示 capability。",
+              "新 client 只能在其测试过的 version 与 additive behavior 范围连接旧 Node；缺少必需 schema 时必须 fail closed。",
+              "Hosted 与 self-hosted 可共享公开合约，但 authentication、composition、capabilities、外部服务与运营责任可能不同。",
+              "Happy path 成功不能证明 conflict、duplicate、timeout、migration、downgrade 与 recovery 安全。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "兼容表面",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "表面",
+              "必须兼容",
+              "证据"
+            ],
+            "rows": [
+              [
+                "HTTP API",
+                "method、path、schema、envelope、authentication、stable error、idempotency 与 state effect",
+                "OpenAPI、negative test、release notes"
+              ],
+              [
+                "Event 与 WebSocket",
+                "event identity、payload version、ordering assumption、reconnect 与 refresh semantics",
+                "Event contract、duplicate/reconnect test"
+              ],
+              [
+                "Webhook",
+                "Signature、delivery identity、retry、deduplication、payload version 与 reconciliation",
+                "Webhook contract、delivery history、consumer test"
+              ],
+              [
+                "Runtime config",
+                "Schema version、readiness、deployment profile、feature 与 capability 含义",
+                "`/v1/runtime-config`、client resolver test"
+              ],
+              [
+                "Commerce state",
+                "Order、payment、fulfillment、refund、dispute、settlement 与 protection",
+                "State-machine 与 transaction conformance test"
+              ],
+              [
+                "Persisted data",
+                "Migration、provider binding、backup、restore、rollback 与 export",
+                "Migration test 与恢复后的代表性数据"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "数据库内部、private hook、composition-root 细节或 internal import 可达代码，不是公开兼容承诺。"
+          }
+        ]
+      },
+      {
+        "heading": "Version 与安全升级",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Patch release 应保持支持的合约；minor release 可加入向后兼容 operation、field 或 capability；major release 可以在提供 migration guidance 后打破公开 wire、state、package 或 persisted-data contract。候选版本阶段尚未声明稳定兼容，即使看似 minor 的变化也需明确审核。"
+          },
+          {
+            "type": "ordered-list",
+            "items": [
+              "记录当前 backend、client、distribution、contract、capability schema、配置与 provider version。",
+              "阅读 migration、移除行为、capability change 与 known issue。",
+              "创建验证过的备份并保留旧 artifact 与配置。",
+              "用恢复的数据测试 store、order、payment、webhook、Agent 与 recovery。",
+              "受控升级后验证 runtime readiness 与所有展示 capability。",
+              "接收新工作前核对既有订单与 provider binding。",
+              "只通过文档声明的数据兼容路径 rollback。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "备份与升级",
+                "href": "/zh/self-host/backup-and-upgrade"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/project/compatibility"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/project/decisions",
+    "title": "公开决定与提案",
+    "summary": "用 RFC 记录仍在评估的变更，用 ADR 记录已经作出的决定，用 History 保存被取代的公开材料。",
+    "status": "Current",
+    "audiences": [
+      "贡献者",
+      "维护者",
+      "Agent",
+      "评估者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "公开决定与提案",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/decisions",
+    "evidenceLabel": "Mobazha 文档决策流程",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-docs/blob/main/docs/CONTENT_GOVERNANCE.md",
+    "reviewed": "2026-07-14",
+    "pageType": "hub",
+    "outcome": "为要提出或检查的决定选择 RFC、ADR、政策页、Release note 或 History record。",
+    "estimatedTime": "5 分钟",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "选择记录类型",
+      "href": "/zh/project/decisions#选择正确记录"
+    },
+    "language": "zh-CN",
+    "translationOf": "project/decisions",
+    "sections": [
+      {
+        "heading": "选择正确记录",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "RFC：仍需审核、证据或决定的重大公开提案。",
+              "ADR：持久架构或产品决定，记录上下文、替代方案、后果与 supersession。",
+              "History record：保留已替换或撤回的公开陈述，使旧链接和讨论仍可解释。",
+              "Task documentation：从当前权威推导的操作与解释，不能替代决策记录。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "生命周期规则",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Draft 或 Review RFC 不是已交付行为。",
+              "Accepted RFC 授权实现工作，但不能证明已实现或发布。",
+              "ADR 记录决定；运行时行为仍需 implementation、test、capability gate 与 release evidence。",
+              "被取代记录保持可读并链接 replacement。",
+              "安全敏感细节、凭据、私有运营、客户数据、预测与未批准商业假设不进入公开记录。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "开始或检查记录",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "RFC 索引",
+                "href": "/zh/project/rfcs"
+              },
+              {
+                "label": "ADR 索引",
+                "href": "/zh/project/adrs"
+              },
+              {
+                "label": "History 与 Supersession",
+                "href": "/zh/project/history"
+              },
+              {
+                "label": "文档治理",
+                "href": "/zh/project/governance"
+              }
+            ]
+          },
+          {
+            "type": "callout",
+            "tone": "important",
+            "text": "记录状态必须始终明确。不能从提案、已接受设计或代码存在推断 capability 可用。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/project/decisions"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/project/distribution",
+    "title": "Mobazha 可以怎样打包与运营",
+    "summary": "比较源码构建 Node、托管服务、standalone package 与第三方 appliance，同时不把 packaging 当作 capability 或官方身份。",
+    "status": "Current",
+    "audiences": [
+      "卖家",
+      "运营者",
+      "Distribution 发布者",
+      "安全审核者",
+      "评估者",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Mobazha 可以怎样打包与运营",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/distribution",
+    "evidenceLabel": "Standalone packaging、distribution policy、release 与 supply-chain checks",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/deploy/standalone",
+    "reviewed": "2026-07-14",
+    "pageType": "policy",
+    "outcome": "选择或发布 Mobazha distribution，同时保留 capability 真实性、安全首次运行、用户控制、恢复、许可与诚实品牌表达。",
+    "estimatedTime": "10 分钟",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "比较 Distribution 形式",
+      "href": "/zh/project/distribution#distribution-形式"
+    },
+    "language": "zh-CN",
+    "translationOf": "project/distribution",
+    "sections": [
+      {
+        "heading": "Distribution 形式",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Distribution 是 Mobazha Core、adapter、frontend、configuration、packaging、update channel 与 operating assumption 的已测试组合；更换 installer、brand 或 host 不会创造新商业协议。"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "形式",
+              "运营者",
+              "当前含义"
+            ],
+            "rows": [
+              [
+                "Community source build",
+                "独立卖家或运营者",
+                "公开候选源码可在受支持环境构建评估；运营者负责主机、secret、网络、数据、备份、更新与事件响应"
+              ],
+              [
+                "Mobazha hosted service",
+                "Mobazha 或具名托管运营者",
+                "Beta 服务运行适用 commercial distribution；其条款负责可用性、隔离、数据、价格、导出与支持"
+              ],
+              [
+                "Standalone installer / launcher",
+                "安装后的独立运营者",
+                "Packaging 与更新机制可能处于预发布；稳定签名 artifact 仍需 release evidence"
+              ],
+              [
+                "Container、VPS image 或 appliance",
+                "独立 distribution 发布者或运营者",
+                "只有保留许可、安全、capability、provenance 与恢复规则时才是允许的 packaging"
+              ],
+              [
+                "Branded / vertical distribution",
+                "具名运营者",
+                "可选择 profile、brand、integration 与 service bundle，但不创造新 Core authority"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "v0.3 当前只用于评估与 Testnet。Packaging source 或安装脚本不能证明稳定签名 binary、自动更新或生产支持已发布。"
+          }
+        ]
+      },
+      {
+        "heading": "可以改变与必须保留",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Distribution 可以选择运营模型、公开 adapter、展示、品牌、基础设施和本地功能；但必须保留："
+          },
+          {
+            "type": "unordered-list",
+            "items": [
+              "拥有订单的 backend 与 Core state authority；",
+              "effective capability discovery 与 fail-closed behavior；",
+              "backend authorization 与受保护 state transition；",
+              "对 provider、payer、recipient、data 与责任的诚实披露；",
+              "artifact provenance、secret safety、backup、restore、export 与 rollback；",
+              "公开 contract compatibility，并与项目政策清楚分离。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Frontend switch、bundled adapter 或 product name 不能扩大 backend 安全实现的内容。"
+          }
+        ]
+      },
+      {
+        "heading": "用户选择前的七个问题",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "谁发布并运营，是否声称官方身份？",
+              "包含哪个准确版本、source revision、capability manifest 与 frontend？",
+              "哪些服务是 local、hosted、third-party、optional 或 required？",
+              "Store data、identity key、payment credential 与 recovery material 存放在哪里？",
+              "首次凭据、更新、备份、导出与 rollback 如何工作？",
+              "适用哪些费用、限制、支持条款与外部 endpoint？",
+              "Distribution 或可选服务消失时，店铺与既有订单怎么办？"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "发布者要求",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "记录准确 commit/tag、build input、manifest、frontend revision、license、SBOM、checksum、provenance 与 test result。",
+              "不包含未批准付款能力、私有 control plane、隐藏支持入口、客户数据、provider credential 或预生成用户 secret。",
+              "首次运行在用户系统或明确托管边界生成凭据与签名材料，并从最小网络暴露开始。",
+              "更新有签名 metadata、完整性验证、备份、兼容 rollback、restore、reset 与 export 说明。",
+              "只宣传 included、configured、authorized、healthy 且 tested 的 effective capability。",
+              "未有证据与授权时，不得称 Official、Certified、audited、production-ready 或 compatible。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "开源许可不授予 Mobazha 名称、logo 或 certification claim。正式认证计划发布前，“Mobazha Certified”不是有效公开状态。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "安装 Node",
+                "href": "/zh/self-host/install"
+              },
+              {
+                "label": "法律、隐私、许可与商标",
+                "href": "/zh/project/legal-and-privacy"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/project/distribution"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "zh/project/fees",
     "title": "收费与可持续经济模式",
     "summary": "Mobazha 不为所有交易定义一个无法避免的统一抽成；实际收费必须说明服务、收款方、依据和确认点。",
@@ -12624,6 +15077,182 @@
               {
                 "label": "English canonical page",
                 "href": "/project/fees"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/project/governance",
+    "title": "文档与政策治理",
+    "summary": "重要项目陈述需要 owner、source、review date、status 与清晰变更路径。",
+    "status": "Draft",
+    "audiences": [
+      "贡献者",
+      "维护者",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "文档与政策治理",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/governance",
+    "evidenceLabel": "Mobazha 公开治理与文档政策",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/GOVERNANCE.md",
+    "reviewed": "2026-07-14",
+    "pageType": "policy",
+    "outcome": "确认政策、合约、发布、文档或实现变更所需的审核与发布路径。",
+    "estimatedTime": "8 分钟",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "分类变更",
+      "href": "/zh/project/governance#变更类别"
+    },
+    "language": "zh-CN",
+    "translationOf": "project/governance",
+    "sections": [
+      {
+        "heading": "变更类别",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Editorial：澄清措辞，不改变行为或政策。",
+              "Operational：改变安装、恢复、兼容或集成指南。",
+              "Policy：改变权利、责任、收费、治理、隐私或安全预期。",
+              "Protocol：改变互操作行为、状态转换或机器合约。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "审核预期",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "项目级公开政策与解释在本仓库变更。运营与 protocol implementation 在 owner 仓库变更，并同步受影响文档、machine-readable index、test、contract 与 release note。任何一层都不能静默覆盖 runtime state 或 versioned interface contract。"
+          }
+        ]
+      },
+      {
+        "heading": "文档发布流程",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Wave 0 盘点 authority、public source、lifecycle 与 stable URL。",
+              "Wave 1 保持 portal、兼容路由、source mapping、link check 与 deployment 健康。",
+              "Wave 2 从实现与公开合约生成 task-first 用户、运营与开发指南。",
+              "Wave 3 发布审核后的 trust、security、economic、governance、ADR、RFC 与 whitepaper 内容。",
+              "Wave 4 评估 Agent 回答、维护 translation，并测量 freshness 与 support outcome。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Phase DOCS roadmap",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/docs/PHASE_DOCS_ROADMAP.md"
+              },
+              {
+                "label": "Content governance",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/docs/CONTENT_GOVERNANCE.md"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/project/governance"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/project/history",
+    "title": "History 与 Supersession",
+    "summary": "保留已替换提案与指南，同时不让历史文本伪装成当前行为或政策。",
+    "status": "Current",
+    "audiences": [
+      "社群",
+      "贡献者",
+      "评估者",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "History 与 Supersession",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/history",
+    "evidenceLabel": "Mobazha 公开 History registry",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-docs/tree/main/history",
+    "reviewed": "2026-07-14",
+    "pageType": "policy",
+    "outcome": "保留被取代的公开推理，同时不让历史提案伪装成当前政策。",
+    "estimatedTime": "5 分钟",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "查看保存规则",
+      "href": "/zh/project/history#保存规则"
+    },
+    "language": "zh-CN",
+    "translationOf": "project/history",
+    "sections": [
+      {
+        "heading": "保存规则",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "历史材料可用于解释旧链接、比例、protocol idea 或 product assumption。必须放入明确 Historical 位置，并附原日期、旧状态、替换原因与当前权威 successor。"
+          }
+        ]
+      },
+      {
+        "heading": "禁止事项",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "可以保存 supersession context 时，不静默删除被广泛引用的公开提案。",
+              "不把过期百分比或 capability claim 留在当前 task page。",
+              "不把历史设计写成受支持 API、付款方式、收费或治理规则。",
+              "不用 History storage 发布之前的私有材料。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "当前 Registry",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "初始 content registry 尚未导入被取代公开 artifact。候选材料发布前要审核 source 与安全公开 provenance。"
+          }
+        ]
+      },
+      {
+        "heading": "公开来源历史不变量",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "公开仓库只有一个已审核 public root，并只包含可发布 commit、tree、path、message 与 blob。Private provenance trailer、source-to-public map、Git note、replace ref、private ref 与 private-only commit 不进入公开历史。License、notice 与可发布 authorship 承担 attribution；content safety、secret、license、architecture 与 test 仍是独立 gate。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "History registry 与 template",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/history/README.md"
+              },
+              {
+                "label": "当前收费",
+                "href": "/zh/project/fees"
+              },
+              {
+                "label": "当前运行时能力",
+                "href": "/zh/build/runtime-capabilities"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/project/history"
               }
             ]
           }
@@ -12894,6 +15523,103 @@
           {
             "type": "paragraph",
             "text": "应从能够保留所需信任、记账和恢复模型的最轻边界开始，不能用新 Storefront 模拟它无法提供的隔离。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/project/legal-and-privacy",
+    "title": "法律、隐私、许可与商标边界",
+    "summary": "区分软件许可、托管服务条款、隐私承诺、第三方义务与商标权。",
+    "status": "Current",
+    "audiences": [
+      "用户",
+      "运营者",
+      "贡献者",
+      "评估者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "法律、隐私、许可与商标边界",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/legal-and-privacy",
+    "evidenceLabel": "Mobazha 公开政策与仓库 Notice",
+    "evidenceUrl": "https://mobazha.org/terms",
+    "reviewed": "2026-07-14",
+    "pageType": "policy",
+    "outcome": "确认某个 deployment 适用哪一份许可、条款、隐私声明、商标规则与运营者义务。",
+    "estimatedTime": "8 分钟",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "确认适用文档",
+      "href": "/zh/project/legal-and-privacy#适用哪份文档"
+    },
+    "language": "zh-CN",
+    "translationOf": "project/legal-and-privacy",
+    "sections": [
+      {
+        "heading": "适用哪份文档",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "仓库 LICENSE、NOTICE、attribution 与 third-party notice 约束源码使用与再分发。",
+              "Mobazha.org Terms 与 Privacy Policy 按其描述约束当前托管服务。",
+              "独立运营者负责自己的条款、隐私披露、合法商品、税务、数据处理与服务商。",
+              "源码许可不授予 Mobazha 名称、logo 或视觉身份权利；须查看 trademark policy。",
+              "Transaction-specific Quote 与 seller policy 可以添加适用条款，但不能静默覆盖项目级公开边界。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Canonical 公开链接",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Terms of Service",
+                "href": "https://mobazha.org/terms"
+              },
+              {
+                "label": "Privacy Policy",
+                "href": "https://mobazha.org/privacy"
+              },
+              {
+                "label": "Fees and Paid Services",
+                "href": "https://mobazha.org/fees"
+              },
+              {
+                "label": "Node license",
+                "href": "https://github.com/mobazha/mobazha/blob/main/LICENSE"
+              },
+              {
+                "label": "Node attribution",
+                "href": "https://github.com/mobazha/mobazha/blob/main/docs/project/ATTRIBUTION.md"
+              },
+              {
+                "label": "Trademark policy",
+                "href": "https://github.com/mobazha/mobazha/blob/main/TRADEMARKS.md"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "文档边界",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "本页提供导航与产品解释，不构成法律意见。文档冲突时，使用其公开 owner 的 effective policy 或 license，并报告不一致。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/project/legal-and-privacy"
+              }
+            ]
           }
         ]
       }
@@ -13590,6 +16316,527 @@
             "type": "callout",
             "tone": "important",
             "text": "图、路线图、RFC、已链接的软件包或文档页面都不能激活一项能力。涉及可用性时，应以连接后端和适用发布的证据为准。"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/project/release-scope",
+    "title": "发布范围与成熟度",
+    "summary": "文档会区分当前候选版本行为、Preview 与未来设计。",
+    "status": "Beta",
+    "audiences": [
+      "所有人"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "发布范围与成熟度",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/release-scope",
+    "evidenceLabel": "Mobazha Release 与仓库文档",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
+    "reviewed": "2026-07-14",
+    "pageType": "policy",
+    "outcome": "区分当前 v0.3 候选版本行为、稳定保证、可选组合、提案与未来目标。",
+    "estimatedTime": "8 分钟",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "查看当前发布边界",
+      "href": "/zh/project/release-scope#当前-v0-3-候选版本边界"
+    },
+    "language": "zh-CN",
+    "translationOf": "project/release-scope",
+    "sections": [
+      {
+        "heading": "状态词汇",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Current：已审核公开政策或稳定项目事实。",
+              "Beta：已经可用或正在验证；兼容性与行为可能改变。",
+              "Draft：提案或文档合约；不能当作已交付行为依赖。",
+              "Historical：为上下文保留，并明确由其他内容取代。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "当前 v0.3 候选版本边界",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Mobazha Node 与 Mobazha Unified 是用于评估和 Testnet 的候选版本。",
+              "默认开源 Node 启用 BTC、BCH 与 LTC 付款方式，但仍受 effective runtime capabilities 与卖家配置约束。",
+              "源码中的 identifier 或 adapter 不会启用付款方式或创造兼容承诺。",
+              "稳定签名 binary 与 reproducibility attestation 仍待最终发布批准。",
+              "无法取得有效 runtime-capability snapshot 时，client 必须 fail closed。",
+              "除明确维护的 translation 外，英文是仓库文档默认语言。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Community capability manifest",
+                "href": "https://github.com/mobazha/mobazha/blob/main/config/editions/community.json"
+              },
+              {
+                "label": "Node v0.3.0-rc.1 notes",
+                "href": "https://github.com/mobazha/mobazha/blob/main/docs/releases/v0.3.0-rc.1.md"
+              },
+              {
+                "label": "Unified v0.3.0-rc.1 notes",
+                "href": "https://github.com/mobazha/mobazha-unified/blob/main/docs/releases/v0.3.0-rc.1.md"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "依赖指南",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "问题",
+              "当前答案",
+              "需要验证"
+            ],
+            "rows": [
+              [
+                "可以评估开源 Node？",
+                "可以，在受支持环境从已审核公开源码构建",
+                "Commit、build prerequisites、Testnet、diagnostics 与 backup"
+              ],
+              [
+                "可以使用托管应用？",
+                "可以，作为 Beta 服务",
+                "条款、隐私、价格、服务状态与 deployment capabilities"
+              ],
+              [
+                "BTC、BCH、LTC 总是可用？",
+                "否；它们在默认边界内，但实际可用仍有条件",
+                "Runtime capability、seller config、dependency health、Quote 与 payment instruction"
+              ],
+              [
+                "每个 API/UI 都是受支持能力？",
+                "否",
+                "Generated contract、runtime capability、authorization、configuration 与 release notes"
+              ],
+              [
+                "稳定 installer 与 unattended update 已保证？",
+                "否",
+                "Signed artifact、checksum、provenance、platform validation、rollback 与 final release notice"
+              ],
+              [
+                "Node-to-account binding 稳定？",
+                "否，公开合约仍为 Draft",
+                "Permission、exchanged data、revocation、test 与 version compatibility"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "实质使用应要求 tagged release 与配套 evidence，不要从 `main` branch、截图、设计文档或 feature name 推断 readiness。"
+          }
+        ]
+      },
+      {
+        "heading": "Version-specific 内容",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "准确 checksum、artifact、known issue、migration step、SBOM、provenance 与 implementation commit 属于每个 tagged repository release。本页管理共同成熟度语言与当前公开边界，不替代 release evidence。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/project/release-scope"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/project/rfcs",
+    "title": "Requests for Comment",
+    "summary": "把重大 protocol、policy、economic、security、governance 与跨仓库提案当作承诺前先审核。",
+    "status": "Current",
+    "audiences": [
+      "贡献者",
+      "维护者",
+      "评估者",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Requests for Comment",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/rfcs",
+    "evidenceLabel": "Mobazha 公开 RFC registry",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-docs/tree/main/rfcs",
+    "reviewed": "2026-07-14",
+    "pageType": "hub",
+    "outcome": "查找或发起公开提案，同时不把 Draft 设计方向描述为 accepted 或 shipped behavior。",
+    "estimatedTime": "5 分钟",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "打开 RFC Registry",
+      "href": "/zh/project/rfcs#当前-registry"
+    },
+    "language": "zh-CN",
+    "translationOf": "project/rfcs",
+    "sections": [
+      {
+        "heading": "何时需要 RFC",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "公开 protocol 或 interoperability contract 改变。",
+              "Order、payment、settlement、dispute、identity、authorization 或 custody 边界改变。",
+              "Fee、recipient、reward、public fund 或 economic policy 改变。",
+              "新的可选 hosted dependency 改变独立运营假设。",
+              "Governance、licensing、privacy、security 或跨仓库 ownership 发生实质变化。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "状态模型",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "Draft：编写未完成。",
+              "Review：可以公开技术与产品审核。",
+              "Accepted / Rejected：记录决定与理由。",
+              "Withdrawn：作者不再提议。",
+              "Superseded：由另一 RFC 替代。",
+              "Implemented：release evidence 证明 accepted proposal 已在明确范围交付。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "当前 Registry",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "RFC-0001: Founding whitepaper publication contract",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0001-whitepaper-publication-contract.md",
+                "description": "Review。"
+              },
+              {
+                "label": "RFC-0002: Composable Extension Platform Model",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0002-composable-extension-platform.md",
+                "description": "Draft。"
+              },
+              {
+                "label": "RFC-0003: Composable Frontend Product Model",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0003-composable-frontend-product-model.md",
+                "description": "Draft。"
+              },
+              {
+                "label": "RFC-0004: Deal Link Single-Level Attribution",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0004-deal-link-single-level-attribution.md",
+                "description": "Superseded by RFC-0007。"
+              },
+              {
+                "label": "RFC-0005: Core-owned Resource Collateral Lifecycle",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0005-core-owned-resource-collateral.md",
+                "description": "Draft。"
+              },
+              {
+                "label": "RFC-0006: Payment Kernel, Rails, and Trusted Distribution Modules",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0006-payment-kernel-rails-and-trusted-modules.md",
+                "description": "Draft。"
+              },
+              {
+                "label": "RFC-0007: Seller-funded Affiliate Attribution and Atomic Settlement",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0007-seller-funded-affiliate-atomic-settlement.md",
+                "description": "Draft。"
+              },
+              {
+                "label": "RFC-0008: Node Key Domains and Receiving Architecture",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0008-node-key-domains-and-receiving-architecture.md",
+                "description": "Draft。"
+              },
+              {
+                "label": "RFC-0009: Frozen Payment Attempt Settlement Terms",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0009-frozen-payment-attempt-settlement-terms.md",
+                "description": "Draft。"
+              },
+              {
+                "label": "RFC-0010: Guest Checkout Trust and Custody Model",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0010-guest-checkout-trust-and-custody.md",
+                "description": "Draft。"
+              },
+              {
+                "label": "RFC-0011: Order Settlement Authorization Keys",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0011-order-settlement-authorization-keys.md",
+                "description": "Draft。"
+              },
+              {
+                "label": "RFC-0012: Embedded Wallet Buyer Settlement Keys and Onramp-Funded Attempts",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0012-embedded-wallet-buyer-settlement-keys.md",
+                "description": "Draft。"
+              },
+              {
+                "label": "RFC template",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0000-template.md"
+              }
+            ]
+          },
+          {
+            "type": "callout",
+            "tone": "important",
+            "text": "Accepted 与 Implemented 是不同状态。只有 release evidence 和 effective runtime capability 能证明已交付可用。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/project/rfcs"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/project/roadmap",
+    "title": "Mobazha 接下来要验证什么",
+    "summary": "查看项目正在验证的产品结果、推进所需证据，以及仍属于探索而非承诺的方向。",
+    "status": "Draft",
+    "audiences": [
+      "用户",
+      "贡献者",
+      "运营者",
+      "开发者",
+      "评估者",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Mobazha 接下来要验证什么",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/roadmap",
+    "evidenceLabel": "公开发布范围、仓库 milestone、audit 与已审核产品路线图",
+    "evidenceUrl": "https://github.com/mobazha",
+    "reviewed": "2026-07-14",
+    "pageType": "concept",
+    "outcome": "理解项目接下来要验证的结果、对用户的意义，以及方向成为发布承诺前必须具备的证据。",
+    "estimatedTime": "8 分钟",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "查看当前验证目标",
+      "href": "/zh/project/roadmap#当前验证目标"
+    },
+    "language": "zh-CN",
+    "translationOf": "project/roadmap",
+    "sections": [
+      {
+        "heading": "当前验证目标",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Roadmap 描述期望的用户与产品结果，不是交付日历或 capability 存在证据。内部计划中的日期或条目，只有经过 accepted、implemented、tested、documented 与 released 才成为公开承诺。"
+          },
+          {
+            "type": "paragraph",
+            "text": "近期目标不是功能数量，而是让不同角色能完成并验证一条可信候选版本闭环："
+          },
+          {
+            "type": "table",
+            "headers": [
+              "用户",
+              "要验证的结果",
+              "成功证据"
+            ],
+            "rows": [
+              [
+                "买家",
+                "看懂卖家、总额、付款指示、订单状态与恢复路径",
+                "一笔具有 Quote、Payment Session、履约与恢复状态的完整测试订单"
+              ],
+              [
+                "卖家",
+                "配置店铺、发布 Offer、收到付款证据、履约与售后",
+                "无隐藏管理员修复的可重复 store-to-order 操作"
+              ],
+              [
+                "运营者",
+                "运行健康、安全、可恢复的 backend",
+                "Diagnostics、monitoring、backup restore、upgrade decision 与 incident owner"
+              ],
+              [
+                "开发者 / Agent 构建者",
+                "发现 capability、窄认证、调用公开 contract 并核对未知结果",
+                "覆盖 denial、retry、duplicate、conflict 与 recovery 的 versioned test"
+              ],
+              [
+                "评估者",
+                "区分当前行为、可选服务、费用、依赖与未来方向",
+                "一致的 release、policy、compatibility 与 source evidence"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "近期结果主线",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "买卖旅程：让总额、付款进度、履约、退款与争议清晰可测。",
+              "Standalone 运营：证明 secure first run、监控、restore、migration、rollback 与支持。",
+              "Hosted / independent 一致性：共享 contract、真实 runtime capability、跨 distribution conformance，并披露服务差异。",
+              "付款与保障：分开付款事件、已验证付款、订单状态、settlement 与 buyer protection。",
+              "公开集成：用 scoped credential、stable contract、idempotency、capability gate、approval 与 failure test 限制 API、MCP、webhook 和 Agent 权限。",
+              "发布信任：用 checksum、provenance、SBOM、compatibility、migration、known issue 与文档证明可用性。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "仍受 Gate 限制的探索",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "更丰富 community market、Deal Link、更多 payment/protection model、AI/Agent/Skill、multi-store、更多 channel、launcher 与更广 extension runtime 都仍是探索。每项必须先证明相应 operator responsibility、privacy、custody、authorization、failure semantics、cost control、recovery 与 compatibility。"
+          },
+          {
+            "type": "paragraph",
+            "text": "Roadmap 不承诺每个 adapter 都发布、所有 deployment 能力相同、固定日期、永久免费或零外部成本、统一佣金模型、Token 回报，也不允许 Agent、plugin、marketplace 或 hosted service 绕过 store、order、payment 或 user authority。"
+          }
+        ]
+      },
+      {
+        "heading": "结果如何成为 Current",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "记录真实用户问题与目标结果。",
+              "审核 product、security、economic、legal 与 operational 边界。",
+              "定义公开 contract 与 capability behavior。",
+              "在相关 distribution 测试 implementation 与 migration。",
+              "让 user journey、failure recovery、documentation 与 support evidence 一致。",
+              "Release 发布 scope、artifact、known issue 与 compatibility evidence。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "发布范围",
+                "href": "/zh/project/release-scope"
+              },
+              {
+                "label": "公开决定与提案",
+                "href": "/zh/project/decisions"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/project/roadmap"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/project/security",
+    "title": "项目安全模型",
+    "summary": "Mobazha 安全依赖明确权威、fail-closed capability、受保护签名材料、敌意输入假设与私下披露。",
+    "status": "Beta",
+    "audiences": [
+      "运营者",
+      "开发者",
+      "安全审核者",
+      "评估者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "项目安全模型",
+    "authorityUrl": "https://docs.mobazha.org/zh/project/security",
+    "evidenceLabel": "Mobazha 公开安全来源",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/SECURITY.md",
+    "reviewed": "2026-07-14",
+    "pageType": "policy",
+    "outcome": "理解项目安全边界，并通过私下报告渠道处理疑似漏洞。",
+    "estimatedTime": "6 分钟",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "查看安全报告方式",
+      "href": "/zh/project/security#安全报告"
+    },
+    "language": "zh-CN",
+    "translationOf": "project/security",
+    "sections": [
+      {
+        "heading": "信任边界",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "拥有订单的 backend 是其状态与受保护转换的权威。",
+              "Client 是不受信任输入与 presentation layer；隐藏控件不能替代 server authorization。",
+              "Payment rail、RPC、indexer、plugin、webhook、media 与 delivery system 是有独立 threat/failure model 的外部依赖。",
+              "Extension 取得最小 typed projection 与 scoped handle，而非通用 database 或 Core access。",
+              "敏感操作要可审计，但日志不应包含 secret 或无关个人资料。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Release 与供应链",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "当前 release 是 pre-release candidate。最终 artifact 仍需 vulnerability scanning、dependency/license review、SBOM、checksum、provenance、reproducibility evidence、secret scan 与平台验证。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Node supply-chain audit",
+                "href": "https://github.com/mobazha/mobazha/blob/main/docs/security/SUPPLY_CHAIN_AUDIT.md"
+              },
+              {
+                "label": "Unified supply-chain audit",
+                "href": "https://github.com/mobazha/mobazha-unified/blob/main/docs/security/SUPPLY_CHAIN_AUDIT.md"
+              },
+              {
+                "label": "运营者安全",
+                "href": "/zh/self-host/security"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "安全报告",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "使用受影响仓库的 GitHub private vulnerability reporting。不要在 issue、chat 或文档反馈中公开 exploit 细节、泄露凭据、签名密钥问题或客户数据。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/project/security"
+              }
+            ]
           }
         ]
       }
@@ -14819,6 +18066,181 @@
     ]
   },
   {
+    "slug": "zh/reference",
+    "title": "参考与来源地图",
+    "summary": "提议或自动化变更前，找到公开知识、运行时、合约与实现证据的权威。",
+    "status": "Current",
+    "audiences": [
+      "开发者",
+      "贡献者",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "参考与来源地图",
+    "authorityUrl": "https://docs.mobazha.org/zh/reference",
+    "evidenceLabel": "Mobazha GitHub organization",
+    "evidenceUrl": "https://github.com/mobazha",
+    "reviewed": "2026-07-14",
+    "pageType": "hub",
+    "outcome": "找到拥有公开解释、运行时事实、版本合约或实现陈述的权威来源。",
+    "estimatedTime": "3 分钟",
+    "journey": "build",
+    "primaryAction": {
+      "label": "查看权威归属",
+      "href": "/zh/reference#权威归属"
+    },
+    "language": "zh-CN",
+    "translationOf": "reference",
+    "sections": [
+      {
+        "heading": "权威归属",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "mobazha/mobazha-docs：canonical public knowledge、project policy、user guidance、跨仓库解释、RFC、project ADR 与 history。",
+              "mobazha/mobazha：community backend、生成合约、部署、code-near architecture、conformance 与 Node release notes。",
+              "mobazha/mobazha-unified：公开跨平台客户端实现、package 与 feature design、runtime-capability handling 与 client release notes。",
+              "mobazha/mobazha.org：公开网站、定位与高层披露。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "Evidence link 支持 canonical docs page，但不会成为第二个公开政策来源。连接的 backend、transaction record、generated contract 与 tagged release 仍是运行时与版本事实更具体的权威。"
+          },
+          {
+            "type": "callout",
+            "tone": "important",
+            "text": "内部 Hosting 计划、凭据、运营 playbook、预测和未批准商业实验不是公开文档来源。"
+          }
+        ]
+      },
+      {
+        "heading": "公开仓库",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Mobazha Node",
+                "href": "https://github.com/mobazha/mobazha"
+              },
+              {
+                "label": "Mobazha Unified",
+                "href": "https://github.com/mobazha/mobazha-unified"
+              },
+              {
+                "label": "Mobazha website",
+                "href": "https://github.com/mobazha/mobazha.org"
+              },
+              {
+                "label": "Mobazha documentation",
+                "href": "https://github.com/mobazha/mobazha-docs"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/reference"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/releases",
+    "title": "Releases",
+    "summary": "使用仓库 Release 查找准确版本、Migration note、checksum 与 known issue。",
+    "status": "Current",
+    "audiences": [
+      "运营者",
+      "开发者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "Releases",
+    "authorityUrl": "https://docs.mobazha.org/zh/releases",
+    "evidenceLabel": "Mobazha GitHub Releases",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
+    "reviewed": "2026-07-14",
+    "pageType": "hub",
+    "outcome": "找到当前 release evidence 与采用检查，不把 release candidate 当作稳定生产软件。",
+    "estimatedTime": "5 分钟",
+    "journey": "understand",
+    "primaryAction": {
+      "label": "查看当前候选版本",
+      "href": "/zh/releases#当前候选版本"
+    },
+    "language": "zh-CN",
+    "translationOf": "releases",
+    "sections": [
+      {
+        "heading": "当前候选版本",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "v0.3 用于评估与 Testnet。稳定 binary 与签名 release artifact 尚未发布。首个 release 默认启用 BTC、BCH 与 LTC，但受完整 effective-capability 交集和卖家配置约束。"
+          }
+        ]
+      },
+      {
+        "heading": "采用 Release 前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "确认 repository、version、publication date 与 artifact integrity。",
+              "阅读 breaking change、migration、capability change 与 known issue。",
+              "在代表生产的环境测试 backup 与 rollback。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "文档 Release Gate",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Node 与 Unified tag workflow 会验证 versioned release note 存在、必要公开指南可访问，且文档 source manifest 审核的正是将打 tag 的 commit。Tag 不得在公开指南仍描述另一 source revision 时创建 release。"
+          },
+          {
+            "type": "paragraph",
+            "text": "此 gate 证明文档就绪，不替代 test、artifact provenance、signature、SBOM review、migration validation 或 runtime capability check。"
+          }
+        ]
+      },
+      {
+        "heading": "Release 来源",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Mobazha Node release notes",
+                "href": "https://github.com/mobazha/mobazha/tree/main/docs/releases"
+              },
+              {
+                "label": "Mobazha Unified release notes",
+                "href": "https://github.com/mobazha/mobazha-unified/tree/main/docs/releases"
+              },
+              {
+                "label": "Published GitHub releases",
+                "href": "https://github.com/mobazha/mobazha/releases"
+              },
+              {
+                "label": "Reviewed public source revisions",
+                "href": "/sources.json"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/releases"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "zh/self-host",
     "title": "运行自己的 Mobazha Node",
     "summary": "自行托管让店铺数据与运营处于你的控制之下，同时把安全、备份、升级和可用性责任交给你。",
@@ -14890,6 +18312,345 @@
               {
                 "label": "English canonical page",
                 "href": "/self-host"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/self-host/backup-and-upgrade",
+    "title": "安全备份与升级",
+    "summary": "把升级就绪当作可恢复性演练，而不只是更新软件包。",
+    "status": "Beta",
+    "audiences": [
+      "运营者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "安全备份与升级",
+    "authorityUrl": "https://docs.mobazha.org/zh/self-host/backup-and-upgrade",
+    "evidenceLabel": "Mobazha 运营指南",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/docs/releases",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "生成经过验证的备份，并升级一个已审核版本，同时保留可恢复的回滚点。",
+    "estimatedTime": "30–60 分钟",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "准备恢复点",
+      "href": "/zh/self-host/backup-and-upgrade#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "self-host/backup-and-upgrade",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "阅读 release notes，识别 schema、付款、capability 与配置变更。",
+              "创建带版本信息的备份，并确认其可读取。",
+              "记录运行版本与配置；单独保护 secret。",
+              "变更生产环境前，规划 rollback 与维护窗口。",
+              "升级后验证健康、店铺访问、订单流程与付款 callback。"
+            ]
+          },
+          {
+            "type": "callout",
+            "tone": "warning",
+            "text": "备份文件只有在隔离环境中按兼容版本流程检查并恢复过，才构成恢复计划。"
+          }
+        ]
+      },
+      {
+        "heading": "备份与升级步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "记录运行 binary version 或 commit、service arguments、data directory、配置与 effective capabilities。",
+              "阅读 Node 与客户端 release notes，识别 migration、已移除 flag、付款变更与 compatibility requirement。",
+              "运行诊断；升级前解决既有损坏、存储或依赖故障。",
+              "按 release procedure 停止或静止写入，并创建带时间戳的备份。",
+              "把备份与必要恢复材料复制到独立保护的位置。",
+              "在隔离环境中，用代表性数据测试新版本。",
+              "安排维护窗口，安装已审核 artifact 并启动服务。",
+              "验证诊断、Storefront、管理、订单读取、付款观察、webhook 投递与备份创建。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "内置命令",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "版本变更前运行诊断并创建压缩备份。"
+          },
+          {
+            "type": "code",
+            "language": "text",
+            "code": "./mobazha doctor --json\n./mobazha backup --output mobazha-backup.tar.gz"
+          },
+          {
+            "type": "paragraph",
+            "text": "备份命令会报告解析后的来源与输出路径，最后报告 archive 大小；路径和大小取决于部署。"
+          },
+          {
+            "type": "code",
+            "language": "text",
+            "code": "Backing up <data-dir> → <absolute-output-path>/mobazha-backup.tar.gz\nBackup complete: <absolute-output-path>/mobazha-backup.tar.gz (<size> MB)"
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "备份命令应无错误完成，并在指定路径生成非空 archive。记录大小、创建时间、来源版本与 cryptographic checksum。即使 archive 内的数据已加密，也要用独立访问政策保护 secret 与恢复材料。"
+          },
+          {
+            "type": "paragraph",
+            "text": "升级后比较 effective capabilities，并完成一条小额 Testnet 旅程。不能只凭进程健康宣告成功。"
+          }
+        ]
+      },
+      {
+        "heading": "恢复与回滚",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "当前候选版本没有为所有历史版本发布通用的一键恢复承诺。使用 release-specific migration 与 restore 指南，保留原始备份，并先在独立数据目录练习。只有旧 binary 支持升级后的数据格式时才可 rollback。"
+          },
+          {
+            "type": "unordered-list",
+            "items": [
+              "升级后启动失败时，停止反复写入并保留日志与升级后的数据副本。",
+              "migration 为单向时，恢复升级前备份，不要用旧 binary 打开已迁移数据。",
+              "订单或付款不一致时，让资金自动化 fail closed，同时进行 reconciliation。",
+              "缺少恢复说明应作为 release blocker 报告，而不是由运营者在生产环境临时发挥。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/self-host/backup-and-upgrade"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/self-host/bind-account",
+    "title": "连接可选托管能力",
+    "summary": "将本地 Node 所有权与任何可选账号或托管服务连接明确分开。",
+    "status": "Draft",
+    "audiences": [
+      "运营者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "连接可选托管能力",
+    "authorityUrl": "https://docs.mobazha.org/zh/self-host/bind-account",
+    "evidenceLabel": "Mobazha 公开发布边界",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/README.md",
+    "reviewed": "2026-07-14",
+    "pageType": "policy",
+    "outcome": "在交换 Node 或账号权限前，判断可选托管连接是否已有稳定公开合约。",
+    "estimatedTime": "4 分钟",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "阅读当前状态",
+      "href": "/zh/self-host/bind-account#目前稳定的内容"
+    },
+    "language": "zh-CN",
+    "translationOf": "self-host/bind-account",
+    "sections": [
+      {
+        "heading": "目前稳定的内容",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "本地 standalone store 无需 Mobazha Hosting 账号，仍可用于管理、Listing、数据导出与受支持的 UTXO 付款流程。未来可选服务可能增加发现、搜索、路由、托管更新或支持。"
+          },
+          {
+            "type": "callout",
+            "tone": "important",
+            "text": "目前还没有稳定的公开 Node-to-account binding contract。不要把内部 endpoint、旧截图或历史设计文档当作受支持流程。"
+          }
+        ]
+      },
+      {
+        "heading": "连接任何服务前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "确认正在管理目标 Node 与账号。",
+              "创建新备份，并将恢复材料保存在浏览器会话之外。",
+              "要求清楚说明 capability、data exchange、permission、revocation 与 price。",
+              "不要把 seed phrase、wallet private key 或 database credential 粘贴到账号绑定表单。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "受支持流程的发布 gate",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "公开 Node 与客户端仓库描述同一个 versioned contract。",
+              "UI 显示 Node identity、requested permissions、exchanged data 与 revocation path。",
+              "Authentication 不暴露 Node recovery material，也不会静默扩大 runtime capabilities。",
+              "自动化测试覆盖 connection、denial、expiry、revocation 与 recovery。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/self-host/bind-account"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/self-host/configure",
+    "title": "配置自行托管的 Node",
+    "summary": "明确且可恢复地设置部署模式、数据位置、网络暴露、付款与外部依赖。",
+    "status": "Beta",
+    "audiences": [
+      "运营者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "配置自行托管的 Node",
+    "authorityUrl": "https://docs.mobazha.org/zh/self-host/configure",
+    "evidenceLabel": "Mobazha Node 命令与部署源码",
+    "evidenceUrl": "https://github.com/mobazha/mobazha",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "运行一个数据、listener、依赖、备份与回滚负责人都明确的 Node profile。",
+    "estimatedTime": "20–40 分钟",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "记录部署 profile",
+      "href": "/zh/self-host/configure#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "self-host/configure",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "学习运营模型时使用专用数据目录与 Testnet。把准确 binary commit、flags、配置与外部依赖和备份程序一起记录。"
+          },
+          {
+            "type": "code",
+            "language": "text",
+            "code": "./mobazha init --testnet --datadir /path/to/mobazha-data\n./mobazha start --testnet --datadir /path/to/mobazha-data --open"
+          },
+          {
+            "type": "paragraph",
+            "text": "修改不可丢弃的 profile 前先备份，并记录 binary commit、network、data directory、listener、reverse proxy、DNS、certificate、付款依赖与 rollback owner。"
+          }
+        ]
+      },
+      {
+        "heading": "配置步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "选择一个明确的数据目录，并把访问限制在 service account。",
+              "把管理 listener 保持在 loopback 或受信任私有网络。",
+              "只有确需远程管理时，才配置带认证的 TLS reverse proxy。",
+              "每次只启用一种付款或 Extension 依赖，并在每次变更后检查健康。",
+              "配置备份目的地、监控、日志保留与升级责任。",
+              "通过受支持的 service command 重启，并重新运行诊断。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "安全与依赖检查",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "除非有意配置了带认证 reverse proxy 与 TLS 边界，否则管理接口只绑定受信任网络。",
+              "只启用 effective runtime capability set 报告、且卖家已配置的付款方式。",
+              "把 RPC、indexer、webhook、plugin 和远程媒体输入视为不受信任依赖。",
+              "Secret 不进入源码控制；恢复材料与普通服务配置分开。",
+              "生产使用前，记录 DNS、firewall、proxy、certificate、backup、monitoring 与 rollback 的负责人。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "存在源码文件、可识别标识符、前端组件或配置字段，都不能证明能力已启用。实际可用性是 distribution allowlist、contract compatibility、installation 或 composition、authorization、configuration 与 health 的交集。"
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "code": "./mobazha service status\n./mobazha doctor --json\ncurl -fsS http://127.0.0.1:5102/v1/runtime-config | jq"
+          },
+          {
+            "type": "paragraph",
+            "text": "确认进程使用预定数据目录与网络、本地 UI 可访问、effective capabilities 与已配置依赖一致，并且没有管理接口意外公开。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "运行时能力",
+                "href": "/zh/build/runtime-capabilities"
+              },
+              {
+                "label": "英文兼容性政策",
+                "href": "/project/compatibility"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "失败时",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "回滚最后一次配置变更，不要同时改变多个变量。",
+              "Node 读取了其他 profile 时，停止服务并核对 service arguments，再写入新数据。",
+              "远程访问失败时，先重新测试 loopback 健康，再排查 proxy 或 DNS。",
+              "capability 变为不健康时，停止展示新工作，同时保留既有订单的恢复路径。",
+              "只通过与版本兼容的流程从已验证备份恢复。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/self-host/configure"
               }
             ]
           }
@@ -15061,6 +18822,593 @@
     ]
   },
   {
+    "slug": "zh/self-host/monitoring",
+    "title": "监控自行托管的 Node",
+    "summary": "在进程、存储、能力、付款、webhook 或恢复退化演变为订单事件前发现问题。",
+    "status": "Beta",
+    "audiences": [
+      "运营者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "监控自行托管的 Node",
+    "authorityUrl": "https://docs.mobazha.org/zh/self-host/monitoring",
+    "evidenceLabel": "Node 诊断与运营源码",
+    "evidenceUrl": "https://github.com/mobazha/mobazha",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "在进程、存储、能力和依赖退化演变为订单事件前发现问题。",
+    "estimatedTime": "20–40 分钟",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "定义告警边界",
+      "href": "/zh/self-host/monitoring#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "self-host/monitoring",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "明确谁接收告警、谁可以采取修正操作。",
+              "将监控凭据与 Node 管理员、签名凭据分开。",
+              "定义预期可用性、备份时效、磁盘余量与付款依赖健康标准。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "监控设置步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "从受信任本地 monitor 定期运行 `mobazha service status` 与 `mobazha doctor --json`。",
+              "监控进程重启、磁盘空间、文件系统错误、系统时间与备份时效。",
+              "轮询 runtime capability snapshot，并在 readiness 或付款方式意外变化时告警。",
+              "将 RPC、indexer、webhook 与外部服务商的延迟和失败，与 Node 健康分开监控。",
+              "追踪认证失败、重复 permission error、webhook dead letter 与订单 reconciliation failure。",
+              "测试告警发送，并为每类告警记录第一个安全响应。"
+            ]
+          },
+          {
+            "type": "code",
+            "language": "bash",
+            "code": "./mobazha service status\n./mobazha doctor --json\ncurl -fsS http://127.0.0.1:5102/v1/runtime-config | jq"
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "监控应能区分进程不可用、依赖退化、能力被拒绝和业务操作失败。在非生产环境触发可控失败，确认告警能指出正确边界，同时不记录 secret 或客户 payload。"
+          }
+        ]
+      },
+      {
+        "heading": "失败时",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "监控失去访问时，不要削弱 Node authentication；修复范围最窄的监控凭据或本地执行路径。",
+              "capability 变为不健康时，停止展示新工作，同时保留既有订单恢复。",
+              "磁盘或备份告警触发时，先保护当前数据，再重启或升级。",
+              "告警含有 secret 或个人资料时，按事件处理并轮换受影响凭据。"
+            ]
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/self-host/monitoring"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/self-host/network-and-tls",
+    "title": "设计网络与 TLS 边界",
+    "summary": "默认保持 Node 管理私密，只公开明确经过认证、加密并受监控的路由。",
+    "status": "Beta",
+    "audiences": [
+      "运营者",
+      "安全审核者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "设计网络与 TLS 边界",
+    "authorityUrl": "https://docs.mobazha.org/zh/self-host/network-and-tls",
+    "evidenceLabel": "Node listener 与 API 表面",
+    "evidenceUrl": "https://github.com/mobazha/mobazha",
+    "reviewed": "2026-07-14",
+    "pageType": "concept",
+    "outcome": "选择一个保持管理私密、且只明确公开已认证路由的网络边界。",
+    "estimatedTime": "7 分钟",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "查看建议边界",
+      "href": "/zh/self-host/network-and-tls#建议边界"
+    },
+    "language": "zh-CN",
+    "translationOf": "self-host/network-and-tls",
+    "sections": [
+      {
+        "heading": "建议边界",
+        "blocks": [
+          {
+            "type": "code",
+            "language": "text",
+            "code": "public client\n  -> TLS reverse proxy or trusted private network\n  -> authenticated allowed routes\n  -> Node on loopback or a private interface"
+          },
+          {
+            "type": "paragraph",
+            "text": "不要把默认管理 listener 直接暴露到互联网。Reverse proxy 不会让未认证路由自动安全；必须保留 Node authentication、request limits、body limits、timeouts、WebSocket upgrade handling 与 security headers。"
+          }
+        ]
+      },
+      {
+        "heading": "路由注意事项",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "表面",
+              "默认路径",
+              "边界"
+            ],
+            "rows": [
+              [
+                "Embedded UI 与 HTTP API",
+                "`http://127.0.0.1:5102`，API 位于 `/v1/`",
+                "不同 operation 的管理与商业授权要求不同"
+              ],
+              [
+                "WebSocket",
+                "`/ws`",
+                "认证连接，并保留重连限制"
+              ],
+              [
+                "MCP Streamable HTTP",
+                "`/v1/mcp`",
+                "要求 gateway identity、`ai:use` 与 tool scopes"
+              ],
+              [
+                "Webhooks",
+                "从 Node 向外发送",
+                "验证 destination、TLS、signature、timeout 与 retry 行为"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "暴露检查",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "使用受维护配置终止 TLS，并安全自动更新 certificate。",
+              "把 Node 绑定到 loopback 或私有接口，限制主机 firewall ingress。",
+              "只通过受信任 proxy headers 转发原始 scheme 与 host。",
+              "设置 rate、connection、request-size 与 timeout 限制，同时不破坏 WebSocket 或 MCP streaming。",
+              "把公开 Storefront 与管理员、token minting、wallet 和 system operation 分离。",
+              "监控认证失败与意外路由暴露。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "从受信任边界外枚举时，只应看到有意公开的路由，且管理操作会拒绝未认证请求。从内部验证部署需要的 UI、API、WebSocket 与 MCP 路径。每次 proxy 或 certificate 变更后重新测试。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/self-host/network-and-tls"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/self-host/requirements",
+    "title": "自行托管的要求与就绪条件",
+    "summary": "安装 Mobazha Node 前，确认平台、责任归属、恢复、网络和运营能力。",
+    "status": "Beta",
+    "audiences": [
+      "运营者",
+      "评估者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "自行托管的要求与就绪条件",
+    "authorityUrl": "https://docs.mobazha.org/zh/self-host/requirements",
+    "evidenceLabel": "Node 构建与 standalone 部署源码",
+    "evidenceUrl": "https://github.com/mobazha/mobazha",
+    "reviewed": "2026-07-14",
+    "pageType": "policy",
+    "outcome": "判断团队能否安全承担主机、网络、恢复、更新与事件响应。",
+    "estimatedTime": "10 分钟",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "检查运营基线",
+      "href": "/zh/self-host/requirements#当前软件基线"
+    },
+    "language": "zh-CN",
+    "translationOf": "self-host/requirements",
+    "sections": [
+      {
+        "heading": "当前软件基线",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "要求",
+              "候选版本基线",
+              "重要性"
+            ],
+            "rows": [
+              [
+                "操作系统",
+                "受支持的 macOS 或 Linux 环境",
+                "当前源码构建与服务路径在这些环境验证"
+              ],
+              [
+                "Go",
+                "1.26.4",
+                "与公开构建流程一致"
+              ],
+              [
+                "Git",
+                "当前受支持客户端",
+                "用于记录准确源码版本"
+              ],
+              [
+                "网络",
+                "评估期间使用 Testnet",
+                "避免把预发布行为视为生产就绪"
+              ],
+              [
+                "Listener",
+                "默认 loopback",
+                "保持管理边界私密"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "实际 CPU、内存、存储与带宽需求取决于 Listing、媒体、订单量、数据保留、集成与可用性目标。应测量代表性负载，不要把能启动的最低配置当作生产容量。"
+          }
+        ]
+      },
+      {
+        "heading": "运营责任",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "明确由谁修补主机、控制管理员访问、监控健康并响应付款或订单事件。",
+              "定义数据保留、备份频率、恢复测试、恢复目标和异地存储。",
+              "明确 DNS、TLS、reverse proxy、firewall、RPC、indexer、webhook 与付款服务商负责人。",
+              "维护能代表生产部署的测试环境。",
+              "让授权运营者能够取得恢复材料，但不得放入源码控制或日常日志。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "就绪决定",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "如果尚不能承担主机安全、备份、监控、更新和事件响应，应先使用托管方式评估。只有控制权与可移植性值得这些责任，且团队能在接受实质交易前证明可恢复时，才选择自行托管。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "安装 Node",
+                "href": "/zh/self-host/install"
+              },
+              {
+                "label": "安全配置",
+                "href": "/zh/self-host/configure"
+              },
+              {
+                "label": "备份与升级",
+                "href": "/zh/self-host/backup-and-upgrade"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/self-host/requirements"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/self-host/security",
+    "title": "保护自行托管的 Node",
+    "summary": "把主机、管理边界、签名材料、付款集成、备份与恢复路径作为一个系统保护。",
+    "status": "Beta",
+    "audiences": [
+      "运营者",
+      "安全审核者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "保护自行托管的 Node",
+    "authorityUrl": "https://docs.mobazha.org/zh/self-host/security",
+    "evidenceLabel": "Mobazha 安全政策与 Extension 安全模型",
+    "evidenceUrl": "https://github.com/mobazha/mobazha/blob/main/SECURITY.md",
+    "reviewed": "2026-07-14",
+    "pageType": "policy",
+    "outcome": "为自己运营的 Node 建立最低主机、身份、secret、付款、监控与恢复控制。",
+    "estimatedTime": "10 分钟",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "检查运营者基线",
+      "href": "/zh/self-host/security#最低运营者基线"
+    },
+    "language": "zh-CN",
+    "translationOf": "self-host/security",
+    "sections": [
+      {
+        "heading": "最低运营者基线",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "使用专用、已修补的主机和最小权限 service account。",
+              "Admin API 默认保持私密；远程暴露前加入 TLS、authentication、rate limit 与 network policy。",
+              "分别保护 seed phrase、private key、API token、webhook secret 与 backup。",
+              "把每个 chain RPC、indexer、plugin、webhook 与 delivery integration 当作恶意输入边界审核。",
+              "监控健康、存储、认证失败、付款观察、webhook 投递与意外 capability 变更。",
+              "在版本或基础设施变更前测试 restore 与 rollback。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "资金边界",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "只有 Core policy 可以改变付款、退款、争议或 settlement 状态。",
+              "Extension 与外部服务不得获得原始 seed phrase 或 private key。",
+              "付款 observation 不是结算权限；仍要检查预期状态、身份、金额、confirmations 与 idempotency。",
+              "禁用不健康 capability 必须 fail closed，不能静默选择另一种资金行为。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "私下报告漏洞",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "怀疑存在漏洞、凭据泄露、签名密钥问题或 exploit 时，不要创建公开 issue。请从受影响仓库的 Security 页使用 GitHub private vulnerability reporting。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Node security policy",
+                "href": "https://github.com/mobazha/mobazha/security/policy"
+              },
+              {
+                "label": "Supply-chain audit baseline",
+                "href": "https://github.com/mobazha/mobazha/blob/main/docs/security/SUPPLY_CHAIN_AUDIT.md"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/self-host/security"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/self-host/troubleshooting",
+    "title": "排查 Mobazha Node 故障",
+    "summary": "在不暴露敏感资料的前提下，诊断版本、进程、健康、能力、配置与依赖故障。",
+    "status": "Beta",
+    "audiences": [
+      "运营者",
+      "支持人员"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "排查 Mobazha Node 故障",
+    "authorityUrl": "https://docs.mobazha.org/zh/self-host/troubleshooting",
+    "evidenceLabel": "Mobazha Node 运营命令",
+    "evidenceUrl": "https://github.com/mobazha/mobazha#operations",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "隔离一个故障边界，并在进行恢复变更前保留可复现、已脱敏的测试。",
+    "estimatedTime": "10–30 分钟",
+    "journey": "operate",
+    "primaryAction": {
+      "label": "记录初始状态",
+      "href": "/zh/self-host/troubleshooting#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "self-host/troubleshooting",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "修改数据、flag、版本或付款配置前，创建或找到当前备份。记录准确症状、首次发生时间、近期变更、版本、平台、network mode 与预定 data directory。"
+          }
+        ]
+      },
+      {
+        "heading": "诊断步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "确认 binary version、start flags、data directory、network mode、system time 与可用磁盘空间。",
+              "在不暴露 secret 的情况下检查 service status 与 diagnostics。",
+              "先测试本地 UI 与 runtime endpoint，再检查外部 DNS、proxy 或浏览器层。",
+              "将展示的 runtime capabilities 与失败 operation 对照。",
+              "区分 Node 故障与 RPC、indexer、network、payment provider、webhook consumer 或 browser 故障。",
+              "复现一条最小失败请求或 UI 旅程，并保留其脱敏标识符。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "首轮检查",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "确认 binary version、start flags、data directory、network mode 与 system clock。",
+              "测试外部 DNS 或 proxy 前，先确认本地 UI 与健康端点响应。",
+              "将展示的 runtime capabilities 与失败 operation 对照。",
+              "区分 Node、RPC、indexer、network、payment provider、webhook consumer 或 browser 的故障。"
+            ]
+          },
+          {
+            "type": "code",
+            "language": "text",
+            "code": "./mobazha service status\n./mobazha doctor\n./mobazha doctor --json"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "症状",
+              "首先检查的边界",
+              "避免"
+            ],
+            "rows": [
+              [
+                "进程无法启动",
+                "data directory 所有权、port、disk、既有 process",
+                "删除 profile"
+              ],
+              [
+                "本地 UI 不可用",
+                "loopback listener 与 process health",
+                "先修改公开 DNS"
+              ],
+              [
+                "capability 缺失",
+                "runtime snapshot、configuration、dependency health",
+                "启用只存在于前端的 flag"
+              ],
+              [
+                "未检测到付款",
+                "order、asset、address、amount、expiry、RPC health",
+                "发送第二笔付款"
+              ],
+              [
+                "webhook 延迟",
+                "delivery history、endpoint response、signature handling",
+                "把重复投递当成新状态"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "可提供给支持人员的安全证据",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "记录准确 version 或 commit、操作系统、复现步骤、预期结果与脱敏错误。",
+              "只在不暴露客户资料或 secret 时提供 request、event 或 order 标识符。",
+              "移除 token、私有 endpoint、seed、key、wallet recovery material、原始客户资料与完整生产数据库。",
+              "怀疑安全问题时停止公开讨论，使用 private vulnerability reporting。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "先恢复，再实验",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "修改数据、flag、版本或付款配置前创建并验证备份。优先采用可复现 rollback，不要反复手工修改店铺唯一数据副本。"
+          },
+          {
+            "type": "code",
+            "language": "text",
+            "code": "./mobazha backup --output mobazha-backup.tar.gz"
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "诊断应找出故障边界与可复现测试，而不是只让症状消失。变更后重新运行诊断与受影响的最小旅程，再确认无关订单和付款路径仍稳定。"
+          }
+        ]
+      },
+      {
+        "heading": "失败时",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "两次无法解释的重试后停止，并保留原始证据。",
+              "理解 rollback 时，撤回最后一次已知配置变更。",
+              "不要编辑 Core order 或 payment table 强制状态转换。",
+              "安全问题私下升级，运营缺陷通过 Node issue tracker 报告。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "获取帮助",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "公开支持渠道",
+                "href": "/zh/support"
+              },
+              {
+                "label": "Node issues",
+                "href": "https://github.com/mobazha/mobazha/issues"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/self-host/troubleshooting"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "zh/sell",
     "title": "通过 Mobazha 开店与销售",
     "summary": "从店铺准备、商品发布、报价与付款，到订单履约和售后，保持责任与成本透明。",
@@ -15205,6 +19553,812 @@
               {
                 "label": "English canonical page",
                 "href": "/sell"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/sell/listings",
+    "title": "创建并验证 Listing",
+    "summary": "发布一项准确说明选项、价格、可用性、履约和买家可见条款的商品。",
+    "status": "Beta",
+    "audiences": [
+      "卖家"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "创建并验证 Listing",
+    "authorityUrl": "https://docs.mobazha.org/zh/sell/listings",
+    "evidenceLabel": "Unified Listing 编辑器与 Node Listing API",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/listing",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "发布一项买家能够理解、取得 Quote，并通过预定履约路径购买的 Listing。",
+    "estimatedTime": "15–30 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "准备 Listing 输入",
+      "href": "/zh/sell/listings#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "sell/listings",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "准备真实的标题、说明、媒体、价格、数量或服务容量，以及交付条件。",
+              "确定商品是实体、数字内容、服务，还是其他受支持的 Listing 类型。",
+              "发布前配置必要的配送或交付支持。",
+              "不要因为 Token 或付款能力的标识符可以解析，就把它写成可用。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "选择正确的创建入口",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "入口",
+              "适用场景",
+              "可用性说明"
+            ],
+            "rows": [
+              [
+                "`/admin/products`",
+                "检查发布状态、可用性、价格与既有 Listing。",
+                "主要管理表面。"
+              ],
+              [
+                "`/listing/new`",
+                "使用商品类型字段、媒体、选项、价格和履约信息创建完整 Listing。",
+                "首个代表性商品的首选入口。"
+              ],
+              [
+                "`/listing/quick`",
+                "以较少字段开始，再补全 Listing。",
+                "只在当前 distribution 提供该入口时使用。"
+              ],
+              [
+                "`/listing/import` 或 Admin import",
+                "将外部目录数据规范化为 Mobazha Listing 与供给事实。",
+                "导入后仍须卖家审核与发布。"
+              ],
+              [
+                "`/admin/collections`",
+                "把已发布 Listing 整理为买家可见的分组。",
+                "只负责陈列，不改变订单权威。"
+              ],
+              [
+                "`/admin/discounts`",
+                "定义适用的价格调整与优惠码。",
+                "已接受的 Quote 必须显示应用后的结果。"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "分开处理商品形态、选项与供给",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "事实",
+              "示例",
+              "为什么要分开"
+            ],
+            "rows": [
+              [
+                "商品类型",
+                "实体商品、数字商品、服务、收藏品或其他受支持类型",
+                "决定必填的履约与买家可见字段。"
+              ],
+              [
+                "选项",
+                "颜色、尺寸、授权等级、服务时长",
+                "买家选择的 Offer 属性。"
+              ],
+              [
+                "Variant / SKU",
+                "蓝色 + 大号，或 Pro + 年付",
+                "标识可购买组合，不代表供应商身份。"
+              ],
+              [
+                "可用性",
+                "库存、服务商供给、服务容量或资格",
+                "回答该组合目前能否履约。"
+              ],
+              [
+                "履约",
+                "配送模板、数字交付、预约、兑换或服务商路径",
+                "回答如何兑现已接受的承诺。"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Listing 步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "打开 **Admin → Products**，确认当前店铺；第一个代表性 Offer 使用完整的 `/listing/new` 入口。",
+              "先选择商品类型，再填写标题、说明、分类、买家可见媒体和类型专属事实。",
+              "使用正确精度填写价格与币种；以渲染金额为准，不要只信任存储的整数单位。",
+              "添加选项维度与 Variant。只在受支持且确有用途时，为每个可购买组合设置有意义的 SKU 或标识。",
+              "把可用性与选项名称分开配置：本地库存、服务容量、服务商供给或其他受支持来源。",
+              "按商品类型和目的地分配配送、数字交付、服务履约、兑换或其他有效路径。",
+              "加入卖家实际能够履行的退货、退款、保修、资格或兑换条件。",
+              "保存 Draft，在买家上下文预览 `/product/{slug}`，然后发布。",
+              "适用时将 Listing 加入 Collection 或设置 Discount；随后请求新 Quote 并核对结果，不要假设陈列变更已正确进入订单。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "在买家上下文打开公开商品 URL，核对标题、媒体、商品类型、选项、Variant 可用性、显示价格、卖家身份、政策和适用于目的地的履约方式。把商品加入购物车并请求新 Quote，继续到 Checkout 出现有效的配送和付款路径；发布成功本身不能证明 Offer 可以生成订单。"
+          }
+        ]
+      },
+      {
+        "heading": "失败时",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "商品已保存但未公开时，检查发布状态、Storefront 上下文、索引与运行时能力。",
+              "某选项无法购买时，检查 Variant 完整性与可用性。",
+              "价格渲染错误时，停止发布并核对金额单位、币种和精度。",
+              "无配送方式时，将 Listing 分配到适用模板并重新测试买家目的地。",
+              "导入或服务商供给的商品已公开但不可用时，检查规范化后的 Supply 记录，不要在选项字段中虚构库存。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "变更安全",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "编辑已有活跃订单的 Listing 时，保留买家已接受的版本和条款。新 Listing 版本不得静默改写已创建订单。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/sell/listings"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/sell/orders",
+    "title": "处理进店订单",
+    "summary": "核对付款、确认义务、记录履约证据，并只使用状态允许的取消、退款、争议与完成操作。",
+    "status": "Beta",
+    "audiences": [
+      "卖家",
+      "运营者",
+      "Agent"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "处理进店订单",
+    "authorityUrl": "https://docs.mobazha.org/zh/sell/orders",
+    "evidenceLabel": "Unified 订单管理与 Node 订单状态合约",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/orders",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "只使用当前状态有效的操作，把一笔已付款订单推进到履约。",
+    "estimatedTime": "每次检查约 5 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "检查进店订单",
+      "href": "/zh/sell/orders#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "sell/orders",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "接单前发布履约与退款政策。",
+              "监控后端、付款依赖、库存与买家沟通。",
+              "区分订单通知与权威订单、付款状态。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "把订单工作区看成四组相连记录",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "当前客户端在 `/admin/orders` 提供卖家工作区，在 `/orders/{orderId}` 提供订单详情。详情可分别展示 Summary、Discussion、Dispute 与 Evidence；任何一项都不能替代其他记录。"
+          },
+          {
+            "type": "table",
+            "headers": [
+              "记录",
+              "用途",
+              "权威规则"
+            ],
+            "rows": [
+              [
+                "Order summary",
+                "已接受的 Listing 快照、参与方、金额、交付义务、当前状态与有效操作",
+                "每次重要状态转换后重新加载。"
+              ],
+              [
+                "Payment Session",
+                "Funding target、观察、验证、过期、settlement mode 与当前 capabilities",
+                "回执或聊天陈述不是付款权威。"
+              ],
+              [
+                "Discussion",
+                "与订单绑定的买卖双方协调",
+                "保留有用上下文，但不能只凭消息文本执行受保护状态。"
+              ],
+              [
+                "Dispute 与 Evidence",
+                "请求的 remedy、提交材料、履约记录与适用裁决路径",
+                "保留原始证据，并遵守角色、政策和状态允许的操作。"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "订单处理步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "打开 **Admin → Orders**（`/admin/orders`），选择目标店铺与订单。",
+              "核对卖家身份、商品版本、数量、选项、交付义务、总额与买家指示。",
+              "检查订单绑定的 Payment Session，并从后端拥有的状态验证资金；不要依赖截图或聊天消息。",
+              "只有在库存、政策和履约能力仍有效时才接受或确认。",
+              "严格按订单履约，并记录承运商、追踪号、数字交付、服务或其他受支持证据。",
+              "分别使用 Discussion、Dispute 与 Evidence；对取消、退款或争议，只执行当前状态与角色允许的操作。",
+              "只有已实现的交付与付款 gate 均满足后才完成订单。",
+              "按政策保留订单、Quote、付款、履约和沟通引用。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "每个卖家操作都应产生新的权威状态或明确错误，并保留之前可恢复的状态。每次资金或履约状态转换后重新打开订单，核对状态、时间戳、证据以及由此产生的付款操作。"
+          }
+        ]
+      },
+      {
+        "heading": "失败时",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "收到重复通知时，以订单与事件标识去重，并重新加载当前状态。",
+              "付款与订单不一致时，停止履约或结算自动化并核对付款引用。",
+              "履约证据保存失败时，安全保存证据，再通过受支持的转换重试。",
+              "操作返回 conflict 时，先刷新状态，再判断是否已由另一参与方完成。",
+              "Extension 不健康时，让 Core 资金状态转换 fail closed，并按恢复流程处理。",
+              "Discussion、Payment Session 与 Order summary 不一致时，保留标识并在行动前重载权威订单。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Agent 边界",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Agent 可以总结并准备操作，但没有所需身份、scope、状态、政策与人类确认时，不得确认、退款、结算或完成订单。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/sell/orders"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/sell/payments",
+    "title": "为销售准备付款方式",
+    "summary": "只展示 distribution 允许、已配置、健康，并由店铺后端持续监控的付款方式。",
+    "status": "Beta",
+    "audiences": [
+      "卖家",
+      "运营者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "为销售准备付款方式",
+    "authorityUrl": "https://docs.mobazha.org/zh/sell/payments",
+    "evidenceLabel": "Node 付款能力与 Unified 付款管理",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/payments",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-13",
+    "outcome": "只有在配置、健康、观察和恢复路径都得到验证后，才启用一种付款方式。",
+    "estimatedTime": "20–40 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "开始付款就绪检查",
+      "href": "/zh/sell/payments#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "sell/payments",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "评估候选版本时使用测试网与可丢弃订单。",
+              "确认该方式被 distribution 允许，并由后端实现。",
+              "了解密钥托管、观察、确认、退款路径、费用与外部依赖。",
+              "备份恢复材料；绝不要把 seed 或私钥输入文档、聊天或无关服务商表单。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "把付款就绪理解为会话，而不是一个标志",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "订单详情通过 `/v1/orders/{orderID}/payment-session` 解析 Payment Session。付款方式标志或 Admin 开关不能替代下列与订单绑定的事实："
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Payment Session 字段",
+              "回答的问题"
+            ],
+            "rows": [
+              [
+                "`paymentCoin`",
+                "预期使用哪个 canonical 加密资产，或哪个法币服务商/币种？"
+              ],
+              [
+                "`settlementMode`",
+                "是地址监控、服务商 Checkout、escrow，还是其他受支持结算路径？"
+              ],
+              [
+                "`productMode`",
+                "订单是 direct、cancelable，还是 moderated？"
+              ],
+              [
+                "`fundingTarget`",
+                "当前适用的准确地址或服务商会话、金额、资产、memo 与 QR payload 是什么？"
+              ],
+              [
+                "`paymentProgress`",
+                "已观察到什么、还差多少、有多少 observation，当前 funding 状态是什么？"
+              ],
+              [
+                "`expiresAt`",
+                "何时必须刷新指示，而不能继续复用目标？"
+              ],
+              [
+                "`capabilities`",
+                "当前允许 refresh、cancel、confirm、refund 或 completion 中的哪些操作？"
+              ],
+              [
+                "`userActionRequest`",
+                "还需要用户明确执行哪个钱包或服务商操作？"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "不要把**付款就绪**、**资金观察**、**验证**与**结算**合并成一个状态；它们回答不同的运营问题。"
+          }
+        ]
+      },
+      {
+        "heading": "付款就绪步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "打开 **Admin → Payments**（`/admin/payments`），检查收款账户、服务商、Guest Checkout 政策，以及后端报告为就绪的付款方式。",
+              "选择一种方式，只完成其文档列出的设置要求。",
+              "验证配置与健康状态，不要只依赖前端开关。",
+              "按该付款方式设置或复核确认与付款过期行为。",
+              "创建小额测试网订单，将显示的 Payment Session ID、订单 ID、canonical asset、settlement mode、funding target、预期金额与 expiry 和后端状态逐项对照。",
+              "广播或授权测试付款，并区分 observed progress 与后端拥有的 funded 状态。",
+              "重新打开订单详情，确认 capabilities 只提供当前状态有效的操作。",
+              "接受实质订单前，演练适用的取消或退款路径。"
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "对于 attempt-scoped 的标准加密货币付款，只有在必要的卖家与 moderator offer、冻结的结算条款和授权 bundle 一致后，funding target 才可操作。如果 Affiliate attribution 或其他订单特性不被该确切路径支持，后端必须在创建 Draft 前保持路径不可用；前端不能只凭 coin 或 rail 推断支持。"
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "只有完整的 effective-capability 交集就绪时，该方式才应出现在 Checkout。付款观察必须绑定预期订单、资产、地址、金额、预期状态与确认政策；识别到代码或安装了 adapter 并不足够。"
+          }
+        ]
+      },
+      {
+        "heading": "失败时",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "设置不完整时保持方式不可用，不要静默降级。",
+              "健康状态未知时停止展示新的 Checkout 工作，同时保留既有恢复路径。",
+              "观察到错误金额或目的地的付款时，不要自动结算。",
+              "会话显示 `awaiting_seller_receipt` 时，不要描述为买家付款延迟；此时卖家侧 funding target 尚未就绪。",
+              "不要让买家向废弃或不兼容 attempt 留下的地址付款；刷新 Payment Session，只使用当前可操作目标。",
+              "服务商 Checkout 或钱包操作失败时，重试前保留订单与 Payment Session 标识符。",
+              "退款路径不可用时，在接受该付款方式前披露限制。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "当前发布边界",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "公开客户端与后端包含多种付款 adapter 和兼容路径，但实际可用性由 distribution 政策、后端实现、店铺配置、健康状态、订单模式和 Payment Session capabilities 在运行时共同决定。Token 标识符或源码模块不会创造发布承诺。参见[英文发布范围](/project/release-scope)与[收费与经济模式](/zh/project/fees)。"
+          },
+          {
+            "type": "paragraph",
+            "text": "只有当服务商路径能让卖家出款保持 pending（或保留等价的可逆资金状态），并支持所需恢复操作时，provider-session payment 才能提供 moderated product mode。服务商自己的付款争议或 chargeback 流程，与 Mobazha moderator 的订单决定仍是两件事。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/sell/payments"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/sell/shipping",
+    "title": "配置配送与交付",
+    "summary": "定义商品可送达范围、向买家收取的费用，以及卖家履约后记录的证据。",
+    "status": "Beta",
+    "audiences": [
+      "卖家",
+      "运营者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "配置配送与交付",
+    "authorityUrl": "https://docs.mobazha.org/zh/sell/shipping",
+    "evidenceLabel": "Unified 配送模板与 Node Listing 合约",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin/settings/shipping",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "只提供适用于买家目的地、并会保留在已创建订单中的交付方式。",
+    "estimatedTime": "15–30 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "梳理交付要求",
+      "href": "/zh/sell/shipping#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "sell/shipping",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "列出发货地、支持的目的地、交付方式、预计时间与计价规则。",
+              "确定每个配送模板适用哪些 Listing。",
+              "说明不配送地区、关税责任、追踪能力与退货处理方式。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "配送如何进入 Mobazha 订单",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "阶段",
+              "权威事实",
+              "要避免的错误"
+            ],
+            "rows": [
+              [
+                "配送模板",
+                "在 `/admin/settings/shipping` 配置的区域、服务、费率、时效与条件",
+                "把一个全局费率视为适用于所有 Listing 和目的地。"
+              ],
+              [
+                "Listing 分配",
+                "实体商品版本在 Listing 的 Shipping 区块绑定适用模板",
+                "发布无法送达买家目的地的商品。"
+              ],
+              [
+                "Quote",
+                "目的地与所选服务生成买家可见的运费与时效",
+                "地址、数量或模板变更后继续复用目录估算。"
+              ],
+              [
+                "订单快照",
+                "已接受的交付服务、金额、目的地义务与卖家承诺保留在订单中",
+                "让后续模板编辑静默改变既有订单。"
+              ],
+              [
+                "履约证据",
+                "承运商、追踪号、交接、数字证明、服务完成或其他受支持记录",
+                "没有适合商品类型的证据就把订单标为已履约。"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "配送设置步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "打开 **Admin → Settings → Shipping**（`/admin/settings/shipping`）。",
+              "创建或选择代表一套一致履约政策的模板。",
+              "添加目的地区域，确保重叠是有意且易于理解的。",
+              "添加买家可见的服务名称、金额、币种、条件与预计送达时间。",
+              "打开每项实体 Listing 的 **Shipping** 区块并分配适用模板；移除数字商品、服务或需要其他交付路径的商品。",
+              "保存后测试区域内、区域外及每个支持区域边界上的地址。",
+              "完成测试订单，并通过订单流程记录承运商、追踪号或其他交付证据。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "Checkout 应只显示适用于商品和目的地的交付方式。所选运费必须出现在最终成本明细中，并与已创建订单关联；卖家订单视图应保留所选服务与义务。"
+          },
+          {
+            "type": "paragraph",
+            "text": "修改模板后，测试一份新 Quote，同时确认已经接受的订单仍显示原始交付承诺。"
+          }
+        ]
+      },
+      {
+        "heading": "失败时",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "没有选项时，检查目的地规范化、模板分配、Listing 类型与区域覆盖。",
+              "出现重复选项时，检查重叠区域与重复模板分配。",
+              "Checkout 金额与配置不符时，停止接单并核对币种与计算基准。",
+              "无法保存追踪信息时，私下安全保存引用并报告状态转换缺陷。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "数字商品与服务",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "不要为了让 Checkout 通过而给数字商品或服务附加实体运费。应使用受支持的交付合约，并分别说明访问、预约、兑换或证据。"
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "English canonical page",
+                "href": "/sell/shipping"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zh/sell/store-setup",
+    "title": "为首笔订单准备店铺",
+    "summary": "在接受买家资金前，配置店铺身份、政策、履约、付款方式，并走完一条完整测试旅程。",
+    "status": "Beta",
+    "audiences": [
+      "卖家",
+      "运营者"
+    ],
+    "authorityKind": "public-knowledge",
+    "authorityLabel": "为首笔订单准备店铺",
+    "authorityUrl": "https://docs.mobazha.org/zh/sell/store-setup",
+    "evidenceLabel": "Unified 卖家管理路由",
+    "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin",
+    "reviewed": "2026-07-14",
+    "pageType": "task",
+    "lastTested": "2026-07-04",
+    "outcome": "发布一个不依赖隐藏运营步骤、能完成一条代表性买家旅程的店铺。",
+    "estimatedTime": "30–60 分钟",
+    "journey": "use",
+    "primaryAction": {
+      "label": "开始就绪检查",
+      "href": "/zh/sell/store-setup#开始前"
+    },
+    "language": "zh-CN",
+    "translationOf": "sell/store-setup",
+    "sections": [
+      {
+        "heading": "开始前",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "选择托管或自行托管，并确认后端健康。",
+              "使用目标店铺的管理员身份，不要使用来自另一部署的买家会话。",
+              "准备公开店名、联系渠道、币种显示、履约地区、退货条款和付款方式。",
+              "将恢复材料保存在浏览器之外；进行重要配置变更前先创建备份。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "先确认正在修改哪个表面",
+        "blocks": [
+          {
+            "type": "table",
+            "headers": [
+              "管理表面",
+              "当前路由",
+              "控制内容"
+            ],
+            "rows": [
+              [
+                "店铺资料",
+                "`/admin/settings/profile`",
+                "公开运营者身份与资料信息。"
+              ],
+              [
+                "Storefront 编辑器",
+                "`/admin/storefront`",
+                "品牌、展示、区块与公开店面体验。"
+              ],
+              [
+                "店铺政策",
+                "`/admin/settings/policies`",
+                "买家可见的履约、退货、退款、隐私与保障条款。"
+              ],
+              [
+                "配送模板",
+                "`/admin/settings/shipping`",
+                "目的地资格、费率、时效与 Listing 覆盖。"
+              ],
+              [
+                "付款",
+                "`/admin/payments`",
+                "支持时的加密货币收款账户、可用服务商、Guest Checkout 行为与付款政策。"
+              ],
+              [
+                "商品",
+                "`/admin/products` 与 `/listing/new`",
+                "Listing 版本、选项、可用性、价格与履约分配。"
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "text": "**Store / Node** 拥有身份、政策、能力和订单；**Storefront** 是这些商业状态的展示表面。一个账号能访问多个店铺时，修改任何一项前都要确认当前店铺上下文。"
+          }
+        ]
+      },
+      {
+        "heading": "店铺设置步骤",
+        "blocks": [
+          {
+            "type": "ordered-list",
+            "items": [
+              "打开 **Admin → Settings → Profile**，核对当前店铺身份、公开运营者名称、联系渠道、地区设置与币种显示。",
+              "打开 **Admin → Storefront**，只发布属于该店铺的品牌与区块；继续前先预览公开页面。",
+              "打开 **Admin → Settings → Policies**，发布适合该运营者与付款模型的配送、退货、退款、隐私和买家保障条款。",
+              "打开 **Admin → Settings → Shipping**，创建至少覆盖一个真实目的地和目标商品类型的模板。",
+              "打开 **Admin → Payments**，只启用状态为就绪，且运营者能够监控、对账并在适用时退款的收款账户或服务商。",
+              "打开 **Admin → Products** 或 `/listing/new`，创建一项完整 Listing，并配置有效的可用性与履约方式。",
+              "在独立买家上下文中打开 `/store/{peerId}`，核对店铺身份、政策、Listing、Quote、配送和付款选择。",
+              "使用测试网订单走完卖家接受、付款验证、履约证据，以及买家完成或预期终态。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "预期结果与验证",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "公开 Storefront 应显示目标店铺身份、展示内容、政策、Listing 版本、完整价格组成、适用于目的地的配送方式，以及仅处于就绪状态的付款方式。管理员应能在同一店铺上下文中收到测试订单，并在不依赖隐藏工具的情况下检查付款与履约状态。"
+          }
+        ]
+      },
+      {
+        "heading": "失败时",
+        "blocks": [
+          {
+            "type": "unordered-list",
+            "items": [
+              "公开店铺与 Admin 不一致时，确认 Store / Storefront 上下文并刷新权威设置。",
+              "Checkout 没有配送选项时，确认 Listing 已绑定适用的配送模板或数字交付路径。",
+              "付款方式缺失时，检查运行时就绪状态，不要只在前端补一个标识符。",
+              "买家与卖家路由意外共用凭据时，停止使用实质资金并报告隔离缺陷。",
+              "修改了错误店铺时，停止操作，先核对账号、Store / Node、Storefront 与 `peerId` 上下文。"
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "继续",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "创建并验证 Listing",
+                "href": "/zh/sell/listings"
+              },
+              {
+                "label": "配置配送",
+                "href": "/zh/sell/shipping"
+              },
+              {
+                "label": "准备付款方式",
+                "href": "/zh/sell/payments"
+              },
+              {
+                "label": "处理进店订单",
+                "href": "/zh/sell/orders"
+              },
+              {
+                "label": "English canonical page",
+                "href": "/sell/store-setup"
               }
             ]
           }

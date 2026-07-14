@@ -349,8 +349,44 @@
           "/zh/sell"
         ],
         [
+          "店铺准备",
+          "/zh/sell/store-setup"
+        ],
+        [
+          "Listing",
+          "/zh/sell/listings"
+        ],
+        [
+          "配送",
+          "/zh/sell/shipping"
+        ],
+        [
+          "付款",
+          "/zh/sell/payments"
+        ],
+        [
+          "订单",
+          "/zh/sell/orders"
+        ],
+        [
           "买家指南",
           "/zh/buy"
+        ],
+        [
+          "Checkout",
+          "/zh/buy/checkout"
+        ],
+        [
+          "Guest Checkout",
+          "/zh/buy/guest-checkout"
+        ],
+        [
+          "订单状态",
+          "/zh/buy/order-status"
+        ],
+        [
+          "取消、退款与争议",
+          "/zh/buy/cancel-refund-dispute"
         ]
       ]
     },
@@ -362,8 +398,40 @@
           "/zh/self-host"
         ],
         [
+          "运行要求",
+          "/zh/self-host/requirements"
+        ],
+        [
           "安装",
           "/zh/self-host/install"
+        ],
+        [
+          "配置",
+          "/zh/self-host/configure"
+        ],
+        [
+          "网络与 TLS",
+          "/zh/self-host/network-and-tls"
+        ],
+        [
+          "监控",
+          "/zh/self-host/monitoring"
+        ],
+        [
+          "备份与升级",
+          "/zh/self-host/backup-and-upgrade"
+        ],
+        [
+          "安全",
+          "/zh/self-host/security"
+        ],
+        [
+          "故障排查",
+          "/zh/self-host/troubleshooting"
+        ],
+        [
+          "可选托管连接",
+          "/zh/self-host/bind-account"
         ]
       ]
     },
@@ -375,6 +443,18 @@
           "/zh/build"
         ],
         [
+          "Quickstart",
+          "/zh/build/quickstart"
+        ],
+        [
+          "认证与 Scope",
+          "/zh/build/authentication"
+        ],
+        [
+          "错误与 Idempotency",
+          "/zh/build/errors-and-idempotency"
+        ],
+        [
           "运行时能力",
           "/zh/build/runtime-capabilities"
         ],
@@ -383,8 +463,28 @@
           "/zh/build/token-identifiers"
         ],
         [
+          "HTTP API",
+          "/zh/build/api"
+        ],
+        [
+          "WebSocket",
+          "/zh/build/websocket"
+        ],
+        [
+          "MCP 与 Agent",
+          "/zh/build/mcp"
+        ],
+        [
+          "Webhooks",
+          "/zh/build/webhooks"
+        ],
+        [
           "扩展架构",
           "/zh/build/extensions"
+        ],
+        [
+          "参考与来源",
+          "/zh/reference"
         ]
       ]
     },
@@ -392,8 +492,20 @@
       "label": "产品基础",
       "links": [
         [
+          "系统架构",
+          "/zh/project/architecture"
+        ],
+        [
           "收费与经济模式",
           "/zh/project/fees"
+        ],
+        [
+          "兼容性",
+          "/zh/project/compatibility"
+        ],
+        [
+          "Packaging 与 Distribution",
+          "/zh/project/distribution"
         ]
       ]
     },
@@ -403,6 +515,10 @@
         [
           "白皮书 v0.2",
           "/zh/project/whitepaper"
+        ],
+        [
+          "产品路线图",
+          "/zh/project/roadmap"
         ]
       ]
     },
@@ -412,12 +528,52 @@
         [
           "项目概览",
           "/zh/project"
+        ],
+        [
+          "安全模型",
+          "/zh/project/security"
+        ],
+        [
+          "法律与隐私",
+          "/zh/project/legal-and-privacy"
+        ],
+        [
+          "发布范围",
+          "/zh/project/release-scope"
+        ],
+        [
+          "治理",
+          "/zh/project/governance"
+        ],
+        [
+          "决定与提案",
+          "/zh/project/decisions"
+        ],
+        [
+          "RFC",
+          "/zh/project/rfcs"
+        ],
+        [
+          "ADR",
+          "/zh/project/adrs"
+        ],
+        [
+          "历史",
+          "/zh/project/history"
+        ],
+        [
+          "Releases",
+          "/zh/releases"
         ]
       ]
     },
     {
       "label": "社区",
       "links": [
+        [
+          "参与贡献",
+          "/zh/contribute"
+        ],
         [
           "获取帮助",
           "/zh/support"
