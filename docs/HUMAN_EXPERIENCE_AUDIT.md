@@ -1,9 +1,9 @@
 # Human Documentation Experience Audit
 
-- Status: Current baseline
+- Status: Historical baseline with current follow-up
 - Scope: `docs.mobazha.org` human-facing English experience
 - Baseline date: 2026-07-04
-- Reassess after: Human Experience Phase 3
+- Follow-up review: 2026-07-14
 
 ## Executive verdict
 
@@ -17,6 +17,27 @@ This is not primarily a page-count problem. The central design problem is that
 hub, task, reference, concept, and policy content all use one authority-first
 presentation. The same facts should serve people and Agents, but they should
 not be forced through the same information hierarchy.
+
+## 2026-07-14 follow-up
+
+The baseline measurements below are retained for change history; they no
+longer describe the complete current portal. Role- and journey-scoped
+navigation, page-type presentation, visible primary actions, local section
+navigation, readable type scales, conceptual evidence, and responsive checks
+have since been implemented. English and Chinese now have 61 same-path pages.
+
+The remaining human-product gap is evidence, not another general renderer
+redesign. Released buyer, seller, hosted-operator, self-hosted-operator,
+developer, and Agent journeys still need representative product states that
+show success, denial, dependency failure, unknown financial outcome, and safe
+recovery. Product screenshots or route-specific guides remain gated on stable
+synthetic data, privacy review, source revision, capability truth, responsive
+review, and release evidence.
+
+A localization follow-up also found that file and metadata parity had masked
+substantial summary-only Chinese pages. Fourteen priority pages were expanded
+on 2026-07-14 and a loose severe-gap validation floor was added. Human review
+remains necessary; the heuristic is a regression guard, not a quality score.
 
 ## Audit method
 

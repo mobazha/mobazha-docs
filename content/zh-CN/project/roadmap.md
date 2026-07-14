@@ -1,6 +1,6 @@
 ---
-title: Mobazha 接下来要验证什么
-summary: 查看项目正在验证的产品结果、推进所需证据，以及仍属于探索而非承诺的方向。
+title: Mobazha 接下来要证明什么
+summary: 了解 Mobazha 当前验证的产品结果、推进所需证据，以及仍属于探索而非承诺的想法。
 status: Draft
 audiences:
   - 用户
@@ -9,12 +9,12 @@ audiences:
   - 开发者
   - 评估者
   - Agent
-evidenceLabel: 公开发布范围、仓库 milestone、audit 与已审核产品路线图
+evidenceLabel: 公开发布范围、仓库里程碑、审计与经过审阅的产品路线图
 evidenceUrl: https://github.com/mobazha
 reviewed: 2026-07-14
 translationOf: project/roadmap
 pageType: concept
-outcome: 理解项目接下来要验证的结果、对用户的意义，以及方向成为发布承诺前必须具备的证据。
+outcome: 理解项目接下来要证明的用户结果、其价值，以及方向成为发布承诺前必须存在的证据。
 estimatedTime: 8 分钟
 journey: understand
 primaryAction:
@@ -22,44 +22,85 @@ primaryAction:
   href: /zh/project/roadmap#当前验证目标
 ---
 
+## 本页的位置
+
+路线图描述期望的用户与产品结果。它不是所有讨论中功能的列表、交付日历，也不能证明某项能力已经存在。
+
+| 需要 | 来源 |
+|---|---|
+| 当前发布中有什么？ | [发布范围](/zh/project/release-scope)和连接后端 |
+| 为什么构建 Mobazha？ | [创始白皮书](/zh/project/whitepaper) |
+| 项目下一步要证明什么结果？ | 本路线图 |
+| 哪项具体变更已提出或接受？ | [RFC、ADR 与决策](/zh/project/decisions) |
+| 哪些实施工作正在进行？ | 公开仓库 Issue、Project、测试和发布说明 |
+
+内部计划上的日期或项目不会自动成为公开承诺；它必须经过接受、实施、测试、文档化和发布。
+
 ## 当前验证目标
 
-Roadmap 描述期望的用户与产品结果，不是交付日历或 capability 存在证据。内部计划中的日期或条目，只有经过 accepted、implemented、tested、documented 与 released 才成为公开承诺。
+近期目标不是功能数量，而是让不同用户都能完成并验证一条可信的候选发布闭环：
 
-近期目标不是功能数量，而是让不同角色能完成并验证一条可信候选版本闭环：
-
-| 用户 | 要验证的结果 | 成功证据 |
+| 用户 | 要证明的结果 | 成功证据 |
 |---|---|---|
-| 买家 | 看懂卖家、总额、付款指示、订单状态与恢复路径 | 一笔具有 Quote、Payment Session、履约与恢复状态的完整测试订单 |
-| 卖家 | 配置店铺、发布 Offer、收到付款证据、履约与售后 | 无隐藏管理员修复的可重复 store-to-order 操作 |
-| 运营者 | 运行健康、安全、可恢复的 backend | Diagnostics、monitoring、backup restore、upgrade decision 与 incident owner |
-| 开发者 / Agent 构建者 | 发现 capability、窄认证、调用公开 contract 并核对未知结果 | 覆盖 denial、retry、duplicate、conflict 与 recovery 的 versioned test |
-| 评估者 | 区分当前行为、可选服务、费用、依赖与未来方向 | 一致的 release、policy、compatibility 与 source evidence |
+| 买家 | 理解卖家、最终总额、付款指令、订单状态和恢复路径 | 一笔完整测试订单，Quote、Payment Session、履约和恢复状态都可检查 |
+| 卖家 | 配置可识别店铺、发布 Offer、接收付款证据、履约并支持订单 | 可重复的店铺到订单运营，不依赖隐藏管理员修复 |
+| 运营者 | 运行或提供健康、安全、可恢复的后端 | 诊断、监控、备份恢复、升级决策和事故责任证据 |
+| 开发者或 Agent 构建者 | 发现能力、最小权限认证、调用公开契约并处理未知结果 | 版本化契约测试覆盖拒绝、重试、重复、冲突与恢复 |
+| 评估者 | 区分当前行为、可选服务、费用、依赖和未来方向 | 公开发布、政策、兼容性与源码证据一致 |
 
-## 近期结果主线
+在这条闭环可靠前，更大的 Marketplace、更多支付轨道或更多自动化只会扩大表面积，而不能证明核心价值。
 
-- 买卖旅程：让总额、付款进度、履约、退款与争议清晰可测。
-- Standalone 运营：证明 secure first run、监控、restore、migration、rollback 与支持。
-- Hosted / independent 一致性：共享 contract、真实 runtime capability、跨 distribution conformance，并披露服务差异。
-- 付款与保障：分开付款事件、已验证付款、订单状态、settlement 与 buyer protection。
-- 公开集成：用 scoped credential、stable contract、idempotency、capability gate、approval 与 failure test 限制 API、MCP、webhook 和 Agent 权限。
-- 发布信任：用 checksum、provenance、SBOM、compatibility、migration、known issue 与文档证明可用性。
+## 近期结果轨道
 
-## 仍受 Gate 限制的探索
+| 结果轨道 | 要解决的用户问题 | 推进所需证据 |
+|---|---|---|
+| 买卖旅程 | 重要状态和恢复信息分散或含糊 | 经过测试的桌面与移动流程，清晰展示总额、付款进度、履约、退款和争议 |
+| 独立运营 | 安装比安全长期运营容易 | 签名发布证据、安全首次运行、监控、备份恢复、迁移、回滚和支持指导 |
+| 托管与独立一致性 | 不同组合中的产品行为可能漂移 | 共享契约、运行时能力事实、跨分发一致性和明确服务差异 |
+| 付款与保护清晰度 | Payment event、Verified payment、Order state、Settlement 和 Buyer protection 容易混淆 | 订单绑定 Payment Session、轨道特定恢复、可审计状态转换和诚实条款 |
+| 公开集成表面 | API、Event、Webhook、MCP、Extension 和 Agent 可能暗示越权 | 有 Scope 的凭据、稳定契约、幂等、能力 Gate、批准和失败测试 |
+| 店铺与分发质量 | 发布 Listing 不等于完整商业体验 | 更好的身份、Storefront、履约、可见性、无障碍、国际化和运营证据 |
+| 发布信任 | 源码存在常被误认为已支持 | Checksum、Provenance、SBOM、兼容、迁移、已知问题和发布关联文档 |
 
-更丰富 community market、Deal Link、更多 payment/protection model、AI/Agent/Skill、multi-store、更多 channel、launcher 与更广 extension runtime 都仍是探索。每项必须先证明相应 operator responsibility、privacy、custody、authorization、failure semantics、cost control、recovery 与 compatibility。
+这些轨道可以并行，但都不能绕过适用的安全、经济、法律、能力和发布门槛。
 
-Roadmap 不承诺每个 adapter 都发布、所有 deployment 能力相同、固定日期、永久免费或零外部成本、统一佣金模型、Token 回报，也不允许 Agent、plugin、marketplace 或 hosted service 绕过 store、order、payment 或 user authority。
+## 仍受门槛限制的探索
+
+| 探索领域 | 潜在价值 | 必须先证明什么 |
+|---|---|---|
+| 更丰富的社群市场和垂直场景 | 连接聚焦需求与独立供给 | 运营责任、审核、发现质量、归因和可持续单位经济 |
+| Deal Link、Embedded 或社交入口 | 缩短已知需求到可归因订单的路径 | 不可变卖家与 Quote 绑定、隐私、渠道上下文、费用披露和恢复 |
+| 更多付款与保护模型 | 服务更多地区、资产和风险偏好 | 保管、验证、最终性、退款、争议、合规、依赖与失败语义 |
+| AI、Agent 与可复用 Skill | 减少设置和运营工作 | 有 Scope 的身份、批准、追踪、确定性政策、成本控制和人类责任 |
+| 多店铺与更丰富 Storefront | 让一个运营者区分品牌、Catalog、Policy 和受众 | Store context、授权、数据所有权、路由、Analytics 和迁移边界 |
+| Browser、Messaging、TMA 或其他渠道 | 在需求所在位置触达用户 | 安全 Origin、认证上下文、能力发现、隐私和一致订单权威 |
+| Launcher 与托管更新 | 降低自托管摩擦 | 签名制品、平台验证、更新同意、健康检查、备份、回滚和恢复 |
+| 更广泛扩展运行时 | 支持更多服务商和分发特定能力 | 稳定类型契约、隔离、最小权限、兼容、审阅和撤销 |
+
+探索不等于计划发布。即使原型可用，也可能无法通过产品、安全、合规、运营成本或维护测试。
+
+## 路线图不承诺什么
+
+- 每个仓库设计或 Adapter 都会发布；
+- 所有部署公开相同能力集合；
+- 在发布证据存在前承诺稳定日期；
+- 永久免费服务、零外部成本或统一抽成模型；
+- Token 价值、交易挖矿、招募奖励、回购或投资回报；
+- 旧数据、新 Binary、私有分发与第三方服务商自动兼容；
+- Agent、Plugin、Marketplace 或托管服务可以绕过 Store、Order、Payment 或 User authority。
 
 ## 结果如何成为 Current
 
-1. 记录真实用户问题与目标结果。
-2. 审核 product、security、economic、legal 与 operational 边界。
-3. 定义公开 contract 与 capability behavior。
-4. 在相关 distribution 测试 implementation 与 migration。
-5. 让 user journey、failure recovery、documentation 与 support evidence 一致。
-6. Release 发布 scope、artifact、known issue 与 compatibility evidence。
+1. 记录真实用户问题和目标结果。
+2. 审阅产品、安全、经济、法律和运营边界。
+3. 定义公开契约与 Capability 行为。
+4. 在相关分发版本测试实施和迁移路径。
+5. 用户流程、失败恢复、文档与支持证据保持一致。
+6. 发布范围、制品、已知问题和兼容性证据。
 
-- [发布范围](/zh/project/release-scope)
-- [公开决定与提案](/zh/project/decisions)
+仓库 Issue 与 Project 跟踪执行细节，RFC 和 ADR 记录决策，Release note 说明实际交付。本页是公开结果地图，应在证据变化时更新，而不是随内部任务名称变化。
+
+- [查看发布范围和成熟度](/zh/project/release-scope)
+- [检查运行时能力](/zh/build/runtime-capabilities)
+- [阅读公开决策与提案](/zh/project/decisions)
 - [English canonical page](/project/roadmap)

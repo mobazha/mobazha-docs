@@ -1,8 +1,8 @@
 # Phase DOCS: Mobazha Knowledge Surface
 
-- Status: Waves 2–4 in progress
+- Status: Waves 2–5 in progress
 - Public surface: <https://docs.mobazha.org>
-- Last reviewed: 2026-07-06
+- Last reviewed: 2026-07-14
 
 ## Mission
 
@@ -99,7 +99,7 @@ count.
   local-TOC, section-anchor, and copyable-code foundations.
 - Moved full trust metadata into progressive disclosure while preserving visible
   lifecycle and material applicability.
-- Migrated all 54 English and 14 Chinese pages to explicit outcome, effort,
+- Migrated all 61 English and 61 Chinese pages to explicit outcome, effort,
   journey, page-type, and primary-action contracts.
 - Published reviewed responsive conceptual models for buyer, seller, and
   self-host journeys; real product screenshots remain behind the pricing,
@@ -137,6 +137,12 @@ Product narrative, topic selection, and flagship sequencing are maintained in
   with required claims, forbidden claims, and authority paths.
 - Published English and Chinese core journeys with per-page translation,
   canonical-source, lifecycle, and review metadata.
+- Reached same-path Chinese coverage for all 61 English canonical pages and
+  restored equivalent decision, risk, verification, and recovery depth on the
+  14 pages that had been reduced to summaries.
+- Added a normalized semantic-volume floor that rejects severe non-whitepaper
+  translation omissions while continuing to permit idiomatic, non-literal
+  Chinese authoring. The whitepaper keeps its separate versioned review.
 - Test code samples, internal links, public source links, and structured data continuously.
 - Moved page authority from inline TypeScript into reviewable Markdown with
   deterministic generated registries and stale-output validation.
@@ -171,6 +177,8 @@ Product narrative, topic selection, and flagship sequencing are maintained in
 - Fee answers distinguish software, infrastructure, networks, providers, optional services, referrals, and public-good funding.
 - Capability answers fail closed when runtime authority or version applicability is missing.
 - Security reports are routed privately.
+- Translation existence, metadata parity, localized links, and severe semantic
+  omissions are checked separately; passing one does not imply the others.
 
 ## Current completion definition
 

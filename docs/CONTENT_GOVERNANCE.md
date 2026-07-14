@@ -120,6 +120,16 @@ lifecycle status, and carry a translation review date. The English source is
 the policy-authoring authority during the first public phase; a translation
 may clarify language but must not introduce a separate product promise.
 
+A translated file is not complete merely because its frontmatter and route
+exist. It must preserve the decisions, user tasks, risk boundaries, comparison
+dimensions, verification criteria, recovery guidance, and next actions needed
+to achieve the canonical page's outcome. It may reorganize or compress prose
+for the target language, but must not reduce a policy or task page to a summary.
+Content validation applies a deliberately loose, code- and URL-excluding
+semantic-volume floor to catch severe omissions without requiring literal
+translation. The versioned whitepaper continues to use its separate record and
+publication review instead of this heuristic.
+
 When a public source revision is recorded in `sources.json`, run
 `npm run check:source-contracts` before a source-driven review. During active
 development, a changed upstream revision is reported but does not fail the

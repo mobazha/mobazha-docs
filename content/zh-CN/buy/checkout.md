@@ -10,7 +10,7 @@ evidenceUrl: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/a
 reviewed: 2026-07-14
 translationOf: buy/checkout
 pageType: task
-lastTested: 2026-07-04
+lastTested: 2026-07-14
 outcome: 从已核对的卖家 Quote 创建订单，并保留恢复所需标识符。
 estimatedTime: 5–10 分钟
 journey: use
@@ -39,11 +39,23 @@ primaryAction:
 7. 只有在卖家、收件人、最终总额、付款资产或服务商、适用政策及保障选择都清晰可见时才确认订单。
 8. 确认后保存订单标识符与追踪链接，再从订单绑定的 Payment Session 取得地址、服务商 payload、金额、过期时间与进度。
 
+## 使用外部钱包付款
+
+1. 只使用应用订单政策后仍可见的付款选项。Protection 或 Settlement mode 可能有意移除缓存中的服务商或付款轨道。
+2. 在当前 Payment Session 中核对资产或 Token、显示时的 Network、准确金额、付款地址或 URI、Expiry 和 Order identifier。不能根据商品目录价格自行拼出这些值。
+3. 扫描当前 QR code，或复制当前地址与金额。在钱包中批准转账前，再将钱包解析的 Recipient 和 Amount 与 Payment Session 对照。
+4. 广播后保留 Transaction identifier，并让订单保持可供对账。分别读取 Observed transfer、Observed 或 Remaining amount、Observation status 和 Confirmation。
+5. 付款指令过期后停止使用其 QR code、URI、Address 和 Amount。通过产品刷新取得当前指令，不要向过期目标付款。
+
+> **Warning:** 已观察到的转账仍可能处于 Pending、金额不足、已经 Reverted、使用错误网络，或未达到所需金额。只有后端的 Funded order state 才能证明该订单已经接受付款证据。
+
 ## 预期结果与验证
 
 应用应显示带有权威状态和订单绑定 Payment Session 的新订单。核对商品版本、卖家、卖家拥有的后端、总额、canonical payment asset 或 provider、funding target、金额、settlement mode 与 expiry 是否和最终确认一致。Marketplace 页面或 referral 标签不是卖家，不得静默成为订单 owner。
 
 不要把钱包广播、截图或 pending transaction 当作付款完成。等待订单页报告所需确认数与 funded 状态。
+
+等待付款或付款验证的订单应留在付款流程。Canceled、Declined、Expired、Refunded 或 Processing-error 订单不能显示为付款成功。已付款或履约状态可以进入确认页，但订单详情仍是恢复权威。
 
 ## 失败时
 

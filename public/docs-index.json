@@ -770,9 +770,9 @@
         "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/checkout",
         "label": "Unified checkout routes and Node order contracts"
       },
-      "reviewed": "2026-07-06",
+      "reviewed": "2026-07-14",
       "page_type": "task",
-      "last_tested": "2026-07-04",
+      "last_tested": "2026-07-14",
       "outcome": "Create one order from a reviewed seller quote and keep the identifiers needed to recover it.",
       "estimated_time": "5–10 minutes",
       "journey": "use",
@@ -781,7 +781,7 @@
         "href": "/buy/checkout#before-you-start"
       },
       "language": "en",
-      "search_text": "Before you start Confirm the store identity, item, quantity, variant, fulfillment method, and return policy. Use a current browser session connected to the intended store and backend. Decide whether you are using account checkout or the store's optional Guest Checkout path. Have the exact payment asset available, but do not send funds before the order displays an address, amount, and expiry. Never reuse an address, QR code, quote, or amount from another order, message, screenshot, or Agent response. Checkout steps Open /product/{slug} , confirm the seller and store context, select required options, and add the item to the cart. Open Cart and confirm every line belongs to the intended seller. A marketplace may curate discovery and record attribution, but the approved seller—not the marketplace projection—must own the checkout handoff and resulting order. Continue through /checkout ; enter only the delivery and contact data required for this order, then choose a destination valid shipping method where required. Review subtotal, shipping, discounts, taxes, network or provider costs, optional services, and final total. Select an available payment method at the payment method step. Availability comes from the connected backend and store policy, not from a static list in this guide. If the order mode requires a moderator or other protection choice, review its scope and cost before confirmation. Confirm the order only after seller, recipient, final total, payment asset or provider, applicable policy, and any protection choice are visible. On confirmation, save the order identifier and tracking link, then use the order bound Payment Session for address, provider payload, amount, expiry, and progress. Expected result and verification The application should display a newly created order with an authoritative state and order bound Payment Session. Confirm that the item revision, seller, seller owned backend, total, canonical payment asset or provider, funding target, amount, settlement mode, and expiry match the final confirmation you approved. A marketplace page or referral label is not the seller and must not silently become the order owner. Do not treat a wallet broadcast, a screenshot, or a pending transaction as completed payment. Wait for the order page to report the required confirmations and funded state. If something fails If the quote expires, return to checkout and request a new quote; do not send the old amount. If an item becomes unavailable, return to the cart and re evaluate the order rather than repeatedly submitting it. If the payment asset or destination changes unexpectedly, stop and verify the store and backend identity. If you created an order but lost the page, use the saved order identifier or Guest Order tracking link. If funds were sent but state does not advance, preserve the transaction ID and order ID and follow order status troubleshooting. Continue Guest Checkout Buy without attaching a seller or administrator session. Track payment and order state Understand what the current state proves. Cancellation, refund, and dispute Use only transitions available for the active order."
+      "search_text": "Before you start Confirm the store identity, item, quantity, variant, fulfillment method, and return policy. Use a current browser session connected to the intended store and backend. Decide whether you are using account checkout or the store's optional Guest Checkout path. Have the exact payment asset available, but do not send funds before the order displays an address, amount, and expiry. Never reuse an address, QR code, quote, or amount from another order, message, screenshot, or Agent response. Checkout steps Open /product/{slug} , confirm the seller and store context, select required options, and add the item to the cart. Open Cart and confirm every line belongs to the intended seller. A marketplace may curate discovery and record attribution, but the approved seller—not the marketplace projection—must own the checkout handoff and resulting order. Continue through /checkout ; enter only the delivery and contact data required for this order, then choose a destination valid shipping method where required. Review subtotal, shipping, discounts, taxes, network or provider costs, optional services, and final total. Select an available payment method at the payment method step. Availability comes from the connected backend and store policy, not from a static list in this guide. If the order mode requires a moderator or other protection choice, review its scope and cost before confirmation. Confirm the order only after seller, recipient, final total, payment asset or provider, applicable policy, and any protection choice are visible. On confirmation, save the order identifier and tracking link, then use the order bound Payment Session for address, provider payload, amount, expiry, and progress. Pay with an external wallet Use only the payment choices still visible after the order policy is applied. A protection or settlement mode may intentionally remove a previously cached provider or rail. In the active Payment Session, match the asset or Token, network where shown, exact amount, payment address or URI, expiry, and order identifier. Do not reconstruct these values from a catalog price. Scan the active QR code or copy the active address and amount. Before approving the wallet transfer, compare the wallet's parsed recipient and amount with the Payment Session again. After broadcast, keep the transaction identifier and leave the order available for reconciliation. Read observed transfers, observed or remaining amount, observation status, and confirmations separately. If the payment instruction expires, stop using its QR code, URI, address, and amount. Refresh through the product to request the current instruction instead of sending to the expired target. An observed transfer may still be pending, incomplete, reverted, on the wrong network, or below the required amount. Only the backend's funded order state proves that the payment evidence was accepted for this order. Expected result and verification The application should display a newly created order with an authoritative state and order bound Payment Session. Confirm that the item revision, seller, seller owned backend, total, canonical payment asset or provider, funding target, amount, settlement mode, and expiry match the final confirmation you approved. A marketplace page or referral label is not the seller and must not silently become the order owner. Do not treat a wallet broadcast, a screenshot, or a pending transaction as completed payment. Wait for the order page to report the required confirmations and funded state. An order awaiting payment or payment verification should remain in the payment journey. A canceled, declined, expired, refunded, or processing error order must not be presented as payment success. Paid or fulfillment states may continue to confirmation, but the order detail remains the recovery authority. If something fails If the quote expires, return to checkout and request a new quote; do not send the old amount. If an item becomes unavailable, ret"
     },
     {
       "id": "buy-guest-checkout",
@@ -840,9 +840,9 @@
         "source": "https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/components/orders/guestOrderStages.ts",
         "label": "Unified order milestones and Node order API"
       },
-      "reviewed": "2026-07-06",
+      "reviewed": "2026-07-14",
       "page_type": "task",
-      "last_tested": "2026-07-04",
+      "last_tested": "2026-07-14",
       "outcome": "Decide what the current order state proves and which recovery action is safe to take next.",
       "estimated_time": "3 minutes",
       "journey": "use",
@@ -2298,7 +2298,7 @@
       "path": "/zh/start/choose-deployment",
       "canonical_url": "https://docs.mobazha.org/zh/start/choose-deployment",
       "title": "选择托管服务或自行托管",
-      "summary": "根据控制权、运维责任、集成需求和服务价值选择，而不是把它简化成“免费或收费”。",
+      "summary": "先根据控制权和责任选择后端运营者，再判断是否用边界明确的托管或第三方服务补充该后端。",
       "status": "beta",
       "audiences": [
         "卖家",
@@ -2316,9 +2316,9 @@
         "source": "https://github.com/mobazha/mobazha/blob/main/README.md",
         "label": "Mobazha 公开产品与发布边界"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-14",
       "page_type": "concept",
-      "outcome": "根据真正需要的控制权和运维责任，选择托管或自行托管。",
+      "outcome": "根据所需控制权选择托管或自行托管，并理解 Hybrid 如何增加服务而不改变订单权威。",
       "estimated_time": "5 分钟",
       "journey": "start",
       "primary_action": {
@@ -2327,19 +2327,19 @@
       },
       "language": "zh-CN",
       "translation_of": "/start/choose-deployment",
-      "search_text": "托管服务 如果你希望先体验产品或开店，但不想维护服务器，可以使用托管应用。服务运营方负责部署、可用性和托管账号边界；当前 Beta 价格、限制和条款独立公布。 打开 Mobazha 当前价格 自行托管 如果你需要控制部署、店铺数据、域名、备份、可用性和集成，可以运行开源 Node。你同时承担主机安全、恢复、升级和第三方成本。 运行开源软件本身不会自动产生必须支付给 Mobazha 的中心化交易抽成。 v0.3 当前用于评估和测试网，尚不是稳定生产版本。 默认发布边界包含 BTC、BCH 和 LTC，但仍受运行时能力和卖家配置约束。 决策规则 希望减少运维工作时，优先考虑托管服务。 控制权、可移植性和独立可用性更重要时，考虑自行托管。 在投入真实业务前，先用测试网验证备份、付款、履约和恢复流程。 安装自行托管节点 English canonical page"
+      "search_text": "托管服务 如果希望评估 Mobazha 或经营店铺，但不想维护底层服务器，可以使用托管应用。服务运营者负责可用性、部署和托管账号边界；当前 Beta 价格和限制另行公布。 这是进入当前买家和卖家体验的最快路径。 服务可用性、数据处理、限制和未来价格受托管条款约束。 实际可用的交易和支付路径仍由运行时能力决定。 打开 Mobazha 当前价格 隐私政策 自行托管 Node 如果需要直接控制部署、店铺数据、域名、可用性、备份和集成，可以运行开源 Node。你负责机器、安全、恢复、升级和第三方成本。 运行软件本身不会产生必须支付给 Mobazha 的中心化交易费。 当前 v0.3 系列是用于评估和测试网的候选版本。 默认发布边界包含 BTC、BCH 和 LTC，但仍受运行时能力和卖家配置约束。 安装 Node 检查运营安全 责任比较 决策范围 托管服务 自行托管 Node 服务器可用性和更新 由托管服务运营者按公开条款管理 由你的运营者负责，包括维护窗口和回滚 域名和网络边界 使用服务支持的公开入口 自行负责 DNS、TLS、反向代理、防火墙和暴露策略 店铺数据和恢复 受托管服务的导出、保留、隐私和恢复条款约束 自行决定备份频率、异地副本、恢复测试和恢复访问 集成 限于托管部署公开的能力 可在 Node 已发布契约和有效能力范围内配置 服务成本 查看当前托管价格和适用服务商费用 运行软件本身没有强制 Mobazha 交易费，但基础设施和第三方成本由你承担 第一个验证 完成一次可丢弃的买卖流程并检查服务条款 在测试网启动，然后验证诊断、备份、恢复和一次完整交易流程 两种模式都不会自动提供所有支付轨道、扩展或市场能力。连接后端的运行时响应、卖家配置和当前发布契约才是权威来源。 Hybrid 是组合方式，不是第三个订单所有者 Hybrid 指独立或商业运营的店铺后端加入更广泛的店铺网络，或调用选择的外部能力。它不是第三种部署类型，也不会让一笔订单同时由多个权威数据库管理。 例如： 自托管店铺出现在社群或托管发现入口； 独立 Node 使用明确的支付、配送、消息、索引、AI 或支持服务； 托管和自托管店铺交换允许的发现、签名内容、消息或交易协议请求； 托管店面或直接链接把买家解析到真正拥有订单的卖家后端。 每项连接都要记录提供者、交换的数据、价格、能力、故障行为、退出路径，以及继续负责店铺和订单状态的后端。方便的渠道或网关不能悄悄成为第二个交易权威。 比较 Direct P2P 和 Hybrid 拓扑 按收款方和运营方式检查成本 决策规则 如果减少运维工作比控制全部基础设施边界更重要，选择托管。 如果控制权、可移植性、自定义运营或独立可用性值得承担运维责任，选择自行托管。 只有当外部服务的价值、交换数据、成本、失败行为和退出路径比自行运行更清晰时，才加入 Hybrid 服务。 先在测试网验证备份、付款、履约和恢复，再让任何模式承载重要交易。 持续依据最新条款和能力重新评估；部署选择不会永久锁死产品模式。 承诺投入前验证选择 指定负责可用性、更新、安全、备份和事故响应的人或服务商。 确认店铺数据位于何处、如何导出，以及更新失败或服务不可用时如何恢复。 检查实际部署公开的支付、配送、Agent、API 和市场能力。 完成一次测试订单，从商品和报价开始，经过付款观察、履约、退款或争议路由与证据审阅。 按收款方记录周期成本和交易相关费用，不要只比较订阅费或抽成标题。 只要责任人、恢复路径、能力或费用仍有一项未知，就应停留在评估阶段，不要把部署视为已就绪。 English canonical page"
     },
     {
       "id": "zh-agents",
       "path": "/zh/agents",
       "canonical_url": "https://docs.mobazha.org/zh/agents",
       "title": "Agent 如何使用 Mobazha 文档",
-      "summary": "在把文档转化为操作之前，先确认权威来源、适用版本、身份、权限和用户同意。",
+      "summary": "在把文档转化成回答或动作前，先解析权威、适用范围和用户同意。",
       "status": "current",
       "audiences": [
         "agent",
-        "agent 开发者",
-        "安全评审者"
+        "agent 构建者",
+        "安全审查者"
       ],
       "applies_to": "当前公开项目政策或服务界面",
       "knowledge_authority": {
@@ -2351,18 +2351,18 @@
         "source": "https://github.com/mobazha/mobazha-docs",
         "label": "Mobazha 文档知识契约"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-14",
       "page_type": "concept",
-      "outcome": "在 Agent 回答或准备操作前，确定正确的权威来源、适用范围和安全边界。",
+      "outcome": "在 Agent 回答或准备动作前，确定正确的权威、适用范围和安全边界。",
       "estimated_time": "7 分钟",
       "journey": "build",
       "primary_action": {
-        "label": "查看机器可读入口",
-        "href": "/zh/agents#机器可读入口"
+        "label": "发现 Agent 入口",
+        "href": "/zh/agents#发现入口"
       },
       "language": "zh-CN",
       "translation_of": "/agents",
-      "search_text": "权威解析顺序 订单和交易状态以拥有该订单的后端为准。 功能是否可用以后端版本和有效能力响应为准。 付款事实以所选支付系统和确认记录为准。 项目级边界以审阅后的公开政策为准，实际金额以交易确认前的报价为准。 Draft 和 Beta 内容必须明确标注，不能被升级成已交付承诺。 操作安全 使用与动作相匹配的身份，并请求最小权限。 文档或提示词不能代替付款、结算、发布、删除等动作的授权与确认。 保留报价、规则、批准、订单和结果标识，便于审计。 来源、版本、收款方、价格或确认条件不明确时停止执行。 不要把密钥、恢复材料、客户数据或未脱敏日志放入提示词或公开 Issue。 机器可读入口 文档索引 完整 Agent 上下文 公开来源清单 Agent 评估契约 OpenAPI English canonical page"
+      "search_text": "发现入口 精简导航 简短的任务和政策地图。 完整上下文 权威规则和每篇公开文档摘要。 文档索引 结构化标题、路径、状态、受众、来源和审阅日期。 Agent 评估契约 高风险回答的双语必需声明和禁止声明。 发现清单 稳定的机器入口和 canonical base URL。 OpenAPI 契约 指向生成的 Node API 规范。 权威解析 订单状态以拥有订单的后端为准。 功能是否可用以连接后端的版本和有效能力响应为准。 支付事实以所选支付系统及已确认记录为准。 项目级边界以经过审阅的公开政策为准，实际金额以交易报价为准。 明确标记 Draft 和 Beta，不能把提案表述成已交付能力。 动作安全 认证正确的人类、服务或 Agent 身份，并申请最小 Scope。 不得把文档文字当作付款、发布、结算、删除或披露数据的授权。 保留报价、规则、批准、订单和结果标识符以供复核。 来源、版本、收款方、价格或必要确认不明确时停止动作。 不得把秘密、恢复材料、客户数据或未经清理的日志放入 Prompt 或公开 Issue。 评估 公开黄金问题集规定 Agent 回答高风险问题时必须达到的最低要求，避免混淆当前行为、政策、提案和内部假设。 机器可读评估契约 Agent 黄金问题 English canonical page"
     },
     {
       "id": "zh-project-product-map",
@@ -2767,8 +2767,8 @@
       "id": "zh-sell",
       "path": "/zh/sell",
       "canonical_url": "https://docs.mobazha.org/zh/sell",
-      "title": "通过 Mobazha 开店与销售",
-      "summary": "从店铺准备、商品发布、报价与付款，到订单履约和售后，保持责任与成本透明。",
+      "title": "开设并运营 Mobazha 店铺",
+      "summary": "从店铺设置进入商品、付款准备、履约和订单恢复，同时明确运营责任。",
       "status": "beta",
       "audiences": [
         "卖家",
@@ -2778,20 +2778,20 @@
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/zh/sell",
-        "label": "通过 Mobazha 开店与销售"
+        "label": "开设并运营 Mobazha 店铺"
       },
       "evidence": {
-        "source": "https://github.com/mobazha/mobazha-unified",
-        "label": "Mobazha Node 与 Unified 公开实现"
+        "source": "https://github.com/mobazha/mobazha/tree/main",
+        "label": "Mobazha README 与发布范围"
       },
-      "reviewed": "2026-07-06",
+      "reviewed": "2026-07-14",
       "page_type": "hub",
-      "outcome": "准备一个买家能理解、付款并完成收货验证的店铺旅程。",
+      "outcome": "准备一个买家能够理解、付款并完成收货，而且已经通过完整流程验证的店铺。",
       "estimated_time": "6 分钟",
       "journey": "use",
       "primary_action": {
-        "label": "检查开店条件",
-        "href": "/zh/sell#开店前"
+        "label": "准备店铺",
+        "href": "/zh/sell/store-setup"
       },
       "featured_visual": {
         "id": "seller-operating-loop",
@@ -2815,7 +2815,7 @@
       },
       "language": "zh-CN",
       "translation_of": "/sell",
-      "search_text": "开店前 选择托管服务或自行托管。 配置后端和所在地区实际支持的付款方式。 公开配送、退货、退款和争议条款。 在接受订单前检查最终报价和所有收款方金额。 理解从 Offer 到 Fulfillment 的经营模型 卖家实际经营的对象 对象 负责什么 边界 Store / Node 身份、政策、能力、订单和业务状态权威 不只是一个视觉店面或渠道账号。 Storefront 品牌、导航、页面、域名和受众视图 可以复用店铺商业状态，但不拥有订单。 Listing revision 商品形态、规格、价格、媒体、条款和履约资格 新版本不能静默修改已接受的 Quote 或订单。 Supply / availability 某个可购买组合能否真实履约 库存、供应商供给、服务容量和规格名称是不同事实。 Collection / Discount 组织商品和调整价格 影响展示或 Quote，不拥有订单状态。 Shipping profile 目的地、服务、费率、时效和证据要求 没有有效履约路径，商品不能对该目的地成交。 Payment capability 后端声明且运营者准备好的收款路径 仅能解析 Token 或服务商名称不等于可用。 店铺与商品准备 设置可识别的店铺身份、联系方式、地区、币种展示和域名。 为商品提供准确的规格、库存、图片、价格和配送范围。 先配置配送模板、预计时间、退货条件和履约证据。 只启用后端公开且店铺有能力监控、结算的付款方式。 订单运营 确认订单前检查报价、付款状态、买家要求和履约义务。 不要用截图、聊天消息或 Agent 陈述代替后端验证后的付款状态。 通过订单流程记录发货或交付证据。 取消、退款、争议和完成必须遵循当前订单允许的状态转换。 继续 打开托管应用 收费与经济模式 English canonical page"
+      "search_text": "从店铺旅程开始 理解从 Offer 到履约的模型 区分产品结构、陈列、供应事实、已接受条款和履约证据。 准备店铺 验证身份、政策、履约和一次完整测试购买。 发布商品 提供买家可核对的产品、规格、价格和可用性数据。 配置配送 匹配目的地、费率、商品、时效和证据。 准备收款 只公开后端和运营者已经准备支持的能力。 运营订单 安全处理付款对账、履约、退款、争议和完成。 卖家运营的对象 对象 卖家责任 产品边界 Store / Node 身份、政策、能力、订单和业务状态权威 它不只是可视店面或渠道账号。 Storefront 品牌、导航、展示、域名和受众视图 在支持时，多个店面或渠道可复用店铺拥有的交易状态。 Listing revision 买家可见承诺：产品结构、选项、价格、媒体、条款和履约资格 新版本不能悄悄改变已经接受的 Quote 或订单。 Supply 与 Availability 某个可购买组合是否真的能够履约 库存、服务商供应、服务容量和选项标签是不同事实。 Collection 与 Discount 商品陈列和价格调整规则 它们组织或转换 Offer，但不拥有订单状态。 Shipping profile 目的地资格、服务、费率、时效和证据要求 对目的地没有有效履约路径时，商品不应可购买。 Payment capability 后端声明且运营者已准备好的付款路径 仅识别 Token 或服务商名称不等于就绪。 Order 已接受条款、付款状态、履约义务、恢复和完成 即使订单显示在其他渠道，后端仍是权威。 开店前 选择自行托管或可选托管服务。 配置后端和所在地区支持的付款方式。 发布买家可以查看的配送、退货、退款和争议条款。 接单前复核最终 Quote 以及所有收款方金额。 Mobazha 不会替你决定的事项 卖家仍负责产品合法性、税务、履约、客户支持和卖家自定义收费。Mobazha 提供交易软件和可验证流程，不会让所有运营者成为同一法律实体。 成本标签必须说明收款方和原因，不能用模糊的隐藏服务费代替。 店铺就绪检查清单 设置可识别的店铺身份、运营者联系路径、Locale、货币显示和适用域名。 创建包含准确规格、库存或可用性、媒体、价格和配送资格的完整商品。 接单前配置 Shipping Profile、配送时效、退货条件和履约证据。 只启用后端声明且店铺有能力监控和结算的付款方式。 在与客户相同的部署、能力集合和设备类型上测试完整买家流程。 订单运营 确认订单前复核 Order、Quote、付款状态、买家指令和履约义务。 不要根据截图、消息或 Agent 声明推断付款完成；使用后端验证后的付款状态。 通过订单流程记录发货或交付证据，不能只依赖外部聊天。 根据当前订单允许的状态转换处理取消、退款、争议和完成。 保留支持或争议审阅需要的政策、Quote、付款、履约和沟通引用。 选择运营方式 使用托管应用 选择部署方式 安装自行托管 Node 理解收费 English canonical page"
     },
     {
       "id": "zh-sell-store-setup",
@@ -2996,8 +2996,8 @@
       "id": "zh-buy",
       "path": "/zh/buy",
       "canonical_url": "https://docs.mobazha.org/zh/buy",
-      "title": "在条款与成本透明的前提下购买",
-      "summary": "付款前确认卖家、商品、配送、支付路径、完整成本和争议规则。",
+      "title": "从独立 Mobazha 店铺购买",
+      "summary": "围绕拥有订单的店铺完成结账、付款、订单跟踪、取消、退款和争议流程。",
       "status": "beta",
       "audiences": [
         "买家",
@@ -3007,15 +3007,15 @@
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/zh/buy",
-        "label": "在条款与成本透明的前提下购买"
+        "label": "从独立 Mobazha 店铺购买"
       },
       "evidence": {
         "source": "https://github.com/mobazha/mobazha-unified",
         "label": "Mobazha Unified 公开客户端"
       },
-      "reviewed": "2026-07-06",
+      "reviewed": "2026-07-14",
       "page_type": "hub",
-      "outcome": "在付款前看清店铺运营者、完整成本和订单恢复路径。",
+      "outcome": "在投入资金前看清店铺运营者、完整成本和订单恢复路径。",
       "estimated_time": "5 分钟",
       "journey": "use",
       "primary_action": {
@@ -3044,7 +3044,7 @@
       },
       "language": "zh-CN",
       "translation_of": "/buy",
-      "search_text": "Mobazha 的购买对象 对象 回答的问题 不应做的假设 店铺与后端 谁发布 Offer、谁拥有订单状态？ 发现站点、社群或 Agent 不会因此自动拥有交易。 Quote 当前商品版本、规格、目的地、配送、折扣和总额是什么？ 商品页价格或旧截图不是已接受总额。 订单 哪些条款已被接受、当前允许什么状态转换？ 后续编辑商品不能重写已有订单。 支付会话 当前订单使用哪个资产或服务商、地址、金额、有效期和验证规则？ 广播、观察、验证和最终结算不是同一状态。 恢复路径 当前可用取消、退款、保障或争议中的哪一项？ 不同支付方式和政策没有统一保证的恢复动作。 确认前 核对店铺身份、商品、数量、规格、配送地址和配送方式。 查看商品小计、运费、税费、折扣、网络或服务费用和最终总额。 阅读取消、退款、证据和争议规则。 Agent 建议是辅助，不是绕过用户确认或消费权限的授权。 付款 只使用当前订单显示的付款方式、资产、地址、金额和有效期。 不要复用过期报价、其他订单地址、截图或聊天中的付款信息。 交易广播、待确认交易和回执图片都不等于最终结算。 以拥有订单的后端所记录的验证状态为准。 履约与争议 保留订单号、报价、付款引用、消息、履约证据和政策版本。 根据当前订单允许的操作申请取消或退款。 支持争议时，通过产品内流程提交证据和期望的解决方式。 支付或托管机制只能执行已实现的条件，不能保证商品质量或特定裁决结果。 继续 获取帮助 收费与经济模式 English canonical page"
+      "search_text": "选择要完成的任务 完成结账 根据一份已审阅报价创建一笔订单。 使用 Guest Checkout 不关联账号购买，并保留可恢复的跟踪链接。 跟踪订单 对照付款证据与后端拥有的订单状态。 取消、退款或争议 使用当前订单状态允许的转换。 Mobazha 的购买模型 Mobazha 不会把商品页面、钱包转账和订单当成同一条记录。买家流程会经过几个明确对象： 对象 回答的问题 不应做的假设 店铺与后端 谁发布 Offer、谁拥有订单状态？ 发现站点、社群或 Agent 不会因此自动拥有交易。 Quote 当前商品版本、规格、目的地、配送、折扣和总额是什么？ 商品页价格或旧截图不是已接受总额。 订单 哪些条款已接受、当前允许哪种状态转换？ 后续编辑商品不能重写已有订单。 Payment Session 当前订单使用哪个资产或服务商、目标、金额、有效期和验证规则？ 广播、授权、观察、验证和最终结算不是同一状态。 恢复路径 当前可用取消、退款、买家保护或争议中的哪一项？ 不同付款轨道和政策没有统一保证的恢复动作。 付款前应看到什么 决策 买家应看到的内容 权威来源 谁接收订单 卖家身份，以及服务该店铺的后端或运营者 店铺和订单所有者 订单成本 商品、配送、税费、折扣、服务商或网络费用、可选服务和最终总额 当前 Quote 如何付款 资产、目标、金额、有效期和所需确认 当前订单和支付系统 后续会发生什么 当前订单可用的取消、退款、履约证据和争议路径 当前订单状态和公开政策 确认前 核对店铺身份以及服务该店铺的后端或运营者。 查看小计、配送、税费、网络成本、服务费用、折扣和最终总额。 阅读取消、退款、证据和争议规则。 Agent 建议是辅助，不是绕过用户确认或消费 Scope 的授权。 如果购物车包含多家店铺的商品，应分别确认每个卖家订单的店铺边界和 Quote。 保留证据 保存订单标识、Quote、付款引用、消息、履约证据和结账时展示的政策版本。这些记录能提高支持和争议处理的可靠性。 结账与付款 请求 Quote 前确认商品、数量、规格、卖家、配送目的地和方式。 阅读完整成本分配：商品小计、配送、税费、折扣、网络或服务商成本、可选服务和最终总额。 只使用当前订单显示的付款方式、资产、地址、金额、有效期和确认指令。 不要复用其他订单、消息、截图或 Agent 回复中的过期 Quote 或付款目标。 等待权威付款与订单状态，不要把广播、待确认交易或回执图片当成最终结算。 履约、取消与争议 使用当前订单实际提供的取消和退款动作，不要假设存在统一期限。 检查卖家履约证据，并以原始形式保存买家证据。 产品提供争议入口时，通过该入口提交，并清楚说明期望补救方式。 支付轨道或 Escrow 只能执行已经实现的条件，不能保证商品质量或特定争议结果。 涉嫌欺诈或安全问题时进行升级，但不要公开订单、身份或付款隐私数据。 继续 打开托管应用 检查收费与经济模式 获取帮助 English canonical page"
     },
     {
       "id": "zh-buy-checkout",
@@ -3069,7 +3069,7 @@
       },
       "reviewed": "2026-07-14",
       "page_type": "task",
-      "last_tested": "2026-07-04",
+      "last_tested": "2026-07-14",
       "outcome": "从已核对的卖家 Quote 创建订单，并保留恢复所需标识符。",
       "estimated_time": "5–10 分钟",
       "journey": "use",
@@ -3079,7 +3079,7 @@
       },
       "language": "zh-CN",
       "translation_of": "/buy/checkout",
-      "search_text": "开始前 核对店铺身份、商品、数量、Variant、履约方式与退货政策。 使用连接到目标店铺与后端的当前浏览器会话。 确定使用账号 Checkout，还是店铺可选的 Guest Checkout。 准备准确的付款资产；在订单显示地址、金额和过期时间前不要转账。 绝不要复用其他订单、消息、截图或 Agent 回答中的地址、QR code、Quote 或金额。 Checkout 步骤 打开 /product/{slug} ，核对卖家与店铺上下文，选择必填选项并加入购物车。 打开 Cart ，确认每项商品属于目标卖家。Marketplace 可以组织发现并记录 attribution，但必须由获准卖家而不是 Marketplace projection 拥有 Checkout handoff 和产生的订单。 继续到 /checkout ；只填写此订单需要的交付与联系资料，并在需要时选择适用于目的地的配送方式。 核对商品小计、运费、折扣、税费、网络或服务商成本、可选服务与最终总额。 在付款方式步骤选择当前可用方式。可用性来自连接的后端与店铺政策，而不是本指南中的静态列表。 如果订单模式要求 moderator 或其他保障选择，确认前查看其范围与成本。 只有在卖家、收件人、最终总额、付款资产或服务商、适用政策及保障选择都清晰可见时才确认订单。 确认后保存订单标识符与追踪链接，再从订单绑定的 Payment Session 取得地址、服务商 payload、金额、过期时间与进度。 预期结果与验证 应用应显示带有权威状态和订单绑定 Payment Session 的新订单。核对商品版本、卖家、卖家拥有的后端、总额、canonical payment asset 或 provider、funding target、金额、settlement mode 与 expiry 是否和最终确认一致。Marketplace 页面或 referral 标签不是卖家，不得静默成为订单 owner。 不要把钱包广播、截图或 pending transaction 当作付款完成。等待订单页报告所需确认数与 funded 状态。 失败时 Quote 过期时返回 Checkout 请求新 Quote，不要发送旧金额。 商品变为不可用时返回 Cart 重新评估，不要反复提交。 付款资产或目的地意外变化时停止操作，核对店铺与后端身份。 订单已创建但页面丢失时，使用已保存的订单标识符或 Guest Order 追踪链接。 资金已发出但状态未推进时，保留 transaction ID 与 order ID，并按订单状态故障排查处理。 继续 安全使用 Guest Checkout 不附加卖家或管理员会话即可购买。 追踪付款与订单状态 理解当前状态能证明什么。 取消、退款与争议 只使用当前订单可用的转换。 English canonical page"
+      "search_text": "开始前 核对店铺身份、商品、数量、Variant、履约方式与退货政策。 使用连接到目标店铺与后端的当前浏览器会话。 确定使用账号 Checkout，还是店铺可选的 Guest Checkout。 准备准确的付款资产；在订单显示地址、金额和过期时间前不要转账。 绝不要复用其他订单、消息、截图或 Agent 回答中的地址、QR code、Quote 或金额。 Checkout 步骤 打开 /product/{slug} ，核对卖家与店铺上下文，选择必填选项并加入购物车。 打开 Cart ，确认每项商品属于目标卖家。Marketplace 可以组织发现并记录 attribution，但必须由获准卖家而不是 Marketplace projection 拥有 Checkout handoff 和产生的订单。 继续到 /checkout ；只填写此订单需要的交付与联系资料，并在需要时选择适用于目的地的配送方式。 核对商品小计、运费、折扣、税费、网络或服务商成本、可选服务与最终总额。 在付款方式步骤选择当前可用方式。可用性来自连接的后端与店铺政策，而不是本指南中的静态列表。 如果订单模式要求 moderator 或其他保障选择，确认前查看其范围与成本。 只有在卖家、收件人、最终总额、付款资产或服务商、适用政策及保障选择都清晰可见时才确认订单。 确认后保存订单标识符与追踪链接，再从订单绑定的 Payment Session 取得地址、服务商 payload、金额、过期时间与进度。 使用外部钱包付款 只使用应用订单政策后仍可见的付款选项。Protection 或 Settlement mode 可能有意移除缓存中的服务商或付款轨道。 在当前 Payment Session 中核对资产或 Token、显示时的 Network、准确金额、付款地址或 URI、Expiry 和 Order identifier。不能根据商品目录价格自行拼出这些值。 扫描当前 QR code，或复制当前地址与金额。在钱包中批准转账前，再将钱包解析的 Recipient 和 Amount 与 Payment Session 对照。 广播后保留 Transaction identifier，并让订单保持可供对账。分别读取 Observed transfer、Observed 或 Remaining amount、Observation status 和 Confirmation。 付款指令过期后停止使用其 QR code、URI、Address 和 Amount。通过产品刷新取得当前指令，不要向过期目标付款。 已观察到的转账仍可能处于 Pending、金额不足、已经 Reverted、使用错误网络，或未达到所需金额。只有后端的 Funded order state 才能证明该订单已经接受付款证据。 预期结果与验证 应用应显示带有权威状态和订单绑定 Payment Session 的新订单。核对商品版本、卖家、卖家拥有的后端、总额、canonical payment asset 或 provider、funding target、金额、settlement mode 与 expiry 是否和最终确认一致。Marketplace 页面或 referral 标签不是卖家，不得静默成为订单 owner。 不要把钱包广播、截图或 pending transaction 当作付款完成。等待订单页报告所需确认数与 funded 状态。 等待付款或付款验证的订单应留在付款流程。Canceled、Declined、Expired、Refunded 或 Processing error 订单不能显示为付款成功。已付款或履约状态可以进入确认页，但订单详情仍是恢复权威。 失败时 Quote 过期时返回 Checkout 请求新 Quote，不要发送旧金额。 商品变为不可用时返回 Cart 重新评估，不要反复提交。 付款资产或目的地意外变化时停止操作，核对店铺与后端身份。 订单已创建但页面丢失时，使用已保存的订单标识符或 Guest Order 追踪链接。 资金已发出但状态未推进时，保留 transaction ID 与 order ID，并按订单状态故障排查处理。 继续 安全使用 Guest Checkout 不附加卖家或管理员会话即可购买。 追踪付款与订单状态 理解当前状态能证明什么。 取消、退款与争议 只使用当前订单可用的转换。 English canonical page"
     },
     {
       "id": "zh-buy-guest-checkout",
@@ -3141,7 +3141,7 @@
       },
       "reviewed": "2026-07-14",
       "page_type": "task",
-      "last_tested": "2026-07-04",
+      "last_tested": "2026-07-14",
       "outcome": "判断当前订单状态能证明什么，以及下一步采取哪项恢复操作才安全。",
       "estimated_time": "3 分钟",
       "journey": "use",
@@ -3193,8 +3193,8 @@
       "id": "zh-self-host",
       "path": "/zh/self-host",
       "canonical_url": "https://docs.mobazha.org/zh/self-host",
-      "title": "运行自己的 Mobazha Node",
-      "summary": "自行托管让店铺数据与运营处于你的控制之下，同时把安全、备份、升级和可用性责任交给你。",
+      "title": "在自己控制下运行 Mobazha Node",
+      "summary": "评估要求，在测试网安装，定义网络边界，监控健康状态，并在生产使用前准备恢复路径。",
       "status": "beta",
       "audiences": [
         "运营者",
@@ -3204,20 +3204,20 @@
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/zh/self-host",
-        "label": "运行自己的 Mobazha Node"
+        "label": "在自己控制下运行 Mobazha Node"
       },
       "evidence": {
-        "source": "https://github.com/mobazha/mobazha",
-        "label": "Mobazha Node 公开部署源码"
+        "source": "https://github.com/mobazha/mobazha/tree/main",
+        "label": "Mobazha 部署源码"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-14",
       "page_type": "hub",
-      "outcome": "判断自行托管是否适合，并运行一个健康、可恢复的测试网 Node。",
+      "outcome": "判断自行托管是否合适，并获得健康且可恢复的评估 Node。",
       "estimated_time": "6 分钟",
       "journey": "operate",
       "primary_action": {
-        "label": "开始安装",
-        "href": "/zh/self-host/install"
+        "label": "检查要求",
+        "href": "/zh/self-host/requirements"
       },
       "featured_visual": {
         "id": "self-host-trust-boundary",
@@ -3241,7 +3241,7 @@
       },
       "language": "zh-CN",
       "translation_of": "/self-host",
-      "search_text": "当前发布边界 v0.3 是用于评估和测试网的候选版本。默认开源发布包含 BTC、BCH 和 LTC，实际可用性仍取决于有效能力集和卖家配置。稳定签名制品尚未正式发布。 运营者责任 保护主机、管理员入口、密钥和网络边界。 升级前备份数据与恢复材料，并验证可恢复性。 监控存储、可用性、付款依赖和回调。 只公开用户和 Agent 实际需要的接口。 独立运行边界 本地独立店铺无需 Mobazha 托管账号，也可进行管理、商品、数据导出和默认支持的 UTXO 付款流程。可选服务可能提供发现、搜索、路由、托管更新或支持，但必须单独说明权限、数据与价格。 开始安装 安装节点 English canonical page"
+      "search_text": "选择运营路径 检查主机和发布要求 安装评估 Node 配置 Node 设置网络与 TLS 边界 增加监控和健康检查 备份、升级与恢复 应用安全模型 诊断 Node 评估版快速开始 当前候选版本需要 Go 1.26.4、Git，以及受支持的 macOS 或 Linux 环境。评估付款流程时使用测试网。 v0.3 用于评估和测试网。稳定二进制文件及签名发布制品尚未发布。 就绪的评估 Node 应有什么证据 边界 应保留的证据 构建与身份 精确源码提交、构建命令、版本、服务账号、网络和数据目录 本地健康 成功的服务状态、 doctor json 、内嵌 UI 和 runtime config 检查 网络暴露 符合预期的监听、Firewall、Proxy、DNS 和 TLS，且没有意外公开管理员入口 交易 在支持的测试网轨道上完成一次可丢弃的商品、报价、付款观察、履约和恢复流程 恢复 带时间戳的备份，以及使用兼容构建完成的隔离恢复测试 运维 明确的告警接收者、更新负责人、回滚负责人，以及存储、依赖和付款故障的安全首要动作 进程启动只是第一个证明。如果唯一店铺副本仍在运行主机上、能力只是从源码推测，或者没人负责告警与回滚，Node 就还没有达到运维就绪。 运营者责任 保护主机、管理员访问、秘密和网络边界。 在升级前备份数据和恢复材料。 监控存储、可用性、付款集成和发布说明。 只公开用户和 Agent 实际需要的接口。 运营循环 接受工作前： 确认健康、存储、备份时效、有效能力，以及外部支付或配送依赖。 事故期间： 停止宣传不可用的新工作，保留现有订单证据，隔离故障边界后再重试。 升级前： 阅读发布证据，创建并测试恢复点，明确维护窗口和回滚判断。 变更后： 验证诊断结果，以及受影响的一条代表性买家、卖家、付款、Webhook 和恢复路径。 监控 Node 安全备份和升级 不破坏证据地排障 可选托管连接 在服务提供时，运营者可以把自托管 Node 绑定到可选 Mobazha 账号以使用托管能力。绑定不会转移本地恢复材料的保管权，也不是独立运行的必要条件。 连接可选托管账号 English canonical page"
     },
     {
       "id": "zh-self-host-requirements",
@@ -3554,35 +3554,35 @@
       "id": "zh-build",
       "path": "/zh/build",
       "canonical_url": "https://docs.mobazha.org/zh/build",
-      "title": "基于后端实际公开的能力进行开发",
-      "summary": "集成应发现当前后端支持什么，而不是假设每种 Mobazha 部署都公开相同能力。",
+      "title": "基于后端声明的能力构建",
+      "summary": "集成应主动发现后端支持什么，不能假设每个 Mobazha 部署都公开相同接口。",
       "status": "beta",
       "audiences": [
         "开发者",
-        "agent 开发者"
+        "agent 构建者"
       ],
       "applies_to": "Mobazha v0.3 候选版本",
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/zh/build",
-        "label": "基于后端实际公开的能力进行开发"
+        "label": "基于后端声明的能力构建"
       },
       "evidence": {
         "source": "https://github.com/mobazha",
         "label": "Mobazha 公开源码组织"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-14",
       "page_type": "hub",
-      "outcome": "选择当前可用的公共集成契约，并在不假设所有部署相同的前提下开始开发。",
+      "outcome": "为集成选择当前公开契约，并在不假设部署完全相同的前提下完成第一个有范围限制的调用。",
       "estimated_time": "5 分钟",
       "journey": "build",
       "primary_action": {
-        "label": "查看公开界面",
-        "href": "/zh/build#公开界面"
+        "label": "完成第一个 API 调用",
+        "href": "/zh/build/quickstart"
       },
       "language": "zh-CN",
       "translation_of": "/build",
-      "search_text": "集成原则 把连接后端的版本与有效能力响应作为运行时事实。文档描述接口与意图，但客户端必须处理能力不可用、被关闭或版本不同的情况。 公开界面 版本化 HTTP API 与 WebSocket 实时事件。 面向运营者的 Webhook 事件投递。 带身份、ai:use 和工具级权限边界的 MCP。 只有部署实际声明时才可使用的扩展和合约。 继续 选择交互表面与集成契约 运行时能力 OpenAPI English canonical page"
+      "search_text": "集成规则 把连接后端的能力响应和版本信息作为运行时事实。文档解释接口和意图，但客户端必须处理能力不可用、被禁用或版本不同的情况。 接口类型 用于交易操作和实时更新的 HTTP 与 WebSocket 接口。 面向运营者控制的事件投递 Webhook。 带明确身份和授权边界的 MCP 与 Agent 接口。 只有连接部署明确声明时才可使用的插件和契约。 当前 Node 的 HTTP 入口位于 /v1/ ，WebSocket 位于 /ws ，MCP Streamable HTTP 位于 /v1/mcp 。具体操作仍取决于版本和能力。 开始构建 选择接口和集成契约 区分客户端壳、上下文路由、传输、事件和状态权威。 完成第一个认证 API 调用 发现能力并调用受保护的读取操作。 认证与 Scope 在 Basic、托管 JWT 和有 Scope 的 API Token 中选择。 错误、重试和幂等 在结果未知时保持业务正确性。 HTTP API 与 OpenAPI 使用生成的 operation 和 Schema 契约。 Webhook 验证签名、去重并对账。 WebSocket 把事件当成刷新提示，而不是最终事实。 MCP 与 Agent 初始化有 Scope 的 Streamable HTTP 客户端。 English canonical page"
     },
     {
       "id": "zh-build-quickstart",
@@ -4002,14 +4002,14 @@
       },
       "language": "zh-CN",
       "translation_of": "/project",
-      "search_text": "按问题选择入口 想了解的问题 从这里开始 Mobazha 的店铺、市场、渠道和 Agent 如何组合？ 产品地图 订单如何经过支付、履约、完成和恢复？ 交易主线 费用由谁收取，如何理解经济边界？ 收费与经济模式 Mobazha 为什么存在，长期原则是什么？ 创始白皮书 当前版本、系统边界或治理记录具体是什么？ 英文项目事实入口 中文知识分组 左侧分组 用途 当前中文覆盖 产品模型 解释用户会遇到的对象、关系和交易主线 产品地图、身份与店铺、Offer 与履约、交易、市场、集成、Agent 产品基础 解释产品模型下面的运行与经济规则 系统架构、收费、兼容性、Packaging 与 Distribution 愿景与方向 解释项目存在的原因、长期原则与证据门槛 白皮书 v0.2、Draft 产品路线图 信任与治理 区分当前事实、政策、发布证据和治理记录 安全、法律与隐私、发布范围、治理、RFC、ADR、历史与 Release 顶部导航与英文站使用同一逻辑： 买卖、运营、开发、产品、项目、社区 。产品覆盖前三个解释性分组；项目承载信任与治理。Mobazha Docs 标志返回中文起始页。 当前中文覆盖边界 除已单独校验的白皮书外，当前英文文档均已有同路径中文对应页，并通过翻译元数据、内部链接、内容治理与发布检查。中文页提供同等任务入口，但英文仍是第一阶段政策与产品事实的 canonical authoring authority。 精确 API operation 与 Schema 继续由共用的 API Reference 和 OpenAPI JSON 提供，不复制 359 个 operation。 每个中文页保留与英文一致的 lifecycle status、page type、journey、version 与适用 visual，并明确链接英文 canonical page。 Runtime、交易、发布与法律事实仍由连接后端、订单记录、版本合约、tagged release 或其公开 policy owner 决定；翻译不会扩大产品、收费或治理承诺。"
+      "search_text": "按问题选择入口 想了解的问题 从这里开始 Mobazha 的店铺、市场、渠道和 Agent 如何组合？ 产品地图 订单如何经过支付、履约、完成和恢复？ 交易主线 费用由谁收取，如何理解经济边界？ 收费与经济模式 Mobazha 为什么存在，长期原则是什么？ 创始白皮书 当前版本、系统边界或治理记录具体是什么？ 英文项目事实入口 中文知识分组 左侧分组 用途 当前中文覆盖 产品模型 解释用户会遇到的对象、关系和交易主线 产品地图、身份与店铺、Offer 与履约、交易、市场、集成、Agent 产品基础 解释产品模型下面的运行与经济规则 系统架构、收费、兼容性、Packaging 与 Distribution 愿景与方向 解释项目存在的原因、长期原则与证据门槛 白皮书 v0.2、Draft 产品路线图 信任与治理 区分当前事实、政策、发布证据和治理记录 安全、法律与隐私、发布范围、治理、RFC、ADR、历史与 Release 顶部导航与英文站使用同一逻辑： 买卖、运营、开发、产品、项目、社区 。产品覆盖前三个解释性分组；项目承载信任与治理。Mobazha Docs 标志返回中文起始页。 当前中文覆盖边界 除已单独校验的白皮书外，当前 61 篇英文文档均已有同路径中文对应页。检查分别验证文件与导航覆盖、翻译元数据、内部链接和严重语义缺失；“中文文件存在”本身不再被视为内容完成。中文页应保留完成同一用户任务需要的决策、风险、验证、恢复和下一步，但英文仍是第一阶段政策与产品事实的 canonical authoring authority。 精确 API operation 与 Schema 继续由共用的 API Reference 和 OpenAPI JSON 提供，不复制 359 个 operation。 每个中文页保留与英文一致的 lifecycle status、page type、journey、version 与适用 visual，并明确链接英文 canonical page。 中文可以按照中文阅读习惯重组或压缩措辞，但不能把政策、任务或比较页缩减成摘要；白皮书继续使用独立版本与发布审阅。 产品代码中的 Route 或组件只作为文档需求线索。没有运行时能力、权限、失败路径、测试和发布证据时，不会把账号恢复、市场运营、高级经营、AI 或其他候选界面写成 Current 能力。 Runtime、交易、发布与法律事实仍由连接后端、订单记录、版本合约、tagged release 或其公开 policy owner 决定；翻译不会扩大产品、收费或治理承诺。 English canonical page"
     },
     {
       "id": "zh-project-architecture",
       "path": "/zh/project/architecture",
       "canonical_url": "https://docs.mobazha.org/zh/project/architecture",
-      "title": "Mobazha 系统与店铺网络如何组合",
-      "summary": "比较直接 P2P 与混合店铺网络，并沿请求找到拥有店铺和交易状态的后端。",
+      "title": "Mobazha 系统与店铺网络如何协作",
+      "summary": "比较 Direct P2P 和 Hybrid 店铺网络，并把请求追踪到拥有店铺与交易状态的后端。",
       "status": "beta",
       "audiences": [
         "买家",
@@ -4023,15 +4023,15 @@
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/zh/project/architecture",
-        "label": "Mobazha 系统与店铺网络如何组合"
+        "label": "Mobazha 系统与店铺网络如何协作"
       },
       "evidence": {
         "source": "https://github.com/mobazha",
-        "label": "Mobazha 公开产品、Node、运行时与 Distribution 合约"
+        "label": "Mobazha 公开产品、Node、运行时与分发契约"
       },
       "reviewed": "2026-07-14",
       "page_type": "concept",
-      "outcome": "区分直接 P2P 与混合店铺网络，找出每项决定的后端 owner，并追踪不同表面与服务间的权威。",
+      "outcome": "区分 Direct P2P 与 Hybrid 店铺网络，识别每个决定的拥有后端，并追踪不同界面和服务之间的权威。",
       "estimated_time": "10 分钟",
       "journey": "understand",
       "primary_action": {
@@ -4060,14 +4060,14 @@
       },
       "language": "zh-CN",
       "translation_of": "/project/architecture",
-      "search_text": "阅读拓扑 Mobazha 的 P2P 含义是：独立运营的店铺后端可以参与共享发现、签名内容、消息与商业协议，而不必把每个店铺和订单都迁入一个中央平台数据库。它不表示每个买家都必须运行 Node、每个请求都在 transport 层直连，或每个 peer 都持有所有订单副本。 两种拓扑中，所选卖家后端都是稳定权威边界： 问题 直接 P2P 店铺网络 混合店铺网络 店铺在哪里运行？ 由独立店铺运营的 Node 独立 Node 或托管 Commercial Node 买家如何到达？ Storefront、app、direct link 或 Agent 解析卖家 Node 并请求操作 入口解析卖家上下文；Hosting gateway 路由托管上下文，独立上下文继续到自己的 Node 哪些内容可跨网络？ 公开 profile、Offer、发现信号、消息与明确 protocol request 相同公开关系，加上分别启用的 hosted、index、payment、delivery、messaging 或 automation service 哪些不会自动扩散？ 私有店铺数据、恢复材料、凭据与权威订单记录 独立 Node 使用托管渠道或可选服务，不会因此把数据与订单迁入 Hosting 谁决定订单状态变化？ 创建并拥有订单的卖家后端 所选卖家后端；不是入口渠道、gateway、index 或其他 peer Direct P2P 指独立 Node 互为 peer，而不是共享一个数据库； Hybrid 指共存与有边界的服务组合，不产生第三种订单 owner。 选择正确的架构视图 视图 回答的问题 来源 店铺网络拓扑 独立与托管店铺如何共存，谁拥有订单？ 本页 交易与保障 付款、履约、退款、争议如何协作？ 交易主线与取消、退款或争议 体验与渠道 Web、桌面、移动、社群、消息和 Agent 如何到达同一商业上下文？ 交互表面与集成 Node composition Core、数据、内容、消息、钱包和 adapter 如何组成后端？ 本页六部分模型与自行托管 付款与结算 某订单适用哪个 rail、wallet、provider、chain 或 escrow？ 卖家付款、订单 Payment Session 与运行时能力 具名 blockchain、smart contract、social client 或托管服务只有在当前 capability 与政策证据支持时才进入更具体视图；概念图中出现不代表普遍可用。 系统的六个部分 部分 用户看到或依赖什么 可以决定什么 Presentation surface Storefront、Admin、hosted app、client、direct link、community、Agent 或 API client 展示方式与请求哪个受支持操作 Selected backend 服务当前店铺与订单上下文的 hosted 或 self hosted Node 店铺数据、身份上下文、effective capabilities、授权与获准业务操作 Open Core 订单、付款验证、退款、争议、结算、保障与审计状态机 受保护转换是否有效，以及下一个权威状态 Adapter 与 controller Payment、delivery、messaging、search、webhook 等集成 转换请求和 observation；不能直接创造 Core state External system Chain、wallet、provider、carrier、messaging、indexer 或 AI provider 自身边界内的事实与操作 Public knowledge 与 release evidence Canonical docs、生成合约、capability response、conformance test 与 tagged release 公开政策含义与某版本可以声称的内容 规则很简单：表面可以请求操作，外部 provider 可以报告事实；只有拥有订单的后端决定输入是否形成有效业务状态变化。 一个请求如何经过系统 表面解析目标店铺与后端上下文。 Client 读取 runtime configuration 与 effective capabilities，而不是假定所有 deployment 相同。 后端检查身份、政策、Listing revision、Quote、authorization 与当前状态后创建业务记录。 Core 为订单建立 durable identity，并用 Payment Session 绑定 rail、金额、funding target 或 provider state、expiry 与 verification rule。 外部系统报告 evidence；evidence 不是跳过状态机的权限。 Core 检查预期订单、金额、资产、confirmations、身份、政策与 idempotency 后接受或拒绝转换。 Buyer、seller、webhook consumer 与 Agent 从最新后端状态刷新，而不是只看 notification。 Shipping、pickup、cancel、refund、dispute 与 settlement 都遵循同一结构：集成提供有边界输入，拥有后端验证受保护变更。 托管、自行托管与可选服务 路径 谁运行后端？ 谁负责运营？ 保持分离的内容 Hosted 托管服务运行相应 commercial distribution 服务商按其条款负责 deployment；店铺运营者仍负责 catalog、政策与订单义务 Payment rail、delivery、AI、messaging 等仍是具名依赖 Self hosted 卖家或独立运营者运行已发布 Node distribution 运营者负责主机安全、数据、备份、网络、更新、监控与恢复 可选 Mobazha 或第三方服务分别启用，并披露数据与价格 Hybrid Hosted 或 self hosted backend 调用选定外部能力 责任按服务与交易合约拆分 连接服务不会自动转移订单权威或本地恢复材料 查找权威答案 问题 首先检查 当前订单状态？ 拥有订单的后端 应付哪里、已验证什么？ 订单绑定 Payment Session 与后端付款记录 此处是否可用？ 连接后端 ready 的 runtime capability 人或 Agent 能否操作？ Backend authorization、role、scope、store context 与当前 state 精确 request/response？ Generated contract 与 tagged release evidence 公开收费、安全或兼容规则？ docs.mobazha.org 的 canonical policy page 本订单金额与收款方？ 公开政策范围内的 accepted Quote 与 transaction record Extension 只能接收最少数据与 capability；controller 不能直接写受保护订单或付款状态，所有财务或订单变更都要返回授权 Core command。 当前 v0.3 仍是候选版本。Dynamic plugin、remote UI code、universal product manifest 与无限制 runtime extension 不是当前公开合约。 发布范围 兼容性 English canonical page"
+      "search_text": "阅读拓扑 Mobazha 是 Peer to peer，因为独立运营的店铺后端可以参与共享发现、签名内容、消息和交易协议，而无需把所有店铺或订单移入一个中心平台数据库。这 不表示 每个买家都要运行 Node、每个请求都必须在传输层直连，也不表示每个 Peer 都会收到所有订单副本。 两种拓扑都以选中的卖家后端作为稳定权威边界： 问题 Direct P2P 店铺网络 Hybrid 店铺网络 店铺运行在哪里？ 独立店铺自行运营的 Node 独立 Node 或托管 Commercial Node 买家如何访问？ Storefront、App、Direct link 或 Agent 解析卖家 Node 并请求动作 入口解析卖家上下文；Hosting gateway 路由托管上下文，独立上下文继续访问自己的 Node 哪些内容可以跨网络？ 已发布 Profile 和 Offer、发现信号、消息及明确协议请求 相同公开协议关系，加上单独启用的托管、索引、付款、配送、消息或自动化服务 哪些内容不会自动扩散？ 私有店铺数据、恢复材料、凭据和权威订单记录 独立 Node 数据和订单不会因为使用托管渠道或可选服务就移入 Hosting 谁决定订单是否改变状态？ 创建并拥有订单的选中卖家后端 选中的卖家后端，无论独立还是托管；不是入口渠道、Gateway、Index 或其他 Peer Direct P2P 指独立 Node 作为 Peer，而不是共享数据库。 Hybrid 指共存和有边界的服务组合，不是第三种订单所有者。一笔订单仍只有一个活跃后端上下文。 选择托管或自行托管 理解社群市场与分布式发现 检查连接后端能做什么 使用正确的架构视图 拓扑不会把所有 Actor、Client、Chain、Contract 和 Node component 放在同一张图上，因为它们属于不同架构维度。混在一起会让可选集成看似强制，或让共享服务看似权威。 视图 应回答的问题 使用来源 店铺网络拓扑 独立与托管店铺如何共存？哪个后端拥有订单？ 上述拓扑和本页 交易与保护流程 买家、卖家、付款证据、履约、退款、争议和仲裁责任如何交互？ 订单、付款与恢复和取消、退款或争议 体验与渠道拓扑 Web、Desktop、Mobile、Community、Embedded、Messaging 和 Agent 入口如何访问同一交易上下文？ 交互表面与集成 Node 组成 Core service、本地数据、内容存储、消息、钱包和服务商 Adapter 如何组成一个后端？ 下述六部分模型、自行托管及公开实现契约 付款与结算拓扑 一笔订单适用哪个 Rail、Wallet、Provider、Chain、Escrow 或 Settlement controller？ 卖家付款、订单绑定 Payment Session、运行时能力和适用服务商契约 只有当前能力和政策证据支持时，具体 Blockchain、Smart contract、Social client、Hosted service 或 Arbitration mechanism 才应出现在更具体的视图中。概念图中出现不表示普遍可用。 本页的位置 Mobazha 可以表现为 Storefront、Hosted application、Self hosted Node、Community market、Direct link、API 或 Agent workflow。它们不是相互独立的产品解释，而是围绕同一交易模型的界面和运营路径。 页面 回答的问题 产品地图 Mobazha 的主要产品概念和使用方式是什么？ 本架构页 哪些系统处理请求、状态位于哪里、哪个系统是权威？ 交易主线 订单如何经过付款、履约、完成和恢复？ 运行时能力 当前连接后端现在能做什么？ 发布范围 哪些能力有当前发布证据、受条件限制或仍是 Draft？ 如果只需要购买或销售，跟随任务指南即可。需要理解两个界面为何不一致、选择运营模式、集成服务或确定故障责任时再使用本页。 系统的六个部分 部分 用户看到或依赖什么 它可以决定什么 Presentation surface Storefront、Admin、托管 App、Web 或 Desktop client、Direct link、Community entry、Agent、API client 信息如何展示，以及请求哪个受支持动作 Selected backend 服务当前 Store 和 Order context 的托管或自行托管 Node 店铺数据、身份上下文、有效能力、授权和准入业务操作 Open Core 后端中的订单、付款验证、退款、争议、结算、保护和审计状态机 受保护转换是否有效，以及下一个权威状态 Adapter 与 Controller 付款、配送、消息、搜索、Webhook 和其他有边界集成 转换请求、观察和服务商结果，但不能直接创造 Core 状态 External system Blockchain、Wallet、Payment provider、Carrier、Messaging network、Indexer、AI provider 或其他明确服务 自己边界内的事实与动作 Public knowledge 与发布证据 Canonical docs、生成契约、Capability response、一致性测试和 Tagged release 公开政策的含义以及特定发布可以声明什么 长期规则很简单：界面可以请求动作，外部服务商可以报告事实，但拥有订单的后端决定这些输入是否形成有效业务状态变化。 一条请求如何经过系统 以买家打开 Offer 并付款为例： 界面解析上下文。 Storefront、Application 或 Agent 确定正在操作的 Store 和 Backend。 客户端发现可用性。 读取 Runtime configuration 和 Effective capability，而不是假设所有 Mobazha 部署相同。 后端创建业务记录。 创建订单前验证 Identity、Store policy、Listing revision、Quote、Authorization 和当前状态。 Core 绑定交易。 订单获得持久 Identity 与已接受条款快照；Payment Session 绑定预期 Rail、Amount、Funding target 或 Provider state、Expiry 和 Verification rule。 外部系统报告证据。 Chain observer、Wallet、Payment provider、Webhook 或运营者报告观察结果。报告是证据，不是跳过状态机的许可。 Core 接受或拒绝转换。 在推进付款或订单状态前核对预期 Order、Amount、Asset、Confirmation、Identity、Policy 和 Idempotency。 界面刷新权威状态。 买家、卖家、Webhook consumer 和 Agent 根据最新后端状态显示或行动，而不是仅根据通知。 配送、自提、取消、退款、争议和结算都遵循同一结构：集成提供有边界的输入，拥有后端验证受保护变化。 托管、自行托管与可选服务 运营路径 谁运行后端？ 谁负责运维？ 哪些内容仍独立？ 托管 托管服务运行适用商业分发并路由当前账号或店铺上下文 服务运营者按条款管理部署和可用性；店铺运营者仍负责 Catalog、Policy 和订单责任 Payment rail、Delivery、AI、Messaging 和其他服务仍是明确依赖 自行托管 卖家或独立运营者运行已发布 Node distribution 运营者负责主机安全、数据、备份、网络暴露、更新、监控与恢复 可选 Mobazha 或第三方服务单独启用，并披露交换数据和价格 Hybrid 自托管或托管后端调用选中的外部能力 责任按公开服务与交易契约分开 连接服务不会自动转移订单权威或本地恢复材料 托管和自行托管可以共享公开契约与 Core 行为，但不是同一 Distribution 或运营边界。买家不必理解仓库拓扑，运营者必须知道哪个后端拥有店铺以及谁为每项依赖负责。 选择托管或自行托管 运行和恢复自行托管 Node 查看分发与打包政策 在哪里找权威答案 用户问题 首先检查的权威 当前订单状态是什么？ 拥有订单的后端 应向哪里付款，已经验证了什么？ 订单绑定 Payment Session 与后端付款记录 此处是否提供该功能？ 连接后端 ready 的运行时能力响应 此人或 Agent 能否执行动作？ 后端 Authorization、Role、Scope、Store context 和当前状态 是否发生付款、配送或服务商事件？ 适用服务商证据，以及对其进行对账的后端记录 支持哪个精确请求和响应形状？ 生成契约和 Tagged release evidence 公开收费、安全或兼容规则是什么？ docs.mobazha.org 上的 canonical policy 此订单适用什么金额和收款方？ 公开政策范围内的已接受 Quote 与交易记录 文档用于解释这些权威，不能启用能力、改变订单或替代交易证据。 权威与恢复边界 Mobazha 把不同状态的权威留给各自负责的系统，避免互相竞争的事实来源。Presentation surface 可以请求动作，Externa"
     },
     {
       "id": "zh-project-fees",
       "path": "/zh/project/fees",
       "canonical_url": "https://docs.mobazha.org/zh/project/fees",
-      "title": "收费与可持续经济模式",
-      "summary": "Mobazha 不为所有交易定义一个无法避免的统一抽成；实际收费必须说明服务、收款方、依据和确认点。",
+      "title": "你支付什么，以及谁收取这些金额",
+      "summary": "分别理解买家总额、卖家所得、服务费用、外部成本和退款规则，而不是把它们隐藏在一个模糊抽成里。",
       "status": "current",
       "audiences": [
         "买家",
@@ -4080,52 +4080,52 @@
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/zh/project/fees",
-        "label": "收费与可持续经济模式"
+        "label": "你支付什么，以及谁收取这些金额"
       },
       "evidence": {
         "source": "https://github.com/mobazha/mobazha",
-        "label": "Mobazha 公开实现与发布证据"
+        "label": "Mobazha 公开收费政策、报价要求与发布证据"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-14",
       "page_type": "policy",
-      "outcome": "在同意交易前，区分平台、服务商、网络、运营者、推荐、税费和可选服务收费。",
-      "estimated_time": "7 分钟",
+      "outcome": "判断订单或服务的成本、每项金额的付款方与收款方、生效时间，以及取消或退款如何改变金额。",
+      "estimated_time": "9 分钟",
       "journey": "understand",
       "primary_action": {
-        "label": "查看报价披露要求",
-        "href": "/zh/project/fees#报价必须说明"
+        "label": "阅读 Fee Quote",
+        "href": "/zh/project/fees#阅读-fee-quote"
       },
       "language": "zh-CN",
       "translation_of": "/project/fees",
-      "search_text": "不要把所有资金流都叫作佣金 商品价格、税费、配送费、链上或处理商费用、运营服务费、托管订阅、推荐奖励和公共资金有不同原因与收款方。把它们合并成一个百分比，会隐藏谁提供价值、谁收款以及费用是否可选。 经济边界 自行托管：独立运行不需要购买可选托管订阅，也不会自动产生中心化平台交易费。 托管与增值服务：可以为可靠性、支持、自动化、分发等明确价值收费，但需提前公开价格与续费条件。 网络和支付成本：属于所选网络或服务商，必须单独披露。 运营者或卖家费用：在合法且适用时可配置，但责任方和计算依据必须可见。 推荐与生态奖励：必须有资金来源、上限、可归因，并在退款或欺诈时按规则冲回。 协议或公共资金：必须明确、可治理，不能由草案百分比暗示。 稳定承诺 在自己控制的基础设施上运行 Mobazha，本身不会产生应付给 Mobazha 的订单费。 开源不等于服务器、网络、支付处理、插件、税费、支持和所有可选服务都免费。 Mobazha 或其他提供者可以对明确的可选服务收费，但必须在同意前披露提供者、付费者、价值、价格、续费和退出方式。 区块链、支付商、插件、税费或换汇成本，除非 Mobazha 是明确收款方，否则不能表述成 Mobazha 平台费。 自行托管不得强制加入 Mobazha 运营的成交服务。 报价必须说明 每项收费的名称、服务和收款方。 固定金额、百分比、计算基数、最低值和上限。 是否必需、可选、可退或依赖条件。 确认前的最终总额和结算分配。 报价有效期与适用规则版本。 受运营成交、推荐与 Agent 与交易相关的服务费必须对应支付执行、自动交付、证据处理、争议运营或明确风险责任等具体服务。 推荐或分发报酬必须由卖家或运营者提供预算、与已结算交易可归因、设置总额与时间上限，并在退款或欺诈后冲回。 Agent 或推荐存在付费关系时，必须在影响付费决定前披露。 多层招募收益、无限下级比例和未披露付费推荐不属于当前 Mobazha 政策。 修改此边界 普通自托管订单如果要强制使用中心 Mobazha 服务或支付 Mobazha 费用，必须经过公开 RFC 或 ADR、迁移和退出分析、明确的客户端与 API 行为、发布范围更新以及适用的法律审查。可选服务提供者可以在自己的价格页面标明生效日期后调整价格，但这不会改变项目级边界。 历史讨论中的示例比例不是当前默认值。只有完成公开审阅、实现、测试、披露和发布说明后，比例才能成为政策。 相关页面 当前服务价格 English canonical page"
+      "search_text": "本页的位置 本页规定 Mobazha 应如何解释费用和成本。它不是价格表，也不会为某个托管套餐、付款轨道、卖家或交易虚构费率。 需要 应使用的来源 理解长期有效的收费与披露规则 本页 查看当前托管套餐或服务价格 Mobazha pricing 和 fees 确认某笔订单的最终总额和各收款方 付款前接受的最终 Fee Quote 或等价结账报价 理解商品、配送、付款和订单状态 结账指南和交易主线 理解长期经济原则 创始白皮书 直接回答 每笔 Mobazha 订单都要支付中心化抽成吗？ 不需要。在自己控制的基础设施上运行 Community 软件，本身不会产生强制 Mobazha 交易费。 开源是否等于所有东西都免费？ 不是。服务器、存储、支付网络、服务商、配送、插件、AI、支持、税费和可选托管服务都会产生真实成本。 Hybrid 是否意味着同时支付平台抽成和自托管成本？ 不是。Hybrid 表示组合方式，不是收费类别。运营者承担自己的基础设施，以及实际使用并单独接受的服务和外部成本。 每一项扣款都是 Mobazha 费用吗？ 不是。收款方可能是卖家、承运人、区块链网络、支付服务商、税务机关、运营者、推荐方或另一项明确服务。 买家何时应知道总额？ 在最终确认及资金投入前。后续页面不能悄悄增加新的强制费用。 卖家何时应知道净所得？ 在接受适用服务或订单条款前，包括卖家承担的费用和退款处理方式。 卖家、市场、运营者或 Agent 能否获得费用？ 在合法、明确出资、可归因、设有上限、充分披露，并正确处理退款或欺诈的前提下可以。 当前费率在哪里？ 在适用服务商或服务价格入口，以及当前交易 Quote 中；不在旧截图、讨论或示例百分比中。 阅读 Fee Quote Fee Quote 把买家付款和卖家所得分开。当前 Deal Link 代码路径使用名为 pilot zero fee v1 的启动政策：对于 $100.00 Offer，平台生成的买家总额和预计卖家净额都是 $100.00；如果 Node 订单含有 Quote 中没有的非零配送、税费、折扣或其他组件，接受流程会拒绝它。该名称描述价格尚未决定时的当前实现约束， 不是已批准的 Deal Link 费率、零费承诺或永久商业政策 。 下面故意使用非零假设报价，以便展示资金方向。它 不是当前 Mobazha 费率、税务判断或 Offer 。示例中买家承担配送和适用税费，卖家承担托管交易服务和付款成本： 项目 对买家总额的影响 对卖家所得的影响 收款方或处理方式 商品或服务 +$100.00 +$100.00 毛额 卖家 配送 +$8.00 收取 +$8.00，同时承担 −$8.00 履约义务 卖家或商家随订单收取并支付适用履约成本 适用税费 +$5.00 收取 +$5.00，同时承担 −$5.00 税务义务 卖家或商家收取；当前结算不会自动汇给税务机关 托管交易服务 — −$2.00 提供已披露服务的明确运营者 付款或结算成本 — −$1.00 明确的支付服务商或网络 示例结果 买家总额：$113.00 预计卖家经济所得：$97.00 配送和税费在示例中是代收义务，不是卖家收入 算式表达两个方向：由买家出资的项目增加结账批准金额；由卖家出资的项目从 $100.00 订单毛额中减少所得。真实 Quote 可以采用不同分配，但不能把同一项成本同时加给买家又从卖家扣除，除非它们是两个单独命名的费用。 钱包、区块链网络、支付服务商、承运人或税务机关仍可能在平台 Fee Quote 外收取适用外部金额。必须在资金投入前，于相应选择或结账步骤说明实际付款方和收款方。 当前标准结账中的税费 卖家配置匹配的税务规则后，当前标准店铺结账把商品展示价格视为未含税： 卖家定义百分比和适用的买家地区。 后端匹配买家配送国家，并按商品金额计算税费。 税费在订单总额中单独显示，并加入买家支付金额。 税费通过订单付款路径收取；当前系统不会拆分并直接汇给税务机关。适用税务处理仍由卖家或商家负责。 当前百分比应用于商品金额，不包括配送。Deal Link 接受流程会拒绝包含其启动 Fee Quote 中没有的非零税费、配送或折扣的 Node 订单。因此 Deal Link 目前不能把标准结账税费作为独立组件加入；这是能力限制，不是 Deal Link 必须永久零费的决定。 未来非零费用由谁出资 托管交易服务： 并非天然由买家或卖家支付。买家出资会增加买家总额；卖家出资会减少卖家所得。Quote 必须说明服务商、付款方、收款方、服务、金额或费率以及退款处理。 付款或网络成本： 可以由买家直接承担、卖家吸收，或包含在服务商价格中。Quote 或 Payment Session 必须说明实际方式，且不能重复计算。 税费： 当前标准结账能在商品展示价上增加卖家配置的地区税费，并随订单向买家收取。特定销售是否合法仍取决于适用法律、卖家或 merchant of record 安排、产品和地区。软件代收不表示 Mobazha 汇缴税款或承担税务义务。 配送： 所选履约条款决定成本包含在商品价内、加入买家总额、代承运人收取，还是由卖家吸收。 Offer 可以在买家选择配送或提供税费计算所需信息前显示商品价格。但如果已经知道存在必需附加费，就不能把该价格表述成最终应付总额；结账也不能在确认后悄悄增加费用。 未来接受任何非零 Quote 前，还必须说明： 货币或资产、汇率来源和时间、Quote 有效期； 固定和百分比组件、最低值、上限，以及百分比的计算基数； 每项是必需、可选、预估、可退还是取决于条件； 谁控制资金，以及何时向各收款方付款； 取消、部分退款、全额退款、争议、过期或付款失败后的处理； 随订单保存的政策与 Quote 版本。 如果产品无法生成这些信息，就不应悄悄扣除新费用。 五种不同金额 类别 购买的价值 常见收款方 必需披露 托管订阅 可用性、管理、配额、更新、备份、域名或支持 托管服务运营者 账期、包含容量、续费、取消、导出和超额条款 交易服务 付款执行、订单运营、配送协调、证据、争议处理或明确风险责任 实际提供服务的运营者 付款方、金额或费率、上限、覆盖服务、结算和退款处理 使用量或专业服务 AI、存储、CDN、通知、API、迁移、实施、培训或 SLA 明确服务商 计量方式、包含额度、超额价格、期限和退出路径 分发或推荐报酬 可归因的新增需求、策展或销售辅助 推荐方、市场运营者、Agent 发布者或其他已披露参与方 资金来源、受益方、归因窗口、上限、利益冲突和冲回规则 外部成本 Network gas、处理商费用、换汇、税费、承运费或第三方插件 网络、服务商、机关、承运人或插件运营者 原始成本或估算规则、收款方、波动性和已披露加价 “卖家收到的钱少于订单总额”不能证明存在平台抽成。结算记录必须保留每个差额的独立原因和收款方。 成本取决于运营路径 自托管 Community 软件 独立运行不要求托管订阅，也没有统一的中心 Mobazha 交易抽成。 运营者承担自己的基础设施、管理、备份、网络、支付和所选第三方成本。 可选 Mobazha 或第三方服务可以在披露服务商、价格、交换数据、续费和退出路径后单独收费。 托管服务 托管套餐可以对运营、可靠性、存储、域名、更新、自动化、AI、分析或支持收费。 免费 Beta 或免费层是当前服务政策，不是永久权利。 适用价格页和服务条款必须说明套餐、生效日期、限制、续费、取消和导出路径。 Hybrid 组合 自托管或托管店铺可以增加发现、消息、付款、配送、AI、支持或其他托管能力，而不转移订单权威。 每项新增服务必须说明服务商、付款方、收款方、计量或费率、交换数据、故障行为、续费和退出路径。 使用托管渠道触达独立店铺本身不会产生统一交易抽成。任何归因分发或交易服务费仍需明确出资和 Quote 披露。 应比较完整运营成本与责任，而不是只比较订阅、抽成或服务器账单标题。 Deal Link 或托管交易 交易相关费用只能由明确服务或责任支撑，例如执行、配送协调、证据、争议运营或风险处理。 低接触自动交付与高接触人工运营不必使用相同价格模型。 实际费率和金额由交易 Quote 决定，而不是本政策页。 分发、推荐与 Agent 报酬是可选的，必须有真实资金来源，通常由卖家或责任运营者选择。 只适用于披露窗口和上限内可归因、已结算的价值。 退款、欺诈和归因修正必须按已接受规则冲回或调整。 付费推荐和 Agent 利益冲突必须在影响付费决定前披露。 注册人数、招募层级和无限下级百分比不属于当前 Mobazha 政策。 资金如何经过订单 配置政策。 卖家、运营者和服务商发布适用的商品、配送、服务、推荐、税费和外部成本规则。 计算 Quote。 后端绑定当前商品版本、付款方、收款方、金额、货币或资产、有效期和适用规则。 买家确认。 在付款指令或服务商授权前展示最终总额和实质条件。 订单保存快照。 后续政策或价格变化不能悄悄重写已接受交易。 付款和结算对账。 系统记录指令、观察、验证、付给各方的金额和仍待处理部分。 恢复调整明确项目。 取消、退款、争议、失败或欺诈只能按已接受政策和当前状态调整授权金额，并保留审计记录。 Agent 可以比较或解释 Quote，但不能替代必要的用户确认、虚构收款方或把估算当成最终值。 各类用户应检查什么 买家 确认商品、"
     },
     {
       "id": "zh-project-compatibility",
       "path": "/zh/project/compatibility",
       "canonical_url": "https://docs.mobazha.org/zh/project/compatibility",
-      "title": "这些 Mobazha 组件能否协同工作？",
-      "summary": "连接系统或升级店铺前，检查 client、backend、contract、capability、extension、data 与 distribution 兼容性。",
+      "title": "Mobazha 组件能否一起工作",
+      "summary": "在连接系统或升级店铺前，检查客户端、后端、契约、能力、扩展、数据与分发版本的兼容性。",
       "status": "current",
       "audiences": [
         "卖家",
         "运营者",
         "开发者",
-        "distribution 发布者",
+        "分发者",
         "agent"
       ],
       "applies_to": "当前公开项目政策或服务界面",
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/zh/project/compatibility",
-        "label": "这些 Mobazha 组件能否协同工作？"
+        "label": "Mobazha 组件能否一起工作"
       },
       "evidence": {
         "source": "https://github.com/mobazha/mobazha",
-        "label": "Node 公开合约、运行时能力、Migration 与 Conformance 来源"
+        "label": "Node 公开契约、运行时能力、迁移与一致性来源"
       },
       "reviewed": "2026-07-14",
       "page_type": "policy",
-      "outcome": "判断两个组件能否安全交换数据并保留业务含义，明确部署前所需证据。",
+      "outcome": "判断两个 Mobazha 组件能否安全交换数据并保留业务含义，并确定部署前所需证据。",
       "estimated_time": "9 分钟",
       "journey": "understand",
       "primary_action": {
@@ -4134,20 +4134,20 @@
       },
       "language": "zh-CN",
       "translation_of": "/project/compatibility",
-      "search_text": "快速兼容性检查 连接或升级前回答七个问题： Identity： 涉及哪些准确 client、backend、package、adapter 或 distribution version？ Contract： 双方声明哪一版 HTTP、event、webhook、MCP、extension 或 data contract？ Capability： 连接后端是否把所需 effective capability 标为 ready？ Authorization： 当前身份是否有正确 role、scope、store context 与 permission？ Semantics： 双方是否同意 state transition、amount、identifier、idempotency、finality 与 recovery？ Migration： 既有 data、configuration、credential 与 provider binding 能否安全升级与恢复？ Evidence： 是否有 conformance、integration 或 release test 覆盖这个准确组合？ 任何答案未知，即使能够编译或渲染，组合仍未经验证。 常见误判 双方认识同一字段名，不代表 authorization、状态含义、重试、确认与恢复兼容。 源码有 adapter，不代表 distribution 包含、运营者授权配置、依赖健康或后端展示 capability。 新 client 只能在其测试过的 version 与 additive behavior 范围连接旧 Node；缺少必需 schema 时必须 fail closed。 Hosted 与 self hosted 可共享公开合约，但 authentication、composition、capabilities、外部服务与运营责任可能不同。 Happy path 成功不能证明 conflict、duplicate、timeout、migration、downgrade 与 recovery 安全。 兼容表面 表面 必须兼容 证据 HTTP API method、path、schema、envelope、authentication、stable error、idempotency 与 state effect OpenAPI、negative test、release notes Event 与 WebSocket event identity、payload version、ordering assumption、reconnect 与 refresh semantics Event contract、duplicate/reconnect test Webhook Signature、delivery identity、retry、deduplication、payload version 与 reconciliation Webhook contract、delivery history、consumer test Runtime config Schema version、readiness、deployment profile、feature 与 capability 含义 /v1/runtime config 、client resolver test Commerce state Order、payment、fulfillment、refund、dispute、settlement 与 protection State machine 与 transaction conformance test Persisted data Migration、provider binding、backup、restore、rollback 与 export Migration test 与恢复后的代表性数据 数据库内部、private hook、composition root 细节或 internal import 可达代码，不是公开兼容承诺。 Version 与安全升级 Patch release 应保持支持的合约；minor release 可加入向后兼容 operation、field 或 capability；major release 可以在提供 migration guidance 后打破公开 wire、state、package 或 persisted data contract。候选版本阶段尚未声明稳定兼容，即使看似 minor 的变化也需明确审核。 记录当前 backend、client、distribution、contract、capability schema、配置与 provider version。 阅读 migration、移除行为、capability change 与 known issue。 创建验证过的备份并保留旧 artifact 与配置。 用恢复的数据测试 store、order、payment、webhook、Agent 与 recovery。 受控升级后验证 runtime readiness 与所有展示 capability。 接收新工作前核对既有订单与 provider binding。 只通过文档声明的数据兼容路径 rollback。 备份与升级 English canonical page"
+      "search_text": "本页的位置 兼容性比产品架构更具体，但不只是“请求返回了 JSON”。不同问题应使用不同来源： 问题 来源 哪个系统拥有请求或状态？ 系统架构 连接的后端现在能做什么？ 运行时能力 哪个 HTTP operation 或 Schema 存在？ API 与 OpenAPI 功能是否属于当前发布？ 发布范围 这些版本和组件能否安全协作？ 本页及适用发布证据 直接回答 客户端与后端都识别同名字段，是否代表兼容？ 不一定。授权、状态含义、幂等、确认、恢复和失败行为也是契约的一部分。 源码里存在 Adapter，客户端能否使用？ 只有分发版本包含它、契约版本匹配、运营者已授权和配置、依赖健康，且后端声明有效能力时才可以。 新客户端能否连接旧 Node？ 仅限客户端已经测试的版本和增量行为。缺少必需 Schema 或能力信息时必须 fail closed。 托管和自行托管店铺能否使用相同客户端与集成？ 可以共享公开契约，但认证、部署组成、启用能力、外部服务和运营责任可能不同。 成功的 happy path 是否证明兼容？ 不能。还必须覆盖冲突、重试、重复事件、超时、旧数据、迁移、降级和恢复路径。 快速兼容性检查 连接或升级两个组件前，回答以下七个问题： 身份： 涉及哪些精确客户端、后端、Package、Adapter 或分发版本？ 契约： 双方共同声明哪个生成的 HTTP、事件、Webhook、MCP、扩展或数据契约？ 能力： 连接后端是否把所需有效能力声明为 ready？ 授权： 当前身份是否拥有所需 Role、Scope、Store Context 和 Permission？ 语义： 双方是否对状态转换、金额、标识符、幂等、最终性和恢复达成一致？ 迁移： 现有数据、配置、凭据和服务商绑定能否安全升级和恢复？ 证据： 是否有覆盖这个精确组合的一致性、集成或发布测试？ 只要有一项未知，即使代码能编译或页面能显示，该组合仍未得到验证。 兼容性表面 表面 必须保持兼容的内容 应检查的证据 HTTP API Method、Path、Schema、Envelope、认证、稳定错误、幂等和状态影响 生成的 OpenAPI、负向测试、发布说明 Event 与 WebSocket Event identity、Payload version、排序假设、重连行为和刷新语义 事件契约、重复与重连测试 Webhook 签名、投递标识、重试、去重、Payload version 和对账 Webhook 契约、投递历史、消费者测试 Runtime configuration Schema version、Readiness、Deployment profile、Feature 与 Capability 含义 /v1/runtime config 、客户端 resolver 测试 交易状态 Order、Payment、Fulfillment、Refund、Dispute、Settlement 和 Protection 含义 状态机与交易一致性测试 标识符 权威 Asset、Chain、Payment、Store、Order 和 Capability identity 公开标识符契约与 normalization 测试 扩展与 Package 受支持的公开 Port、Module、Function、Controller 或进程外协议 版本化 Package 契约和组合测试 持久数据 Schema migration、服务商绑定、备份、恢复、回滚和导出 迁移测试、恢复后的代表性数据 数据库内部结构、具体 Constructor、私有 Hook、Composition Root 细节，以及可通过内部 Import 访问的代码，都不是公开兼容性承诺。 常见场景 新客户端连接旧后端 客户端应先读取 Runtime Schema 和 Capability Readiness。可以容忍增量未知字段，但不能把缺少的必需状态、畸形能力或不兼容 Schema 转换成“默认支持”。可选 UI 应保持不可用，而不是调用猜测出来的 Route。 集成识别了一个付款标识符 识别只证明标识符可解析或显示，并不证明分发版本包含 Adapter、卖家已启用、凭据存在、依赖健康，或当前 Order Mode 支持它。 服务商被禁用，但旧订单仍存在 新工作可以停止接纳，但已有订单会保留服务商绑定，仍可能需要观察、退款、结算或对账。兼容性包括履行这些历史义务的能力；悄悄选择另一服务商不是安全 fallback。 托管与自行托管共享 API Operation 形状可能相同，但认证、多店铺路由、限制、托管依赖和有效能力可能不同。集成必须发现上下文和能力，不能只按产品名称分支。 托管与自行托管店铺共享网络 共享发现、签名内容、消息或交易协议不会创建共享订单数据库。先解析选中的店铺和后端，再向该后端对账状态。Hosting gateway 可以路由托管店铺上下文，但不会因此成为独立 Node 的兼容代理或恢复权威。 Hybrid 兼容需要两层证据：Peer 或服务协议能够互操作，而且选中后端仍接受所需业务能力、身份和状态转换。 版本与变更规则 Patch release 应在修复缺陷和安全问题时保留受支持契约。 Minor release 可以增加向后兼容的 Operation、Field、Event、Capability 或 Extension point。 Major release 可以有意破坏受支持的 Wire、State、Package 或 Persisted data contract，但必须提供迁移指导。 RC 开发期间，即使看似很小的变更也需要明确审阅，因为稳定兼容性尚未声明。 改变状态含义、把可选服务改成强制、删除字段、削弱资金不变量或改变重试安全性，即使传输仍可解析，也属于 breaking change。 Breaking change 需要公开决策证据、迁移与降级指导、更新一致性测试、支持窗口、发布说明和文档影响审阅。 安全升级流程 记录运行中的后端、客户端、分发版本、契约、Capability Schema、配置和服务商版本。 阅读发布说明中的迁移、移除行为、能力变更和已知问题。 创建已验证备份，并保留上一个可运行制品和配置。 使用恢复数据测试代表性的店铺、订单、付款、Webhook、Agent 和恢复流程。 在受控环境升级，然后验证 Runtime Readiness 以及部署声明的每项能力。 接纳新工作前，对账现有订单和服务商绑定。 只沿文档说明的数据兼容路径回滚；旧 Binary 可能无法理解迁移后的数据。 安全备份和升级 处理错误、重试和幂等 什么能证明兼容 最强证据是使用代表性数据，对精确发布组合执行测试： 生成契约验证； Unit 与 State machine invariant； Standalone 与托管分发集成测试； 共享 Black box conformance test； 迁移、备份、恢复和降级演练； 重复、超时、冲突、依赖失败与恢复测试。 Mock 有助于开发，但不能证明生产分发、外部服务商或历史数据集兼容。记录精确版本，并把证据与发布或部署决定保存在一起。 English canonical page"
     },
     {
       "id": "zh-project-distribution",
       "path": "/zh/project/distribution",
       "canonical_url": "https://docs.mobazha.org/zh/project/distribution",
-      "title": "Mobazha 可以怎样打包与运营",
-      "summary": "比较源码构建 Node、托管服务、standalone package 与第三方 appliance，同时不把 packaging 当作 capability 或官方身份。",
+      "title": "Mobazha 如何打包与运营",
+      "summary": "比较源码构建 Node、托管服务、独立安装包和第三方 Appliance，避免混淆打包、能力和官方状态。",
       "status": "current",
       "audiences": [
         "卖家",
         "运营者",
-        "distribution 发布者",
-        "安全审核者",
+        "分发者",
+        "安全审查者",
         "评估者",
         "agent"
       ],
@@ -4155,24 +4155,24 @@
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/zh/project/distribution",
-        "label": "Mobazha 可以怎样打包与运营"
+        "label": "Mobazha 如何打包与运营"
       },
       "evidence": {
         "source": "https://github.com/mobazha/mobazha/tree/main/deploy/standalone",
-        "label": "Standalone packaging、distribution policy、release 与 supply-chain checks"
+        "label": "Standalone 打包、分发政策、发布与供应链检查"
       },
       "reviewed": "2026-07-14",
       "page_type": "policy",
-      "outcome": "选择或发布 Mobazha distribution，同时保留 capability 真实性、安全首次运行、用户控制、恢复、许可与诚实品牌表达。",
+      "outcome": "在保留能力事实、安全首次运行、用户控制、恢复、许可和诚实品牌声明的前提下选择或发布 Mobazha 分发版本。",
       "estimated_time": "10 分钟",
       "journey": "understand",
       "primary_action": {
-        "label": "比较 Distribution 形式",
-        "href": "/zh/project/distribution#distribution-形式"
+        "label": "比较分发形式",
+        "href": "/zh/project/distribution#分发形式"
       },
       "language": "zh-CN",
       "translation_of": "/project/distribution",
-      "search_text": "Distribution 形式 Distribution 是 Mobazha Core、adapter、frontend、configuration、packaging、update channel 与 operating assumption 的已测试组合；更换 installer、brand 或 host 不会创造新商业协议。 形式 运营者 当前含义 Community source build 独立卖家或运营者 公开候选源码可在受支持环境构建评估；运营者负责主机、secret、网络、数据、备份、更新与事件响应 Mobazha hosted service Mobazha 或具名托管运营者 Beta 服务运行适用 commercial distribution；其条款负责可用性、隔离、数据、价格、导出与支持 Standalone installer / launcher 安装后的独立运营者 Packaging 与更新机制可能处于预发布；稳定签名 artifact 仍需 release evidence Container、VPS image 或 appliance 独立 distribution 发布者或运营者 只有保留许可、安全、capability、provenance 与恢复规则时才是允许的 packaging Branded / vertical distribution 具名运营者 可选择 profile、brand、integration 与 service bundle，但不创造新 Core authority v0.3 当前只用于评估与 Testnet。Packaging source 或安装脚本不能证明稳定签名 binary、自动更新或生产支持已发布。 可以改变与必须保留 Distribution 可以选择运营模型、公开 adapter、展示、品牌、基础设施和本地功能；但必须保留： 拥有订单的 backend 与 Core state authority； effective capability discovery 与 fail closed behavior； backend authorization 与受保护 state transition； 对 provider、payer、recipient、data 与责任的诚实披露； artifact provenance、secret safety、backup、restore、export 与 rollback； 公开 contract compatibility，并与项目政策清楚分离。 Frontend switch、bundled adapter 或 product name 不能扩大 backend 安全实现的内容。 用户选择前的七个问题 谁发布并运营，是否声称官方身份？ 包含哪个准确版本、source revision、capability manifest 与 frontend？ 哪些服务是 local、hosted、third party、optional 或 required？ Store data、identity key、payment credential 与 recovery material 存放在哪里？ 首次凭据、更新、备份、导出与 rollback 如何工作？ 适用哪些费用、限制、支持条款与外部 endpoint？ Distribution 或可选服务消失时，店铺与既有订单怎么办？ 发布者要求 记录准确 commit/tag、build input、manifest、frontend revision、license、SBOM、checksum、provenance 与 test result。 不包含未批准付款能力、私有 control plane、隐藏支持入口、客户数据、provider credential 或预生成用户 secret。 首次运行在用户系统或明确托管边界生成凭据与签名材料，并从最小网络暴露开始。 更新有签名 metadata、完整性验证、备份、兼容 rollback、restore、reset 与 export 说明。 只宣传 included、configured、authorized、healthy 且 tested 的 effective capability。 未有证据与授权时，不得称 Official、Certified、audited、production ready 或 compatible。 开源许可不授予 Mobazha 名称、logo 或 certification claim。正式认证计划发布前，“Mobazha Certified”不是有效公开状态。 安装 Node 法律、隐私、许可与商标 English canonical page"
+      "search_text": "本页的位置 Distribution 是经过测试的 Mobazha Core、Adapter、Frontend、Configuration、Packaging、Update channel 和运营假设组合。安装器、品牌、主机或功能集合不同，并不会让它自动成为新交易协议。 问题 来源 应选择托管还是自行托管？ 选择部署方式 哪些系统拥有状态和依赖？ 系统架构 Package 是否允许且描述诚实？ 本页 制品是否就绪且兼容？ 发布范围、发布证据和兼容性 如何安装和恢复 Node？ 自行托管指南 分发形式 形式 谁运营？ 当前含义 主要责任 Community 源码构建 独立卖家或运营者 可在受支持环境构建和评估公开候选版本源码 主机、秘密、网络、数据、备份、更新、集成和事故响应 Mobazha 托管服务 Mobazha 或明确托管运营者 Beta 服务运营适用商业分发和托管基础设施 服务条款、可用性、租户隔离、数据处理、价格、导出和支持 Standalone 安装器或 Launcher 安装后的独立运营者 打包和更新机制可能处于预发布；稳定签名制品需要发布证据 制品完整性、首次运行、更新批准、回滚和本地恢复 Container、VPS Image 或 Appliance 独立分发者或运营者 在保留许可、安全、能力、来源和恢复规则时允许打包 安全镜像构建、披露、更新、支持和源码义务 品牌或垂直分发 其明确运营者 可选择 Profile、品牌、集成和服务组合，但不会创建新的 Core 权威 诚实品牌、兼容契约、明确本地功能，不做虚假官方声明 当前 v0.3 系列用于评估和测试网。打包源码或存在安装脚本并不能证明已发布稳定签名 Binary、自动更新或生产支持。 可以不同与必须保留的内容 Distribution 可以选择 Distribution 必须保留 托管或自行托管运营模式 拥有订单的后端和 Core 状态权威 包含的公开 Adapter 和 Build time feature 有效能力发现和 fail closed 行为 Store、Marketplace、Embedded 或 Vertical presentation 后端授权和受保护状态转换 品牌、域名、Theme、Support 和 Pricing 诚实披露服务商、付款方、收款方、数据和责任 基础设施服务商和更新渠道 制品来源、秘密安全、备份、恢复、导出和回滚 Distribution local feature 公开契约兼容，并与 Mobazha 项目政策明确分离 Frontend switch、Bundled adapter 或产品名称不能扩大后端安全实现的范围。分发者可以增加服务，但必须说明服务商，不能隐藏外部依赖或把资金权威移入展示代码。 用户如何选择分发版本 信任 Package 或托管服务前，询问： 谁发布和运营它？是否声称官方身份？ 包含哪个精确 Mobazha 版本、源码 revision、Capability manifest 和 Frontend？ 哪些服务是本地、托管、第三方、可选或必需？ 店铺数据、Identity key、Payment credential 和恢复材料存放在哪里？ 首次凭据如何生成，更新如何验证，备份如何创建，数据如何导出，失败如何回滚？ 适用哪些费用、限制、支持条款和外部 Endpoint？ 分发者或可选服务消失后，店铺和现有订单如何继续？ 如果发布者无法回答这些问题，安装器的便利性不能建立信任。 分发者要求 构建与来源 记录精确源码 commit 或 tag、构建输入、Capability manifest、Frontend revision、License、SBOM、Checksum、Provenance 和测试结果。 不得包含未批准付款能力、私有 Control plane code、隐藏支持访问、客户数据、服务商凭据或预生成用户秘密。 为精确制品履行对应源码、Notice、Attribution 和第三方 License 义务。 安全首次运行 在用户系统上生成管理员凭据、店铺身份、签名材料和本地秘密；若使用托管边界，必须明确披露。 以最小网络暴露启动，并要求明确配置 TLS、Proxy、Firewall、Domain 和远程管理。 展示外部 Endpoint、Telemetry、Update check 和可选托管连接；契约允许时应可禁用。 更新与恢复 通过文档化渠道签名并发布更新 Metadata，替换前验证完整性。 说明更新是自动、提示、运营者控制还是不可用。 迁移前备份，保留兼容回滚点，测试恢复，并说明 Reset 和 Export 路径。 禁用新能力后，仍应服务历史服务商绑定及现有订单恢复。 产品事实 只宣传该 Distribution 已包含、配置、授权、健康并测试的有效能力。 区分 Mobazha 项目政策与分发者自己的条款、价格、隐私、支持和本地功能承诺。 没有相应证据和授权，不得声称 Official、Certified、Audited、Production ready 或 Compatible。 品牌与认证 开源许可不授予 Mobazha 名称、Logo 或认证声明权。第三方 Image 可以准确说明包含 Mobazha 并标注源码 revision，但没有单独授权不能暗示 Mobazha 运营、认可、审计或支持该 Package。 未来认证项目可能检查来源、发布材料、能力事实、首次运行安全、更新、恢复和兼容性。参与公开契约不以认证为必要条件；认证项目正式发布前，“Mobazha Certified”不是有效公开状态。 重要使用前验证 安装到可丢弃环境或测试网。 验证制品身份、本地 Listener、Runtime profile、声明能力和外部连接。 创建店铺，完成一次代表性商品、Quote、付款、履约和恢复流程。 使用文档指定的兼容版本创建并恢复备份。 演练更新与回滚判断，不删除唯一店铺副本。 接受重要交易前记录运营者、支持路线、周期成本和事故负责人。 安装自行托管 Node 监控 Node 备份与升级 检查法律、隐私、许可与商标边界 English canonical page"
     },
     {
       "id": "zh-project-whitepaper",
@@ -4214,8 +4214,8 @@
       "id": "zh-project-roadmap",
       "path": "/zh/project/roadmap",
       "canonical_url": "https://docs.mobazha.org/zh/project/roadmap",
-      "title": "Mobazha 接下来要验证什么",
-      "summary": "查看项目正在验证的产品结果、推进所需证据，以及仍属于探索而非承诺的方向。",
+      "title": "Mobazha 接下来要证明什么",
+      "summary": "了解 Mobazha 当前验证的产品结果、推进所需证据，以及仍属于探索而非承诺的想法。",
       "status": "draft",
       "audiences": [
         "用户",
@@ -4229,15 +4229,15 @@
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/zh/project/roadmap",
-        "label": "Mobazha 接下来要验证什么"
+        "label": "Mobazha 接下来要证明什么"
       },
       "evidence": {
         "source": "https://github.com/mobazha",
-        "label": "公开发布范围、仓库 milestone、audit 与已审核产品路线图"
+        "label": "公开发布范围、仓库里程碑、审计与经过审阅的产品路线图"
       },
       "reviewed": "2026-07-14",
       "page_type": "concept",
-      "outcome": "理解项目接下来要验证的结果、对用户的意义，以及方向成为发布承诺前必须具备的证据。",
+      "outcome": "理解项目接下来要证明的用户结果、其价值，以及方向成为发布承诺前必须存在的证据。",
       "estimated_time": "8 分钟",
       "journey": "understand",
       "primary_action": {
@@ -4246,7 +4246,7 @@
       },
       "language": "zh-CN",
       "translation_of": "/project/roadmap",
-      "search_text": "当前验证目标 Roadmap 描述期望的用户与产品结果，不是交付日历或 capability 存在证据。内部计划中的日期或条目，只有经过 accepted、implemented、tested、documented 与 released 才成为公开承诺。 近期目标不是功能数量，而是让不同角色能完成并验证一条可信候选版本闭环： 用户 要验证的结果 成功证据 买家 看懂卖家、总额、付款指示、订单状态与恢复路径 一笔具有 Quote、Payment Session、履约与恢复状态的完整测试订单 卖家 配置店铺、发布 Offer、收到付款证据、履约与售后 无隐藏管理员修复的可重复 store to order 操作 运营者 运行健康、安全、可恢复的 backend Diagnostics、monitoring、backup restore、upgrade decision 与 incident owner 开发者 / Agent 构建者 发现 capability、窄认证、调用公开 contract 并核对未知结果 覆盖 denial、retry、duplicate、conflict 与 recovery 的 versioned test 评估者 区分当前行为、可选服务、费用、依赖与未来方向 一致的 release、policy、compatibility 与 source evidence 近期结果主线 买卖旅程：让总额、付款进度、履约、退款与争议清晰可测。 Standalone 运营：证明 secure first run、监控、restore、migration、rollback 与支持。 Hosted / independent 一致性：共享 contract、真实 runtime capability、跨 distribution conformance，并披露服务差异。 付款与保障：分开付款事件、已验证付款、订单状态、settlement 与 buyer protection。 公开集成：用 scoped credential、stable contract、idempotency、capability gate、approval 与 failure test 限制 API、MCP、webhook 和 Agent 权限。 发布信任：用 checksum、provenance、SBOM、compatibility、migration、known issue 与文档证明可用性。 仍受 Gate 限制的探索 更丰富 community market、Deal Link、更多 payment/protection model、AI/Agent/Skill、multi store、更多 channel、launcher 与更广 extension runtime 都仍是探索。每项必须先证明相应 operator responsibility、privacy、custody、authorization、failure semantics、cost control、recovery 与 compatibility。 Roadmap 不承诺每个 adapter 都发布、所有 deployment 能力相同、固定日期、永久免费或零外部成本、统一佣金模型、Token 回报，也不允许 Agent、plugin、marketplace 或 hosted service 绕过 store、order、payment 或 user authority。 结果如何成为 Current 记录真实用户问题与目标结果。 审核 product、security、economic、legal 与 operational 边界。 定义公开 contract 与 capability behavior。 在相关 distribution 测试 implementation 与 migration。 让 user journey、failure recovery、documentation 与 support evidence 一致。 Release 发布 scope、artifact、known issue 与 compatibility evidence。 发布范围 公开决定与提案 English canonical page"
+      "search_text": "本页的位置 路线图描述期望的用户与产品结果。它不是所有讨论中功能的列表、交付日历，也不能证明某项能力已经存在。 需要 来源 当前发布中有什么？ 发布范围和连接后端 为什么构建 Mobazha？ 创始白皮书 项目下一步要证明什么结果？ 本路线图 哪项具体变更已提出或接受？ RFC、ADR 与决策 哪些实施工作正在进行？ 公开仓库 Issue、Project、测试和发布说明 内部计划上的日期或项目不会自动成为公开承诺；它必须经过接受、实施、测试、文档化和发布。 当前验证目标 近期目标不是功能数量，而是让不同用户都能完成并验证一条可信的候选发布闭环： 用户 要证明的结果 成功证据 买家 理解卖家、最终总额、付款指令、订单状态和恢复路径 一笔完整测试订单，Quote、Payment Session、履约和恢复状态都可检查 卖家 配置可识别店铺、发布 Offer、接收付款证据、履约并支持订单 可重复的店铺到订单运营，不依赖隐藏管理员修复 运营者 运行或提供健康、安全、可恢复的后端 诊断、监控、备份恢复、升级决策和事故责任证据 开发者或 Agent 构建者 发现能力、最小权限认证、调用公开契约并处理未知结果 版本化契约测试覆盖拒绝、重试、重复、冲突与恢复 评估者 区分当前行为、可选服务、费用、依赖和未来方向 公开发布、政策、兼容性与源码证据一致 在这条闭环可靠前，更大的 Marketplace、更多支付轨道或更多自动化只会扩大表面积，而不能证明核心价值。 近期结果轨道 结果轨道 要解决的用户问题 推进所需证据 买卖旅程 重要状态和恢复信息分散或含糊 经过测试的桌面与移动流程，清晰展示总额、付款进度、履约、退款和争议 独立运营 安装比安全长期运营容易 签名发布证据、安全首次运行、监控、备份恢复、迁移、回滚和支持指导 托管与独立一致性 不同组合中的产品行为可能漂移 共享契约、运行时能力事实、跨分发一致性和明确服务差异 付款与保护清晰度 Payment event、Verified payment、Order state、Settlement 和 Buyer protection 容易混淆 订单绑定 Payment Session、轨道特定恢复、可审计状态转换和诚实条款 公开集成表面 API、Event、Webhook、MCP、Extension 和 Agent 可能暗示越权 有 Scope 的凭据、稳定契约、幂等、能力 Gate、批准和失败测试 店铺与分发质量 发布 Listing 不等于完整商业体验 更好的身份、Storefront、履约、可见性、无障碍、国际化和运营证据 发布信任 源码存在常被误认为已支持 Checksum、Provenance、SBOM、兼容、迁移、已知问题和发布关联文档 这些轨道可以并行，但都不能绕过适用的安全、经济、法律、能力和发布门槛。 仍受门槛限制的探索 探索领域 潜在价值 必须先证明什么 更丰富的社群市场和垂直场景 连接聚焦需求与独立供给 运营责任、审核、发现质量、归因和可持续单位经济 Deal Link、Embedded 或社交入口 缩短已知需求到可归因订单的路径 不可变卖家与 Quote 绑定、隐私、渠道上下文、费用披露和恢复 更多付款与保护模型 服务更多地区、资产和风险偏好 保管、验证、最终性、退款、争议、合规、依赖与失败语义 AI、Agent 与可复用 Skill 减少设置和运营工作 有 Scope 的身份、批准、追踪、确定性政策、成本控制和人类责任 多店铺与更丰富 Storefront 让一个运营者区分品牌、Catalog、Policy 和受众 Store context、授权、数据所有权、路由、Analytics 和迁移边界 Browser、Messaging、TMA 或其他渠道 在需求所在位置触达用户 安全 Origin、认证上下文、能力发现、隐私和一致订单权威 Launcher 与托管更新 降低自托管摩擦 签名制品、平台验证、更新同意、健康检查、备份、回滚和恢复 更广泛扩展运行时 支持更多服务商和分发特定能力 稳定类型契约、隔离、最小权限、兼容、审阅和撤销 探索不等于计划发布。即使原型可用，也可能无法通过产品、安全、合规、运营成本或维护测试。 路线图不承诺什么 每个仓库设计或 Adapter 都会发布； 所有部署公开相同能力集合； 在发布证据存在前承诺稳定日期； 永久免费服务、零外部成本或统一抽成模型； Token 价值、交易挖矿、招募奖励、回购或投资回报； 旧数据、新 Binary、私有分发与第三方服务商自动兼容； Agent、Plugin、Marketplace 或托管服务可以绕过 Store、Order、Payment 或 User authority。 结果如何成为 Current 记录真实用户问题和目标结果。 审阅产品、安全、经济、法律和运营边界。 定义公开契约与 Capability 行为。 在相关分发版本测试实施和迁移路径。 用户流程、失败恢复、文档与支持证据保持一致。 发布范围、制品、已知问题和兼容性证据。 仓库 Issue 与 Project 跟踪执行细节，RFC 和 ADR 记录决策，Release note 说明实际交付。本页是公开结果地图，应在证据变化时更新，而不是随内部任务名称变化。 查看发布范围和成熟度 检查运行时能力 阅读公开决策与提案 English canonical page"
     },
     {
       "id": "zh-project-security",
@@ -4428,8 +4428,8 @@
       "id": "zh-project-rfcs",
       "path": "/zh/project/rfcs",
       "canonical_url": "https://docs.mobazha.org/zh/project/rfcs",
-      "title": "Requests for Comment",
-      "summary": "把重大 protocol、policy、economic、security、governance 与跨仓库提案当作承诺前先审核。",
+      "title": "征求意见稿（RFC）",
+      "summary": "在把重大协议、政策、经济、安全、治理和跨仓库提案当成承诺前，先查看其状态与审阅记录。",
       "status": "current",
       "audiences": [
         "贡献者",
@@ -4441,24 +4441,24 @@
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/zh/project/rfcs",
-        "label": "Requests for Comment"
+        "label": "征求意见稿（RFC）"
       },
       "evidence": {
         "source": "https://github.com/mobazha/mobazha-docs/tree/main/rfcs",
-        "label": "Mobazha 公开 RFC registry"
+        "label": "Mobazha 公开 RFC 注册表"
       },
       "reviewed": "2026-07-14",
       "page_type": "hub",
-      "outcome": "查找或发起公开提案，同时不把 Draft 设计方向描述为 accepted 或 shipped behavior。",
+      "outcome": "查找或发起公开提案，同时避免把 Draft 方向表述成已接受或已发布行为。",
       "estimated_time": "5 分钟",
       "journey": "understand",
       "primary_action": {
-        "label": "打开 RFC Registry",
-        "href": "/zh/project/rfcs#当前-registry"
+        "label": "打开 RFC 注册表",
+        "href": "/zh/project/rfcs#当前注册表"
       },
       "language": "zh-CN",
       "translation_of": "/project/rfcs",
-      "search_text": "何时需要 RFC 公开 protocol 或 interoperability contract 改变。 Order、payment、settlement、dispute、identity、authorization 或 custody 边界改变。 Fee、recipient、reward、public fund 或 economic policy 改变。 新的可选 hosted dependency 改变独立运营假设。 Governance、licensing、privacy、security 或跨仓库 ownership 发生实质变化。 状态模型 Draft：编写未完成。 Review：可以公开技术与产品审核。 Accepted / Rejected：记录决定与理由。 Withdrawn：作者不再提议。 Superseded：由另一 RFC 替代。 Implemented：release evidence 证明 accepted proposal 已在明确范围交付。 当前 Registry RFC 0001: Founding whitepaper publication contract Review。 RFC 0002: Composable Extension Platform Model Draft。 RFC 0003: Composable Frontend Product Model Draft。 RFC 0004: Deal Link Single Level Attribution Superseded by RFC 0007。 RFC 0005: Core owned Resource Collateral Lifecycle Draft。 RFC 0006: Payment Kernel, Rails, and Trusted Distribution Modules Draft。 RFC 0007: Seller funded Affiliate Attribution and Atomic Settlement Draft。 RFC 0008: Node Key Domains and Receiving Architecture Draft。 RFC 0009: Frozen Payment Attempt Settlement Terms Draft。 RFC 0010: Guest Checkout Trust and Custody Model Draft。 RFC 0011: Order Settlement Authorization Keys Draft。 RFC 0012: Embedded Wallet Buyer Settlement Keys and Onramp Funded Attempts Draft。 RFC template Accepted 与 Implemented 是不同状态。只有 release evidence 和 effective runtime capability 能证明已交付可用。 English canonical page"
+      "search_text": "何时需要 RFC 公开协议或互操作契约发生变化。 订单、付款、结算、争议、身份、授权或保管边界发生变化。 费用、收款方、奖励、公共资金或经济政策发生变化。 新的可选托管依赖改变独立运行假设。 治理、许可、隐私、安全或跨仓库所有权发生实质变化。 状态模型 Draft： 编写尚未完成。 Review： 已准备好进行公开技术和产品审阅。 Accepted 或 Rejected： 已记录决定及理由。 Withdrawn： 作者不再提出该变更。 Superseded： 由另一份 RFC 取代。 Implemented： 发布证据确认已接受提案在明确范围内交付。 当前注册表 RFC 0001：创始白皮书发布契约 Review；规定白皮书升级状态所需证据和批准。 RFC 0002：可组合扩展平台模型 Draft；区分领域、契约角色、运行时、信任、生命周期和打包。 RFC 0003：可组合前端产品模型 Draft；区分部署、体验、渠道、代码包含关系和有效能力。 RFC 0004：Deal Link 单层归因 已由 RFC 0007 取代；保留早期仅人工审阅提案。 RFC 0005：Core 拥有的资源抵押品生命周期 Draft；提出独立的 Core 抵押品聚合，不与 Order Extension 或订单结算状态合并。 RFC 0006：Payment Kernel、Rails 与可信分发模块 Draft；提出类型化支付轨道、经过审阅的模块组合、按贡献路由和持久恢复边界。 RFC 0007：卖家出资的 Affiliate 归因与原子结算 Draft；提出把卖家出资的 Affiliate 输出纳入权威订单 release，而不增加第二套付款引擎。 RFC 0008：Node 密钥域与收款架构 Draft；提出拆分 Identity、Wallet 和 Settlement 域，并为订单授权密钥设置生产门槛。 RFC 0009：冻结 Payment Attempt 结算条款 Draft；提出在付款目标可用前冻结卖家付款、平台与取消费用、Affiliate、Moderator、Escrow 超时和争议政策。 RFC 0010：Guest Checkout 信任与保管模型 Draft；提出卖家保管的 Guest Checkout、逐链关闭门槛和订单 Scope 凭据。 RFC 0011：订单结算授权密钥 Draft；提出针对每个 attempt 的确定性硬化结算密钥，以及付款前 Moderator 可选性的密钥条件。 RFC 0012：内嵌钱包买家结算密钥与 Onramp 注资 Draft；提出由买家和卖家共同保管的参与者密钥类别，并允许经过审阅的内嵌钱包可信模块。 RFC 模板 必需 metadata 和审阅问题。 仓库 RFC 指南 Accepted 与 Implemented 是不同状态。只有发布证据和有效运行时能力才能证明能力已经交付。 English canonical page"
     },
     {
       "id": "zh-project-adrs",
@@ -4605,8 +4605,8 @@
       "id": "zh-support",
       "path": "/zh/support",
       "canonical_url": "https://docs.mobazha.org/zh/support",
-      "title": "获取帮助与报告问题",
-      "summary": "产品问题使用公开支持，缺陷提交到对应仓库，安全问题必须私下报告。",
+      "title": "获取帮助并报告问题",
+      "summary": "可复现的产品问题使用公开支持，代码缺陷使用仓库 Issue，安全问题使用私密报告。",
       "status": "current",
       "audiences": [
         "所有人"
@@ -4615,13 +4615,13 @@
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/zh/support",
-        "label": "获取帮助与报告问题"
+        "label": "获取帮助并报告问题"
       },
       "evidence": {
         "source": "https://mobazha.org/status",
         "label": "Mobazha 公开支持入口"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-14",
       "page_type": "hub",
       "outcome": "把产品问题、可复现缺陷、文档问题或安全问题送到正确的公开或私密渠道。",
       "estimated_time": "3 分钟",
@@ -4632,7 +4632,7 @@
       },
       "language": "zh-CN",
       "translation_of": "/support",
-      "search_text": "选择渠道 文档问题 过期、缺失、不清楚或互相冲突的文档。 Node 问题 后端、部署、API、付款或运营缺陷。 Unified 问题 买家、卖家、浏览器或前端缺陷。 Telegram Discord 写出可处理的问题 说明托管或自行托管、准确版本、操作系统和相关能力状态。 提供最小复现步骤、预期结果、实际结果和脱敏证据。 不要提交访问令牌、私钥、助记词、恢复材料、客户数据或私有基础设施信息。 安全问题例外 漏洞、凭证泄露、签名密钥问题和利用方式必须通过受影响 GitHub 仓库的私有漏洞报告渠道提交，不要先发到公开 Issue 或社区聊天。 English canonical page"
+      "search_text": "选择渠道 在 Mobazha Unified 中打开 Me → Help & Support → Documentation；桌面版 Footer 也链接到同一个权威文档站。 文档 Issue 文档过期、缺失、不清晰或互相冲突。 Node Issue 可复现的后端、部署、API、支付或运营缺陷。 Unified Issue 买家、卖家、浏览器、响应式或前端缺陷。 Telegram 社群帮助和当前服务问题。 Discord 社群讨论和帮助。 从故障边界开始 症状 首先检查 可复现时的最佳渠道 托管页面或登录不可用 服务状态、浏览器网络结果，以及其他公开页面是否可访问 当前服务问题先走社群支持；只有能复现产品缺陷时才提交仓库 Issue 本地 Node 无法启动 精确 commit、启动参数、数据目录权限、端口、磁盘和 doctor json Node Issue 缺少店铺控制项 runtime config 就绪状态、能力、当前身份、店铺上下文和卖家配置 展示问题走 Unified；后端能力错误走 Node 未观察到付款 订单 ID、预期资产、地址、金额、有效期、确认数和依赖健康状态 保存脱敏证据后提交 Node Issue；不要盲目再付一笔作为测试 订单、退款或争议状态异常 权威订单状态、付款记录、最近动作和生效政策 状态权威错误走 Node；后端正确但前端展示错误才走 Unified Webhook 或集成重复执行 投递或事件 ID、签名结果、端点响应和对账记录 投递行为走 Node；消费者去重问题由集成维护者处理 文档与行为冲突 页面 URL、审阅日期、部署版本、能力快照和冲突结果 文档 Issue 不要同时改变多个层。先在最小的本地或可丢弃边界复现，再报告拥有错误状态的组件。 写出有用的报告 说明是托管还是自行托管、精确版本或 commit、操作系统和相关能力状态。 提供最小复现步骤、预期行为、实际行为和脱敏证据。 搜索已有 Issue，并链接相关文档或发布说明。 不得包含 Access Token、私钥、助记词、钱包恢复材料、客户数据或私有基础设施详情。 订单或付款问题只提供关联记录所需的脱敏标识符。明确资金是仅收到指令、已观察、已验证、已结算、已退款还是仍未知；这些状态需要不同的恢复动作。 安全问题例外 疑似漏洞、泄露凭据、签名密钥问题和 Exploit 必须使用受影响 GitHub 仓库的私密漏洞报告，不能先发到社群聊天或公开 Issue。 English canonical page"
     },
     {
       "id": "start",
@@ -4671,8 +4671,8 @@
       "id": "zh-start",
       "path": "/zh/start",
       "canonical_url": "https://docs.mobazha.org/zh/start",
-      "title": "从你要完成的任务开始",
-      "summary": "Mobazha 是一套开放商业技术栈，可用于自行托管商店、托管服务、市场、结账和 Agent 自动化。",
+      "title": "选择使用 Mobazha 的方式",
+      "summary": "无需先理解仓库结构，直接以买家、卖家、Node 运营者、开发者或项目评估者身份开始。",
       "status": "beta",
       "audiences": [
         "所有人",
@@ -4682,15 +4682,15 @@
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/zh/start",
-        "label": "从你要完成的任务开始"
+        "label": "选择使用 Mobazha 的方式"
       },
       "evidence": {
         "source": "https://github.com/mobazha",
         "label": "Mobazha 公开仓库"
       },
-      "reviewed": "2026-07-04",
+      "reviewed": "2026-07-14",
       "page_type": "hub",
-      "outcome": "从当前要完成的任务进入最短且可信的 Mobazha 路径。",
+      "outcome": "为当前要完成的工作找到最短且可信的路径。",
       "estimated_time": "3 分钟",
       "journey": "start",
       "primary_action": {
@@ -4699,7 +4699,7 @@
       },
       "language": "zh-CN",
       "translation_of": "/start",
-      "search_text": "选择你的路径 卖家：创建店铺、发布商品、接收订单并履约。 买家：理解结账、付款、证据、退款与争议处理。 运营者：在自己控制的基础设施上运行 Mobazha Node。 开发者：通过后端实际公开的 HTTP、WebSocket、Webhook 与 MCP 能力集成。 评估者：查看架构、发布范围、经济模式、治理和安全边界。 先看状态，再执行说明 Mobazha 当前属于候选版本。Current 表示已审阅的公开政策或稳定事实；Beta 表示可用但仍可能变化；Draft 表示方向或提案，不是交付承诺。 运行时能力以你连接的后端版本和有效能力响应为准。文档不能替后端启用功能，也不能代替授权。 选择托管方式 Agent 使用指南 English canonical page"
+      "search_text": "选择你的路径 从店铺购买 核对卖家、总成本、付款指令、订单状态和恢复路径。 开始销售 准备店铺、发布商品、接受支持的付款并完成履约。 运行自己的 Node 评估、安装、保护、监控并恢复自行托管部署。 构建集成 使用 API、事件、MCP、Webhook 和扩展契约。 理解项目 查看架构、发布范围、经济模式、治理和安全边界。 如果第一个问题是“由谁运营后端”，请在创建店铺或迁移数据前先比较托管与自行托管的责任。 正式投入前应知道什么 买家： 付款前确认店铺运营者、最终总额、付款指令、订单所有者和恢复路线。 卖家： 验证一次从商品发布到履约的完整流程，包括付款观察和失败订单的恢复路径。 运营者： 在接受重要交易前证明健康检查、备份、恢复、升级、网络防护和事故责任都已落实。 开发者或 Agent 构建者： 发现运行时能力，使用最小权限认证；写操作结果未知时先对账再重试。 评估者： 区分当前 RC 行为和 Draft 方向，也要区分软件本身、托管服务、服务商、网络、配送和税费。 了解当前成熟度 Mobazha 当前仍是候选发布软件。标记为 Current 的页面描述经过审阅的行为；Beta 可能变化；Draft 只表示方向，不构成承诺。 连接到的后端是运行时能力的权威来源。文档不会赋予后端没有声明的能力。 直接进入公开入口 使用托管应用 体验当前托管的买家和卖家流程。 运行开源 Node 从源码构建候选版本并自行运营。 查看共享前端 检查托管和自行托管部署共同使用的客户端。 English canonical page"
     }
   ]
 }

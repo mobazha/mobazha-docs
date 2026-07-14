@@ -26,6 +26,21 @@ const retiredPolicyEvidence = new Set([
   "https://github.com/mobazha/mobazha-unified/blob/main/docs/architecture/RUNTIME_CAPABILITIES.md",
   "https://github.com/mobazha/mobazha-unified/blob/main/docs/TOKEN_STANDARD_GUIDE.md",
 ]);
+const translationCoverageExemptions = new Set(["project/whitepaper"]);
+const semanticUnits = (text) => {
+  const prose = text
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/https?:\/\/\S+/g, "");
+  let units = 0;
+  for (const character of prose) {
+    if (/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u.test(character)) {
+      units += 2;
+    } else if (/[\p{L}\p{N}]/u.test(character)) {
+      units += 1;
+    }
+  }
+  return units;
+};
 
 const expectedRegistry = renderDocumentRegistry(loadContentDocuments());
 if (read("app/lib/generated-docs.json") !== expectedRegistry) {
@@ -174,6 +189,16 @@ for (const doc of docs) {
     if (canonical && canonical.pageType !== doc.pageType) fail(`translation page type mismatch on /${doc.slug}`);
     if (canonical && canonical.journey !== doc.journey) fail(`translation journey mismatch on /${doc.slug}`);
     if (canonical && canonical.featuredVisual !== doc.featuredVisual) fail(`translation featured visual mismatch on /${doc.slug}`);
+    if (canonical && !translationCoverageExemptions.has(canonical.slug)) {
+      const canonicalUnits = semanticUnits(documentText(canonical));
+      const translatedUnits = semanticUnits(documentText(doc));
+      if (canonicalUnits > 0 && translatedUnits / canonicalUnits < 0.5) {
+        fail(
+          `translation semantic coverage on /${doc.slug} is below the severe-gap floor ` +
+          `(${translatedUnits}/${canonicalUnits} normalized units)`,
+        );
+      }
+    }
     const canonicalPath = `/${doc.translationOf}`;
     const canonicalLinkPaths = new Set([canonicalPath]);
     if (canonicalPath === "/start") canonicalLinkPaths.add("/");

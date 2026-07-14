@@ -8,9 +8,9 @@ audiences:
   - Agents
 evidenceLabel: Unified order milestones and Node order API
 evidenceUrl: https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/components/orders/guestOrderStages.ts
-reviewed: 2026-07-06
+reviewed: 2026-07-14
 pageType: task
-lastTested: 2026-07-04
+lastTested: 2026-07-14
 outcome: Decide what the current order state proves and which recovery action is safe to take next.
 estimatedTime: 3 minutes
 journey: use

@@ -7,9 +7,9 @@ audiences:
   - Agents
 evidenceLabel: Unified checkout routes and Node order contracts
 evidenceUrl: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/checkout
-reviewed: 2026-07-06
+reviewed: 2026-07-14
 pageType: task
-lastTested: 2026-07-04
+lastTested: 2026-07-14
 outcome: Create one order from a reviewed seller quote and keep the identifiers needed to recover it.
 estimatedTime: 5–10 minutes
 journey: use
@@ -38,11 +38,23 @@ primaryAction:
 7. Confirm the order only after seller, recipient, final total, payment asset or provider, applicable policy, and any protection choice are visible.
 8. On confirmation, save the order identifier and tracking link, then use the order-bound Payment Session for address, provider payload, amount, expiry, and progress.
 
+## Pay with an external wallet
+
+1. Use only the payment choices still visible after the order policy is applied. A protection or settlement mode may intentionally remove a previously cached provider or rail.
+2. In the active Payment Session, match the asset or Token, network where shown, exact amount, payment address or URI, expiry, and order identifier. Do not reconstruct these values from a catalog price.
+3. Scan the active QR code or copy the active address and amount. Before approving the wallet transfer, compare the wallet's parsed recipient and amount with the Payment Session again.
+4. After broadcast, keep the transaction identifier and leave the order available for reconciliation. Read observed transfers, observed or remaining amount, observation status, and confirmations separately.
+5. If the payment instruction expires, stop using its QR code, URI, address, and amount. Refresh through the product to request the current instruction instead of sending to the expired target.
+
+> **Warning:** An observed transfer may still be pending, incomplete, reverted, on the wrong network, or below the required amount. Only the backend's funded order state proves that the payment evidence was accepted for this order.
+
 ## Expected result and verification
 
 The application should display a newly created order with an authoritative state and order-bound Payment Session. Confirm that the item revision, seller, seller-owned backend, total, canonical payment asset or provider, funding target, amount, settlement mode, and expiry match the final confirmation you approved. A marketplace page or referral label is not the seller and must not silently become the order owner.
 
 Do not treat a wallet broadcast, a screenshot, or a pending transaction as completed payment. Wait for the order page to report the required confirmations and funded state.
+
+An order awaiting payment or payment verification should remain in the payment journey. A canceled, declined, expired, refunded, or processing-error order must not be presented as payment success. Paid or fulfillment states may continue to confirmation, but the order detail remains the recovery authority.
 
 ## If something fails
 

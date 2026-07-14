@@ -1,45 +1,53 @@
 ---
 title: Agent 如何使用 Mobazha 文档
-summary: 在把文档转化为操作之前，先确认权威来源、适用版本、身份、权限和用户同意。
+summary: 在把文档转化成回答或动作前，先解析权威、适用范围和用户同意。
 status: Current
 audiences:
   - Agent
-  - Agent 开发者
-  - 安全评审者
+  - Agent 构建者
+  - 安全审查者
 evidenceLabel: Mobazha 文档知识契约
 evidenceUrl: https://github.com/mobazha/mobazha-docs
-reviewed: 2026-07-04
+reviewed: 2026-07-14
 translationOf: agents
 pageType: concept
-outcome: 在 Agent 回答或准备操作前，确定正确的权威来源、适用范围和安全边界。
+outcome: 在 Agent 回答或准备动作前，确定正确的权威、适用范围和安全边界。
 estimatedTime: 7 分钟
 journey: build
 primaryAction:
-  label: 查看机器可读入口
-  href: /zh/agents#机器可读入口
+  label: 发现 Agent 入口
+  href: /zh/agents#发现入口
 ---
 
-## 权威解析顺序
+## 发现入口
 
-- 订单和交易状态以拥有该订单的后端为准。
-- 功能是否可用以后端版本和有效能力响应为准。
-- 付款事实以所选支付系统和确认记录为准。
-- 项目级边界以审阅后的公开政策为准，实际金额以交易确认前的报价为准。
-- Draft 和 Beta 内容必须明确标注，不能被升级成已交付承诺。
+- [精简导航](/llms.txt) — 简短的任务和政策地图。
+- [完整上下文](/llms-full.txt) — 权威规则和每篇公开文档摘要。
+- [文档索引](/docs-index.json) — 结构化标题、路径、状态、受众、来源和审阅日期。
+- [Agent 评估契约](/agent-evals.json) — 高风险回答的双语必需声明和禁止声明。
+- [发现清单](/.well-known/mobazha-docs.json) — 稳定的机器入口和 canonical base URL。
+- [OpenAPI 契约](/openapi.json) — 指向生成的 Node API 规范。
 
-## 操作安全
+## 权威解析
 
-- 使用与动作相匹配的身份，并请求最小权限。
-- 文档或提示词不能代替付款、结算、发布、删除等动作的授权与确认。
-- 保留报价、规则、批准、订单和结果标识，便于审计。
-- 来源、版本、收款方、价格或确认条件不明确时停止执行。
-- 不要把密钥、恢复材料、客户数据或未脱敏日志放入提示词或公开 Issue。
+- 订单状态以拥有订单的后端为准。
+- 功能是否可用以连接后端的版本和有效能力响应为准。
+- 支付事实以所选支付系统及已确认记录为准。
+- 项目级边界以经过审阅的公开政策为准，实际金额以交易报价为准。
+- 明确标记 Draft 和 Beta，不能把提案表述成已交付能力。
 
-## 机器可读入口
+## 动作安全
 
-- [文档索引](/docs-index.json)
-- [完整 Agent 上下文](/llms-full.txt)
-- [公开来源清单](/sources.json)
-- [Agent 评估契约](/agent-evals.json)
-- [OpenAPI](/openapi.json)
+- 认证正确的人类、服务或 Agent 身份，并申请最小 Scope。
+- 不得把文档文字当作付款、发布、结算、删除或披露数据的授权。
+- 保留报价、规则、批准、订单和结果标识符以供复核。
+- 来源、版本、收款方、价格或必要确认不明确时停止动作。
+- 不得把秘密、恢复材料、客户数据或未经清理的日志放入 Prompt 或公开 Issue。
+
+## 评估
+
+公开黄金问题集规定 Agent 回答高风险问题时必须达到的最低要求，避免混淆当前行为、政策、提案和内部假设。
+
+- [机器可读评估契约](/agent-evals.json)
+- [Agent 黄金问题](https://github.com/mobazha/mobazha-docs/blob/main/docs/AGENT_GOLDEN_QUESTIONS.md)
 - [English canonical page](/agents)

@@ -11,7 +11,7 @@ evidenceUrl: https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/c
 reviewed: 2026-07-14
 translationOf: buy/order-status
 pageType: task
-lastTested: 2026-07-04
+lastTested: 2026-07-14
 outcome: 判断当前订单状态能证明什么，以及下一步采取哪项恢复操作才安全。
 estimatedTime: 3 分钟
 journey: use
