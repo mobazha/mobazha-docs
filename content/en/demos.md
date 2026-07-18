@@ -21,6 +21,14 @@ primaryAction:
 
 ## Sell and promote
 
+**Storefront Makeover** — a seller redesigns her store with the built-in
+studio: start from a template, apply brand colors with an automatic
+readability guard, hand-pick the featured products, share a private preview
+link for feedback, then publish in one click. **Preview** — the storefront
+studio additions are in rollout.
+
+!video[Storefront Makeover demo](https://media.mobazha.org/demos/0004-storefront-makeover/storefront-makeover-demo-v1.mp4 https://media.mobazha.org/demos/0004-storefront-makeover/cover-v1.jpg "92 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.")
+
 **Seller Affiliate Loop** — sellers set a storefront-wide cut once, promoters
 share one short link, and commissions settle on-chain when order funds
 release. **Preview** — the short-link share surface is in rollout.
