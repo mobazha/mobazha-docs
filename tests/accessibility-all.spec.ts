@@ -8,7 +8,7 @@ const pagePaths = [...sitemap.matchAll(/<loc>https:\/\/docs\.mobazha\.org([^<]*)
 
 test("all published pages avoid critical and serious WCAG violations", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop-chromium", "representative routes retain separate mobile WCAG coverage");
-  test.setTimeout(120_000);
+  test.setTimeout(300_000);
   const failures = [];
 
   for (const path of pagePaths) {

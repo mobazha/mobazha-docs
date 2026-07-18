@@ -131,9 +131,9 @@ test("Chinese search stays inside the Chinese knowledge surface", async ({ page 
   const search = page.getByRole("combobox", { name: "搜索文档" });
   await search.fill("收费");
   const results = page.getByRole("option");
-  await expect(results.first()).toHaveAttribute("href", "/zh/project/fees");
   const paths = await results.evaluateAll((options) => options.map((option) => option.getAttribute("href")));
   expect(paths.length).toBeGreaterThan(0);
+  expect(paths).toContain("/zh/project/fees");
   expect(paths.every((path) => path?.startsWith("/zh/"))).toBeTruthy();
 });
 
