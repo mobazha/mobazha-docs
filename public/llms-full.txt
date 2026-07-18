@@ -199,7 +199,7 @@ Grow and operate
 Watch the operator commission journey
 112 seconds; operator, seller, and buyer; recorded on the Mobazha local test network.
 Watch the seller affiliate journey
-89 seconds; seller, promoter, and buyer; recorded on the Mobazha local test network.
+69 seconds; seller, promoter, and buyer; recorded on the Mobazha local test network.
 How these demos are made
 Each demo is a scripted, re-recordable run of the real product — no mockups, no spliced outcomes — and keeps its provenance: what was recorded, when, and against which build. Where payments appear, the recording runs on the Mobazha test network and says so on screen. Demos of capability not yet in a general release carry a **Preview** label until it ships.
 Video registry
@@ -9296,7 +9296,7 @@ Maya creates a curated community market, sets a ten percent operator commission,
 - Applies to: Mobazha local E2E test-network build recorded on 2026-07-18
 - Reviewed: 2026-07-18
 
-Alice offers promoters five percent on every attributed storefront order. Kai sees the expected return for each product, creates a personal short link and QR, and shares it. A buyer follows the link and shops normally with the referral attached. When the paid order releases, Mobazha records the seller and promoter settlement legs without an invoice or spreadsheet. Kai's earnings page shows the commission as Paid and includes its on-chain transaction hash. The short-link share surface remains labeled Preview while rollout completes.
+Alice offers promoters five percent on every attributed storefront order. Kai sees the concrete return and creates one wallet-bound short link. Jordan follows it, shops normally, and pays the resulting ETH order on the local test network. That payment submits the seller and promoter settlement legs without a second affiliate workflow. Kai's earnings page shows the exact commission as Paid with its basis, buyer, confirmation time, payout address, and on-chain transaction hash. The short-link share surface remains labeled Preview while rollout completes.
 
 ### Turn a default store into your brand
 - URL: /demos/storefront-makeover
@@ -9307,7 +9307,7 @@ Alice offers promoters five percent on every attributed storefront order. Kai se
 - Applies to: Mobazha storefront-studio Preview build recorded on 2026-07-18
 - Reviewed: 2026-07-18
 
-Alice opens a generic storefront in the built-in design studio. She applies a complete template, selects a readable brand palette, chooses coherent featured products, writes the store story, and sets one clear buyer call to action. She creates a private preview link and reviews the exact draft as a logged-out visitor. After publishing, the public storefront shows that same branded design without the Preview banner. The storefront studio additions remain labeled Preview while hosted rollout completes.
+Alice starts with a live storefront whose credible cold-storage products still look generic. In the built-in design studio, she applies one complete layout and a warm leather-and-steel palette, selects three coherent products, writes the store story, and sets one buyer call to action. She creates a private preview link and reviews the exact draft as a logged-out visitor. After publishing, a matched product-row shot shows the same branded design without the Preview banner. The storefront studio additions remain labeled Preview while hosted rollout completes.
 
 Use /docs-index.json for structured metadata, /videos.json for governed video
 metadata and provenance, /sources.json for the public-source

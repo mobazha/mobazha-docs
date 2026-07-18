@@ -96,24 +96,24 @@
       "personas": ["Promoter", "Seller", "Buyer"],
       "goals": ["Grow", "Sell", "Pay"],
       "productPromises": ["Connect", "Trade"],
-      "durationSeconds": 89,
+      "durationSeconds": 69,
       "featured": true,
       "outcome": "Kai's earnings page shows a Paid commission row and the on-chain transaction hash for the attributed order.",
       "disclosure": "Recorded on the Mobazha local test network. The short-link and QR share surface is labeled Preview while it completes rollout.",
       "media": {
         "video": {
-          "url": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/seller-affiliate-loop-demo-v7.mp4",
-          "sha256": "48b1e14d7bf03a13834d51606821736cd4d62b7ced2427c714a9c1068aa91849"
+          "url": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/seller-affiliate-loop-demo-v8.mp4?rev=20260719",
+          "sha256": "1a4500c7f2352dfbc54eb7c21f74e0aae909e79fce37812f1ed66ab0fea5fdb7"
         },
         "cover": {
-          "url": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/cover-v7.jpg",
-          "sha256": "c130df82865f06aa1389e3114fa71fe8f79bc20348c94bcf0deaecf1a290857b",
+          "url": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/cover-v8.jpg?rev=20260719",
+          "sha256": "834990662612755b81f861ef9f55413de06928a47edbb74190521c6ff2091eaa",
           "width": 1920,
           "height": 1080
         },
         "poster": {
-          "url": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/poster-v7.jpg",
-          "sha256": "a8efd95d7263a39178b998c2db3d339976e45cd8ef6a931e8f995f85c4b7909e",
+          "url": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/poster-v8.jpg?rev=20260719",
+          "sha256": "125b6fe5a548346c562d3a9e87e2edc0e04f73c2eeb7ca20187932cc1bba025b",
           "width": 1920,
           "height": 1080
         }
@@ -140,27 +140,23 @@
           "description": "Alice sets a five percent storefront-wide commission and a seven-day attribution window."
         },
         {
-          "title": "See what each sale pays",
-          "description": "Kai reviews the catalog and sees the expected promoter return for each product."
-        },
-        {
-          "title": "Create one link and QR",
-          "description": "Kai creates a personal short link that is bound to the promoter identity and ready to share."
+          "title": "Use one link everywhere",
+          "description": "Kai sees the five percent return, creates one wallet-bound short link, and uses it for the sale."
         },
         {
           "title": "Shop through the referral",
           "description": "A buyer follows the link, keeps the referral, and continues through the normal store and checkout experience."
         },
         {
-          "title": "Settle without an invoice",
-          "description": "When order funds release, the seller and promoter settlement legs are recorded automatically."
+          "title": "Settle automatically",
+          "description": "The real ETH payment submits the seller and promoter settlement legs without a second affiliate workflow."
         },
         {
           "title": "Verify the on-chain payout",
           "description": "Kai sees the Paid commission row, paid-out rollup, and transaction hash."
         }
       ],
-      "transcript": "Alice offers promoters five percent on every attributed storefront order. Kai sees the expected return for each product, creates a personal short link and QR, and shares it. A buyer follows the link and shops normally with the referral attached. When the paid order releases, Mobazha records the seller and promoter settlement legs without an invoice or spreadsheet. Kai's earnings page shows the commission as Paid and includes its on-chain transaction hash. The short-link share surface remains labeled Preview while rollout completes."
+      "transcript": "Alice offers promoters five percent on every attributed storefront order. Kai sees the concrete return and creates one wallet-bound short link. Jordan follows it, shops normally, and pays the resulting ETH order on the local test network. That payment submits the seller and promoter settlement legs without a second affiliate workflow. Kai's earnings page shows the exact commission as Paid with its basis, buyer, confirmation time, payout address, and on-chain transaction hash. The short-link share surface remains labeled Preview while rollout completes."
     },
     {
       "id": "0004",
@@ -174,24 +170,24 @@
       "personas": ["Seller", "Buyer"],
       "goals": ["Sell"],
       "productPromises": ["Own"],
-      "durationSeconds": 92,
+      "durationSeconds": 63,
       "featured": false,
       "outcome": "Alice's public storefront shows the same branded palette, featured products, story, and call to action that she reviewed through the private preview.",
       "disclosure": "The storefront studio additions are labeled Preview while they complete rollout to the hosted SaaS.",
       "media": {
         "video": {
-          "url": "https://media.mobazha.org/demos/0004-storefront-makeover/storefront-makeover-demo-v1.mp4",
-          "sha256": "93b490ff18b070b0f6708d839e0444d5cac5000ad65115eda440f5dcd2d6cd47"
+          "url": "https://media.mobazha.org/demos/0004-storefront-makeover/storefront-makeover-demo-v2.mp4?rev=20260719",
+          "sha256": "60d9576dd7c8c238e12c68df6a77fccf74b861ff3539f394967c00ff1c0bb1da"
         },
         "cover": {
-          "url": "https://media.mobazha.org/demos/0004-storefront-makeover/cover-v1.jpg",
-          "sha256": "2c7da064b7de3879b594c014d7e73ac7c1ee49afdcf90c3a0d95b24a5a142898",
+          "url": "https://media.mobazha.org/demos/0004-storefront-makeover/cover-v2.jpg?rev=20260719",
+          "sha256": "db307343e378a4584208916476780e863a819b8302313cad612042c097435321",
           "width": 1920,
           "height": 1080
         },
         "poster": {
-          "url": "https://media.mobazha.org/demos/0004-storefront-makeover/poster-v1.jpg",
-          "sha256": "7200c0f380c809516eff6d91473b00b81cba8302d7b9d5fff32de3f0d978c345",
+          "url": "https://media.mobazha.org/demos/0004-storefront-makeover/poster-v2.jpg?rev=20260719",
+          "sha256": "a8a357f80162e730c47a5666af6e23a10e2657fdd08d8d25c9556272df37ccd0",
           "width": 1920,
           "height": 1080
         }
@@ -214,20 +210,16 @@
       ],
       "chapters": [
         {
-          "title": "Open the design studio",
-          "description": "Alice starts from the default storefront and opens its section-based editor."
+          "title": "See the template problem",
+          "description": "Alice starts from a credible product row that still looks like a generic template."
         },
         {
-          "title": "Apply a complete layout",
-          "description": "One template establishes the hero, featured products, story, and trust sections."
+          "title": "Set the brand foundation",
+          "description": "One layout and warm palette establish the hero, featured products, story, and trust sections."
         },
         {
-          "title": "Set a readable brand palette",
-          "description": "Alice chooses her colors and corrects a low-contrast combination when the editor warns her."
-        },
-        {
-          "title": "Curate the storefront story",
-          "description": "She selects coherent products, writes the store story, and sets one buyer call to action."
+          "title": "Curate products and story",
+          "description": "She selects three coherent cold-storage products, writes the field-testing story, and sets one buyer call to action."
         },
         {
           "title": "Review a private preview",
@@ -238,7 +230,7 @@
           "description": "Alice publishes and verifies the native-density public storefront without the Preview banner."
         }
       ],
-      "transcript": "Alice opens a generic storefront in the built-in design studio. She applies a complete template, selects a readable brand palette, chooses coherent featured products, writes the store story, and sets one clear buyer call to action. She creates a private preview link and reviews the exact draft as a logged-out visitor. After publishing, the public storefront shows that same branded design without the Preview banner. The storefront studio additions remain labeled Preview while hosted rollout completes."
+      "transcript": "Alice starts with a live storefront whose credible cold-storage products still look generic. In the built-in design studio, she applies one complete layout and a warm leather-and-steel palette, selects three coherent products, writes the store story, and sets one buyer call to action. She creates a private preview link and reviews the exact draft as a logged-out visitor. After publishing, a matched product-row shot shows the same branded design without the Preview banner. The storefront studio additions remain labeled Preview while hosted rollout completes."
     }
   ]
 }

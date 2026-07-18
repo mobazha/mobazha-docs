@@ -53,7 +53,7 @@ share one short link, and commissions settle on-chain when order funds
 release. **Preview** — the short-link share surface is in rollout.
 
 - [Watch the operator commission journey](/demos/operator-commission-flywheel) — 112 seconds; operator, seller, and buyer; recorded on the Mobazha local test network.
-- [Watch the seller affiliate journey](/demos/seller-affiliate-loop) — 89 seconds; seller, promoter, and buyer; recorded on the Mobazha local test network.
+- [Watch the seller affiliate journey](/demos/seller-affiliate-loop) — 69 seconds; seller, promoter, and buyer; recorded on the Mobazha local test network.
 
 ## How these demos are made
 
