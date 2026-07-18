@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import { documentLinks, documentText, parseSections } from "./content-files.mjs";
+import { validateVideoCatalog } from "./video-files.mjs";
 
 test("preserves rich Markdown block order", () => {
   const sections = parseSections(`
@@ -76,4 +78,37 @@ test("rejects malformed tables", () => {
 |---|
 | one | two |
 `, "broken-delimiter.md"), /table delimiter with the wrong number of cells/);
+});
+
+const videoFixture = () => JSON.parse(readFileSync(new URL("../content/videos.json", import.meta.url), "utf8"));
+
+test("accepts the governed video catalog", () => {
+  assert.deepEqual(validateVideoCatalog(videoFixture()), []);
+});
+
+test("rejects duplicate video identities and ungoverned media", () => {
+  const catalog = videoFixture();
+  catalog.videos[1].id = catalog.videos[0].id;
+  catalog.videos[1].slug = catalog.videos[0].slug;
+  catalog.videos[1].media.video.url = "https://example.com/demo.mp4";
+  const failures = validateVideoCatalog(catalog);
+  assert(failures.some((failure) => failure.includes("duplicate or invalid id")));
+  assert(failures.some((failure) => failure.includes("duplicate or invalid slug")));
+  assert(failures.some((failure) => failure.includes("must use https://media.mobazha.org/")));
+});
+
+test("rejects more than three featured videos", () => {
+  const catalog = videoFixture();
+  catalog.videos.push({ ...structuredClone(catalog.videos[2]), id: "0005", slug: "fourth-featured-video", featured: true });
+  catalog.videos[2].featured = true;
+  assert(validateVideoCatalog(catalog).some((failure) => failure.includes("maximum is 3")));
+});
+
+test("rejects impossible video review chronology", () => {
+  const catalog = videoFixture();
+  catalog.videos[0].recordedAt = "2026-07-19";
+  catalog.videos[1].reviewed = "2026-07-19";
+  const failures = validateVideoCatalog(catalog);
+  assert(failures.some((failure) => failure.includes("reviewed before it was recorded")));
+  assert(failures.some((failure) => failure.includes("newer than the catalog review")));
 });

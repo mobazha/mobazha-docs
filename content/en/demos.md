@@ -19,7 +19,27 @@ primaryAction:
   href: /sell
 ---
 
-## Operate a marketplace
+## Choose by outcome
+
+- [Sell and shape a storefront](/demos/storefront-makeover) — Apply a branded design, review a private preview, and publish the same buyer-facing store.
+- [Buy safely](/buy/cancel-refund-dispute) — Understand cancellation, refund, and dispute paths before a real purchase needs recovery.
+- [Grow and operate](/demos/operator-commission-flywheel) — Follow a community market from seller recruitment to one attributed completed order.
+- [Run and build](/self-host) — Install the stack, inspect its boundaries, or continue to the public API contract.
+
+## Featured end-to-end journeys
+
+The catalog page keeps playback lightweight. Open a journey for its video,
+visible outcome, chapter guide, transcript, applicability, evidence, and
+related product guidance.
+
+- [From community market to one completed order](/demos/operator-commission-flywheel) — An operator recruits a seller, shares a curated market, and traces one real test-network order to an estimated commission.
+- [Recommend, link, and get paid on-chain](/demos/seller-affiliate-loop) — A seller offers a cut, a promoter shares one link, and the attributed order produces a confirmed payout.
+
+## Sell and shape a storefront
+
+- [Turn a default store into your brand](/demos/storefront-makeover) — Apply a complete layout, choose a readable palette, curate products, preview privately, and publish without code.
+
+## Grow and operate
 
 **Operator Commission Flywheel** — create and publish a curated market,
 recruit a seller, bring a buyer through a real test-network payment, let the
@@ -28,25 +48,12 @@ back to its share link and estimated operator commission.
 **Preview** — Phase 1 records attribution and commission estimates; it does
 not credit a withdrawable operator balance yet.
 
-!video[Operator Commission Flywheel demo](https://media.mobazha.org/demos/0001-operator-commission-flywheel/operator-commission-flywheel-demo-v9.mp4 https://media.mobazha.org/demos/0001-operator-commission-flywheel/cover-v9.jpg "112 seconds, silent — chapter cards narrate. One real order is carried from checkout through completion and attribution. Recorded 2026-07-18 on the Mobazha test network.")
-
-## Build your storefront
-
-**Storefront Makeover** — a seller redesigns her store with the built-in
-studio: start from a template, apply brand colors with an automatic
-readability guard, hand-pick the featured products, share a private preview
-link for feedback, then publish in one click. **Preview** — the storefront
-studio additions are in rollout.
-
-!video[Storefront Makeover demo](https://media.mobazha.org/demos/0004-storefront-makeover/storefront-makeover-demo-v1.mp4 https://media.mobazha.org/demos/0004-storefront-makeover/cover-v1.jpg "92 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.")
-
-## Grow with promoters
-
 **Seller Affiliate Loop** — sellers set a storefront-wide cut once, promoters
 share one short link, and commissions settle on-chain when order funds
 release. **Preview** — the short-link share surface is in rollout.
 
-!video[Seller Affiliate Loop demo](https://media.mobazha.org/demos/0003-seller-affiliate-loop/seller-affiliate-loop-demo-v7.mp4 https://media.mobazha.org/demos/0003-seller-affiliate-loop/cover-v7.jpg "89 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.")
+- [Watch the operator commission journey](/demos/operator-commission-flywheel) — 112 seconds; operator, seller, and buyer; recorded on the Mobazha local test network.
+- [Watch the seller affiliate journey](/demos/seller-affiliate-loop) — 89 seconds; seller, promoter, and buyer; recorded on the Mobazha local test network.
 
 ## How these demos are made
 
@@ -55,3 +62,6 @@ no spliced outcomes — and keeps its provenance: what was recorded, when, and
 against which build. Where payments appear, the recording runs on the Mobazha
 test network and says so on screen. Demos of capability not yet in a general
 release carry a **Preview** label until it ships.
+
+- [Video registry](/videos.json) — Machine-readable titles, roles, outcomes, media digests, review dates, and provenance.
+- [Video registry schema](/videos.schema.json) — The validation contract used by the documentation build.

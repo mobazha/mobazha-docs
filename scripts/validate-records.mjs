@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { loadContentDocuments } from "./content-files.mjs";
+import { loadVideoCatalog } from "./video-files.mjs";
 
 const root = new URL("../", import.meta.url);
 const failures = [];
@@ -54,6 +55,13 @@ const adrCount = validateRegistry({
 });
 
 const documents = loadContentDocuments();
+let videoCount = 0;
+try {
+  const knownDocPaths = new Set(documents.map((doc) => `/${doc.slug}`));
+  videoCount = loadVideoCatalog({ knownDocPaths }).videos.length;
+} catch (error) {
+  fail(error.message);
+}
 const whitepaper = documents.find((doc) => doc.slug === "project/whitepaper");
 const chineseWhitepaper = documents.find((doc) => doc.slug === "zh/project/whitepaper");
 if (!whitepaper?.version) fail("English whitepaper is missing a version");
@@ -70,4 +78,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`record validation passed: ${rfcCount} RFCs, ${adrCount} ADRs, whitepaper ${whitepaper.version}`);
+console.log(`record validation passed: ${rfcCount} RFCs, ${adrCount} ADRs, ${videoCount} videos, whitepaper ${whitepaper.version}`);

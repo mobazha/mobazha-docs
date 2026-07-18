@@ -1,4 +1,5 @@
 import { documentText } from "./content-files.mjs";
+import { videoPath, videoSearchText } from "./video-files.mjs";
 
 const baseUrl = "https://docs.mobazha.org";
 
@@ -23,9 +24,9 @@ export function orderedDocuments(docs, navGroups) {
   return [...ordered, ...docs.filter((doc) => !included.has(doc.slug))];
 }
 
-export function renderPublication({ docs, navGroups, docApplicability, sources, sourceSchema, agentEvals, agentEvalSchema, visualEvidence, visualEvidenceSchema }) {
+export function renderPublication({ docs, navGroups, docApplicability, sources, sourceSchema, agentEvals, agentEvalSchema, visualEvidence, visualEvidenceSchema, videos, videoSchema }) {
   const ordered = orderedDocuments(docs, navGroups);
-  const reviewed = ordered.map((doc) => doc.reviewed).sort().at(-1);
+  const reviewed = [videos.reviewed, ...videos.videos.map((video) => video.reviewed), ...ordered.map((doc) => doc.reviewed)].sort().at(-1);
   const visualsById = new Map(visualEvidence.visuals.map((visual) => [visual.id, visual]));
   const records = ordered.map((doc) => ({
     id: doc.slug.replaceAll("/", "-"),
@@ -58,9 +59,33 @@ export function renderPublication({ docs, navGroups, docApplicability, sources, 
     translation_of: doc.translationOf ? `/${doc.translationOf}` : undefined,
     search_text: searchTextFromDocument(doc),
   }));
+  const videoRecords = videos.videos.map((video) => ({
+    id: `video-${video.id}`,
+    path: videoPath(video),
+    canonical_url: `${baseUrl}${videoPath(video)}`,
+    title: video.title,
+    summary: cleanLine(video.summary),
+    status: video.status.toLowerCase(),
+    audiences: video.personas.map((persona) => persona.toLowerCase()),
+    applies_to: video.appliesTo,
+    knowledge_authority: {
+      kind: "public-knowledge",
+      url: `${baseUrl}${videoPath(video)}`,
+      label: "Canonical video detail page",
+    },
+    evidence: { source: video.evidence.url, label: video.evidence.label },
+    reviewed: video.reviewed,
+    page_type: "video",
+    outcome: video.outcome,
+    estimated_time: `${Math.ceil(video.durationSeconds / 60)} minutes`,
+    journey: "start",
+    primary_action: video.primaryAction,
+    language: video.language,
+    search_text: cleanLine(videoSearchText(video).slice(0, 4000)),
+  }));
 
   const index = {
-    schema_version: "1.7",
+    schema_version: "1.8",
     generated_from: "canonical-public-knowledge-and-reviewed-evidence",
     canonical_language: "en",
     languages: ["en", "zh-CN"],
@@ -69,7 +94,7 @@ export function renderPublication({ docs, navGroups, docApplicability, sources, 
     runtime_authority: "connected backend version and advertised effective capabilities",
     public_knowledge_authority: "the canonical page on docs.mobazha.org",
     implementation_authority: "versioned code, generated contracts, conformance tests, and tagged release evidence",
-    documents: records,
+    documents: [...records, ...videoRecords],
   };
 
   const llmsSections = navGroups.map((group) => {
@@ -91,6 +116,7 @@ ${llmsSections}
 
 ## Machine-readable
 - [Documentation index](/docs-index.json)
+- [Product video catalog](/videos.json)
 - [Public source manifest](/sources.json)
 - [Agent evaluation contract](/agent-evals.json)
 - [Visual evidence catalog](/visual-evidence.json)
@@ -160,12 +186,26 @@ amount, and confirmation point. Old illustrative percentages are not current def
 
 ${documentContext}
 
-Use /docs-index.json for structured metadata, /sources.json for the public-source
+## Product videos
+
+${videos.videos.map((video) => `### ${video.title}
+- URL: ${videoPath(video)}
+- Status: ${video.status}
+- Kind: ${video.kind}
+- Audience: ${video.personas.join(", ")}
+- Outcome: ${video.outcome}
+- Applies to: ${video.appliesTo}
+- Reviewed: ${video.reviewed}
+
+${video.transcript}`).join("\n\n")}
+
+Use /docs-index.json for structured metadata, /videos.json for governed video
+metadata and provenance, /sources.json for the public-source
 allowlist, /agent-evals.json for answer-safety evaluation, /visual-evidence.json
 for governed visual claims and provenance, and /llms.txt for compact navigation.
 `;
 
-  const sitemapRecords = records.filter((doc) => !redirectOnlyPaths.has(doc.path));
+  const sitemapRecords = [...records.filter((doc) => !redirectOnlyPaths.has(doc.path)), ...videoRecords];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>${baseUrl}/</loc><lastmod>${reviewed}</lastmod></url>
@@ -176,7 +216,7 @@ ${sitemapRecords.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc>
 `;
 
   const discovery = {
-    schema_version: "1.7",
+    schema_version: "1.8",
     name: "Mobazha Documentation",
     canonical_base_url: baseUrl,
     canonical_language: "en",
@@ -190,6 +230,7 @@ ${sitemapRecords.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc>
     sources: "/sources.json",
     agent_evals: "/agent-evals.json",
     visual_evidence: "/visual-evidence.json",
+    videos: "/videos.json",
     authority_model: {
       public_knowledge: "/docs-index.json",
       runtime: "connected backend version and effective capability response",
@@ -233,5 +274,7 @@ ${sitemapRecords.map((doc) => `  <url><loc>${xmlEscape(doc.canonical_url)}</loc>
     "public/agent-evals.schema.json": agentEvalSchema,
     "public/visual-evidence.json": `${JSON.stringify({ ...visualEvidence, $schema: `${baseUrl}/visual-evidence.schema.json` }, null, 2)}\n`,
     "public/visual-evidence.schema.json": visualEvidenceSchema,
+    "public/videos.json": `${JSON.stringify({ ...videos, $schema: `${baseUrl}/videos.schema.json` }, null, 2)}\n`,
+    "public/videos.schema.json": videoSchema,
   };
 }

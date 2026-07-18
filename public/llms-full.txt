@@ -175,20 +175,37 @@ Agent golden questions
 - Language: en
 - Summary: Short, honest walkthroughs of real Mobazha flows — recorded from scripted runs against a running stack, narrated by on-screen chapter cards.
 
-Operate a marketplace
+Choose by outcome
+Sell and shape a storefront
+Apply a branded design, review a private preview, and publish the same buyer-facing store.
+Buy safely
+Understand cancellation, refund, and dispute paths before a real purchase needs recovery.
+Grow and operate
+Follow a community market from seller recruitment to one attributed completed order.
+Run and build
+Install the stack, inspect its boundaries, or continue to the public API contract.
+Featured end-to-end journeys
+The catalog page keeps playback lightweight. Open a journey for its video, visible outcome, chapter guide, transcript, applicability, evidence, and related product guidance.
+From community market to one completed order
+An operator recruits a seller, shares a curated market, and traces one real test-network order to an estimated commission.
+Recommend, link, and get paid on-chain
+A seller offers a cut, a promoter shares one link, and the attributed order produces a confirmed payout.
+Sell and shape a storefront
+Turn a default store into your brand
+Apply a complete layout, choose a readable palette, curate products, preview privately, and publish without code.
+Grow and operate
 **Operator Commission Flywheel** — create and publish a curated market, recruit a seller, bring a buyer through a real test-network payment, let the seller fulfill the order and the buyer complete it, then trace that same order back to its share link and estimated operator commission. **Preview** — Phase 1 records attribution and commission estimates; it does not credit a withdrawable operator balance yet.
-Operator Commission Flywheel demo
-112 seconds, silent — chapter cards narrate. One real order is carried from checkout through completion and attribution. Recorded 2026-07-18 on the Mobazha test network.
-Build your storefront
-**Storefront Makeover** — a seller redesigns her store with the built-in studio: start from a template, apply brand colors with an automatic readability guard, hand-pick the featured products, share a private preview link for feedback, then publish in one click. **Preview** — the storefront studio additions are in rollout.
-Storefront Makeover demo
-92 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.
-Grow with promoters
 **Seller Affiliate Loop** — sellers set a storefront-wide cut once, promoters share one short link, and commissions settle on-chain when order funds release. **Preview** — the short-link share surface is in rollout.
-Seller Affiliate Loop demo
-89 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.
+Watch the operator commission journey
+112 seconds; operator, seller, and buyer; recorded on the Mobazha local test network.
+Watch the seller affiliate journey
+89 seconds; seller, promoter, and buyer; recorded on the Mobazha local test network.
 How these demos are made
 Each demo is a scripted, re-recordable run of the real product — no mockups, no spliced outcomes — and keeps its provenance: what was recorded, when, and against which build. Where payments appear, the recording runs on the Mobazha test network and says so on screen. Demos of capability not yet in a general release carry a **Preview** label until it ships.
+Video registry
+Machine-readable titles, roles, outcomes, media digests, review dates, and provenance.
+Video registry schema
+The validation contract used by the documentation build.
 
 ### How Mobazha fits together
 - URL: /project/product-map
@@ -4348,7 +4365,7 @@ A record's status must remain explicit. Agents and readers must not infer availa
 - Audience: contributors, maintainers, evaluators, agents
 - Knowledge authority: https://docs.mobazha.org/project/rfcs
 - Evidence: https://github.com/mobazha/mobazha-docs/tree/main/rfcs
-- Reviewed: 2026-07-14
+- Reviewed: 2026-07-18
 - Language: en
 - Summary: Review substantial protocol, policy, economic, security, governance, and cross-repository proposals before treating them as commitments.
 
@@ -4394,6 +4411,10 @@ RFC-0013: Peer-scoped Deal Link Hosting and Store Authority
 Draft; proposes Peer-scoped seller administration, optional hosted account association, and a bounded Hosting-to-Node authority split for Deal Links.
 RFC-0014: Quote-bound Cross-currency Payment Attempt Authorization
 Draft; specifies a buyer-proposed funding basis that the seller checks against a fresh local rate floor and authorizes by signing the exact basis hash with the attempt terms.
+RFC-0015: Marketplace Operator Commission
+Draft; proposes an operator-set, release-snapshotted, seller-visible commission on marketplace-attributed orders, phased from a hosted estimate ledger to seller-funded settlement outputs under the RFC-0007 model.
+RFC-0016: Peer Handle Naming, Resolution, and Portability
+Draft; proposes one human-readable network handle per Peer, direct default-store routing, signed claim and lifecycle governance, and portability without replacing Peer-scoped business authority.
 RFC template
 Required metadata and review questions.
 Repository RFC guide
@@ -9253,6 +9274,42 @@ Mobazha 当前仍是候选发布软件。标记为 Current 的页面描述经过
 检查托管和自行托管部署共同使用的客户端。
 English canonical page
 
-Use /docs-index.json for structured metadata, /sources.json for the public-source
+## Product videos
+
+### From community market to one completed order
+- URL: /demos/operator-commission-flywheel
+- Status: Preview
+- Kind: story
+- Audience: Operator, Seller, Buyer
+- Outcome: The same completed order appears in the operator's attribution view with a 0.0020 ETH estimated commission at 10%.
+- Applies to: Mobazha local E2E test-network build recorded on 2026-07-18
+- Reviewed: 2026-07-18
+
+Maya creates a curated community market, sets a ten percent operator commission, and publishes it. One seller reviews those terms and joins through the invitation link. Maya curates the seller's product and shares the market. A buyer opens that storefront, creates one order, and pays 0.012 ETH to its monitored address on the local test network. The seller accepts and ships the same order. The buyer confirms receipt. Maya then sees that completed order attributed to the community share link with a 0.0020 ETH estimated commission. The estimate is not a withdrawable balance.
+
+### Recommend, link, and get paid on-chain
+- URL: /demos/seller-affiliate-loop
+- Status: Preview
+- Kind: story
+- Audience: Promoter, Seller, Buyer
+- Outcome: Kai's earnings page shows a Paid commission row and the on-chain transaction hash for the attributed order.
+- Applies to: Mobazha local E2E test-network build recorded on 2026-07-18
+- Reviewed: 2026-07-18
+
+Alice offers promoters five percent on every attributed storefront order. Kai sees the expected return for each product, creates a personal short link and QR, and shares it. A buyer follows the link and shops normally with the referral attached. When the paid order releases, Mobazha records the seller and promoter settlement legs without an invoice or spreadsheet. Kai's earnings page shows the commission as Paid and includes its on-chain transaction hash. The short-link share surface remains labeled Preview while rollout completes.
+
+### Turn a default store into your brand
+- URL: /demos/storefront-makeover
+- Status: Preview
+- Kind: task
+- Audience: Seller, Buyer
+- Outcome: Alice's public storefront shows the same branded palette, featured products, story, and call to action that she reviewed through the private preview.
+- Applies to: Mobazha storefront-studio Preview build recorded on 2026-07-18
+- Reviewed: 2026-07-18
+
+Alice opens a generic storefront in the built-in design studio. She applies a complete template, selects a readable brand palette, chooses coherent featured products, writes the store story, and sets one clear buyer call to action. She creates a private preview link and reviews the exact draft as a logged-out visitor. After publishing, the public storefront shows that same branded design without the Preview banner. The storefront studio additions remain labeled Preview while hosted rollout completes.
+
+Use /docs-index.json for structured metadata, /videos.json for governed video
+metadata and provenance, /sources.json for the public-source
 allowlist, /agent-evals.json for answer-safety evaluation, /visual-evidence.json
 for governed visual claims and provenance, and /llms.txt for compact navigation.

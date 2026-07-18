@@ -2758,50 +2758,99 @@
     "language": "en",
     "sections": [
       {
-        "heading": "Operate a marketplace",
+        "heading": "Choose by outcome",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Sell and shape a storefront",
+                "href": "/demos/storefront-makeover",
+                "description": "Apply a branded design, review a private preview, and publish the same buyer-facing store."
+              },
+              {
+                "label": "Buy safely",
+                "href": "/buy/cancel-refund-dispute",
+                "description": "Understand cancellation, refund, and dispute paths before a real purchase needs recovery."
+              },
+              {
+                "label": "Grow and operate",
+                "href": "/demos/operator-commission-flywheel",
+                "description": "Follow a community market from seller recruitment to one attributed completed order."
+              },
+              {
+                "label": "Run and build",
+                "href": "/self-host",
+                "description": "Install the stack, inspect its boundaries, or continue to the public API contract."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Featured end-to-end journeys",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The catalog page keeps playback lightweight. Open a journey for its video, visible outcome, chapter guide, transcript, applicability, evidence, and related product guidance."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "From community market to one completed order",
+                "href": "/demos/operator-commission-flywheel",
+                "description": "An operator recruits a seller, shares a curated market, and traces one real test-network order to an estimated commission."
+              },
+              {
+                "label": "Recommend, link, and get paid on-chain",
+                "href": "/demos/seller-affiliate-loop",
+                "description": "A seller offers a cut, a promoter shares one link, and the attributed order produces a confirmed payout."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Sell and shape a storefront",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Turn a default store into your brand",
+                "href": "/demos/storefront-makeover",
+                "description": "Apply a complete layout, choose a readable palette, curate products, preview privately, and publish without code."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Grow and operate",
         "blocks": [
           {
             "type": "paragraph",
             "text": "**Operator Commission Flywheel** — create and publish a curated market, recruit a seller, bring a buyer through a real test-network payment, let the seller fulfill the order and the buyer complete it, then trace that same order back to its share link and estimated operator commission. **Preview** — Phase 1 records attribution and commission estimates; it does not credit a withdrawable operator balance yet."
           },
           {
-            "type": "video",
-            "alt": "Operator Commission Flywheel demo",
-            "src": "https://media.mobazha.org/demos/0001-operator-commission-flywheel/operator-commission-flywheel-demo-v9.mp4",
-            "poster": "https://media.mobazha.org/demos/0001-operator-commission-flywheel/cover-v9.jpg",
-            "caption": "112 seconds, silent — chapter cards narrate. One real order is carried from checkout through completion and attribution. Recorded 2026-07-18 on the Mobazha test network."
-          }
-        ]
-      },
-      {
-        "heading": "Build your storefront",
-        "blocks": [
-          {
-            "type": "paragraph",
-            "text": "**Storefront Makeover** — a seller redesigns her store with the built-in studio: start from a template, apply brand colors with an automatic readability guard, hand-pick the featured products, share a private preview link for feedback, then publish in one click. **Preview** — the storefront studio additions are in rollout."
-          },
-          {
-            "type": "video",
-            "alt": "Storefront Makeover demo",
-            "src": "https://media.mobazha.org/demos/0004-storefront-makeover/storefront-makeover-demo-v1.mp4",
-            "poster": "https://media.mobazha.org/demos/0004-storefront-makeover/cover-v1.jpg",
-            "caption": "92 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network."
-          }
-        ]
-      },
-      {
-        "heading": "Grow with promoters",
-        "blocks": [
-          {
             "type": "paragraph",
             "text": "**Seller Affiliate Loop** — sellers set a storefront-wide cut once, promoters share one short link, and commissions settle on-chain when order funds release. **Preview** — the short-link share surface is in rollout."
           },
           {
-            "type": "video",
-            "alt": "Seller Affiliate Loop demo",
-            "src": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/seller-affiliate-loop-demo-v7.mp4",
-            "poster": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/cover-v7.jpg",
-            "caption": "89 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network."
+            "type": "links",
+            "items": [
+              {
+                "label": "Watch the operator commission journey",
+                "href": "/demos/operator-commission-flywheel",
+                "description": "112 seconds; operator, seller, and buyer; recorded on the Mobazha local test network."
+              },
+              {
+                "label": "Watch the seller affiliate journey",
+                "href": "/demos/seller-affiliate-loop",
+                "description": "89 seconds; seller, promoter, and buyer; recorded on the Mobazha local test network."
+              }
+            ]
           }
         ]
       },
@@ -2811,6 +2860,21 @@
           {
             "type": "paragraph",
             "text": "Each demo is a scripted, re-recordable run of the real product — no mockups, no spliced outcomes — and keeps its provenance: what was recorded, when, and against which build. Where payments appear, the recording runs on the Mobazha test network and says so on screen. Demos of capability not yet in a general release carry a **Preview** label until it ships."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Video registry",
+                "href": "/videos.json",
+                "description": "Machine-readable titles, roles, outcomes, media digests, review dates, and provenance."
+              },
+              {
+                "label": "Video registry schema",
+                "href": "/videos.schema.json",
+                "description": "The validation contract used by the documentation build."
+              }
+            ]
           }
         ]
       }
@@ -6634,7 +6698,7 @@
     "authorityUrl": "https://docs.mobazha.org/project/rfcs",
     "evidenceLabel": "Public Mobazha RFC registry",
     "evidenceUrl": "https://github.com/mobazha/mobazha-docs/tree/main/rfcs",
-    "reviewed": "2026-07-14",
+    "reviewed": "2026-07-18",
     "pageType": "hub",
     "outcome": "Find or start a public proposal without presenting Draft design direction as accepted or shipped behavior.",
     "estimatedTime": "5 minutes",
@@ -6751,6 +6815,16 @@
                 "label": "RFC-0014: Quote-bound Cross-currency Payment Attempt Authorization",
                 "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0014-quote-bound-cross-currency-payment-attempt-authorization.md",
                 "description": "Draft; specifies a buyer-proposed funding basis that the seller checks against a fresh local rate floor and authorizes by signing the exact basis hash with the attempt terms."
+              },
+              {
+                "label": "RFC-0015: Marketplace Operator Commission",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0015-marketplace-operator-commission.md",
+                "description": "Draft; proposes an operator-set, release-snapshotted, seller-visible commission on marketplace-attributed orders, phased from a hosted estimate ledger to seller-funded settlement outputs under the RFC-0007 model."
+              },
+              {
+                "label": "RFC-0016: Peer Handle Naming, Resolution, and Portability",
+                "href": "https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0016-peer-handle-naming-resolution-portability.md",
+                "description": "Draft; proposes one human-readable network handle per Peer, direct default-store routing, signed claim and lifecycle governance, and portability without replacing Peer-scoped business authority."
               },
               {
                 "label": "RFC template",

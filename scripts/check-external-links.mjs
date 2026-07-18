@@ -2,6 +2,7 @@ import { access } from "node:fs/promises";
 import { docs } from "./load-docs.mjs";
 import { documentLinks } from "./content-files.mjs";
 import visualEvidence from "../visual-evidence.json" with { type: "json" };
+import videoCatalog from "../content/videos.json" with { type: "json" };
 
 const links = new Set();
 for (const doc of docs) {
@@ -10,6 +11,12 @@ for (const doc of docs) {
 }
 for (const visual of visualEvidence.visuals) {
   if (visual.source?.startsWith("https://")) links.add(visual.source);
+}
+for (const video of videoCatalog.videos) {
+  links.add(video.media.video.url);
+  links.add(video.media.cover.url);
+  links.add(video.media.poster.url);
+  links.add(video.evidence.url);
 }
 
 const urls = [...links].sort();

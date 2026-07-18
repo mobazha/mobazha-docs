@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { docApplicability, docs, publicationNavGroups as navGroups } from "./load-docs.mjs";
 import { renderPublication } from "./publication.mjs";
 import { documentLinks, documentText, loadContentDocuments, renderDocumentRegistry } from "./content-files.mjs";
+import { loadVideoCatalog, videoPath } from "./video-files.mjs";
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
 const navigation = JSON.parse(read("content/navigation.json"));
@@ -53,8 +54,17 @@ const agentEvals = JSON.parse(read("agent-evals.json"));
 const agentEvalSchema = read("agent-evals.schema.json");
 const visualEvidence = JSON.parse(read("visual-evidence.json"));
 const visualEvidenceSchema = read("visual-evidence.schema.json");
-const expectedFiles = renderPublication({ docs, navGroups, docApplicability, sources, sourceSchema, agentEvals, agentEvalSchema, visualEvidence, visualEvidenceSchema });
 const paths = new Set(docs.map((doc) => `/${doc.slug}`));
+let videos;
+try {
+  videos = loadVideoCatalog({ knownDocPaths: paths });
+} catch (error) {
+  fail(error.message);
+  videos = { schema_version: "1.0", reviewed: "", videos: [] };
+}
+const videoSchema = read("content/videos.schema.json");
+const expectedFiles = renderPublication({ docs, navGroups, docApplicability, sources, sourceSchema, agentEvals, agentEvalSchema, visualEvidence, visualEvidenceSchema, videos, videoSchema });
+const videoPaths = new Set(videos.videos.map(videoPath));
 const localizedRouteByEnglishPath = new Map(
   docs
     .filter((doc) => doc.language === "zh-CN" && doc.translationOf)
@@ -65,6 +75,7 @@ const allowedInternal = new Set([
   "/",
   "/zh",
   ...paths,
+  ...videoPaths,
   "/llms.txt",
   "/llms-full.txt",
   "/docs-index.json",
@@ -74,6 +85,8 @@ const allowedInternal = new Set([
   "/agent-evals.schema.json",
   "/visual-evidence.json",
   "/visual-evidence.schema.json",
+  "/videos.json",
+  "/videos.schema.json",
   "/.well-known/mobazha-docs.json",
   "/openapi.json",
   "/api-reference",
@@ -280,7 +293,7 @@ if (!visualEvidence || visualEvidence.schema_version !== "1.1" || !/^\d{4}-\d{2}
   for (const visual of visualEvidence.visuals) if (!referencedVisuals.has(visual.id)) fail(`unreferenced visual evidence ${visual.id}`);
 }
 
-const serializedPublicInputs = JSON.stringify({ docs, sources, agentEvals, visualEvidence });
+const serializedPublicInputs = JSON.stringify({ docs, sources, agentEvals, visualEvidence, videos });
 for (const forbidden of [
   "github.com/mobazha/mobazha_hosting",
   "gitlab.mobazha.com",
@@ -315,4 +328,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`content validation passed: ${docs.length} documents, ${navGroups.length} navigation groups`);
+console.log(`content validation passed: ${docs.length} documents, ${videos.videos.length} videos, ${navGroups.length} navigation groups`);

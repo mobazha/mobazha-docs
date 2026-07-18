@@ -1,0 +1,244 @@
+{
+  "schema_version": "1.0",
+  "reviewed": "2026-07-18",
+  "videos": [
+    {
+      "id": "0001",
+      "slug": "operator-commission-flywheel",
+      "title": "From community market to one completed order",
+      "summary": "Create and publish a curated market, recruit one seller, carry one real test-network order through payment and fulfillment, then trace it back to the operator's share link and estimated commission.",
+      "kind": "story",
+      "status": "Preview",
+      "language": "en",
+      "primaryPersona": "Operator",
+      "personas": ["Operator", "Seller", "Buyer"],
+      "goals": ["Operate", "Grow", "Buy"],
+      "productPromises": ["Connect", "Trade"],
+      "durationSeconds": 112,
+      "featured": true,
+      "outcome": "The same completed order appears in the operator's attribution view with a 0.0020 ETH estimated commission at 10%.",
+      "disclosure": "Recorded on the Mobazha local test network. The operator commission is an attributed estimate, not a withdrawable balance.",
+      "media": {
+        "video": {
+          "url": "https://media.mobazha.org/demos/0001-operator-commission-flywheel/operator-commission-flywheel-demo-v9.mp4",
+          "sha256": "a8f5a0d3d0c4e859baf7e65c0174b4e661c16dd596a8b818a80e8c4e9e0c946c"
+        },
+        "cover": {
+          "url": "https://media.mobazha.org/demos/0001-operator-commission-flywheel/cover-v9.jpg",
+          "sha256": "16583e52b3ddb00eb7a42e4a403f808551e875283e143bc7c7031f9414f15764",
+          "width": 1920,
+          "height": 1080
+        },
+        "poster": {
+          "url": "https://media.mobazha.org/demos/0001-operator-commission-flywheel/poster-v9.jpg",
+          "sha256": "98c92cfeb4a2e4de188a4c58170c763821024d88ed35021939bfec25f7a9253e",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "recordedAt": "2026-07-18",
+      "reviewed": "2026-07-18",
+      "appliesTo": "Mobazha local E2E test-network build recorded on 2026-07-18",
+      "evidence": {
+        "label": "Mobazha public repositories and reviewed demo provenance",
+        "url": "https://github.com/mobazha"
+      },
+      "primaryAction": {
+        "label": "Operate a marketplace",
+        "href": "/sell/marketplace-participation"
+      },
+      "relatedDocs": [
+        "/sell/marketplace-participation",
+        "/project/community-commerce",
+        "/project/transaction-spine"
+      ],
+      "chapters": [
+        {
+          "title": "Create and publish the market",
+          "description": "Maya creates a curated, invite-only market, sets the operator commission, and publishes a buyer-facing page before recruiting sellers."
+        },
+        {
+          "title": "Invite one seller",
+          "description": "The seller opens the invitation, sees the commission terms, and joins the market in one step."
+        },
+        {
+          "title": "Curate and share",
+          "description": "The operator features one coherent product and shares the branded community storefront."
+        },
+        {
+          "title": "Place and fund one real order",
+          "description": "A buyer purchases the featured product and funds the monitored address with 0.012 ETH on local Anvil."
+        },
+        {
+          "title": "Fulfill the same order",
+          "description": "The seller receives the paid order, adds tracking, and marks it shipped."
+        },
+        {
+          "title": "Complete the order",
+          "description": "The buyer confirms receipt and the order reaches its completed state."
+        },
+        {
+          "title": "Trace the operator outcome",
+          "description": "The operator opens the attribution view and sees the same order, share source, rate, and estimated commission."
+        }
+      ],
+      "transcript": "Maya creates a curated community market, sets a ten percent operator commission, and publishes it. One seller reviews those terms and joins through the invitation link. Maya curates the seller's product and shares the market. A buyer opens that storefront, creates one order, and pays 0.012 ETH to its monitored address on the local test network. The seller accepts and ships the same order. The buyer confirms receipt. Maya then sees that completed order attributed to the community share link with a 0.0020 ETH estimated commission. The estimate is not a withdrawable balance."
+    },
+    {
+      "id": "0003",
+      "slug": "seller-affiliate-loop",
+      "title": "Recommend, link, and get paid on-chain",
+      "summary": "A seller offers a storefront-wide commission, a promoter shares one short link, and a paid order produces a confirmed on-chain promoter commission.",
+      "kind": "story",
+      "status": "Preview",
+      "language": "en",
+      "primaryPersona": "Promoter",
+      "personas": ["Promoter", "Seller", "Buyer"],
+      "goals": ["Grow", "Sell", "Pay"],
+      "productPromises": ["Connect", "Trade"],
+      "durationSeconds": 89,
+      "featured": true,
+      "outcome": "Kai's earnings page shows a Paid commission row and the on-chain transaction hash for the attributed order.",
+      "disclosure": "Recorded on the Mobazha local test network. The short-link and QR share surface is labeled Preview while it completes rollout.",
+      "media": {
+        "video": {
+          "url": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/seller-affiliate-loop-demo-v7.mp4",
+          "sha256": "48b1e14d7bf03a13834d51606821736cd4d62b7ced2427c714a9c1068aa91849"
+        },
+        "cover": {
+          "url": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/cover-v7.jpg",
+          "sha256": "c130df82865f06aa1389e3114fa71fe8f79bc20348c94bcf0deaecf1a290857b",
+          "width": 1920,
+          "height": 1080
+        },
+        "poster": {
+          "url": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/poster-v7.jpg",
+          "sha256": "a8efd95d7263a39178b998c2db3d339976e45cd8ef6a931e8f995f85c4b7909e",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "recordedAt": "2026-07-18",
+      "reviewed": "2026-07-18",
+      "appliesTo": "Mobazha local E2E test-network build recorded on 2026-07-18",
+      "evidence": {
+        "label": "Mobazha public repositories and reviewed demo provenance",
+        "url": "https://github.com/mobazha"
+      },
+      "primaryAction": {
+        "label": "Start selling",
+        "href": "/sell"
+      },
+      "relatedDocs": [
+        "/sell",
+        "/sell/payments",
+        "/project/surfaces-and-integrations"
+      ],
+      "chapters": [
+        {
+          "title": "Offer promoters a cut",
+          "description": "Alice sets a five percent storefront-wide commission and a seven-day attribution window."
+        },
+        {
+          "title": "See what each sale pays",
+          "description": "Kai reviews the catalog and sees the expected promoter return for each product."
+        },
+        {
+          "title": "Create one link and QR",
+          "description": "Kai creates a personal short link that is bound to the promoter identity and ready to share."
+        },
+        {
+          "title": "Shop through the referral",
+          "description": "A buyer follows the link, keeps the referral, and continues through the normal store and checkout experience."
+        },
+        {
+          "title": "Settle without an invoice",
+          "description": "When order funds release, the seller and promoter settlement legs are recorded automatically."
+        },
+        {
+          "title": "Verify the on-chain payout",
+          "description": "Kai sees the Paid commission row, paid-out rollup, and transaction hash."
+        }
+      ],
+      "transcript": "Alice offers promoters five percent on every attributed storefront order. Kai sees the expected return for each product, creates a personal short link and QR, and shares it. A buyer follows the link and shops normally with the referral attached. When the paid order releases, Mobazha records the seller and promoter settlement legs without an invoice or spreadsheet. Kai's earnings page shows the commission as Paid and includes its on-chain transaction hash. The short-link share surface remains labeled Preview while rollout completes."
+    },
+    {
+      "id": "0004",
+      "slug": "storefront-makeover",
+      "title": "Turn a default store into your brand",
+      "summary": "Apply a storefront template, choose brand colors and featured products, share a private preview, and publish the same buyer-facing design without code.",
+      "kind": "task",
+      "status": "Preview",
+      "language": "en",
+      "primaryPersona": "Seller",
+      "personas": ["Seller", "Buyer"],
+      "goals": ["Sell"],
+      "productPromises": ["Own"],
+      "durationSeconds": 92,
+      "featured": false,
+      "outcome": "Alice's public storefront shows the same branded palette, featured products, story, and call to action that she reviewed through the private preview.",
+      "disclosure": "The storefront studio additions are labeled Preview while they complete rollout to the hosted SaaS.",
+      "media": {
+        "video": {
+          "url": "https://media.mobazha.org/demos/0004-storefront-makeover/storefront-makeover-demo-v1.mp4",
+          "sha256": "93b490ff18b070b0f6708d839e0444d5cac5000ad65115eda440f5dcd2d6cd47"
+        },
+        "cover": {
+          "url": "https://media.mobazha.org/demos/0004-storefront-makeover/cover-v1.jpg",
+          "sha256": "2c7da064b7de3879b594c014d7e73ac7c1ee49afdcf90c3a0d95b24a5a142898",
+          "width": 1920,
+          "height": 1080
+        },
+        "poster": {
+          "url": "https://media.mobazha.org/demos/0004-storefront-makeover/poster-v1.jpg",
+          "sha256": "7200c0f380c809516eff6d91473b00b81cba8302d7b9d5fff32de3f0d978c345",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "recordedAt": "2026-07-18",
+      "reviewed": "2026-07-18",
+      "appliesTo": "Mobazha storefront-studio Preview build recorded on 2026-07-18",
+      "evidence": {
+        "label": "Mobazha public repositories and reviewed demo provenance",
+        "url": "https://github.com/mobazha"
+      },
+      "primaryAction": {
+        "label": "Set up your store",
+        "href": "/sell/store-setup"
+      },
+      "relatedDocs": [
+        "/sell/store-setup",
+        "/sell/listings",
+        "/project/identity-and-stores"
+      ],
+      "chapters": [
+        {
+          "title": "Open the design studio",
+          "description": "Alice starts from the default storefront and opens its section-based editor."
+        },
+        {
+          "title": "Apply a complete layout",
+          "description": "One template establishes the hero, featured products, story, and trust sections."
+        },
+        {
+          "title": "Set a readable brand palette",
+          "description": "Alice chooses her colors and corrects a low-contrast combination when the editor warns her."
+        },
+        {
+          "title": "Curate the storefront story",
+          "description": "She selects coherent products, writes the store story, and sets one buyer call to action."
+        },
+        {
+          "title": "Review a private preview",
+          "description": "A logged-out buyer opens the seven-day preview link and sees the exact draft with a Preview banner."
+        },
+        {
+          "title": "Publish the same design",
+          "description": "Alice publishes and verifies the native-density public storefront without the Preview banner."
+        }
+      ],
+      "transcript": "Alice opens a generic storefront in the built-in design studio. She applies a complete template, selects a readable brand palette, chooses coherent featured products, writes the store story, and sets one clear buyer call to action. She creates a private preview link and reviews the exact draft as a logged-out visitor. After publishing, the public storefront shows that same branded design without the Preview banner. The storefront studio additions remain labeled Preview while hosted rollout completes."
+    }
+  ]
+}

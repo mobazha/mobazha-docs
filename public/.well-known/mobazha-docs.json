@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.7",
+  "schema_version": "1.8",
   "name": "Mobazha Documentation",
   "canonical_base_url": "https://docs.mobazha.org",
   "canonical_language": "en",
@@ -19,6 +19,7 @@
   "sources": "/sources.json",
   "agent_evals": "/agent-evals.json",
   "visual_evidence": "/visual-evidence.json",
+  "videos": "/videos.json",
   "authority_model": {
     "public_knowledge": "/docs-index.json",
     "runtime": "connected backend version and effective capability response",

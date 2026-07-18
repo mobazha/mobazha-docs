@@ -9,6 +9,8 @@ const discoveryPaths = [
   "/sources.json",
   "/agent-evals.json",
   "/visual-evidence.json",
+  "/videos.json",
+  "/videos.schema.json",
   "/llms.txt",
   "/llms-full.txt",
   "/.well-known/mobazha-docs.json",

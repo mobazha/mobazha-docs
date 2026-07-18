@@ -118,6 +118,9 @@ The baseline and execution contract are maintained in
 [`HUMAN_EXPERIENCE_IMPLEMENTATION_PLAN.md`](./HUMAN_EXPERIENCE_IMPLEMENTATION_PLAN.md).
 Product narrative, topic selection, and flagship sequencing are maintained in
 [`PRODUCT_KNOWLEDGE_ARCHITECTURE_PLAN.md`](./PRODUCT_KNOWLEDGE_ARCHITECTURE_PLAN.md).
+Video discovery, contextual placement, registry ownership, and the rollout
+sequence for story demos, task clips, and technical proofs are maintained in
+[`VIDEO_INFORMATION_ARCHITECTURE_PLAN.md`](./VIDEO_INFORMATION_ARCHITECTURE_PLAN.md).
 
 ### Wave 3 — Trust and project knowledge: in progress
 

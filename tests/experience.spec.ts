@@ -18,6 +18,8 @@ const routes = [
   "/project/agent-commerce",
   "/project/surfaces-and-integrations",
   "/project/fees",
+  "/demos",
+  "/demos/operator-commission-flywheel",
   "/zh/buy",
   "/zh/buy/order-notifications",
   "/zh/sell/catalog-operations",
@@ -99,6 +101,26 @@ test("desktop search supports keyboard selection and navigation", async ({ page 
   await expect(page.locator("#docs-search-option-0")).toHaveAttribute("aria-selected", "true");
   await search.press("Enter");
   await expect(page).toHaveURL(/\/buy\/cancel-refund-dispute$/);
+});
+
+test("video discovery stays lightweight and searchable", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "one desktop project covers catalog behavior");
+  await page.goto("/demos");
+  await expect(page.locator(".video-card")).toHaveCount(6);
+  await expect(page.locator("video")).toHaveCount(0);
+  await expect(page.locator(".video-section").getByRole("heading", { name: "Featured journeys" })).toBeVisible();
+
+  await page.goto("/demos/operator-commission-flywheel");
+  await expect(page.locator("video[preload='metadata']")).toHaveCount(1);
+  await expect(page.locator(".video-chapters li")).toHaveCount(7);
+  await expect(page.locator(".video-transcript")).toContainText("Read transcript");
+
+  const indexReady = page.waitForResponse((response) => response.url().endsWith("/docs-index.json") && response.ok());
+  await page.goto("/buy");
+  await indexReady;
+  const search = page.getByRole("combobox", { name: "Search documentation" });
+  await search.fill("from community market");
+  await expect(page.getByRole("option").first()).toHaveAttribute("href", "/demos/operator-commission-flywheel");
 });
 
 test("Chinese search stays inside the Chinese knowledge surface", async ({ page }, testInfo) => {

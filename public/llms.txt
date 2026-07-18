@@ -175,6 +175,7 @@ Implementation evidence: the versioned sources linked from each page.
 
 ## Machine-readable
 - [Documentation index](/docs-index.json)
+- [Product video catalog](/videos.json)
 - [Public source manifest](/sources.json)
 - [Agent evaluation contract](/agent-evals.json)
 - [Visual evidence catalog](/visual-evidence.json)

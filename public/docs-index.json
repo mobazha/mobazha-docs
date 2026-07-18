@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.7",
+  "schema_version": "1.8",
   "generated_from": "canonical-public-knowledge-and-reviewed-evidence",
   "canonical_language": "en",
   "languages": [
@@ -114,7 +114,7 @@
         "href": "/sell"
       },
       "language": "en",
-      "search_text": "Operate a marketplace Operator Commission Flywheel — create and publish a curated market, recruit a seller, bring a buyer through a real test network payment, let the seller fulfill the order and the buyer complete it, then trace that same order back to its share link and estimated operator commission. Preview — Phase 1 records attribution and commission estimates; it does not credit a withdrawable operator balance yet. Operator Commission Flywheel demo 112 seconds, silent — chapter cards narrate. One real order is carried from checkout through completion and attribution. Recorded 2026 07 18 on the Mobazha test network. Build your storefront Storefront Makeover — a seller redesigns her store with the built in studio: start from a template, apply brand colors with an automatic readability guard, hand pick the featured products, share a private preview link for feedback, then publish in one click. Preview — the storefront studio additions are in rollout. Storefront Makeover demo 92 seconds, silent — chapter cards narrate. Recorded 2026 07 18 on the Mobazha test network. Grow with promoters Seller Affiliate Loop — sellers set a storefront wide cut once, promoters share one short link, and commissions settle on chain when order funds release. Preview — the short link share surface is in rollout. Seller Affiliate Loop demo 89 seconds, silent — chapter cards narrate. Recorded 2026 07 18 on the Mobazha test network. How these demos are made Each demo is a scripted, re recordable run of the real product — no mockups, no spliced outcomes — and keeps its provenance: what was recorded, when, and against which build. Where payments appear, the recording runs on the Mobazha test network and says so on screen. Demos of capability not yet in a general release carry a Preview label until it ships."
+      "search_text": "Choose by outcome Sell and shape a storefront Apply a branded design, review a private preview, and publish the same buyer facing store. Buy safely Understand cancellation, refund, and dispute paths before a real purchase needs recovery. Grow and operate Follow a community market from seller recruitment to one attributed completed order. Run and build Install the stack, inspect its boundaries, or continue to the public API contract. Featured end to end journeys The catalog page keeps playback lightweight. Open a journey for its video, visible outcome, chapter guide, transcript, applicability, evidence, and related product guidance. From community market to one completed order An operator recruits a seller, shares a curated market, and traces one real test network order to an estimated commission. Recommend, link, and get paid on chain A seller offers a cut, a promoter shares one link, and the attributed order produces a confirmed payout. Sell and shape a storefront Turn a default store into your brand Apply a complete layout, choose a readable palette, curate products, preview privately, and publish without code. Grow and operate Operator Commission Flywheel — create and publish a curated market, recruit a seller, bring a buyer through a real test network payment, let the seller fulfill the order and the buyer complete it, then trace that same order back to its share link and estimated operator commission. Preview — Phase 1 records attribution and commission estimates; it does not credit a withdrawable operator balance yet. Seller Affiliate Loop — sellers set a storefront wide cut once, promoters share one short link, and commissions settle on chain when order funds release. Preview — the short link share surface is in rollout. Watch the operator commission journey 112 seconds; operator, seller, and buyer; recorded on the Mobazha local test network. Watch the seller affiliate journey 89 seconds; seller, promoter, and buyer; recorded on the Mobazha local test network. How these demos are made Each demo is a scripted, re recordable run of the real product — no mockups, no spliced outcomes — and keeps its provenance: what was recorded, when, and against which build. Where payments appear, the recording runs on the Mobazha test network and says so on screen. Demos of capability not yet in a general release carry a Preview label until it ships. Video registry Machine readable titles, roles, outcomes, media digests, review dates, and provenance. Video registry schema The validation contract used by the documentation build."
     },
     {
       "id": "project-product-map",
@@ -2251,7 +2251,7 @@
         "source": "https://github.com/mobazha/mobazha-docs/tree/main/rfcs",
         "label": "Public Mobazha RFC registry"
       },
-      "reviewed": "2026-07-14",
+      "reviewed": "2026-07-18",
       "page_type": "hub",
       "outcome": "Find or start a public proposal without presenting Draft design direction as accepted or shipped behavior.",
       "estimated_time": "5 minutes",
@@ -2261,7 +2261,7 @@
         "href": "/project/rfcs#current-registry"
       },
       "language": "en",
-      "search_text": "When an RFC is required A public protocol or interoperability contract changes. Order, payment, settlement, dispute, identity, authorization, or custody boundaries change. A fee, recipient, reward, public fund, or economic policy changes. A new optional hosted dependency changes independent operation assumptions. Governance, licensing, privacy, security, or cross repository ownership changes materially. Status model Draft: authoring is incomplete. Review: ready for public technical and product review. Accepted or Rejected: the decision is recorded with rationale. Withdrawn: the author no longer proposes the change. Superseded: another RFC replaces the proposal. Implemented: release evidence confirms that the accepted proposal shipped within a stated scope. Current registry RFC 0001: Founding whitepaper publication contract Review; defines the evidence and approvals needed to advance the whitepaper. RFC 0002: Composable Extension Platform Model Draft; separates domain, contract role, runtime, trust, lifecycle, and packaging while defining the target multi runtime platform. RFC 0003: Composable Frontend Product Model Draft; separates deployment, experience, channel, code inclusion, and effective capability so public and private distributions can assemble coherent products without product name branching. RFC 0004: Deal Link Single Level Attribution Superseded by RFC 0007; retained as the earlier manual review only proposal. RFC 0005: Core owned Resource Collateral Lifecycle Draft; proposes a separate Core owned collateral aggregate without merging collateral into Order Extension or order settlement state. RFC 0006: Payment Kernel, Rails, and Trusted Distribution Modules Draft; proposes typed payment rails, reviewed module composition, contribution level routing, and durable payment recovery boundaries. RFC 0007: Seller funded Affiliate Attribution and Atomic Settlement Draft; proposes seller funded Affiliate outputs in the canonical order release without a second payout engine or commission balance. RFC 0008: Node Key Domains and Receiving Architecture Draft; proposes separate Identity, Wallet, and Settlement domains, generic receiving destinations, and a production gate for order authorization keys. RFC 0009: Frozen Payment Attempt Settlement Terms Draft; proposes freezing seller payout, platform and cancellation fees, Affiliate and moderator terms, escrow timeout, and dispute policy into the immutable payment attempt before a funding target is payable. RFC 0010: Guest Checkout Trust and Custody Model Draft; proposes seller custodied Guest Checkout, a strict per chain closure gate, an order scoped access credential, and buyer disclosure rules without introducing a separate Direct payment product. RFC 0011: Order Settlement Authorization Keys Draft; proposes deterministic hardened attempt scoped settlement keys for all order participants, Identity signed public key offers without private key exposure, and moderator selectability gated on obtaining a valid offer before payment. RFC 0012: Embedded Wallet Buyer Settlement Keys and Onramp Funded Attempts Draft; proposes a buyer vendor custodied participant key class for moderated escrow, admits embedded wallet providers as a reviewed trusted module class, and defines onramp funded attempts without changing the RFC 0010 guest custodial default or the RFC 0011 Settlement root key hierarchy. RFC 0013: Peer scoped Deal Link Hosting and Store Authority Draft; proposes Peer scoped seller administration, optional hosted account association, and a bounded Hosting to Node authority split for Deal Links. RFC 0014: Quote bound Cross currency Payment Attempt Authorization Draft; specifies a buyer proposed funding basis that the seller checks against a fresh local rate floor and authorizes by signing the exact basis hash with the attempt terms. RFC template Required metadata and review questions. Repository RFC guide Accepted and Implemented are different states. Only release evidence and effecti"
+      "search_text": "When an RFC is required A public protocol or interoperability contract changes. Order, payment, settlement, dispute, identity, authorization, or custody boundaries change. A fee, recipient, reward, public fund, or economic policy changes. A new optional hosted dependency changes independent operation assumptions. Governance, licensing, privacy, security, or cross repository ownership changes materially. Status model Draft: authoring is incomplete. Review: ready for public technical and product review. Accepted or Rejected: the decision is recorded with rationale. Withdrawn: the author no longer proposes the change. Superseded: another RFC replaces the proposal. Implemented: release evidence confirms that the accepted proposal shipped within a stated scope. Current registry RFC 0001: Founding whitepaper publication contract Review; defines the evidence and approvals needed to advance the whitepaper. RFC 0002: Composable Extension Platform Model Draft; separates domain, contract role, runtime, trust, lifecycle, and packaging while defining the target multi runtime platform. RFC 0003: Composable Frontend Product Model Draft; separates deployment, experience, channel, code inclusion, and effective capability so public and private distributions can assemble coherent products without product name branching. RFC 0004: Deal Link Single Level Attribution Superseded by RFC 0007; retained as the earlier manual review only proposal. RFC 0005: Core owned Resource Collateral Lifecycle Draft; proposes a separate Core owned collateral aggregate without merging collateral into Order Extension or order settlement state. RFC 0006: Payment Kernel, Rails, and Trusted Distribution Modules Draft; proposes typed payment rails, reviewed module composition, contribution level routing, and durable payment recovery boundaries. RFC 0007: Seller funded Affiliate Attribution and Atomic Settlement Draft; proposes seller funded Affiliate outputs in the canonical order release without a second payout engine or commission balance. RFC 0008: Node Key Domains and Receiving Architecture Draft; proposes separate Identity, Wallet, and Settlement domains, generic receiving destinations, and a production gate for order authorization keys. RFC 0009: Frozen Payment Attempt Settlement Terms Draft; proposes freezing seller payout, platform and cancellation fees, Affiliate and moderator terms, escrow timeout, and dispute policy into the immutable payment attempt before a funding target is payable. RFC 0010: Guest Checkout Trust and Custody Model Draft; proposes seller custodied Guest Checkout, a strict per chain closure gate, an order scoped access credential, and buyer disclosure rules without introducing a separate Direct payment product. RFC 0011: Order Settlement Authorization Keys Draft; proposes deterministic hardened attempt scoped settlement keys for all order participants, Identity signed public key offers without private key exposure, and moderator selectability gated on obtaining a valid offer before payment. RFC 0012: Embedded Wallet Buyer Settlement Keys and Onramp Funded Attempts Draft; proposes a buyer vendor custodied participant key class for moderated escrow, admits embedded wallet providers as a reviewed trusted module class, and defines onramp funded attempts without changing the RFC 0010 guest custodial default or the RFC 0011 Settlement root key hierarchy. RFC 0013: Peer scoped Deal Link Hosting and Store Authority Draft; proposes Peer scoped seller administration, optional hosted account association, and a bounded Hosting to Node authority split for Deal Links. RFC 0014: Quote bound Cross currency Payment Attempt Authorization Draft; specifies a buyer proposed funding basis that the seller checks against a fresh local rate floor and authorizes by signing the exact basis hash with the attempt terms. RFC 0015: Marketplace Operator Commission Draft; proposes an operator set, release snapshotted, seller visible commission on marketplace attributed orders"
     },
     {
       "id": "project-adrs",
@@ -4946,6 +4946,107 @@
       "language": "zh-CN",
       "translation_of": "/start",
       "search_text": "选择你的路径 从店铺购买 核对卖家、总成本、付款指令、订单状态和恢复路径。 开始销售 准备店铺、发布商品、接受支持的付款并完成履约。 运行自己的 Node 评估、安装、保护、监控并恢复自行托管部署。 构建集成 使用 API、事件、MCP、Webhook 和扩展契约。 理解项目 查看架构、发布范围、经济模式、治理和安全边界。 如果第一个问题是“由谁运营后端”，请在创建店铺或迁移数据前先比较托管与自行托管的责任。 正式投入前应知道什么 买家： 付款前确认店铺运营者、最终总额、付款指令、订单所有者和恢复路线。 卖家： 验证一次从商品发布到履约的完整流程，包括付款观察和失败订单的恢复路径。 运营者： 在接受重要交易前证明健康检查、备份、恢复、升级、网络防护和事故责任都已落实。 开发者或 Agent 构建者： 发现运行时能力，使用最小权限认证；写操作结果未知时先对账再重试。 评估者： 区分当前 RC 行为和 Draft 方向，也要区分软件本身、托管服务、服务商、网络、配送和税费。 了解当前成熟度 Mobazha 当前仍是候选发布软件。标记为 Current 的页面描述经过审阅的行为；Beta 可能变化；Draft 只表示方向，不构成承诺。 连接到的后端是运行时能力的权威来源。文档不会赋予后端没有声明的能力。 直接进入公开入口 使用托管应用 体验当前托管的买家和卖家流程。 运行开源 Node 从源码构建候选版本并自行运营。 查看共享前端 检查托管和自行托管部署共同使用的客户端。 English canonical page"
+    },
+    {
+      "id": "video-0001",
+      "path": "/demos/operator-commission-flywheel",
+      "canonical_url": "https://docs.mobazha.org/demos/operator-commission-flywheel",
+      "title": "From community market to one completed order",
+      "summary": "Create and publish a curated market, recruit one seller, carry one real test-network order through payment and fulfillment, then trace it back to the operator's share link and estimated commission.",
+      "status": "preview",
+      "audiences": [
+        "operator",
+        "seller",
+        "buyer"
+      ],
+      "applies_to": "Mobazha local E2E test-network build recorded on 2026-07-18",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/demos/operator-commission-flywheel",
+        "label": "Canonical video detail page"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha public repositories and reviewed demo provenance"
+      },
+      "reviewed": "2026-07-18",
+      "page_type": "video",
+      "outcome": "The same completed order appears in the operator's attribution view with a 0.0020 ETH estimated commission at 10%.",
+      "estimated_time": "2 minutes",
+      "journey": "start",
+      "primary_action": {
+        "label": "Operate a marketplace",
+        "href": "/sell/marketplace-participation"
+      },
+      "language": "en",
+      "search_text": "From community market to one completed order Create and publish a curated market, recruit one seller, carry one real test-network order through payment and fulfillment, then trace it back to the operator's share link and estimated commission. The same completed order appears in the operator's attribution view with a 0.0020 ETH estimated commission at 10%. Recorded on the Mobazha local test network. The operator commission is an attributed estimate, not a withdrawable balance. Operator Operator Seller Buyer Operate Grow Buy Connect Trade Create and publish the market Maya creates a curated, invite-only market, sets the operator commission, and publishes a buyer-facing page before recruiting sellers. Invite one seller The seller opens the invitation, sees the commission terms, and joins the market in one step. Curate and share The operator features one coherent product and shares the branded community storefront. Place and fund one real order A buyer purchases the featured product and funds the monitored address with 0.012 ETH on local Anvil. Fulfill the same order The seller receives the paid order, adds tracking, and marks it shipped. Complete the order The buyer confirms receipt and the order reaches its completed state. Trace the operator outcome The operator opens the attribution view and sees the same order, share source, rate, and estimated commission. Maya creates a curated community market, sets a ten percent operator commission, and publishes it. One seller reviews those terms and joins through the invitation link. Maya curates the seller's product and shares the market. A buyer opens that storefront, creates one order, and pays 0.012 ETH to its monitored address on the local test network. The seller accepts and ships the same order. The buyer confirms receipt. Maya then sees that completed order attributed to the community share link with a 0.0020 ETH estimated commission. The estimate is not a withdrawable balance."
+    },
+    {
+      "id": "video-0003",
+      "path": "/demos/seller-affiliate-loop",
+      "canonical_url": "https://docs.mobazha.org/demos/seller-affiliate-loop",
+      "title": "Recommend, link, and get paid on-chain",
+      "summary": "A seller offers a storefront-wide commission, a promoter shares one short link, and a paid order produces a confirmed on-chain promoter commission.",
+      "status": "preview",
+      "audiences": [
+        "promoter",
+        "seller",
+        "buyer"
+      ],
+      "applies_to": "Mobazha local E2E test-network build recorded on 2026-07-18",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/demos/seller-affiliate-loop",
+        "label": "Canonical video detail page"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha public repositories and reviewed demo provenance"
+      },
+      "reviewed": "2026-07-18",
+      "page_type": "video",
+      "outcome": "Kai's earnings page shows a Paid commission row and the on-chain transaction hash for the attributed order.",
+      "estimated_time": "2 minutes",
+      "journey": "start",
+      "primary_action": {
+        "label": "Start selling",
+        "href": "/sell"
+      },
+      "language": "en",
+      "search_text": "Recommend, link, and get paid on-chain A seller offers a storefront-wide commission, a promoter shares one short link, and a paid order produces a confirmed on-chain promoter commission. Kai's earnings page shows a Paid commission row and the on-chain transaction hash for the attributed order. Recorded on the Mobazha local test network. The short-link and QR share surface is labeled Preview while it completes rollout. Promoter Promoter Seller Buyer Grow Sell Pay Connect Trade Offer promoters a cut Alice sets a five percent storefront-wide commission and a seven-day attribution window. See what each sale pays Kai reviews the catalog and sees the expected promoter return for each product. Create one link and QR Kai creates a personal short link that is bound to the promoter identity and ready to share. Shop through the referral A buyer follows the link, keeps the referral, and continues through the normal store and checkout experience. Settle without an invoice When order funds release, the seller and promoter settlement legs are recorded automatically. Verify the on-chain payout Kai sees the Paid commission row, paid-out rollup, and transaction hash. Alice offers promoters five percent on every attributed storefront order. Kai sees the expected return for each product, creates a personal short link and QR, and shares it. A buyer follows the link and shops normally with the referral attached. When the paid order releases, Mobazha records the seller and promoter settlement legs without an invoice or spreadsheet. Kai's earnings page shows the commission as Paid and includes its on-chain transaction hash. The short-link share surface remains labeled Preview while rollout completes."
+    },
+    {
+      "id": "video-0004",
+      "path": "/demos/storefront-makeover",
+      "canonical_url": "https://docs.mobazha.org/demos/storefront-makeover",
+      "title": "Turn a default store into your brand",
+      "summary": "Apply a storefront template, choose brand colors and featured products, share a private preview, and publish the same buyer-facing design without code.",
+      "status": "preview",
+      "audiences": [
+        "seller",
+        "buyer"
+      ],
+      "applies_to": "Mobazha storefront-studio Preview build recorded on 2026-07-18",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/demos/storefront-makeover",
+        "label": "Canonical video detail page"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha public repositories and reviewed demo provenance"
+      },
+      "reviewed": "2026-07-18",
+      "page_type": "video",
+      "outcome": "Alice's public storefront shows the same branded palette, featured products, story, and call to action that she reviewed through the private preview.",
+      "estimated_time": "2 minutes",
+      "journey": "start",
+      "primary_action": {
+        "label": "Set up your store",
+        "href": "/sell/store-setup"
+      },
+      "language": "en",
+      "search_text": "Turn a default store into your brand Apply a storefront template, choose brand colors and featured products, share a private preview, and publish the same buyer-facing design without code. Alice's public storefront shows the same branded palette, featured products, story, and call to action that she reviewed through the private preview. The storefront studio additions are labeled Preview while they complete rollout to the hosted SaaS. Seller Seller Buyer Sell Own Open the design studio Alice starts from the default storefront and opens its section-based editor. Apply a complete layout One template establishes the hero, featured products, story, and trust sections. Set a readable brand palette Alice chooses her colors and corrects a low-contrast combination when the editor warns her. Curate the storefront story She selects coherent products, writes the store story, and sets one buyer call to action. Review a private preview A logged-out buyer opens the seven-day preview link and sees the exact draft with a Preview banner. Publish the same design Alice publishes and verifies the native-density public storefront without the Preview banner. Alice opens a generic storefront in the built-in design studio. She applies a complete template, selects a readable brand palette, chooses coherent featured products, writes the store story, and sets one clear buyer call to action. She creates a private preview link and reviews the exact draft as a logged-out visitor. After publishing, the public storefront shows that same branded design without the Preview banner. The storefront studio additions remain labeled Preview while hosted rollout completes."
     }
   ]
 }

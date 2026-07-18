@@ -60,7 +60,7 @@
   <url><loc>https://docs.mobazha.org/project/release-scope</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/governance</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/decisions</loc><lastmod>2026-07-04</lastmod></url>
-  <url><loc>https://docs.mobazha.org/project/rfcs</loc><lastmod>2026-07-14</lastmod></url>
+  <url><loc>https://docs.mobazha.org/project/rfcs</loc><lastmod>2026-07-18</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/adrs</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/history</loc><lastmod>2026-07-04</lastmod></url>
   <url><loc>https://docs.mobazha.org/releases</loc><lastmod>2026-07-04</lastmod></url>
@@ -129,5 +129,8 @@
   <url><loc>https://docs.mobazha.org/zh/releases</loc><lastmod>2026-07-14</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/contribute</loc><lastmod>2026-07-14</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/support</loc><lastmod>2026-07-14</lastmod></url>
+  <url><loc>https://docs.mobazha.org/demos/operator-commission-flywheel</loc><lastmod>2026-07-18</lastmod></url>
+  <url><loc>https://docs.mobazha.org/demos/seller-affiliate-loop</loc><lastmod>2026-07-18</lastmod></url>
+  <url><loc>https://docs.mobazha.org/demos/storefront-makeover</loc><lastmod>2026-07-18</lastmod></url>
   <url><loc>https://docs.mobazha.org/api-reference</loc><lastmod>2026-07-18</lastmod></url>
 </urlset>

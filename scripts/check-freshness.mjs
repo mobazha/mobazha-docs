@@ -45,9 +45,13 @@ for (const source of sources.sources) {
 const agentEvals = readJson("agent-evals.json");
 checkAge("Agent evaluation contract", agentEvals.reviewed, 180);
 
+const videos = readJson("content/videos.json");
+checkAge("video catalog", videos.reviewed, 90);
+for (const video of videos.videos) checkAge(`video ${video.id}`, video.reviewed, video.status === "Current" ? 180 : 90);
+
 if (failures.length) {
   console.error(`freshness check failed (${now.toISOString().slice(0, 10)}):\n- ${failures.join("\n- ")}`);
   process.exit(1);
 }
 
-console.log(`freshness check passed: ${documents.length} documents, ${evidence.visuals.length} visuals, ${sources.sources.length} sources, and the Agent evaluation contract`);
+console.log(`freshness check passed: ${documents.length} documents, ${videos.videos.length} videos, ${evidence.visuals.length} visuals, ${sources.sources.length} sources, and the Agent evaluation contract`);

@@ -8,7 +8,9 @@ const agentEvals = JSON.parse(readFileSync(new URL("../agent-evals.json", import
 const agentEvalSchema = readFileSync(new URL("../agent-evals.schema.json", import.meta.url), "utf8");
 const visualEvidence = JSON.parse(readFileSync(new URL("../visual-evidence.json", import.meta.url), "utf8"));
 const visualEvidenceSchema = readFileSync(new URL("../visual-evidence.schema.json", import.meta.url), "utf8");
-const files = renderPublication({ docs, navGroups, docApplicability, sources, sourceSchema, agentEvals, agentEvalSchema, visualEvidence, visualEvidenceSchema });
+const videos = JSON.parse(readFileSync(new URL("../content/videos.json", import.meta.url), "utf8"));
+const videoSchema = readFileSync(new URL("../content/videos.schema.json", import.meta.url), "utf8");
+const files = renderPublication({ docs, navGroups, docApplicability, sources, sourceSchema, agentEvals, agentEvalSchema, visualEvidence, visualEvidenceSchema, videos, videoSchema });
 
 for (const [path, content] of Object.entries(files)) {
   writeFileSync(new URL(`../${path}`, import.meta.url), content);
