@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha product, hosted commerce, and documentation maintainers
 - Created: 2026-07-14
-- Updated: 2026-07-14
+- Updated: 2026-07-18
 - Decision owners: Mobazha hosted commerce, Open Core order, Unified, and documentation maintainers
 - Affected surfaces: hosted Deal Link service, store identity and authorization, standalone administration, Unified, public API, Node order creation, docs
 - Supersedes: None
@@ -59,6 +59,11 @@ Links before optional owner association. Connecting an account may add SSO,
 multi-store switching, recovery, aggregation, branded routing, or other hosted
 features, but it does not rewrite `sellerPeerID`, transfer order history, or
 change link ownership. Account reassociation therefore does not orphan a link.
+
+[RFC-0016](./0016-peer-handle-naming-resolution-portability.md) separately
+proposes a human-readable handle and branded default-store route for that Peer.
+Resolving or renaming a handle does not change the immutable `sellerPeerID` on
+a Deal Link or make the handle an administration credential.
 
 ### Hosted Deal Link aggregate
 

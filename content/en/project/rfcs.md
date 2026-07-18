@@ -9,7 +9,7 @@ audiences:
   - Agents
 evidenceLabel: Public Mobazha RFC registry
 evidenceUrl: https://github.com/mobazha/mobazha-docs/tree/main/rfcs
-reviewed: 2026-07-14
+reviewed: 2026-07-18
 pageType: hub
 outcome: Find or start a public proposal without presenting Draft design direction as accepted or shipped behavior.
 estimatedTime: 5 minutes
@@ -52,6 +52,8 @@ primaryAction:
 - [RFC-0012: Embedded Wallet Buyer Settlement Keys and Onramp-Funded Attempts](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0012-embedded-wallet-buyer-settlement-keys.md) — Draft; proposes a buyer-vendor-custodied participant key class for moderated escrow, admits embedded-wallet providers as a reviewed trusted-module class, and defines onramp-funded attempts without changing the RFC-0010 guest-custodial default or the RFC-0011 Settlement-root key hierarchy.
 - [RFC-0013: Peer-scoped Deal Link Hosting and Store Authority](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0013-peer-scoped-deal-link-hosting.md) — Draft; proposes Peer-scoped seller administration, optional hosted account association, and a bounded Hosting-to-Node authority split for Deal Links.
 - [RFC-0014: Quote-bound Cross-currency Payment Attempt Authorization](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0014-quote-bound-cross-currency-payment-attempt-authorization.md) — Draft; specifies a buyer-proposed funding basis that the seller checks against a fresh local rate floor and authorizes by signing the exact basis hash with the attempt terms.
+- [RFC-0015: Marketplace Operator Commission](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0015-marketplace-operator-commission.md) — Draft; proposes an operator-set, release-snapshotted, seller-visible commission on marketplace-attributed orders, phased from a hosted estimate ledger to seller-funded settlement outputs under the RFC-0007 model.
+- [RFC-0016: Peer Handle Naming, Resolution, and Portability](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0016-peer-handle-naming-resolution-portability.md) — Draft; proposes one human-readable network handle per Peer, direct default-store routing, signed claim and lifecycle governance, and portability without replacing Peer-scoped business authority.
 - [RFC template](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/0000-template.md) — Required metadata and review questions.
 - [Repository RFC guide](https://github.com/mobazha/mobazha-docs/blob/main/rfcs/README.md)
 

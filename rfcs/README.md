@@ -22,6 +22,8 @@ record; it does not activate behavior.
 | [0012](./0012-embedded-wallet-buyer-settlement-keys.md) | Embedded Wallet Buyer Settlement Keys and Onramp-Funded Attempts | Draft | 2026-07-13 |
 | [0013](./0013-peer-scoped-deal-link-hosting.md) | Peer-scoped Deal Link Hosting and Store Authority | Draft | 2026-07-14 |
 | [0014](./0014-quote-bound-cross-currency-payment-attempt-authorization.md) | Quote-bound Cross-currency Payment Attempt Authorization | Draft | 2026-07-15 |
+| [0015](./0015-marketplace-operator-commission.md) | Marketplace Operator Commission | Draft | 2026-07-17 |
+| [0016](./0016-peer-handle-naming-resolution-portability.md) | Peer Handle Naming, Resolution, and Portability | Draft | 2026-07-18 |
 
 Start from [`0000-template.md`](./0000-template.md). Allocate the next number,
 keep the filename stable, and update this table in the same change.

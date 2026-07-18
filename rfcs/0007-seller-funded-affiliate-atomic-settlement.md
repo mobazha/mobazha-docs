@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha product, settlement, and documentation maintainers
 - Created: 2026-07-11
-- Updated: 2026-07-14
+- Updated: 2026-07-18
 - Decision owners: Mobazha hosted commerce, Open Core settlement, Unified, and documentation maintainers
 - Affected surfaces: Node order settlement, hosted Affiliate service, Unified, public API, economics, supported payment rails, docs
 - Supersedes: RFC-0004
@@ -60,6 +60,12 @@ Affiliate fact source. A Casdoor user or other hosted owner association may
 authorize access to an explicitly selected store, but it must not replace the
 store Peer ID, merge programs from different stores, or become necessary for a
 standalone store to configure its local program.
+
+If a public Affiliate surface uses a human-readable Peer handle,
+[RFC-0016](./0016-peer-handle-naming-resolution-portability.md) governs that
+optional name and its resolution. The resolved promoter or seller Peer ID,
+not the mutable handle, remains the identity frozen into Affiliate and order
+facts.
 
 An independently operated store therefore keeps attribution working when the
 hosted control plane or account association is unavailable. A hosted public

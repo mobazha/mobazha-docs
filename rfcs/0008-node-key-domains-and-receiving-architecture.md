@@ -3,7 +3,7 @@
 - Status: Draft
 - Authors: Mobazha identity, wallet, settlement, and documentation maintainers
 - Created: 2026-07-11
-- Updated: 2026-07-13
+- Updated: 2026-07-18
 - Decision owners: Mobazha Open Core, distributions, hosted service, clients, and documentation maintainers
 - Affected surfaces: Node identity and wallets, Profile, order protocol, settlement signers, hosted service, clients, recovery, docs
 - Supersedes: None
@@ -89,6 +89,11 @@ The following invariants apply:
 Existing EVM and Solana standard-order participant keys are known exceptions,
 not permanent exemptions. The three-domain target is not complete until their
 replacement protocol is reviewed and implemented.
+
+[RFC-0016](./0016-peer-handle-naming-resolution-portability.md) separately
+proposes a human-readable handle resolved to a Peer ID. An Identity-key handle
+claim is a published identity statement; it does not turn the handle into a
+signing key, wallet destination, Settlement authority, or business-record key.
 
 ### 2. Define stable wallet account roles
 
