@@ -178,7 +178,7 @@ Agent golden questions
 Sell and promote
 **Seller Affiliate Loop** — sellers set a storefront-wide cut once, promoters share one short link, and commissions settle on-chain when order funds release. **Preview** — the short-link share surface is in rollout.
 Seller Affiliate Loop demo
-75 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.
+80 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.
 Operate a marketplace
 **Operator Commission Flywheel** — earn a commission on every order your market brings in. Recorded; publishing next.
 Buy
