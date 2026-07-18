@@ -16,6 +16,7 @@ export function DemoVideo({ src, poster, alt }: DemoVideoProps) {
       <video
         controls
         autoPlay={playing}
+        muted={playing}
         playsInline
         preload={playing ? "auto" : "metadata"}
         poster={poster}
