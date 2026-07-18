@@ -48,6 +48,18 @@
         "description": { "type": "string", "minLength": 1 }
       }
     },
+    "caption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "language", "label", "kind"],
+      "properties": {
+        "url": { "type": "string", "pattern": "^https://media\\.mobazha\\.org/" },
+        "language": { "enum": ["en", "zh-CN"] },
+        "label": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["captions", "subtitles"] },
+        "default": { "type": "boolean" }
+      }
+    },
     "link": {
       "type": "object",
       "additionalProperties": false,
@@ -130,7 +142,12 @@
           "properties": {
             "video": { "$ref": "#/$defs/asset" },
             "cover": { "$ref": "#/$defs/imageAsset" },
-            "poster": { "$ref": "#/$defs/imageAsset" }
+            "poster": { "$ref": "#/$defs/imageAsset" },
+            "captions": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/caption" }
+            }
           }
         },
         "recordedAt": { "type": "string", "format": "date" },

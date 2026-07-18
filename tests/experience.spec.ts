@@ -5,6 +5,8 @@ const routes = [
   "/",
   "/buy",
   "/buy/order-notifications",
+  "/sell",
+  "/sell/store-setup",
   "/sell/catalog-operations",
   "/sell/marketplace-participation",
   "/self-host/install",
@@ -121,6 +123,23 @@ test("video discovery stays lightweight and searchable", async ({ page }, testIn
   const search = page.getByRole("combobox", { name: "Search documentation" });
   await search.fill("from community market");
   await expect(page.getByRole("option").first()).toHaveAttribute("href", "/demos/operator-commission-flywheel");
+});
+
+test("contextual video references stay lightweight and canonical", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "representative routes cover mobile layout and accessibility");
+  const placements = [
+    ["/sell/store-setup", "/demos/storefront-makeover"],
+    ["/sell", "/demos/seller-affiliate-loop"],
+    ["/sell/marketplace-participation", "/demos/operator-commission-flywheel"],
+    ["/project/community-commerce", "/demos/operator-commission-flywheel"],
+  ];
+  for (const [path, href] of placements) {
+    await page.goto(path);
+    const reference = page.locator(`.contextual-video a[href="${href}"]`);
+    await expect(reference).toHaveCount(1);
+    await expect(reference).toContainText("Open video, chapters, transcript, and evidence");
+    await expect(page.locator("video")).toHaveCount(0);
+  }
 });
 
 test("Chinese search stays inside the Chinese knowledge surface", async ({ page }, testInfo) => {

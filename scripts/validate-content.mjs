@@ -65,6 +65,8 @@ try {
 const videoSchema = read("content/videos.schema.json");
 const expectedFiles = renderPublication({ docs, navGroups, docApplicability, sources, sourceSchema, agentEvals, agentEvalSchema, visualEvidence, visualEvidenceSchema, videos, videoSchema });
 const videoPaths = new Set(videos.videos.map(videoPath));
+const videosById = new Map(videos.videos.map((video) => [video.id, video]));
+const contextualVideoRefs = new Set();
 const localizedRouteByEnglishPath = new Map(
   docs
     .filter((doc) => doc.language === "zh-CN" && doc.translationOf)
@@ -239,6 +241,18 @@ for (const doc of docs) {
   const sectionIds = doc.sections.map((section, index) => sectionId(section.heading, index));
   if (new Set(sectionIds).size !== sectionIds.length) fail(`duplicate rendered section id on /${doc.slug}`);
   const blocks = doc.sections.flatMap((section) => section.blocks ?? []);
+  for (const block of blocks) {
+    if (block.type !== "video-ref") continue;
+    const video = videosById.get(block.videoId);
+    if (!video) {
+      fail(`/${doc.slug} references unknown video ${block.videoId}`);
+      continue;
+    }
+    if (video.language !== (doc.language ?? "en")) {
+      fail(`/${doc.slug} references video ${block.videoId} in another language`);
+    }
+    contextualVideoRefs.add(block.videoId);
+  }
   if (doc.pageType === "task") {
     if (!doc.lastTested) fail(`task page /${doc.slug} is missing lastTested`);
     if (!/Before you start|Prerequisites|Requirements|开始前|前置条件|要求/i.test(headings)) fail(`task page /${doc.slug} is missing prerequisites`);
@@ -261,6 +275,10 @@ for (const doc of docs) {
       fail(`/${doc.slug} has a non-HTTPS external link ${link}`);
     }
   }
+}
+
+for (const video of videos.videos) {
+  if (!contextualVideoRefs.has(video.id)) fail(`video ${video.id} has no contextual documentation reference`);
 }
 
 if (!visualEvidence || visualEvidence.schema_version !== "1.1" || !/^\d{4}-\d{2}-\d{2}$/.test(visualEvidence.reviewed) || !Array.isArray(visualEvidence.visuals)) {

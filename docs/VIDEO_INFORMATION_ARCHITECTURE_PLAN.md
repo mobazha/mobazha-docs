@@ -196,7 +196,7 @@ audience from understanding the recording.
 | 0003 Seller Affiliate Loop | Story | `/demos/seller-affiliate-loop` | Seller growth or promoter task guidance | Keep featured while it is the strongest Grow proof |
 | 0004 Storefront Makeover | Task | `/demos/storefront-makeover` | `/sell/store-setup` in VIDEO-2 | Keep in the Sell catalog, outside the featured set |
 | Protected Deal Link plus digital delivery | Story | Future `/demos/protected-digital-sale` | Payments and digital-delivery tasks | Produce next and feature when evidence gates pass |
-| Escrow dispute and resolution | Story/proof | Future detail page | Cancel/refund/dispute and transaction-spine pages | Second production priority; compete for a featured slot rather than adding a permanent fourth |
+| Escrow dispute and resolution | Story/proof | Future `/demos/escrow-dispute-resolution` | Cancel/refund/dispute and transaction-spine pages | Second production priority; compete for a featured slot rather than adding a permanent fourth |
 | Onramp-funded order | Technical proof | Checkout task or proof page | Catalog under Buy safely | Keep Preview while the fiat provider leg is simulated |
 | Telegram entry to paid order | Story/task | Future sales-channel task | Catalog under Grow and operate | Record only after the full Telegram-to-order path is deterministic |
 | SaaS buyer to self-hosted store | Technical proof | Self-host or connection guide | Catalog under Run and build | Record after cross-store order completion is a hard E2E assertion |
@@ -251,6 +251,8 @@ the hub does not preload every full recording.
 
 ### VIDEO-2 — Contextual task integration
 
+Status: implemented on 2026-07-19 for the initial three-video catalog.
+
 1. Add the 0004 clip or poster link to `/sell/store-setup`.
 2. Add 0001 to marketplace and community-commerce guidance.
 3. Add 0003 to the canonical seller-growth guidance when that task page has a
@@ -263,6 +265,9 @@ and the user journey it supports, while every task remains complete in text.
 
 ### VIDEO-3 — New high-value stories
 
+Status: evidence gate audited on 2026-07-19; neither candidate is ready to
+record yet.
+
 1. Build and record Protected Deal Link plus real Safe payment plus automatic
    digital delivery as the next flagship candidate.
 2. Build a live browser-to-backend-to-chain escrow dispute recording harness,
@@ -273,6 +278,19 @@ and the user journey it supports, while every task remains complete in text.
 
 Exit condition: new recordings have a canonical destination before production
 starts and do not expand the featured set by default.
+
+The initial audit found strong backend evidence but an incomplete recording
+boundary:
+
+| Candidate | Evidence already present | Remaining gate before recording |
+|---|---|---|
+| Protected digital sale | `TestE2E_DealLink_SafeFinalSettlementAction` creates and accepts a Deal Link, funds a canonical Safe fixture on local Anvil, observes confirmed settlement actions, grants digital entitlement, reaches `SHIPPED`, and completes the order | Replace the example download link with a deterministic reviewable demo asset; add one live browser harness that shows the public terms, exact payment target, funded state, accessible delivery, and completion without mocked APIs; create the recording manifest only after that harness passes |
+| Escrow dispute resolution | `TestE2E_SafeModerated_DisputeAndResolve` funds a moderated Safe order, records evidence, closes with a 60/40 ruling, executes the dispute-release settlement action, and reaches `RESOLVED` | Add a live buyer/moderator browser harness over the same real order and expose the ruling plus final funds outcome visibly; existing browser dispute fixtures are useful for UI review but are not transaction evidence |
+
+Both proofs use a real transaction against a local deterministic chain, not a
+public-network payment. The future video must state that boundary. Until the
+remaining gates pass, do not allocate public media, add a registry record, or
+claim that either story is published.
 
 ## Quality gates
 
@@ -315,17 +333,22 @@ repeatable product/E2E evidence
 
 ## Immediate next batch
 
-The smallest useful implementation batch is VIDEO-0 plus one vertical slice of
-VIDEO-1:
+VIDEO-0 through VIDEO-2 now form the minimum public system: one registry owns
+metadata, `/demos` and detail pages own discovery and playback, and stable
+Markdown references place lightweight poster links in the relevant journeys.
 
-1. define the registry schema;
-2. migrate metadata for 0001, 0003, and 0004;
-3. render one detail page for 0001;
-4. include that page in search and sitemap;
-5. convert `/demos` from three inline players to featured/catalog cards that
-   link to the canonical pages;
-6. run repository and responsive experience checks without deploying;
-7. only then begin production of the Protected Deal Link recording.
+The next batch is the VIDEO-3 evidence gate, not automatic video production:
 
-This order proves the placement and maintenance system before video volume
-increases.
+1. inventory the current Protected Deal Link, Safe payment, digital delivery,
+   and dispute E2E assertions and recording manifests;
+2. identify the exact real-versus-simulated boundary for each candidate;
+3. require a deterministic run with an observable payment, delivery, or
+   resolution payoff before approving a recording brief;
+4. assign the canonical destination, maturity, and featured-slot decision
+   before creating public media or a registry record;
+5. only then record, review, upload approved derivatives to R2, and publish the
+   docs-owned metadata.
+
+Onramp, Telegram, cross-store, Collectibles, and Agent candidates remain
+queued until their own evidence gates pass. They must not be promoted merely
+to increase catalog volume.

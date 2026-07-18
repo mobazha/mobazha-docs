@@ -31,3 +31,28 @@ export function VideoCard({ video }: { video: PublicVideo }) {
 export function VideoCatalog({ items }: { items: PublicVideo[] }) {
   return <div className="video-grid">{items.map((video) => <VideoCard key={video.id} video={video} />)}</div>;
 }
+
+export function ContextualVideo({ video }: { video: PublicVideo }) {
+  return (
+    <aside className="contextual-video" aria-label={`Related video: ${video.title}`}>
+      <Link href={`/demos/${video.slug}`}>
+        <span className="contextual-video-media">
+          <img
+            alt=""
+            height={video.media.cover.height}
+            loading="lazy"
+            src={video.media.cover.url}
+            width={video.media.cover.width}
+          />
+          <span className="video-duration">{formatVideoDuration(video.durationSeconds)}</span>
+        </span>
+        <span className="contextual-video-copy">
+          <span><b>Watch the walkthrough</b>{video.status}</span>
+          <strong>{video.title}</strong>
+          <span>{video.outcome}</span>
+          <small>Open video, chapters, transcript, and evidence <i aria-hidden="true">→</i></small>
+        </span>
+      </Link>
+    </aside>
+  );
+}

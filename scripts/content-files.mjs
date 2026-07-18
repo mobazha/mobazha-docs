@@ -113,6 +113,16 @@ export function parseSections(body, path = "<content>") {
       throw new Error(`${path} uses an unsupported blockquote; use an Important, Warning, Note, or Tip callout`);
     }
 
+    const videoReference = line.match(/^!video-ref\[([0-9]{4})\]$/);
+    if (videoReference) {
+      flushParagraph();
+      addBlock({ type: "video-ref", videoId: videoReference[1], mode: "poster" });
+      continue;
+    }
+    if (line.startsWith("!video-ref[")) {
+      throw new Error(`${path} has an invalid video reference: ${line}`);
+    }
+
     const video = line.match(/^!video\[([^\]]*)\]\((\S+)(?:\s+([^\s"]+))?(?:\s+"([^"]+)")?\)$/);
     if (video) {
       flushParagraph();
@@ -219,6 +229,7 @@ function blockStrings(block) {
   if (block.type === "table") return [...block.headers, ...block.rows.flat()];
   if (block.type === "image") return [block.alt, block.caption ?? ""];
   if (block.type === "video") return [block.alt, block.caption ?? ""];
+  if (block.type === "video-ref") return [`Video ${block.videoId}`];
   return [];
 }
 

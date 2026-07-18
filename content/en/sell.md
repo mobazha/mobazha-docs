@@ -7,7 +7,7 @@ audiences:
   - Operators
 evidenceLabel: Mobazha README and release scope
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main
-reviewed: 2026-07-14
+reviewed: 2026-07-18
 pageType: hub
 outcome: Prepare a store that a buyer can understand, pay, and receive from through one tested journey.
 estimatedTime: 6 minutes
@@ -28,6 +28,19 @@ featuredVisual: seller-operating-loop
 - [Configure shipping](/sell/shipping) — Match destinations, rates, listings, estimates, and evidence.
 - [Prepare payments](/sell/payments) — Advertise only capabilities the backend and operator are ready to support.
 - [Operate orders](/sell/orders) — Reconcile payment, fulfill, refund, dispute, and complete safely.
+
+## Grow through disclosed distribution
+
+A seller can use an attributed promoter relationship without moving the order
+or settlement truth into a second spreadsheet. This walkthrough shows
+one wallet-bound link, a real local-test-network payment, and the resulting
+on-chain promoter payout. Review the written payment and fee guidance before
+using the pattern.
+
+!video-ref[0003]
+
+- [Prepare payment methods](/sell/payments) — Verify the exact route supports the required settlement terms before creating an order.
+- [Understand distribution compensation](/project/fees) — Keep payer, recipient, attribution, cap, and reversal rules explicit.
 
 ## The objects a Mobazha seller operates
 

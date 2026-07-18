@@ -58,7 +58,18 @@ export default async function VideoDetailPage({ params }: PageProps) {
             poster={video.media.poster.url}
             preload="metadata"
             src={video.media.video.url}
-          />
+          >
+            {video.media.captions?.map((caption) => (
+              <track
+                default={caption.default}
+                key={`${caption.language}-${caption.kind}`}
+                kind={caption.kind}
+                label={caption.label}
+                src={caption.url}
+                srcLang={caption.language}
+              />
+            ))}
+          </video>
           <figcaption>{video.disclosure}</figcaption>
         </figure>
 

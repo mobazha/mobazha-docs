@@ -13,6 +13,14 @@ export type VideoAsset = {
   height?: number;
 };
 
+export type VideoCaption = {
+  url: string;
+  language: "en" | "zh-CN";
+  label: string;
+  kind: "captions" | "subtitles";
+  default?: boolean;
+};
+
 export type VideoChapter = {
   startSeconds?: number;
   title: string;
@@ -39,6 +47,7 @@ export type PublicVideo = {
     video: VideoAsset;
     cover: VideoAsset;
     poster: VideoAsset;
+    captions?: VideoCaption[];
   };
   recordedAt: string;
   reviewed: string;
@@ -59,6 +68,7 @@ export type VideoCatalog = {
 export const videoCatalog = catalog as VideoCatalog;
 export const videos = videoCatalog.videos;
 export const videosBySlug = new Map(videos.map((video) => [video.slug, video]));
+export const videosById = new Map(videos.map((video) => [video.id, video]));
 export const featuredVideos = videos.filter((video) => video.featured);
 
 export function formatVideoDuration(seconds: number): string {

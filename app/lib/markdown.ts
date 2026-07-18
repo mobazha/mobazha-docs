@@ -22,6 +22,10 @@ function blockToMarkdown(block: DocBlock): string[] {
     }
     case "image":
       return [`![${block.alt}](${block.src})`, block.caption ?? "", ""];
+    case "video":
+      return [`!video[${block.alt}](${block.src}${block.poster ? ` ${block.poster}` : ""}${block.caption ? ` "${block.caption}"` : ""})`, ""];
+    case "video-ref":
+      return [`!video-ref[${block.videoId}]`, ""];
     case "links":
       return [...block.items.map((item) => `- [${item.label}](${item.href})${item.description ? ` — ${item.description}` : ""}`), ""];
     case "separator":

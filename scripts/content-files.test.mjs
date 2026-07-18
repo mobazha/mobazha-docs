@@ -42,6 +42,24 @@ mobazha doctor --json
   assert.match(documentText({ sections }), /```bash\nmobazha doctor --json\n```/);
 });
 
+test("parses stable registry-backed video references", () => {
+  const sections = parseSections(`
+## Watch
+
+!video-ref[0004]
+`, "video-reference.md");
+  assert.deepEqual(sections[0].blocks, [{ type: "video-ref", videoId: "0004", mode: "poster" }]);
+  assert.match(documentText({ sections }), /Video 0004/);
+});
+
+test("rejects malformed registry-backed video references", () => {
+  assert.throws(() => parseSections(`
+## Watch
+
+!video-ref[storefront]
+`, "bad-video-reference.md"), /invalid video reference/);
+});
+
 test("collects card, inline, and image links", () => {
   const doc = {
     sections: parseSections(`
@@ -111,4 +129,16 @@ test("rejects impossible video review chronology", () => {
   const failures = validateVideoCatalog(catalog);
   assert(failures.some((failure) => failure.includes("reviewed before it was recorded")));
   assert(failures.some((failure) => failure.includes("newer than the catalog review")));
+});
+
+test("rejects duplicate or ungoverned caption tracks", () => {
+  const catalog = videoFixture();
+  catalog.videos[0].media.captions = [
+    { url: "https://example.com/demo.vtt", language: "en", label: "English", kind: "captions", default: true },
+    { url: "https://media.mobazha.org/demo-copy.vtt", language: "en", label: "English copy", kind: "captions", default: true },
+  ];
+  const failures = validateVideoCatalog(catalog);
+  assert(failures.some((failure) => failure.includes("must use https://media.mobazha.org/")));
+  assert(failures.some((failure) => failure.includes("duplicates en:captions")));
+  assert(failures.some((failure) => failure.includes("more than one default caption track")));
 });

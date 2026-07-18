@@ -7,7 +7,9 @@ import { CopyCodeButton } from "@/app/components/CopyCodeButton";
 import { DocumentHero, FeaturedVisual, PageTableOfContents, sectionId, TrustPanel } from "@/app/components/DocumentExperience";
 import { DocsShell } from "@/app/components/DocsShell";
 import { PageToolbar } from "@/app/components/PageToolbar";
+import { ContextualVideo } from "@/app/components/VideoCatalog";
 import { activeNavGroupForPath, docs, docsBySlug, translationPathFor, type DocBlock } from "@/app/lib/docs";
+import { videosById } from "@/app/lib/videos";
 
 type PageProps = { params: Promise<{ slug: string[] }> };
 
@@ -77,6 +79,10 @@ function DocumentBlock({ block, isChinese }: { block: DocBlock; isChinese: boole
         {block.caption && <figcaption>{block.caption}</figcaption>}
       </figure>
     );
+  }
+  if (block.type === "video-ref") {
+    const video = videosById.get(block.videoId);
+    return video ? <ContextualVideo video={video} /> : null;
   }
   if (block.type === "links") {
     return (

@@ -10,7 +10,7 @@ audiences:
   - Evaluators
 evidenceLabel: Mobazha public product boundaries and capability-gated marketplace contracts
 evidenceUrl: https://github.com/mobazha
-reviewed: 2026-07-06
+reviewed: 2026-07-18
 pageType: concept
 outcome: Choose a store, storefront, community market, or operator market without moving transaction authority into the discovery layer.
 estimatedTime: 9 minutes
@@ -83,6 +83,14 @@ A multi-store discovery page does not imply a cross-store cart, combined settlem
 
 - [Review checkout responsibilities](/buy/checkout)
 - [Understand fees, attribution, and recipients](/project/fees)
+
+## See discovery hand off to commerce
+
+The following journey makes the boundary concrete: a market recruits
+and curates, a seller still fulfills the order, a buyer completes it, and the
+operator sees an attributed estimate rather than a withdrawable balance.
+
+!video-ref[0001]
 
 ## Operator value comes from audience and curation
 

@@ -85,6 +85,26 @@ export function validateVideoCatalog(catalog, { knownDocPaths } = {}) {
     validateAsset(video.media?.video, `${label} video asset`, false, fail);
     validateAsset(video.media?.cover, `${label} cover asset`, true, fail);
     validateAsset(video.media?.poster, `${label} poster asset`, true, fail);
+    if (video.media?.captions !== undefined) {
+      if (!Array.isArray(video.media.captions) || video.media.captions.length === 0) {
+        fail(`${label} captions must be a non-empty array when present`);
+      } else {
+        let defaultCaptionCount = 0;
+        const captionKeys = new Set();
+        for (const [captionIndex, caption] of video.media.captions.entries()) {
+          const captionLabel = `${label} caption[${captionIndex}]`;
+          if (!caption?.url?.startsWith(mediaPrefix)) fail(`${captionLabel} must use ${mediaPrefix}`);
+          if (!allowedLanguages.has(caption?.language)) fail(`${captionLabel} has an unsupported language`);
+          if (!isNonEmptyString(caption?.label)) fail(`${captionLabel} is missing label`);
+          if (!new Set(["captions", "subtitles"]).has(caption?.kind)) fail(`${captionLabel} has an unsupported kind`);
+          if (caption?.default === true) defaultCaptionCount += 1;
+          const captionKey = `${caption?.language}:${caption?.kind}`;
+          if (captionKeys.has(captionKey)) fail(`${captionLabel} duplicates ${captionKey}`);
+          captionKeys.add(captionKey);
+        }
+        if (defaultCaptionCount > 1) fail(`${label} has more than one default caption track`);
+      }
+    }
     if (!datePattern.test(video.recordedAt ?? "")) fail(`${label} recordedAt is invalid`);
     if (!datePattern.test(video.reviewed ?? "")) fail(`${label} reviewed is invalid`);
     if (datePattern.test(video.recordedAt ?? "") && datePattern.test(video.reviewed ?? "") && video.recordedAt > video.reviewed) {

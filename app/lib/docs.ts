@@ -13,6 +13,7 @@ export type DocBlock =
   | { type: "table"; headers: string[]; rows: string[][] }
   | { type: "image"; alt: string; src: string; caption?: string }
   | { type: "video"; alt: string; src: string; poster?: string; caption?: string }
+  | { type: "video-ref"; videoId: string; mode: "poster" }
   | {
       type: "links";
       items: Array<{ label: string; href: string; description?: string }>;

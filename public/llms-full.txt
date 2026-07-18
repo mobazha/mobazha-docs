@@ -685,7 +685,7 @@ The connected backend, applicable release, accepted transaction evidence, and ef
 - Audience: buyers, sellers, community operators, marketplace operators, evaluators
 - Knowledge authority: https://docs.mobazha.org/project/community-commerce
 - Evidence: https://github.com/mobazha
-- Reviewed: 2026-07-06
+- Reviewed: 2026-07-18
 - Language: en
 - Summary: Understand how communities and operator markets curate independent stores without becoming the owner of their catalog, orders, funds, or reputation.
 
@@ -747,6 +747,9 @@ The market may retain disclosed attribution and an observable handoff result, bu
 A multi-store discovery page does not imply a cross-store cart, combined settlement, pooled escrow, shared refund authority, or one operator order desk. Each of those would require an explicit product and accounting contract.
 Review checkout responsibilities
 Understand fees, attribution, and recipients
+See discovery hand off to commerce
+The following journey makes the boundary concrete: a market recruits and curates, a seller still fulfills the order, a buyer completes it, and the operator sees an attributed estimate rather than a withdrawable balance.
+Video 0001
 Operator value comes from audience and curation
 The operator's durable contribution is not possession of seller funds. It is audience, context, trust-building, moderation, catalog organization, and channel operation. Commercial terms can charge for real services, but the payer, recipient, trigger, reversal rules, and attribution must be visible before they affect a transaction.
 Direct and Deal links can shorten the path from a known offer to checkout. They still need immutable quote and seller bindings. Referral or promotion attribution must remain disclosed and auditable; it cannot make a promoter or market the order owner.
@@ -1011,7 +1014,7 @@ Do not infer that every Skill, Tool, model provider, memory system, commercial w
 - Audience: sellers, operators
 - Knowledge authority: https://docs.mobazha.org/sell
 - Evidence: https://github.com/mobazha/mobazha/tree/main
-- Reviewed: 2026-07-14
+- Reviewed: 2026-07-18
 - Language: en
 - Summary: Move from store setup to listings, payment readiness, fulfillment, and order recovery while keeping operator responsibilities explicit.
 
@@ -1032,6 +1035,13 @@ Prepare payments
 Advertise only capabilities the backend and operator are ready to support.
 Operate orders
 Reconcile payment, fulfill, refund, dispute, and complete safely.
+Grow through disclosed distribution
+A seller can use an attributed promoter relationship without moving the order or settlement truth into a second spreadsheet. This walkthrough shows one wallet-bound link, a real local-test-network payment, and the resulting on-chain promoter payout. Review the written payment and fee guidance before using the pattern.
+Video 0003
+Prepare payment methods
+Verify the exact route supports the required settlement terms before creating an order.
+Understand distribution compensation
+Keep payer, recipient, attribution, cap, and reversal rules explicit.
 The objects a Mobazha seller operates
 Object
 Seller responsibility
@@ -1097,7 +1107,7 @@ Understand fees
 - Audience: sellers, operators
 - Knowledge authority: https://docs.mobazha.org/sell/store-setup
 - Evidence: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin
-- Reviewed: 2026-07-06
+- Reviewed: 2026-07-18
 - Last tested: 2026-07-04
 - Language: en
 - Summary: Configure store identity, policies, fulfillment, payments, and a complete test journey before accepting buyer funds.
@@ -1130,6 +1140,9 @@ Products
 `/admin/products` and `/listing/new`
 Listing revisions, options, availability, price, and fulfillment assignment.
 The **store / Node** owns identity, policy, capabilities, and orders. A **storefront** is a presentation surface over that commerce state. Confirm the active store context before editing either one, especially when one account can reach more than one store.
+See the storefront change
+The following walkthrough shows one seller changing a generic live storefront into a coherent brand, reviewing the exact draft through a private buyer link, and publishing the same design. The written readiness steps below remain the operating checklist.
+Video 0004
 Store setup steps
 Open **Admin → Settings → Profile** and verify the active store identity, public operator name, contact route, locale, and currency display.
 Open **Admin → Storefront** and publish only the brand and sections intended for this store; preview the public view before continuing.
@@ -1164,7 +1177,7 @@ Operate incoming orders
 - Audience: sellers, market operators
 - Knowledge authority: https://docs.mobazha.org/sell/marketplace-participation
 - Evidence: https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/app/marketplace/%5Bslug%5D/sell/page.tsx
-- Reviewed: 2026-07-14
+- Reviewed: 2026-07-18
 - Last tested: 2026-07-14
 - Language: en
 - Summary: Read a market's seller-entry, review, and catalog rules before applying, withdrawing, or reapplying with selected product groups.
@@ -1205,6 +1218,9 @@ Reapply when the current policy permits it
 The operator has suspended participation
 Do not reapply through self-service; follow the market operator's published review route
 Selections remain locked while the application is applied, approved, or suspended. This prevents a local draft from silently changing the groups attached to an active membership state.
+See the complete market loop
+This journey follows an operator, seller, and buyer from market publication through one real test-network order and its attributed operator estimate. It illustrates the surrounding outcome; the application states and seller-authority checks above remain authoritative for this task.
+Video 0001
 Expected result and verification
 The seller page should show one current application and membership state for the selected market and seller context. Verify the market identifier, store or seller identity, selected product-group identifiers, review mode, and current status after a refresh.
 For an approved seller, separately verify that the intended groups or listings are visible in the market and that a buyer handoff still resolves to the correct seller-owned backend. Membership alone does not prove availability, price, payment readiness, or fulfillment readiness.

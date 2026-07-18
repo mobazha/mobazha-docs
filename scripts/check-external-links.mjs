@@ -16,6 +16,7 @@ for (const video of videoCatalog.videos) {
   links.add(video.media.video.url);
   links.add(video.media.cover.url);
   links.add(video.media.poster.url);
+  for (const caption of video.media.captions ?? []) links.add(caption.url);
   links.add(video.evidence.url);
 }
 

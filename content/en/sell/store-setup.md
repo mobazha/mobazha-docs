@@ -7,7 +7,7 @@ audiences:
   - Operators
 evidenceLabel: Unified seller administration routes
 evidenceUrl: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/admin
-reviewed: 2026-07-06
+reviewed: 2026-07-18
 pageType: task
 lastTested: 2026-07-04
 outcome: Publish a store that can complete one representative buyer journey without hidden operator steps.
@@ -37,6 +37,15 @@ primaryAction:
 | Products | `/admin/products` and `/listing/new` | Listing revisions, options, availability, price, and fulfillment assignment. |
 
 The **store / Node** owns identity, policy, capabilities, and orders. A **storefront** is a presentation surface over that commerce state. Confirm the active store context before editing either one, especially when one account can reach more than one store.
+
+## See the storefront change
+
+The following walkthrough shows one seller changing a generic live
+storefront into a coherent brand, reviewing the exact draft through a private
+buyer link, and publishing the same design. The written readiness steps below
+remain the operating checklist.
+
+!video-ref[0004]
 
 ## Store setup steps
 

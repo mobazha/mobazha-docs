@@ -7,7 +7,7 @@ audiences:
   - Market operators
 evidenceLabel: Unified native marketplace seller policy and tests
 evidenceUrl: https://github.com/mobazha/mobazha-unified/blob/main/apps/web/src/app/marketplace/%5Bslug%5D/sell/page.tsx
-reviewed: 2026-07-14
+reviewed: 2026-07-18
 pageType: task
 lastTested: 2026-07-14
 outcome: Submit one eligible market application, understand its current membership state, and take only the transition that state allows.
@@ -48,6 +48,15 @@ primaryAction:
 | `suspended` | The operator has suspended participation | Do not reapply through self-service; follow the market operator's published review route |
 
 Selections remain locked while the application is applied, approved, or suspended. This prevents a local draft from silently changing the groups attached to an active membership state.
+
+## See the complete market loop
+
+This journey follows an operator, seller, and buyer from market
+publication through one real test-network order and its attributed operator
+estimate. It illustrates the surrounding outcome; the application states and
+seller-authority checks above remain authoritative for this task.
+
+!video-ref[0001]
 
 ## Expected result and verification
 
