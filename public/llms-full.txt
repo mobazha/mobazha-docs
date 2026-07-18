@@ -181,11 +181,11 @@ Storefront Makeover demo
 92 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.
 **Seller Affiliate Loop** — sellers set a storefront-wide cut once, promoters share one short link, and commissions settle on-chain when order funds release. **Preview** — the short-link share surface is in rollout.
 Seller Affiliate Loop demo
-80 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.
+89 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.
 Operate a marketplace
 **Operator Commission Flywheel** — create a curated market, set your commission once, recruit sellers with one link, and watch every share, click, and sale come back attributed — with your cut. **Preview** — operator commissions are rolling out.
 Operator Commission Flywheel demo
-69 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.
+73 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.
 Buy
 **Cold-start Demand Capture** — how a new market serves buyer demand before its catalog is deep. In planning.
 How these demos are made

@@ -33,7 +33,7 @@ studio additions are in rollout.
 share one short link, and commissions settle on-chain when order funds
 release. **Preview** — the short-link share surface is in rollout.
 
-!video[Seller Affiliate Loop demo](https://media.mobazha.org/demos/0003-seller-affiliate-loop/seller-affiliate-loop-demo-v3.mp4 https://media.mobazha.org/demos/0003-seller-affiliate-loop/cover-v3.jpg "80 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.")
+!video[Seller Affiliate Loop demo](https://media.mobazha.org/demos/0003-seller-affiliate-loop/seller-affiliate-loop-demo-v7.mp4 https://media.mobazha.org/demos/0003-seller-affiliate-loop/cover-v7.jpg "89 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.")
 
 ## Operate a marketplace
 
@@ -41,7 +41,7 @@ release. **Preview** — the short-link share surface is in rollout.
 commission once, recruit sellers with one link, and watch every share,
 click, and sale come back attributed — with your cut. **Preview** — operator commissions are rolling out.
 
-!video[Operator Commission Flywheel demo](https://media.mobazha.org/demos/0001-operator-commission-flywheel/operator-commission-flywheel-demo-v4.mp4 https://media.mobazha.org/demos/0001-operator-commission-flywheel/cover-v4.jpg "69 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.")
+!video[Operator Commission Flywheel demo](https://media.mobazha.org/demos/0001-operator-commission-flywheel/operator-commission-flywheel-demo-v7.mp4 https://media.mobazha.org/demos/0001-operator-commission-flywheel/cover-v7.jpg "73 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.")
 
 ## Buy
 
