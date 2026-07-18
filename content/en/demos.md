@@ -25,7 +25,7 @@ primaryAction:
 share one short link, and commissions settle on-chain when order funds
 release. **Preview** — the short-link share surface is in rollout.
 
-!video[Seller Affiliate Loop demo](https://media.mobazha.org/demos/0003-seller-affiliate-loop/seller-affiliate-loop-demo-v1.mp4 https://media.mobazha.org/demos/0003-seller-affiliate-loop/poster.jpg "76 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.")
+!video[Seller Affiliate Loop demo](https://media.mobazha.org/demos/0003-seller-affiliate-loop/seller-affiliate-loop-demo-v2.mp4 https://media.mobazha.org/demos/0003-seller-affiliate-loop/cover.jpg "75 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.")
 
 ## Operate a marketplace
 
