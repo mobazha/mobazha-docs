@@ -222,7 +222,10 @@ No invoices, no spreadsheets — commissions settle when funds release.
 7
 Promoter
 Paid on-chain, automatically — confirmed commissions land in your wallet.
-The video for this demo is being published to the media CDN; this page carries the demo's verified transcript and provenance until the player is embedded.
+Promoter earnings page with paid-out totals and a confirmed on-chain commission
+The payoff frame: commissions paid out on-chain, transaction hash included.
+Watch the demo (76s, MP4)
+Silent master narrated by on-screen chapter cards.
 Coming to this gallery
 **Operator Commission Flywheel** — how a marketplace operator earns a
 commission on every order their market brings in (recorded, publishing next).

@@ -2886,9 +2886,20 @@
             ]
           },
           {
-            "type": "callout",
-            "tone": "note",
-            "text": "The video for this demo is being published to the media CDN; this page carries the demo's verified transcript and provenance until the player is embedded."
+            "type": "image",
+            "alt": "Promoter earnings page with paid-out totals and a confirmed on-chain commission",
+            "src": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/poster.jpg",
+            "caption": "The payoff frame: commissions paid out on-chain, transaction hash included."
+          },
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Watch the demo (76s, MP4)",
+                "href": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/seller-affiliate-loop-demo-v1.mp4",
+                "description": "Silent master narrated by on-screen chapter cards."
+              }
+            ]
           }
         ]
       },

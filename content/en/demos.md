@@ -61,9 +61,9 @@ What the chapters show:
 | 6 | Seller | No invoices, no spreadsheets — commissions settle when funds release. |
 | 7 | Promoter | Paid on-chain, automatically — confirmed commissions land in your wallet. |
 
-> **Note:** The video for this demo is being published to the media CDN; this
-> page carries the demo's verified transcript and provenance until the player
-> is embedded.
+![Promoter earnings page with paid-out totals and a confirmed on-chain commission](https://media.mobazha.org/demos/0003-seller-affiliate-loop/poster.jpg "The payoff frame: commissions paid out on-chain, transaction hash included.")
+
+- [Watch the demo (76s, MP4)](https://media.mobazha.org/demos/0003-seller-affiliate-loop/seller-affiliate-loop-demo-v1.mp4) — Silent master narrated by on-screen chapter cards.
 
 ## Coming to this gallery
 
