@@ -4,7 +4,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { CopyCodeButton } from "@/app/components/CopyCodeButton";
-import { DemoVideo } from "@/app/components/DemoVideo";
 import { DocumentHero, FeaturedVisual, PageTableOfContents, sectionId, TrustPanel } from "@/app/components/DocumentExperience";
 import { DocsShell } from "@/app/components/DocsShell";
 import { PageToolbar } from "@/app/components/PageToolbar";
@@ -74,7 +73,7 @@ function DocumentBlock({ block, isChinese }: { block: DocBlock; isChinese: boole
   if (block.type === "video") {
     return (
       <figure className="doc-figure doc-video">
-        <DemoVideo src={block.src} poster={block.poster} alt={block.alt} />
+        <video controls playsInline preload="metadata" poster={block.poster} src={block.src} aria-label={block.alt} />
         {block.caption && <figcaption>{block.caption}</figcaption>}
       </figure>
     );
