@@ -2733,7 +2733,7 @@
   {
     "slug": "demos",
     "title": "Product demos",
-    "summary": "Scripted, re-recordable walkthroughs that show real Mobazha flows end to end, each recorded against a running stack with its provenance on record.",
+    "summary": "Short, honest walkthroughs of real Mobazha flows — recorded from scripted runs against a running stack, narrated by on-screen chapter cards.",
     "status": "Draft",
     "audiences": [
       "Buyers",
@@ -2749,7 +2749,7 @@
     "reviewed": "2026-07-18",
     "pageType": "hub",
     "outcome": "See a complete Mobazha journey performed by the real product before you commit to running one yourself.",
-    "estimatedTime": "3 minutes",
+    "estimatedTime": "2 minutes",
     "journey": "start",
     "primaryAction": {
       "label": "Start selling",
@@ -2758,173 +2758,45 @@
     "language": "en",
     "sections": [
       {
-        "heading": "What these demos are",
+        "heading": "Sell and promote",
         "blocks": [
           {
             "type": "paragraph",
-            "text": "Every demo in this gallery proves one promise to one persona by showing the real product keep it. Demos are recorded from scripted, deterministic runs against a running Mobazha stack — never mockups, never spliced outcomes — and each recording keeps its provenance: what was recorded, when, and against which build."
+            "text": "**Seller Affiliate Loop** — sellers set a storefront-wide cut once, promoters share one short link, and commissions settle on-chain when order funds release. *Preview: the short-link share surface is in rollout.*"
           },
           {
-            "type": "unordered-list",
-            "items": [
-              "Masters are silent 16:9 recordings narrated by on-screen chapter cards, so"
-            ]
-          },
-          {
-            "type": "paragraph",
-            "text": "the same footage reads correctly in a social feed, an embedded player, or a conference screen."
-          },
-          {
-            "type": "unordered-list",
-            "items": [
-              "Where a demo shows payments, it is recorded on the Mobazha test network and"
-            ]
-          },
-          {
-            "type": "paragraph",
-            "text": "says so on screen."
-          },
-          {
-            "type": "unordered-list",
-            "items": [
-              "A demo of capability that is not yet in a general release is labeled"
-            ]
-          },
-          {
-            "type": "paragraph",
-            "text": "**Preview** until that capability ships."
+            "type": "video",
+            "alt": "Seller Affiliate Loop demo",
+            "src": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/seller-affiliate-loop-demo-v1.mp4",
+            "poster": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/poster.jpg",
+            "caption": "76 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network."
           }
         ]
       },
       {
-        "heading": "Seller Affiliate Loop (Preview)",
+        "heading": "Operate a marketplace",
         "blocks": [
           {
             "type": "paragraph",
-            "text": "*Sellers offer promoters a storefront-wide cut; promoters share one short link; commissions settle on-chain when order funds release.*"
-          },
-          {
-            "type": "table",
-            "headers": [
-              "",
-              ""
-            ],
-            "rows": [
-              [
-                "Primary persona",
-                "Promoter (with seller and buyer supporting)"
-              ],
-              [
-                "The pain",
-                "\"My followers buy the gear I review — the brand keeps everything.\""
-              ],
-              [
-                "The payoff",
-                "A promoter's earnings page: paid-out totals and a confirmed commission with its on-chain transaction hash."
-              ],
-              [
-                "Length",
-                "76 seconds, silent master"
-              ],
-              [
-                "Recorded",
-                "2026-07-18, on the Mobazha test network"
-              ],
-              [
-                "Status",
-                "Preview — the short-link share surface is in rollout"
-              ]
-            ]
-          },
-          {
-            "type": "paragraph",
-            "text": "What the chapters show:"
-          },
-          {
-            "type": "table",
-            "headers": [
-              "#",
-              "Role",
-              "Chapter"
-            ],
-            "rows": [
-              [
-                "1",
-                "Seller",
-                "Offer promoters a cut — 5% on every attributed order, storefront-wide."
-              ],
-              [
-                "2",
-                "Promoter",
-                "See what each sale pays — every item shows your cut before you commit."
-              ],
-              [
-                "3",
-                "Promoter",
-                "Grab your link — and a QR — one short link, bound to your wallet."
-              ],
-              [
-                "4",
-                "Buyer",
-                "One tap from a post — the referral is saved, shopping stays normal."
-              ],
-              [
-                "5",
-                "Buyer",
-                "Buy as usual — escrow-protected checkout, paid in crypto."
-              ],
-              [
-                "6",
-                "Seller",
-                "No invoices, no spreadsheets — commissions settle when funds release."
-              ],
-              [
-                "7",
-                "Promoter",
-                "Paid on-chain, automatically — confirmed commissions land in your wallet."
-              ]
-            ]
-          },
-          {
-            "type": "image",
-            "alt": "Promoter earnings page with paid-out totals and a confirmed on-chain commission",
-            "src": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/poster.jpg",
-            "caption": "The payoff frame: commissions paid out on-chain, transaction hash included."
-          },
-          {
-            "type": "links",
-            "items": [
-              {
-                "label": "Watch the demo (76s, MP4)",
-                "href": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/seller-affiliate-loop-demo-v1.mp4",
-                "description": "Silent master narrated by on-screen chapter cards."
-              }
-            ]
+            "text": "**Operator Commission Flywheel** — earn a commission on every order your market brings in. Recorded; publishing next."
           }
         ]
       },
       {
-        "heading": "Coming to this gallery",
+        "heading": "Buy",
         "blocks": [
           {
-            "type": "unordered-list",
-            "items": [
-              "**Operator Commission Flywheel** — how a marketplace operator earns a"
-            ]
-          },
+            "type": "paragraph",
+            "text": "**Cold-start Demand Capture** — how a new market serves buyer demand before its catalog is deep. In planning."
+          }
+        ]
+      },
+      {
+        "heading": "How these demos are made",
+        "blocks": [
           {
             "type": "paragraph",
-            "text": "commission on every order their market brings in (recorded, publishing next)."
-          },
-          {
-            "type": "unordered-list",
-            "items": [
-              "**Cold-start Demand Capture** — how a new market captures buyer demand"
-            ]
-          },
-          {
-            "type": "paragraph",
-            "text": "before its catalog is deep (in planning)."
+            "text": "Each demo is a scripted, re-recordable run of the real product — no mockups, no spliced outcomes — and keeps its provenance: what was recorded, when, and against which build. Where payments appear, the recording runs on the Mobazha test network and says so on screen. Demos of capability not yet in a general release carry a **Preview** label until it ships."
           }
         ]
       }

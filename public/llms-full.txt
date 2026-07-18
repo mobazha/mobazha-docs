@@ -165,7 +165,7 @@ Agent golden questions
 - Status: draft
 - Page type: hub
 - Outcome: See a complete Mobazha journey performed by the real product before you commit to running one yourself.
-- Estimated time: 3 minutes
+- Estimated time: 2 minutes
 - Journey: start
 - Applies to: Design direction; not a shipped guarantee
 - Audience: buyers, sellers, operators, evaluators
@@ -173,64 +173,18 @@ Agent golden questions
 - Evidence: https://github.com/mobazha
 - Reviewed: 2026-07-18
 - Language: en
-- Summary: Scripted, re-recordable walkthroughs that show real Mobazha flows end to end, each recorded against a running stack with its provenance on record.
+- Summary: Short, honest walkthroughs of real Mobazha flows — recorded from scripted runs against a running stack, narrated by on-screen chapter cards.
 
-What these demos are
-Every demo in this gallery proves one promise to one persona by showing the real product keep it. Demos are recorded from scripted, deterministic runs against a running Mobazha stack — never mockups, never spliced outcomes — and each recording keeps its provenance: what was recorded, when, and against which build.
-Masters are silent 16:9 recordings narrated by on-screen chapter cards, so
-the same footage reads correctly in a social feed, an embedded player, or a conference screen.
-Where a demo shows payments, it is recorded on the Mobazha test network and
-says so on screen.
-A demo of capability that is not yet in a general release is labeled
-**Preview** until that capability ships.
-Seller Affiliate Loop (Preview)
-*Sellers offer promoters a storefront-wide cut; promoters share one short link; commissions settle on-chain when order funds release.*
-Primary persona
-Promoter (with seller and buyer supporting)
-The pain
-"My followers buy the gear I review — the brand keeps everything."
-The payoff
-A promoter's earnings page: paid-out totals and a confirmed commission with its on-chain transaction hash.
-Length
-76 seconds, silent master
-Recorded
-2026-07-18, on the Mobazha test network
-Status
-Preview — the short-link share surface is in rollout
-What the chapters show:
-#
-Role
-Chapter
-1
-Seller
-Offer promoters a cut — 5% on every attributed order, storefront-wide.
-2
-Promoter
-See what each sale pays — every item shows your cut before you commit.
-3
-Promoter
-Grab your link — and a QR — one short link, bound to your wallet.
-4
-Buyer
-One tap from a post — the referral is saved, shopping stays normal.
-5
-Buyer
-Buy as usual — escrow-protected checkout, paid in crypto.
-6
-Seller
-No invoices, no spreadsheets — commissions settle when funds release.
-7
-Promoter
-Paid on-chain, automatically — confirmed commissions land in your wallet.
-Promoter earnings page with paid-out totals and a confirmed on-chain commission
-The payoff frame: commissions paid out on-chain, transaction hash included.
-Watch the demo (76s, MP4)
-Silent master narrated by on-screen chapter cards.
-Coming to this gallery
-**Operator Commission Flywheel** — how a marketplace operator earns a
-commission on every order their market brings in (recorded, publishing next).
-**Cold-start Demand Capture** — how a new market captures buyer demand
-before its catalog is deep (in planning).
+Sell and promote
+**Seller Affiliate Loop** — sellers set a storefront-wide cut once, promoters share one short link, and commissions settle on-chain when order funds release. *Preview: the short-link share surface is in rollout.*
+Seller Affiliate Loop demo
+76 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.
+Operate a marketplace
+**Operator Commission Flywheel** — earn a commission on every order your market brings in. Recorded; publishing next.
+Buy
+**Cold-start Demand Capture** — how a new market serves buyer demand before its catalog is deep. In planning.
+How these demos are made
+Each demo is a scripted, re-recordable run of the real product — no mockups, no spliced outcomes — and keeps its provenance: what was recorded, when, and against which build. Where payments appear, the recording runs on the Mobazha test network and says so on screen. Demos of capability not yet in a general release carry a **Preview** label until it ships.
 
 ### How Mobazha fits together
 - URL: /project/product-map

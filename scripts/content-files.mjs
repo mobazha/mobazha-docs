@@ -113,6 +113,19 @@ export function parseSections(body, path = "<content>") {
       throw new Error(`${path} uses an unsupported blockquote; use an Important, Warning, Note, or Tip callout`);
     }
 
+    const video = line.match(/^!video\[([^\]]*)\]\((\S+)(?:\s+([^\s"]+))?(?:\s+"([^"]+)")?\)$/);
+    if (video) {
+      flushParagraph();
+      addBlock({
+        type: "video",
+        alt: video[1],
+        src: video[2],
+        ...(video[3] ? { poster: video[3] } : {}),
+        ...(video[4] ? { caption: video[4] } : {}),
+      });
+      continue;
+    }
+
     const image = line.match(/^!\[([^\]]*)\]\((\S+)(?:\s+"([^"]+)")?\)$/);
     if (image) {
       flushParagraph();
@@ -205,6 +218,7 @@ function blockStrings(block) {
   if (block.type === "links") return block.items.flatMap((item) => [item.label, item.description ?? ""]);
   if (block.type === "table") return [...block.headers, ...block.rows.flat()];
   if (block.type === "image") return [block.alt, block.caption ?? ""];
+  if (block.type === "video") return [block.alt, block.caption ?? ""];
   return [];
 }
 
@@ -214,6 +228,10 @@ export function documentLinks(doc) {
     for (const block of section.blocks ?? []) {
       if (block.type === "links") for (const item of block.items) links.add(item.href);
       if (block.type === "image") links.add(block.src);
+      if (block.type === "video") {
+        links.add(block.src);
+        if (block.poster) links.add(block.poster);
+      }
       for (const text of blockStrings(block)) {
         for (const match of text.matchAll(/\[[^\]]+\]\(([^)]+)\)/g)) links.add(match[1]);
       }

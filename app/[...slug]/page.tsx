@@ -70,6 +70,14 @@ function DocumentBlock({ block, isChinese }: { block: DocBlock; isChinese: boole
   if (block.type === "image") {
     return <figure className="doc-figure"><img src={block.src} alt={block.alt} />{block.caption && <figcaption>{block.caption}</figcaption>}</figure>;
   }
+  if (block.type === "video") {
+    return (
+      <figure className="doc-figure doc-video">
+        <video controls playsInline preload="none" poster={block.poster} src={block.src} aria-label={block.alt} />
+        {block.caption && <figcaption>{block.caption}</figcaption>}
+      </figure>
+    );
+  }
   if (block.type === "links") {
     return (
       <div className="doc-links">
