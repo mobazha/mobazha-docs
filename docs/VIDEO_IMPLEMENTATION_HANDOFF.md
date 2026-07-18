@@ -3,7 +3,7 @@
 - Updated: 2026-07-19
 - Repository: `mobazha/mobazha-docs`
 - Branch: `main`
-- Current deployed baseline: `ec0b367`
+- Current deployed implementation baseline: `303e4dd`
 - Planning authority: [`VIDEO_INFORMATION_ARCHITECTURE_PLAN.md`](./VIDEO_INFORMATION_ARCHITECTURE_PLAN.md)
 
 ## Completed
@@ -22,6 +22,9 @@
 - Production verification on 2026-07-19 confirmed that
   `https://docs.mobazha.org/videos.json` and the three detail routes expose the
   current registry.
+- Production verification after `303e4dd` confirmed contextual video cards on
+  `/sell`, `/sell/store-setup`, `/sell/marketplace-participation`, and
+  `/project/community-commerce`, plus the caption-capable public video schema.
 
 ## Repository authority split
 
@@ -123,3 +126,4 @@ npm run check:external-links
 - `479517c` — VIDEO-0 and VIDEO-1 registry/discovery implementation.
 - `199fb65` — 0003 v8 and 0004 v2 focused films.
 - `ec0b367` — stabilized search and full-page accessibility checks.
+- `303e4dd` — VIDEO-2 contextual integration and VIDEO-3 evidence audit.
