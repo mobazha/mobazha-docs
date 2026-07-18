@@ -2762,7 +2762,7 @@
         "blocks": [
           {
             "type": "paragraph",
-            "text": "**Seller Affiliate Loop** — sellers set a storefront-wide cut once, promoters share one short link, and commissions settle on-chain when order funds release. *Preview: the short-link share surface is in rollout.*"
+            "text": "**Seller Affiliate Loop** — sellers set a storefront-wide cut once, promoters share one short link, and commissions settle on-chain when order funds release. **Preview** — the short-link share surface is in rollout."
           },
           {
             "type": "video",

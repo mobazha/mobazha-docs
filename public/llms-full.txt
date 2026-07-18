@@ -176,7 +176,7 @@ Agent golden questions
 - Summary: Short, honest walkthroughs of real Mobazha flows — recorded from scripted runs against a running stack, narrated by on-screen chapter cards.
 
 Sell and promote
-**Seller Affiliate Loop** — sellers set a storefront-wide cut once, promoters share one short link, and commissions settle on-chain when order funds release. *Preview: the short-link share surface is in rollout.*
+**Seller Affiliate Loop** — sellers set a storefront-wide cut once, promoters share one short link, and commissions settle on-chain when order funds release. **Preview** — the short-link share surface is in rollout.
 Seller Affiliate Loop demo
 76 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.
 Operate a marketplace
