@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://docs.mobazha.org/</loc><lastmod>2026-07-14</lastmod></url>
-  <url><loc>https://docs.mobazha.org/zh</loc><lastmod>2026-07-14</lastmod></url>
+  <url><loc>https://docs.mobazha.org/</loc><lastmod>2026-07-18</lastmod></url>
+  <url><loc>https://docs.mobazha.org/zh</loc><lastmod>2026-07-18</lastmod></url>
   <url><loc>https://docs.mobazha.org/start/choose-deployment</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/agents</loc><lastmod>2026-07-04</lastmod></url>
+  <url><loc>https://docs.mobazha.org/demos</loc><lastmod>2026-07-18</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/product-map</loc><lastmod>2026-07-06</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/identity-and-stores</loc><lastmod>2026-07-14</lastmod></url>
   <url><loc>https://docs.mobazha.org/project/offer-to-fulfillment</loc><lastmod>2026-07-06</lastmod></url>
@@ -128,5 +129,5 @@
   <url><loc>https://docs.mobazha.org/zh/releases</loc><lastmod>2026-07-14</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/contribute</loc><lastmod>2026-07-14</lastmod></url>
   <url><loc>https://docs.mobazha.org/zh/support</loc><lastmod>2026-07-14</lastmod></url>
-  <url><loc>https://docs.mobazha.org/api-reference</loc><lastmod>2026-07-14</lastmod></url>
+  <url><loc>https://docs.mobazha.org/api-reference</loc><lastmod>2026-07-18</lastmod></url>
 </urlset>
