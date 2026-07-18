@@ -29,8 +29,11 @@ release. **Preview** — the short-link share surface is in rollout.
 
 ## Operate a marketplace
 
-**Operator Commission Flywheel** — earn a commission on every order your
-market brings in. Recorded; publishing next.
+**Operator Commission Flywheel** — create a curated market, set your
+commission once, recruit sellers with one link, and watch every share,
+click, and sale come back attributed — with your cut. **Preview** — operator commissions are rolling out.
+
+!video[Operator Commission Flywheel demo](https://media.mobazha.org/demos/0001-operator-commission-flywheel/operator-commission-flywheel-demo-v4.mp4 https://media.mobazha.org/demos/0001-operator-commission-flywheel/cover-v4.jpg "69 seconds, silent — chapter cards narrate. Recorded 2026-07-18 on the Mobazha test network.")
 
 ## Buy
 
