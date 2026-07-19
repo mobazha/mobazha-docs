@@ -7,9 +7,9 @@ audiences:
   - Agents
 evidenceLabel: Unified checkout routes and Node order contracts
 evidenceUrl: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/checkout
-reviewed: 2026-07-14
+reviewed: 2026-07-19
 pageType: task
-lastTested: 2026-07-14
+lastTested: 2026-07-19
 outcome: Create one order from a reviewed seller quote and keep the identifiers needed to recover it.
 estimatedTime: 5–10 minutes
 journey: use
@@ -55,6 +55,8 @@ The application should display a newly created order with an authoritative state
 Do not treat a wallet broadcast, a screenshot, or a pending transaction as completed payment. Wait for the order page to report the required confirmations and funded state.
 
 An order awaiting payment or payment verification should remain in the payment journey. A canceled, declined, expired, refunded, or processing-error order must not be presented as payment success. Paid or fulfillment states may continue to confirmation, but the order detail remains the recovery authority.
+
+!video-ref[0005]
 
 ## If something fails
 

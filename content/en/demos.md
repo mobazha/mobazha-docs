@@ -9,7 +9,7 @@ audiences:
   - Evaluators
 evidenceLabel: Demo provenance records maintained with each recording
 evidenceUrl: https://github.com/mobazha
-reviewed: 2026-07-18
+reviewed: 2026-07-19
 pageType: hub
 outcome: See focused Mobazha journeys performed by the real product before you commit to running one yourself.
 estimatedTime: 5 minutes
@@ -22,7 +22,7 @@ primaryAction:
 ## Choose by outcome
 
 - [Sell and shape a storefront](/demos/storefront-makeover) — Apply a branded design, review a private preview, and publish the same buyer-facing store.
-- [Buy safely](/buy/cancel-refund-dispute) — Understand cancellation, refund, and dispute paths before a real purchase needs recovery.
+- [Buy safely](/demos/protected-digital-sale) — Follow a protected purchase from its fixed promise and exact payment through automatic digital access, or continue to dispute recovery.
 - [Grow and operate](/demos/operator-commission-flywheel) — Follow a community market from seller recruitment to one attributed completed order.
 - [Run and build](/self-host) — Install the stack, inspect its boundaries, or continue to the public API contract.
 
@@ -34,10 +34,16 @@ related product guidance.
 
 - [From community market to one completed order](/demos/operator-commission-flywheel) — An operator recruits a seller, shares a curated market, and traces one real test-network order to an estimated commission.
 - [Recommend, link, and get paid on-chain](/demos/seller-affiliate-loop) — A seller offers a cut, a promoter shares one link, and the attributed order produces a confirmed payout.
+- [Pay once and unlock the real digital product](/demos/protected-digital-sale) — A buyer reviews one fixed protected offer, pays its exact monitored total, and opens the delivered artifact from the same verified order.
 
 ## Sell and shape a storefront
 
 - [Turn a default store into your brand](/demos/storefront-makeover) — Apply a complete layout, choose a readable palette, curate products, preview privately, and publish without code.
+
+## Buy safely
+
+- [Pay once and unlock the real digital product](/demos/protected-digital-sale) — 61 seconds; buyer and seller; exact Safe payment and deterministic delivery on the Mobazha local test network.
+- [Resolve one protected order from evidence to payout](/demos/escrow-dispute-resolution) — 67 seconds; buyer, seller, and moderator; evidence, a 60/40 ruling, and the final Safe release stay in one audit trail on local Anvil.
 
 ## Grow and operate
 

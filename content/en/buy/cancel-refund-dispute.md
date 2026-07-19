@@ -8,9 +8,9 @@ audiences:
   - Agents
 evidenceLabel: Node order and dispute contracts
 evidenceUrl: https://github.com/mobazha/mobazha/tree/main/api-spec
-reviewed: 2026-07-13
+reviewed: 2026-07-19
 pageType: task
-lastTested: 2026-07-13
+lastTested: 2026-07-19
 outcome: Choose a valid resolution path for the active order without losing the evidence behind it.
 estimatedTime: 5 minutes to assess
 journey: use
@@ -57,6 +57,8 @@ action rather than reusing a previous attempt's address.
 ## Expected result and verification
 
 The UI should expose only actions valid for the current order, role, payment method, and protection state. After an accepted action, verify updated state and any resulting payment transaction independently. A submitted request is not a completed refund or settlement.
+
+!video-ref[0006]
 
 ## If something fails
 

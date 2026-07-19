@@ -107,14 +107,14 @@
         "status": { "enum": ["Current", "Beta", "Preview"] },
         "language": { "enum": ["en", "zh-CN"] },
         "primaryPersona": {
-          "enum": ["Buyer", "Seller", "Operator", "Promoter", "Developer", "Evaluator"]
+          "enum": ["Buyer", "Seller", "Moderator", "Operator", "Promoter", "Developer", "Evaluator"]
         },
         "personas": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
           "items": {
-            "enum": ["Buyer", "Seller", "Operator", "Promoter", "Developer", "Evaluator"]
+            "enum": ["Buyer", "Seller", "Moderator", "Operator", "Promoter", "Developer", "Evaluator"]
           }
         },
         "goals": {

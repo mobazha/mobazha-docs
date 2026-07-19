@@ -1993,9 +1993,9 @@
     "authorityUrl": "https://docs.mobazha.org/buy/cancel-refund-dispute",
     "evidenceLabel": "Node order and dispute contracts",
     "evidenceUrl": "https://github.com/mobazha/mobazha/tree/main/api-spec",
-    "reviewed": "2026-07-13",
+    "reviewed": "2026-07-19",
     "pageType": "task",
-    "lastTested": "2026-07-13",
+    "lastTested": "2026-07-19",
     "outcome": "Choose a valid resolution path for the active order without losing the evidence behind it.",
     "estimatedTime": "5 minutes to assess",
     "journey": "use",
@@ -2085,6 +2085,11 @@
           {
             "type": "paragraph",
             "text": "The UI should expose only actions valid for the current order, role, payment method, and protection state. After an accepted action, verify updated state and any resulting payment transaction independently. A submitted request is not a completed refund or settlement."
+          },
+          {
+            "type": "video-ref",
+            "videoId": "0006",
+            "mode": "poster"
           }
         ]
       },
@@ -2127,9 +2132,9 @@
     "authorityUrl": "https://docs.mobazha.org/buy/checkout",
     "evidenceLabel": "Unified checkout routes and Node order contracts",
     "evidenceUrl": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/checkout",
-    "reviewed": "2026-07-14",
+    "reviewed": "2026-07-19",
     "pageType": "task",
-    "lastTested": "2026-07-14",
+    "lastTested": "2026-07-19",
     "outcome": "Create one order from a reviewed seller quote and keep the identifiers needed to recover it.",
     "estimatedTime": "5–10 minutes",
     "journey": "use",
@@ -2210,6 +2215,11 @@
           {
             "type": "paragraph",
             "text": "An order awaiting payment or payment verification should remain in the payment journey. A canceled, declined, expired, refunded, or processing-error order must not be presented as payment success. Paid or fulfillment states may continue to confirmation, but the order detail remains the recovery authority."
+          },
+          {
+            "type": "video-ref",
+            "videoId": "0005",
+            "mode": "poster"
           }
         ]
       },
@@ -2746,7 +2756,7 @@
     "authorityUrl": "https://docs.mobazha.org/demos",
     "evidenceLabel": "Demo provenance records maintained with each recording",
     "evidenceUrl": "https://github.com/mobazha",
-    "reviewed": "2026-07-18",
+    "reviewed": "2026-07-19",
     "pageType": "hub",
     "outcome": "See focused Mobazha journeys performed by the real product before you commit to running one yourself.",
     "estimatedTime": "5 minutes",
@@ -2770,8 +2780,8 @@
               },
               {
                 "label": "Buy safely",
-                "href": "/buy/cancel-refund-dispute",
-                "description": "Understand cancellation, refund, and dispute paths before a real purchase needs recovery."
+                "href": "/demos/protected-digital-sale",
+                "description": "Follow a protected purchase from its fixed promise and exact payment through automatic digital access, or continue to dispute recovery."
               },
               {
                 "label": "Grow and operate",
@@ -2806,6 +2816,11 @@
                 "label": "Recommend, link, and get paid on-chain",
                 "href": "/demos/seller-affiliate-loop",
                 "description": "A seller offers a cut, a promoter shares one link, and the attributed order produces a confirmed payout."
+              },
+              {
+                "label": "Pay once and unlock the real digital product",
+                "href": "/demos/protected-digital-sale",
+                "description": "A buyer reviews one fixed protected offer, pays its exact monitored total, and opens the delivered artifact from the same verified order."
               }
             ]
           }
@@ -2821,6 +2836,26 @@
                 "label": "Turn a default store into your brand",
                 "href": "/demos/storefront-makeover",
                 "description": "Apply a complete layout, choose a readable palette, curate products, preview privately, and publish without code."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Buy safely",
+        "blocks": [
+          {
+            "type": "links",
+            "items": [
+              {
+                "label": "Pay once and unlock the real digital product",
+                "href": "/demos/protected-digital-sale",
+                "description": "61 seconds; buyer and seller; exact Safe payment and deterministic delivery on the Mobazha local test network."
+              },
+              {
+                "label": "Resolve one protected order from evidence to payout",
+                "href": "/demos/escrow-dispute-resolution",
+                "description": "67 seconds; buyer, seller, and moderator; evidence, a 60/40 ruling, and the final Safe release stay in one audit trail on local Anvil."
               }
             ]
           }

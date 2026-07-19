@@ -22,6 +22,8 @@ const routes = [
   "/project/fees",
   "/demos",
   "/demos/operator-commission-flywheel",
+  "/demos/protected-digital-sale",
+  "/demos/escrow-dispute-resolution",
   "/zh/buy",
   "/zh/buy/order-notifications",
   "/zh/sell/catalog-operations",
@@ -108,7 +110,7 @@ test("desktop search supports keyboard selection and navigation", async ({ page 
 test("video discovery stays lightweight and searchable", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop-chromium", "one desktop project covers catalog behavior");
   await page.goto("/demos");
-  await expect(page.locator(".video-card")).toHaveCount(6);
+  await expect(page.locator(".video-card")).toHaveCount(8);
   await expect(page.locator("video")).toHaveCount(0);
   await expect(page.locator(".video-section").getByRole("heading", { name: "Featured journeys" })).toBeVisible();
 
@@ -132,6 +134,8 @@ test("contextual video references stay lightweight and canonical", async ({ page
     ["/sell", "/demos/seller-affiliate-loop"],
     ["/sell/marketplace-participation", "/demos/operator-commission-flywheel"],
     ["/project/community-commerce", "/demos/operator-commission-flywheel"],
+    ["/buy/checkout", "/demos/protected-digital-sale"],
+    ["/buy/cancel-refund-dispute", "/demos/escrow-dispute-resolution"],
   ];
   for (const [path, href] of placements) {
     await page.goto(path);

@@ -124,8 +124,9 @@ test("rejects more than three featured videos", () => {
 
 test("rejects impossible video review chronology", () => {
   const catalog = videoFixture();
-  catalog.videos[0].recordedAt = "2026-07-19";
-  catalog.videos[1].reviewed = "2026-07-19";
+  catalog.videos[0].recordedAt = "2099-01-02";
+  catalog.videos[0].reviewed = "2099-01-01";
+  catalog.videos[1].reviewed = "2099-12-31";
   const failures = validateVideoCatalog(catalog);
   assert(failures.some((failure) => failure.includes("reviewed before it was recorded")));
   assert(failures.some((failure) => failure.includes("newer than the catalog review")));

@@ -195,8 +195,8 @@ audience from understanding the recording.
 | 0001 Operator Commission Flywheel | Story | `/demos/operator-commission-flywheel` | Community-commerce and marketplace-participation pages | Keep featured |
 | 0003 Seller Affiliate Loop | Story | `/demos/seller-affiliate-loop` | Seller growth or promoter task guidance | Keep featured while it is the strongest Grow proof |
 | 0004 Storefront Makeover | Task | `/demos/storefront-makeover` | `/sell/store-setup` in VIDEO-2 | Keep in the Sell catalog, outside the featured set |
-| Protected Deal Link plus digital delivery | Story | Future `/demos/protected-digital-sale` | Payments and digital-delivery tasks | Produce next and feature when evidence gates pass |
-| Escrow dispute and resolution | Story/proof | Future `/demos/escrow-dispute-resolution` | Cancel/refund/dispute and transaction-spine pages | Second production priority; compete for a featured slot rather than adding a permanent fourth |
+| 0005 Protected Digital Sale | Story | `/demos/protected-digital-sale` | Checkout, payments, and transaction-spine guidance | Published as the featured Buy story after live payment and delivery gates passed |
+| 0006 Escrow Dispute Resolution | Story/proof | `/demos/escrow-dispute-resolution` | Cancel/refund/dispute, order-status, and transaction-spine guidance | Published in Buy safely without expanding the three-story featured set |
 | Onramp-funded order | Technical proof | Checkout task or proof page | Catalog under Buy safely | Keep Preview while the fiat provider leg is simulated |
 | Telegram entry to paid order | Story/task | Future sales-channel task | Catalog under Grow and operate | Record only after the full Telegram-to-order path is deterministic |
 | SaaS buyer to self-hosted store | Technical proof | Self-host or connection guide | Catalog under Run and build | Record after cross-store order completion is a hard E2E assertion |
@@ -265,8 +265,7 @@ and the user journey it supports, while every task remains complete in text.
 
 ### VIDEO-3 — New high-value stories
 
-Status: evidence gate audited on 2026-07-19; neither candidate is ready to
-record yet.
+Status: 0005 and 0006 implemented, recorded, and published on 2026-07-19.
 
 1. Build and record Protected Deal Link plus real Safe payment plus automatic
    digital delivery as the next flagship candidate.
@@ -280,17 +279,18 @@ Exit condition: new recordings have a canonical destination before production
 starts and do not expand the featured set by default.
 
 The initial audit found strong backend evidence but an incomplete recording
-boundary:
+boundary. VIDEO-3 closed those gates as follows:
 
 | Candidate | Evidence already present | Remaining gate before recording |
 |---|---|---|
-| Protected digital sale | `TestE2E_DealLink_SafeFinalSettlementAction` creates and accepts a Deal Link, funds a canonical Safe fixture on local Anvil, observes confirmed settlement actions, grants digital entitlement, reaches `SHIPPED`, and completes the order | Replace the example download link with a deterministic reviewable demo asset; add one live browser harness that shows the public terms, exact payment target, funded state, accessible delivery, and completion without mocked APIs; create the recording manifest only after that harness passes |
-| Escrow dispute resolution | `TestE2E_SafeModerated_DisputeAndResolve` funds a moderated Safe order, records evidence, closes with a 60/40 ruling, executes the dispute-release settlement action, and reaches `RESOLVED` | Add a live buyer/moderator browser harness over the same real order and expose the ruling plus final funds outcome visibly; existing browser dispute fixtures are useful for UI review but are not transaction evidence |
+| Protected digital sale | `TestE2E_DealLink_SafeFinalSettlementAction` plus the live 0005 browser harness | Added a deterministic, fetchable launch-kit artifact; the browser now shows fixed terms, the exact Safe target and amount, funded advancement, granted link, and Access verified payoff without mocked APIs |
+| Escrow dispute resolution | `TestE2E_SafeModerated_DisputeAndResolve` plus the live 0006 preparation test and multi-role browser harness | A fresh funded order carries buyer evidence into the moderator's 60/40 ruling, buyer payout acceptance, local-Anvil dispute release, and the final resolved audit trail |
 
-Both proofs use a real transaction against a local deterministic chain, not a
-public-network payment. The future video must state that boundary. Until the
-remaining gates pass, do not allocate public media, add a registry record, or
-claim that either story is published.
+Both published proofs use real transactions against a local deterministic
+chain, not a public-network payment. Their hook cards, detail-page disclosure,
+transcripts, and manifests state that boundary. 0005 uses the third featured
+slot because it adds the missing Buy/delivery promise; 0006 remains a catalog
+and task-context proof rather than creating a fourth featured story.
 
 ## Quality gates
 
@@ -331,23 +331,23 @@ repeatable product/E2E evidence
 - The Mobazha website and application consume links or approved derivatives;
   they do not fork public video metadata.
 
-## Immediate next batch
+## Completed VIDEO-3 batch
 
 VIDEO-0 through VIDEO-2 now form the minimum public system: one registry owns
 metadata, `/demos` and detail pages own discovery and playback, and stable
 Markdown references place lightweight poster links in the relevant journeys.
 
-The next batch is the VIDEO-3 evidence gate, not automatic video production:
+VIDEO-3 followed the evidence gate before public media was created:
 
-1. inventory the current Protected Deal Link, Safe payment, digital delivery,
-   and dispute E2E assertions and recording manifests;
-2. identify the exact real-versus-simulated boundary for each candidate;
-3. require a deterministic run with an observable payment, delivery, or
-   resolution payoff before approving a recording brief;
-4. assign the canonical destination, maturity, and featured-slot decision
-   before creating public media or a registry record;
-5. only then record, review, upload approved derivatives to R2, and publish the
-   docs-owned metadata.
+1. audited the Protected Deal Link, Safe payment, digital delivery, and dispute
+   E2E assertions;
+2. documented the local-chain and deterministic-test-content boundaries;
+3. added live browser harnesses over the real backend transactions and required
+   observable delivery or resolution payoffs;
+4. assigned canonical routes and made the featured-slot decision before
+   registry publication;
+5. reviewed the masters, uploaded checksum-verified objects to R2, and added
+   the docs-owned records plus task-context references.
 
 Onramp, Telegram, cross-store, Collectibles, and Agent candidates remain
 queued until their own evidence gates pass. They must not be promoted merely

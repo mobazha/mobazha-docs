@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "reviewed": "2026-07-18",
+  "reviewed": "2026-07-19",
   "videos": [
     {
       "id": "0001",
@@ -34,10 +34,19 @@
           "sha256": "98c92cfeb4a2e4de188a4c58170c763821024d88ed35021939bfec25f7a9253e",
           "width": 1920,
           "height": 1080
-        }
+        },
+        "captions": [
+          {
+            "url": "https://media.mobazha.org/demos/0001-operator-commission-flywheel/operator-commission-flywheel-en-v9.vtt",
+            "language": "en",
+            "label": "English",
+            "kind": "captions",
+            "default": true
+          }
+        ]
       },
       "recordedAt": "2026-07-18",
-      "reviewed": "2026-07-18",
+      "reviewed": "2026-07-19",
       "appliesTo": "Mobazha local E2E test-network build recorded on 2026-07-18",
       "evidence": {
         "label": "Mobazha public repositories and reviewed demo provenance",
@@ -116,10 +125,19 @@
           "sha256": "125b6fe5a548346c562d3a9e87e2edc0e04f73c2eeb7ca20187932cc1bba025b",
           "width": 1920,
           "height": 1080
-        }
+        },
+        "captions": [
+          {
+            "url": "https://media.mobazha.org/demos/0003-seller-affiliate-loop/seller-affiliate-loop-en-v8.vtt",
+            "language": "en",
+            "label": "English",
+            "kind": "captions",
+            "default": true
+          }
+        ]
       },
       "recordedAt": "2026-07-18",
-      "reviewed": "2026-07-18",
+      "reviewed": "2026-07-19",
       "appliesTo": "Mobazha local E2E test-network build recorded on 2026-07-18",
       "evidence": {
         "label": "Mobazha public repositories and reviewed demo provenance",
@@ -190,10 +208,19 @@
           "sha256": "a8a357f80162e730c47a5666af6e23a10e2657fdd08d8d25c9556272df37ccd0",
           "width": 1920,
           "height": 1080
-        }
+        },
+        "captions": [
+          {
+            "url": "https://media.mobazha.org/demos/0004-storefront-makeover/storefront-makeover-en-v2.vtt",
+            "language": "en",
+            "label": "English",
+            "kind": "captions",
+            "default": true
+          }
+        ]
       },
       "recordedAt": "2026-07-18",
-      "reviewed": "2026-07-18",
+      "reviewed": "2026-07-19",
       "appliesTo": "Mobazha storefront-studio Preview build recorded on 2026-07-18",
       "evidence": {
         "label": "Mobazha public repositories and reviewed demo provenance",
@@ -231,6 +258,154 @@
         }
       ],
       "transcript": "Alice starts with a live storefront whose credible cold-storage products still look generic. In the built-in design studio, she applies one complete layout and a warm leather-and-steel palette, selects three coherent products, writes the store story, and sets one buyer call to action. She creates a private preview link and reviews the exact draft as a logged-out visitor. After publishing, a matched product-row shot shows the same branded design without the Preview banner. The storefront studio additions remain labeled Preview while hosted rollout completes."
+    },
+    {
+      "id": "0005",
+      "slug": "protected-digital-sale",
+      "title": "Pay once and unlock the real digital product",
+      "summary": "Review one fixed protected offer, pay its exact monitored ETH total, and open the delivered artifact from the same verified order without waiting for a delivery email.",
+      "kind": "story",
+      "status": "Preview",
+      "language": "en",
+      "primaryPersona": "Buyer",
+      "personas": ["Buyer", "Seller"],
+      "goals": ["Buy", "Pay", "Deliver"],
+      "productPromises": ["Trade", "Connect"],
+      "durationSeconds": 61,
+      "featured": true,
+      "outcome": "The paid order exposes the real launch-kit link, and the buyer opens an Access verified artifact while payment and buyer protection remain attached to that order.",
+      "disclosure": "Recorded on the Mobazha local test network. The delivered launch kit is deterministic test content served by the local E2E delivery endpoint, not a production customer file.",
+      "media": {
+        "video": {
+          "url": "https://media.mobazha.org/demos/0005-protected-digital-sale/protected-digital-sale-demo-v1.mp4",
+          "sha256": "cbf907ae39c32548bbe77b264690380505c897e0cb32b0fbf2cb9f14569e8902"
+        },
+        "cover": {
+          "url": "https://media.mobazha.org/demos/0005-protected-digital-sale/cover-v1.jpg",
+          "sha256": "0f49ec4723b2c6c767723dc554961422f3825ff4729b79c4e7ca587afd6e7862",
+          "width": 1920,
+          "height": 1080
+        },
+        "poster": {
+          "url": "https://media.mobazha.org/demos/0005-protected-digital-sale/poster-v1.jpg",
+          "sha256": "1e8282d529153ef90d1b446af2b7467af3899abbd95020eea9949c7bbc45ddd4",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "recordedAt": "2026-07-19",
+      "reviewed": "2026-07-19",
+      "appliesTo": "Mobazha local E2E Preview build recorded on 2026-07-19",
+      "evidence": {
+        "label": "Mobazha public repositories and reviewed demo provenance",
+        "url": "https://github.com/mobazha"
+      },
+      "primaryAction": {
+        "label": "Understand checkout",
+        "href": "/buy/checkout"
+      },
+      "relatedDocs": [
+        "/buy/checkout",
+        "/sell/payments",
+        "/project/transaction-spine"
+      ],
+      "chapters": [
+        {
+          "title": "Review the exact promise",
+          "description": "Jordan sees the price, launch-kit deliverables, protection, and delivery terms in one fixed offer."
+        },
+        {
+          "title": "Pay the monitored total",
+          "description": "The order creates a unique Safe address and watches the exact 0.025 ETH payment on local Anvil."
+        },
+        {
+          "title": "Verify payment automatically",
+          "description": "The same order advances only after the chain payment is observed."
+        },
+        {
+          "title": "Open what you bought",
+          "description": "Verified payment grants the real launch-kit link, which opens an Access verified artifact instead of a placeholder."
+        },
+        {
+          "title": "Keep protection and access together",
+          "description": "The payoff keeps payment verification, automatic delivery, and buyer protection on one order."
+        }
+      ],
+      "transcript": "Jordan reviews one fixed protected offer containing the full price, digital launch-kit deliverables, buyer protection, and delivery terms. Accepting it creates one order and a unique Safe address for the exact 0.025 ETH payment. Mobazha observes the local test-network transaction and advances that same order. The order then exposes the real delivery link without a seller approval step or a separate email. Jordan opens the deterministic launch kit and sees Access verified. Returning to the order keeps the verified payment, granted access, and buyer protection together."
+    },
+    {
+      "id": "0006",
+      "slug": "escrow-dispute-resolution",
+      "title": "Resolve one protected order from evidence to payout",
+      "summary": "Keep a disputed ETH payment in one Safe, review the buyer's evidence, record a neutral 60/40 ruling, and release the same protected balance on-chain.",
+      "kind": "story",
+      "status": "Preview",
+      "language": "en",
+      "primaryPersona": "Buyer",
+      "personas": ["Buyer", "Seller", "Moderator"],
+      "goals": ["Buy", "Recover", "Operate"],
+      "productPromises": ["Trade", "Connect"],
+      "durationSeconds": 67,
+      "featured": false,
+      "outcome": "The completed order shows the buyer evidence, 60/40 ruling, three payout amounts, on-chain release hash, and Dispute resolved state in one audit trail.",
+      "disclosure": "Recorded with test accounts and test ETH on the Mobazha local E2E network. The Safe deployment, dispute release, and payout transaction use local Anvil; no production funds are involved.",
+      "media": {
+        "video": {
+          "url": "https://media.mobazha.org/demos/0006-escrow-dispute-resolution/escrow-dispute-resolution-demo-v1.mp4",
+          "sha256": "275ed8b30790eb7bf4c02b45a4ed2b25fff31fad3abe884b18a6f18a71fd2d46"
+        },
+        "cover": {
+          "url": "https://media.mobazha.org/demos/0006-escrow-dispute-resolution/cover-v1.jpg",
+          "sha256": "c0e326f600620e8646ae9a60e023aa16a5899021b10398ba788b70e859245b7c",
+          "width": 1920,
+          "height": 1080
+        },
+        "poster": {
+          "url": "https://media.mobazha.org/demos/0006-escrow-dispute-resolution/poster-v1.jpg",
+          "sha256": "eb6fd467ed87fbfb299a41a0710553a24c2a58739bad6aa45dde888e3c0a8435",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "recordedAt": "2026-07-19",
+      "reviewed": "2026-07-19",
+      "appliesTo": "Mobazha local E2E Preview build recorded on 2026-07-19",
+      "evidence": {
+        "label": "Mobazha public repositories and reviewed demo provenance",
+        "url": "https://github.com/mobazha"
+      },
+      "primaryAction": {
+        "label": "Understand disputes",
+        "href": "/buy/cancel-refund-dispute"
+      },
+      "relatedDocs": [
+        "/buy/cancel-refund-dispute",
+        "/buy/order-status",
+        "/project/transaction-spine"
+      ],
+      "chapters": [
+        {
+          "title": "Open one evidence-backed case",
+          "description": "Jordan's claim and uploaded photo stay attached to the exact funded order."
+        },
+        {
+          "title": "Keep funds protected",
+          "description": "The payment remains in the Safe while neither party can silently rewrite the order or take the full balance."
+        },
+        {
+          "title": "Record a neutral ruling",
+          "description": "The moderator reviews the same case, assigns 60 percent to the buyer and 40 percent to the seller, and publishes the reason."
+        },
+        {
+          "title": "Accept the protected payout",
+          "description": "The buyer verifies the three-way amount breakdown before authorizing the dispute release."
+        },
+        {
+          "title": "Keep the full resolution trail",
+          "description": "The completed order retains the evidence, ruling, payout amounts, release hash, and resolved state."
+        }
+      ],
+      "transcript": "Jordan opens a dispute on a funded, arbitration-protected ETH order and submits one claim with photo evidence. The payment remains in the Safe during review. The moderator opens the same case record, reviews the product, amount, claim, evidence, buyer, and seller, then records a 60 percent buyer and 40 percent seller ruling with a written reason. Jordan sees the ruling and exact buyer, seller, and moderator amounts before accepting the payout. Mobazha deploys the Safe when needed, submits the dispute-release transaction on local Anvil, and completes the order. The final audit trail retains the evidence, 60/40 ruling, on-chain release hash, and Dispute resolved state."
     }
   ]
 }

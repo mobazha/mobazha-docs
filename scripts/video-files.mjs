@@ -8,7 +8,7 @@ const mediaPrefix = "https://media.mobazha.org/";
 const allowedKinds = new Set(["story", "task", "proof", "release"]);
 const allowedStatuses = new Set(["Current", "Beta", "Preview"]);
 const allowedLanguages = new Set(["en", "zh-CN"]);
-const allowedPersonas = new Set(["Buyer", "Seller", "Operator", "Promoter", "Developer", "Evaluator"]);
+const allowedPersonas = new Set(["Buyer", "Seller", "Moderator", "Operator", "Promoter", "Developer", "Evaluator"]);
 const allowedGoals = new Set(["Sell", "Buy", "Pay", "Deliver", "Recover", "Grow", "Operate", "Build"]);
 const allowedPromises = new Set(["Own", "Connect", "Trade", "Extend"]);
 

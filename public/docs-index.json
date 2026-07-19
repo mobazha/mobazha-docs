@@ -7,7 +7,7 @@
     "zh-CN"
   ],
   "canonical_base_url": "https://docs.mobazha.org",
-  "reviewed": "2026-07-18",
+  "reviewed": "2026-07-19",
   "runtime_authority": "connected backend version and advertised effective capabilities",
   "public_knowledge_authority": "the canonical page on docs.mobazha.org",
   "implementation_authority": "versioned code, generated contracts, conformance tests, and tagged release evidence",
@@ -104,7 +104,7 @@
         "source": "https://github.com/mobazha",
         "label": "Demo provenance records maintained with each recording"
       },
-      "reviewed": "2026-07-18",
+      "reviewed": "2026-07-19",
       "page_type": "hub",
       "outcome": "See focused Mobazha journeys performed by the real product before you commit to running one yourself.",
       "estimated_time": "5 minutes",
@@ -114,7 +114,7 @@
         "href": "/sell"
       },
       "language": "en",
-      "search_text": "Choose by outcome Sell and shape a storefront Apply a branded design, review a private preview, and publish the same buyer facing store. Buy safely Understand cancellation, refund, and dispute paths before a real purchase needs recovery. Grow and operate Follow a community market from seller recruitment to one attributed completed order. Run and build Install the stack, inspect its boundaries, or continue to the public API contract. Featured end to end journeys The catalog page keeps playback lightweight. Open a journey for its video, visible outcome, chapter guide, transcript, applicability, evidence, and related product guidance. From community market to one completed order An operator recruits a seller, shares a curated market, and traces one real test network order to an estimated commission. Recommend, link, and get paid on chain A seller offers a cut, a promoter shares one link, and the attributed order produces a confirmed payout. Sell and shape a storefront Turn a default store into your brand Apply a complete layout, choose a readable palette, curate products, preview privately, and publish without code. Grow and operate Operator Commission Flywheel — create and publish a curated market, recruit a seller, bring a buyer through a real test network payment, let the seller fulfill the order and the buyer complete it, then trace that same order back to its share link and estimated operator commission. Preview — Phase 1 records attribution and commission estimates; it does not credit a withdrawable operator balance yet. Seller Affiliate Loop — sellers set a storefront wide cut once, promoters share one short link, and commissions settle on chain when order funds release. Preview — the short link share surface is in rollout. Watch the operator commission journey 112 seconds; operator, seller, and buyer; recorded on the Mobazha local test network. Watch the seller affiliate journey 69 seconds; seller, promoter, and buyer; recorded on the Mobazha local test network. How these demos are made Each demo is a scripted, re recordable run of the real product — no mockups, no spliced outcomes — and keeps its provenance: what was recorded, when, and against which build. Where payments appear, the recording runs on the Mobazha test network and says so on screen. Demos of capability not yet in a general release carry a Preview label until it ships. Video registry Machine readable titles, roles, outcomes, media digests, review dates, and provenance. Video registry schema The validation contract used by the documentation build."
+      "search_text": "Choose by outcome Sell and shape a storefront Apply a branded design, review a private preview, and publish the same buyer facing store. Buy safely Follow a protected purchase from its fixed promise and exact payment through automatic digital access, or continue to dispute recovery. Grow and operate Follow a community market from seller recruitment to one attributed completed order. Run and build Install the stack, inspect its boundaries, or continue to the public API contract. Featured end to end journeys The catalog page keeps playback lightweight. Open a journey for its video, visible outcome, chapter guide, transcript, applicability, evidence, and related product guidance. From community market to one completed order An operator recruits a seller, shares a curated market, and traces one real test network order to an estimated commission. Recommend, link, and get paid on chain A seller offers a cut, a promoter shares one link, and the attributed order produces a confirmed payout. Pay once and unlock the real digital product A buyer reviews one fixed protected offer, pays its exact monitored total, and opens the delivered artifact from the same verified order. Sell and shape a storefront Turn a default store into your brand Apply a complete layout, choose a readable palette, curate products, preview privately, and publish without code. Buy safely Pay once and unlock the real digital product 61 seconds; buyer and seller; exact Safe payment and deterministic delivery on the Mobazha local test network. Resolve one protected order from evidence to payout 67 seconds; buyer, seller, and moderator; evidence, a 60/40 ruling, and the final Safe release stay in one audit trail on local Anvil. Grow and operate Operator Commission Flywheel — create and publish a curated market, recruit a seller, bring a buyer through a real test network payment, let the seller fulfill the order and the buyer complete it, then trace that same order back to its share link and estimated operator commission. Preview — Phase 1 records attribution and commission estimates; it does not credit a withdrawable operator balance yet. Seller Affiliate Loop — sellers set a storefront wide cut once, promoters share one short link, and commissions settle on chain when order funds release. Preview — the short link share surface is in rollout. Watch the operator commission journey 112 seconds; operator, seller, and buyer; recorded on the Mobazha local test network. Watch the seller affiliate journey 69 seconds; seller, promoter, and buyer; recorded on the Mobazha local test network. How these demos are made Each demo is a scripted, re recordable run of the real product — no mockups, no spliced outcomes — and keeps its provenance: what was recorded, when, and against which build. Where payments appear, the recording runs on the Mobazha test network and says so on screen. Demos of capability not yet in a general release carry a Preview label until it ships. Video registry Machine readable titles, roles, outcomes, media digests, review dates, and provenance. Video registry schema The validation contract used by the documentation build."
     },
     {
       "id": "project-product-map",
@@ -873,9 +873,9 @@
         "source": "https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/checkout",
         "label": "Unified checkout routes and Node order contracts"
       },
-      "reviewed": "2026-07-14",
+      "reviewed": "2026-07-19",
       "page_type": "task",
-      "last_tested": "2026-07-14",
+      "last_tested": "2026-07-19",
       "outcome": "Create one order from a reviewed seller quote and keep the identifiers needed to recover it.",
       "estimated_time": "5–10 minutes",
       "journey": "use",
@@ -884,7 +884,7 @@
         "href": "/buy/checkout#before-you-start"
       },
       "language": "en",
-      "search_text": "Before you start Confirm the store identity, item, quantity, variant, fulfillment method, and return policy. Use a current browser session connected to the intended store and backend. Decide whether you are using account checkout or the store's optional Guest Checkout path. Have the exact payment asset available, but do not send funds before the order displays an address, amount, and expiry. Never reuse an address, QR code, quote, or amount from another order, message, screenshot, or Agent response. Checkout steps Open /product/{slug} , confirm the seller and store context, select required options, and add the item to the cart. Open Cart and confirm every line belongs to the intended seller. A marketplace may curate discovery and record attribution, but the approved seller—not the marketplace projection—must own the checkout handoff and resulting order. Continue through /checkout ; enter only the delivery and contact data required for this order, then choose a destination valid shipping method where required. Review subtotal, shipping, discounts, taxes, network or provider costs, optional services, and final total. Select an available payment method at the payment method step. Availability comes from the connected backend and store policy, not from a static list in this guide. If the order mode requires a moderator or other protection choice, review its scope and cost before confirmation. Confirm the order only after seller, recipient, final total, payment asset or provider, applicable policy, and any protection choice are visible. On confirmation, save the order identifier and tracking link, then use the order bound Payment Session for address, provider payload, amount, expiry, and progress. Pay with an external wallet Use only the payment choices still visible after the order policy is applied. A protection or settlement mode may intentionally remove a previously cached provider or rail. In the active Payment Session, match the asset or Token, network where shown, exact amount, payment address or URI, expiry, and order identifier. Do not reconstruct these values from a catalog price. Scan the active QR code or copy the active address and amount. Before approving the wallet transfer, compare the wallet's parsed recipient and amount with the Payment Session again. After broadcast, keep the transaction identifier and leave the order available for reconciliation. Read observed transfers, observed or remaining amount, observation status, and confirmations separately. If the payment instruction expires, stop using its QR code, URI, address, and amount. Refresh through the product to request the current instruction instead of sending to the expired target. An observed transfer may still be pending, incomplete, reverted, on the wrong network, or below the required amount. Only the backend's funded order state proves that the payment evidence was accepted for this order. Expected result and verification The application should display a newly created order with an authoritative state and order bound Payment Session. Confirm that the item revision, seller, seller owned backend, total, canonical payment asset or provider, funding target, amount, settlement mode, and expiry match the final confirmation you approved. A marketplace page or referral label is not the seller and must not silently become the order owner. Do not treat a wallet broadcast, a screenshot, or a pending transaction as completed payment. Wait for the order page to report the required confirmations and funded state. An order awaiting payment or payment verification should remain in the payment journey. A canceled, declined, expired, refunded, or processing error order must not be presented as payment success. Paid or fulfillment states may continue to confirmation, but the order detail remains the recovery authority. If something fails If the quote expires, return to checkout and request a new quote; do not send the old amount. If an item becomes unavailable, ret"
+      "search_text": "Before you start Confirm the store identity, item, quantity, variant, fulfillment method, and return policy. Use a current browser session connected to the intended store and backend. Decide whether you are using account checkout or the store's optional Guest Checkout path. Have the exact payment asset available, but do not send funds before the order displays an address, amount, and expiry. Never reuse an address, QR code, quote, or amount from another order, message, screenshot, or Agent response. Checkout steps Open /product/{slug} , confirm the seller and store context, select required options, and add the item to the cart. Open Cart and confirm every line belongs to the intended seller. A marketplace may curate discovery and record attribution, but the approved seller—not the marketplace projection—must own the checkout handoff and resulting order. Continue through /checkout ; enter only the delivery and contact data required for this order, then choose a destination valid shipping method where required. Review subtotal, shipping, discounts, taxes, network or provider costs, optional services, and final total. Select an available payment method at the payment method step. Availability comes from the connected backend and store policy, not from a static list in this guide. If the order mode requires a moderator or other protection choice, review its scope and cost before confirmation. Confirm the order only after seller, recipient, final total, payment asset or provider, applicable policy, and any protection choice are visible. On confirmation, save the order identifier and tracking link, then use the order bound Payment Session for address, provider payload, amount, expiry, and progress. Pay with an external wallet Use only the payment choices still visible after the order policy is applied. A protection or settlement mode may intentionally remove a previously cached provider or rail. In the active Payment Session, match the asset or Token, network where shown, exact amount, payment address or URI, expiry, and order identifier. Do not reconstruct these values from a catalog price. Scan the active QR code or copy the active address and amount. Before approving the wallet transfer, compare the wallet's parsed recipient and amount with the Payment Session again. After broadcast, keep the transaction identifier and leave the order available for reconciliation. Read observed transfers, observed or remaining amount, observation status, and confirmations separately. If the payment instruction expires, stop using its QR code, URI, address, and amount. Refresh through the product to request the current instruction instead of sending to the expired target. An observed transfer may still be pending, incomplete, reverted, on the wrong network, or below the required amount. Only the backend's funded order state proves that the payment evidence was accepted for this order. Expected result and verification The application should display a newly created order with an authoritative state and order bound Payment Session. Confirm that the item revision, seller, seller owned backend, total, canonical payment asset or provider, funding target, amount, settlement mode, and expiry match the final confirmation you approved. A marketplace page or referral label is not the seller and must not silently become the order owner. Do not treat a wallet broadcast, a screenshot, or a pending transaction as completed payment. Wait for the order page to report the required confirmations and funded state. An order awaiting payment or payment verification should remain in the payment journey. A canceled, declined, expired, refunded, or processing error order must not be presented as payment success. Paid or fulfillment states may continue to confirmation, but the order detail remains the recovery authority. Video 0005 If something fails If the quote expires, return to checkout and request a new quote; do not send the old amount. If an item becomes unava"
     },
     {
       "id": "buy-guest-checkout",
@@ -1014,9 +1014,9 @@
         "source": "https://github.com/mobazha/mobazha/tree/main/api-spec",
         "label": "Node order and dispute contracts"
       },
-      "reviewed": "2026-07-13",
+      "reviewed": "2026-07-19",
       "page_type": "task",
-      "last_tested": "2026-07-13",
+      "last_tested": "2026-07-19",
       "outcome": "Choose a valid resolution path for the active order without losing the evidence behind it.",
       "estimated_time": "5 minutes to assess",
       "journey": "use",
@@ -1025,7 +1025,7 @@
         "href": "/buy/cancel-refund-dispute#before-you-start"
       },
       "language": "en",
-      "search_text": "Before you start Open the authoritative order detail and record its current state. Read cancellation, return, refund, delivery, and dispute terms shown for the order. Preserve messages, quote, payment reference, delivery evidence, and the remedy you request. Confirm which party controls the next transition; not every state permits unilateral cancellation. Choose the path by order mode and current capability Path Typical purpose What must be verified Cancel Stop an eligible order before its current commitment or payment path closes cancellation Current order state, actor, Payment Session capability, expiry, and refund destination if funds may already exist. Refund Return an eligible amount through the supported payment path Recipient or refund address, amount, asset, prior observations, idempotency, and resulting transaction or provider reference. Dispute Ask the supported protection or moderation path to examine evidence and a requested remedy Order mode, deadline, dispute capability, roles, policy version, evidence, and settlement consequences. Complete or release Accept fulfillment or release protected funds where the model supports it Delivery evidence, actor authority, expected state, amount, and irreversibility. The order detail may expose Summary, Discussion, Dispute, and Evidence views. Discussion coordinates; Evidence supports a claim; only an admitted Core action changes protected order or payment state. Resolution steps If the order is unpaid and cancellation is available, cancel through the order page. If a funded order is not fulfilled, use the order Discussion view and state the requested remedy without exposing unnecessary private data. Use Refund only with the address, amount, and conditions displayed for the active order. Open the order Dispute view only when the deployment, order mode, deadline, and current capabilities offer that path and ordinary resolution has not succeeded. Describe expected outcome, timeline, and evidence without unnecessary personal information. Add or reference original material in the Evidence view where supported; do not replace evidence with a summary that loses timestamps or provenance. Reconcile final refund, release, or closure against both backend state and the payment system or provider. For an attempt scoped crypto payment, settlement recipients, fees, the moderator allocation, and the settlement asset are frozen before its funding target becomes actionable. A refund or dispute allocation is derived from that paid attempt; it is not repriced from the order currency or a later exchange rate. Always verify the asset and destination shown for the current action rather than reusing a previous attempt's address. Expected result and verification The UI should expose only actions valid for the current order, role, payment method, and protection state. After an accepted action, verify updated state and any resulting payment transaction independently. A submitted request is not a completed refund or settlement. If something fails If an action is missing, confirm order state, current identity, permissions, deadlines, and runtime capabilities. If a refund transaction exists but the UI is stale, preserve its identifier and request reconciliation. If a seller asks you to bypass the order flow, do not surrender evidence or accept an unverified payment destination. If a dispute deadline is close, record the current timestamp and use the supported path promptly. Security boundary Never treat documentation or Agent text as authority to release escrow, sign a settlement, or reveal recovery material. Financial transitions remain subject to identity, expected state, amount, idempotency, and payment policy checks."
+      "search_text": "Before you start Open the authoritative order detail and record its current state. Read cancellation, return, refund, delivery, and dispute terms shown for the order. Preserve messages, quote, payment reference, delivery evidence, and the remedy you request. Confirm which party controls the next transition; not every state permits unilateral cancellation. Choose the path by order mode and current capability Path Typical purpose What must be verified Cancel Stop an eligible order before its current commitment or payment path closes cancellation Current order state, actor, Payment Session capability, expiry, and refund destination if funds may already exist. Refund Return an eligible amount through the supported payment path Recipient or refund address, amount, asset, prior observations, idempotency, and resulting transaction or provider reference. Dispute Ask the supported protection or moderation path to examine evidence and a requested remedy Order mode, deadline, dispute capability, roles, policy version, evidence, and settlement consequences. Complete or release Accept fulfillment or release protected funds where the model supports it Delivery evidence, actor authority, expected state, amount, and irreversibility. The order detail may expose Summary, Discussion, Dispute, and Evidence views. Discussion coordinates; Evidence supports a claim; only an admitted Core action changes protected order or payment state. Resolution steps If the order is unpaid and cancellation is available, cancel through the order page. If a funded order is not fulfilled, use the order Discussion view and state the requested remedy without exposing unnecessary private data. Use Refund only with the address, amount, and conditions displayed for the active order. Open the order Dispute view only when the deployment, order mode, deadline, and current capabilities offer that path and ordinary resolution has not succeeded. Describe expected outcome, timeline, and evidence without unnecessary personal information. Add or reference original material in the Evidence view where supported; do not replace evidence with a summary that loses timestamps or provenance. Reconcile final refund, release, or closure against both backend state and the payment system or provider. For an attempt scoped crypto payment, settlement recipients, fees, the moderator allocation, and the settlement asset are frozen before its funding target becomes actionable. A refund or dispute allocation is derived from that paid attempt; it is not repriced from the order currency or a later exchange rate. Always verify the asset and destination shown for the current action rather than reusing a previous attempt's address. Expected result and verification The UI should expose only actions valid for the current order, role, payment method, and protection state. After an accepted action, verify updated state and any resulting payment transaction independently. A submitted request is not a completed refund or settlement. Video 0006 If something fails If an action is missing, confirm order state, current identity, permissions, deadlines, and runtime capabilities. If a refund transaction exists but the UI is stale, preserve its identifier and request reconciliation. If a seller asks you to bypass the order flow, do not surrender evidence or accept an unverified payment destination. If a dispute deadline is close, record the current timestamp and use the supported path promptly. Security boundary Never treat documentation or Agent text as authority to release escrow, sign a settlement, or reveal recovery material. Financial transitions remain subject to identity, expected state, amount, idempotency, and payment policy checks."
     },
     {
       "id": "self-host",
@@ -4969,7 +4969,7 @@
         "source": "https://github.com/mobazha",
         "label": "Mobazha public repositories and reviewed demo provenance"
       },
-      "reviewed": "2026-07-18",
+      "reviewed": "2026-07-19",
       "page_type": "video",
       "outcome": "The same completed order appears in the operator's attribution view with a 0.0020 ETH estimated commission at 10%.",
       "estimated_time": "2 minutes",
@@ -5003,7 +5003,7 @@
         "source": "https://github.com/mobazha",
         "label": "Mobazha public repositories and reviewed demo provenance"
       },
-      "reviewed": "2026-07-18",
+      "reviewed": "2026-07-19",
       "page_type": "video",
       "outcome": "Kai's earnings page shows a Paid commission row and the on-chain transaction hash for the attributed order.",
       "estimated_time": "2 minutes",
@@ -5036,7 +5036,7 @@
         "source": "https://github.com/mobazha",
         "label": "Mobazha public repositories and reviewed demo provenance"
       },
-      "reviewed": "2026-07-18",
+      "reviewed": "2026-07-19",
       "page_type": "video",
       "outcome": "Alice's public storefront shows the same branded palette, featured products, story, and call to action that she reviewed through the private preview.",
       "estimated_time": "2 minutes",
@@ -5047,6 +5047,73 @@
       },
       "language": "en",
       "search_text": "Turn a default store into your brand Apply a storefront template, choose brand colors and featured products, share a private preview, and publish the same buyer-facing design without code. Alice's public storefront shows the same branded palette, featured products, story, and call to action that she reviewed through the private preview. The storefront studio additions are labeled Preview while they complete rollout to the hosted SaaS. Seller Seller Buyer Sell Own See the template problem Alice starts from a credible product row that still looks like a generic template. Set the brand foundation One layout and warm palette establish the hero, featured products, story, and trust sections. Curate products and story She selects three coherent cold-storage products, writes the field-testing story, and sets one buyer call to action. Review a private preview A logged-out buyer opens the seven-day preview link and sees the exact draft with a Preview banner. Publish the same design Alice publishes and verifies the native-density public storefront without the Preview banner. Alice starts with a live storefront whose credible cold-storage products still look generic. In the built-in design studio, she applies one complete layout and a warm leather-and-steel palette, selects three coherent products, writes the store story, and sets one buyer call to action. She creates a private preview link and reviews the exact draft as a logged-out visitor. After publishing, a matched product-row shot shows the same branded design without the Preview banner. The storefront studio additions remain labeled Preview while hosted rollout completes."
+    },
+    {
+      "id": "video-0005",
+      "path": "/demos/protected-digital-sale",
+      "canonical_url": "https://docs.mobazha.org/demos/protected-digital-sale",
+      "title": "Pay once and unlock the real digital product",
+      "summary": "Review one fixed protected offer, pay its exact monitored ETH total, and open the delivered artifact from the same verified order without waiting for a delivery email.",
+      "status": "preview",
+      "audiences": [
+        "buyer",
+        "seller"
+      ],
+      "applies_to": "Mobazha local E2E Preview build recorded on 2026-07-19",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/demos/protected-digital-sale",
+        "label": "Canonical video detail page"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha public repositories and reviewed demo provenance"
+      },
+      "reviewed": "2026-07-19",
+      "page_type": "video",
+      "outcome": "The paid order exposes the real launch-kit link, and the buyer opens an Access verified artifact while payment and buyer protection remain attached to that order.",
+      "estimated_time": "2 minutes",
+      "journey": "start",
+      "primary_action": {
+        "label": "Understand checkout",
+        "href": "/buy/checkout"
+      },
+      "language": "en",
+      "search_text": "Pay once and unlock the real digital product Review one fixed protected offer, pay its exact monitored ETH total, and open the delivered artifact from the same verified order without waiting for a delivery email. The paid order exposes the real launch-kit link, and the buyer opens an Access verified artifact while payment and buyer protection remain attached to that order. Recorded on the Mobazha local test network. The delivered launch kit is deterministic test content served by the local E2E delivery endpoint, not a production customer file. Buyer Buyer Seller Buy Pay Deliver Trade Connect Review the exact promise Jordan sees the price, launch-kit deliverables, protection, and delivery terms in one fixed offer. Pay the monitored total The order creates a unique Safe address and watches the exact 0.025 ETH payment on local Anvil. Verify payment automatically The same order advances only after the chain payment is observed. Open what you bought Verified payment grants the real launch-kit link, which opens an Access verified artifact instead of a placeholder. Keep protection and access together The payoff keeps payment verification, automatic delivery, and buyer protection on one order. Jordan reviews one fixed protected offer containing the full price, digital launch-kit deliverables, buyer protection, and delivery terms. Accepting it creates one order and a unique Safe address for the exact 0.025 ETH payment. Mobazha observes the local test-network transaction and advances that same order. The order then exposes the real delivery link without a seller approval step or a separate email. Jordan opens the deterministic launch kit and sees Access verified. Returning to the order keeps the verified payment, granted access, and buyer protection together."
+    },
+    {
+      "id": "video-0006",
+      "path": "/demos/escrow-dispute-resolution",
+      "canonical_url": "https://docs.mobazha.org/demos/escrow-dispute-resolution",
+      "title": "Resolve one protected order from evidence to payout",
+      "summary": "Keep a disputed ETH payment in one Safe, review the buyer's evidence, record a neutral 60/40 ruling, and release the same protected balance on-chain.",
+      "status": "preview",
+      "audiences": [
+        "buyer",
+        "seller",
+        "moderator"
+      ],
+      "applies_to": "Mobazha local E2E Preview build recorded on 2026-07-19",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/demos/escrow-dispute-resolution",
+        "label": "Canonical video detail page"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha public repositories and reviewed demo provenance"
+      },
+      "reviewed": "2026-07-19",
+      "page_type": "video",
+      "outcome": "The completed order shows the buyer evidence, 60/40 ruling, three payout amounts, on-chain release hash, and Dispute resolved state in one audit trail.",
+      "estimated_time": "2 minutes",
+      "journey": "start",
+      "primary_action": {
+        "label": "Understand disputes",
+        "href": "/buy/cancel-refund-dispute"
+      },
+      "language": "en",
+      "search_text": "Resolve one protected order from evidence to payout Keep a disputed ETH payment in one Safe, review the buyer's evidence, record a neutral 60/40 ruling, and release the same protected balance on-chain. The completed order shows the buyer evidence, 60/40 ruling, three payout amounts, on-chain release hash, and Dispute resolved state in one audit trail. Recorded with test accounts and test ETH on the Mobazha local E2E network. The Safe deployment, dispute release, and payout transaction use local Anvil; no production funds are involved. Buyer Buyer Seller Moderator Buy Recover Operate Trade Connect Open one evidence-backed case Jordan's claim and uploaded photo stay attached to the exact funded order. Keep funds protected The payment remains in the Safe while neither party can silently rewrite the order or take the full balance. Record a neutral ruling The moderator reviews the same case, assigns 60 percent to the buyer and 40 percent to the seller, and publishes the reason. Accept the protected payout The buyer verifies the three-way amount breakdown before authorizing the dispute release. Keep the full resolution trail The completed order retains the evidence, ruling, payout amounts, release hash, and resolved state. Jordan opens a dispute on a funded, arbitration-protected ETH order and submits one claim with photo evidence. The payment remains in the Safe during review. The moderator opens the same case record, reviews the product, amount, claim, evidence, buyer, and seller, then records a 60 percent buyer and 40 percent seller ruling with a written reason. Jordan sees the ruling and exact buyer, seller, and moderator amounts before accepting the payout. Mobazha deploys the Safe when needed, submits the dispute-release transaction on local Anvil, and completes the order. The final audit trail retains the evidence, 60/40 ruling, on-chain release hash, and Dispute resolved state."
     }
   ]
 }

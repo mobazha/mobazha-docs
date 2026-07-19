@@ -2,7 +2,7 @@ import catalog from "@/content/videos.json";
 
 export type VideoKind = "story" | "task" | "proof" | "release";
 export type VideoStatus = "Current" | "Beta" | "Preview";
-export type VideoPersona = "Buyer" | "Seller" | "Operator" | "Promoter" | "Developer" | "Evaluator";
+export type VideoPersona = "Buyer" | "Seller" | "Moderator" | "Operator" | "Promoter" | "Developer" | "Evaluator";
 export type VideoGoal = "Sell" | "Buy" | "Pay" | "Deliver" | "Recover" | "Grow" | "Operate" | "Build";
 export type ProductPromise = "Own" | "Connect" | "Trade" | "Extend";
 

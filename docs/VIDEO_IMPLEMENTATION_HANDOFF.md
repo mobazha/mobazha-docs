@@ -3,7 +3,7 @@
 - Updated: 2026-07-19
 - Repository: `mobazha/mobazha-docs`
 - Branch: `main`
-- Current deployed implementation baseline: `303e4dd`
+- Previous deployment checkpoint: `303e4dd`
 - Planning authority: [`VIDEO_INFORMATION_ARCHITECTURE_PLAN.md`](./VIDEO_INFORMATION_ARCHITECTURE_PLAN.md)
 
 ## Completed
@@ -46,71 +46,89 @@
   - https://media.mobazha.org/demos/0001-operator-commission-flywheel/cut45-cover-v9.jpg
   - https://media.mobazha.org/demos/0001-operator-commission-flywheel/cut45-poster-v9.jpg
 - Hosting manifest: `docs/demos/0001-operator-commission-flywheel/demo.md`.
-- VIDEO-3A/3B remain the next story work; do not let website cut work collide
-  with those harnesses.
+- VIDEO-3A/3B are now independent full masters; the website derivative remains
+  0001 cut45-v9 unless a later marketing review deliberately replaces it.
+
+## Captions (2026-07-19)
+
+- English WebVTT tracks are published for 0001 v9, 0003 v8, and 0004 v2.
+- Cue text mirrors on-screen hook, chapter chips, and end cards on the silent
+  masters; detail players load them as the default `captions` track.
+- Media:
+  - https://media.mobazha.org/demos/0001-operator-commission-flywheel/operator-commission-flywheel-en-v9.vtt
+  - https://media.mobazha.org/demos/0003-seller-affiliate-loop/seller-affiliate-loop-en-v8.vtt
+  - https://media.mobazha.org/demos/0004-storefront-makeover/storefront-makeover-en-v2.vtt
 
 ## Current work
 
-VIDEO-2 is implemented in the working tree. Its vertical slice:
+VIDEO-3 is complete in source. It adds two public records, canonical detail
+routes, one Buy/delivery featured story, one Buy/recovery catalog proof, and
+lightweight task references without increasing the featured set beyond three.
 
-1. resolves `!video-ref[NNNN]` against the public registry and defaults to a
-   lightweight poster link without repeating an R2 URL in a task page;
-2. places 0004 on `/sell/store-setup`;
-3. places 0001 on `/sell/marketplace-participation` and
-   `/project/community-commerce`;
-4. places 0003 on the stable `/sell` seller journey hub until a dedicated
-   seller-growth task has a reviewed owner;
-5. preserves complete text instructions when video playback is unavailable;
-6. supports optional validated WebVTT caption tracks on the canonical detail
-   player without claiming that captions already exist.
-
-The read-only VIDEO-3 evidence audit is complete. Do not create a registry
-record, media file, or R2 URL until the remaining live-browser and delivered-
-artifact gates below establish a recordable observable payoff.
+- 0005 Protected Digital Sale — 61.13s, v1, 1920×1080, local-Anvil payment
+  plus a deterministic fetchable launch-kit artifact.
+- 0006 Escrow Dispute Resolution — 66.57s, v1, 1920×1080, buyer evidence,
+  moderator 60/40 ruling, buyer acceptance, and local-Anvil Safe release.
+- Both are labeled Preview and describe their local test-network boundary.
+- Both have chapters and full text transcripts. Caption tracks remain optional
+  schema fields and can be added as a later accessibility derivative without
+  changing the canonical records.
 
 ## VIDEO-3 evidence audit
 
-Audit completed on 2026-07-19 against:
+The audit and implementation completed on 2026-07-19 against:
 
-- `mobazha-e2e@bcbc8ef641dfb759155cc07090bda875770edb92`;
-- `mobazha-unified@afb94e26410d60fe760e96e48c779261cbd36a54`;
-- the current `mobazha_hosting/docs/demos` portfolio, which contains no new
-  Protected Deal or dispute manifest.
+- `mobazha@44d212c9367d65337b01f8fc048a49346af6a31f`;
+- `mobazha-commercial-node@a9296b850b54d94975c83eea1ef46fa8c7dbdf83`;
+- `mobazha-unified@db149cb125fbfc9b2c155124100a130dcd825a77`
+  and `574feba430fae51e31514646fcbec71b62dffff5`;
+- `mobazha-e2e@1804c81457310af4250ee7c79f2b27988e7f3cd6`.
 
 Findings:
 
-1. `TestE2E_DealLink_SafeFinalSettlementAction` is the strongest next-story
-   foundation. It combines Deal acceptance, an exact Safe payment on local
-   Anvil, confirmed `safe_deploy` and `confirm` settlement actions, automatic
-   digital entitlement, `SHIPPED`, and buyer completion.
-2. Its digital asset is still seeded as an `example.com` link. The entitlement
-   and shipment facts are real, but the viewer cannot yet inspect a meaningful,
-   deterministic delivered artifact.
-3. Unified has public Deal, payment, order, and buyer digital-asset surfaces,
-   but there is no live browser recording harness that drives the same backend
-   transaction. Current Deal administration visual coverage uses mocked APIs.
-4. `TestE2E_SafeModerated_DisputeAndResolve` proves a real local-chain Safe
-   deposit, buyer evidence, moderator 60/40 ruling, dispute-release settlement
-   action, and final `RESOLVED` projections.
-5. Unified has dispute and moderator ruling UI, but current browser dispute
-   capture coverage is primarily fixture-backed rather than the same live
-   transaction. There is no recording manifest or live multi-role harness.
+1. 0005 replaced the `example.com` placeholder with a local deterministic
+   delivery endpoint and a visibly reviewable Access verified artifact.
+2. Its live Playwright run creates the order from the public Deal Link, creates
+   the buyer-owned Payment Session, pays the exact target, observes automatic
+   advancement, and opens the granted delivery link.
+3. 0006 prepares one fresh funded moderated order with uploaded buyer evidence,
+   then records buyer and moderator views over that same backend transaction.
+4. The moderator's 60/40 ruling, buyer acceptance, `safe_deploy` when needed,
+   `dispute_release`, transaction hash, and final resolved projection all remain
+   observable.
+5. Recording exposed two real correctness issues that were fixed before the
+   masters were accepted: settlement-message ACKs were not retired, and a
+   provider head race could degrade the Safe monitor on a stale `BalanceAt`.
 
-Decision: VIDEO-3 does not advance to recording yet. The next implementation
-slice is one Protected Deal live browser harness plus a deterministic delivered
-artifact. Only after it passes should a hosting manifest be allocated and a
-recording brief approved. The dispute story remains second priority.
+Decision: publish 0005 as the featured Buy story; publish 0006 under Buy safely
+and the dispute task page without adding a fourth featured slot.
 
-## VIDEO-2 verification
+## VIDEO-3 public media
+
+- 0005:
+  - https://media.mobazha.org/demos/0005-protected-digital-sale/protected-digital-sale-demo-v1.mp4
+  - https://media.mobazha.org/demos/0005-protected-digital-sale/cover-v1.jpg
+  - https://media.mobazha.org/demos/0005-protected-digital-sale/poster-v1.jpg
+- 0006:
+  - https://media.mobazha.org/demos/0006-escrow-dispute-resolution/escrow-dispute-resolution-demo-v1.mp4
+  - https://media.mobazha.org/demos/0006-escrow-dispute-resolution/cover-v1.jpg
+  - https://media.mobazha.org/demos/0006-escrow-dispute-resolution/poster-v1.jpg
+
+All six public downloads match their registry SHA-256 digests. The MP4s return
+byte ranges and immutable cache headers from `media.mobazha.org`.
+
+## VIDEO-2 and VIDEO-3 verification
 
 - `npm run generate:content`: passed.
 - `npm run check`: passed, including content, records, freshness, visual
   evidence, OpenAPI, lint, and production build.
-- Targeted desktop/mobile Playwright checks: 14 passed, 2 expected skips.
-- `npm run check:external-links`: 113 checked, 0 failed.
-- Human responsive review at 1280×720 and 390×844: the contextual card is
-  readable, has no page-level overflow, links to the canonical detail page,
-  and adds no inline `<video>` element.
+- Targeted desktop/mobile Playwright checks: 14 passed, 2 expected skips,
+  including both new detail routes and both new contextual references.
+- `npm run check:external-links`: passed, including all six new R2 objects.
+- Human responsive review at 1280×720 and 390×844: the five-video hub remains
+  scannable, featured stories stay capped at three, both detail pages retain
+  useful native-density content, and no page-level overflow or blank content
+  block appears.
 
 ## Guardrails for a new session
 
@@ -130,7 +148,7 @@ recording brief approved. The dispute story remains second priority.
 ```bash
 npm run generate:content
 npm run check
-npx playwright test tests/experience.spec.ts --grep 'video|store setup|marketplace'
+npx playwright test tests/experience.spec.ts --grep 'video|store setup|marketplace|demos|protected|dispute'
 npm run check:external-links
 ```
 

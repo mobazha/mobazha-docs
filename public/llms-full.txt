@@ -171,7 +171,7 @@ Agent golden questions
 - Audience: buyers, sellers, operators, evaluators
 - Knowledge authority: https://docs.mobazha.org/demos
 - Evidence: https://github.com/mobazha
-- Reviewed: 2026-07-18
+- Reviewed: 2026-07-19
 - Language: en
 - Summary: Short, honest walkthroughs of real Mobazha flows — recorded from scripted runs against a running stack, narrated by on-screen chapter cards.
 
@@ -179,7 +179,7 @@ Choose by outcome
 Sell and shape a storefront
 Apply a branded design, review a private preview, and publish the same buyer-facing store.
 Buy safely
-Understand cancellation, refund, and dispute paths before a real purchase needs recovery.
+Follow a protected purchase from its fixed promise and exact payment through automatic digital access, or continue to dispute recovery.
 Grow and operate
 Follow a community market from seller recruitment to one attributed completed order.
 Run and build
@@ -190,9 +190,16 @@ From community market to one completed order
 An operator recruits a seller, shares a curated market, and traces one real test-network order to an estimated commission.
 Recommend, link, and get paid on-chain
 A seller offers a cut, a promoter shares one link, and the attributed order produces a confirmed payout.
+Pay once and unlock the real digital product
+A buyer reviews one fixed protected offer, pays its exact monitored total, and opens the delivered artifact from the same verified order.
 Sell and shape a storefront
 Turn a default store into your brand
 Apply a complete layout, choose a readable palette, curate products, preview privately, and publish without code.
+Buy safely
+Pay once and unlock the real digital product
+61 seconds; buyer and seller; exact Safe payment and deterministic delivery on the Mobazha local test network.
+Resolve one protected order from evidence to payout
+67 seconds; buyer, seller, and moderator; evidence, a 60/40 ruling, and the final Safe release stay in one audit trail on local Anvil.
 Grow and operate
 **Operator Commission Flywheel** — create and publish a curated market, recruit a seller, bring a buyer through a real test-network payment, let the seller fulfill the order and the buyer complete it, then trace that same order back to its share link and estimated operator commission. **Preview** — Phase 1 records attribution and commission estimates; it does not credit a withdrawable operator balance yet.
 **Seller Affiliate Loop** — sellers set a storefront-wide cut once, promoters share one short link, and commissions settle on-chain when order funds release. **Preview** — the short-link share surface is in rollout.
@@ -1671,8 +1678,8 @@ Get help
 - Audience: buyers, agents
 - Knowledge authority: https://docs.mobazha.org/buy/checkout
 - Evidence: https://github.com/mobazha/mobazha-unified/tree/main/apps/web/src/app/checkout
-- Reviewed: 2026-07-14
-- Last tested: 2026-07-14
+- Reviewed: 2026-07-19
+- Last tested: 2026-07-19
 - Language: en
 - Summary: Review one store, one quote, and one payment instruction set before creating or funding an order.
 
@@ -1702,6 +1709,7 @@ Expected result and verification
 The application should display a newly created order with an authoritative state and order-bound Payment Session. Confirm that the item revision, seller, seller-owned backend, total, canonical payment asset or provider, funding target, amount, settlement mode, and expiry match the final confirmation you approved. A marketplace page or referral label is not the seller and must not silently become the order owner.
 Do not treat a wallet broadcast, a screenshot, or a pending transaction as completed payment. Wait for the order page to report the required confirmations and funded state.
 An order awaiting payment or payment verification should remain in the payment journey. A canceled, declined, expired, refunded, or processing-error order must not be presented as payment success. Paid or fulfillment states may continue to confirmation, but the order detail remains the recovery authority.
+Video 0005
 If something fails
 If the quote expires, return to checkout and request a new quote; do not send the old amount.
 If an item becomes unavailable, return to the cart and re-evaluate the order rather than repeatedly submitting it.
@@ -1894,8 +1902,8 @@ Get help with sanitized evidence
 - Audience: buyers, sellers, agents
 - Knowledge authority: https://docs.mobazha.org/buy/cancel-refund-dispute
 - Evidence: https://github.com/mobazha/mobazha/tree/main/api-spec
-- Reviewed: 2026-07-13
-- Last tested: 2026-07-13
+- Reviewed: 2026-07-19
+- Last tested: 2026-07-19
 - Language: en
 - Summary: Choose the transition allowed by the current order state and preserve the evidence needed to explain the requested remedy.
 
@@ -1932,6 +1940,7 @@ Reconcile final refund, release, or closure against both backend state and the p
 For an attempt-scoped crypto payment, settlement recipients, fees, the moderator allocation, and the settlement asset are frozen before its funding target becomes actionable. A refund or dispute allocation is derived from that paid attempt; it is not repriced from the order currency or a later exchange rate. Always verify the asset and destination shown for the current action rather than reusing a previous attempt's address.
 Expected result and verification
 The UI should expose only actions valid for the current order, role, payment method, and protection state. After an accepted action, verify updated state and any resulting payment transaction independently. A submitted request is not a completed refund or settlement.
+Video 0006
 If something fails
 If an action is missing, confirm order state, current identity, permissions, deadlines, and runtime capabilities.
 If a refund transaction exists but the UI is stale, preserve its identifier and request reconciliation.
@@ -9299,7 +9308,7 @@ English canonical page
 - Audience: Operator, Seller, Buyer
 - Outcome: The same completed order appears in the operator's attribution view with a 0.0020 ETH estimated commission at 10%.
 - Applies to: Mobazha local E2E test-network build recorded on 2026-07-18
-- Reviewed: 2026-07-18
+- Reviewed: 2026-07-19
 
 Maya creates a curated community market, sets a ten percent operator commission, and publishes it. One seller reviews those terms and joins through the invitation link. Maya curates the seller's product and shares the market. A buyer opens that storefront, creates one order, and pays 0.012 ETH to its monitored address on the local test network. The seller accepts and ships the same order. The buyer confirms receipt. Maya then sees that completed order attributed to the community share link with a 0.0020 ETH estimated commission. The estimate is not a withdrawable balance.
 
@@ -9310,7 +9319,7 @@ Maya creates a curated community market, sets a ten percent operator commission,
 - Audience: Promoter, Seller, Buyer
 - Outcome: Kai's earnings page shows a Paid commission row and the on-chain transaction hash for the attributed order.
 - Applies to: Mobazha local E2E test-network build recorded on 2026-07-18
-- Reviewed: 2026-07-18
+- Reviewed: 2026-07-19
 
 Alice offers promoters five percent on every attributed storefront order. Kai sees the concrete return and creates one wallet-bound short link. Jordan follows it, shops normally, and pays the resulting ETH order on the local test network. That payment submits the seller and promoter settlement legs without a second affiliate workflow. Kai's earnings page shows the exact commission as Paid with its basis, buyer, confirmation time, payout address, and on-chain transaction hash. The short-link share surface remains labeled Preview while rollout completes.
 
@@ -9321,9 +9330,31 @@ Alice offers promoters five percent on every attributed storefront order. Kai se
 - Audience: Seller, Buyer
 - Outcome: Alice's public storefront shows the same branded palette, featured products, story, and call to action that she reviewed through the private preview.
 - Applies to: Mobazha storefront-studio Preview build recorded on 2026-07-18
-- Reviewed: 2026-07-18
+- Reviewed: 2026-07-19
 
 Alice starts with a live storefront whose credible cold-storage products still look generic. In the built-in design studio, she applies one complete layout and a warm leather-and-steel palette, selects three coherent products, writes the store story, and sets one buyer call to action. She creates a private preview link and reviews the exact draft as a logged-out visitor. After publishing, a matched product-row shot shows the same branded design without the Preview banner. The storefront studio additions remain labeled Preview while hosted rollout completes.
+
+### Pay once and unlock the real digital product
+- URL: /demos/protected-digital-sale
+- Status: Preview
+- Kind: story
+- Audience: Buyer, Seller
+- Outcome: The paid order exposes the real launch-kit link, and the buyer opens an Access verified artifact while payment and buyer protection remain attached to that order.
+- Applies to: Mobazha local E2E Preview build recorded on 2026-07-19
+- Reviewed: 2026-07-19
+
+Jordan reviews one fixed protected offer containing the full price, digital launch-kit deliverables, buyer protection, and delivery terms. Accepting it creates one order and a unique Safe address for the exact 0.025 ETH payment. Mobazha observes the local test-network transaction and advances that same order. The order then exposes the real delivery link without a seller approval step or a separate email. Jordan opens the deterministic launch kit and sees Access verified. Returning to the order keeps the verified payment, granted access, and buyer protection together.
+
+### Resolve one protected order from evidence to payout
+- URL: /demos/escrow-dispute-resolution
+- Status: Preview
+- Kind: story
+- Audience: Buyer, Seller, Moderator
+- Outcome: The completed order shows the buyer evidence, 60/40 ruling, three payout amounts, on-chain release hash, and Dispute resolved state in one audit trail.
+- Applies to: Mobazha local E2E Preview build recorded on 2026-07-19
+- Reviewed: 2026-07-19
+
+Jordan opens a dispute on a funded, arbitration-protected ETH order and submits one claim with photo evidence. The payment remains in the Safe during review. The moderator opens the same case record, reviews the product, amount, claim, evidence, buyer, and seller, then records a 60 percent buyer and 40 percent seller ruling with a written reason. Jordan sees the ruling and exact buyer, seller, and moderator amounts before accepting the payout. Mobazha deploys the Safe when needed, submits the dispute-release transaction on local Anvil, and completes the order. The final audit trail retains the evidence, 60/40 ruling, on-chain release hash, and Dispute resolved state.
 
 Use /docs-index.json for structured metadata, /videos.json for governed video
 metadata and provenance, /sources.json for the public-source
