@@ -34,46 +34,52 @@ export default async function VideoDetailPage({ params }: PageProps) {
   const video = videosBySlug.get((await params).slug);
   if (!video) notFound();
 
+  const nextSteps = video.relatedDocs.slice(0, 2);
+
   return (
     <DocsShell activePath={`/demos/${video.slug}`}>
       <article className="doc-page video-detail">
         <div className="doc-breadcrumb"><Link href="/">Docs</Link><span>/</span><Link href="/demos">Product demos</Link><span>/</span><span>{video.title}</span></div>
-        <header className="video-detail-header">
+
+        <header className="video-detail-header video-detail-header-compact">
           <div className="doc-title-context">
-            <span>{video.primaryPersona} journey</span>
-            <span>{formatVideoDuration(video.durationSeconds)} video</span>
+            <span>{formatVideoDuration(video.durationSeconds)}</span>
           </div>
           <h1>{video.title}</h1>
-          <p>{video.summary}</p>
-          <div className="doc-hero-actions">
-            <Link className="doc-primary-action" href={video.primaryAction.href}>{video.primaryAction.label}<span aria-hidden="true">→</span></Link>
-            <span className="doc-time"><b>Made for</b>{video.personas.join(" · ")}</span>
-          </div>
+          <p>{video.outcome}</p>
         </header>
 
-        <section className="video-outcome" aria-labelledby="outcome">
-          <span>The result</span>
-          <h2 id="outcome">What this makes possible</h2>
-          <p>{video.outcome}</p>
-        </section>
-
         <InteractiveVideo video={video} />
+
+        <div className="video-detail-cta">
+          <Link className="doc-primary-action" href={video.primaryAction.href}>
+            {video.primaryAction.label}
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
 
         <details className="video-transcript">
           <summary>Read the full story</summary>
           <p>{video.transcript}</p>
         </details>
 
-        <section className="video-detail-section" aria-labelledby="related-guidance">
-          <span>Make it yours</span>
-          <h2 id="related-guidance">Take the next step</h2>
-          <div className="video-related-grid">
-            {video.relatedDocs.map((path) => {
-              const doc = docsBySlug.get(path.slice(1));
-              return <Link href={path} key={path}><strong>{doc?.title ?? path}<span aria-hidden="true">→</span></strong><span>{doc?.summary}</span></Link>;
-            })}
-          </div>
-        </section>
+        {nextSteps.length > 0 && (
+          <section className="video-detail-section" aria-labelledby="related-guidance">
+            <span>Next</span>
+            <h2 id="related-guidance">Keep going</h2>
+            <div className="video-related-grid">
+              {nextSteps.map((path) => {
+                const doc = docsBySlug.get(path.slice(1));
+                return (
+                  <Link href={path} key={path}>
+                    <strong>{doc?.title ?? path}<span aria-hidden="true">→</span></strong>
+                    <span>{doc?.summary}</span>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        )}
 
         <footer className="video-detail-footer">
           <Link href="/demos">← Browse all product demos</Link>

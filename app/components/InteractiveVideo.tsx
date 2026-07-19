@@ -7,6 +7,12 @@ type InteractiveVideoProps = {
   video: Pick<PublicVideo, "title" | "media" | "chapters">;
 };
 
+function formatChapterTime(seconds: number): string {
+  const minutes = Math.floor(seconds / 60);
+  const remainder = seconds % 60;
+  return `${minutes}:${remainder.toString().padStart(2, "0")}`;
+}
+
 export function InteractiveVideo({ video }: InteractiveVideoProps) {
   const player = useRef<HTMLVideoElement>(null);
 
@@ -41,26 +47,22 @@ export function InteractiveVideo({ video }: InteractiveVideoProps) {
             />
           ))}
         </video>
-        <figcaption>Watch the complete story, or jump straight to the part that matters to you.</figcaption>
       </figure>
 
-      <section className="video-detail-section" aria-labelledby="chapters">
-        <span>Follow the story</span>
-        <h2 id="chapters">What happens</h2>
+      <section className="video-detail-section video-chapters-section" aria-labelledby="chapters">
+        <span>Chapters</span>
+        <h2 id="chapters">Jump to a moment</h2>
         <ol className="video-chapters">
-          {video.chapters.map((chapter, index) => (
+          {video.chapters.map((chapter) => (
             <li key={chapter.title}>
-              <b>{String(index + 1).padStart(2, "0")}</b>
-              <div>
-                {chapter.startSeconds === undefined ? (
+              {chapter.startSeconds === undefined ? (
+                <strong>{chapter.title}</strong>
+              ) : (
+                <button type="button" onClick={() => jumpTo(chapter.startSeconds!)}>
+                  <time dateTime={`PT${chapter.startSeconds}S`}>{formatChapterTime(chapter.startSeconds)}</time>
                   <strong>{chapter.title}</strong>
-                ) : (
-                  <button type="button" onClick={() => jumpTo(chapter.startSeconds!)}>
-                    {chapter.title}<span>Jump to moment <i aria-hidden="true">→</i></span>
-                  </button>
-                )}
-                <p>{chapter.description}</p>
-              </div>
+                </button>
+              )}
             </li>
           ))}
         </ol>

@@ -7,7 +7,7 @@ audiences:
   - Sellers
   - Promoters
 evidenceLabel: Product demo catalog
-reviewed: 2026-07-20
+reviewed: 2026-07-19
 pageType: hub
 outcome: See the complete customer journeys that make a storefront, a recommendation, or a purchase work.
 estimatedTime: 5 minutes

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "reviewed": "2026-07-20",
+  "reviewed": "2026-07-19",
   "videos": [
     {
       "id": "0001",
@@ -519,7 +519,7 @@
         }
       },
       "recordedAt": "2026-07-19",
-      "reviewed": "2026-07-20",
+      "reviewed": "2026-07-19",
       "appliesTo": "Mobazha SaaS E2E Preview build recorded on 2026-07-19",
       "evidence": {
         "label": "Mobazha public repositories and reviewed demo provenance",

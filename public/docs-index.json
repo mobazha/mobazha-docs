@@ -7,7 +7,7 @@
     "zh-CN"
   ],
   "canonical_base_url": "https://docs.mobazha.org",
-  "reviewed": "2026-07-20",
+  "reviewed": "2026-07-19",
   "runtime_authority": "connected backend version and advertised effective capabilities",
   "public_knowledge_authority": "the canonical page on docs.mobazha.org",
   "implementation_authority": "versioned code, generated contracts, conformance tests, and tagged release evidence",
@@ -103,7 +103,7 @@
         "source": "docs-curation",
         "label": "Product demo catalog"
       },
-      "reviewed": "2026-07-20",
+      "reviewed": "2026-07-19",
       "page_type": "hub",
       "outcome": "See the complete customer journeys that make a storefront, a recommendation, or a purchase work.",
       "estimated_time": "5 minutes",
@@ -5135,7 +5135,7 @@
         "source": "https://github.com/mobazha",
         "label": "Mobazha public repositories and reviewed demo provenance"
       },
-      "reviewed": "2026-07-20",
+      "reviewed": "2026-07-19",
       "page_type": "video",
       "outcome": "Elena's store completes the same physical order from verified ETH payment through shipping and buyer confirmation.",
       "estimated_time": "2 minutes",

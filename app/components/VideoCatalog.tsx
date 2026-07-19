@@ -2,10 +2,12 @@
 import Link from "next/link";
 import { formatVideoDuration, type PublicVideo } from "@/app/lib/videos";
 
-export function VideoCard({ video }: { video: PublicVideo }) {
-  const thumb = video.media.cover;
+type CatalogVariant = "default" | "featured";
+
+export function VideoCard({ video, variant = "default" }: { video: PublicVideo; variant?: CatalogVariant }) {
+  const thumb = video.media.poster;
   return (
-    <Link className="video-card" href={`/demos/${video.slug}`}>
+    <Link className={`video-card${variant === "featured" ? " video-card-featured" : ""}`} href={`/demos/${video.slug}`}>
       <span className="video-card-media">
         <img
           alt=""
@@ -18,20 +20,19 @@ export function VideoCard({ video }: { video: PublicVideo }) {
         <span className="video-duration">{formatVideoDuration(video.durationSeconds)}</span>
       </span>
       <span className="video-card-body">
-        <span className="video-card-eyebrow">
-          <b>{video.primaryPersona} journey</b>
-          <span>Watch demo</span>
-        </span>
         <strong>{video.title}</strong>
-        <span>{video.summary}</span>
-        <small>See the full journey <i aria-hidden="true">→</i></small>
+        <span>{video.outcome}</span>
       </span>
     </Link>
   );
 }
 
-export function VideoCatalog({ items }: { items: PublicVideo[] }) {
-  return <div className="video-grid">{items.map((video) => <VideoCard key={video.id} video={video} />)}</div>;
+export function VideoCatalog({ items, variant = "default" }: { items: PublicVideo[]; variant?: CatalogVariant }) {
+  return (
+    <div className={`video-grid${variant === "featured" ? " video-grid-featured" : ""}`}>
+      {items.map((video) => <VideoCard key={video.id} video={video} variant={variant} />)}
+    </div>
+  );
 }
 
 export function ContextualVideo({ video }: { video: PublicVideo }) {

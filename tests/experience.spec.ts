@@ -110,14 +110,16 @@ test("desktop search supports keyboard selection and navigation", async ({ page 
 test("video discovery stays lightweight and searchable", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop-chromium", "one desktop project covers catalog behavior");
   await page.goto("/demos");
-  await expect(page.locator(".video-card")).toHaveCount(5);
+  await expect(page.locator(".video-card")).toHaveCount(6);
   await expect(page.locator("video")).toHaveCount(0);
-  await expect(page.locator(".video-section").getByRole("heading", { name: "Watch Mobazha at work" })).toBeVisible();
+  await expect(page.locator(".video-section").getByRole("heading", { name: "Three journeys that matter" })).toBeVisible();
+  await expect(page.locator(".video-section").getByRole("heading", { name: "When you need the next detail" })).toBeVisible();
 
   await page.goto("/demos/operator-commission-flywheel");
   await expect(page.locator("video[preload='metadata']")).toHaveCount(1);
   await expect(page.locator(".video-chapters li")).toHaveCount(7);
   await expect(page.locator(".video-transcript")).toContainText("Read the full story");
+  await expect(page.locator(".video-detail-cta .doc-primary-action")).toBeVisible();
 
   const indexReady = page.waitForResponse((response) => response.url().endsWith("/docs-index.json") && response.ok());
   await page.goto("/buy");

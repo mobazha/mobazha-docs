@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { DocsShell } from "@/app/components/DocsShell";
 import { VideoCatalog } from "@/app/components/VideoCatalog";
-import { videos } from "@/app/lib/videos";
+import { featuredVideos, videos } from "@/app/lib/videos";
 
 export const metadata: Metadata = {
   title: "Product demos",
@@ -10,11 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/demos" },
 };
 
-const paths = [
-  ["Build your storefront", "Make your store feel like your brand, select what you want to sell, then publish with confidence.", "/demos/storefront-makeover"],
-  ["Grow through recommendations", "Give partners one link to share and let every attributed sale reward the right people.", "/demos/seller-affiliate-loop"],
-  ["Buy with confidence", "See one purchase move from a clear offer to payment, delivery, and protection in the same place.", "/demos/protected-digital-sale"],
-] as const;
+const moreVideos = videos.filter((video) => !video.featured);
 
 export default function DemosPage() {
   return (
@@ -22,45 +18,35 @@ export default function DemosPage() {
       <div className="doc-page doc-page-hub video-hub">
         <div className="doc-breadcrumb"><Link href="/">Docs</Link><span>/</span><span>Product demos</span></div>
 
-        <section className="demo-hero" aria-labelledby="demos-title">
-          <div>
-            <span>Mobazha in action</span>
-            <h1 id="demos-title">See commerce move from first click to completed sale.</h1>
-            <p>These journeys show what people come to Mobazha to do: make a storefront their own, turn recommendations into sales, and buy with confidence.</p>
-            <div className="demo-hero-actions">
-              <Link className="doc-primary-action" href="/sell">Start selling <span aria-hidden="true">→</span></Link>
-              <a href="#journeys">Explore the journeys <span aria-hidden="true">↓</span></a>
+        <header className="demo-hero demo-hero-compact" aria-labelledby="demos-title">
+          <h1 id="demos-title">See Mobazha complete a real sale.</h1>
+          <p>Watch how a storefront, a recommendation, or a purchase comes together — then try the same flow yourself.</p>
+          <a className="doc-primary-action" href="#featured">Watch a demo <span aria-hidden="true">↓</span></a>
+        </header>
+
+        <section className="video-section" id="featured" aria-labelledby="featured-title">
+          <div className="video-section-heading">
+            <div>
+              <span>Start here</span>
+              <h2 id="featured-title">Three journeys that matter</h2>
             </div>
+            <p>Pick the story closest to what you need next. Each card opens the full video.</p>
           </div>
-          <ul aria-label="What the demos show">
-            <li><b>Your store</b><span>Own the experience your buyers see.</span></li>
-            <li><b>Your growth</b><span>Make every recommendation count.</span></li>
-            <li><b>Your order</b><span>Keep payment, delivery, and support together.</span></li>
-          </ul>
+          <VideoCatalog items={featuredVideos} variant="featured" />
         </section>
 
-        <section className="video-section demo-start" aria-labelledby="choose-outcome">
-          <div className="video-section-heading">
-            <div><span>Start with your goal</span><h2 id="choose-outcome">What do you want to make happen?</h2></div>
-            <p>Choose the story that feels most like the next thing you need to do.</p>
-          </div>
-          <div className="video-path-grid">
-            {paths.map(([title, description, href]) => (
-              <Link className="video-path-card" href={href} key={title}>
-                <strong>{title}<span aria-hidden="true">→</span></strong>
-                <span>{description}</span>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="video-section" id="journeys" aria-labelledby="journeys-title">
-          <div className="video-section-heading">
-            <div><span>See the full journey</span><h2 id="journeys-title">Watch Mobazha at work</h2></div>
-            <p>Each video follows a complete story, at the pace the story needs. Open the one that answers your question.</p>
-          </div>
-          <VideoCatalog items={videos} />
-        </section>
+        {moreVideos.length > 0 && (
+          <section className="video-section" id="more" aria-labelledby="more-title">
+            <div className="video-section-heading">
+              <div>
+                <span>More scenes</span>
+                <h2 id="more-title">When you need the next detail</h2>
+              </div>
+              <p>Store branding and protected-order recovery, without competing with the main paths.</p>
+            </div>
+            <VideoCatalog items={moreVideos} />
+          </section>
+        )}
       </div>
     </DocsShell>
   );
