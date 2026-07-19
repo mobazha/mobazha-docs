@@ -35,6 +35,20 @@
 - recording manifests own build and capture provenance.
 - R2 through `media.mobazha.org` owns approved media bytes only.
 
+## Website derivative (2026-07-19)
+
+- 0001 cut45-v9 (36.2s) is live on R2 and embedded on `mobazha.org`
+  (`DemoHighlight` below the hero).
+- Identity-first open ("Your community. Your market."); payoff poster is the
+  earnings attribution frame. Docs gallery still serves the v9 master.
+- Media:
+  - https://media.mobazha.org/demos/0001-operator-commission-flywheel/operator-commission-flywheel-cut45-v9.mp4
+  - https://media.mobazha.org/demos/0001-operator-commission-flywheel/cut45-cover-v9.jpg
+  - https://media.mobazha.org/demos/0001-operator-commission-flywheel/cut45-poster-v9.jpg
+- Hosting manifest: `docs/demos/0001-operator-commission-flywheel/demo.md`.
+- VIDEO-3A/3B remain the next story work; do not let website cut work collide
+  with those harnesses.
+
 ## Current work
 
 VIDEO-2 is implemented in the working tree. Its vertical slice:
