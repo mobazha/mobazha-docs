@@ -119,7 +119,7 @@ test("video discovery stays lightweight and searchable", async ({ page }, testIn
   await expect(page.locator("video[preload='metadata']")).toHaveCount(1);
   await expect(page.locator(".video-chapters li")).toHaveCount(7);
   await expect(page.locator(".video-transcript")).toContainText("Read the full story");
-  await expect(page.locator(".video-detail-cta .doc-primary-action")).toBeVisible();
+  await expect(page.locator(".video-detail-header .doc-primary-action")).toBeVisible();
 
   const indexReady = page.waitForResponse((response) => response.url().endsWith("/docs-index.json") && response.ok());
   await page.goto("/buy");

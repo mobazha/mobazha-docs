@@ -47,16 +47,15 @@ export default async function VideoDetailPage({ params }: PageProps) {
           </div>
           <h1>{video.title}</h1>
           <p>{video.outcome}</p>
+          <div className="doc-hero-actions">
+            <Link className="doc-primary-action" href={video.primaryAction.href}>
+              {video.primaryAction.label}
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </header>
 
         <InteractiveVideo video={video} />
-
-        <div className="video-detail-cta">
-          <Link className="doc-primary-action" href={video.primaryAction.href}>
-            {video.primaryAction.label}
-            <span aria-hidden="true">→</span>
-          </Link>
-        </div>
 
         <details className="video-transcript">
           <summary>Read the full story</summary>
