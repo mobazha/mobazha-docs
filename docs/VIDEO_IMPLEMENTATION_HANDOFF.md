@@ -3,7 +3,7 @@
 - Updated: 2026-07-19
 - Repository: `mobazha/mobazha-docs`
 - Branch: `main`
-- Previous deployment checkpoint: `303e4dd`
+- Current deployed implementation baseline: `218dd65`
 - Planning authority: [`VIDEO_INFORMATION_ARCHITECTURE_PLAN.md`](./VIDEO_INFORMATION_ARCHITECTURE_PLAN.md)
 
 ## Completed
@@ -25,6 +25,10 @@
 - Production verification after `303e4dd` confirmed contextual video cards on
   `/sell`, `/sell/store-setup`, `/sell/marketplace-participation`, and
   `/project/community-commerce`, plus the caption-capable public video schema.
+- Production verification after `218dd65` confirmed registry records 0005 and
+  0006, both canonical detail routes, the 0005 featured decision, the 0006
+  catalog placement, and contextual cards on `/buy/checkout` and
+  `/buy/cancel-refund-dispute`.
 
 ## Repository authority split
 
@@ -159,3 +163,4 @@ npm run check:external-links
 - `199fb65` — 0003 v8 and 0004 v2 focused films.
 - `ec0b367` — stabilized search and full-page accessibility checks.
 - `303e4dd` — VIDEO-2 contextual integration and VIDEO-3 evidence audit.
+- `218dd65` — VIDEO-3 protected sale and dispute publication.
