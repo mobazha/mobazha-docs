@@ -2754,69 +2754,45 @@
     "authorityLabel": "Product demos",
     "authorityUrl": "https://docs.mobazha.org/demos",
     "evidenceLabel": "Product demo catalog",
-    "reviewed": "2026-07-19",
+    "reviewed": "2026-07-20",
     "pageType": "hub",
     "outcome": "See the complete customer journeys that make a storefront, a recommendation, or a purchase work.",
     "estimatedTime": "5 minutes",
     "journey": "start",
     "primaryAction": {
-      "label": "Start selling",
-      "href": "/sell"
+      "label": "Watch a community sale",
+      "href": "/demos/operator-commission-flywheel"
     },
     "language": "en",
     "sections": [
       {
-        "heading": "What do you want to make happen?",
+        "heading": "Three journeys that matter",
         "blocks": [
-          {
-            "type": "links",
-            "items": [
-              {
-                "label": "Build your storefront",
-                "href": "/demos/storefront-makeover",
-                "description": "Make your store feel like your brand, select what you want to sell, then publish with confidence."
-              },
-              {
-                "label": "Grow through recommendations",
-                "href": "/demos/seller-affiliate-loop",
-                "description": "Give partners one link to share and let every attributed sale reward the right people."
-              },
-              {
-                "label": "Buy with confidence",
-                "href": "/demos/protected-digital-sale",
-                "description": "See one purchase move from a clear offer to payment, delivery, and protection in the same place."
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "heading": "Watch Mobazha at work",
-        "blocks": [
-          {
-            "type": "paragraph",
-            "text": "Each video follows a complete story. Open the one that answers your question, then follow the moments that matter to you."
-          },
           {
             "type": "links",
             "items": [
               {
                 "label": "Build a community storefront, then complete a sale",
                 "href": "/demos/operator-commission-flywheel",
-                "description": "Bring sellers into a shared market, help buyers discover the right products, and see one sale come together."
+                "description": "Bring sellers into a shared market, help buyers discover products, and see one sale come together."
               },
               {
                 "label": "Share products and earn when they sell",
                 "href": "/demos/seller-affiliate-loop",
-                "description": "A seller offers a commission, a promoter shares one link, and the attributed order rewards the promoter."
+                "description": "Offer a commission, share one link, and reward the attributed order."
               },
               {
                 "label": "Pay once and unlock the real digital product",
                 "href": "/demos/protected-digital-sale",
-                "description": "A buyer reviews one fixed protected offer, pays its exact monitored total, and opens the delivered artifact from the same verified order."
+                "description": "Review a protected offer, pay once, and open the delivered product from the same order."
               }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "heading": "More scenes",
+        "blocks": [
           {
             "type": "links",
             "items": [
@@ -2826,9 +2802,9 @@
                 "description": "Apply a layout, choose a palette, curate products, then publish without code."
               },
               {
-                "label": "Pay once and unlock your digital product",
-                "href": "/demos/protected-digital-sale",
-                "description": "Review a clear offer, pay, and open what you bought from the same order."
+                "label": "Take your first crypto-paid physical order",
+                "href": "/demos/seller-first-crypto-order",
+                "description": "Open a ready storefront, accept a verified ETH payment, and ship the same order to completion."
               },
               {
                 "label": "Resolve a protected order fairly",
@@ -10803,6 +10779,20 @@
           {
             "type": "paragraph",
             "text": "Do not collapse **payment readiness**, **funding observation**, **verification**, and **settlement** into one status. They answer different operational questions."
+          }
+        ]
+      },
+      {
+        "heading": "See a first crypto-paid physical order",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "text": "The following walkthrough shows one seller taking a verified ETH payment for a physical good on a dressed SaaS storefront, then shipping and completing the same order. The readiness checklist below remains the operating guide."
+          },
+          {
+            "type": "video-ref",
+            "videoId": "0007",
+            "mode": "poster"
           }
         ]
       },

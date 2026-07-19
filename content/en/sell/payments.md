@@ -42,6 +42,14 @@ The order detail resolves a Payment Session from `/v1/orders/{orderID}/payment-s
 
 Do not collapse **payment readiness**, **funding observation**, **verification**, and **settlement** into one status. They answer different operational questions.
 
+## See a first crypto-paid physical order
+
+The following walkthrough shows one seller taking a verified ETH payment for a
+physical good on a dressed SaaS storefront, then shipping and completing the
+same order. The readiness checklist below remains the operating guide.
+
+!video-ref[0007]
+
 ## Payment readiness steps
 
 1. Open **Admin → Payments** (`/admin/payments`) and inspect receiving accounts, providers, guest-checkout policy, and methods reported ready by the backend.

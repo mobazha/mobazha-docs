@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "reviewed": "2026-07-19",
+  "reviewed": "2026-07-20",
   "videos": [
     {
       "id": "0001",
@@ -473,6 +473,99 @@
         }
       ],
       "transcript": "Jordan opens a dispute on a funded, arbitration-protected ETH order and submits one claim with photo evidence. The payment remains in the Safe during review. The moderator opens the same case record, reviews the product, amount, claim, evidence, buyer, and seller, then records a 60 percent buyer and 40 percent seller ruling with a written reason. Jordan sees the ruling and exact buyer, seller, and moderator amounts before accepting the payout. Mobazha deploys the Safe when needed, submits the dispute-release transaction on local Anvil, and completes the order. The final audit trail retains the evidence, 60/40 ruling, on-chain release hash, and Dispute resolved state."
+    },
+    {
+      "id": "0007",
+      "slug": "seller-first-crypto-order",
+      "title": "Take your first crypto-paid physical order",
+      "summary": "Open a ready storefront, accept a verified ETH payment for a physical good, and ship the same order to completion.",
+      "kind": "story",
+      "status": "Preview",
+      "language": "en",
+      "primaryPersona": "Seller",
+      "personas": [
+        "Seller",
+        "Buyer"
+      ],
+      "goals": [
+        "Sell",
+        "Pay",
+        "Deliver"
+      ],
+      "productPromises": [
+        "Own",
+        "Trade"
+      ],
+      "durationSeconds": 103,
+      "featured": false,
+      "outcome": "Elena's store completes the same physical order from verified ETH payment through shipping and buyer confirmation.",
+      "disclosure": "Recorded with test accounts and test ETH on the Mobazha local E2E network (Anvil). Not Outpost, not Monero, and not a public-network payment.",
+      "media": {
+        "video": {
+          "url": "https://media.mobazha.org/demos/0007-seller-first-crypto-order/seller-first-crypto-order-demo-v1.mp4",
+          "sha256": "ea1c51304c8ff67c5537270f07f8c0a51fd6140394786526ce90e6ad8486ee0f"
+        },
+        "cover": {
+          "url": "https://media.mobazha.org/demos/0007-seller-first-crypto-order/cover-v1.jpg",
+          "sha256": "cc98c26773091fd58786a3080657d844af4f5e3e2e3cf57a561c1db0cfb65ffe",
+          "width": 1920,
+          "height": 1080
+        },
+        "poster": {
+          "url": "https://media.mobazha.org/demos/0007-seller-first-crypto-order/poster-v1.jpg",
+          "sha256": "a82c25dbd2304581818270c765c76c211fd42d2c4e451c2f2acd916851a49d36",
+          "width": 1920,
+          "height": 1080
+        }
+      },
+      "recordedAt": "2026-07-19",
+      "reviewed": "2026-07-20",
+      "appliesTo": "Mobazha SaaS E2E Preview build recorded on 2026-07-19",
+      "evidence": {
+        "label": "Mobazha public repositories and reviewed demo provenance",
+        "url": "https://github.com/mobazha"
+      },
+      "primaryAction": {
+        "label": "Prepare payment methods",
+        "href": "/sell/payments"
+      },
+      "relatedDocs": [
+        "/sell/payments",
+        "/sell/listings",
+        "/sell/orders",
+        "/buy/checkout"
+      ],
+      "chapters": [
+        {
+          "title": "Open a ready storefront",
+          "description": "Elena's Forge Signal Supply store and featured physical products are live before the first buyer arrives."
+        },
+        {
+          "title": "Publish one physical offer",
+          "description": "The Titan Leather Hardware Wallet Case shows price, shipping promise, and buyer-visible product detail."
+        },
+        {
+          "title": "Place the first order",
+          "description": "Jordan checks out with item, address, and shipping on the same screen."
+        },
+        {
+          "title": "Pay the verified total",
+          "description": "A unique Safe address watches the exact ETH amount on the local test network."
+        },
+        {
+          "title": "Ship with tracking",
+          "description": "Elena accepts the paid order, adds carrier and tracking, and opens the packing slip."
+        },
+        {
+          "title": "Confirm receipt",
+          "description": "Jordan confirms delivery so the same order reaches its completed state."
+        },
+        {
+          "title": "First crypto order done",
+          "description": "Elena's seller order view holds the completed, paid, and fulfilled outcome."
+        }
+      ],
+      "transcript": "Elena opens a dressed SaaS storefront for Forge Signal Supply with a live physical listing. Jordan places one order for the Titan Leather Hardware Wallet Case and pays the exact ETH total to a unique watched address on the local test network. Payment verifies automatically. Elena accepts the paid order, ships with UPS tracking, and reviews the packing slip. Jordan confirms receipt. The same order ends completed on Elena's seller view. Recorded on the Mobazha local test network."
     }
   ],
   "$schema": "https://docs.mobazha.org/videos.schema.json"

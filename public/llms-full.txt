@@ -171,29 +171,22 @@ Agent golden questions
 - Audience: buyers, sellers, promoters
 - Knowledge authority: https://docs.mobazha.org/demos
 - Evidence: docs-curation
-- Reviewed: 2026-07-19
+- Reviewed: 2026-07-20
 - Language: en
 - Summary: See how sellers, promoters, and buyers use Mobazha to build stores, grow sales, and complete purchases.
 
-What do you want to make happen?
-Build your storefront
-Make your store feel like your brand, select what you want to sell, then publish with confidence.
-Grow through recommendations
-Give partners one link to share and let every attributed sale reward the right people.
-Buy with confidence
-See one purchase move from a clear offer to payment, delivery, and protection in the same place.
-Watch Mobazha at work
-Each video follows a complete story. Open the one that answers your question, then follow the moments that matter to you.
+Three journeys that matter
 Build a community storefront, then complete a sale
-Bring sellers into a shared market, help buyers discover the right products, and see one sale come together.
+Bring sellers into a shared market, help buyers discover products, and see one sale come together.
 Share products and earn when they sell
-A seller offers a commission, a promoter shares one link, and the attributed order rewards the promoter.
+Offer a commission, share one link, and reward the attributed order.
 Pay once and unlock the real digital product
-A buyer reviews one fixed protected offer, pays its exact monitored total, and opens the delivered artifact from the same verified order.
+Review a protected offer, pay once, and open the delivered product from the same order.
+More scenes
 Turn your store into your brand
 Apply a layout, choose a palette, curate products, then publish without code.
-Pay once and unlock your digital product
-Review a clear offer, pay, and open what you bought from the same order.
+Take your first crypto-paid physical order
+Open a ready storefront, accept a verified ETH payment, and ship the same order to completion.
 Resolve a protected order fairly
 See how a disputed order stays protected while everyone works toward a clear resolution.
 
@@ -1479,6 +1472,9 @@ Which refresh, cancel, confirm, refund, or completion action is currently admitt
 `userActionRequest`
 Which explicit wallet or provider action still requires the user?
 Do not collapse **payment readiness**, **funding observation**, **verification**, and **settlement** into one status. They answer different operational questions.
+See a first crypto-paid physical order
+The following walkthrough shows one seller taking a verified ETH payment for a physical good on a dressed SaaS storefront, then shipping and completing the same order. The readiness checklist below remains the operating guide.
+Video 0007
 Payment readiness steps
 Open **Admin → Payments** (`/admin/payments`) and inspect receiving accounts, providers, guest-checkout policy, and methods reported ready by the backend.
 Select one method and complete only its documented setup requirements.
@@ -9338,6 +9334,17 @@ Jordan reviews one fixed protected offer containing the full price, digital laun
 - Reviewed: 2026-07-19
 
 Jordan opens a dispute on a funded, arbitration-protected ETH order and submits one claim with photo evidence. The payment remains in the Safe during review. The moderator opens the same case record, reviews the product, amount, claim, evidence, buyer, and seller, then records a 60 percent buyer and 40 percent seller ruling with a written reason. Jordan sees the ruling and exact buyer, seller, and moderator amounts before accepting the payout. Mobazha deploys the Safe when needed, submits the dispute-release transaction on local Anvil, and completes the order. The final audit trail retains the evidence, 60/40 ruling, on-chain release hash, and Dispute resolved state.
+
+### Take your first crypto-paid physical order
+- URL: /demos/seller-first-crypto-order
+- Status: Preview
+- Kind: story
+- Audience: Seller, Buyer
+- Outcome: Elena's store completes the same physical order from verified ETH payment through shipping and buyer confirmation.
+- Applies to: Mobazha SaaS E2E Preview build recorded on 2026-07-19
+- Reviewed: 2026-07-20
+
+Elena opens a dressed SaaS storefront for Forge Signal Supply with a live physical listing. Jordan places one order for the Titan Leather Hardware Wallet Case and pays the exact ETH total to a unique watched address on the local test network. Payment verifies automatically. Elena accepts the paid order, ships with UPS tracking, and reviews the packing slip. Jordan confirms receipt. The same order ends completed on Elena's seller view. Recorded on the Mobazha local test network.
 
 Use /docs-index.json for structured metadata, /videos.json for governed video
 metadata and provenance, /sources.json for the public-source
