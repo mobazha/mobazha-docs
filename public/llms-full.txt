@@ -165,6 +165,7 @@ Agent golden questions
 - Status: draft
 - Page type: hub
 - Outcome: See the complete customer journeys that make a storefront, a recommendation, or a purchase work.
+- Estimated time: 5 minutes
 - Journey: start
 - Applies to: Design direction; not a shipped guarantee
 - Audience: buyers, sellers, promoters
