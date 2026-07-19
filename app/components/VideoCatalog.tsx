@@ -3,15 +3,17 @@ import Link from "next/link";
 import { formatVideoDuration, type PublicVideo, videoKindLabel } from "@/app/lib/videos";
 
 export function VideoCard({ video }: { video: PublicVideo }) {
+  // Catalog cards use the payoff poster so the hub leads with evidence, not the pain hook.
+  const thumb = video.media.poster;
   return (
     <Link className="video-card" href={`/demos/${video.slug}`}>
       <span className="video-card-media">
         <img
           alt=""
-          height={video.media.cover.height}
+          height={thumb.height}
           loading="lazy"
-          src={video.media.cover.url}
-          width={video.media.cover.width}
+          src={thumb.url}
+          width={thumb.width}
         />
         <span className="video-duration">{formatVideoDuration(video.durationSeconds)}</span>
       </span>
@@ -33,16 +35,17 @@ export function VideoCatalog({ items }: { items: PublicVideo[] }) {
 }
 
 export function ContextualVideo({ video }: { video: PublicVideo }) {
+  const thumb = video.media.poster;
   return (
     <aside className="contextual-video" aria-label={`Related video: ${video.title}`}>
       <Link href={`/demos/${video.slug}`}>
         <span className="contextual-video-media">
           <img
             alt=""
-            height={video.media.cover.height}
+            height={thumb.height}
             loading="lazy"
-            src={video.media.cover.url}
-            width={video.media.cover.width}
+            src={thumb.url}
+            width={thumb.width}
           />
           <span className="video-duration">{formatVideoDuration(video.durationSeconds)}</span>
         </span>

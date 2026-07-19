@@ -53,6 +53,13 @@
 - VIDEO-3A/3B are now independent full masters; the website derivative remains
   0001 cut45-v9 unless a later marketing review deliberately replaces it.
 
+## Catalog thumbnails (2026-07-19)
+
+- Docs `VideoCard` and `ContextualVideo` render `media.poster` (payoff), not
+  `media.cover` (pain/hook). Detail players already used poster.
+- Homepage short cut on `mobazha.org` uses the identity `cut45-cover-v9.jpg`
+  as its default video poster.
+
 ## Captions (2026-07-19)
 
 - English WebVTT tracks are published for 0001 v9, 0003 v8, and 0004 v2.
