@@ -164,55 +164,37 @@ Agent golden questions
 - URL: /demos
 - Status: draft
 - Page type: hub
-- Outcome: See focused Mobazha journeys performed by the real product before you commit to running one yourself.
-- Estimated time: 5 minutes
+- Outcome: See the complete customer journeys that make a storefront, a recommendation, or a purchase work.
 - Journey: start
 - Applies to: Design direction; not a shipped guarantee
-- Audience: buyers, sellers, operators, evaluators
+- Audience: buyers, sellers, promoters
 - Knowledge authority: https://docs.mobazha.org/demos
-- Evidence: https://github.com/mobazha
+- Evidence: docs-curation
 - Reviewed: 2026-07-19
 - Language: en
-- Summary: Short, honest walkthroughs of real Mobazha flows — recorded from scripted runs against a running stack, narrated by on-screen chapter cards.
+- Summary: See how sellers, promoters, and buyers use Mobazha to build stores, grow sales, and complete purchases.
 
-Choose by outcome
-Sell and shape a storefront
-Apply a branded design, review a private preview, and publish the same buyer-facing store.
-Buy safely
-Follow a protected purchase from its fixed promise and exact payment through automatic digital access, or continue to dispute recovery.
-Grow and operate
-Follow a community market from seller recruitment to one attributed completed order.
-Run and build
-Install the stack, inspect its boundaries, or continue to the public API contract.
-Featured end-to-end journeys
-The catalog page keeps playback lightweight. Open a journey for its video, visible outcome, chapter guide, transcript, applicability, evidence, and related product guidance.
-From community market to one completed order
-An operator recruits a seller, shares a curated market, and traces one real test-network order to an estimated commission.
-Recommend, link, and get paid on-chain
-A seller offers a cut, a promoter shares one link, and the attributed order produces a confirmed payout.
+What do you want to make happen?
+Build your storefront
+Make your store feel like your brand, select what you want to sell, then publish with confidence.
+Grow through recommendations
+Give partners one link to share and let every attributed sale reward the right people.
+Buy with confidence
+See one purchase move from a clear offer to payment, delivery, and protection in the same place.
+Watch Mobazha at work
+Each video follows a complete story. Open the one that answers your question, then follow the moments that matter to you.
+Build a community storefront, then complete a sale
+Bring sellers into a shared market, help buyers discover the right products, and see one sale come together.
+Share products and earn when they sell
+A seller offers a commission, a promoter shares one link, and the attributed order rewards the promoter.
 Pay once and unlock the real digital product
 A buyer reviews one fixed protected offer, pays its exact monitored total, and opens the delivered artifact from the same verified order.
-Sell and shape a storefront
-Turn a default store into your brand
-Apply a complete layout, choose a readable palette, curate products, preview privately, and publish without code.
-Buy safely
-Pay once and unlock the real digital product
-61 seconds; buyer and seller; exact Safe payment and deterministic delivery on the Mobazha local test network.
-Resolve one protected order from evidence to payout
-67 seconds; buyer, seller, and moderator; evidence, a 60/40 ruling, and the final Safe release stay in one audit trail on local Anvil.
-Grow and operate
-**Operator Commission Flywheel** — create and publish a curated market, recruit a seller, bring a buyer through a real test-network payment, let the seller fulfill the order and the buyer complete it, then trace that same order back to its share link and estimated operator commission. **Preview** — Phase 1 records attribution and commission estimates; it does not credit a withdrawable operator balance yet.
-**Seller Affiliate Loop** — sellers set a storefront-wide cut once, promoters share one short link, and commissions settle on-chain when order funds release. **Preview** — the short-link share surface is in rollout.
-Watch the operator commission journey
-112 seconds; operator, seller, and buyer; recorded on the Mobazha local test network.
-Watch the seller affiliate journey
-69 seconds; seller, promoter, and buyer; recorded on the Mobazha local test network.
-How these demos are made
-Each demo is a scripted, re-recordable run of the real product — no mockups, no spliced outcomes — and keeps its provenance: what was recorded, when, and against which build. Where payments appear, the recording runs on the Mobazha test network and says so on screen. Demos of capability not yet in a general release carry a **Preview** label until it ships.
-Video registry
-Machine-readable titles, roles, outcomes, media digests, review dates, and provenance.
-Video registry schema
-The validation contract used by the documentation build.
+Turn your store into your brand
+Apply a layout, choose a palette, curate products, then publish without code.
+Pay once and unlock your digital product
+Review a clear offer, pay, and open what you bought from the same order.
+Resolve a protected order fairly
+See how a disputed order stays protected while everyone works toward a clear resolution.
 
 ### How Mobazha fits together
 - URL: /project/product-map
@@ -9301,29 +9283,29 @@ English canonical page
 
 ## Product videos
 
-### From community market to one completed order
+### Build a community storefront, then complete a sale
 - URL: /demos/operator-commission-flywheel
 - Status: Preview
 - Kind: story
 - Audience: Operator, Seller, Buyer
-- Outcome: The same completed order appears in the operator's attribution view with a 0.0020 ETH estimated commission at 10%.
+- Outcome: The completed sale comes back to the community market that made it possible, so its contribution is clear to everyone involved.
 - Applies to: Mobazha local E2E test-network build recorded on 2026-07-18
 - Reviewed: 2026-07-19
 
 Maya creates a curated community market, sets a ten percent operator commission, and publishes it. One seller reviews those terms and joins through the invitation link. Maya curates the seller's product and shares the market. A buyer opens that storefront, creates one order, and pays 0.012 ETH to its monitored address on the local test network. The seller accepts and ships the same order. The buyer confirms receipt. Maya then sees that completed order attributed to the community share link with a 0.0020 ETH estimated commission. The estimate is not a withdrawable balance.
 
-### Recommend, link, and get paid on-chain
+### Share products and earn when they sell
 - URL: /demos/seller-affiliate-loop
 - Status: Preview
 - Kind: story
 - Audience: Promoter, Seller, Buyer
-- Outcome: Kai's earnings page shows a Paid commission row and the on-chain transaction hash for the attributed order.
+- Outcome: Kai can see that the sale came through his link and that his commission is ready, without running a separate affiliate workflow.
 - Applies to: Mobazha local E2E test-network build recorded on 2026-07-18
 - Reviewed: 2026-07-19
 
 Alice offers promoters five percent on every attributed storefront order. Kai sees the concrete return and creates one wallet-bound short link. Jordan follows it, shops normally, and pays the resulting ETH order on the local test network. That payment submits the seller and promoter settlement legs without a second affiliate workflow. Kai's earnings page shows the exact commission as Paid with its basis, buyer, confirmation time, payout address, and on-chain transaction hash. The short-link share surface remains labeled Preview while rollout completes.
 
-### Turn a default store into your brand
+### Turn your store into your brand
 - URL: /demos/storefront-makeover
 - Status: Preview
 - Kind: task
@@ -9334,23 +9316,23 @@ Alice offers promoters five percent on every attributed storefront order. Kai se
 
 Alice starts with a live storefront whose credible cold-storage products still look generic. In the built-in design studio, she applies one complete layout and a warm leather-and-steel palette, selects three coherent products, writes the store story, and sets one buyer call to action. She creates a private preview link and reviews the exact draft as a logged-out visitor. After publishing, a matched product-row shot shows the same branded design without the Preview banner. The storefront studio additions remain labeled Preview while hosted rollout completes.
 
-### Pay once and unlock the real digital product
+### Pay once and unlock your digital product
 - URL: /demos/protected-digital-sale
 - Status: Preview
 - Kind: story
 - Audience: Buyer, Seller
-- Outcome: The paid order exposes the real launch-kit link, and the buyer opens an Access verified artifact while payment and buyer protection remain attached to that order.
+- Outcome: The paid order gives the buyer instant access to the digital product while payment, delivery, and buyer protection stay together.
 - Applies to: Mobazha local E2E Preview build recorded on 2026-07-19
 - Reviewed: 2026-07-19
 
 Jordan reviews one fixed protected offer containing the full price, digital launch-kit deliverables, buyer protection, and delivery terms. Accepting it creates one order and a unique Safe address for the exact 0.025 ETH payment. Mobazha observes the local test-network transaction and advances that same order. The order then exposes the real delivery link without a seller approval step or a separate email. Jordan opens the deterministic launch kit and sees Access verified. Returning to the order keeps the verified payment, granted access, and buyer protection together.
 
-### Resolve one protected order from evidence to payout
+### Resolve a protected order fairly
 - URL: /demos/escrow-dispute-resolution
 - Status: Preview
 - Kind: story
 - Audience: Buyer, Seller, Moderator
-- Outcome: The completed order shows the buyer evidence, 60/40 ruling, three payout amounts, on-chain release hash, and Dispute resolved state in one audit trail.
+- Outcome: Everyone can see the decision, the agreed outcome, and that the protected order has reached a clear resolution.
 - Applies to: Mobazha local E2E Preview build recorded on 2026-07-19
 - Reviewed: 2026-07-19
 

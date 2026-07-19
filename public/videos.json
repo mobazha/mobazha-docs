@@ -5,8 +5,8 @@
     {
       "id": "0001",
       "slug": "operator-commission-flywheel",
-      "title": "From community market to one completed order",
-      "summary": "Create and publish a curated market, recruit one seller, carry one real test-network order through payment and fulfillment, then trace it back to the operator's share link and estimated commission.",
+      "title": "Build a community storefront, then complete a sale",
+      "summary": "Bring sellers into a shared market, help buyers discover the right products, and follow one sale from storefront to completion.",
       "kind": "story",
       "status": "Preview",
       "language": "en",
@@ -27,7 +27,7 @@
       ],
       "durationSeconds": 112,
       "featured": true,
-      "outcome": "The same completed order appears in the operator's attribution view with a 0.0020 ETH estimated commission at 10%.",
+      "outcome": "The completed sale comes back to the community market that made it possible, so its contribution is clear to everyone involved.",
       "disclosure": "Recorded on the Mobazha local test network. The operator commission is an attributed estimate, not a withdrawable balance.",
       "media": {
         "video": {
@@ -74,30 +74,37 @@
       ],
       "chapters": [
         {
+          "startSeconds": 5,
           "title": "Create and publish the market",
           "description": "Maya creates a curated, invite-only market, sets the operator commission, and publishes a buyer-facing page before recruiting sellers."
         },
         {
+          "startSeconds": 24,
           "title": "Invite one seller",
           "description": "The seller opens the invitation, sees the commission terms, and joins the market in one step."
         },
         {
+          "startSeconds": 40,
           "title": "Curate and share",
           "description": "The operator features one coherent product and shares the branded community storefront."
         },
         {
-          "title": "Place and fund one real order",
-          "description": "A buyer purchases the featured product and funds the monitored address with 0.012 ETH on local Anvil."
+          "startSeconds": 64,
+          "title": "Complete one order",
+          "description": "A buyer chooses the featured product and completes the purchase from the community storefront."
         },
         {
+          "startSeconds": 82,
           "title": "Fulfill the same order",
           "description": "The seller receives the paid order, adds tracking, and marks it shipped."
         },
         {
+          "startSeconds": 92,
           "title": "Complete the order",
           "description": "The buyer confirms receipt and the order reaches its completed state."
         },
         {
+          "startSeconds": 100,
           "title": "Trace the operator outcome",
           "description": "The operator opens the attribution view and sees the same order, share source, rate, and estimated commission."
         }
@@ -107,8 +114,8 @@
     {
       "id": "0003",
       "slug": "seller-affiliate-loop",
-      "title": "Recommend, link, and get paid on-chain",
-      "summary": "A seller offers a storefront-wide commission, a promoter shares one short link, and a paid order produces a confirmed on-chain promoter commission.",
+      "title": "Share products and earn when they sell",
+      "summary": "A seller offers a commission, a promoter shares one link, and an attributed order rewards the promoter automatically.",
       "kind": "story",
       "status": "Preview",
       "language": "en",
@@ -129,7 +136,7 @@
       ],
       "durationSeconds": 69,
       "featured": true,
-      "outcome": "Kai's earnings page shows a Paid commission row and the on-chain transaction hash for the attributed order.",
+      "outcome": "Kai can see that the sale came through his link and that his commission is ready, without running a separate affiliate workflow.",
       "disclosure": "Recorded on the Mobazha local test network. The short-link and QR share surface is labeled Preview while it completes rollout.",
       "media": {
         "video": {
@@ -176,23 +183,28 @@
       ],
       "chapters": [
         {
+          "startSeconds": 5,
           "title": "Offer promoters a cut",
           "description": "Alice sets a five percent storefront-wide commission and a seven-day attribution window."
         },
         {
+          "startSeconds": 14,
           "title": "Use one link everywhere",
           "description": "Kai sees the five percent return, creates one wallet-bound short link, and uses it for the sale."
         },
         {
+          "startSeconds": 24,
           "title": "Shop through the referral",
           "description": "A buyer follows the link, keeps the referral, and continues through the normal store and checkout experience."
         },
         {
+          "startSeconds": 40,
           "title": "Settle automatically",
-          "description": "The real ETH payment submits the seller and promoter settlement legs without a second affiliate workflow."
+          "description": "One completed purchase rewards the seller and promoter without a separate affiliate workflow."
         },
         {
-          "title": "Verify the on-chain payout",
+          "startSeconds": 52,
+          "title": "See the reward arrive",
           "description": "Kai sees the Paid commission row, paid-out rollup, and transaction hash."
         }
       ],
@@ -201,7 +213,7 @@
     {
       "id": "0004",
       "slug": "storefront-makeover",
-      "title": "Turn a default store into your brand",
+      "title": "Turn your store into your brand",
       "summary": "Apply a storefront template, choose brand colors and featured products, share a private preview, and publish the same buyer-facing design without code.",
       "kind": "task",
       "status": "Preview",
@@ -266,22 +278,27 @@
       ],
       "chapters": [
         {
+          "startSeconds": 5,
           "title": "See the template problem",
           "description": "Alice starts from a credible product row that still looks like a generic template."
         },
         {
+          "startSeconds": 14,
           "title": "Set the brand foundation",
           "description": "One layout and warm palette establish the hero, featured products, story, and trust sections."
         },
         {
+          "startSeconds": 26,
           "title": "Curate products and story",
           "description": "She selects three coherent cold-storage products, writes the field-testing story, and sets one buyer call to action."
         },
         {
+          "startSeconds": 38,
           "title": "Review a private preview",
           "description": "A logged-out buyer opens the seven-day preview link and sees the exact draft with a Preview banner."
         },
         {
+          "startSeconds": 50,
           "title": "Publish the same design",
           "description": "Alice publishes and verifies the native-density public storefront without the Preview banner."
         }
@@ -291,8 +308,8 @@
     {
       "id": "0005",
       "slug": "protected-digital-sale",
-      "title": "Pay once and unlock the real digital product",
-      "summary": "Review one fixed protected offer, pay its exact monitored ETH total, and open the delivered artifact from the same verified order without waiting for a delivery email.",
+      "title": "Pay once and unlock your digital product",
+      "summary": "Review a clear offer, pay once, and open the digital product from the same order without waiting for a delivery email.",
       "kind": "story",
       "status": "Preview",
       "language": "en",
@@ -312,7 +329,7 @@
       ],
       "durationSeconds": 61,
       "featured": true,
-      "outcome": "The paid order exposes the real launch-kit link, and the buyer opens an Access verified artifact while payment and buyer protection remain attached to that order.",
+      "outcome": "The paid order gives the buyer instant access to the digital product while payment, delivery, and buyer protection stay together.",
       "disclosure": "Recorded on the Mobazha local test network. The delivered launch kit is deterministic test content served by the local E2E delivery endpoint, not a production customer file.",
       "media": {
         "video": {
@@ -375,8 +392,8 @@
     {
       "id": "0006",
       "slug": "escrow-dispute-resolution",
-      "title": "Resolve one protected order from evidence to payout",
-      "summary": "Keep a disputed ETH payment in one Safe, review the buyer's evidence, record a neutral 60/40 ruling, and release the same protected balance on-chain.",
+      "title": "Resolve a protected order fairly",
+      "summary": "Keep a disputed order protected, review what happened, agree on a fair ruling, and close the order with clarity.",
       "kind": "story",
       "status": "Preview",
       "language": "en",
@@ -397,7 +414,7 @@
       ],
       "durationSeconds": 67,
       "featured": false,
-      "outcome": "The completed order shows the buyer evidence, 60/40 ruling, three payout amounts, on-chain release hash, and Dispute resolved state in one audit trail.",
+      "outcome": "Everyone can see the decision, the agreed outcome, and that the protected order has reached a clear resolution.",
       "disclosure": "Recorded with test accounts and test ETH on the Mobazha local E2E network. The Safe deployment, dispute release, and payout transaction use local Anvil; no production funds are involved.",
       "media": {
         "video": {

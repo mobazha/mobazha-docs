@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DocsShell } from "@/app/components/DocsShell";
+import { InteractiveVideo } from "@/app/components/InteractiveVideo";
 import { docsBySlug } from "@/app/lib/docs";
-import { formatVideoDuration, videoKindLabel, videos, videosBySlug } from "@/app/lib/videos";
+import { formatVideoDuration, videos, videosBySlug } from "@/app/lib/videos";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -36,76 +37,36 @@ export default async function VideoDetailPage({ params }: PageProps) {
   return (
     <DocsShell activePath={`/demos/${video.slug}`}>
       <article className="doc-page video-detail">
-        <div className="doc-breadcrumb"><Link href="/">Docs</Link><span>/</span><Link href="/demos">demos</Link><span>/</span><span>{video.id}</span></div>
+        <div className="doc-breadcrumb"><Link href="/">Docs</Link><span>/</span><Link href="/demos">Product demos</Link><span>/</span><span>{video.title}</span></div>
         <header className="video-detail-header">
           <div className="doc-title-context">
-            <span className={`doc-status status-${video.status.toLowerCase()}`}>{video.status}</span>
-            <span>{videoKindLabel(video.kind)} · {formatVideoDuration(video.durationSeconds)}</span>
+            <span>{video.primaryPersona} journey</span>
+            <span>{formatVideoDuration(video.durationSeconds)} video</span>
           </div>
           <h1>{video.title}</h1>
           <p>{video.summary}</p>
           <div className="doc-hero-actions">
             <Link className="doc-primary-action" href={video.primaryAction.href}>{video.primaryAction.label}<span aria-hidden="true">→</span></Link>
-            <span className="doc-time"><b>Primary viewer</b>{video.primaryPersona}</span>
+            <span className="doc-time"><b>Made for</b>{video.personas.join(" · ")}</span>
           </div>
         </header>
 
-        <figure className="video-player">
-          <video
-            aria-label={`${video.title} product demo`}
-            controls
-            playsInline
-            poster={video.media.poster.url}
-            preload="metadata"
-            src={video.media.video.url}
-          >
-            {video.media.captions?.map((caption) => (
-              <track
-                default={caption.default}
-                key={`${caption.language}-${caption.kind}`}
-                kind={caption.kind}
-                label={caption.label}
-                src={caption.url}
-                srcLang={caption.language}
-              />
-            ))}
-          </video>
-          <figcaption>{video.disclosure}</figcaption>
-        </figure>
-
         <section className="video-outcome" aria-labelledby="outcome">
-          <span>Visible result</span>
-          <h2 id="outcome">Outcome</h2>
+          <span>The result</span>
+          <h2 id="outcome">What this makes possible</h2>
           <p>{video.outcome}</p>
         </section>
 
-        <dl className="video-metadata">
-          <div><dt>Duration</dt><dd>{formatVideoDuration(video.durationSeconds)}</dd></div>
-          <div><dt>Personas</dt><dd>{video.personas.join(" · ")}</dd></div>
-          <div><dt>Recorded</dt><dd>{video.recordedAt}</dd></div>
-          <div><dt>Applies to</dt><dd>{video.appliesTo}</dd></div>
-          <div><dt>Evidence</dt><dd><a href={video.evidence.url}>{video.evidence.label} ↗</a></dd></div>
-          <div><dt>Registry</dt><dd><a href="/videos.json">Video {video.id} metadata ↗</a></dd></div>
-        </dl>
-
-        <section className="video-detail-section" aria-labelledby="chapters">
-          <span>What you will see</span>
-          <h2 id="chapters">Chapters</h2>
-          <ol className="video-chapters">
-            {video.chapters.map((chapter, index) => (
-              <li key={chapter.title}><b>{String(index + 1).padStart(2, "0")}</b><div><strong>{chapter.title}</strong><p>{chapter.description}</p></div></li>
-            ))}
-          </ol>
-        </section>
+        <InteractiveVideo video={video} />
 
         <details className="video-transcript">
-          <summary>Read transcript</summary>
+          <summary>Read the full story</summary>
           <p>{video.transcript}</p>
         </details>
 
         <section className="video-detail-section" aria-labelledby="related-guidance">
-          <span>Continue with the product</span>
-          <h2 id="related-guidance">Related guidance</h2>
+          <span>Make it yours</span>
+          <h2 id="related-guidance">Take the next step</h2>
           <div className="video-related-grid">
             {video.relatedDocs.map((path) => {
               const doc = docsBySlug.get(path.slice(1));
@@ -116,7 +77,6 @@ export default async function VideoDetailPage({ params }: PageProps) {
 
         <footer className="video-detail-footer">
           <Link href="/demos">← Browse all product demos</Link>
-          <span>Reviewed {video.reviewed}</span>
         </footer>
       </article>
     </DocsShell>

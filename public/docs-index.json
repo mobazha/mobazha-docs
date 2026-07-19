@@ -86,13 +86,12 @@
       "path": "/demos",
       "canonical_url": "https://docs.mobazha.org/demos",
       "title": "Product demos",
-      "summary": "Short, honest walkthroughs of real Mobazha flows — recorded from scripted runs against a running stack, narrated by on-screen chapter cards.",
+      "summary": "See how sellers, promoters, and buyers use Mobazha to build stores, grow sales, and complete purchases.",
       "status": "draft",
       "audiences": [
         "buyers",
         "sellers",
-        "operators",
-        "evaluators"
+        "promoters"
       ],
       "applies_to": "Design direction; not a shipped guarantee",
       "knowledge_authority": {
@@ -101,20 +100,19 @@
         "label": "Product demos"
       },
       "evidence": {
-        "source": "https://github.com/mobazha",
-        "label": "Demo provenance records maintained with each recording"
+        "source": "docs-curation",
+        "label": "Product demo catalog"
       },
       "reviewed": "2026-07-19",
       "page_type": "hub",
-      "outcome": "See focused Mobazha journeys performed by the real product before you commit to running one yourself.",
-      "estimated_time": "5 minutes",
+      "outcome": "See the complete customer journeys that make a storefront, a recommendation, or a purchase work.",
       "journey": "start",
       "primary_action": {
         "label": "Start selling",
         "href": "/sell"
       },
       "language": "en",
-      "search_text": "Choose by outcome Sell and shape a storefront Apply a branded design, review a private preview, and publish the same buyer facing store. Buy safely Follow a protected purchase from its fixed promise and exact payment through automatic digital access, or continue to dispute recovery. Grow and operate Follow a community market from seller recruitment to one attributed completed order. Run and build Install the stack, inspect its boundaries, or continue to the public API contract. Featured end to end journeys The catalog page keeps playback lightweight. Open a journey for its video, visible outcome, chapter guide, transcript, applicability, evidence, and related product guidance. From community market to one completed order An operator recruits a seller, shares a curated market, and traces one real test network order to an estimated commission. Recommend, link, and get paid on chain A seller offers a cut, a promoter shares one link, and the attributed order produces a confirmed payout. Pay once and unlock the real digital product A buyer reviews one fixed protected offer, pays its exact monitored total, and opens the delivered artifact from the same verified order. Sell and shape a storefront Turn a default store into your brand Apply a complete layout, choose a readable palette, curate products, preview privately, and publish without code. Buy safely Pay once and unlock the real digital product 61 seconds; buyer and seller; exact Safe payment and deterministic delivery on the Mobazha local test network. Resolve one protected order from evidence to payout 67 seconds; buyer, seller, and moderator; evidence, a 60/40 ruling, and the final Safe release stay in one audit trail on local Anvil. Grow and operate Operator Commission Flywheel — create and publish a curated market, recruit a seller, bring a buyer through a real test network payment, let the seller fulfill the order and the buyer complete it, then trace that same order back to its share link and estimated operator commission. Preview — Phase 1 records attribution and commission estimates; it does not credit a withdrawable operator balance yet. Seller Affiliate Loop — sellers set a storefront wide cut once, promoters share one short link, and commissions settle on chain when order funds release. Preview — the short link share surface is in rollout. Watch the operator commission journey 112 seconds; operator, seller, and buyer; recorded on the Mobazha local test network. Watch the seller affiliate journey 69 seconds; seller, promoter, and buyer; recorded on the Mobazha local test network. How these demos are made Each demo is a scripted, re recordable run of the real product — no mockups, no spliced outcomes — and keeps its provenance: what was recorded, when, and against which build. Where payments appear, the recording runs on the Mobazha test network and says so on screen. Demos of capability not yet in a general release carry a Preview label until it ships. Video registry Machine readable titles, roles, outcomes, media digests, review dates, and provenance. Video registry schema The validation contract used by the documentation build."
+      "search_text": "What do you want to make happen? Build your storefront Make your store feel like your brand, select what you want to sell, then publish with confidence. Grow through recommendations Give partners one link to share and let every attributed sale reward the right people. Buy with confidence See one purchase move from a clear offer to payment, delivery, and protection in the same place. Watch Mobazha at work Each video follows a complete story. Open the one that answers your question, then follow the moments that matter to you. Build a community storefront, then complete a sale Bring sellers into a shared market, help buyers discover the right products, and see one sale come together. Share products and earn when they sell A seller offers a commission, a promoter shares one link, and the attributed order rewards the promoter. Pay once and unlock the real digital product A buyer reviews one fixed protected offer, pays its exact monitored total, and opens the delivered artifact from the same verified order. Turn your store into your brand Apply a layout, choose a palette, curate products, then publish without code. Pay once and unlock your digital product Review a clear offer, pay, and open what you bought from the same order. Resolve a protected order fairly See how a disputed order stays protected while everyone works toward a clear resolution."
     },
     {
       "id": "project-product-map",
@@ -4951,8 +4949,8 @@
       "id": "video-0001",
       "path": "/demos/operator-commission-flywheel",
       "canonical_url": "https://docs.mobazha.org/demos/operator-commission-flywheel",
-      "title": "From community market to one completed order",
-      "summary": "Create and publish a curated market, recruit one seller, carry one real test-network order through payment and fulfillment, then trace it back to the operator's share link and estimated commission.",
+      "title": "Build a community storefront, then complete a sale",
+      "summary": "Bring sellers into a shared market, help buyers discover the right products, and follow one sale from storefront to completion.",
       "status": "preview",
       "audiences": [
         "operator",
@@ -4971,7 +4969,7 @@
       },
       "reviewed": "2026-07-19",
       "page_type": "video",
-      "outcome": "The same completed order appears in the operator's attribution view with a 0.0020 ETH estimated commission at 10%.",
+      "outcome": "The completed sale comes back to the community market that made it possible, so its contribution is clear to everyone involved.",
       "estimated_time": "2 minutes",
       "journey": "start",
       "primary_action": {
@@ -4979,14 +4977,14 @@
         "href": "/sell/marketplace-participation"
       },
       "language": "en",
-      "search_text": "From community market to one completed order Create and publish a curated market, recruit one seller, carry one real test-network order through payment and fulfillment, then trace it back to the operator's share link and estimated commission. The same completed order appears in the operator's attribution view with a 0.0020 ETH estimated commission at 10%. Recorded on the Mobazha local test network. The operator commission is an attributed estimate, not a withdrawable balance. Operator Operator Seller Buyer Operate Grow Buy Connect Trade Create and publish the market Maya creates a curated, invite-only market, sets the operator commission, and publishes a buyer-facing page before recruiting sellers. Invite one seller The seller opens the invitation, sees the commission terms, and joins the market in one step. Curate and share The operator features one coherent product and shares the branded community storefront. Place and fund one real order A buyer purchases the featured product and funds the monitored address with 0.012 ETH on local Anvil. Fulfill the same order The seller receives the paid order, adds tracking, and marks it shipped. Complete the order The buyer confirms receipt and the order reaches its completed state. Trace the operator outcome The operator opens the attribution view and sees the same order, share source, rate, and estimated commission. Maya creates a curated community market, sets a ten percent operator commission, and publishes it. One seller reviews those terms and joins through the invitation link. Maya curates the seller's product and shares the market. A buyer opens that storefront, creates one order, and pays 0.012 ETH to its monitored address on the local test network. The seller accepts and ships the same order. The buyer confirms receipt. Maya then sees that completed order attributed to the community share link with a 0.0020 ETH estimated commission. The estimate is not a withdrawable balance."
+      "search_text": "Build a community storefront, then complete a sale Bring sellers into a shared market, help buyers discover the right products, and follow one sale from storefront to completion. The completed sale comes back to the community market that made it possible, so its contribution is clear to everyone involved. Recorded on the Mobazha local test network. The operator commission is an attributed estimate, not a withdrawable balance. Operator Operator Seller Buyer Operate Grow Buy Connect Trade Create and publish the market Maya creates a curated, invite-only market, sets the operator commission, and publishes a buyer-facing page before recruiting sellers. Invite one seller The seller opens the invitation, sees the commission terms, and joins the market in one step. Curate and share The operator features one coherent product and shares the branded community storefront. Complete one order A buyer chooses the featured product and completes the purchase from the community storefront. Fulfill the same order The seller receives the paid order, adds tracking, and marks it shipped. Complete the order The buyer confirms receipt and the order reaches its completed state. Trace the operator outcome The operator opens the attribution view and sees the same order, share source, rate, and estimated commission. Maya creates a curated community market, sets a ten percent operator commission, and publishes it. One seller reviews those terms and joins through the invitation link. Maya curates the seller's product and shares the market. A buyer opens that storefront, creates one order, and pays 0.012 ETH to its monitored address on the local test network. The seller accepts and ships the same order. The buyer confirms receipt. Maya then sees that completed order attributed to the community share link with a 0.0020 ETH estimated commission. The estimate is not a withdrawable balance."
     },
     {
       "id": "video-0003",
       "path": "/demos/seller-affiliate-loop",
       "canonical_url": "https://docs.mobazha.org/demos/seller-affiliate-loop",
-      "title": "Recommend, link, and get paid on-chain",
-      "summary": "A seller offers a storefront-wide commission, a promoter shares one short link, and a paid order produces a confirmed on-chain promoter commission.",
+      "title": "Share products and earn when they sell",
+      "summary": "A seller offers a commission, a promoter shares one link, and an attributed order rewards the promoter automatically.",
       "status": "preview",
       "audiences": [
         "promoter",
@@ -5005,7 +5003,7 @@
       },
       "reviewed": "2026-07-19",
       "page_type": "video",
-      "outcome": "Kai's earnings page shows a Paid commission row and the on-chain transaction hash for the attributed order.",
+      "outcome": "Kai can see that the sale came through his link and that his commission is ready, without running a separate affiliate workflow.",
       "estimated_time": "2 minutes",
       "journey": "start",
       "primary_action": {
@@ -5013,13 +5011,13 @@
         "href": "/sell"
       },
       "language": "en",
-      "search_text": "Recommend, link, and get paid on-chain A seller offers a storefront-wide commission, a promoter shares one short link, and a paid order produces a confirmed on-chain promoter commission. Kai's earnings page shows a Paid commission row and the on-chain transaction hash for the attributed order. Recorded on the Mobazha local test network. The short-link and QR share surface is labeled Preview while it completes rollout. Promoter Promoter Seller Buyer Grow Sell Pay Connect Trade Offer promoters a cut Alice sets a five percent storefront-wide commission and a seven-day attribution window. Use one link everywhere Kai sees the five percent return, creates one wallet-bound short link, and uses it for the sale. Shop through the referral A buyer follows the link, keeps the referral, and continues through the normal store and checkout experience. Settle automatically The real ETH payment submits the seller and promoter settlement legs without a second affiliate workflow. Verify the on-chain payout Kai sees the Paid commission row, paid-out rollup, and transaction hash. Alice offers promoters five percent on every attributed storefront order. Kai sees the concrete return and creates one wallet-bound short link. Jordan follows it, shops normally, and pays the resulting ETH order on the local test network. That payment submits the seller and promoter settlement legs without a second affiliate workflow. Kai's earnings page shows the exact commission as Paid with its basis, buyer, confirmation time, payout address, and on-chain transaction hash. The short-link share surface remains labeled Preview while rollout completes."
+      "search_text": "Share products and earn when they sell A seller offers a commission, a promoter shares one link, and an attributed order rewards the promoter automatically. Kai can see that the sale came through his link and that his commission is ready, without running a separate affiliate workflow. Recorded on the Mobazha local test network. The short-link and QR share surface is labeled Preview while it completes rollout. Promoter Promoter Seller Buyer Grow Sell Pay Connect Trade Offer promoters a cut Alice sets a five percent storefront-wide commission and a seven-day attribution window. Use one link everywhere Kai sees the five percent return, creates one wallet-bound short link, and uses it for the sale. Shop through the referral A buyer follows the link, keeps the referral, and continues through the normal store and checkout experience. Settle automatically One completed purchase rewards the seller and promoter without a separate affiliate workflow. See the reward arrive Kai sees the Paid commission row, paid-out rollup, and transaction hash. Alice offers promoters five percent on every attributed storefront order. Kai sees the concrete return and creates one wallet-bound short link. Jordan follows it, shops normally, and pays the resulting ETH order on the local test network. That payment submits the seller and promoter settlement legs without a second affiliate workflow. Kai's earnings page shows the exact commission as Paid with its basis, buyer, confirmation time, payout address, and on-chain transaction hash. The short-link share surface remains labeled Preview while rollout completes."
     },
     {
       "id": "video-0004",
       "path": "/demos/storefront-makeover",
       "canonical_url": "https://docs.mobazha.org/demos/storefront-makeover",
-      "title": "Turn a default store into your brand",
+      "title": "Turn your store into your brand",
       "summary": "Apply a storefront template, choose brand colors and featured products, share a private preview, and publish the same buyer-facing design without code.",
       "status": "preview",
       "audiences": [
@@ -5046,14 +5044,14 @@
         "href": "/sell/store-setup"
       },
       "language": "en",
-      "search_text": "Turn a default store into your brand Apply a storefront template, choose brand colors and featured products, share a private preview, and publish the same buyer-facing design without code. Alice's public storefront shows the same branded palette, featured products, story, and call to action that she reviewed through the private preview. The storefront studio additions are labeled Preview while they complete rollout to the hosted SaaS. Seller Seller Buyer Sell Own See the template problem Alice starts from a credible product row that still looks like a generic template. Set the brand foundation One layout and warm palette establish the hero, featured products, story, and trust sections. Curate products and story She selects three coherent cold-storage products, writes the field-testing story, and sets one buyer call to action. Review a private preview A logged-out buyer opens the seven-day preview link and sees the exact draft with a Preview banner. Publish the same design Alice publishes and verifies the native-density public storefront without the Preview banner. Alice starts with a live storefront whose credible cold-storage products still look generic. In the built-in design studio, she applies one complete layout and a warm leather-and-steel palette, selects three coherent products, writes the store story, and sets one buyer call to action. She creates a private preview link and reviews the exact draft as a logged-out visitor. After publishing, a matched product-row shot shows the same branded design without the Preview banner. The storefront studio additions remain labeled Preview while hosted rollout completes."
+      "search_text": "Turn your store into your brand Apply a storefront template, choose brand colors and featured products, share a private preview, and publish the same buyer-facing design without code. Alice's public storefront shows the same branded palette, featured products, story, and call to action that she reviewed through the private preview. The storefront studio additions are labeled Preview while they complete rollout to the hosted SaaS. Seller Seller Buyer Sell Own See the template problem Alice starts from a credible product row that still looks like a generic template. Set the brand foundation One layout and warm palette establish the hero, featured products, story, and trust sections. Curate products and story She selects three coherent cold-storage products, writes the field-testing story, and sets one buyer call to action. Review a private preview A logged-out buyer opens the seven-day preview link and sees the exact draft with a Preview banner. Publish the same design Alice publishes and verifies the native-density public storefront without the Preview banner. Alice starts with a live storefront whose credible cold-storage products still look generic. In the built-in design studio, she applies one complete layout and a warm leather-and-steel palette, selects three coherent products, writes the store story, and sets one buyer call to action. She creates a private preview link and reviews the exact draft as a logged-out visitor. After publishing, a matched product-row shot shows the same branded design without the Preview banner. The storefront studio additions remain labeled Preview while hosted rollout completes."
     },
     {
       "id": "video-0005",
       "path": "/demos/protected-digital-sale",
       "canonical_url": "https://docs.mobazha.org/demos/protected-digital-sale",
-      "title": "Pay once and unlock the real digital product",
-      "summary": "Review one fixed protected offer, pay its exact monitored ETH total, and open the delivered artifact from the same verified order without waiting for a delivery email.",
+      "title": "Pay once and unlock your digital product",
+      "summary": "Review a clear offer, pay once, and open the digital product from the same order without waiting for a delivery email.",
       "status": "preview",
       "audiences": [
         "buyer",
@@ -5071,7 +5069,7 @@
       },
       "reviewed": "2026-07-19",
       "page_type": "video",
-      "outcome": "The paid order exposes the real launch-kit link, and the buyer opens an Access verified artifact while payment and buyer protection remain attached to that order.",
+      "outcome": "The paid order gives the buyer instant access to the digital product while payment, delivery, and buyer protection stay together.",
       "estimated_time": "2 minutes",
       "journey": "start",
       "primary_action": {
@@ -5079,14 +5077,14 @@
         "href": "/buy/checkout"
       },
       "language": "en",
-      "search_text": "Pay once and unlock the real digital product Review one fixed protected offer, pay its exact monitored ETH total, and open the delivered artifact from the same verified order without waiting for a delivery email. The paid order exposes the real launch-kit link, and the buyer opens an Access verified artifact while payment and buyer protection remain attached to that order. Recorded on the Mobazha local test network. The delivered launch kit is deterministic test content served by the local E2E delivery endpoint, not a production customer file. Buyer Buyer Seller Buy Pay Deliver Trade Connect Review the exact promise Jordan sees the price, launch-kit deliverables, protection, and delivery terms in one fixed offer. Pay the monitored total The order creates a unique Safe address and watches the exact 0.025 ETH payment on local Anvil. Verify payment automatically The same order advances only after the chain payment is observed. Open what you bought Verified payment grants the real launch-kit link, which opens an Access verified artifact instead of a placeholder. Keep protection and access together The payoff keeps payment verification, automatic delivery, and buyer protection on one order. Jordan reviews one fixed protected offer containing the full price, digital launch-kit deliverables, buyer protection, and delivery terms. Accepting it creates one order and a unique Safe address for the exact 0.025 ETH payment. Mobazha observes the local test-network transaction and advances that same order. The order then exposes the real delivery link without a seller approval step or a separate email. Jordan opens the deterministic launch kit and sees Access verified. Returning to the order keeps the verified payment, granted access, and buyer protection together."
+      "search_text": "Pay once and unlock your digital product Review a clear offer, pay once, and open the digital product from the same order without waiting for a delivery email. The paid order gives the buyer instant access to the digital product while payment, delivery, and buyer protection stay together. Recorded on the Mobazha local test network. The delivered launch kit is deterministic test content served by the local E2E delivery endpoint, not a production customer file. Buyer Buyer Seller Buy Pay Deliver Trade Connect Review the exact promise Jordan sees the price, launch-kit deliverables, protection, and delivery terms in one fixed offer. Pay the monitored total The order creates a unique Safe address and watches the exact 0.025 ETH payment on local Anvil. Verify payment automatically The same order advances only after the chain payment is observed. Open what you bought Verified payment grants the real launch-kit link, which opens an Access verified artifact instead of a placeholder. Keep protection and access together The payoff keeps payment verification, automatic delivery, and buyer protection on one order. Jordan reviews one fixed protected offer containing the full price, digital launch-kit deliverables, buyer protection, and delivery terms. Accepting it creates one order and a unique Safe address for the exact 0.025 ETH payment. Mobazha observes the local test-network transaction and advances that same order. The order then exposes the real delivery link without a seller approval step or a separate email. Jordan opens the deterministic launch kit and sees Access verified. Returning to the order keeps the verified payment, granted access, and buyer protection together."
     },
     {
       "id": "video-0006",
       "path": "/demos/escrow-dispute-resolution",
       "canonical_url": "https://docs.mobazha.org/demos/escrow-dispute-resolution",
-      "title": "Resolve one protected order from evidence to payout",
-      "summary": "Keep a disputed ETH payment in one Safe, review the buyer's evidence, record a neutral 60/40 ruling, and release the same protected balance on-chain.",
+      "title": "Resolve a protected order fairly",
+      "summary": "Keep a disputed order protected, review what happened, agree on a fair ruling, and close the order with clarity.",
       "status": "preview",
       "audiences": [
         "buyer",
@@ -5105,7 +5103,7 @@
       },
       "reviewed": "2026-07-19",
       "page_type": "video",
-      "outcome": "The completed order shows the buyer evidence, 60/40 ruling, three payout amounts, on-chain release hash, and Dispute resolved state in one audit trail.",
+      "outcome": "Everyone can see the decision, the agreed outcome, and that the protected order has reached a clear resolution.",
       "estimated_time": "2 minutes",
       "journey": "start",
       "primary_action": {
@@ -5113,7 +5111,7 @@
         "href": "/buy/cancel-refund-dispute"
       },
       "language": "en",
-      "search_text": "Resolve one protected order from evidence to payout Keep a disputed ETH payment in one Safe, review the buyer's evidence, record a neutral 60/40 ruling, and release the same protected balance on-chain. The completed order shows the buyer evidence, 60/40 ruling, three payout amounts, on-chain release hash, and Dispute resolved state in one audit trail. Recorded with test accounts and test ETH on the Mobazha local E2E network. The Safe deployment, dispute release, and payout transaction use local Anvil; no production funds are involved. Buyer Buyer Seller Moderator Buy Recover Operate Trade Connect Open one evidence-backed case Jordan's claim and uploaded photo stay attached to the exact funded order. Keep funds protected The payment remains in the Safe while neither party can silently rewrite the order or take the full balance. Record a neutral ruling The moderator reviews the same case, assigns 60 percent to the buyer and 40 percent to the seller, and publishes the reason. Accept the protected payout The buyer verifies the three-way amount breakdown before authorizing the dispute release. Keep the full resolution trail The completed order retains the evidence, ruling, payout amounts, release hash, and resolved state. Jordan opens a dispute on a funded, arbitration-protected ETH order and submits one claim with photo evidence. The payment remains in the Safe during review. The moderator opens the same case record, reviews the product, amount, claim, evidence, buyer, and seller, then records a 60 percent buyer and 40 percent seller ruling with a written reason. Jordan sees the ruling and exact buyer, seller, and moderator amounts before accepting the payout. Mobazha deploys the Safe when needed, submits the dispute-release transaction on local Anvil, and completes the order. The final audit trail retains the evidence, 60/40 ruling, on-chain release hash, and Dispute resolved state."
+      "search_text": "Resolve a protected order fairly Keep a disputed order protected, review what happened, agree on a fair ruling, and close the order with clarity. Everyone can see the decision, the agreed outcome, and that the protected order has reached a clear resolution. Recorded with test accounts and test ETH on the Mobazha local E2E network. The Safe deployment, dispute release, and payout transaction use local Anvil; no production funds are involved. Buyer Buyer Seller Moderator Buy Recover Operate Trade Connect Open one evidence-backed case Jordan's claim and uploaded photo stay attached to the exact funded order. Keep funds protected The payment remains in the Safe while neither party can silently rewrite the order or take the full balance. Record a neutral ruling The moderator reviews the same case, assigns 60 percent to the buyer and 40 percent to the seller, and publishes the reason. Accept the protected payout The buyer verifies the three-way amount breakdown before authorizing the dispute release. Keep the full resolution trail The completed order retains the evidence, ruling, payout amounts, release hash, and resolved state. Jordan opens a dispute on a funded, arbitration-protected ETH order and submits one claim with photo evidence. The payment remains in the Safe during review. The moderator opens the same case record, reviews the product, amount, claim, evidence, buyer, and seller, then records a 60 percent buyer and 40 percent seller ruling with a written reason. Jordan sees the ruling and exact buyer, seller, and moderator amounts before accepting the payout. Mobazha deploys the Safe when needed, submits the dispute-release transaction on local Anvil, and completes the order. The final audit trail retains the evidence, 60/40 ruling, on-chain release hash, and Dispute resolved state."
     }
   ]
 }

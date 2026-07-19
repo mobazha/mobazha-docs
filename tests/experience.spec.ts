@@ -110,20 +110,20 @@ test("desktop search supports keyboard selection and navigation", async ({ page 
 test("video discovery stays lightweight and searchable", async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop-chromium", "one desktop project covers catalog behavior");
   await page.goto("/demos");
-  await expect(page.locator(".video-card")).toHaveCount(8);
+  await expect(page.locator(".video-card")).toHaveCount(5);
   await expect(page.locator("video")).toHaveCount(0);
-  await expect(page.locator(".video-section").getByRole("heading", { name: "Featured journeys" })).toBeVisible();
+  await expect(page.locator(".video-section").getByRole("heading", { name: "Watch Mobazha at work" })).toBeVisible();
 
   await page.goto("/demos/operator-commission-flywheel");
   await expect(page.locator("video[preload='metadata']")).toHaveCount(1);
   await expect(page.locator(".video-chapters li")).toHaveCount(7);
-  await expect(page.locator(".video-transcript")).toContainText("Read transcript");
+  await expect(page.locator(".video-transcript")).toContainText("Read the full story");
 
   const indexReady = page.waitForResponse((response) => response.url().endsWith("/docs-index.json") && response.ok());
   await page.goto("/buy");
   await indexReady;
   const search = page.getByRole("combobox", { name: "Search documentation" });
-  await search.fill("from community market");
+  await search.fill("community storefront");
   await expect(page.getByRole("option").first()).toHaveAttribute("href", "/demos/operator-commission-flywheel");
 });
 
@@ -141,7 +141,7 @@ test("contextual video references stay lightweight and canonical", async ({ page
     await page.goto(path);
     const reference = page.locator(`.contextual-video a[href="${href}"]`);
     await expect(reference).toHaveCount(1);
-    await expect(reference).toContainText("Open video, chapters, transcript, and evidence");
+    await expect(reference).toContainText("Watch the journey and see what happens next");
     await expect(page.locator("video")).toHaveCount(0);
   }
 });
