@@ -7,7 +7,7 @@ audiences:
   - Sellers
   - Promoters
 evidenceLabel: Product demo catalog
-reviewed: 2026-07-19
+reviewed: 2026-07-20
 pageType: hub
 outcome: See the complete customer journeys that make a storefront, a recommendation, or a purchase work.
 estimatedTime: 5 minutes
@@ -21,7 +21,7 @@ primaryAction:
 
 - [Build a community storefront, then complete a sale](/demos/operator-commission-flywheel) — Bring sellers into a shared market, help buyers discover products, and see one sale come together.
 - [Share products and earn when they sell](/demos/seller-affiliate-loop) — Offer a commission, share one link, and reward the attributed order.
-- [Pay once and unlock the real digital product](/demos/protected-digital-sale) — Review a protected offer, pay once, and open the delivered product from the same order.
+- [Lock one offer. Get paid. Unlock the file.](/demos/protected-digital-sale) — Create a protected Deal Link, take one payment, and open Access verified from the same order.
 
 ## More scenes
 

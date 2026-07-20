@@ -3,7 +3,7 @@
 > Canonical task-oriented documentation for people and agents using, operating, integrating, or evaluating Mobazha.
 
 Status: Beta knowledge surface. Draft pages are not shipped guarantees.
-Reviewed: 2026-07-19
+Reviewed: 2026-07-20
 Runtime authority: the connected backend's version and advertised effective capabilities.
 Public knowledge authority: the canonical page on docs.mobazha.org.
 Implementation evidence: the versioned sources linked from each page.

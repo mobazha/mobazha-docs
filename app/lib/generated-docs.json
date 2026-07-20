@@ -2754,7 +2754,7 @@
     "authorityLabel": "Product demos",
     "authorityUrl": "https://docs.mobazha.org/demos",
     "evidenceLabel": "Product demo catalog",
-    "reviewed": "2026-07-19",
+    "reviewed": "2026-07-20",
     "pageType": "hub",
     "outcome": "See the complete customer journeys that make a storefront, a recommendation, or a purchase work.",
     "estimatedTime": "5 minutes",
@@ -2782,9 +2782,9 @@
                 "description": "Offer a commission, share one link, and reward the attributed order."
               },
               {
-                "label": "Pay once and unlock the real digital product",
+                "label": "Lock one offer. Get paid. Unlock the file.",
                 "href": "/demos/protected-digital-sale",
-                "description": "Review a protected offer, pay once, and open the delivered product from the same order."
+                "description": "Create a protected Deal Link, take one payment, and open Access verified from the same order."
               }
             ]
           }

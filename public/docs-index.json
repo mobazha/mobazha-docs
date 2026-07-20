@@ -7,7 +7,7 @@
     "zh-CN"
   ],
   "canonical_base_url": "https://docs.mobazha.org",
-  "reviewed": "2026-07-19",
+  "reviewed": "2026-07-20",
   "runtime_authority": "connected backend version and advertised effective capabilities",
   "public_knowledge_authority": "the canonical page on docs.mobazha.org",
   "implementation_authority": "versioned code, generated contracts, conformance tests, and tagged release evidence",
@@ -103,7 +103,7 @@
         "source": "docs-curation",
         "label": "Product demo catalog"
       },
-      "reviewed": "2026-07-19",
+      "reviewed": "2026-07-20",
       "page_type": "hub",
       "outcome": "See the complete customer journeys that make a storefront, a recommendation, or a purchase work.",
       "estimated_time": "5 minutes",
@@ -113,7 +113,7 @@
         "href": "/demos/operator-commission-flywheel"
       },
       "language": "en",
-      "search_text": "Three journeys that matter Build a community storefront, then complete a sale Bring sellers into a shared market, help buyers discover products, and see one sale come together. Share products and earn when they sell Offer a commission, share one link, and reward the attributed order. Pay once and unlock the real digital product Review a protected offer, pay once, and open the delivered product from the same order. More scenes Turn your store into your brand Apply a layout, choose a palette, curate products, then publish without code. Take your first crypto paid physical order Open a ready storefront, accept a verified ETH payment, and ship the same order to completion. Resolve a protected order fairly See how a disputed order stays protected while everyone works toward a clear resolution."
+      "search_text": "Three journeys that matter Build a community storefront, then complete a sale Bring sellers into a shared market, help buyers discover products, and see one sale come together. Share products and earn when they sell Offer a commission, share one link, and reward the attributed order. Lock one offer. Get paid. Unlock the file. Create a protected Deal Link, take one payment, and open Access verified from the same order. More scenes Turn your store into your brand Apply a layout, choose a palette, curate products, then publish without code. Take your first crypto paid physical order Open a ready storefront, accept a verified ETH payment, and ship the same order to completion. Resolve a protected order fairly See how a disputed order stays protected while everyone works toward a clear resolution."
     },
     {
       "id": "project-product-map",
@@ -5051,14 +5051,14 @@
       "id": "video-0005",
       "path": "/demos/protected-digital-sale",
       "canonical_url": "https://docs.mobazha.org/demos/protected-digital-sale",
-      "title": "Pay once and unlock your digital product",
-      "summary": "Review a clear offer, pay once, and open the digital product from the same order without waiting for a delivery email.",
+      "title": "Lock one offer. Get paid. Unlock the file.",
+      "summary": "Create a protected Deal Link for a digital product, share the locked terms, take one ETH payment, and deliver Access verified from the same order.",
       "status": "preview",
       "audiences": [
-        "buyer",
-        "seller"
+        "seller",
+        "buyer"
       ],
-      "applies_to": "Mobazha local E2E Preview build recorded on 2026-07-19",
+      "applies_to": "Mobazha local E2E Preview build recorded on 2026-07-20",
       "knowledge_authority": {
         "kind": "public-knowledge",
         "url": "https://docs.mobazha.org/demos/protected-digital-sale",
@@ -5068,9 +5068,9 @@
         "source": "https://github.com/mobazha",
         "label": "Mobazha public repositories and reviewed demo provenance"
       },
-      "reviewed": "2026-07-19",
+      "reviewed": "2026-07-20",
       "page_type": "video",
-      "outcome": "The paid order gives the buyer instant access to the digital product while payment, delivery, and buyer protection stay together.",
+      "outcome": "Mira locks one Creator Launch Pack offer; Jordan pays 0.025 ETH once and opens Access verified without a separate delivery email.",
       "estimated_time": "2 minutes",
       "journey": "start",
       "primary_action": {
@@ -5078,7 +5078,7 @@
         "href": "/buy/checkout"
       },
       "language": "en",
-      "search_text": "Pay once and unlock your digital product Review a clear offer, pay once, and open the digital product from the same order without waiting for a delivery email. The paid order gives the buyer instant access to the digital product while payment, delivery, and buyer protection stay together. Recorded on the Mobazha local test network. The delivered launch kit is deterministic test content served by the local E2E delivery endpoint, not a production customer file. Buyer Buyer Seller Buy Pay Deliver Trade Connect Review the exact promise Jordan sees the price, launch-kit deliverables, protection, and delivery terms in one fixed offer. Pay the monitored total The order creates a unique Safe address and watches the exact 0.025 ETH payment on local Anvil. Verify payment automatically The same order advances only after the chain payment is observed. Open what you bought Verified payment grants the real launch-kit link, which opens an Access verified artifact instead of a placeholder. Keep protection and access together The payoff keeps payment verification, automatic delivery, and buyer protection on one order. Jordan reviews one fixed protected offer containing the full price, digital launch-kit deliverables, buyer protection, and delivery terms. Accepting it creates one order and a unique Safe address for the exact 0.025 ETH payment. Mobazha observes the local test-network transaction and advances that same order. The order then exposes the real delivery link without a seller approval step or a separate email. Jordan opens the deterministic launch kit and sees Access verified. Returning to the order keeps the verified payment, granted access, and buyer protection together."
+      "search_text": "Lock one offer. Get paid. Unlock the file. Create a protected Deal Link for a digital product, share the locked terms, take one ETH payment, and deliver Access verified from the same order. Mira locks one Creator Launch Pack offer; Jordan pays 0.025 ETH once and opens Access verified without a separate delivery email. Recorded on the Mobazha local test network. The delivered launch pack is deterministic test content served by the local E2E delivery endpoint, not a production customer file. Seller Seller Buyer Sell Pay Deliver Trade Connect Create a protected offer Mira picks Creator Launch Pack and locks price, deliverables, and protection into one Deal Link. Share the locked link The live link is ready to send — terms freeze at acceptance. Review the exact promise Jordan sees Northbound Studio, 0.025 ETH, deliverables, and protection on one page. Pay once The order watches the exact ETH payment on the local test network and advances without email chase. Open what you bought The launch pack opens with Access verified — real content, not a placeholder. Mira at Northbound Studio creates one protected Deal Link for Creator Launch Pack, locking price, deliverables, and buyer protection. She shares the live link. Jordan opens the same offer, reviews Northbound Studio and the 0.025 ETH total, and pays once to a unique monitored address on the local test network. The order advances and grants the real delivery link without a seller review step or a separate email. Jordan opens the deterministic launch pack and sees Access verified."
     },
     {
       "id": "video-0006",

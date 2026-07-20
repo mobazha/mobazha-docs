@@ -171,7 +171,7 @@ Agent golden questions
 - Audience: buyers, sellers, promoters
 - Knowledge authority: https://docs.mobazha.org/demos
 - Evidence: docs-curation
-- Reviewed: 2026-07-19
+- Reviewed: 2026-07-20
 - Language: en
 - Summary: See how sellers, promoters, and buyers use Mobazha to build stores, grow sales, and complete purchases.
 
@@ -180,8 +180,8 @@ Build a community storefront, then complete a sale
 Bring sellers into a shared market, help buyers discover products, and see one sale come together.
 Share products and earn when they sell
 Offer a commission, share one link, and reward the attributed order.
-Pay once and unlock the real digital product
-Review a protected offer, pay once, and open the delivered product from the same order.
+Lock one offer. Get paid. Unlock the file.
+Create a protected Deal Link, take one payment, and open Access verified from the same order.
 More scenes
 Turn your store into your brand
 Apply a layout, choose a palette, curate products, then publish without code.
@@ -9313,16 +9313,16 @@ Alice offers promoters five percent on every attributed storefront order. Kai se
 
 Alice starts with a live storefront whose credible cold-storage products still look generic. In the built-in design studio, she applies one complete layout and a warm leather-and-steel palette, selects three coherent products, writes the store story, and sets one buyer call to action. She creates a private preview link and reviews the exact draft as a logged-out visitor. After publishing, a matched product-row shot shows the same branded design without the Preview banner. The storefront studio additions remain labeled Preview while hosted rollout completes.
 
-### Pay once and unlock your digital product
+### Lock one offer. Get paid. Unlock the file.
 - URL: /demos/protected-digital-sale
 - Status: Preview
 - Kind: story
-- Audience: Buyer, Seller
-- Outcome: The paid order gives the buyer instant access to the digital product while payment, delivery, and buyer protection stay together.
-- Applies to: Mobazha local E2E Preview build recorded on 2026-07-19
-- Reviewed: 2026-07-19
+- Audience: Seller, Buyer
+- Outcome: Mira locks one Creator Launch Pack offer; Jordan pays 0.025 ETH once and opens Access verified without a separate delivery email.
+- Applies to: Mobazha local E2E Preview build recorded on 2026-07-20
+- Reviewed: 2026-07-20
 
-Jordan reviews one fixed protected offer containing the full price, digital launch-kit deliverables, buyer protection, and delivery terms. Accepting it creates one order and a unique Safe address for the exact 0.025 ETH payment. Mobazha observes the local test-network transaction and advances that same order. The order then exposes the real delivery link without a seller approval step or a separate email. Jordan opens the deterministic launch kit and sees Access verified. Returning to the order keeps the verified payment, granted access, and buyer protection together.
+Mira at Northbound Studio creates one protected Deal Link for Creator Launch Pack, locking price, deliverables, and buyer protection. She shares the live link. Jordan opens the same offer, reviews Northbound Studio and the 0.025 ETH total, and pays once to a unique monitored address on the local test network. The order advances and grants the real delivery link without a seller review step or a separate email. Jordan opens the deterministic launch pack and sees Access verified.
 
 ### Resolve a protected order fairly
 - URL: /demos/escrow-dispute-resolution
