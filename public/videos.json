@@ -327,24 +327,24 @@
         "Trade",
         "Connect"
       ],
-      "durationSeconds": 82,
+      "durationSeconds": 67,
       "featured": true,
       "outcome": "Mira locks one Creator Launch Pack offer; Jordan pays 0.025 ETH once and opens Access verified without a separate delivery email.",
       "disclosure": "Recorded on the Mobazha local test network. The delivered launch pack is deterministic test content served by the local E2E delivery endpoint, not a production customer file.",
       "media": {
         "video": {
-          "url": "https://media.mobazha.org/demos/0005-protected-digital-sale/protected-digital-sale-demo-v2.mp4",
-          "sha256": "bfb42bb93260d50f0b584fd953fb005934d32da116724a8a21754ae84ae514e4"
+          "url": "https://media.mobazha.org/demos/0005-protected-digital-sale/protected-digital-sale-demo-v3.mp4",
+          "sha256": "e9ea89a26fcf3e1eba5d4eaeee00a494ed7488096f343cfd0ad0329c055e2c2b"
         },
         "cover": {
-          "url": "https://media.mobazha.org/demos/0005-protected-digital-sale/cover-v2.jpg",
-          "sha256": "8f55ae2f69f5824b768bd0e3fd8cf1d872f2a5b4d36b1a45a50fbe65066e72aa",
+          "url": "https://media.mobazha.org/demos/0005-protected-digital-sale/cover-v3.jpg",
+          "sha256": "8630497a67f00201646f80312fd2d1972ecf3d3cbdf0ac83071df605ad564ede",
           "width": 1920,
           "height": 1080
         },
         "poster": {
-          "url": "https://media.mobazha.org/demos/0005-protected-digital-sale/poster-v2.jpg",
-          "sha256": "c1e80ad7d2142fa95041a6f88d5515d59a87ec9b170fdfc68cc6f9fa17e27ef8",
+          "url": "https://media.mobazha.org/demos/0005-protected-digital-sale/poster-v3.jpg",
+          "sha256": "a926e95486cb933c4cf56252e81ec5b5a649e3b57afbe6bf57c2a9591257bcc6",
           "width": 1920,
           "height": 1080
         }
