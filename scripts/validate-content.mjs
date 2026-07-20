@@ -64,7 +64,10 @@ try {
 }
 const videoSchema = read("content/videos.schema.json");
 const expectedFiles = renderPublication({ docs, navGroups, docApplicability, sources, sourceSchema, agentEvals, agentEvalSchema, visualEvidence, visualEvidenceSchema, videos, videoSchema });
-const videoPaths = new Set(videos.videos.map(videoPath));
+const videoPaths = new Set([
+  ...videos.videos.map((video) => videoPath(video, "en")),
+  ...videos.videos.map((video) => videoPath(video, "zh-CN")),
+]);
 const videosById = new Map(videos.videos.map((video) => [video.id, video]));
 const contextualVideoRefs = new Set();
 const localizedRouteByEnglishPath = new Map(

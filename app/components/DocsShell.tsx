@@ -6,6 +6,7 @@ import {
   sidebarNavGroupsForPath,
   translationPathFor,
 } from "@/app/lib/docs";
+import { demoTranslationPath } from "@/app/lib/video-locales";
 import { DocsSearch } from "@/app/components/DocsSearch";
 
 function isChinesePath(activePath?: string): boolean {
@@ -18,10 +19,12 @@ export function SiteHeader({ activePath }: { activePath?: string }) {
   const activeDoc = activePath && activePath !== "/" && activePath !== "/zh"
     ? docsBySlug.get(activePath.slice(1))
     : undefined;
-  const languagePath = activeDoc
-    ? translationPathFor(activeDoc) ?? (isChinese ? "/" : "/zh")
-    : activePath === "/api-reference" ? "/zh/build/api"
-    : isChinese ? "/" : "/zh";
+  const demoPath = demoTranslationPath(activePath);
+  const languagePath = demoPath
+    ?? (activeDoc
+      ? translationPathFor(activeDoc) ?? (isChinese ? "/" : "/zh")
+      : activePath === "/api-reference" ? "/zh/build/api"
+      : isChinese ? "/" : "/zh");
   const currentPath = activePath ?? (isChinese ? "/zh" : "/");
   const englishPath = isChinese ? languagePath : currentPath;
   const chinesePath = isChinese ? currentPath : languagePath;

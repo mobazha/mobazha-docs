@@ -9,6 +9,7 @@ import { DocsShell } from "@/app/components/DocsShell";
 import { PageToolbar } from "@/app/components/PageToolbar";
 import { ContextualVideo } from "@/app/components/VideoCatalog";
 import { activeNavGroupForPath, docs, docsBySlug, translationPathFor, type DocBlock } from "@/app/lib/docs";
+import { localizeVideo } from "@/app/lib/video-locales";
 import { videosById } from "@/app/lib/videos";
 
 type PageProps = { params: Promise<{ slug: string[] }> };
@@ -82,7 +83,9 @@ function DocumentBlock({ block, isChinese }: { block: DocBlock; isChinese: boole
   }
   if (block.type === "video-ref") {
     const video = videosById.get(block.videoId);
-    return video ? <ContextualVideo video={video} /> : null;
+    if (!video) return null;
+    const language = isChinese ? "zh-CN" : "en";
+    return <ContextualVideo language={language} video={localizeVideo(video, language)} />;
   }
   if (block.type === "links") {
     return (

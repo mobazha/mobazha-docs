@@ -5,6 +5,7 @@ const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 const digestPattern = /^[a-f0-9]{64}$/;
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const mediaPrefix = "https://media.mobazha.org/";
+const captionPrefixes = [mediaPrefix, "https://docs.mobazha.org/captions/"];
 const allowedKinds = new Set(["story", "task", "proof", "release"]);
 const allowedStatuses = new Set(["Current", "Beta", "Preview"]);
 const allowedLanguages = new Set(["en", "zh-CN"]);
@@ -51,7 +52,7 @@ export function validateVideoCatalog(catalog, { knownDocPaths } = {}) {
   }
 
   const ids = new Set();
-  const slugs = new Set();
+  const languageSlugs = new Set();
   let featuredCount = 0;
   for (const [index, video] of catalog.videos.entries()) {
     const label = `video[${index}]${video?.id ? ` ${video.id}` : ""}`;
@@ -61,8 +62,14 @@ export function validateVideoCatalog(catalog, { knownDocPaths } = {}) {
     }
     if (!/^\d{4}$/.test(video.id ?? "") || ids.has(video.id)) fail(`${label} has a duplicate or invalid id`);
     ids.add(video.id);
-    if (!slugPattern.test(video.slug ?? "") || slugs.has(video.slug)) fail(`${label} has a duplicate or invalid slug`);
-    slugs.add(video.slug);
+    const languageSlug = `${video.language ?? "en"}:${video.slug ?? ""}`;
+    if (!slugPattern.test(video.slug ?? "") || languageSlugs.has(languageSlug)) {
+      fail(`${label} has a duplicate or invalid slug`);
+    }
+    languageSlugs.add(languageSlug);
+    if (video.translationOf !== undefined) {
+      if (!/^\d{4}$/.test(video.translationOf)) fail(`${label} has an invalid translationOf`);
+    }
 
     for (const field of ["title", "summary", "outcome", "disclosure", "appliesTo", "transcript"]) {
       if (!isNonEmptyString(video[field])) fail(`${label} is missing ${field}`);
@@ -93,7 +100,9 @@ export function validateVideoCatalog(catalog, { knownDocPaths } = {}) {
         const captionKeys = new Set();
         for (const [captionIndex, caption] of video.media.captions.entries()) {
           const captionLabel = `${label} caption[${captionIndex}]`;
-          if (!caption?.url?.startsWith(mediaPrefix)) fail(`${captionLabel} must use ${mediaPrefix}`);
+          if (!captionPrefixes.some((prefix) => caption?.url?.startsWith(prefix))) {
+            fail(`${captionLabel} must use ${captionPrefixes.join(" or ")}`);
+          }
           if (!allowedLanguages.has(caption?.language)) fail(`${captionLabel} has an unsupported language`);
           if (!isNonEmptyString(caption?.label)) fail(`${captionLabel} is missing label`);
           if (!new Set(["captions", "subtitles"]).has(caption?.kind)) fail(`${captionLabel} has an unsupported kind`);
@@ -156,8 +165,47 @@ export function loadVideoCatalog(options = {}) {
   return catalog;
 }
 
-export function videoPath(video) {
-  return `/demos/${video.slug}`;
+export function videoPath(video, language = video.language ?? "en") {
+  return language === "zh-CN" ? `/zh/demos/${video.slug}` : `/demos/${video.slug}`;
+}
+
+export function loadVideoLocales() {
+  return JSON.parse(readFileSync(new URL("content/video-locales/zh-CN.json", root), "utf8"));
+}
+
+export function localizeVideoForPublication(video, language, locales = loadVideoLocales()) {
+  if (language !== "zh-CN") return video;
+  const copy = locales[video.id];
+  if (!copy) {
+    return {
+      ...video,
+      language: "zh-CN",
+      primaryAction: {
+        ...video.primaryAction,
+        href: video.primaryAction.href.startsWith("/zh")
+          ? video.primaryAction.href
+          : `/zh${video.primaryAction.href}`,
+      },
+      relatedDocs: video.relatedDocs.map((path) => (path.startsWith("/zh") ? path : `/zh${path}`)),
+    };
+  }
+  return {
+    ...video,
+    language: "zh-CN",
+    title: copy.title,
+    summary: copy.summary,
+    outcome: copy.outcome,
+    disclosure: copy.disclosure,
+    appliesTo: copy.appliesTo,
+    evidence: {
+      ...video.evidence,
+      label: copy.evidenceLabel,
+    },
+    primaryAction: copy.primaryAction,
+    relatedDocs: copy.relatedDocs,
+    chapters: copy.chapters,
+    transcript: copy.transcript,
+  };
 }
 
 export function videoSearchText(video) {

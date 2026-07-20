@@ -1,0 +1,276 @@
+{
+  "0001": {
+    "title": "搭建社群店面，再完成一笔成交",
+    "summary": "把卖家请进共享市场，帮助买家发现合适商品，并从店面一路跟完一笔成交。",
+    "outcome": "成交回到促成它的社群市场，贡献对各方都清晰可见。",
+    "disclosure": "录制于 Mobazha 本地测试网络。运营者佣金为归因估算，不是可提现余额。",
+    "appliesTo": "2026-07-18 录制的 Mobazha 本地 E2E 测试网络构建",
+    "evidenceLabel": "Mobazha 公开仓库与已审阅的演示出处",
+    "primaryAction": {
+      "label": "运营一个市场",
+      "href": "/zh/sell/marketplace-participation"
+    },
+    "relatedDocs": [
+      "/zh/sell/marketplace-participation",
+      "/zh/project/community-commerce",
+      "/zh/project/transaction-spine"
+    ],
+    "chapters": [
+      {
+        "startSeconds": 5,
+        "title": "创建并发布市场",
+        "description": "Maya 创建一个精选、仅邀约的市场，设定运营者佣金，并在招募卖家前发布买家可见页面。"
+      },
+      {
+        "startSeconds": 24,
+        "title": "邀请一位卖家",
+        "description": "卖家打开邀请，看到佣金条款，一步加入市场。"
+      },
+      {
+        "startSeconds": 40,
+        "title": "精选并分享",
+        "description": "运营者精选一件连贯商品，并分享带品牌的社群店面。"
+      },
+      {
+        "startSeconds": 64,
+        "title": "完成一笔订单",
+        "description": "买家从社群店面选择精选商品并完成购买。"
+      },
+      {
+        "startSeconds": 82,
+        "title": "履约同一订单",
+        "description": "卖家收到已付款订单，添加物流单号并标记已发货。"
+      },
+      {
+        "startSeconds": 92,
+        "title": "确认完成",
+        "description": "买家确认收货，订单进入完成状态。"
+      },
+      {
+        "startSeconds": 100,
+        "title": "查看运营者结果",
+        "description": "运营者打开归因视图，看到同一订单、分享来源、费率与预估佣金。"
+      }
+    ],
+    "transcript": "Maya 创建一个精选社群市场，设定百分之十的运营者佣金并发布。一位卖家查看条款后通过邀请链接加入。Maya 精选卖家商品并分享市场。买家打开该店面，创建一笔订单，并向本地测试网络上的监控地址支付 0.012 ETH。卖家接受并履约同一订单。买家确认收货。Maya 随后看到该完成订单归因于社群分享链接，预估佣金为 0.0020 ETH。该估算不是可提现余额。"
+  },
+  "0003": {
+    "title": "分享商品，售出即赚佣金",
+    "summary": "卖家设定佣金，推广者分享一条链接，归因订单自动奖励推广者。",
+    "outcome": "Kai 能看到成交来自他的链接，且佣金已就绪，无需另跑一套联盟流程。",
+    "disclosure": "录制于 Mobazha 本地测试网络。短链与二维码分享界面在完整上线前标注为 Preview。",
+    "appliesTo": "2026-07-18 录制的 Mobazha 本地 E2E 测试网络构建",
+    "evidenceLabel": "Mobazha 公开仓库与已审阅的演示出处",
+    "primaryAction": {
+      "label": "开始销售",
+      "href": "/zh/sell"
+    },
+    "relatedDocs": [
+      "/zh/sell",
+      "/zh/sell/payments",
+      "/zh/project/surfaces-and-integrations"
+    ],
+    "chapters": [
+      {
+        "startSeconds": 5,
+        "title": "给推广者分成",
+        "description": "Alice 设定全店面百分之五佣金与七天归因窗口。"
+      },
+      {
+        "startSeconds": 14,
+        "title": "处处用同一条链接",
+        "description": "Kai 看到百分之五回报，创建一条绑定钱包的短链，并用于这次销售。"
+      },
+      {
+        "startSeconds": 24,
+        "title": "经推荐下单",
+        "description": "买家跟随链接，保留推荐关系，并走完正常店铺与结账体验。"
+      },
+      {
+        "startSeconds": 40,
+        "title": "自动结算",
+        "description": "一笔完成的购买同时奖励卖家与推广者，无需单独联盟流程。"
+      },
+      {
+        "startSeconds": 52,
+        "title": "看到奖励到账",
+        "description": "Kai 看到 Paid 佣金行、已支付汇总与交易哈希。"
+      }
+    ],
+    "transcript": "Alice 为每个归因的店面订单向推广者提供百分之五佣金。Kai 看到具体回报后创建一条绑定钱包的短链。Jordan 跟随链接正常购物，并在本地测试网络支付这笔 ETH 订单。该付款同时提交卖家与推广者结算腿，无需第二套联盟流程。Kai 的收益页显示确切佣金为 Paid，并附带基数、买家、确认时间、打款地址与链上交易哈希。短链分享界面在完整上线前仍标注 Preview。"
+  },
+  "0004": {
+    "title": "把店铺变成你的品牌",
+    "summary": "应用店面模板，选择品牌色与精选商品，分享私密预览，并在无代码的情况下发布同一买家可见设计。",
+    "outcome": "Alice 的公开店面展示她在私密预览中审过的同一品牌配色、精选商品、故事与行动号召。",
+    "disclosure": "店面工作室新增能力在托管 SaaS 完整上线前标注为 Preview。",
+    "appliesTo": "2026-07-18 录制的 Mobazha storefront-studio Preview 构建",
+    "evidenceLabel": "Mobazha 公开仓库与已审阅的演示出处",
+    "primaryAction": {
+      "label": "设置你的店铺",
+      "href": "/zh/sell/store-setup"
+    },
+    "relatedDocs": [
+      "/zh/sell/store-setup",
+      "/zh/sell/listings",
+      "/zh/project/identity-and-stores"
+    ],
+    "chapters": [
+      {
+        "startSeconds": 5,
+        "title": "看清模板问题",
+        "description": "Alice 从可信的商品行开始，但整体仍像通用模板。"
+      },
+      {
+        "startSeconds": 14,
+        "title": "奠定品牌基础",
+        "description": "一套布局与暖色调建立英雄区、精选商品、故事与信任区块。"
+      },
+      {
+        "startSeconds": 26,
+        "title": "精选商品与故事",
+        "description": "她选择三件连贯的冷存储商品，写下实地测试故事，并设定一个买家行动号召。"
+      },
+      {
+        "startSeconds": 38,
+        "title": "审阅私密预览",
+        "description": "未登录买家打开七天预览链接，看到带 Preview 横幅的同一草稿。"
+      },
+      {
+        "startSeconds": 50,
+        "title": "发布同一设计",
+        "description": "Alice 发布后，验证原生密度的公开店面已去掉 Preview 横幅。"
+      }
+    ],
+    "transcript": "Alice 的店面已上线，可信的冷存储商品看起来仍偏通用。在内置设计工作室中，她应用完整布局与暖色皮革钢铁调色板，精选三件商品，撰写店铺故事，并设定一个买家行动号召。她创建私密预览链接，以未登录访客身份审阅同一草稿。发布后，匹配的商品行镜头显示同一品牌设计且无 Preview 横幅。店面工作室新增能力在托管上线完成前仍标注 Preview。"
+  },
+  "0005": {
+    "title": "锁定一个报价。收款。解锁文件。",
+    "summary": "为数字商品创建受保护的 Deal Link，分享锁定条款，完成一笔 ETH 付款，并从同一订单交付 Access verified。",
+    "outcome": "Mira 锁定一份 Creator Launch Pack 报价；Jordan 一次支付 0.025 ETH，无需单独发货邮件即可打开 Access verified。",
+    "disclosure": "录制于 Mobazha 本地测试网络。交付的启动包是本地 E2E 交付端点提供的确定性测试内容，不是生产客户文件。",
+    "appliesTo": "2026-07-20 录制的 Mobazha 本地 E2E Preview 构建",
+    "evidenceLabel": "Mobazha 公开仓库与已审阅的演示出处",
+    "primaryAction": {
+      "label": "了解结账",
+      "href": "/zh/buy/checkout"
+    },
+    "relatedDocs": [
+      "/zh/buy/checkout",
+      "/zh/sell/payments",
+      "/zh/project/transaction-spine"
+    ],
+    "chapters": [
+      {
+        "title": "创建受保护报价",
+        "description": "Mira 选择 Creator Launch Pack，把价格、交付物与保障锁定进一条 Deal Link。"
+      },
+      {
+        "title": "分享锁定链接",
+        "description": "实时链接可直接发送——条款在接受时冻结。"
+      },
+      {
+        "title": "核对确切承诺",
+        "description": "Jordan 在一页看到 Northbound Studio、0.025 ETH、交付物与保障。"
+      },
+      {
+        "title": "一次付款",
+        "description": "订单在本地测试网络监控确切 ETH 付款并推进，无需邮件催促。"
+      },
+      {
+        "title": "打开所购内容",
+        "description": "启动包以 Access verified 打开——真实内容，不是占位符。"
+      }
+    ],
+    "transcript": "Northbound Studio 的 Mira 为 Creator Launch Pack 创建一条受保护的 Deal Link，锁定价格、交付物与买家保障。她分享实时链接。Jordan 打开同一报价，核对 Northbound Studio 与 0.025 ETH 总额，并向本地测试网络上的唯一监控地址一次付款。订单推进并授予真实交付链接，无需卖家审核步骤或单独邮件。Jordan 打开确定性启动包并看到 Access verified。"
+  },
+  "0006": {
+    "title": "公平解决受保护订单",
+    "summary": "让争议订单保持受保护，审阅发生了什么，达成公平裁定，并以清晰结果关闭订单。",
+    "outcome": "各方都能看到决定、约定结果，以及受保护订单已达成明确解决。",
+    "disclosure": "使用测试账户与测试 ETH 在 Mobazha 本地 E2E 网络录制。Safe 部署、争议释放与打款交易使用本地 Anvil；不涉及生产资金。",
+    "appliesTo": "2026-07-19 录制的 Mobazha 本地 E2E Preview 构建",
+    "evidenceLabel": "Mobazha 公开仓库与已审阅的演示出处",
+    "primaryAction": {
+      "label": "了解争议处理",
+      "href": "/zh/buy/cancel-refund-dispute"
+    },
+    "relatedDocs": [
+      "/zh/buy/cancel-refund-dispute",
+      "/zh/buy/order-status",
+      "/zh/project/transaction-spine"
+    ],
+    "chapters": [
+      {
+        "title": "打开一份有证据的案件",
+        "description": "Jordan 的主张与上传照片始终附着在确切的已注资订单上。"
+      },
+      {
+        "title": "资金保持受保护",
+        "description": "审阅期间付款留在 Safe 中，任一方都无法静默改写订单或取走全部余额。"
+      },
+      {
+        "title": "记录中立裁定",
+        "description": "仲裁者审阅同一案件，裁定买家百分之六十、卖家百分之四十，并发布理由。"
+      },
+      {
+        "title": "接受受保护打款",
+        "description": "买家在授权争议释放前核对三方金额明细。"
+      },
+      {
+        "title": "保留完整解决轨迹",
+        "description": "完成的订单保留证据、裁定、打款金额、释放哈希与已解决状态。"
+      }
+    ],
+    "transcript": "Jordan 对一笔已注资、受仲裁保护的 ETH 订单发起争议，并提交主张与照片证据。审阅期间付款留在 Safe。仲裁者打开同一案件记录，审阅商品、金额、主张、证据、买家与卖家，然后记录买家百分之六十、卖家百分之四十的裁定与书面理由。Jordan 在接受打款前看到裁定与买家、卖家、仲裁者的确切金额。Mobazha 在需要时部署 Safe，在本地 Anvil 提交争议释放交易并完成订单。最终审计轨迹保留证据、60/40 裁定、链上释放哈希与 Dispute resolved 状态。"
+  },
+  "0007": {
+    "title": "完成你的第一笔加密货币实体订单",
+    "summary": "打开就绪店面，接受一笔已验证的实体商品 ETH 付款，并将同一订单履约至完成。",
+    "outcome": "Elena 的店铺把同一实体订单从已验证 ETH 付款一路完成到发货与买家确认。",
+    "disclosure": "使用测试账户与测试 ETH 在 Mobazha 本地 E2E 网络（Anvil）录制。不是 Outpost，不是 Monero，也不是公网付款。",
+    "appliesTo": "2026-07-19 录制的 Mobazha SaaS E2E Preview 构建",
+    "evidenceLabel": "Mobazha 公开仓库与已审阅的演示出处",
+    "primaryAction": {
+      "label": "准备收款方式",
+      "href": "/zh/sell/payments"
+    },
+    "relatedDocs": [
+      "/zh/sell/payments",
+      "/zh/sell/listings",
+      "/zh/sell/orders",
+      "/zh/buy/checkout"
+    ],
+    "chapters": [
+      {
+        "title": "打开就绪店面",
+        "description": "Elena 的 Forge Signal Supply 店铺与精选实体商品在首位买家到来前已上线。"
+      },
+      {
+        "title": "发布一件实体商品",
+        "description": "Titan Leather Hardware Wallet Case 展示价格、发货承诺与买家可见的商品细节。"
+      },
+      {
+        "title": "下第一笔订单",
+        "description": "Jordan 在同一屏幕完成商品、地址与运费结账。"
+      },
+      {
+        "title": "支付已验证总额",
+        "description": "唯一的 Safe 地址在本地测试网络监控确切 ETH 金额。"
+      },
+      {
+        "title": "带单号发货",
+        "description": "Elena 接受已付款订单，添加承运商与物流单号，并打开装箱单。"
+      },
+      {
+        "title": "确认收货",
+        "description": "Jordan 确认送达，使同一订单进入完成状态。"
+      },
+      {
+        "title": "第一笔加密订单完成",
+        "description": "Elena 的卖家订单视图保留已完成、已付款、已履约的结果。"
+      }
+    ],
+    "transcript": "Elena 打开 Forge Signal Supply 的装扮好的 SaaS 店面，并上线一件实体商品。Jordan 为 Titan Leather Hardware Wallet Case 下单，并向本地测试网络上的唯一监控地址支付确切 ETH 总额。付款自动验证。Elena 接受已付款订单，用 UPS 单号发货并审阅装箱单。Jordan 确认收货。同一订单在 Elena 的卖家视图以完成结束。录制于 Mobazha 本地测试网络。"
+  }
+}

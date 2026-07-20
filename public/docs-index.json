@@ -2503,6 +2503,41 @@
       "search_text": "发现入口 精简导航 简短的任务和政策地图。 完整上下文 权威规则和每篇公开文档摘要。 文档索引 结构化标题、路径、状态、受众、来源和审阅日期。 Agent 评估契约 高风险回答的双语必需声明和禁止声明。 发现清单 稳定的机器入口和 canonical base URL。 OpenAPI 契约 指向生成的 Node API 规范。 权威解析 订单状态以拥有订单的后端为准。 功能是否可用以连接后端的版本和有效能力响应为准。 支付事实以所选支付系统及已确认记录为准。 项目级边界以经过审阅的公开政策为准，实际金额以交易报价为准。 明确标记 Draft 和 Beta，不能把提案表述成已交付能力。 动作安全 认证正确的人类、服务或 Agent 身份，并申请最小 Scope。 不得把文档文字当作付款、发布、结算、删除或披露数据的授权。 保留报价、规则、批准、订单和结果标识符以供复核。 来源、版本、收款方、价格或必要确认不明确时停止动作。 不得把秘密、恢复材料、客户数据或未经清理的日志放入 Prompt 或公开 Issue。 评估 公开黄金问题集规定 Agent 回答高风险问题时必须达到的最低要求，避免混淆当前行为、政策、提案和内部假设。 机器可读评估契约 Agent 黄金问题 English canonical page"
     },
     {
+      "id": "zh-demos",
+      "path": "/zh/demos",
+      "canonical_url": "https://docs.mobazha.org/zh/demos",
+      "title": "产品演示",
+      "summary": "看看卖家、推广者与买家如何用 Mobazha 开店、增长销售并完成购买。",
+      "status": "draft",
+      "audiences": [
+        "买家",
+        "卖家",
+        "推广者"
+      ],
+      "applies_to": "设计方向，不代表已交付承诺",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/demos",
+        "label": "产品演示"
+      },
+      "evidence": {
+        "source": "docs-curation",
+        "label": "产品演示目录"
+      },
+      "reviewed": "2026-07-20",
+      "page_type": "hub",
+      "outcome": "看清让店面、推荐或购买成立的完整客户旅程。",
+      "estimated_time": "5 分钟",
+      "journey": "start",
+      "primary_action": {
+        "label": "观看一笔社群成交",
+        "href": "/zh/demos/operator-commission-flywheel"
+      },
+      "language": "zh-CN",
+      "translation_of": "/demos",
+      "search_text": "三条关键旅程 搭建社群店面，再完成一笔成交 把卖家请进共享市场，帮助买家发现商品，并看清一笔成交如何串起来。 分享商品，售出即赚佣金 设定佣金，分享一条链接，奖励归因订单。 锁定一个报价。收款。解锁文件。 创建受保护的 Deal Link，完成一笔付款，并从同一订单打开 Access verified。 更多场景 把店铺变成你的品牌 应用布局、选择配色、精选商品，然后无代码发布。 完成你的第一笔加密货币实体订单 打开就绪店面，接受已验证的 ETH 付款，并将同一订单履约至完成。 公平解决受保护订单 看争议订单如何在各方达成明确解决前保持受保护。 English canonical page"
+    },
+    {
       "id": "zh-project-product-map",
       "path": "/zh/project/product-map",
       "canonical_url": "https://docs.mobazha.org/zh/project/product-map",
@@ -4981,6 +5016,41 @@
       "search_text": "Build a community storefront, then complete a sale Bring sellers into a shared market, help buyers discover the right products, and follow one sale from storefront to completion. The completed sale comes back to the community market that made it possible, so its contribution is clear to everyone involved. Recorded on the Mobazha local test network. The operator commission is an attributed estimate, not a withdrawable balance. Operator Operator Seller Buyer Operate Grow Buy Connect Trade Create and publish the market Maya creates a curated, invite-only market, sets the operator commission, and publishes a buyer-facing page before recruiting sellers. Invite one seller The seller opens the invitation, sees the commission terms, and joins the market in one step. Curate and share The operator features one coherent product and shares the branded community storefront. Complete one order A buyer chooses the featured product and completes the purchase from the community storefront. Fulfill the same order The seller receives the paid order, adds tracking, and marks it shipped. Complete the order The buyer confirms receipt and the order reaches its completed state. Trace the operator outcome The operator opens the attribution view and sees the same order, share source, rate, and estimated commission. Maya creates a curated community market, sets a ten percent operator commission, and publishes it. One seller reviews those terms and joins through the invitation link. Maya curates the seller's product and shares the market. A buyer opens that storefront, creates one order, and pays 0.012 ETH to its monitored address on the local test network. The seller accepts and ships the same order. The buyer confirms receipt. Maya then sees that completed order attributed to the community share link with a 0.0020 ETH estimated commission. The estimate is not a withdrawable balance."
     },
     {
+      "id": "video-0001-zh-CN",
+      "path": "/zh/demos/operator-commission-flywheel",
+      "canonical_url": "https://docs.mobazha.org/zh/demos/operator-commission-flywheel",
+      "title": "搭建社群店面，再完成一笔成交",
+      "summary": "把卖家请进共享市场，帮助买家发现合适商品，并从店面一路跟完一笔成交。",
+      "status": "preview",
+      "audiences": [
+        "operator",
+        "seller",
+        "buyer"
+      ],
+      "applies_to": "2026-07-18 录制的 Mobazha 本地 E2E 测试网络构建",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/demos/operator-commission-flywheel",
+        "label": "中文演示详情页"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha 公开仓库与已审阅的演示出处"
+      },
+      "reviewed": "2026-07-19",
+      "page_type": "video",
+      "outcome": "成交回到促成它的社群市场，贡献对各方都清晰可见。",
+      "estimated_time": "2 分钟",
+      "journey": "start",
+      "primary_action": {
+        "label": "运营一个市场",
+        "href": "/zh/sell/marketplace-participation"
+      },
+      "language": "zh-CN",
+      "translation_of": "/demos/operator-commission-flywheel",
+      "search_text": "搭建社群店面，再完成一笔成交 把卖家请进共享市场，帮助买家发现合适商品，并从店面一路跟完一笔成交。 成交回到促成它的社群市场，贡献对各方都清晰可见。 录制于 Mobazha 本地测试网络。运营者佣金为归因估算，不是可提现余额。 Operator Operator Seller Buyer Operate Grow Buy Connect Trade 创建并发布市场 Maya 创建一个精选、仅邀约的市场，设定运营者佣金，并在招募卖家前发布买家可见页面。 邀请一位卖家 卖家打开邀请，看到佣金条款，一步加入市场。 精选并分享 运营者精选一件连贯商品，并分享带品牌的社群店面。 完成一笔订单 买家从社群店面选择精选商品并完成购买。 履约同一订单 卖家收到已付款订单，添加物流单号并标记已发货。 确认完成 买家确认收货，订单进入完成状态。 查看运营者结果 运营者打开归因视图，看到同一订单、分享来源、费率与预估佣金。 Maya 创建一个精选社群市场，设定百分之十的运营者佣金并发布。一位卖家查看条款后通过邀请链接加入。Maya 精选卖家商品并分享市场。买家打开该店面，创建一笔订单，并向本地测试网络上的监控地址支付 0.012 ETH。卖家接受并履约同一订单。买家确认收货。Maya 随后看到该完成订单归因于社群分享链接，预估佣金为 0.0020 ETH。该估算不是可提现余额。"
+    },
+    {
       "id": "video-0003",
       "path": "/demos/seller-affiliate-loop",
       "canonical_url": "https://docs.mobazha.org/demos/seller-affiliate-loop",
@@ -5013,6 +5083,41 @@
       },
       "language": "en",
       "search_text": "Share products and earn when they sell A seller offers a commission, a promoter shares one link, and an attributed order rewards the promoter automatically. Kai can see that the sale came through his link and that his commission is ready, without running a separate affiliate workflow. Recorded on the Mobazha local test network. The short-link and QR share surface is labeled Preview while it completes rollout. Promoter Promoter Seller Buyer Grow Sell Pay Connect Trade Offer promoters a cut Alice sets a five percent storefront-wide commission and a seven-day attribution window. Use one link everywhere Kai sees the five percent return, creates one wallet-bound short link, and uses it for the sale. Shop through the referral A buyer follows the link, keeps the referral, and continues through the normal store and checkout experience. Settle automatically One completed purchase rewards the seller and promoter without a separate affiliate workflow. See the reward arrive Kai sees the Paid commission row, paid-out rollup, and transaction hash. Alice offers promoters five percent on every attributed storefront order. Kai sees the concrete return and creates one wallet-bound short link. Jordan follows it, shops normally, and pays the resulting ETH order on the local test network. That payment submits the seller and promoter settlement legs without a second affiliate workflow. Kai's earnings page shows the exact commission as Paid with its basis, buyer, confirmation time, payout address, and on-chain transaction hash. The short-link share surface remains labeled Preview while rollout completes."
+    },
+    {
+      "id": "video-0003-zh-CN",
+      "path": "/zh/demos/seller-affiliate-loop",
+      "canonical_url": "https://docs.mobazha.org/zh/demos/seller-affiliate-loop",
+      "title": "分享商品，售出即赚佣金",
+      "summary": "卖家设定佣金，推广者分享一条链接，归因订单自动奖励推广者。",
+      "status": "preview",
+      "audiences": [
+        "promoter",
+        "seller",
+        "buyer"
+      ],
+      "applies_to": "2026-07-18 录制的 Mobazha 本地 E2E 测试网络构建",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/demos/seller-affiliate-loop",
+        "label": "中文演示详情页"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha 公开仓库与已审阅的演示出处"
+      },
+      "reviewed": "2026-07-19",
+      "page_type": "video",
+      "outcome": "Kai 能看到成交来自他的链接，且佣金已就绪，无需另跑一套联盟流程。",
+      "estimated_time": "2 分钟",
+      "journey": "start",
+      "primary_action": {
+        "label": "开始销售",
+        "href": "/zh/sell"
+      },
+      "language": "zh-CN",
+      "translation_of": "/demos/seller-affiliate-loop",
+      "search_text": "分享商品，售出即赚佣金 卖家设定佣金，推广者分享一条链接，归因订单自动奖励推广者。 Kai 能看到成交来自他的链接，且佣金已就绪，无需另跑一套联盟流程。 录制于 Mobazha 本地测试网络。短链与二维码分享界面在完整上线前标注为 Preview。 Promoter Promoter Seller Buyer Grow Sell Pay Connect Trade 给推广者分成 Alice 设定全店面百分之五佣金与七天归因窗口。 处处用同一条链接 Kai 看到百分之五回报，创建一条绑定钱包的短链，并用于这次销售。 经推荐下单 买家跟随链接，保留推荐关系，并走完正常店铺与结账体验。 自动结算 一笔完成的购买同时奖励卖家与推广者，无需单独联盟流程。 看到奖励到账 Kai 看到 Paid 佣金行、已支付汇总与交易哈希。 Alice 为每个归因的店面订单向推广者提供百分之五佣金。Kai 看到具体回报后创建一条绑定钱包的短链。Jordan 跟随链接正常购物，并在本地测试网络支付这笔 ETH 订单。该付款同时提交卖家与推广者结算腿，无需第二套联盟流程。Kai 的收益页显示确切佣金为 Paid，并附带基数、买家、确认时间、打款地址与链上交易哈希。短链分享界面在完整上线前仍标注 Preview。"
     },
     {
       "id": "video-0004",
@@ -5048,6 +5153,40 @@
       "search_text": "Turn your store into your brand Apply a storefront template, choose brand colors and featured products, share a private preview, and publish the same buyer-facing design without code. Alice's public storefront shows the same branded palette, featured products, story, and call to action that she reviewed through the private preview. The storefront studio additions are labeled Preview while they complete rollout to the hosted SaaS. Seller Seller Buyer Sell Own See the template problem Alice starts from a credible product row that still looks like a generic template. Set the brand foundation One layout and warm palette establish the hero, featured products, story, and trust sections. Curate products and story She selects three coherent cold-storage products, writes the field-testing story, and sets one buyer call to action. Review a private preview A logged-out buyer opens the seven-day preview link and sees the exact draft with a Preview banner. Publish the same design Alice publishes and verifies the native-density public storefront without the Preview banner. Alice starts with a live storefront whose credible cold-storage products still look generic. In the built-in design studio, she applies one complete layout and a warm leather-and-steel palette, selects three coherent products, writes the store story, and sets one buyer call to action. She creates a private preview link and reviews the exact draft as a logged-out visitor. After publishing, a matched product-row shot shows the same branded design without the Preview banner. The storefront studio additions remain labeled Preview while hosted rollout completes."
     },
     {
+      "id": "video-0004-zh-CN",
+      "path": "/zh/demos/storefront-makeover",
+      "canonical_url": "https://docs.mobazha.org/zh/demos/storefront-makeover",
+      "title": "把店铺变成你的品牌",
+      "summary": "应用店面模板，选择品牌色与精选商品，分享私密预览，并在无代码的情况下发布同一买家可见设计。",
+      "status": "preview",
+      "audiences": [
+        "seller",
+        "buyer"
+      ],
+      "applies_to": "2026-07-18 录制的 Mobazha storefront-studio Preview 构建",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/demos/storefront-makeover",
+        "label": "中文演示详情页"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha 公开仓库与已审阅的演示出处"
+      },
+      "reviewed": "2026-07-19",
+      "page_type": "video",
+      "outcome": "Alice 的公开店面展示她在私密预览中审过的同一品牌配色、精选商品、故事与行动号召。",
+      "estimated_time": "2 分钟",
+      "journey": "start",
+      "primary_action": {
+        "label": "设置你的店铺",
+        "href": "/zh/sell/store-setup"
+      },
+      "language": "zh-CN",
+      "translation_of": "/demos/storefront-makeover",
+      "search_text": "把店铺变成你的品牌 应用店面模板，选择品牌色与精选商品，分享私密预览，并在无代码的情况下发布同一买家可见设计。 Alice 的公开店面展示她在私密预览中审过的同一品牌配色、精选商品、故事与行动号召。 店面工作室新增能力在托管 SaaS 完整上线前标注为 Preview。 Seller Seller Buyer Sell Own 看清模板问题 Alice 从可信的商品行开始，但整体仍像通用模板。 奠定品牌基础 一套布局与暖色调建立英雄区、精选商品、故事与信任区块。 精选商品与故事 她选择三件连贯的冷存储商品，写下实地测试故事，并设定一个买家行动号召。 审阅私密预览 未登录买家打开七天预览链接，看到带 Preview 横幅的同一草稿。 发布同一设计 Alice 发布后，验证原生密度的公开店面已去掉 Preview 横幅。 Alice 的店面已上线，可信的冷存储商品看起来仍偏通用。在内置设计工作室中，她应用完整布局与暖色皮革钢铁调色板，精选三件商品，撰写店铺故事，并设定一个买家行动号召。她创建私密预览链接，以未登录访客身份审阅同一草稿。发布后，匹配的商品行镜头显示同一品牌设计且无 Preview 横幅。店面工作室新增能力在托管上线完成前仍标注 Preview。"
+    },
+    {
       "id": "video-0005",
       "path": "/demos/protected-digital-sale",
       "canonical_url": "https://docs.mobazha.org/demos/protected-digital-sale",
@@ -5079,6 +5218,40 @@
       },
       "language": "en",
       "search_text": "Lock one offer. Get paid. Unlock the file. Create a protected Deal Link for a digital product, share the locked terms, take one ETH payment, and deliver Access verified from the same order. Mira locks one Creator Launch Pack offer; Jordan pays 0.025 ETH once and opens Access verified without a separate delivery email. Recorded on the Mobazha local test network. The delivered launch pack is deterministic test content served by the local E2E delivery endpoint, not a production customer file. Seller Seller Buyer Sell Pay Deliver Trade Connect Create a protected offer Mira picks Creator Launch Pack and locks price, deliverables, and protection into one Deal Link. Share the locked link The live link is ready to send — terms freeze at acceptance. Review the exact promise Jordan sees Northbound Studio, 0.025 ETH, deliverables, and protection on one page. Pay once The order watches the exact ETH payment on the local test network and advances without email chase. Open what you bought The launch pack opens with Access verified — real content, not a placeholder. Mira at Northbound Studio creates one protected Deal Link for Creator Launch Pack, locking price, deliverables, and buyer protection. She shares the live link. Jordan opens the same offer, reviews Northbound Studio and the 0.025 ETH total, and pays once to a unique monitored address on the local test network. The order advances and grants the real delivery link without a seller review step or a separate email. Jordan opens the deterministic launch pack and sees Access verified."
+    },
+    {
+      "id": "video-0005-zh-CN",
+      "path": "/zh/demos/protected-digital-sale",
+      "canonical_url": "https://docs.mobazha.org/zh/demos/protected-digital-sale",
+      "title": "锁定一个报价。收款。解锁文件。",
+      "summary": "为数字商品创建受保护的 Deal Link，分享锁定条款，完成一笔 ETH 付款，并从同一订单交付 Access verified。",
+      "status": "preview",
+      "audiences": [
+        "seller",
+        "buyer"
+      ],
+      "applies_to": "2026-07-20 录制的 Mobazha 本地 E2E Preview 构建",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/demos/protected-digital-sale",
+        "label": "中文演示详情页"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha 公开仓库与已审阅的演示出处"
+      },
+      "reviewed": "2026-07-20",
+      "page_type": "video",
+      "outcome": "Mira 锁定一份 Creator Launch Pack 报价；Jordan 一次支付 0.025 ETH，无需单独发货邮件即可打开 Access verified。",
+      "estimated_time": "2 分钟",
+      "journey": "start",
+      "primary_action": {
+        "label": "了解结账",
+        "href": "/zh/buy/checkout"
+      },
+      "language": "zh-CN",
+      "translation_of": "/demos/protected-digital-sale",
+      "search_text": "锁定一个报价。收款。解锁文件。 为数字商品创建受保护的 Deal Link，分享锁定条款，完成一笔 ETH 付款，并从同一订单交付 Access verified。 Mira 锁定一份 Creator Launch Pack 报价；Jordan 一次支付 0.025 ETH，无需单独发货邮件即可打开 Access verified。 录制于 Mobazha 本地测试网络。交付的启动包是本地 E2E 交付端点提供的确定性测试内容，不是生产客户文件。 Seller Seller Buyer Sell Pay Deliver Trade Connect 创建受保护报价 Mira 选择 Creator Launch Pack，把价格、交付物与保障锁定进一条 Deal Link。 分享锁定链接 实时链接可直接发送——条款在接受时冻结。 核对确切承诺 Jordan 在一页看到 Northbound Studio、0.025 ETH、交付物与保障。 一次付款 订单在本地测试网络监控确切 ETH 付款并推进，无需邮件催促。 打开所购内容 启动包以 Access verified 打开——真实内容，不是占位符。 Northbound Studio 的 Mira 为 Creator Launch Pack 创建一条受保护的 Deal Link，锁定价格、交付物与买家保障。她分享实时链接。Jordan 打开同一报价，核对 Northbound Studio 与 0.025 ETH 总额，并向本地测试网络上的唯一监控地址一次付款。订单推进并授予真实交付链接，无需卖家审核步骤或单独邮件。Jordan 打开确定性启动包并看到 Access verified。"
     },
     {
       "id": "video-0006",
@@ -5115,6 +5288,41 @@
       "search_text": "Resolve a protected order fairly Keep a disputed order protected, review what happened, agree on a fair ruling, and close the order with clarity. Everyone can see the decision, the agreed outcome, and that the protected order has reached a clear resolution. Recorded with test accounts and test ETH on the Mobazha local E2E network. The Safe deployment, dispute release, and payout transaction use local Anvil; no production funds are involved. Buyer Buyer Seller Moderator Buy Recover Operate Trade Connect Open one evidence-backed case Jordan's claim and uploaded photo stay attached to the exact funded order. Keep funds protected The payment remains in the Safe while neither party can silently rewrite the order or take the full balance. Record a neutral ruling The moderator reviews the same case, assigns 60 percent to the buyer and 40 percent to the seller, and publishes the reason. Accept the protected payout The buyer verifies the three-way amount breakdown before authorizing the dispute release. Keep the full resolution trail The completed order retains the evidence, ruling, payout amounts, release hash, and resolved state. Jordan opens a dispute on a funded, arbitration-protected ETH order and submits one claim with photo evidence. The payment remains in the Safe during review. The moderator opens the same case record, reviews the product, amount, claim, evidence, buyer, and seller, then records a 60 percent buyer and 40 percent seller ruling with a written reason. Jordan sees the ruling and exact buyer, seller, and moderator amounts before accepting the payout. Mobazha deploys the Safe when needed, submits the dispute-release transaction on local Anvil, and completes the order. The final audit trail retains the evidence, 60/40 ruling, on-chain release hash, and Dispute resolved state."
     },
     {
+      "id": "video-0006-zh-CN",
+      "path": "/zh/demos/escrow-dispute-resolution",
+      "canonical_url": "https://docs.mobazha.org/zh/demos/escrow-dispute-resolution",
+      "title": "公平解决受保护订单",
+      "summary": "让争议订单保持受保护，审阅发生了什么，达成公平裁定，并以清晰结果关闭订单。",
+      "status": "preview",
+      "audiences": [
+        "buyer",
+        "seller",
+        "moderator"
+      ],
+      "applies_to": "2026-07-19 录制的 Mobazha 本地 E2E Preview 构建",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/demos/escrow-dispute-resolution",
+        "label": "中文演示详情页"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha 公开仓库与已审阅的演示出处"
+      },
+      "reviewed": "2026-07-19",
+      "page_type": "video",
+      "outcome": "各方都能看到决定、约定结果，以及受保护订单已达成明确解决。",
+      "estimated_time": "2 分钟",
+      "journey": "start",
+      "primary_action": {
+        "label": "了解争议处理",
+        "href": "/zh/buy/cancel-refund-dispute"
+      },
+      "language": "zh-CN",
+      "translation_of": "/demos/escrow-dispute-resolution",
+      "search_text": "公平解决受保护订单 让争议订单保持受保护，审阅发生了什么，达成公平裁定，并以清晰结果关闭订单。 各方都能看到决定、约定结果，以及受保护订单已达成明确解决。 使用测试账户与测试 ETH 在 Mobazha 本地 E2E 网络录制。Safe 部署、争议释放与打款交易使用本地 Anvil；不涉及生产资金。 Buyer Buyer Seller Moderator Buy Recover Operate Trade Connect 打开一份有证据的案件 Jordan 的主张与上传照片始终附着在确切的已注资订单上。 资金保持受保护 审阅期间付款留在 Safe 中，任一方都无法静默改写订单或取走全部余额。 记录中立裁定 仲裁者审阅同一案件，裁定买家百分之六十、卖家百分之四十，并发布理由。 接受受保护打款 买家在授权争议释放前核对三方金额明细。 保留完整解决轨迹 完成的订单保留证据、裁定、打款金额、释放哈希与已解决状态。 Jordan 对一笔已注资、受仲裁保护的 ETH 订单发起争议，并提交主张与照片证据。审阅期间付款留在 Safe。仲裁者打开同一案件记录，审阅商品、金额、主张、证据、买家与卖家，然后记录买家百分之六十、卖家百分之四十的裁定与书面理由。Jordan 在接受打款前看到裁定与买家、卖家、仲裁者的确切金额。Mobazha 在需要时部署 Safe，在本地 Anvil 提交争议释放交易并完成订单。最终审计轨迹保留证据、60/40 裁定、链上释放哈希与 Dispute resolved 状态。"
+    },
+    {
       "id": "video-0007",
       "path": "/demos/seller-first-crypto-order",
       "canonical_url": "https://docs.mobazha.org/demos/seller-first-crypto-order",
@@ -5146,6 +5354,40 @@
       },
       "language": "en",
       "search_text": "Take your first crypto-paid physical order Open a ready storefront, accept a verified ETH payment for a physical good, and ship the same order to completion. Elena's store completes the same physical order from verified ETH payment through shipping and buyer confirmation. Recorded with test accounts and test ETH on the Mobazha local E2E network (Anvil). Not Outpost, not Monero, and not a public-network payment. Seller Seller Buyer Sell Pay Deliver Own Trade Open a ready storefront Elena's Forge Signal Supply store and featured physical products are live before the first buyer arrives. Publish one physical offer The Titan Leather Hardware Wallet Case shows price, shipping promise, and buyer-visible product detail. Place the first order Jordan checks out with item, address, and shipping on the same screen. Pay the verified total A unique Safe address watches the exact ETH amount on the local test network. Ship with tracking Elena accepts the paid order, adds carrier and tracking, and opens the packing slip. Confirm receipt Jordan confirms delivery so the same order reaches its completed state. First crypto order done Elena's seller order view holds the completed, paid, and fulfilled outcome. Elena opens a dressed SaaS storefront for Forge Signal Supply with a live physical listing. Jordan places one order for the Titan Leather Hardware Wallet Case and pays the exact ETH total to a unique watched address on the local test network. Payment verifies automatically. Elena accepts the paid order, ships with UPS tracking, and reviews the packing slip. Jordan confirms receipt. The same order ends completed on Elena's seller view. Recorded on the Mobazha local test network."
+    },
+    {
+      "id": "video-0007-zh-CN",
+      "path": "/zh/demos/seller-first-crypto-order",
+      "canonical_url": "https://docs.mobazha.org/zh/demos/seller-first-crypto-order",
+      "title": "完成你的第一笔加密货币实体订单",
+      "summary": "打开就绪店面，接受一笔已验证的实体商品 ETH 付款，并将同一订单履约至完成。",
+      "status": "preview",
+      "audiences": [
+        "seller",
+        "buyer"
+      ],
+      "applies_to": "2026-07-19 录制的 Mobazha SaaS E2E Preview 构建",
+      "knowledge_authority": {
+        "kind": "public-knowledge",
+        "url": "https://docs.mobazha.org/zh/demos/seller-first-crypto-order",
+        "label": "中文演示详情页"
+      },
+      "evidence": {
+        "source": "https://github.com/mobazha",
+        "label": "Mobazha 公开仓库与已审阅的演示出处"
+      },
+      "reviewed": "2026-07-19",
+      "page_type": "video",
+      "outcome": "Elena 的店铺把同一实体订单从已验证 ETH 付款一路完成到发货与买家确认。",
+      "estimated_time": "2 分钟",
+      "journey": "start",
+      "primary_action": {
+        "label": "准备收款方式",
+        "href": "/zh/sell/payments"
+      },
+      "language": "zh-CN",
+      "translation_of": "/demos/seller-first-crypto-order",
+      "search_text": "完成你的第一笔加密货币实体订单 打开就绪店面，接受一笔已验证的实体商品 ETH 付款，并将同一订单履约至完成。 Elena 的店铺把同一实体订单从已验证 ETH 付款一路完成到发货与买家确认。 使用测试账户与测试 ETH 在 Mobazha 本地 E2E 网络（Anvil）录制。不是 Outpost，不是 Monero，也不是公网付款。 Seller Seller Buyer Sell Pay Deliver Own Trade 打开就绪店面 Elena 的 Forge Signal Supply 店铺与精选实体商品在首位买家到来前已上线。 发布一件实体商品 Titan Leather Hardware Wallet Case 展示价格、发货承诺与买家可见的商品细节。 下第一笔订单 Jordan 在同一屏幕完成商品、地址与运费结账。 支付已验证总额 唯一的 Safe 地址在本地测试网络监控确切 ETH 金额。 带单号发货 Elena 接受已付款订单，添加承运商与物流单号，并打开装箱单。 确认收货 Jordan 确认送达，使同一订单进入完成状态。 第一笔加密订单完成 Elena 的卖家订单视图保留已完成、已付款、已履约的结果。 Elena 打开 Forge Signal Supply 的装扮好的 SaaS 店面，并上线一件实体商品。Jordan 为 Titan Leather Hardware Wallet Case 下单，并向本地测试网络上的唯一监控地址支付确切 ETH 总额。付款自动验证。Elena 接受已付款订单，用 UPS 单号发货并审阅装箱单。Jordan 确认收货。同一订单在 Elena 的卖家视图以完成结束。录制于 Mobazha 本地测试网络。"
     }
   ]
 }

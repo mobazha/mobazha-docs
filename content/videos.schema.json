@@ -53,7 +53,10 @@
       "additionalProperties": false,
       "required": ["url", "language", "label", "kind"],
       "properties": {
-        "url": { "type": "string", "pattern": "^https://media\\.mobazha\\.org/" },
+        "url": {
+          "type": "string",
+          "pattern": "^https://(media\\.mobazha\\.org/|docs\\.mobazha\\.org/captions/)"
+        },
         "language": { "enum": ["en", "zh-CN"] },
         "label": { "type": "string", "minLength": 1 },
         "kind": { "enum": ["captions", "subtitles"] },
@@ -106,6 +109,11 @@
         "kind": { "enum": ["story", "task", "proof", "release"] },
         "status": { "enum": ["Current", "Beta", "Preview"] },
         "language": { "enum": ["en", "zh-CN"] },
+        "translationOf": {
+          "type": "string",
+          "pattern": "^[0-9]{4}$",
+          "description": "Optional English catalog id when this record is a localized master or parallel language entry."
+        },
         "primaryPersona": {
           "enum": ["Buyer", "Seller", "Moderator", "Operator", "Promoter", "Developer", "Evaluator"]
         },

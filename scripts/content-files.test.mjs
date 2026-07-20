@@ -117,7 +117,7 @@ test("rejects duplicate video identities and ungoverned media", () => {
 
 test("rejects more than three featured videos", () => {
   const catalog = videoFixture();
-  catalog.videos.push({ ...structuredClone(catalog.videos[2]), id: "0005", slug: "fourth-featured-video", featured: true });
+  catalog.videos.push({ ...structuredClone(catalog.videos[2]), id: "0099", slug: "fourth-featured-video", featured: true });
   catalog.videos[2].featured = true;
   assert(validateVideoCatalog(catalog).some((failure) => failure.includes("maximum is 3")));
 });
@@ -139,7 +139,7 @@ test("rejects duplicate or ungoverned caption tracks", () => {
     { url: "https://media.mobazha.org/demo-copy.vtt", language: "en", label: "English copy", kind: "captions", default: true },
   ];
   const failures = validateVideoCatalog(catalog);
-  assert(failures.some((failure) => failure.includes("must use https://media.mobazha.org/")));
+  assert(failures.some((failure) => failure.includes("must use https://media.mobazha.org/") || failure.includes("docs.mobazha.org/captions/")));
   assert(failures.some((failure) => failure.includes("duplicates en:captions")));
   assert(failures.some((failure) => failure.includes("more than one default caption track")));
 });

@@ -7,7 +7,13 @@ import { featuredVideos, videos } from "@/app/lib/videos";
 export const metadata: Metadata = {
   title: "Product demos",
   description: "See how sellers, promoters, and buyers use Mobazha to build stores, grow sales, and complete purchases.",
-  alternates: { canonical: "/demos" },
+  alternates: {
+    canonical: "/demos",
+    languages: {
+      en: "/demos",
+      "zh-CN": "/zh/demos",
+    },
+  },
 };
 
 const moreVideos = videos.filter((video) => !video.featured);

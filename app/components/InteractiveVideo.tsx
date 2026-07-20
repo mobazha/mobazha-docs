@@ -5,6 +5,7 @@ import type { PublicVideo } from "@/app/lib/videos";
 
 type InteractiveVideoProps = {
   video: Pick<PublicVideo, "title" | "media" | "chapters">;
+  language?: "en" | "zh-CN";
 };
 
 function formatChapterTime(seconds: number): string {
@@ -13,8 +14,9 @@ function formatChapterTime(seconds: number): string {
   return `${minutes}:${remainder.toString().padStart(2, "0")}`;
 }
 
-export function InteractiveVideo({ video }: InteractiveVideoProps) {
+export function InteractiveVideo({ video, language = "en" }: InteractiveVideoProps) {
   const player = useRef<HTMLVideoElement>(null);
+  const isChinese = language === "zh-CN";
 
   function jumpTo(seconds: number) {
     const element = player.current;
@@ -29,7 +31,7 @@ export function InteractiveVideo({ video }: InteractiveVideoProps) {
       <figure className="video-player">
         <video
           ref={player}
-          aria-label={`${video.title} product demo`}
+          aria-label={isChinese ? `${video.title} 产品演示` : `${video.title} product demo`}
           controls
           playsInline
           poster={video.media.poster.url}
@@ -43,15 +45,15 @@ export function InteractiveVideo({ video }: InteractiveVideoProps) {
               kind={caption.kind}
               label={caption.label}
               src={caption.url}
-              srcLang={caption.language}
+              srcLang={caption.language === "zh-CN" ? "zh-CN" : caption.language}
             />
           ))}
         </video>
       </figure>
 
       <section className="video-detail-section video-chapters-section" aria-labelledby="chapters">
-        <span>Chapters</span>
-        <h2 id="chapters">Jump to a moment</h2>
+        <span>{isChinese ? "章节" : "Chapters"}</span>
+        <h2 id="chapters">{isChinese ? "跳到某一刻" : "Jump to a moment"}</h2>
         <ol className="video-chapters">
           {video.chapters.map((chapter) => (
             <li key={chapter.title}>

@@ -4745,6 +4745,38 @@ OpenAPI 契约
 Agent 黄金问题
 English canonical page
 
+### 产品演示
+- URL: /zh/demos
+- Status: draft
+- Page type: hub
+- Outcome: 看清让店面、推荐或购买成立的完整客户旅程。
+- Estimated time: 5 分钟
+- Journey: start
+- Applies to: 设计方向，不代表已交付承诺
+- Audience: 买家, 卖家, 推广者
+- Knowledge authority: https://docs.mobazha.org/zh/demos
+- Evidence: docs-curation
+- Reviewed: 2026-07-20
+- Language: zh-CN
+- Translation of: /demos
+- Summary: 看看卖家、推广者与买家如何用 Mobazha 开店、增长销售并完成购买。
+
+三条关键旅程
+搭建社群店面，再完成一笔成交
+把卖家请进共享市场，帮助买家发现商品，并看清一笔成交如何串起来。
+分享商品，售出即赚佣金
+设定佣金，分享一条链接，奖励归因订单。
+锁定一个报价。收款。解锁文件。
+创建受保护的 Deal Link，完成一笔付款，并从同一订单打开 Access verified。
+更多场景
+把店铺变成你的品牌
+应用布局、选择配色、精选商品，然后无代码发布。
+完成你的第一笔加密货币实体订单
+打开就绪店面，接受已验证的 ETH 付款，并将同一订单履约至完成。
+公平解决受保护订单
+看争议订单如何在各方达成明确解决前保持受保护。
+English canonical page
+
 ### Mobazha 产品地图
 - URL: /zh/project/product-map
 - Status: beta

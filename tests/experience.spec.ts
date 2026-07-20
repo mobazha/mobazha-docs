@@ -24,6 +24,9 @@ const routes = [
   "/demos/operator-commission-flywheel",
   "/demos/protected-digital-sale",
   "/demos/escrow-dispute-resolution",
+  "/zh/demos",
+  "/zh/demos/operator-commission-flywheel",
+  "/zh/demos/protected-digital-sale",
   "/zh/buy",
   "/zh/buy/order-notifications",
   "/zh/sell/catalog-operations",
@@ -127,6 +130,32 @@ test("video discovery stays lightweight and searchable", async ({ page }, testIn
   const search = page.getByRole("combobox", { name: "Search documentation" });
   await search.fill("community storefront");
   await expect(page.getByRole("option").first()).toHaveAttribute("href", "/demos/operator-commission-flywheel");
+});
+
+test("Chinese demos hub and language switching stay paired", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "desktop-chromium", "one desktop project covers catalog behavior");
+  await page.goto("/zh/demos");
+  await expect(page.locator("h1")).toContainText("看 Mobazha 如何完成一笔真实成交");
+  await expect(page.locator(".video-card")).toHaveCount(6);
+  await expect(page.locator(".video-card").first()).toHaveAttribute("href", "/zh/demos/operator-commission-flywheel");
+  await expect(page.locator(".video-section").getByRole("heading", { name: "三条关键旅程" })).toBeVisible();
+
+  await page.goto("/zh/demos/operator-commission-flywheel");
+  await expect(page.locator("h1")).toContainText("搭建社群店面");
+  await expect(page.locator("video[preload='metadata']")).toHaveCount(1);
+  await expect(page.locator("track[srclang='zh-CN']")).toHaveCount(1);
+  await expect(page.locator(".video-transcript")).toContainText("阅读完整故事");
+  await expect(page.locator(".video-detail-header .doc-primary-action")).toHaveAttribute("href", "/zh/sell/marketplace-participation");
+
+  const chineseMenu = page.locator(".language-menu");
+  await chineseMenu.locator("summary").click();
+  await expect(chineseMenu.locator('a[href="/demos/operator-commission-flywheel"]')).toHaveText("English");
+  await expect(chineseMenu.locator('a[href="/zh/demos/operator-commission-flywheel"]')).toHaveAttribute("aria-current", "page");
+
+  await page.goto("/demos");
+  const englishMenu = page.locator(".language-menu");
+  await englishMenu.locator("summary").click();
+  await expect(englishMenu.locator('a[href="/zh/demos"]')).toHaveText("简体中文");
 });
 
 test("contextual video references stay lightweight and canonical", async ({ page }, testInfo) => {

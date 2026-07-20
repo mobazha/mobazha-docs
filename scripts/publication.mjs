@@ -1,5 +1,5 @@
 import { documentText } from "./content-files.mjs";
-import { videoPath, videoSearchText } from "./video-files.mjs";
+import { loadVideoLocales, localizeVideoForPublication, videoPath, videoSearchText } from "./video-files.mjs";
 
 const baseUrl = "https://docs.mobazha.org";
 
@@ -59,30 +59,64 @@ export function renderPublication({ docs, navGroups, docApplicability, sources, 
     translation_of: doc.translationOf ? `/${doc.translationOf}` : undefined,
     search_text: searchTextFromDocument(doc),
   }));
-  const videoRecords = videos.videos.map((video) => ({
-    id: `video-${video.id}`,
-    path: videoPath(video),
-    canonical_url: `${baseUrl}${videoPath(video)}`,
-    title: video.title,
-    summary: cleanLine(video.summary),
-    status: video.status.toLowerCase(),
-    audiences: video.personas.map((persona) => persona.toLowerCase()),
-    applies_to: video.appliesTo,
-    knowledge_authority: {
-      kind: "public-knowledge",
-      url: `${baseUrl}${videoPath(video)}`,
-      label: "Canonical video detail page",
-    },
-    evidence: { source: video.evidence.url, label: video.evidence.label },
-    reviewed: video.reviewed,
-    page_type: "video",
-    outcome: video.outcome,
-    estimated_time: `${Math.ceil(video.durationSeconds / 60)} minutes`,
-    journey: "start",
-    primary_action: video.primaryAction,
-    language: video.language,
-    search_text: cleanLine(videoSearchText(video).slice(0, 4000)),
-  }));
+  const videoLocales = loadVideoLocales();
+  const videoRecords = videos.videos.flatMap((video) => {
+    const englishPath = videoPath(video, "en");
+    const chineseVideo = localizeVideoForPublication(video, "zh-CN", videoLocales);
+    const chinesePath = videoPath(chineseVideo, "zh-CN");
+    return [
+      {
+        id: `video-${video.id}`,
+        path: englishPath,
+        canonical_url: `${baseUrl}${englishPath}`,
+        title: video.title,
+        summary: cleanLine(video.summary),
+        status: video.status.toLowerCase(),
+        audiences: video.personas.map((persona) => persona.toLowerCase()),
+        applies_to: video.appliesTo,
+        knowledge_authority: {
+          kind: "public-knowledge",
+          url: `${baseUrl}${englishPath}`,
+          label: "Canonical video detail page",
+        },
+        evidence: { source: video.evidence.url, label: video.evidence.label },
+        reviewed: video.reviewed,
+        page_type: "video",
+        outcome: video.outcome,
+        estimated_time: `${Math.ceil(video.durationSeconds / 60)} minutes`,
+        journey: "start",
+        primary_action: video.primaryAction,
+        language: "en",
+        translation_of: undefined,
+        search_text: cleanLine(videoSearchText(video).slice(0, 4000)),
+      },
+      {
+        id: `video-${video.id}-zh-CN`,
+        path: chinesePath,
+        canonical_url: `${baseUrl}${chinesePath}`,
+        title: chineseVideo.title,
+        summary: cleanLine(chineseVideo.summary),
+        status: chineseVideo.status.toLowerCase(),
+        audiences: chineseVideo.personas.map((persona) => persona.toLowerCase()),
+        applies_to: chineseVideo.appliesTo,
+        knowledge_authority: {
+          kind: "public-knowledge",
+          url: `${baseUrl}${chinesePath}`,
+          label: "中文演示详情页",
+        },
+        evidence: { source: chineseVideo.evidence.url, label: chineseVideo.evidence.label },
+        reviewed: chineseVideo.reviewed,
+        page_type: "video",
+        outcome: chineseVideo.outcome,
+        estimated_time: `${Math.ceil(chineseVideo.durationSeconds / 60)} 分钟`,
+        journey: "start",
+        primary_action: chineseVideo.primaryAction,
+        language: "zh-CN",
+        translation_of: englishPath,
+        search_text: cleanLine(videoSearchText(chineseVideo).slice(0, 4000)),
+      },
+    ];
+  });
 
   const index = {
     schema_version: "1.8",

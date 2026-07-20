@@ -141,13 +141,37 @@ byte ranges and immutable cache headers from `media.mobazha.org`.
   useful native-density content, and no page-level overflow or blank content
   block appears.
 
+## Chinese localization baseline (2026-07-20)
+
+Phase A/B are live in source:
+
+- `/zh/demos` hub and `/zh/demos/<slug>` detail pages with localized copy from
+  `content/video-locales/zh-CN.json` (English silent masters still play).
+- Chinese nav Start link「产品演示」and language-menu pairing with `/demos`.
+- zh-CN WebVTT for 0001/0003/0004 under `public/captions/` (also mirrored in
+  `content/captions/`), registered on those catalog entries. Prefer migrating
+  caption bytes to `media.mobazha.org` when R2 credentials are available.
+
+### Phase C — Chinese masters (not yet recorded)
+
+Only when Chinese distribution requires baked-in UI text:
+
+1. Confirm `docs/demos/STYLE.md` Chinese-master track wording.
+2. Translate overlay/manifest copy; record with `locale=zh-CN`.
+3. Publish `{slug}-demo-zh-vN.mp4` (+ cover/poster) to R2.
+4. Add `language: "zh-CN"` catalog records (same or paired slug) with
+   `translationOf` when introduced, and point `/zh/demos` at those masters.
+5. Start with 0001, then 0003–0007.
+
 ## Guardrails for a new session
 
 1. Fetch `origin/main` and inspect the worktree before editing; another demo
    session may publish new media revisions.
 2. Do not copy media URL, duration, transcript, maturity, or provenance into
    contextual Markdown. Reference the stable four-digit registry ID.
-3. Keep `/demos/<slug>` as the canonical player and transcript page.
+3. Keep `/demos/<slug>` as the English canonical player; `/zh/demos/<slug>` is
+   the Chinese localized player page (may still use the English master until
+   Phase C).
 4. Contextual task pages use poster-link mode unless playing inline materially
    improves task completion.
 5. Do not add an unverified video candidate to `content/videos.json`.

@@ -77,7 +77,15 @@ export function formatVideoDuration(seconds: number): string {
   return `${minutes}:${remainder.toString().padStart(2, "0")}`;
 }
 
-export function videoKindLabel(kind: VideoKind): string {
+export function videoKindLabel(kind: VideoKind, language: "en" | "zh-CN" = "en"): string {
+  if (language === "zh-CN") {
+    return {
+      story: "故事演示",
+      task: "任务演示",
+      proof: "技术证明",
+      release: "发布剪辑",
+    }[kind];
+  }
   return {
     story: "Story demo",
     task: "Task walkthrough",

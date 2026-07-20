@@ -95,6 +95,7 @@ Implementation evidence: the versioned sources linked from each page.
 - [概览](/zh)
 - [选择托管方式](/zh/start/choose-deployment)
 - [Agent 使用指南](/zh/agents)
+- [产品演示](/zh/demos)
 
 ## 产品模型
 - [产品地图](/zh/project/product-map)
